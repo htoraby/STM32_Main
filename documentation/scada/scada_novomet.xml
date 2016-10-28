@@ -76,7 +76,7 @@
 		<name>Режим работы(стоп, ручной, авто)</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_VSD_ALARM_CODE</id>
 		<address>6</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -88,7 +88,7 @@
 		<name>Номер аварии ПЧ при последнем останове</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>VSD_CONTROL_WORD_1</id>
 		<address>7</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -111,7 +111,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>VSD_STATUS_WORD_1</id>
 		<address>9</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -160,7 +160,7 @@
 	<param>
 		<id>CCS_MOTOR_CURRENT_AVARAGE</id>
 		<address>13</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -184,7 +184,7 @@
 	<param>
 		<id>VSD_FREQUENCY_NOW</id>
 		<address>15</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -230,7 +230,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>VSD_HIGH_LIM_SPEED_MOTOR</id>
+		<id>CCS_BASE_FREQUENCY</id>
 		<address>19</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
@@ -256,7 +256,7 @@
 	<param>
 		<id>CCS_MOTOR_LOAD_NOW</id>
 		<address>21</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -280,7 +280,7 @@
 	<param>
 		<id>CCS_TURBO_ROTATION_NOW</id>
 		<address>23</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -304,7 +304,7 @@
 	<param>
 		<id>CCS_RESISTANCE_ISOLATION</id>
 		<address>25</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
 		<unit>RESISTANCE_KOM</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -328,7 +328,7 @@
 	<param>
 		<id>VSD_POWER_ACTIVE</id>
 		<address>27</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_POWER</physic>
 		<unit>ACTIV_POWER_KW</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
@@ -341,7 +341,7 @@
 	<param>
 		<id>VSD_POWER_FULL</id>
 		<address>29</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<unit>FULL_POWER_KVA</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
@@ -354,7 +354,7 @@
 	<param>
 		<id>CCS_MOTOR_COS_PHI_NOW</id>
 		<address>31</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.01</coefficient>
@@ -377,7 +377,7 @@
 	<param>
 		<id>VSD_CURRENT_OUT_PHASE_1</id>
 		<address>33</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -401,7 +401,7 @@
 	<param>
 		<id>VSD_CURRENT_OUT_PHASE_2</id>
 		<address>35</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -425,7 +425,7 @@
 	<param>
 		<id>VSD_CURRENT_OUT_PHASE_3</id>
 		<address>37</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -449,7 +449,7 @@
 	<param>
 		<id>VSD_OUT_VOLTAGE_MOTOR</id>
 		<address>39</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -473,7 +473,7 @@
 	<param>
 		<id>VSD_VOLTAGE_DC</id>
 		<address>41</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -497,7 +497,7 @@
 	<param>
 		<id>VSD_RADIATOR_TEMPERATURE</id>
 		<address>43</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<unit>TEMPERATURE_C</unit>
 		<typeData>TYPE_DATA_INT16</typeData>
@@ -521,7 +521,7 @@
 	<param>
 		<id>VSD_CONTROL_TEMPERATURE</id>
 		<address>45</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<unit>TEMPERATURE_C</unit>
 		<typeData>TYPE_DATA_INT16</typeData>
@@ -545,7 +545,7 @@
 	<param>
 		<id>CCS_VOLTAGE_PHASE_1_2</id>
 		<address>47</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -569,7 +569,7 @@
 	<param>
 		<id>CCS_VOLTAGE_PHASE_2_3</id>
 		<address>49</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -593,7 +593,7 @@
 	<param>
 		<id>CCS_VOLTAGE_PHASE_3_1</id>
 		<address>51</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -617,7 +617,7 @@
 	<param>
 		<id>CCS_CURRENT_PHASE_1</id>
 		<address>53</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -641,7 +641,7 @@
 	<param>
 		<id>CCS_CURRENT_PHASE_2</id>
 		<address>55</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -665,7 +665,7 @@
 	<param>
 		<id>CCS_CURRENT_PHASE_3</id>
 		<address>57</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -689,7 +689,7 @@
 	<param>
 		<id>CCS_VOLTAGE_IMBALANCE_IN</id>
 		<address>59</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -713,7 +713,7 @@
 	<param>
 		<id>CCS_CURRENT_IMBALANCE_IN</id>
 		<address>61</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -737,7 +737,7 @@
 	<param>
 		<id>EM_ACTIVE_POWER</id>
 		<address>63</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_POWER</physic>
 		<unit>POWER_KW</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
@@ -750,7 +750,7 @@
 	<param>
 		<id>EM_FULL_POWER</id>
 		<address>65</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FULL_POWER</physic>
 		<unit>FULL_POWER_KVA</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
@@ -763,7 +763,7 @@
 	<param>
 		<id>EM_ACTIVE_ENERGY</id>
 		<address>67</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_ACTIVE_ENERGY</physic>
 		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
@@ -776,7 +776,7 @@
 	<param>
 		<id>CCS_MOTOR_CURRENT_PHASE_1</id>
 		<address>69</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -800,7 +800,7 @@
 	<param>
 		<id>CCS_MOTOR_CURRENT_PHASE_1</id>
 		<address>71</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -824,7 +824,7 @@
 	<param>
 		<id>CCS_MOTOR_CURRENT_PHASE_1</id>
 		<address>73</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -848,7 +848,7 @@
 	<param>
 		<id>CCS_MOTOR_LOAD_NOW</id>
 		<address>75</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -872,7 +872,7 @@
 	<param>
 		<id>CCS_MOTOR_VOLTAGE_NOW</id>
 		<address>77</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -896,7 +896,7 @@
 	<param>
 		<id>CCS_MOTOR_CURRENT_IMBALANCE</id>
 		<address>79</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<unit>PERCENT_PERCENT</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -1066,7 +1066,7 @@
 	<param>
 		<id>0</id>
 		<address>93</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>1</coefficient>
@@ -1078,7 +1078,7 @@
 	<param>
 		<id>0</id>
 		<address>95</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>1</coefficient>
@@ -1090,7 +1090,7 @@
 	<param>
 		<id>0</id>
 		<address>97</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -1316,7 +1316,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>VSD_ON</id>
+		<id>CCS_CMD_START</id>
 		<address>119</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -1339,7 +1339,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>VSD_OFF</id>
+		<id>CCS_CMD_STOP</id>
 		<address>121</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -1552,7 +1552,7 @@
 	<param>
 		<id>0</id>
 		<address>139</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -1573,9 +1573,9 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_VERSION_SW_CCS</id>
 		<address>141</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>1</coefficient>
@@ -1609,7 +1609,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_LOG_PERIOD_FAST</id>
 		<address>145</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -1683,7 +1683,7 @@
 	<param>
 		<id>0</id>
 		<address>151</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -1967,7 +1967,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>175</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -2013,7 +2013,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>VSD_ROTATION</id>
 		<address>179</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -2439,7 +2439,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>CCS_DHS_TYPE</id>
+		<id>0</id>
 		<address>215</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -2497,7 +2497,7 @@
 		<name>Скорость работы ТМС</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>221</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -2509,7 +2509,7 @@
 		<name>Номер насоса в базе данных</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>223</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -2532,7 +2532,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>225</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -2555,7 +2555,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>227</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -2578,7 +2578,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_SCADA_BYTERATE</id>
 		<address>229</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -2590,7 +2590,7 @@
 		<name>Скорость компорта слейва</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_SCADA_PARITY</id>
 		<address>231</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -2613,7 +2613,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_SCADA_STOPBIT</id>
 		<address>233</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -2636,7 +2636,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_SCADA_DELAY</id>
 		<address>235</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -2760,7 +2760,7 @@
 		<name>Период режима изменения частоты</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>249</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -2772,7 +2772,7 @@
 		<command>OPERATION_ERROR</command>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_RGM_RUN_SWING_FREQ</id>
 		<address>251</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
@@ -2796,7 +2796,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>253</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
@@ -2833,7 +2833,7 @@
 		<name>Напряжение толчка пуска с раскачкой</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>257</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -2857,7 +2857,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>259</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -2870,7 +2870,7 @@
 		<name>Время торможения пуска с раскачкой</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>260</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
@@ -3009,7 +3009,7 @@
 		<name>Зависимость в режиме поддержания параметра</name>
 	</param>
 	<param>
-		<id>CCS_RUNNING_TYPE</id>
+		<id>0</id>
 		<address>271</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -3348,7 +3348,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_MOTOR_CURRENT_RESTART_COUNT</id>
 		<address>303</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -3371,7 +3371,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_MOTOR_CURRENT_RESTART_RESET</id>
 		<address>305</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -3727,7 +3727,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>337</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
@@ -3750,7 +3750,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>339</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -3911,7 +3911,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY</id>
 		<address>353</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -3935,7 +3935,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY</id>
 		<address>355</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -3959,7 +3959,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY</id>
 		<address>357</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -3972,7 +3972,7 @@
 		<name>Задержка АПВ защиты по минимальному давлению на приеме</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>359</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -3995,7 +3995,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT</id>
 		<address>361</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PRESSURE</physic>
@@ -4019,7 +4019,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET</id>
 		<address>363</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -4043,7 +4043,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT</id>
 		<address>365</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -4329,9 +4329,9 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>391</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>1</coefficient>
@@ -4340,9 +4340,9 @@
 		<command>OPERATION_ERROR</command>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>393</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>1</coefficient>
@@ -4353,7 +4353,7 @@
 	<param>
 		<id>-1</id>
 		<address>395</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<unit>TEMPERATURE_C</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -4376,7 +4376,7 @@
 	<param>
 		<id>-1</id>
 		<address>397</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<unit>TEMPERATURE_C</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -4397,9 +4397,9 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>399</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_LENGHT</physic>
 		<unit>LENGTH_M</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -4421,9 +4421,9 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>401</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_LENGHT</physic>
 		<unit>LENGTH_M</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -4445,9 +4445,9 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>403</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_LENGHT</physic>
 		<unit>LENGTH_M</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -4469,9 +4469,9 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>405</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PRESSURE</physic>
 		<unit>PRESSURE_MPA</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -4493,9 +4493,9 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>407</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_DENSITY</physic>
 		<unit>DENSITY_KG_M3</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -4517,9 +4517,9 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>409</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_LENGHT</physic>
 		<unit>LENGTH_M</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -4541,9 +4541,9 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>411</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -4565,9 +4565,9 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>413</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<unit>FREQUENCY_HZ</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -4589,7 +4589,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>TMS_PSW_TMS</id>
+		<id>0</id>
 		<address>415</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -4732,7 +4732,7 @@
 		<name>Сопротивление изоляции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_DHS_PRESSURE_INTAKE_MODE</id>
 		<address>428</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -4755,7 +4755,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE</id>
 		<address>430</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5021,9 +5021,9 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>455</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5033,9 +5033,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>456</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5045,9 +5045,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>457</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5057,9 +5057,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>458</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5069,9 +5069,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>459</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5081,9 +5081,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>460</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5093,9 +5093,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>461</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5105,9 +5105,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>462</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5117,9 +5117,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>463</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5129,9 +5129,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>464</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5141,9 +5141,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>465</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5153,9 +5153,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>466</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5165,9 +5165,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>467</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5177,9 +5177,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>468</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5189,9 +5189,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>469</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5201,9 +5201,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>470</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5213,9 +5213,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>471</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5225,9 +5225,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>472</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5237,9 +5237,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>473</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5249,9 +5249,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>474</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5273,9 +5273,9 @@
 		<name>Состояние режима поддержания параметра</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>476</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5285,9 +5285,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>477</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5297,9 +5297,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>478</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5309,9 +5309,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>479</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5321,9 +5321,9 @@
 		<name>Резерв</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>480</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5357,7 +5357,7 @@
 		<name>Состояние режима встряхивания</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>483</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5393,9 +5393,9 @@
 		<name>Состояние периодического режима</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>486</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5567,7 +5567,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_DI_1_VALUE</id>
 		<address>500</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5579,7 +5579,7 @@
 		<name>Значение на цифровом входе 1 клемника внешних подключений</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_DI_2_VALUE</id>
 		<address>501</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5591,7 +5591,7 @@
 		<name>Значение на цифровом входе 2 клемника внешних подключений</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_DI_3_VALUE</id>
 		<address>502</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5603,7 +5603,7 @@
 		<name>Значение на цифровом входе 3 клемника внешних подключений</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_DI_4_VALUE</id>
 		<address>503</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5615,7 +5615,7 @@
 		<name>Значение на цифровом входе 4 клемника внешних подключений</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_1_VALUE</id>
 		<address>504</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5627,7 +5627,7 @@
 		<name>Значение на аналоговом входе 1 клемника внешних подключений</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_2_VALUE</id>
 		<address>506</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5639,7 +5639,7 @@
 		<name>Значение на аналоговом входе 2 клемника внешних подключений</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_3_VALUE</id>
 		<address>508</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5651,7 +5651,7 @@
 		<name>Значение на аналоговом входе 3 клемника внешних подключений</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_4_VALUE</id>
 		<address>510</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5663,7 +5663,7 @@
 		<name>Значение на аналоговом входе 4 клемника внешних подключений</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>512</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5675,7 +5675,7 @@
 		<name>Значение на аналоговом входе 1 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>514</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5687,7 +5687,7 @@
 		<name>Значение на аналоговом входе 2 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>516</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5699,7 +5699,7 @@
 		<name>Значение на аналоговом входе 3 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>518</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5711,7 +5711,7 @@
 		<name>Значение на аналоговом входе 4 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>520</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5723,7 +5723,7 @@
 		<name>Значение на аналоговом входе 5 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>522</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5735,7 +5735,7 @@
 		<name>Значение на аналоговом входе 6 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>524</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5747,7 +5747,7 @@
 		<name>Значение на аналоговом входе 7 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>526</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -5759,9 +5759,9 @@
 		<name>Значение на аналоговом входе 8 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>528</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<unit>TIME_SS</unit>
 		<typeData>TYPE_DATA_UINT32</typeData>
@@ -5774,7 +5774,7 @@
 	<param>
 		<id>-1</id>
 		<address>530</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<unit>TEMPERATURE_C</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -5787,7 +5787,7 @@
 	<param>
 		<id>-1</id>
 		<address>531</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.001</coefficient>
@@ -5799,7 +5799,7 @@
 	<param>
 		<id>-1</id>
 		<address>532</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
@@ -5811,7 +5811,7 @@
 	<param>
 		<id>-1</id>
 		<address>533</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TEMPERATURE</physic>
 		<unit>TEMPERATURE_C</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -5822,9 +5822,21 @@
 		<name>Текущая температура ингибитора в баке</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
+		<address>532</address>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<typeData>TYPE_DATA_UINT16</typeData>
+		<coefficient>1</coefficient>
+		<min>0</min>
+		<max>1</max>
+		<command>OPERATION_ERROR</command>
+		<name>Текущий уровень ингибитора в баке УБПР</name>
+	</param>
+	<param>
+		<id>-1</id>
 		<address>534</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -5836,7 +5848,7 @@
 	<param>
 		<id>-1</id>
 		<address>535</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
@@ -5848,7 +5860,7 @@
 	<param>
 		<id>-1</id>
 		<address>536</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
@@ -5860,7 +5872,7 @@
 	<param>
 		<id>-1</id>
 		<address>537</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
@@ -5872,7 +5884,7 @@
 	<param>
 		<id>-1</id>
 		<address>538</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.1</coefficient>
@@ -5882,15 +5894,28 @@
 		<name>Дебит суточный</name>
 	</param>
 	<param>
-		<id>0</id>
-		<address>539</address>
-		<operation>OPERATION_WRITE</operation>
+		<id>-1</id>
+		<address>538</address>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
 		<command>OPERATION_ERROR</command>
+		<name>Дебит суточный</name>
+	</param>
+	<param>
+		<id>-1</id>
+		<address>539</address>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<typeData>TYPE_DATA_UINT16</typeData>
+		<coefficient>1</coefficient>
+		<min>0</min>
+		<max>0</max>
+		<command>OPERATION_ERROR</command>
+		<name>Дебит по 3-ей методике</name>
 	</param>
 	<param>
 		<id>CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ</id>
@@ -6022,7 +6047,7 @@
 		<name>Время встряхивания</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>552</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -6560,7 +6585,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_1_TYPE</id>
 		<address>600</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6572,7 +6597,7 @@
 		<name>Тип аналогового входа 1</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_1_PARAMETER</id>
+		<id>0</id>
 		<address>601</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6596,7 +6621,7 @@
 		<name>Единицы измерения сигнала на аналоговом входе 1</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_1_TRIP_SETPOINT</id>
+		<id>CCS_AI_1_MINIMUM</id>
 		<address>603</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6608,7 +6633,7 @@
 		<name>Минимум шкалы сигнала на аналоговом входе 1</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_1_RESTART_SETPOINT</id>
+		<id>CCS_AI_1_MAXIMUM</id>
 		<address>605</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6620,7 +6645,7 @@
 		<name>Максимум шкалы сигнала на аналоговом входе 1</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_AI_1_TRIP_SETPOINT</id>
 		<address>607</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6632,7 +6657,7 @@
 		<name>Минимальное значение срабатывания защиты по AI1</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>609</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6644,7 +6669,7 @@
 		<name>Минимальное значение АПВ защиты по AI1</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>611</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6656,7 +6681,7 @@
 		<name>Максимальное значение АПВ защиты по AI1</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_1_RESTART_COUNT</id>
+		<id>CCS_PROT_AI_1_RESTART_SETPOINT</id>
 		<address>613</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6732,7 +6757,7 @@
 		<name>Количество АПВ, вызывающее блокировку защиты по AI1</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_2_TYPE</id>
 		<address>621</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6744,7 +6769,7 @@
 		<name>Тип аналогового входа 2</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_2_PARAMETER</id>
+		<id>0</id>
 		<address>622</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6768,7 +6793,7 @@
 		<name>Единицы измерения сигнала на аналоговом входе 2</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_2_TRIP_SETPOINT</id>
+		<id>CCS_AI_2_MINIMUM</id>
 		<address>624</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6780,7 +6805,7 @@
 		<name>Минимум шкалы сигнала на аналоговом входе 2</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_2_RESTART_SETPOINT</id>
+		<id>CCS_AI_2_MAXIMUM</id>
 		<address>626</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6792,7 +6817,7 @@
 		<name>Максимум шкалы сигнала на аналоговом входе 2</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_AI_2_TRIP_SETPOINT</id>
 		<address>628</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6804,7 +6829,7 @@
 		<name>Минимальное значение срабатывания защиты по AI2</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>630</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6816,7 +6841,7 @@
 		<name>Минимальное значение АПВ защиты по AI2</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>632</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6828,7 +6853,7 @@
 		<name>Максимальное значение АПВ защиты по AI2</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_AI_2_RESTART_SETPOINT</id>
 		<address>634</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6904,7 +6929,7 @@
 		<name>Количество АПВ, вызывающее блокировку защиты по AI2</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_3_TYPE</id>
 		<address>642</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6916,7 +6941,7 @@
 		<name>Тип аналогового входа 3</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_3_PARAMETER</id>
+		<id>0</id>
 		<address>643</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6940,7 +6965,7 @@
 		<name>Единицы измерения сигнала на аналоговом входе 3</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_3_TRIP_SETPOINT</id>
+		<id>CCS_AI_3_MINIMUM</id>
 		<address>645</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6952,7 +6977,7 @@
 		<name>Минимум шкалы сигнала на аналоговом входе 3</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_3_RESTART_SETPOINT</id>
+		<id>CCS_AI_3_MAXIMUM</id>
 		<address>647</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6964,7 +6989,7 @@
 		<name>Максимум шкалы сигнала на аналоговом входе 3</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_AI_3_TRIP_SETPOINT</id>
 		<address>649</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6976,7 +7001,7 @@
 		<name>Минимальное значение срабатывания защиты по AI3</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>651</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6988,7 +7013,7 @@
 		<name>Минимальное значение АПВ защиты по AI3</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>653</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7000,7 +7025,7 @@
 		<name>Максимальное значение АПВ защиты по AI3</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_AI_3_RESTART_SETPOINT</id>
 		<address>655</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7076,9 +7101,9 @@
 		<name>Количество АПВ, вызывающее блокировку защиты по AI3</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_4_TYPE</id>
 		<address>663</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -7088,7 +7113,7 @@
 		<name>Тип аналогового входа 4</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_4_PARAMETER</id>
+		<id>0</id>
 		<address>664</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7112,7 +7137,7 @@
 		<name>Единицы измерения сигнала на аналоговом входе 4</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_4_TRIP_SETPOINT</id>
+		<id>CCS_AI_4_MINIMUM</id>
 		<address>666</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7124,7 +7149,7 @@
 		<name>Минимум шкалы сигнала на аналоговом входе 4</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_4_RESTART_SETPOINT</id>
+		<id>CCS_AI_4_MAXIMUM</id>
 		<address>668</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7136,7 +7161,7 @@
 		<name>Максимум шкалы сигнала на аналоговом входе 4</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_AI_4_TRIP_SETPOINT</id>
 		<address>670</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7148,7 +7173,7 @@
 		<name>Минимальное значение срабатывания защиты по AI4</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>672</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7160,7 +7185,7 @@
 		<name>Минимальное значение АПВ защиты по AI4</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>674</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7172,7 +7197,7 @@
 		<name>Максимальное значение АПВ защиты по AI4</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_AI_4_RESTART_SETPOINT</id>
 		<address>676</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7248,7 +7273,7 @@
 		<name>Количество АПВ, вызывающее блокировку защиты по AI4</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_DI_1_TYPE</id>
 		<address>684</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7260,7 +7285,7 @@
 		<name>Тип цифрового входа 1</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_DI_1_ACTION</id>
 		<address>685</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7336,7 +7361,7 @@
 		<name>Число разрешённых АПВ защиты по DI1</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_DI_2_TYPE</id>
 		<address>692</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7348,7 +7373,7 @@
 		<name>Тип цифрового входа 2</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_DI_2_ACTION</id>
 		<address>693</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7424,7 +7449,7 @@
 		<name>Число разрешённых АПВ защиты по DI2</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_DI_3_TYPE</id>
 		<address>700</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7436,7 +7461,7 @@
 		<name>Тип цифрового входа 3</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_DI_3_ACTION</id>
 		<address>701</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7512,7 +7537,7 @@
 		<name>Число разрешённых АПВ защиты по DI3</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_DI_4_TYPE</id>
 		<address>708</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7524,7 +7549,7 @@
 		<name>Тип цифрового входа 4</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_DI_4_ACTION</id>
 		<address>709</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -10785,9 +10810,9 @@
 		<name>Фактор времени</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>4096</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
@@ -10808,9 +10833,9 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>4098</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT32</typeData>
 		<coefficient>1</coefficient>

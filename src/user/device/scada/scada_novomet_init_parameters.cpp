@@ -75,7 +75,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[5].command            = OPERATION_ERROR;
   scadaParameters_[5].value.float_t      = 0;
   // Номер аварии ПЧ при последнем останове
-  scadaParameters_[6].id                 = 0;
+  scadaParameters_[6].id                 = CCS_VSD_ALARM_CODE;
   scadaParameters_[6].address            = 6;
   scadaParameters_[6].operation          = OPERATION_READ;
   scadaParameters_[6].physic             = PHYSIC_NUMERIC;
@@ -87,7 +87,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[6].command            = OPERATION_ERROR;
   scadaParameters_[6].value.float_t      = 0;
   // Командное слово
-  scadaParameters_[7].id                 = 0;
+  scadaParameters_[7].id                 = VSD_CONTROL_WORD_1;
   scadaParameters_[7].address            = 7;
   scadaParameters_[7].operation          = OPERATION_READ;
   scadaParameters_[7].physic             = PHYSIC_NUMERIC;
@@ -111,7 +111,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[8].command            = OPERATION_ERROR;
   scadaParameters_[8].value.float_t      = 0;
   // Слово состояния
-  scadaParameters_[9].id                 = 0;
+  scadaParameters_[9].id                 = VSD_STATUS_WORD_1;
   scadaParameters_[9].address            = 9;
   scadaParameters_[9].operation          = OPERATION_READ;
   scadaParameters_[9].physic             = PHYSIC_NUMERIC;
@@ -161,7 +161,7 @@ void ScadaNovomet::initParameters()
   // Значение текущего тока двигателя
   scadaParameters_[13].id                = CCS_MOTOR_CURRENT_AVARAGE;
   scadaParameters_[13].address           = 13;
-  scadaParameters_[13].operation         = OPERATION_WRITE;
+  scadaParameters_[13].operation         = OPERATION_READ;
   scadaParameters_[13].physic            = PHYSIC_CURRENT;
   scadaParameters_[13].unit              = CURRENT_A;
   scadaParameters_[13].typeData          = TYPE_DATA_UINT16;
@@ -185,7 +185,7 @@ void ScadaNovomet::initParameters()
   // Значение текущей частоты
   scadaParameters_[15].id                = VSD_FREQUENCY_NOW;
   scadaParameters_[15].address           = 15;
-  scadaParameters_[15].operation         = OPERATION_WRITE;
+  scadaParameters_[15].operation         = OPERATION_READ;
   scadaParameters_[15].physic            = PHYSIC_FREQUENCY;
   scadaParameters_[15].unit              = FREQUENCY_HZ;
   scadaParameters_[15].typeData          = TYPE_DATA_UINT16;
@@ -231,7 +231,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[18].command           = OPERATION_ERROR;
   scadaParameters_[18].value.float_t     = 0;
   // Уставка максимальной частоты
-  scadaParameters_[19].id                = VSD_HIGH_LIM_SPEED_MOTOR;
+  scadaParameters_[19].id                = CCS_BASE_FREQUENCY;
   scadaParameters_[19].address           = 19;
   scadaParameters_[19].operation         = OPERATION_WRITE;
   scadaParameters_[19].physic            = PHYSIC_FREQUENCY;
@@ -257,7 +257,7 @@ void ScadaNovomet::initParameters()
   // Загрузка двигателя
   scadaParameters_[21].id                = CCS_MOTOR_LOAD_NOW;
   scadaParameters_[21].address           = 21;
-  scadaParameters_[21].operation         = OPERATION_WRITE;
+  scadaParameters_[21].operation         = OPERATION_READ;
   scadaParameters_[21].physic            = PHYSIC_PERCENT;
   scadaParameters_[21].unit              = PERCENT_PERCENT;
   scadaParameters_[21].typeData          = TYPE_DATA_UINT16;
@@ -281,7 +281,7 @@ void ScadaNovomet::initParameters()
   // Частота турбинного вращения
   scadaParameters_[23].id                = CCS_TURBO_ROTATION_NOW;
   scadaParameters_[23].address           = 23;
-  scadaParameters_[23].operation         = OPERATION_WRITE;
+  scadaParameters_[23].operation         = OPERATION_READ;
   scadaParameters_[23].physic            = PHYSIC_FREQUENCY;
   scadaParameters_[23].unit              = FREQUENCY_HZ;
   scadaParameters_[23].typeData          = TYPE_DATA_UINT16;
@@ -305,7 +305,7 @@ void ScadaNovomet::initParameters()
   // Сопротивление изоляции Rinsul
   scadaParameters_[25].id                = CCS_RESISTANCE_ISOLATION;
   scadaParameters_[25].address           = 25;
-  scadaParameters_[25].operation         = OPERATION_WRITE;
+  scadaParameters_[25].operation         = OPERATION_READ;
   scadaParameters_[25].physic            = PHYSIC_RESISTANCE;
   scadaParameters_[25].unit              = RESISTANCE_KOM;
   scadaParameters_[25].typeData          = TYPE_DATA_UINT16;
@@ -329,7 +329,7 @@ void ScadaNovomet::initParameters()
   // Активная мощность
   scadaParameters_[27].id                = VSD_POWER_ACTIVE;
   scadaParameters_[27].address           = 27;
-  scadaParameters_[27].operation         = OPERATION_WRITE;
+  scadaParameters_[27].operation         = OPERATION_READ;
   scadaParameters_[27].physic            = PHYSIC_ACTIVE_POWER;
   scadaParameters_[27].unit              = ACTIV_POWER_KW;
   scadaParameters_[27].typeData          = TYPE_DATA_UINT32;
@@ -341,7 +341,7 @@ void ScadaNovomet::initParameters()
   // Полная мощность
   scadaParameters_[28].id                = VSD_POWER_FULL;
   scadaParameters_[28].address           = 29;
-  scadaParameters_[28].operation         = OPERATION_WRITE;
+  scadaParameters_[28].operation         = OPERATION_READ;
   scadaParameters_[28].physic            = PHYSIC_FULL_POWER;
   scadaParameters_[28].unit              = FULL_POWER_KVA;
   scadaParameters_[28].typeData          = TYPE_DATA_UINT32;
@@ -353,7 +353,7 @@ void ScadaNovomet::initParameters()
   // Коэф. Мощности
   scadaParameters_[29].id                = CCS_MOTOR_COS_PHI_NOW;
   scadaParameters_[29].address           = 31;
-  scadaParameters_[29].operation         = OPERATION_WRITE;
+  scadaParameters_[29].operation         = OPERATION_READ;
   scadaParameters_[29].physic            = PHYSIC_NUMERIC;
   scadaParameters_[29].unit              = 0;
   scadaParameters_[29].typeData          = TYPE_DATA_UINT16;
@@ -377,7 +377,7 @@ void ScadaNovomet::initParameters()
   // Выходной ток ПЧ фаза U
   scadaParameters_[31].id                = VSD_CURRENT_OUT_PHASE_1;
   scadaParameters_[31].address           = 33;
-  scadaParameters_[31].operation         = OPERATION_WRITE;
+  scadaParameters_[31].operation         = OPERATION_READ;
   scadaParameters_[31].physic            = PHYSIC_CURRENT;
   scadaParameters_[31].unit              = CURRENT_A;
   scadaParameters_[31].typeData          = TYPE_DATA_UINT16;
@@ -401,7 +401,7 @@ void ScadaNovomet::initParameters()
   // Выходной ток ПЧ фаза V
   scadaParameters_[33].id                = VSD_CURRENT_OUT_PHASE_2;
   scadaParameters_[33].address           = 35;
-  scadaParameters_[33].operation         = OPERATION_WRITE;
+  scadaParameters_[33].operation         = OPERATION_READ;
   scadaParameters_[33].physic            = PHYSIC_CURRENT;
   scadaParameters_[33].unit              = CURRENT_A;
   scadaParameters_[33].typeData          = TYPE_DATA_UINT16;
@@ -425,7 +425,7 @@ void ScadaNovomet::initParameters()
   // Выходной ток ПЧ фаза W
   scadaParameters_[35].id                = VSD_CURRENT_OUT_PHASE_3;
   scadaParameters_[35].address           = 37;
-  scadaParameters_[35].operation         = OPERATION_WRITE;
+  scadaParameters_[35].operation         = OPERATION_READ;
   scadaParameters_[35].physic            = PHYSIC_CURRENT;
   scadaParameters_[35].unit              = CURRENT_A;
   scadaParameters_[35].typeData          = TYPE_DATA_UINT16;
@@ -449,7 +449,7 @@ void ScadaNovomet::initParameters()
   // Выходное напряжение ПЧ
   scadaParameters_[37].id                = VSD_OUT_VOLTAGE_MOTOR;
   scadaParameters_[37].address           = 39;
-  scadaParameters_[37].operation         = OPERATION_WRITE;
+  scadaParameters_[37].operation         = OPERATION_READ;
   scadaParameters_[37].physic            = PHYSIC_VOLTAGE;
   scadaParameters_[37].unit              = VOLTAGE_V;
   scadaParameters_[37].typeData          = TYPE_DATA_UINT16;
@@ -473,7 +473,7 @@ void ScadaNovomet::initParameters()
   // Напряжение цепи постоянного тока Ud
   scadaParameters_[39].id                = VSD_VOLTAGE_DC;
   scadaParameters_[39].address           = 41;
-  scadaParameters_[39].operation         = OPERATION_WRITE;
+  scadaParameters_[39].operation         = OPERATION_READ;
   scadaParameters_[39].physic            = PHYSIC_VOLTAGE;
   scadaParameters_[39].unit              = VOLTAGE_V;
   scadaParameters_[39].typeData          = TYPE_DATA_UINT16;
@@ -497,7 +497,7 @@ void ScadaNovomet::initParameters()
   // Температура радиатора
   scadaParameters_[41].id                = VSD_RADIATOR_TEMPERATURE;
   scadaParameters_[41].address           = 43;
-  scadaParameters_[41].operation         = OPERATION_WRITE;
+  scadaParameters_[41].operation         = OPERATION_READ;
   scadaParameters_[41].physic            = PHYSIC_TEMPERATURE;
   scadaParameters_[41].unit              = TEMPERATURE_C;
   scadaParameters_[41].typeData          = TYPE_DATA_INT16;
@@ -521,7 +521,7 @@ void ScadaNovomet::initParameters()
   // Температура платы
   scadaParameters_[43].id                = VSD_CONTROL_TEMPERATURE;
   scadaParameters_[43].address           = 45;
-  scadaParameters_[43].operation         = OPERATION_WRITE;
+  scadaParameters_[43].operation         = OPERATION_READ;
   scadaParameters_[43].physic            = PHYSIC_TEMPERATURE;
   scadaParameters_[43].unit              = TEMPERATURE_C;
   scadaParameters_[43].typeData          = TYPE_DATA_INT16;
@@ -545,7 +545,7 @@ void ScadaNovomet::initParameters()
   // Межфазное напряжение Uin(AB)
   scadaParameters_[45].id                = CCS_VOLTAGE_PHASE_1_2;
   scadaParameters_[45].address           = 47;
-  scadaParameters_[45].operation         = OPERATION_WRITE;
+  scadaParameters_[45].operation         = OPERATION_READ;
   scadaParameters_[45].physic            = PHYSIC_VOLTAGE;
   scadaParameters_[45].unit              = VOLTAGE_V;
   scadaParameters_[45].typeData          = TYPE_DATA_UINT16;
@@ -569,7 +569,7 @@ void ScadaNovomet::initParameters()
   // Межфазное напряжение Uin(BC)
   scadaParameters_[47].id                = CCS_VOLTAGE_PHASE_2_3;
   scadaParameters_[47].address           = 49;
-  scadaParameters_[47].operation         = OPERATION_WRITE;
+  scadaParameters_[47].operation         = OPERATION_READ;
   scadaParameters_[47].physic            = PHYSIC_VOLTAGE;
   scadaParameters_[47].unit              = VOLTAGE_V;
   scadaParameters_[47].typeData          = TYPE_DATA_UINT16;
@@ -593,7 +593,7 @@ void ScadaNovomet::initParameters()
   // Межфазное напряжение Uin(CA)
   scadaParameters_[49].id                = CCS_VOLTAGE_PHASE_3_1;
   scadaParameters_[49].address           = 51;
-  scadaParameters_[49].operation         = OPERATION_WRITE;
+  scadaParameters_[49].operation         = OPERATION_READ;
   scadaParameters_[49].physic            = PHYSIC_VOLTAGE;
   scadaParameters_[49].unit              = VOLTAGE_V;
   scadaParameters_[49].typeData          = TYPE_DATA_UINT16;
@@ -617,7 +617,7 @@ void ScadaNovomet::initParameters()
   // Входной ток фаза А
   scadaParameters_[51].id                = CCS_CURRENT_PHASE_1;
   scadaParameters_[51].address           = 53;
-  scadaParameters_[51].operation         = OPERATION_WRITE;
+  scadaParameters_[51].operation         = OPERATION_READ;
   scadaParameters_[51].physic            = PHYSIC_CURRENT;
   scadaParameters_[51].unit              = CURRENT_A;
   scadaParameters_[51].typeData          = TYPE_DATA_UINT16;
@@ -641,7 +641,7 @@ void ScadaNovomet::initParameters()
   // Входной ток фаза B
   scadaParameters_[53].id                = CCS_CURRENT_PHASE_2;
   scadaParameters_[53].address           = 55;
-  scadaParameters_[53].operation         = OPERATION_WRITE;
+  scadaParameters_[53].operation         = OPERATION_READ;
   scadaParameters_[53].physic            = PHYSIC_CURRENT;
   scadaParameters_[53].unit              = CURRENT_A;
   scadaParameters_[53].typeData          = TYPE_DATA_UINT16;
@@ -665,7 +665,7 @@ void ScadaNovomet::initParameters()
   // Входной ток фаза C
   scadaParameters_[55].id                = CCS_CURRENT_PHASE_3;
   scadaParameters_[55].address           = 57;
-  scadaParameters_[55].operation         = OPERATION_WRITE;
+  scadaParameters_[55].operation         = OPERATION_READ;
   scadaParameters_[55].physic            = PHYSIC_CURRENT;
   scadaParameters_[55].unit              = CURRENT_A;
   scadaParameters_[55].typeData          = TYPE_DATA_UINT16;
@@ -689,7 +689,7 @@ void ScadaNovomet::initParameters()
   // Дисбаланс входного напряжения dUin
   scadaParameters_[57].id                = CCS_VOLTAGE_IMBALANCE_IN;
   scadaParameters_[57].address           = 59;
-  scadaParameters_[57].operation         = OPERATION_WRITE;
+  scadaParameters_[57].operation         = OPERATION_READ;
   scadaParameters_[57].physic            = PHYSIC_PERCENT;
   scadaParameters_[57].unit              = PERCENT_PERCENT;
   scadaParameters_[57].typeData          = TYPE_DATA_UINT16;
@@ -713,7 +713,7 @@ void ScadaNovomet::initParameters()
   // Дисбаланс тока на входе dIin
   scadaParameters_[59].id                = CCS_CURRENT_IMBALANCE_IN;
   scadaParameters_[59].address           = 61;
-  scadaParameters_[59].operation         = OPERATION_WRITE;
+  scadaParameters_[59].operation         = OPERATION_READ;
   scadaParameters_[59].physic            = PHYSIC_PERCENT;
   scadaParameters_[59].unit              = PERCENT_PERCENT;
   scadaParameters_[59].typeData          = TYPE_DATA_UINT16;
@@ -737,7 +737,7 @@ void ScadaNovomet::initParameters()
   // Pin
   scadaParameters_[61].id                = EM_ACTIVE_POWER;
   scadaParameters_[61].address           = 63;
-  scadaParameters_[61].operation         = OPERATION_WRITE;
+  scadaParameters_[61].operation         = OPERATION_READ;
   scadaParameters_[61].physic            = PHYSIC_POWER;
   scadaParameters_[61].unit              = POWER_KW;
   scadaParameters_[61].typeData          = TYPE_DATA_UINT32;
@@ -749,7 +749,7 @@ void ScadaNovomet::initParameters()
   // Sin
   scadaParameters_[62].id                = EM_FULL_POWER;
   scadaParameters_[62].address           = 65;
-  scadaParameters_[62].operation         = OPERATION_WRITE;
+  scadaParameters_[62].operation         = OPERATION_READ;
   scadaParameters_[62].physic            = PHYSIC_FULL_POWER;
   scadaParameters_[62].unit              = FULL_POWER_KVA;
   scadaParameters_[62].typeData          = TYPE_DATA_UINT32;
@@ -761,7 +761,7 @@ void ScadaNovomet::initParameters()
   // Потребленная энергия:
   scadaParameters_[63].id                = EM_ACTIVE_ENERGY;
   scadaParameters_[63].address           = 67;
-  scadaParameters_[63].operation         = OPERATION_WRITE;
+  scadaParameters_[63].operation         = OPERATION_READ;
   scadaParameters_[63].physic            = PHYSIC_ACTIVE_ENERGY;
   scadaParameters_[63].unit              = ACTIVE_ENERGY_KW_HH;
   scadaParameters_[63].typeData          = TYPE_DATA_UINT32;
@@ -773,7 +773,7 @@ void ScadaNovomet::initParameters()
   // Ток двигателя Im(A)
   scadaParameters_[64].id                = CCS_MOTOR_CURRENT_PHASE_1;
   scadaParameters_[64].address           = 69;
-  scadaParameters_[64].operation         = OPERATION_WRITE;
+  scadaParameters_[64].operation         = OPERATION_READ;
   scadaParameters_[64].physic            = PHYSIC_CURRENT;
   scadaParameters_[64].unit              = CURRENT_A;
   scadaParameters_[64].typeData          = TYPE_DATA_UINT16;
@@ -797,7 +797,7 @@ void ScadaNovomet::initParameters()
   // Ток двигателя Im(B)
   scadaParameters_[66].id                = CCS_MOTOR_CURRENT_PHASE_1;
   scadaParameters_[66].address           = 71;
-  scadaParameters_[66].operation         = OPERATION_WRITE;
+  scadaParameters_[66].operation         = OPERATION_READ;
   scadaParameters_[66].physic            = PHYSIC_CURRENT;
   scadaParameters_[66].unit              = CURRENT_A;
   scadaParameters_[66].typeData          = TYPE_DATA_UINT16;
@@ -821,7 +821,7 @@ void ScadaNovomet::initParameters()
   // Ток двигателя Im(C)
   scadaParameters_[68].id                = CCS_MOTOR_CURRENT_PHASE_1;
   scadaParameters_[68].address           = 73;
-  scadaParameters_[68].operation         = OPERATION_WRITE;
+  scadaParameters_[68].operation         = OPERATION_READ;
   scadaParameters_[68].physic            = PHYSIC_CURRENT;
   scadaParameters_[68].unit              = CURRENT_A;
   scadaParameters_[68].typeData          = TYPE_DATA_UINT16;
@@ -845,7 +845,7 @@ void ScadaNovomet::initParameters()
   // Загрузка двигателя
   scadaParameters_[70].id                = CCS_MOTOR_LOAD_NOW;
   scadaParameters_[70].address           = 75;
-  scadaParameters_[70].operation         = OPERATION_WRITE;
+  scadaParameters_[70].operation         = OPERATION_READ;
   scadaParameters_[70].physic            = PHYSIC_PERCENT;
   scadaParameters_[70].unit              = PERCENT_PERCENT;
   scadaParameters_[70].typeData          = TYPE_DATA_UINT16;
@@ -869,7 +869,7 @@ void ScadaNovomet::initParameters()
   // Напряжение двигателя Um
   scadaParameters_[72].id                = CCS_MOTOR_VOLTAGE_NOW;
   scadaParameters_[72].address           = 77;
-  scadaParameters_[72].operation         = OPERATION_WRITE;
+  scadaParameters_[72].operation         = OPERATION_READ;
   scadaParameters_[72].physic            = PHYSIC_VOLTAGE;
   scadaParameters_[72].unit              = VOLTAGE_V;
   scadaParameters_[72].typeData          = TYPE_DATA_UINT16;
@@ -893,7 +893,7 @@ void ScadaNovomet::initParameters()
   // Дисбаланс тока двигателя dIm
   scadaParameters_[74].id                = CCS_MOTOR_CURRENT_IMBALANCE;
   scadaParameters_[74].address           = 79;
-  scadaParameters_[74].operation         = OPERATION_WRITE;
+  scadaParameters_[74].operation         = OPERATION_READ;
   scadaParameters_[74].physic            = PHYSIC_PERCENT;
   scadaParameters_[74].unit              = PERCENT_PERCENT;
   scadaParameters_[74].typeData          = TYPE_DATA_UINT16;
@@ -1061,7 +1061,7 @@ void ScadaNovomet::initParameters()
   // Состояние защит(включены оператором)
   scadaParameters_[88].id                = 0;
   scadaParameters_[88].address           = 93;
-  scadaParameters_[88].operation         = OPERATION_WRITE;
+  scadaParameters_[88].operation         = OPERATION_READ;
   scadaParameters_[88].physic            = PHYSIC_NUMERIC;
   scadaParameters_[88].unit              = 0;
   scadaParameters_[88].typeData          = TYPE_DATA_UINT32;
@@ -1073,7 +1073,7 @@ void ScadaNovomet::initParameters()
   // Сработка защит
   scadaParameters_[89].id                = 0;
   scadaParameters_[89].address           = 95;
-  scadaParameters_[89].operation         = OPERATION_WRITE;
+  scadaParameters_[89].operation         = OPERATION_READ;
   scadaParameters_[89].physic            = PHYSIC_NUMERIC;
   scadaParameters_[89].unit              = 0;
   scadaParameters_[89].typeData          = TYPE_DATA_UINT32;
@@ -1085,7 +1085,7 @@ void ScadaNovomet::initParameters()
   // Причина останова
   scadaParameters_[90].id                = 0;
   scadaParameters_[90].address           = 97;
-  scadaParameters_[90].operation         = OPERATION_WRITE;
+  scadaParameters_[90].operation         = OPERATION_READ;
   scadaParameters_[90].physic            = PHYSIC_NUMERIC;
   scadaParameters_[90].unit              = 0;
   scadaParameters_[90].typeData          = TYPE_DATA_UINT16;
@@ -1311,7 +1311,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[108].command          = OPERATION_ERROR;
   scadaParameters_[108].value.float_t    = 0;
   // Пуск станции
-  scadaParameters_[109].id               = VSD_ON;
+  scadaParameters_[109].id               = CCS_CMD_START;
   scadaParameters_[109].address          = 119;
   scadaParameters_[109].operation        = OPERATION_WRITE;
   scadaParameters_[109].physic           = PHYSIC_NUMERIC;
@@ -1335,7 +1335,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[110].command          = OPERATION_ERROR;
   scadaParameters_[110].value.float_t    = 0;
   // Остановка станции
-  scadaParameters_[111].id               = VSD_OFF;
+  scadaParameters_[111].id               = CCS_CMD_STOP;
   scadaParameters_[111].address          = 121;
   scadaParameters_[111].operation        = OPERATION_WRITE;
   scadaParameters_[111].physic           = PHYSIC_NUMERIC;
@@ -1553,7 +1553,7 @@ void ScadaNovomet::initParameters()
   // Схема выпрямления входного напряжения
   scadaParameters_[129].id               = 0;
   scadaParameters_[129].address          = 139;
-  scadaParameters_[129].operation        = OPERATION_WRITE;
+  scadaParameters_[129].operation        = OPERATION_READ;
   scadaParameters_[129].physic           = PHYSIC_NUMERIC;
   scadaParameters_[129].unit             = 0;
   scadaParameters_[129].typeData         = TYPE_DATA_UINT16;
@@ -1575,9 +1575,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[130].command          = OPERATION_ERROR;
   scadaParameters_[130].value.float_t    = 0;
   // Номер версии ПО
-  scadaParameters_[131].id               = 0;
+  scadaParameters_[131].id               = CCS_VERSION_SW_CCS;
   scadaParameters_[131].address          = 141;
-  scadaParameters_[131].operation        = OPERATION_WRITE;
+  scadaParameters_[131].operation        = OPERATION_READ;
   scadaParameters_[131].physic           = PHYSIC_NUMERIC;
   scadaParameters_[131].unit             = 0;
   scadaParameters_[131].typeData         = TYPE_DATA_UINT32;
@@ -1611,7 +1611,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[133].command          = OPERATION_ERROR;
   scadaParameters_[133].value.float_t    = 0;
   // Период аварийных записей СУ
-  scadaParameters_[134].id               = 0;
+  scadaParameters_[134].id               = CCS_LOG_PERIOD_FAST;
   scadaParameters_[134].address          = 145;
   scadaParameters_[134].operation        = OPERATION_WRITE;
   scadaParameters_[134].physic           = PHYSIC_TIME;
@@ -1685,7 +1685,7 @@ void ScadaNovomet::initParameters()
   // Трансформаторы тока СУ
   scadaParameters_[140].id               = 0;
   scadaParameters_[140].address          = 151;
-  scadaParameters_[140].operation        = OPERATION_WRITE;
+  scadaParameters_[140].operation        = OPERATION_READ;
   scadaParameters_[140].physic           = PHYSIC_VOLTAGE;
   scadaParameters_[140].unit             = VOLTAGE_V;
   scadaParameters_[140].typeData         = TYPE_DATA_UINT16;
@@ -1971,7 +1971,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[163].command          = OPERATION_ERROR;
   scadaParameters_[163].value.float_t    = 0;
   // Номинальный КПД двигателя
-  scadaParameters_[164].id               = 0;
+  scadaParameters_[164].id               = -1;
   scadaParameters_[164].address          = 175;
   scadaParameters_[164].operation        = OPERATION_WRITE;
   scadaParameters_[164].physic           = PHYSIC_NUMERIC;
@@ -2019,7 +2019,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[167].command          = OPERATION_ERROR;
   scadaParameters_[167].value.float_t    = 0;
   // Направление вращения
-  scadaParameters_[168].id               = 0;
+  scadaParameters_[168].id               = VSD_ROTATION;
   scadaParameters_[168].address          = 179;
   scadaParameters_[168].operation        = OPERATION_WRITE;
   scadaParameters_[168].physic           = PHYSIC_NUMERIC;
@@ -2451,7 +2451,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[203].command          = OPERATION_ERROR;
   scadaParameters_[203].value.float_t    = 0;
   // Тип ТМС
-  scadaParameters_[204].id               = CCS_DHS_TYPE;
+  scadaParameters_[204].id               = 0;
   scadaParameters_[204].address          = 215;
   scadaParameters_[204].operation        = OPERATION_WRITE;
   scadaParameters_[204].physic           = PHYSIC_NUMERIC;
@@ -2511,7 +2511,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[208].command          = OPERATION_ERROR;
   scadaParameters_[208].value.float_t    = 0;
   // Номер насоса в базе данных
-  scadaParameters_[209].id               = 0;
+  scadaParameters_[209].id               = -1;
   scadaParameters_[209].address          = 221;
   scadaParameters_[209].operation        = OPERATION_WRITE;
   scadaParameters_[209].physic           = PHYSIC_NUMERIC;
@@ -2523,7 +2523,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[209].command          = OPERATION_ERROR;
   scadaParameters_[209].value.float_t    = 0;
   // Интервал построения графиков
-  scadaParameters_[210].id               = 0;
+  scadaParameters_[210].id               = -1;
   scadaParameters_[210].address          = 223;
   scadaParameters_[210].operation        = OPERATION_WRITE;
   scadaParameters_[210].physic           = PHYSIC_NUMERIC;
@@ -2547,7 +2547,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[211].command          = OPERATION_ERROR;
   scadaParameters_[211].value.float_t    = 0;
   // Первый график
-  scadaParameters_[212].id               = 0;
+  scadaParameters_[212].id               = -1;
   scadaParameters_[212].address          = 225;
   scadaParameters_[212].operation        = OPERATION_WRITE;
   scadaParameters_[212].physic           = PHYSIC_NUMERIC;
@@ -2571,7 +2571,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[213].command          = OPERATION_ERROR;
   scadaParameters_[213].value.float_t    = 0;
   // Второй график
-  scadaParameters_[214].id               = 0;
+  scadaParameters_[214].id               = -1;
   scadaParameters_[214].address          = 227;
   scadaParameters_[214].operation        = OPERATION_WRITE;
   scadaParameters_[214].physic           = PHYSIC_NUMERIC;
@@ -2595,7 +2595,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[215].command          = OPERATION_ERROR;
   scadaParameters_[215].value.float_t    = 0;
   // Скорость компорта слейва
-  scadaParameters_[216].id               = 0;
+  scadaParameters_[216].id               = CCS_SCADA_BYTERATE;
   scadaParameters_[216].address          = 229;
   scadaParameters_[216].operation        = OPERATION_WRITE;
   scadaParameters_[216].physic           = PHYSIC_NUMERIC;
@@ -2607,7 +2607,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[216].command          = OPERATION_ERROR;
   scadaParameters_[216].value.float_t    = 0;
   // Четность компорта слейва
-  scadaParameters_[217].id               = 0;
+  scadaParameters_[217].id               = CCS_SCADA_PARITY;
   scadaParameters_[217].address          = 231;
   scadaParameters_[217].operation        = OPERATION_WRITE;
   scadaParameters_[217].physic           = PHYSIC_NUMERIC;
@@ -2631,7 +2631,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[218].command          = OPERATION_ERROR;
   scadaParameters_[218].value.float_t    = 0;
   // Стоп бит компорта слейва
-  scadaParameters_[219].id               = 0;
+  scadaParameters_[219].id               = CCS_SCADA_STOPBIT;
   scadaParameters_[219].address          = 233;
   scadaParameters_[219].operation        = OPERATION_WRITE;
   scadaParameters_[219].physic           = PHYSIC_NUMERIC;
@@ -2655,7 +2655,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[220].command          = OPERATION_ERROR;
   scadaParameters_[220].value.float_t    = 0;
   // Задержка компорта слейва
-  scadaParameters_[221].id               = 0;
+  scadaParameters_[221].id               = CCS_SCADA_DELAY;
   scadaParameters_[221].address          = 235;
   scadaParameters_[221].operation        = OPERATION_WRITE;
   scadaParameters_[221].physic           = PHYSIC_NUMERIC;
@@ -2775,7 +2775,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[230].command          = OPERATION_ERROR;
   scadaParameters_[230].value.float_t    = 0;
   // 
-  scadaParameters_[231].id               = 0;
+  scadaParameters_[231].id               = -1;
   scadaParameters_[231].address          = 249;
   scadaParameters_[231].operation        = OPERATION_WRITE;
   scadaParameters_[231].physic           = PHYSIC_TIME;
@@ -2787,7 +2787,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[231].command          = OPERATION_ERROR;
   scadaParameters_[231].value.float_t    = 0;
   // Частота вперед пуска с раскачкой
-  scadaParameters_[232].id               = 0;
+  scadaParameters_[232].id               = CCS_RGM_RUN_SWING_FREQ;
   scadaParameters_[232].address          = 251;
   scadaParameters_[232].operation        = OPERATION_WRITE;
   scadaParameters_[232].physic           = PHYSIC_FREQUENCY;
@@ -2811,7 +2811,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[233].command          = OPERATION_ERROR;
   scadaParameters_[233].value.float_t    = 0;
   // Частота назад пуска с раскачкой
-  scadaParameters_[234].id               = 0;
+  scadaParameters_[234].id               = -1;
   scadaParameters_[234].address          = 253;
   scadaParameters_[234].operation        = OPERATION_WRITE;
   scadaParameters_[234].physic           = PHYSIC_FREQUENCY;
@@ -2847,7 +2847,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[236].command          = OPERATION_ERROR;
   scadaParameters_[236].value.float_t    = 0;
   // Время разгона пуска с раскачкой
-  scadaParameters_[237].id               = 0;
+  scadaParameters_[237].id               = -1;
   scadaParameters_[237].address          = 257;
   scadaParameters_[237].operation        = OPERATION_WRITE;
   scadaParameters_[237].physic           = PHYSIC_TIME;
@@ -2871,7 +2871,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[238].command          = OPERATION_ERROR;
   scadaParameters_[238].value.float_t    = 0;
   // Время торможения пуска с раскачкой
-  scadaParameters_[239].id               = 0;
+  scadaParameters_[239].id               = -1;
   scadaParameters_[239].address          = 259;
   scadaParameters_[239].operation        = OPERATION_WRITE;
   scadaParameters_[239].physic           = PHYSIC_TIME;
@@ -2883,7 +2883,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[239].command          = OPERATION_ERROR;
   scadaParameters_[239].value.float_t    = 0;
   // Предел по току пуска с раскачкой
-  scadaParameters_[240].id               = 0;
+  scadaParameters_[240].id               = -1;
   scadaParameters_[240].address          = 260;
   scadaParameters_[240].operation        = OPERATION_WRITE;
   scadaParameters_[240].physic           = PHYSIC_PERCENT;
@@ -3015,7 +3015,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[250].command          = OPERATION_ERROR;
   scadaParameters_[250].value.float_t    = 0;
   // Режимы пуска ЧРП
-  scadaParameters_[251].id               = CCS_RUNNING_TYPE;
+  scadaParameters_[251].id               = 0;
   scadaParameters_[251].address          = 271;
   scadaParameters_[251].operation        = OPERATION_READ;
   scadaParameters_[251].physic           = PHYSIC_NUMERIC;
@@ -3351,7 +3351,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[278].command          = OPERATION_ERROR;
   scadaParameters_[278].value.float_t    = 0;
   // Количество аппаратных включений защиты по максимальному току
-  scadaParameters_[279].id               = 0;
+  scadaParameters_[279].id               = CCS_PROT_MOTOR_CURRENT_RESTART_COUNT;
   scadaParameters_[279].address          = 303;
   scadaParameters_[279].operation        = OPERATION_WRITE;
   scadaParameters_[279].physic           = PHYSIC_NUMERIC;
@@ -3375,7 +3375,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[280].command          = OPERATION_ERROR;
   scadaParameters_[280].value.float_t    = 0;
   // Автосброс счетчика включений защиты по максимальному току
-  scadaParameters_[281].id               = 0;
+  scadaParameters_[281].id               = CCS_PROT_MOTOR_CURRENT_RESTART_RESET;
   scadaParameters_[281].address          = 305;
   scadaParameters_[281].operation        = OPERATION_WRITE;
   scadaParameters_[281].physic           = PHYSIC_TIME;
@@ -3735,7 +3735,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[310].command          = OPERATION_ERROR;
   scadaParameters_[310].value.float_t    = 0;
   // 
-  scadaParameters_[311].id               = 0;
+  scadaParameters_[311].id               = -1;
   scadaParameters_[311].address          = 337;
   scadaParameters_[311].operation        = OPERATION_WRITE;
   scadaParameters_[311].physic           = PHYSIC_PERCENT;
@@ -3759,7 +3759,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[312].command          = OPERATION_ERROR;
   scadaParameters_[312].value.float_t    = 0;
   // 
-  scadaParameters_[313].id               = 0;
+  scadaParameters_[313].id               = -1;
   scadaParameters_[313].address          = 339;
   scadaParameters_[313].operation        = OPERATION_WRITE;
   scadaParameters_[313].physic           = PHYSIC_TIME;
@@ -3927,7 +3927,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[326].command          = OPERATION_ERROR;
   scadaParameters_[326].value.float_t    = 0;
   // Задержка активации защиты по минимальному давлению на приеме
-  scadaParameters_[327].id               = 0;
+  scadaParameters_[327].id               = CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY;
   scadaParameters_[327].address          = 353;
   scadaParameters_[327].operation        = OPERATION_WRITE;
   scadaParameters_[327].physic           = PHYSIC_TIME;
@@ -3951,7 +3951,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[328].command          = OPERATION_ERROR;
   scadaParameters_[328].value.float_t    = 0;
   // Задержка срабатывания защиты по минимальному давлению на приеме
-  scadaParameters_[329].id               = 0;
+  scadaParameters_[329].id               = CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY;
   scadaParameters_[329].address          = 355;
   scadaParameters_[329].operation        = OPERATION_WRITE;
   scadaParameters_[329].physic           = PHYSIC_TIME;
@@ -3975,7 +3975,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[330].command          = OPERATION_ERROR;
   scadaParameters_[330].value.float_t    = 0;
   // Задержка АПВ защиты по минимальному давлению на приеме
-  scadaParameters_[331].id               = 0;
+  scadaParameters_[331].id               = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY;
   scadaParameters_[331].address          = 357;
   scadaParameters_[331].operation        = OPERATION_WRITE;
   scadaParameters_[331].physic           = PHYSIC_TIME;
@@ -3987,7 +3987,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[331].command          = OPERATION_ERROR;
   scadaParameters_[331].value.float_t    = 0;
   // Критерий АПВ защиты по минимальному давлению на приеме
-  scadaParameters_[332].id               = 0;
+  scadaParameters_[332].id               = -1;
   scadaParameters_[332].address          = 359;
   scadaParameters_[332].operation        = OPERATION_WRITE;
   scadaParameters_[332].physic           = PHYSIC_NUMERIC;
@@ -4011,7 +4011,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[333].command          = OPERATION_ERROR;
   scadaParameters_[333].value.float_t    = 0;
   // Давление АПВ защиты по минимальному давлению на приеме
-  scadaParameters_[334].id               = 0;
+  scadaParameters_[334].id               = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT;
   scadaParameters_[334].address          = 361;
   scadaParameters_[334].operation        = OPERATION_WRITE;
   scadaParameters_[334].physic           = PHYSIC_PRESSURE;
@@ -4035,7 +4035,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[335].command          = OPERATION_ERROR;
   scadaParameters_[335].value.float_t    = 0;
   // Автосборос счетчика АПВ защиты по минимальному давлению на приеме
-  scadaParameters_[336].id               = 0;
+  scadaParameters_[336].id               = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET;
   scadaParameters_[336].address          = 363;
   scadaParameters_[336].operation        = OPERATION_WRITE;
   scadaParameters_[336].physic           = PHYSIC_TIME;
@@ -4059,7 +4059,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[337].command          = OPERATION_ERROR;
   scadaParameters_[337].value.float_t    = 0;
   // Количество АПВ защиты по минимальному давлению на приеме
-  scadaParameters_[338].id               = 0;
+  scadaParameters_[338].id               = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT;
   scadaParameters_[338].address          = 365;
   scadaParameters_[338].operation        = OPERATION_WRITE;
   scadaParameters_[338].physic           = PHYSIC_NUMERIC;
@@ -4347,9 +4347,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[361].command          = OPERATION_ERROR;
   scadaParameters_[361].value.float_t    = 0;
   // 
-  scadaParameters_[362].id               = 0;
+  scadaParameters_[362].id               = -1;
   scadaParameters_[362].address          = 391;
-  scadaParameters_[362].operation        = OPERATION_WRITE;
+  scadaParameters_[362].operation        = OPERATION_READ;
   scadaParameters_[362].physic           = PHYSIC_NUMERIC;
   scadaParameters_[362].unit             = 0;
   scadaParameters_[362].typeData         = TYPE_DATA_UINT32;
@@ -4359,9 +4359,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[362].command          = OPERATION_ERROR;
   scadaParameters_[362].value.float_t    = 0;
   // 
-  scadaParameters_[363].id               = 0;
+  scadaParameters_[363].id               = -1;
   scadaParameters_[363].address          = 393;
-  scadaParameters_[363].operation        = OPERATION_WRITE;
+  scadaParameters_[363].operation        = OPERATION_READ;
   scadaParameters_[363].physic           = PHYSIC_NUMERIC;
   scadaParameters_[363].unit             = 0;
   scadaParameters_[363].typeData         = TYPE_DATA_UINT32;
@@ -4373,7 +4373,7 @@ void ScadaNovomet::initParameters()
   // 
   scadaParameters_[364].id               = -1;
   scadaParameters_[364].address          = 395;
-  scadaParameters_[364].operation        = OPERATION_WRITE;
+  scadaParameters_[364].operation        = OPERATION_READ;
   scadaParameters_[364].physic           = PHYSIC_TEMPERATURE;
   scadaParameters_[364].unit             = TEMPERATURE_C;
   scadaParameters_[364].typeData         = TYPE_DATA_UINT16;
@@ -4397,7 +4397,7 @@ void ScadaNovomet::initParameters()
   // 
   scadaParameters_[366].id               = -1;
   scadaParameters_[366].address          = 397;
-  scadaParameters_[366].operation        = OPERATION_WRITE;
+  scadaParameters_[366].operation        = OPERATION_READ;
   scadaParameters_[366].physic           = PHYSIC_TEMPERATURE;
   scadaParameters_[366].unit             = TEMPERATURE_C;
   scadaParameters_[366].typeData         = TYPE_DATA_UINT16;
@@ -4419,9 +4419,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[367].command          = OPERATION_ERROR;
   scadaParameters_[367].value.float_t    = 0;
   // Диаметр колонны
-  scadaParameters_[368].id               = 0;
+  scadaParameters_[368].id               = -1;
   scadaParameters_[368].address          = 399;
-  scadaParameters_[368].operation        = OPERATION_WRITE;
+  scadaParameters_[368].operation        = OPERATION_READ;
   scadaParameters_[368].physic           = PHYSIC_LENGHT;
   scadaParameters_[368].unit             = LENGTH_M;
   scadaParameters_[368].typeData         = TYPE_DATA_UINT16;
@@ -4443,9 +4443,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[369].command          = OPERATION_ERROR;
   scadaParameters_[369].value.float_t    = 0;
   // Диаметр НКТ
-  scadaParameters_[370].id               = 0;
+  scadaParameters_[370].id               = -1;
   scadaParameters_[370].address          = 401;
-  scadaParameters_[370].operation        = OPERATION_WRITE;
+  scadaParameters_[370].operation        = OPERATION_READ;
   scadaParameters_[370].physic           = PHYSIC_LENGHT;
   scadaParameters_[370].unit             = LENGTH_M;
   scadaParameters_[370].typeData         = TYPE_DATA_UINT16;
@@ -4467,9 +4467,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[371].command          = OPERATION_ERROR;
   scadaParameters_[371].value.float_t    = 0;
   // Глубина подвеса насоса
-  scadaParameters_[372].id               = 0;
+  scadaParameters_[372].id               = -1;
   scadaParameters_[372].address          = 403;
-  scadaParameters_[372].operation        = OPERATION_WRITE;
+  scadaParameters_[372].operation        = OPERATION_READ;
   scadaParameters_[372].physic           = PHYSIC_LENGHT;
   scadaParameters_[372].unit             = LENGTH_M;
   scadaParameters_[372].typeData         = TYPE_DATA_UINT16;
@@ -4491,9 +4491,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[373].command          = OPERATION_ERROR;
   scadaParameters_[373].value.float_t    = 0;
   // Давление в линии
-  scadaParameters_[374].id               = 0;
+  scadaParameters_[374].id               = -1;
   scadaParameters_[374].address          = 405;
-  scadaParameters_[374].operation        = OPERATION_WRITE;
+  scadaParameters_[374].operation        = OPERATION_READ;
   scadaParameters_[374].physic           = PHYSIC_PRESSURE;
   scadaParameters_[374].unit             = PRESSURE_MPA;
   scadaParameters_[374].typeData         = TYPE_DATA_UINT16;
@@ -4515,9 +4515,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[375].command          = OPERATION_ERROR;
   scadaParameters_[375].value.float_t    = 0;
   // Плотность жидкости глушения
-  scadaParameters_[376].id               = 0;
+  scadaParameters_[376].id               = -1;
   scadaParameters_[376].address          = 407;
-  scadaParameters_[376].operation        = OPERATION_WRITE;
+  scadaParameters_[376].operation        = OPERATION_READ;
   scadaParameters_[376].physic           = PHYSIC_DENSITY;
   scadaParameters_[376].unit             = DENSITY_KG_M3;
   scadaParameters_[376].typeData         = TYPE_DATA_UINT16;
@@ -4539,9 +4539,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[377].command          = OPERATION_ERROR;
   scadaParameters_[377].value.float_t    = 0;
   // Номинальный напор насоса
-  scadaParameters_[378].id               = 0;
+  scadaParameters_[378].id               = -1;
   scadaParameters_[378].address          = 409;
-  scadaParameters_[378].operation        = OPERATION_WRITE;
+  scadaParameters_[378].operation        = OPERATION_READ;
   scadaParameters_[378].physic           = PHYSIC_LENGHT;
   scadaParameters_[378].unit             = LENGTH_M;
   scadaParameters_[378].typeData         = TYPE_DATA_UINT16;
@@ -4563,9 +4563,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[379].command          = OPERATION_ERROR;
   scadaParameters_[379].value.float_t    = 0;
   // Время цикла откачки-накопления
-  scadaParameters_[380].id               = 0;
+  scadaParameters_[380].id               = -1;
   scadaParameters_[380].address          = 411;
-  scadaParameters_[380].operation        = OPERATION_WRITE;
+  scadaParameters_[380].operation        = OPERATION_READ;
   scadaParameters_[380].physic           = PHYSIC_TIME;
   scadaParameters_[380].unit             = TIME_SS;
   scadaParameters_[380].typeData         = TYPE_DATA_UINT16;
@@ -4587,9 +4587,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[381].command          = OPERATION_ERROR;
   scadaParameters_[381].value.float_t    = 0;
   // Рабочая частота
-  scadaParameters_[382].id               = 0;
+  scadaParameters_[382].id               = -1;
   scadaParameters_[382].address          = 413;
-  scadaParameters_[382].operation        = OPERATION_WRITE;
+  scadaParameters_[382].operation        = OPERATION_READ;
   scadaParameters_[382].physic           = PHYSIC_FREQUENCY;
   scadaParameters_[382].unit             = FREQUENCY_HZ;
   scadaParameters_[382].typeData         = TYPE_DATA_UINT16;
@@ -4611,7 +4611,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[383].command          = OPERATION_ERROR;
   scadaParameters_[383].value.float_t    = 0;
   // Состояние защит (состояние блокировки)
-  scadaParameters_[384].id               = TMS_PSW_TMS;
+  scadaParameters_[384].id               = 0;
   scadaParameters_[384].address          = 415;
   scadaParameters_[384].operation        = OPERATION_READ;
   scadaParameters_[384].physic           = PHYSIC_NUMERIC;
@@ -4755,7 +4755,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[395].command          = OPERATION_ERROR;
   scadaParameters_[395].value.float_t    = 0;
   // Снижение давления на приёме
-  scadaParameters_[396].id               = 0;
+  scadaParameters_[396].id               = CCS_PROT_DHS_PRESSURE_INTAKE_MODE;
   scadaParameters_[396].address          = 428;
   scadaParameters_[396].operation        = OPERATION_WRITE;
   scadaParameters_[396].physic           = PHYSIC_NUMERIC;
@@ -4779,7 +4779,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[397].command          = OPERATION_ERROR;
   scadaParameters_[397].value.float_t    = 0;
   // Превышение давления на выкиде насоса
-  scadaParameters_[398].id               = 0;
+  scadaParameters_[398].id               = CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE;
   scadaParameters_[398].address          = 430;
   scadaParameters_[398].operation        = OPERATION_WRITE;
   scadaParameters_[398].physic           = PHYSIC_NUMERIC;
@@ -5055,9 +5055,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[420].command          = OPERATION_ERROR;
   scadaParameters_[420].value.float_t    = 0;
   // Резерв
-  scadaParameters_[421].id               = 0;
+  scadaParameters_[421].id               = -1;
   scadaParameters_[421].address          = 455;
-  scadaParameters_[421].operation        = OPERATION_WRITE;
+  scadaParameters_[421].operation        = OPERATION_READ;
   scadaParameters_[421].physic           = PHYSIC_NUMERIC;
   scadaParameters_[421].unit             = 0;
   scadaParameters_[421].typeData         = TYPE_DATA_UINT16;
@@ -5067,9 +5067,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[421].command          = OPERATION_ERROR;
   scadaParameters_[421].value.float_t    = 0;
   // Резерв
-  scadaParameters_[422].id               = 0;
+  scadaParameters_[422].id               = -1;
   scadaParameters_[422].address          = 456;
-  scadaParameters_[422].operation        = OPERATION_WRITE;
+  scadaParameters_[422].operation        = OPERATION_READ;
   scadaParameters_[422].physic           = PHYSIC_NUMERIC;
   scadaParameters_[422].unit             = 0;
   scadaParameters_[422].typeData         = TYPE_DATA_UINT16;
@@ -5079,9 +5079,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[422].command          = OPERATION_ERROR;
   scadaParameters_[422].value.float_t    = 0;
   // Резерв
-  scadaParameters_[423].id               = 0;
+  scadaParameters_[423].id               = -1;
   scadaParameters_[423].address          = 457;
-  scadaParameters_[423].operation        = OPERATION_WRITE;
+  scadaParameters_[423].operation        = OPERATION_READ;
   scadaParameters_[423].physic           = PHYSIC_NUMERIC;
   scadaParameters_[423].unit             = 0;
   scadaParameters_[423].typeData         = TYPE_DATA_UINT16;
@@ -5091,9 +5091,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[423].command          = OPERATION_ERROR;
   scadaParameters_[423].value.float_t    = 0;
   // Резерв
-  scadaParameters_[424].id               = 0;
+  scadaParameters_[424].id               = -1;
   scadaParameters_[424].address          = 458;
-  scadaParameters_[424].operation        = OPERATION_WRITE;
+  scadaParameters_[424].operation        = OPERATION_READ;
   scadaParameters_[424].physic           = PHYSIC_NUMERIC;
   scadaParameters_[424].unit             = 0;
   scadaParameters_[424].typeData         = TYPE_DATA_UINT16;
@@ -5103,9 +5103,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[424].command          = OPERATION_ERROR;
   scadaParameters_[424].value.float_t    = 0;
   // Резерв
-  scadaParameters_[425].id               = 0;
+  scadaParameters_[425].id               = -1;
   scadaParameters_[425].address          = 459;
-  scadaParameters_[425].operation        = OPERATION_WRITE;
+  scadaParameters_[425].operation        = OPERATION_READ;
   scadaParameters_[425].physic           = PHYSIC_NUMERIC;
   scadaParameters_[425].unit             = 0;
   scadaParameters_[425].typeData         = TYPE_DATA_UINT16;
@@ -5115,9 +5115,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[425].command          = OPERATION_ERROR;
   scadaParameters_[425].value.float_t    = 0;
   // Резерв
-  scadaParameters_[426].id               = 0;
+  scadaParameters_[426].id               = -1;
   scadaParameters_[426].address          = 460;
-  scadaParameters_[426].operation        = OPERATION_WRITE;
+  scadaParameters_[426].operation        = OPERATION_READ;
   scadaParameters_[426].physic           = PHYSIC_NUMERIC;
   scadaParameters_[426].unit             = 0;
   scadaParameters_[426].typeData         = TYPE_DATA_UINT16;
@@ -5127,9 +5127,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[426].command          = OPERATION_ERROR;
   scadaParameters_[426].value.float_t    = 0;
   // Резерв
-  scadaParameters_[427].id               = 0;
+  scadaParameters_[427].id               = -1;
   scadaParameters_[427].address          = 461;
-  scadaParameters_[427].operation        = OPERATION_WRITE;
+  scadaParameters_[427].operation        = OPERATION_READ;
   scadaParameters_[427].physic           = PHYSIC_NUMERIC;
   scadaParameters_[427].unit             = 0;
   scadaParameters_[427].typeData         = TYPE_DATA_UINT16;
@@ -5139,9 +5139,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[427].command          = OPERATION_ERROR;
   scadaParameters_[427].value.float_t    = 0;
   // Резерв
-  scadaParameters_[428].id               = 0;
+  scadaParameters_[428].id               = -1;
   scadaParameters_[428].address          = 462;
-  scadaParameters_[428].operation        = OPERATION_WRITE;
+  scadaParameters_[428].operation        = OPERATION_READ;
   scadaParameters_[428].physic           = PHYSIC_NUMERIC;
   scadaParameters_[428].unit             = 0;
   scadaParameters_[428].typeData         = TYPE_DATA_UINT16;
@@ -5151,9 +5151,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[428].command          = OPERATION_ERROR;
   scadaParameters_[428].value.float_t    = 0;
   // Резерв
-  scadaParameters_[429].id               = 0;
+  scadaParameters_[429].id               = -1;
   scadaParameters_[429].address          = 463;
-  scadaParameters_[429].operation        = OPERATION_WRITE;
+  scadaParameters_[429].operation        = OPERATION_READ;
   scadaParameters_[429].physic           = PHYSIC_NUMERIC;
   scadaParameters_[429].unit             = 0;
   scadaParameters_[429].typeData         = TYPE_DATA_UINT16;
@@ -5163,9 +5163,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[429].command          = OPERATION_ERROR;
   scadaParameters_[429].value.float_t    = 0;
   // Резерв
-  scadaParameters_[430].id               = 0;
+  scadaParameters_[430].id               = -1;
   scadaParameters_[430].address          = 464;
-  scadaParameters_[430].operation        = OPERATION_WRITE;
+  scadaParameters_[430].operation        = OPERATION_READ;
   scadaParameters_[430].physic           = PHYSIC_NUMERIC;
   scadaParameters_[430].unit             = 0;
   scadaParameters_[430].typeData         = TYPE_DATA_UINT16;
@@ -5175,9 +5175,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[430].command          = OPERATION_ERROR;
   scadaParameters_[430].value.float_t    = 0;
   // Резерв
-  scadaParameters_[431].id               = 0;
+  scadaParameters_[431].id               = -1;
   scadaParameters_[431].address          = 465;
-  scadaParameters_[431].operation        = OPERATION_WRITE;
+  scadaParameters_[431].operation        = OPERATION_READ;
   scadaParameters_[431].physic           = PHYSIC_NUMERIC;
   scadaParameters_[431].unit             = 0;
   scadaParameters_[431].typeData         = TYPE_DATA_UINT16;
@@ -5187,9 +5187,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[431].command          = OPERATION_ERROR;
   scadaParameters_[431].value.float_t    = 0;
   // Резерв
-  scadaParameters_[432].id               = 0;
+  scadaParameters_[432].id               = -1;
   scadaParameters_[432].address          = 466;
-  scadaParameters_[432].operation        = OPERATION_WRITE;
+  scadaParameters_[432].operation        = OPERATION_READ;
   scadaParameters_[432].physic           = PHYSIC_NUMERIC;
   scadaParameters_[432].unit             = 0;
   scadaParameters_[432].typeData         = TYPE_DATA_UINT16;
@@ -5199,9 +5199,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[432].command          = OPERATION_ERROR;
   scadaParameters_[432].value.float_t    = 0;
   // Резерв
-  scadaParameters_[433].id               = 0;
+  scadaParameters_[433].id               = -1;
   scadaParameters_[433].address          = 467;
-  scadaParameters_[433].operation        = OPERATION_WRITE;
+  scadaParameters_[433].operation        = OPERATION_READ;
   scadaParameters_[433].physic           = PHYSIC_NUMERIC;
   scadaParameters_[433].unit             = 0;
   scadaParameters_[433].typeData         = TYPE_DATA_UINT16;
@@ -5211,9 +5211,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[433].command          = OPERATION_ERROR;
   scadaParameters_[433].value.float_t    = 0;
   // Резерв
-  scadaParameters_[434].id               = 0;
+  scadaParameters_[434].id               = -1;
   scadaParameters_[434].address          = 468;
-  scadaParameters_[434].operation        = OPERATION_WRITE;
+  scadaParameters_[434].operation        = OPERATION_READ;
   scadaParameters_[434].physic           = PHYSIC_NUMERIC;
   scadaParameters_[434].unit             = 0;
   scadaParameters_[434].typeData         = TYPE_DATA_UINT16;
@@ -5223,9 +5223,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[434].command          = OPERATION_ERROR;
   scadaParameters_[434].value.float_t    = 0;
   // Резерв
-  scadaParameters_[435].id               = 0;
+  scadaParameters_[435].id               = -1;
   scadaParameters_[435].address          = 469;
-  scadaParameters_[435].operation        = OPERATION_WRITE;
+  scadaParameters_[435].operation        = OPERATION_READ;
   scadaParameters_[435].physic           = PHYSIC_NUMERIC;
   scadaParameters_[435].unit             = 0;
   scadaParameters_[435].typeData         = TYPE_DATA_UINT16;
@@ -5235,9 +5235,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[435].command          = OPERATION_ERROR;
   scadaParameters_[435].value.float_t    = 0;
   // Резерв
-  scadaParameters_[436].id               = 0;
+  scadaParameters_[436].id               = -1;
   scadaParameters_[436].address          = 470;
-  scadaParameters_[436].operation        = OPERATION_WRITE;
+  scadaParameters_[436].operation        = OPERATION_READ;
   scadaParameters_[436].physic           = PHYSIC_NUMERIC;
   scadaParameters_[436].unit             = 0;
   scadaParameters_[436].typeData         = TYPE_DATA_UINT16;
@@ -5247,9 +5247,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[436].command          = OPERATION_ERROR;
   scadaParameters_[436].value.float_t    = 0;
   // Резерв
-  scadaParameters_[437].id               = 0;
+  scadaParameters_[437].id               = -1;
   scadaParameters_[437].address          = 471;
-  scadaParameters_[437].operation        = OPERATION_WRITE;
+  scadaParameters_[437].operation        = OPERATION_READ;
   scadaParameters_[437].physic           = PHYSIC_NUMERIC;
   scadaParameters_[437].unit             = 0;
   scadaParameters_[437].typeData         = TYPE_DATA_UINT16;
@@ -5259,9 +5259,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[437].command          = OPERATION_ERROR;
   scadaParameters_[437].value.float_t    = 0;
   // Резерв
-  scadaParameters_[438].id               = 0;
+  scadaParameters_[438].id               = -1;
   scadaParameters_[438].address          = 472;
-  scadaParameters_[438].operation        = OPERATION_WRITE;
+  scadaParameters_[438].operation        = OPERATION_READ;
   scadaParameters_[438].physic           = PHYSIC_NUMERIC;
   scadaParameters_[438].unit             = 0;
   scadaParameters_[438].typeData         = TYPE_DATA_UINT16;
@@ -5271,9 +5271,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[438].command          = OPERATION_ERROR;
   scadaParameters_[438].value.float_t    = 0;
   // Резерв
-  scadaParameters_[439].id               = 0;
+  scadaParameters_[439].id               = -1;
   scadaParameters_[439].address          = 473;
-  scadaParameters_[439].operation        = OPERATION_WRITE;
+  scadaParameters_[439].operation        = OPERATION_READ;
   scadaParameters_[439].physic           = PHYSIC_NUMERIC;
   scadaParameters_[439].unit             = 0;
   scadaParameters_[439].typeData         = TYPE_DATA_UINT16;
@@ -5283,9 +5283,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[439].command          = OPERATION_ERROR;
   scadaParameters_[439].value.float_t    = 0;
   // Резерв
-  scadaParameters_[440].id               = 0;
+  scadaParameters_[440].id               = -1;
   scadaParameters_[440].address          = 474;
-  scadaParameters_[440].operation        = OPERATION_WRITE;
+  scadaParameters_[440].operation        = OPERATION_READ;
   scadaParameters_[440].physic           = PHYSIC_NUMERIC;
   scadaParameters_[440].unit             = 0;
   scadaParameters_[440].typeData         = TYPE_DATA_UINT16;
@@ -5307,9 +5307,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[441].command          = OPERATION_ERROR;
   scadaParameters_[441].value.float_t    = 0;
   // Резерв
-  scadaParameters_[442].id               = 0;
+  scadaParameters_[442].id               = -1;
   scadaParameters_[442].address          = 476;
-  scadaParameters_[442].operation        = OPERATION_WRITE;
+  scadaParameters_[442].operation        = OPERATION_READ;
   scadaParameters_[442].physic           = PHYSIC_NUMERIC;
   scadaParameters_[442].unit             = 0;
   scadaParameters_[442].typeData         = TYPE_DATA_UINT16;
@@ -5319,9 +5319,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[442].command          = OPERATION_ERROR;
   scadaParameters_[442].value.float_t    = 0;
   // Резерв
-  scadaParameters_[443].id               = 0;
+  scadaParameters_[443].id               = -1;
   scadaParameters_[443].address          = 477;
-  scadaParameters_[443].operation        = OPERATION_WRITE;
+  scadaParameters_[443].operation        = OPERATION_READ;
   scadaParameters_[443].physic           = PHYSIC_NUMERIC;
   scadaParameters_[443].unit             = 0;
   scadaParameters_[443].typeData         = TYPE_DATA_UINT16;
@@ -5331,9 +5331,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[443].command          = OPERATION_ERROR;
   scadaParameters_[443].value.float_t    = 0;
   // Резерв
-  scadaParameters_[444].id               = 0;
+  scadaParameters_[444].id               = -1;
   scadaParameters_[444].address          = 478;
-  scadaParameters_[444].operation        = OPERATION_WRITE;
+  scadaParameters_[444].operation        = OPERATION_READ;
   scadaParameters_[444].physic           = PHYSIC_NUMERIC;
   scadaParameters_[444].unit             = 0;
   scadaParameters_[444].typeData         = TYPE_DATA_UINT16;
@@ -5343,9 +5343,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[444].command          = OPERATION_ERROR;
   scadaParameters_[444].value.float_t    = 0;
   // Резерв
-  scadaParameters_[445].id               = 0;
+  scadaParameters_[445].id               = -1;
   scadaParameters_[445].address          = 479;
-  scadaParameters_[445].operation        = OPERATION_WRITE;
+  scadaParameters_[445].operation        = OPERATION_READ;
   scadaParameters_[445].physic           = PHYSIC_NUMERIC;
   scadaParameters_[445].unit             = 0;
   scadaParameters_[445].typeData         = TYPE_DATA_UINT16;
@@ -5355,9 +5355,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[445].command          = OPERATION_ERROR;
   scadaParameters_[445].value.float_t    = 0;
   // Резерв
-  scadaParameters_[446].id               = 0;
+  scadaParameters_[446].id               = -1;
   scadaParameters_[446].address          = 480;
-  scadaParameters_[446].operation        = OPERATION_WRITE;
+  scadaParameters_[446].operation        = OPERATION_READ;
   scadaParameters_[446].physic           = PHYSIC_NUMERIC;
   scadaParameters_[446].unit             = 0;
   scadaParameters_[446].typeData         = TYPE_DATA_UINT16;
@@ -5391,7 +5391,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[448].command          = OPERATION_ERROR;
   scadaParameters_[448].value.float_t    = 0;
   // Резерв
-  scadaParameters_[449].id               = 0;
+  scadaParameters_[449].id               = -1;
   scadaParameters_[449].address          = 483;
   scadaParameters_[449].operation        = OPERATION_WRITE;
   scadaParameters_[449].physic           = PHYSIC_NUMERIC;
@@ -5427,9 +5427,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[451].command          = OPERATION_ERROR;
   scadaParameters_[451].value.float_t    = 0;
   // Резерв
-  scadaParameters_[452].id               = 0;
+  scadaParameters_[452].id               = -1;
   scadaParameters_[452].address          = 486;
-  scadaParameters_[452].operation        = OPERATION_WRITE;
+  scadaParameters_[452].operation        = OPERATION_READ;
   scadaParameters_[452].physic           = PHYSIC_NUMERIC;
   scadaParameters_[452].unit             = 0;
   scadaParameters_[452].typeData         = TYPE_DATA_UINT16;
@@ -5595,7 +5595,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[465].command          = OPERATION_ERROR;
   scadaParameters_[465].value.float_t    = 0;
   // Значение на цифровом входе 1 клемника внешних подключений
-  scadaParameters_[466].id               = 0;
+  scadaParameters_[466].id               = CCS_DI_1_VALUE;
   scadaParameters_[466].address          = 500;
   scadaParameters_[466].operation        = OPERATION_READ;
   scadaParameters_[466].physic           = PHYSIC_NUMERIC;
@@ -5607,7 +5607,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[466].command          = OPERATION_ERROR;
   scadaParameters_[466].value.float_t    = 0;
   // Значение на цифровом входе 2 клемника внешних подключений
-  scadaParameters_[467].id               = 0;
+  scadaParameters_[467].id               = CCS_DI_2_VALUE;
   scadaParameters_[467].address          = 501;
   scadaParameters_[467].operation        = OPERATION_READ;
   scadaParameters_[467].physic           = PHYSIC_NUMERIC;
@@ -5619,7 +5619,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[467].command          = OPERATION_ERROR;
   scadaParameters_[467].value.float_t    = 0;
   // Значение на цифровом входе 3 клемника внешних подключений
-  scadaParameters_[468].id               = 0;
+  scadaParameters_[468].id               = CCS_DI_3_VALUE;
   scadaParameters_[468].address          = 502;
   scadaParameters_[468].operation        = OPERATION_READ;
   scadaParameters_[468].physic           = PHYSIC_NUMERIC;
@@ -5631,7 +5631,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[468].command          = OPERATION_ERROR;
   scadaParameters_[468].value.float_t    = 0;
   // Значение на цифровом входе 4 клемника внешних подключений
-  scadaParameters_[469].id               = 0;
+  scadaParameters_[469].id               = CCS_DI_4_VALUE;
   scadaParameters_[469].address          = 503;
   scadaParameters_[469].operation        = OPERATION_READ;
   scadaParameters_[469].physic           = PHYSIC_NUMERIC;
@@ -5643,7 +5643,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[469].command          = OPERATION_ERROR;
   scadaParameters_[469].value.float_t    = 0;
   // Значение на аналоговом входе 1 клемника внешних подключений
-  scadaParameters_[470].id               = 0;
+  scadaParameters_[470].id               = CCS_AI_1_VALUE;
   scadaParameters_[470].address          = 504;
   scadaParameters_[470].operation        = OPERATION_READ;
   scadaParameters_[470].physic           = PHYSIC_NUMERIC;
@@ -5655,7 +5655,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[470].command          = OPERATION_ERROR;
   scadaParameters_[470].value.float_t    = 0;
   // Значение на аналоговом входе 2 клемника внешних подключений
-  scadaParameters_[471].id               = 0;
+  scadaParameters_[471].id               = CCS_AI_2_VALUE;
   scadaParameters_[471].address          = 506;
   scadaParameters_[471].operation        = OPERATION_READ;
   scadaParameters_[471].physic           = PHYSIC_NUMERIC;
@@ -5667,7 +5667,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[471].command          = OPERATION_ERROR;
   scadaParameters_[471].value.float_t    = 0;
   // Значение на аналоговом входе 3 клемника внешних подключений
-  scadaParameters_[472].id               = 0;
+  scadaParameters_[472].id               = CCS_AI_3_VALUE;
   scadaParameters_[472].address          = 508;
   scadaParameters_[472].operation        = OPERATION_READ;
   scadaParameters_[472].physic           = PHYSIC_NUMERIC;
@@ -5679,7 +5679,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[472].command          = OPERATION_ERROR;
   scadaParameters_[472].value.float_t    = 0;
   // Значение на аналоговом входе 4 клемника внешних подключений
-  scadaParameters_[473].id               = 0;
+  scadaParameters_[473].id               = CCS_AI_4_VALUE;
   scadaParameters_[473].address          = 510;
   scadaParameters_[473].operation        = OPERATION_READ;
   scadaParameters_[473].physic           = PHYSIC_NUMERIC;
@@ -5691,7 +5691,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[473].command          = OPERATION_ERROR;
   scadaParameters_[473].value.float_t    = 0;
   // Значение на аналоговом входе 1 внешнего модуля аналоговых входов
-  scadaParameters_[474].id               = 0;
+  scadaParameters_[474].id               = -1;
   scadaParameters_[474].address          = 512;
   scadaParameters_[474].operation        = OPERATION_READ;
   scadaParameters_[474].physic           = PHYSIC_NUMERIC;
@@ -5703,7 +5703,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[474].command          = OPERATION_ERROR;
   scadaParameters_[474].value.float_t    = 0;
   // Значение на аналоговом входе 2 внешнего модуля аналоговых входов
-  scadaParameters_[475].id               = 0;
+  scadaParameters_[475].id               = -1;
   scadaParameters_[475].address          = 514;
   scadaParameters_[475].operation        = OPERATION_READ;
   scadaParameters_[475].physic           = PHYSIC_NUMERIC;
@@ -5715,7 +5715,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[475].command          = OPERATION_ERROR;
   scadaParameters_[475].value.float_t    = 0;
   // Значение на аналоговом входе 3 внешнего модуля аналоговых входов
-  scadaParameters_[476].id               = 0;
+  scadaParameters_[476].id               = -1;
   scadaParameters_[476].address          = 516;
   scadaParameters_[476].operation        = OPERATION_READ;
   scadaParameters_[476].physic           = PHYSIC_NUMERIC;
@@ -5727,7 +5727,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[476].command          = OPERATION_ERROR;
   scadaParameters_[476].value.float_t    = 0;
   // Значение на аналоговом входе 4 внешнего модуля аналоговых входов
-  scadaParameters_[477].id               = 0;
+  scadaParameters_[477].id               = -1;
   scadaParameters_[477].address          = 518;
   scadaParameters_[477].operation        = OPERATION_READ;
   scadaParameters_[477].physic           = PHYSIC_NUMERIC;
@@ -5739,7 +5739,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[477].command          = OPERATION_ERROR;
   scadaParameters_[477].value.float_t    = 0;
   // Значение на аналоговом входе 5 внешнего модуля аналоговых входов
-  scadaParameters_[478].id               = 0;
+  scadaParameters_[478].id               = -1;
   scadaParameters_[478].address          = 520;
   scadaParameters_[478].operation        = OPERATION_READ;
   scadaParameters_[478].physic           = PHYSIC_NUMERIC;
@@ -5751,7 +5751,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[478].command          = OPERATION_ERROR;
   scadaParameters_[478].value.float_t    = 0;
   // Значение на аналоговом входе 6 внешнего модуля аналоговых входов
-  scadaParameters_[479].id               = 0;
+  scadaParameters_[479].id               = -1;
   scadaParameters_[479].address          = 522;
   scadaParameters_[479].operation        = OPERATION_READ;
   scadaParameters_[479].physic           = PHYSIC_NUMERIC;
@@ -5763,7 +5763,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[479].command          = OPERATION_ERROR;
   scadaParameters_[479].value.float_t    = 0;
   // Значение на аналоговом входе 7 внешнего модуля аналоговых входов
-  scadaParameters_[480].id               = 0;
+  scadaParameters_[480].id               = -1;
   scadaParameters_[480].address          = 524;
   scadaParameters_[480].operation        = OPERATION_READ;
   scadaParameters_[480].physic           = PHYSIC_NUMERIC;
@@ -5775,7 +5775,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[480].command          = OPERATION_ERROR;
   scadaParameters_[480].value.float_t    = 0;
   // Значение на аналоговом входе 8 внешнего модуля аналоговых входов
-  scadaParameters_[481].id               = 0;
+  scadaParameters_[481].id               = -1;
   scadaParameters_[481].address          = 526;
   scadaParameters_[481].operation        = OPERATION_READ;
   scadaParameters_[481].physic           = PHYSIC_NUMERIC;
@@ -5787,9 +5787,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[481].command          = OPERATION_ERROR;
   scadaParameters_[481].value.float_t    = 0;
   // Время накопления суточного дебита
-  scadaParameters_[482].id               = 0;
+  scadaParameters_[482].id               = -1;
   scadaParameters_[482].address          = 528;
-  scadaParameters_[482].operation        = OPERATION_WRITE;
+  scadaParameters_[482].operation        = OPERATION_READ;
   scadaParameters_[482].physic           = PHYSIC_TIME;
   scadaParameters_[482].unit             = TIME_SS;
   scadaParameters_[482].typeData         = TYPE_DATA_UINT32;
@@ -5801,7 +5801,7 @@ void ScadaNovomet::initParameters()
   // Уставка температуры ингибитора в баке
   scadaParameters_[483].id               = -1;
   scadaParameters_[483].address          = 530;
-  scadaParameters_[483].operation        = OPERATION_WRITE;
+  scadaParameters_[483].operation        = OPERATION_READ;
   scadaParameters_[483].physic           = PHYSIC_TEMPERATURE;
   scadaParameters_[483].unit             = TEMPERATURE_C;
   scadaParameters_[483].typeData         = TYPE_DATA_UINT16;
@@ -5813,7 +5813,7 @@ void ScadaNovomet::initParameters()
   // Объём подачи ингибитора
   scadaParameters_[484].id               = -1;
   scadaParameters_[484].address          = 531;
-  scadaParameters_[484].operation        = OPERATION_WRITE;
+  scadaParameters_[484].operation        = OPERATION_READ;
   scadaParameters_[484].physic           = PHYSIC_NUMERIC;
   scadaParameters_[484].unit             = 0;
   scadaParameters_[484].typeData         = TYPE_DATA_UINT16;
@@ -5825,7 +5825,7 @@ void ScadaNovomet::initParameters()
   // Текущий уровень ингибитора в баке УБПР
   scadaParameters_[485].id               = -1;
   scadaParameters_[485].address          = 532;
-  scadaParameters_[485].operation        = OPERATION_WRITE;
+  scadaParameters_[485].operation        = OPERATION_READ;
   scadaParameters_[485].physic           = PHYSIC_NUMERIC;
   scadaParameters_[485].unit             = 0;
   scadaParameters_[485].typeData         = TYPE_DATA_UINT16;
@@ -5837,7 +5837,7 @@ void ScadaNovomet::initParameters()
   // Текущая температура ингибитора в баке
   scadaParameters_[486].id               = -1;
   scadaParameters_[486].address          = 533;
-  scadaParameters_[486].operation        = OPERATION_WRITE;
+  scadaParameters_[486].operation        = OPERATION_READ;
   scadaParameters_[486].physic           = PHYSIC_TEMPERATURE;
   scadaParameters_[486].unit             = TEMPERATURE_C;
   scadaParameters_[486].typeData         = TYPE_DATA_UINT16;
@@ -5846,10 +5846,10 @@ void ScadaNovomet::initParameters()
   scadaParameters_[486].max              = 250;
   scadaParameters_[486].command          = OPERATION_ERROR;
   scadaParameters_[486].value.float_t    = 0;
-  // Останов насоса-дозатора по максимальному/минимальному давлению в линии нагнетания
-  scadaParameters_[487].id               = 0;
-  scadaParameters_[487].address          = 534;
-  scadaParameters_[487].operation        = OPERATION_WRITE;
+  // Текущий уровень ингибитора в баке УБПР
+  scadaParameters_[487].id               = -1;
+  scadaParameters_[487].address          = 532;
+  scadaParameters_[487].operation        = OPERATION_READ;
   scadaParameters_[487].physic           = PHYSIC_NUMERIC;
   scadaParameters_[487].unit             = 0;
   scadaParameters_[487].typeData         = TYPE_DATA_UINT16;
@@ -5858,22 +5858,22 @@ void ScadaNovomet::initParameters()
   scadaParameters_[487].max              = 1;
   scadaParameters_[487].command          = OPERATION_ERROR;
   scadaParameters_[487].value.float_t    = 0;
-  // Дебит по 1-ой методике
+  // Останов насоса-дозатора по максимальному/минимальному давлению в линии нагнетания
   scadaParameters_[488].id               = -1;
-  scadaParameters_[488].address          = 535;
-  scadaParameters_[488].operation        = OPERATION_WRITE;
+  scadaParameters_[488].address          = 534;
+  scadaParameters_[488].operation        = OPERATION_READ;
   scadaParameters_[488].physic           = PHYSIC_NUMERIC;
   scadaParameters_[488].unit             = 0;
   scadaParameters_[488].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[488].coefficient      = 0.1;
+  scadaParameters_[488].coefficient      = 1;
   scadaParameters_[488].min              = 0;
-  scadaParameters_[488].max              = 2500;
+  scadaParameters_[488].max              = 1;
   scadaParameters_[488].command          = OPERATION_ERROR;
   scadaParameters_[488].value.float_t    = 0;
-  // Дебит по 2-ой методике
+  // Дебит по 1-ой методике
   scadaParameters_[489].id               = -1;
-  scadaParameters_[489].address          = 536;
-  scadaParameters_[489].operation        = OPERATION_WRITE;
+  scadaParameters_[489].address          = 535;
+  scadaParameters_[489].operation        = OPERATION_READ;
   scadaParameters_[489].physic           = PHYSIC_NUMERIC;
   scadaParameters_[489].unit             = 0;
   scadaParameters_[489].typeData         = TYPE_DATA_UINT16;
@@ -5882,10 +5882,10 @@ void ScadaNovomet::initParameters()
   scadaParameters_[489].max              = 2500;
   scadaParameters_[489].command          = OPERATION_ERROR;
   scadaParameters_[489].value.float_t    = 0;
-  // Дебит средний
+  // Дебит по 2-ой методике
   scadaParameters_[490].id               = -1;
-  scadaParameters_[490].address          = 537;
-  scadaParameters_[490].operation        = OPERATION_WRITE;
+  scadaParameters_[490].address          = 536;
+  scadaParameters_[490].operation        = OPERATION_READ;
   scadaParameters_[490].physic           = PHYSIC_NUMERIC;
   scadaParameters_[490].unit             = 0;
   scadaParameters_[490].typeData         = TYPE_DATA_UINT16;
@@ -5894,10 +5894,10 @@ void ScadaNovomet::initParameters()
   scadaParameters_[490].max              = 2500;
   scadaParameters_[490].command          = OPERATION_ERROR;
   scadaParameters_[490].value.float_t    = 0;
-  // Дебит суточный
+  // Дебит средний
   scadaParameters_[491].id               = -1;
-  scadaParameters_[491].address          = 538;
-  scadaParameters_[491].operation        = OPERATION_WRITE;
+  scadaParameters_[491].address          = 537;
+  scadaParameters_[491].operation        = OPERATION_READ;
   scadaParameters_[491].physic           = PHYSIC_NUMERIC;
   scadaParameters_[491].unit             = 0;
   scadaParameters_[491].typeData         = TYPE_DATA_UINT16;
@@ -5906,45 +5906,45 @@ void ScadaNovomet::initParameters()
   scadaParameters_[491].max              = 2500;
   scadaParameters_[491].command          = OPERATION_ERROR;
   scadaParameters_[491].value.float_t    = 0;
-  // 
-  scadaParameters_[492].id               = 0;
-  scadaParameters_[492].address          = 539;
-  scadaParameters_[492].operation        = OPERATION_WRITE;
+  // Дебит суточный
+  scadaParameters_[492].id               = -1;
+  scadaParameters_[492].address          = 538;
+  scadaParameters_[492].operation        = OPERATION_READ;
   scadaParameters_[492].physic           = PHYSIC_NUMERIC;
   scadaParameters_[492].unit             = 0;
   scadaParameters_[492].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[492].coefficient      = 1;
+  scadaParameters_[492].coefficient      = 0.1;
   scadaParameters_[492].min              = 0;
-  scadaParameters_[492].max              = 0;
+  scadaParameters_[492].max              = 2500;
   scadaParameters_[492].command          = OPERATION_ERROR;
   scadaParameters_[492].value.float_t    = 0;
-  // Минимальная рабочая частота режима поддержания параметров
-  scadaParameters_[493].id               = CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ;
-  scadaParameters_[493].address          = 540;
-  scadaParameters_[493].operation        = OPERATION_WRITE;
-  scadaParameters_[493].physic           = PHYSIC_FREQUENCY;
-  scadaParameters_[493].unit             = FREQUENCY_HZ;
+  // Дебит суточный
+  scadaParameters_[493].id               = -1;
+  scadaParameters_[493].address          = 538;
+  scadaParameters_[493].operation        = OPERATION_READ;
+  scadaParameters_[493].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[493].unit             = 0;
   scadaParameters_[493].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[493].coefficient      = 0.1;
+  scadaParameters_[493].coefficient      = 1;
   scadaParameters_[493].min              = 0;
-  scadaParameters_[493].max              = 300;
+  scadaParameters_[493].max              = 0;
   scadaParameters_[493].command          = OPERATION_ERROR;
   scadaParameters_[493].value.float_t    = 0;
-  // Максимальная рабочая частота режима поддержания параметров
-  scadaParameters_[494].id               = CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ;
-  scadaParameters_[494].address          = 541;
-  scadaParameters_[494].operation        = OPERATION_WRITE;
-  scadaParameters_[494].physic           = PHYSIC_FREQUENCY;
-  scadaParameters_[494].unit             = FREQUENCY_HZ;
+  // Дебит по 3-ей методике
+  scadaParameters_[494].id               = -1;
+  scadaParameters_[494].address          = 539;
+  scadaParameters_[494].operation        = OPERATION_READ;
+  scadaParameters_[494].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[494].unit             = 0;
   scadaParameters_[494].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[494].coefficient      = 0.1;
+  scadaParameters_[494].coefficient      = 1;
   scadaParameters_[494].min              = 0;
-  scadaParameters_[494].max              = 300;
+  scadaParameters_[494].max              = 0;
   scadaParameters_[494].command          = OPERATION_ERROR;
   scadaParameters_[494].value.float_t    = 0;
-  // Частота F1 режима чередования частот
-  scadaParameters_[495].id               = CCS_RGM_ALTERNATION_FREQ_FREQ_1;
-  scadaParameters_[495].address          = 542;
+  // Минимальная рабочая частота режима поддержания параметров
+  scadaParameters_[495].id               = CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ;
+  scadaParameters_[495].address          = 540;
   scadaParameters_[495].operation        = OPERATION_WRITE;
   scadaParameters_[495].physic           = PHYSIC_FREQUENCY;
   scadaParameters_[495].unit             = FREQUENCY_HZ;
@@ -5954,9 +5954,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[495].max              = 300;
   scadaParameters_[495].command          = OPERATION_ERROR;
   scadaParameters_[495].value.float_t    = 0;
-  // Частота F2 режима чередования частот
-  scadaParameters_[496].id               = CCS_RGM_ALTERNATION_FREQ_FREQ_2;
-  scadaParameters_[496].address          = 543;
+  // Максимальная рабочая частота режима поддержания параметров
+  scadaParameters_[496].id               = CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ;
+  scadaParameters_[496].address          = 541;
   scadaParameters_[496].operation        = OPERATION_WRITE;
   scadaParameters_[496].physic           = PHYSIC_FREQUENCY;
   scadaParameters_[496].unit             = FREQUENCY_HZ;
@@ -5966,141 +5966,141 @@ void ScadaNovomet::initParameters()
   scadaParameters_[496].max              = 300;
   scadaParameters_[496].command          = OPERATION_ERROR;
   scadaParameters_[496].value.float_t    = 0;
-  // Время работы начастоте F1
-  scadaParameters_[497].id               = CCS_RGM_ALTERNATION_FREQ_TIMER_1;
-  scadaParameters_[497].address          = 544;
+  // Частота F1 режима чередования частот
+  scadaParameters_[497].id               = CCS_RGM_ALTERNATION_FREQ_FREQ_1;
+  scadaParameters_[497].address          = 542;
   scadaParameters_[497].operation        = OPERATION_WRITE;
-  scadaParameters_[497].physic           = PHYSIC_TIME;
-  scadaParameters_[497].unit             = TIME_SS;
-  scadaParameters_[497].typeData         = TYPE_DATA_UINT32;
-  scadaParameters_[497].coefficient      = 1;
+  scadaParameters_[497].physic           = PHYSIC_FREQUENCY;
+  scadaParameters_[497].unit             = FREQUENCY_HZ;
+  scadaParameters_[497].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[497].coefficient      = 0.1;
   scadaParameters_[497].min              = 0;
-  scadaParameters_[497].max              = 864000;
+  scadaParameters_[497].max              = 300;
   scadaParameters_[497].command          = OPERATION_ERROR;
   scadaParameters_[497].value.float_t    = 0;
-  // Время работы начастоте F2
-  scadaParameters_[498].id               = CCS_RGM_ALTERNATION_FREQ_TIMER_2;
-  scadaParameters_[498].address          = 546;
+  // Частота F2 режима чередования частот
+  scadaParameters_[498].id               = CCS_RGM_ALTERNATION_FREQ_FREQ_2;
+  scadaParameters_[498].address          = 543;
   scadaParameters_[498].operation        = OPERATION_WRITE;
-  scadaParameters_[498].physic           = PHYSIC_TIME;
-  scadaParameters_[498].unit             = TIME_SS;
-  scadaParameters_[498].typeData         = TYPE_DATA_UINT32;
-  scadaParameters_[498].coefficient      = 1;
+  scadaParameters_[498].physic           = PHYSIC_FREQUENCY;
+  scadaParameters_[498].unit             = FREQUENCY_HZ;
+  scadaParameters_[498].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[498].coefficient      = 0.1;
   scadaParameters_[498].min              = 0;
-  scadaParameters_[498].max              = 864000;
+  scadaParameters_[498].max              = 300;
   scadaParameters_[498].command          = OPERATION_ERROR;
   scadaParameters_[498].value.float_t    = 0;
-  // Частота F1 режима встряхивания
-  scadaParameters_[499].id               = CCS_RGM_JARRING_FREQ_1;
-  scadaParameters_[499].address          = 548;
+  // Время работы начастоте F1
+  scadaParameters_[499].id               = CCS_RGM_ALTERNATION_FREQ_TIMER_1;
+  scadaParameters_[499].address          = 544;
   scadaParameters_[499].operation        = OPERATION_WRITE;
-  scadaParameters_[499].physic           = PHYSIC_FREQUENCY;
-  scadaParameters_[499].unit             = FREQUENCY_HZ;
-  scadaParameters_[499].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[499].coefficient      = 0.1;
+  scadaParameters_[499].physic           = PHYSIC_TIME;
+  scadaParameters_[499].unit             = TIME_SS;
+  scadaParameters_[499].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[499].coefficient      = 1;
   scadaParameters_[499].min              = 0;
-  scadaParameters_[499].max              = 300;
+  scadaParameters_[499].max              = 864000;
   scadaParameters_[499].command          = OPERATION_ERROR;
   scadaParameters_[499].value.float_t    = 0;
-  // Частота F2 режима встряхивания
-  scadaParameters_[500].id               = CCS_RGM_JARRING_FREQ_2;
-  scadaParameters_[500].address          = 549;
+  // Время работы начастоте F2
+  scadaParameters_[500].id               = CCS_RGM_ALTERNATION_FREQ_TIMER_2;
+  scadaParameters_[500].address          = 546;
   scadaParameters_[500].operation        = OPERATION_WRITE;
-  scadaParameters_[500].physic           = PHYSIC_FREQUENCY;
-  scadaParameters_[500].unit             = FREQUENCY_HZ;
-  scadaParameters_[500].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[500].coefficient      = 0.1;
+  scadaParameters_[500].physic           = PHYSIC_TIME;
+  scadaParameters_[500].unit             = TIME_SS;
+  scadaParameters_[500].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[500].coefficient      = 1;
   scadaParameters_[500].min              = 0;
-  scadaParameters_[500].max              = 300;
+  scadaParameters_[500].max              = 864000;
   scadaParameters_[500].command          = OPERATION_ERROR;
   scadaParameters_[500].value.float_t    = 0;
-  // Число встряхиваний
-  scadaParameters_[501].id               = CCS_RGM_JARRING_COUNT;
-  scadaParameters_[501].address          = 550;
+  // Частота F1 режима встряхивания
+  scadaParameters_[501].id               = CCS_RGM_JARRING_FREQ_1;
+  scadaParameters_[501].address          = 548;
   scadaParameters_[501].operation        = OPERATION_WRITE;
-  scadaParameters_[501].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[501].unit             = 0;
+  scadaParameters_[501].physic           = PHYSIC_FREQUENCY;
+  scadaParameters_[501].unit             = FREQUENCY_HZ;
   scadaParameters_[501].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[501].coefficient      = 1;
+  scadaParameters_[501].coefficient      = 0.1;
   scadaParameters_[501].min              = 0;
-  scadaParameters_[501].max              = 99;
+  scadaParameters_[501].max              = 300;
   scadaParameters_[501].command          = OPERATION_ERROR;
   scadaParameters_[501].value.float_t    = 0;
-  // Время встряхивания
-  scadaParameters_[502].id               = CCS_RGM_JARRING_PERIOD;
-  scadaParameters_[502].address          = 551;
+  // Частота F2 режима встряхивания
+  scadaParameters_[502].id               = CCS_RGM_JARRING_FREQ_2;
+  scadaParameters_[502].address          = 549;
   scadaParameters_[502].operation        = OPERATION_WRITE;
-  scadaParameters_[502].physic           = PHYSIC_TIME;
-  scadaParameters_[502].unit             = TIME_SS;
+  scadaParameters_[502].physic           = PHYSIC_FREQUENCY;
+  scadaParameters_[502].unit             = FREQUENCY_HZ;
   scadaParameters_[502].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[502].coefficient      = 1;
-  scadaParameters_[502].min              = 10;
-  scadaParameters_[502].max              = 3600;
+  scadaParameters_[502].coefficient      = 0.1;
+  scadaParameters_[502].min              = 0;
+  scadaParameters_[502].max              = 300;
   scadaParameters_[502].command          = OPERATION_ERROR;
   scadaParameters_[502].value.float_t    = 0;
-  // Пауза встряхивания
-  scadaParameters_[503].id               = 0;
-  scadaParameters_[503].address          = 552;
+  // Число встряхиваний
+  scadaParameters_[503].id               = CCS_RGM_JARRING_COUNT;
+  scadaParameters_[503].address          = 550;
   scadaParameters_[503].operation        = OPERATION_WRITE;
-  scadaParameters_[503].physic           = PHYSIC_TIME;
-  scadaParameters_[503].unit             = TIME_MM;
+  scadaParameters_[503].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[503].unit             = 0;
   scadaParameters_[503].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[503].coefficient      = 1;
   scadaParameters_[503].min              = 0;
-  scadaParameters_[503].max              = 32000;
+  scadaParameters_[503].max              = 99;
   scadaParameters_[503].command          = OPERATION_ERROR;
   scadaParameters_[503].value.float_t    = 0;
-  // Темп увеличения частоты в режиме встряхивания
-  scadaParameters_[504].id               = CCS_RGM_JARRING_UPTEMP;
-  scadaParameters_[504].address          = 553;
+  // Время встряхивания
+  scadaParameters_[504].id               = CCS_RGM_JARRING_PERIOD;
+  scadaParameters_[504].address          = 551;
   scadaParameters_[504].operation        = OPERATION_WRITE;
-  scadaParameters_[504].physic           = PHYSIC_TEMP;
-  scadaParameters_[504].unit             = TEMP_HZ_SS;
+  scadaParameters_[504].physic           = PHYSIC_TIME;
+  scadaParameters_[504].unit             = TIME_SS;
   scadaParameters_[504].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[504].coefficient      = 0.1;
-  scadaParameters_[504].min              = 0;
-  scadaParameters_[504].max              = 20;
+  scadaParameters_[504].coefficient      = 1;
+  scadaParameters_[504].min              = 10;
+  scadaParameters_[504].max              = 3600;
   scadaParameters_[504].command          = OPERATION_ERROR;
   scadaParameters_[504].value.float_t    = 0;
-  // Темп уменьшения частоты в режиме встряхивания
-  scadaParameters_[505].id               = CCS_RGM_JARRING_DOWNTEMP;
-  scadaParameters_[505].address          = 554;
+  // Пауза встряхивания
+  scadaParameters_[505].id               = -1;
+  scadaParameters_[505].address          = 552;
   scadaParameters_[505].operation        = OPERATION_WRITE;
-  scadaParameters_[505].physic           = PHYSIC_TEMP;
-  scadaParameters_[505].unit             = TEMP_HZ_SS;
+  scadaParameters_[505].physic           = PHYSIC_TIME;
+  scadaParameters_[505].unit             = TIME_MM;
   scadaParameters_[505].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[505].coefficient      = 0.1;
+  scadaParameters_[505].coefficient      = 1;
   scadaParameters_[505].min              = 0;
-  scadaParameters_[505].max              = 20;
+  scadaParameters_[505].max              = 32000;
   scadaParameters_[505].command          = OPERATION_ERROR;
   scadaParameters_[505].value.float_t    = 0;
-  // Нет операции
-  scadaParameters_[506].id               = -1;
-  scadaParameters_[506].address          = 555;
-  scadaParameters_[506].operation        = OPERATION_READ;
-  scadaParameters_[506].physic           = 0;
-  scadaParameters_[506].unit             = 0;
+  // Темп увеличения частоты в режиме встряхивания
+  scadaParameters_[506].id               = CCS_RGM_JARRING_UPTEMP;
+  scadaParameters_[506].address          = 553;
+  scadaParameters_[506].operation        = OPERATION_WRITE;
+  scadaParameters_[506].physic           = PHYSIC_TEMP;
+  scadaParameters_[506].unit             = TEMP_HZ_SS;
   scadaParameters_[506].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[506].coefficient      = 1;
+  scadaParameters_[506].coefficient      = 0.1;
   scadaParameters_[506].min              = 0;
-  scadaParameters_[506].max              = 0;
+  scadaParameters_[506].max              = 20;
   scadaParameters_[506].command          = OPERATION_ERROR;
   scadaParameters_[506].value.float_t    = 0;
-  // Нет операции
-  scadaParameters_[507].id               = -1;
-  scadaParameters_[507].address          = 556;
-  scadaParameters_[507].operation        = OPERATION_READ;
-  scadaParameters_[507].physic           = 0;
-  scadaParameters_[507].unit             = 0;
+  // Темп уменьшения частоты в режиме встряхивания
+  scadaParameters_[507].id               = CCS_RGM_JARRING_DOWNTEMP;
+  scadaParameters_[507].address          = 554;
+  scadaParameters_[507].operation        = OPERATION_WRITE;
+  scadaParameters_[507].physic           = PHYSIC_TEMP;
+  scadaParameters_[507].unit             = TEMP_HZ_SS;
   scadaParameters_[507].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[507].coefficient      = 1;
+  scadaParameters_[507].coefficient      = 0.1;
   scadaParameters_[507].min              = 0;
-  scadaParameters_[507].max              = 0;
+  scadaParameters_[507].max              = 20;
   scadaParameters_[507].command          = OPERATION_ERROR;
   scadaParameters_[507].value.float_t    = 0;
   // Нет операции
   scadaParameters_[508].id               = -1;
-  scadaParameters_[508].address          = 557;
+  scadaParameters_[508].address          = 555;
   scadaParameters_[508].operation        = OPERATION_READ;
   scadaParameters_[508].physic           = 0;
   scadaParameters_[508].unit             = 0;
@@ -6112,7 +6112,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[508].value.float_t    = 0;
   // Нет операции
   scadaParameters_[509].id               = -1;
-  scadaParameters_[509].address          = 558;
+  scadaParameters_[509].address          = 556;
   scadaParameters_[509].operation        = OPERATION_READ;
   scadaParameters_[509].physic           = 0;
   scadaParameters_[509].unit             = 0;
@@ -6124,7 +6124,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[509].value.float_t    = 0;
   // Нет операции
   scadaParameters_[510].id               = -1;
-  scadaParameters_[510].address          = 559;
+  scadaParameters_[510].address          = 557;
   scadaParameters_[510].operation        = OPERATION_READ;
   scadaParameters_[510].physic           = 0;
   scadaParameters_[510].unit             = 0;
@@ -6134,33 +6134,33 @@ void ScadaNovomet::initParameters()
   scadaParameters_[510].max              = 0;
   scadaParameters_[510].command          = OPERATION_ERROR;
   scadaParameters_[510].value.float_t    = 0;
-  // Пуск ПЧ плавный
-  scadaParameters_[511].id               = 0;
-  scadaParameters_[511].address          = 560;
-  scadaParameters_[511].operation        = OPERATION_WRITE;
-  scadaParameters_[511].physic           = PHYSIC_NUMERIC;
+  // Нет операции
+  scadaParameters_[511].id               = -1;
+  scadaParameters_[511].address          = 558;
+  scadaParameters_[511].operation        = OPERATION_READ;
+  scadaParameters_[511].physic           = 0;
   scadaParameters_[511].unit             = 0;
   scadaParameters_[511].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[511].coefficient      = 1;
   scadaParameters_[511].min              = 0;
-  scadaParameters_[511].max              = 1;
+  scadaParameters_[511].max              = 0;
   scadaParameters_[511].command          = OPERATION_ERROR;
   scadaParameters_[511].value.float_t    = 0;
-  // Пуск ПЧ с раскачкой
-  scadaParameters_[512].id               = 0;
-  scadaParameters_[512].address          = 561;
-  scadaParameters_[512].operation        = OPERATION_WRITE;
-  scadaParameters_[512].physic           = PHYSIC_NUMERIC;
+  // Нет операции
+  scadaParameters_[512].id               = -1;
+  scadaParameters_[512].address          = 559;
+  scadaParameters_[512].operation        = OPERATION_READ;
+  scadaParameters_[512].physic           = 0;
   scadaParameters_[512].unit             = 0;
   scadaParameters_[512].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[512].coefficient      = 1;
   scadaParameters_[512].min              = 0;
-  scadaParameters_[512].max              = 1;
+  scadaParameters_[512].max              = 0;
   scadaParameters_[512].command          = OPERATION_ERROR;
   scadaParameters_[512].value.float_t    = 0;
-  // Пуск ПЧ толчками
+  // Пуск ПЧ плавный
   scadaParameters_[513].id               = 0;
-  scadaParameters_[513].address          = 562;
+  scadaParameters_[513].address          = 560;
   scadaParameters_[513].operation        = OPERATION_WRITE;
   scadaParameters_[513].physic           = PHYSIC_NUMERIC;
   scadaParameters_[513].unit             = 0;
@@ -6170,9 +6170,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[513].max              = 1;
   scadaParameters_[513].command          = OPERATION_ERROR;
   scadaParameters_[513].value.float_t    = 0;
-  // Пуск ПЧ с синхронизацией
+  // Пуск ПЧ с раскачкой
   scadaParameters_[514].id               = 0;
-  scadaParameters_[514].address          = 563;
+  scadaParameters_[514].address          = 561;
   scadaParameters_[514].operation        = OPERATION_WRITE;
   scadaParameters_[514].physic           = PHYSIC_NUMERIC;
   scadaParameters_[514].unit             = 0;
@@ -6182,33 +6182,33 @@ void ScadaNovomet::initParameters()
   scadaParameters_[514].max              = 1;
   scadaParameters_[514].command          = OPERATION_ERROR;
   scadaParameters_[514].value.float_t    = 0;
-  // Нет операции
-  scadaParameters_[515].id               = -1;
-  scadaParameters_[515].address          = 564;
-  scadaParameters_[515].operation        = OPERATION_READ;
-  scadaParameters_[515].physic           = 0;
+  // Пуск ПЧ толчками
+  scadaParameters_[515].id               = 0;
+  scadaParameters_[515].address          = 562;
+  scadaParameters_[515].operation        = OPERATION_WRITE;
+  scadaParameters_[515].physic           = PHYSIC_NUMERIC;
   scadaParameters_[515].unit             = 0;
   scadaParameters_[515].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[515].coefficient      = 1;
   scadaParameters_[515].min              = 0;
-  scadaParameters_[515].max              = 0;
+  scadaParameters_[515].max              = 1;
   scadaParameters_[515].command          = OPERATION_ERROR;
   scadaParameters_[515].value.float_t    = 0;
-  // Нет операции
-  scadaParameters_[516].id               = -1;
-  scadaParameters_[516].address          = 565;
-  scadaParameters_[516].operation        = OPERATION_READ;
-  scadaParameters_[516].physic           = 0;
+  // Пуск ПЧ с синхронизацией
+  scadaParameters_[516].id               = 0;
+  scadaParameters_[516].address          = 563;
+  scadaParameters_[516].operation        = OPERATION_WRITE;
+  scadaParameters_[516].physic           = PHYSIC_NUMERIC;
   scadaParameters_[516].unit             = 0;
   scadaParameters_[516].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[516].coefficient      = 1;
   scadaParameters_[516].min              = 0;
-  scadaParameters_[516].max              = 0;
+  scadaParameters_[516].max              = 1;
   scadaParameters_[516].command          = OPERATION_ERROR;
   scadaParameters_[516].value.float_t    = 0;
   // Нет операции
   scadaParameters_[517].id               = -1;
-  scadaParameters_[517].address          = 566;
+  scadaParameters_[517].address          = 564;
   scadaParameters_[517].operation        = OPERATION_READ;
   scadaParameters_[517].physic           = 0;
   scadaParameters_[517].unit             = 0;
@@ -6220,7 +6220,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[517].value.float_t    = 0;
   // Нет операции
   scadaParameters_[518].id               = -1;
-  scadaParameters_[518].address          = 567;
+  scadaParameters_[518].address          = 565;
   scadaParameters_[518].operation        = OPERATION_READ;
   scadaParameters_[518].physic           = 0;
   scadaParameters_[518].unit             = 0;
@@ -6232,7 +6232,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[518].value.float_t    = 0;
   // Нет операции
   scadaParameters_[519].id               = -1;
-  scadaParameters_[519].address          = 568;
+  scadaParameters_[519].address          = 566;
   scadaParameters_[519].operation        = OPERATION_READ;
   scadaParameters_[519].physic           = 0;
   scadaParameters_[519].unit             = 0;
@@ -6244,7 +6244,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[519].value.float_t    = 0;
   // Нет операции
   scadaParameters_[520].id               = -1;
-  scadaParameters_[520].address          = 569;
+  scadaParameters_[520].address          = 567;
   scadaParameters_[520].operation        = OPERATION_READ;
   scadaParameters_[520].physic           = 0;
   scadaParameters_[520].unit             = 0;
@@ -6256,7 +6256,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[520].value.float_t    = 0;
   // Нет операции
   scadaParameters_[521].id               = -1;
-  scadaParameters_[521].address          = 570;
+  scadaParameters_[521].address          = 568;
   scadaParameters_[521].operation        = OPERATION_READ;
   scadaParameters_[521].physic           = 0;
   scadaParameters_[521].unit             = 0;
@@ -6268,7 +6268,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[521].value.float_t    = 0;
   // Нет операции
   scadaParameters_[522].id               = -1;
-  scadaParameters_[522].address          = 571;
+  scadaParameters_[522].address          = 569;
   scadaParameters_[522].operation        = OPERATION_READ;
   scadaParameters_[522].physic           = 0;
   scadaParameters_[522].unit             = 0;
@@ -6280,7 +6280,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[522].value.float_t    = 0;
   // Нет операции
   scadaParameters_[523].id               = -1;
-  scadaParameters_[523].address          = 572;
+  scadaParameters_[523].address          = 570;
   scadaParameters_[523].operation        = OPERATION_READ;
   scadaParameters_[523].physic           = 0;
   scadaParameters_[523].unit             = 0;
@@ -6292,7 +6292,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[523].value.float_t    = 0;
   // Нет операции
   scadaParameters_[524].id               = -1;
-  scadaParameters_[524].address          = 573;
+  scadaParameters_[524].address          = 571;
   scadaParameters_[524].operation        = OPERATION_READ;
   scadaParameters_[524].physic           = 0;
   scadaParameters_[524].unit             = 0;
@@ -6304,7 +6304,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[524].value.float_t    = 0;
   // Нет операции
   scadaParameters_[525].id               = -1;
-  scadaParameters_[525].address          = 574;
+  scadaParameters_[525].address          = 572;
   scadaParameters_[525].operation        = OPERATION_READ;
   scadaParameters_[525].physic           = 0;
   scadaParameters_[525].unit             = 0;
@@ -6316,7 +6316,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[525].value.float_t    = 0;
   // Нет операции
   scadaParameters_[526].id               = -1;
-  scadaParameters_[526].address          = 575;
+  scadaParameters_[526].address          = 573;
   scadaParameters_[526].operation        = OPERATION_READ;
   scadaParameters_[526].physic           = 0;
   scadaParameters_[526].unit             = 0;
@@ -6328,7 +6328,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[526].value.float_t    = 0;
   // Нет операции
   scadaParameters_[527].id               = -1;
-  scadaParameters_[527].address          = 576;
+  scadaParameters_[527].address          = 574;
   scadaParameters_[527].operation        = OPERATION_READ;
   scadaParameters_[527].physic           = 0;
   scadaParameters_[527].unit             = 0;
@@ -6340,7 +6340,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[527].value.float_t    = 0;
   // Нет операции
   scadaParameters_[528].id               = -1;
-  scadaParameters_[528].address          = 577;
+  scadaParameters_[528].address          = 575;
   scadaParameters_[528].operation        = OPERATION_READ;
   scadaParameters_[528].physic           = 0;
   scadaParameters_[528].unit             = 0;
@@ -6352,7 +6352,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[528].value.float_t    = 0;
   // Нет операции
   scadaParameters_[529].id               = -1;
-  scadaParameters_[529].address          = 578;
+  scadaParameters_[529].address          = 576;
   scadaParameters_[529].operation        = OPERATION_READ;
   scadaParameters_[529].physic           = 0;
   scadaParameters_[529].unit             = 0;
@@ -6364,7 +6364,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[529].value.float_t    = 0;
   // Нет операции
   scadaParameters_[530].id               = -1;
-  scadaParameters_[530].address          = 579;
+  scadaParameters_[530].address          = 577;
   scadaParameters_[530].operation        = OPERATION_READ;
   scadaParameters_[530].physic           = 0;
   scadaParameters_[530].unit             = 0;
@@ -6376,7 +6376,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[530].value.float_t    = 0;
   // Нет операции
   scadaParameters_[531].id               = -1;
-  scadaParameters_[531].address          = 580;
+  scadaParameters_[531].address          = 578;
   scadaParameters_[531].operation        = OPERATION_READ;
   scadaParameters_[531].physic           = 0;
   scadaParameters_[531].unit             = 0;
@@ -6388,7 +6388,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[531].value.float_t    = 0;
   // Нет операции
   scadaParameters_[532].id               = -1;
-  scadaParameters_[532].address          = 581;
+  scadaParameters_[532].address          = 579;
   scadaParameters_[532].operation        = OPERATION_READ;
   scadaParameters_[532].physic           = 0;
   scadaParameters_[532].unit             = 0;
@@ -6400,7 +6400,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[532].value.float_t    = 0;
   // Нет операции
   scadaParameters_[533].id               = -1;
-  scadaParameters_[533].address          = 582;
+  scadaParameters_[533].address          = 580;
   scadaParameters_[533].operation        = OPERATION_READ;
   scadaParameters_[533].physic           = 0;
   scadaParameters_[533].unit             = 0;
@@ -6412,7 +6412,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[533].value.float_t    = 0;
   // Нет операции
   scadaParameters_[534].id               = -1;
-  scadaParameters_[534].address          = 583;
+  scadaParameters_[534].address          = 581;
   scadaParameters_[534].operation        = OPERATION_READ;
   scadaParameters_[534].physic           = 0;
   scadaParameters_[534].unit             = 0;
@@ -6424,7 +6424,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[534].value.float_t    = 0;
   // Нет операции
   scadaParameters_[535].id               = -1;
-  scadaParameters_[535].address          = 584;
+  scadaParameters_[535].address          = 582;
   scadaParameters_[535].operation        = OPERATION_READ;
   scadaParameters_[535].physic           = 0;
   scadaParameters_[535].unit             = 0;
@@ -6436,7 +6436,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[535].value.float_t    = 0;
   // Нет операции
   scadaParameters_[536].id               = -1;
-  scadaParameters_[536].address          = 585;
+  scadaParameters_[536].address          = 583;
   scadaParameters_[536].operation        = OPERATION_READ;
   scadaParameters_[536].physic           = 0;
   scadaParameters_[536].unit             = 0;
@@ -6448,7 +6448,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[536].value.float_t    = 0;
   // Нет операции
   scadaParameters_[537].id               = -1;
-  scadaParameters_[537].address          = 586;
+  scadaParameters_[537].address          = 584;
   scadaParameters_[537].operation        = OPERATION_READ;
   scadaParameters_[537].physic           = 0;
   scadaParameters_[537].unit             = 0;
@@ -6460,7 +6460,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[537].value.float_t    = 0;
   // Нет операции
   scadaParameters_[538].id               = -1;
-  scadaParameters_[538].address          = 587;
+  scadaParameters_[538].address          = 585;
   scadaParameters_[538].operation        = OPERATION_READ;
   scadaParameters_[538].physic           = 0;
   scadaParameters_[538].unit             = 0;
@@ -6472,7 +6472,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[538].value.float_t    = 0;
   // Нет операции
   scadaParameters_[539].id               = -1;
-  scadaParameters_[539].address          = 588;
+  scadaParameters_[539].address          = 586;
   scadaParameters_[539].operation        = OPERATION_READ;
   scadaParameters_[539].physic           = 0;
   scadaParameters_[539].unit             = 0;
@@ -6484,7 +6484,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[539].value.float_t    = 0;
   // Нет операции
   scadaParameters_[540].id               = -1;
-  scadaParameters_[540].address          = 589;
+  scadaParameters_[540].address          = 587;
   scadaParameters_[540].operation        = OPERATION_READ;
   scadaParameters_[540].physic           = 0;
   scadaParameters_[540].unit             = 0;
@@ -6496,7 +6496,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[540].value.float_t    = 0;
   // Нет операции
   scadaParameters_[541].id               = -1;
-  scadaParameters_[541].address          = 590;
+  scadaParameters_[541].address          = 588;
   scadaParameters_[541].operation        = OPERATION_READ;
   scadaParameters_[541].physic           = 0;
   scadaParameters_[541].unit             = 0;
@@ -6508,7 +6508,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[541].value.float_t    = 0;
   // Нет операции
   scadaParameters_[542].id               = -1;
-  scadaParameters_[542].address          = 591;
+  scadaParameters_[542].address          = 589;
   scadaParameters_[542].operation        = OPERATION_READ;
   scadaParameters_[542].physic           = 0;
   scadaParameters_[542].unit             = 0;
@@ -6520,7 +6520,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[542].value.float_t    = 0;
   // Нет операции
   scadaParameters_[543].id               = -1;
-  scadaParameters_[543].address          = 592;
+  scadaParameters_[543].address          = 590;
   scadaParameters_[543].operation        = OPERATION_READ;
   scadaParameters_[543].physic           = 0;
   scadaParameters_[543].unit             = 0;
@@ -6532,7 +6532,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[543].value.float_t    = 0;
   // Нет операции
   scadaParameters_[544].id               = -1;
-  scadaParameters_[544].address          = 593;
+  scadaParameters_[544].address          = 591;
   scadaParameters_[544].operation        = OPERATION_READ;
   scadaParameters_[544].physic           = 0;
   scadaParameters_[544].unit             = 0;
@@ -6544,7 +6544,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[544].value.float_t    = 0;
   // Нет операции
   scadaParameters_[545].id               = -1;
-  scadaParameters_[545].address          = 594;
+  scadaParameters_[545].address          = 592;
   scadaParameters_[545].operation        = OPERATION_READ;
   scadaParameters_[545].physic           = 0;
   scadaParameters_[545].unit             = 0;
@@ -6556,7 +6556,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[545].value.float_t    = 0;
   // Нет операции
   scadaParameters_[546].id               = -1;
-  scadaParameters_[546].address          = 595;
+  scadaParameters_[546].address          = 593;
   scadaParameters_[546].operation        = OPERATION_READ;
   scadaParameters_[546].physic           = 0;
   scadaParameters_[546].unit             = 0;
@@ -6568,7 +6568,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[546].value.float_t    = 0;
   // Нет операции
   scadaParameters_[547].id               = -1;
-  scadaParameters_[547].address          = 596;
+  scadaParameters_[547].address          = 594;
   scadaParameters_[547].operation        = OPERATION_READ;
   scadaParameters_[547].physic           = 0;
   scadaParameters_[547].unit             = 0;
@@ -6580,7 +6580,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[547].value.float_t    = 0;
   // Нет операции
   scadaParameters_[548].id               = -1;
-  scadaParameters_[548].address          = 597;
+  scadaParameters_[548].address          = 595;
   scadaParameters_[548].operation        = OPERATION_READ;
   scadaParameters_[548].physic           = 0;
   scadaParameters_[548].unit             = 0;
@@ -6592,7 +6592,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[548].value.float_t    = 0;
   // Нет операции
   scadaParameters_[549].id               = -1;
-  scadaParameters_[549].address          = 598;
+  scadaParameters_[549].address          = 596;
   scadaParameters_[549].operation        = OPERATION_READ;
   scadaParameters_[549].physic           = 0;
   scadaParameters_[549].unit             = 0;
@@ -6604,7 +6604,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[549].value.float_t    = 0;
   // Нет операции
   scadaParameters_[550].id               = -1;
-  scadaParameters_[550].address          = 599;
+  scadaParameters_[550].address          = 597;
   scadaParameters_[550].operation        = OPERATION_READ;
   scadaParameters_[550].physic           = 0;
   scadaParameters_[550].unit             = 0;
@@ -6614,69 +6614,69 @@ void ScadaNovomet::initParameters()
   scadaParameters_[550].max              = 0;
   scadaParameters_[550].command          = OPERATION_ERROR;
   scadaParameters_[550].value.float_t    = 0;
-  // Тип аналогового входа 1
-  scadaParameters_[551].id               = 0;
-  scadaParameters_[551].address          = 600;
+  // Нет операции
+  scadaParameters_[551].id               = -1;
+  scadaParameters_[551].address          = 598;
   scadaParameters_[551].operation        = OPERATION_READ;
-  scadaParameters_[551].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[551].physic           = 0;
   scadaParameters_[551].unit             = 0;
   scadaParameters_[551].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[551].coefficient      = 1;
   scadaParameters_[551].min              = 0;
-  scadaParameters_[551].max              = 2;
+  scadaParameters_[551].max              = 0;
   scadaParameters_[551].command          = OPERATION_ERROR;
   scadaParameters_[551].value.float_t    = 0;
-  // Сигнал на аналоговом входе 1
-  scadaParameters_[552].id               = CCS_PROT_AI_1_PARAMETER;
-  scadaParameters_[552].address          = 601;
-  scadaParameters_[552].operation        = OPERATION_WRITE;
-  scadaParameters_[552].physic           = PHYSIC_NUMERIC;
+  // Нет операции
+  scadaParameters_[552].id               = -1;
+  scadaParameters_[552].address          = 599;
+  scadaParameters_[552].operation        = OPERATION_READ;
+  scadaParameters_[552].physic           = 0;
   scadaParameters_[552].unit             = 0;
   scadaParameters_[552].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[552].coefficient      = 1;
   scadaParameters_[552].min              = 0;
-  scadaParameters_[552].max              = 5;
+  scadaParameters_[552].max              = 0;
   scadaParameters_[552].command          = OPERATION_ERROR;
   scadaParameters_[552].value.float_t    = 0;
-  // Единицы измерения сигнала на аналоговом входе 1
-  scadaParameters_[553].id               = 0;
-  scadaParameters_[553].address          = 602;
-  scadaParameters_[553].operation        = OPERATION_WRITE;
+  // Тип аналогового входа 1
+  scadaParameters_[553].id               = CCS_AI_1_TYPE;
+  scadaParameters_[553].address          = 600;
+  scadaParameters_[553].operation        = OPERATION_READ;
   scadaParameters_[553].physic           = PHYSIC_NUMERIC;
   scadaParameters_[553].unit             = 0;
   scadaParameters_[553].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[553].coefficient      = 1;
   scadaParameters_[553].min              = 0;
-  scadaParameters_[553].max              = 4;
+  scadaParameters_[553].max              = 2;
   scadaParameters_[553].command          = OPERATION_ERROR;
   scadaParameters_[553].value.float_t    = 0;
-  // Минимум шкалы сигнала на аналоговом входе 1
-  scadaParameters_[554].id               = CCS_PROT_AI_1_TRIP_SETPOINT;
-  scadaParameters_[554].address          = 603;
+  // Сигнал на аналоговом входе 1
+  scadaParameters_[554].id               = 0;
+  scadaParameters_[554].address          = 601;
   scadaParameters_[554].operation        = OPERATION_WRITE;
   scadaParameters_[554].physic           = PHYSIC_NUMERIC;
   scadaParameters_[554].unit             = 0;
-  scadaParameters_[554].typeData         = TYPE_DATA_UINT32;
-  scadaParameters_[554].coefficient      = 0.1;
+  scadaParameters_[554].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[554].coefficient      = 1;
   scadaParameters_[554].min              = 0;
-  scadaParameters_[554].max              = 100000;
+  scadaParameters_[554].max              = 5;
   scadaParameters_[554].command          = OPERATION_ERROR;
   scadaParameters_[554].value.float_t    = 0;
-  // Максимум шкалы сигнала на аналоговом входе 1
-  scadaParameters_[555].id               = CCS_PROT_AI_1_RESTART_SETPOINT;
-  scadaParameters_[555].address          = 605;
+  // Единицы измерения сигнала на аналоговом входе 1
+  scadaParameters_[555].id               = 0;
+  scadaParameters_[555].address          = 602;
   scadaParameters_[555].operation        = OPERATION_WRITE;
   scadaParameters_[555].physic           = PHYSIC_NUMERIC;
   scadaParameters_[555].unit             = 0;
-  scadaParameters_[555].typeData         = TYPE_DATA_UINT32;
-  scadaParameters_[555].coefficient      = 0.1;
+  scadaParameters_[555].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[555].coefficient      = 1;
   scadaParameters_[555].min              = 0;
-  scadaParameters_[555].max              = 100000;
+  scadaParameters_[555].max              = 4;
   scadaParameters_[555].command          = OPERATION_ERROR;
   scadaParameters_[555].value.float_t    = 0;
-  // Минимальное значение срабатывания защиты по AI1
-  scadaParameters_[556].id               = 0;
-  scadaParameters_[556].address          = 607;
+  // Минимум шкалы сигнала на аналоговом входе 1
+  scadaParameters_[556].id               = CCS_AI_1_MINIMUM;
+  scadaParameters_[556].address          = 603;
   scadaParameters_[556].operation        = OPERATION_WRITE;
   scadaParameters_[556].physic           = PHYSIC_NUMERIC;
   scadaParameters_[556].unit             = 0;
@@ -6686,9 +6686,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[556].max              = 100000;
   scadaParameters_[556].command          = OPERATION_ERROR;
   scadaParameters_[556].value.float_t    = 0;
-  // Минимальное значение АПВ защиты по AI1
-  scadaParameters_[557].id               = 0;
-  scadaParameters_[557].address          = 609;
+  // Максимум шкалы сигнала на аналоговом входе 1
+  scadaParameters_[557].id               = CCS_AI_1_MAXIMUM;
+  scadaParameters_[557].address          = 605;
   scadaParameters_[557].operation        = OPERATION_WRITE;
   scadaParameters_[557].physic           = PHYSIC_NUMERIC;
   scadaParameters_[557].unit             = 0;
@@ -6698,9 +6698,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[557].max              = 100000;
   scadaParameters_[557].command          = OPERATION_ERROR;
   scadaParameters_[557].value.float_t    = 0;
-  // Максимальное значение АПВ защиты по AI1
-  scadaParameters_[558].id               = 0;
-  scadaParameters_[558].address          = 611;
+  // Минимальное значение срабатывания защиты по AI1
+  scadaParameters_[558].id               = CCS_PROT_AI_1_TRIP_SETPOINT;
+  scadaParameters_[558].address          = 607;
   scadaParameters_[558].operation        = OPERATION_WRITE;
   scadaParameters_[558].physic           = PHYSIC_NUMERIC;
   scadaParameters_[558].unit             = 0;
@@ -6710,9 +6710,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[558].max              = 100000;
   scadaParameters_[558].command          = OPERATION_ERROR;
   scadaParameters_[558].value.float_t    = 0;
-  // Максимальное значение срабатывания защиты по AI1
-  scadaParameters_[559].id               = CCS_PROT_AI_1_RESTART_COUNT;
-  scadaParameters_[559].address          = 613;
+  // Минимальное значение АПВ защиты по AI1
+  scadaParameters_[559].id               = -1;
+  scadaParameters_[559].address          = 609;
   scadaParameters_[559].operation        = OPERATION_WRITE;
   scadaParameters_[559].physic           = PHYSIC_NUMERIC;
   scadaParameters_[559].unit             = 0;
@@ -6722,129 +6722,129 @@ void ScadaNovomet::initParameters()
   scadaParameters_[559].max              = 100000;
   scadaParameters_[559].command          = OPERATION_ERROR;
   scadaParameters_[559].value.float_t    = 0;
-  // Задержка активации защиты по AI1
-  scadaParameters_[560].id               = CCS_PROT_AI_1_ACTIV_DELAY;
-  scadaParameters_[560].address          = 615;
+  // Максимальное значение АПВ защиты по AI1
+  scadaParameters_[560].id               = -1;
+  scadaParameters_[560].address          = 611;
   scadaParameters_[560].operation        = OPERATION_WRITE;
-  scadaParameters_[560].physic           = PHYSIC_TIME;
-  scadaParameters_[560].unit             = TIME_SS;
-  scadaParameters_[560].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[560].coefficient      = 1;
+  scadaParameters_[560].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[560].unit             = 0;
+  scadaParameters_[560].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[560].coefficient      = 0.1;
   scadaParameters_[560].min              = 0;
-  scadaParameters_[560].max              = 120;
+  scadaParameters_[560].max              = 100000;
   scadaParameters_[560].command          = OPERATION_ERROR;
   scadaParameters_[560].value.float_t    = 0;
-  // Задержка срабатывания защиты по AI1
-  scadaParameters_[561].id               = CCS_PROT_AI_1_TRIP_DELAY;
-  scadaParameters_[561].address          = 616;
+  // Максимальное значение срабатывания защиты по AI1
+  scadaParameters_[561].id               = CCS_PROT_AI_1_RESTART_SETPOINT;
+  scadaParameters_[561].address          = 613;
   scadaParameters_[561].operation        = OPERATION_WRITE;
-  scadaParameters_[561].physic           = PHYSIC_TIME;
-  scadaParameters_[561].unit             = TIME_SS;
-  scadaParameters_[561].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[561].coefficient      = 1;
+  scadaParameters_[561].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[561].unit             = 0;
+  scadaParameters_[561].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[561].coefficient      = 0.1;
   scadaParameters_[561].min              = 0;
-  scadaParameters_[561].max              = 600;
+  scadaParameters_[561].max              = 100000;
   scadaParameters_[561].command          = OPERATION_ERROR;
   scadaParameters_[561].value.float_t    = 0;
-  // Задержка АПВ защиты по AI1
-  scadaParameters_[562].id               = CCS_PROT_AI_1_RESTART_DELAY;
-  scadaParameters_[562].address          = 617;
+  // Задержка активации защиты по AI1
+  scadaParameters_[562].id               = CCS_PROT_AI_1_ACTIV_DELAY;
+  scadaParameters_[562].address          = 615;
   scadaParameters_[562].operation        = OPERATION_WRITE;
   scadaParameters_[562].physic           = PHYSIC_TIME;
   scadaParameters_[562].unit             = TIME_SS;
-  scadaParameters_[562].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[562].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[562].coefficient      = 1;
   scadaParameters_[562].min              = 0;
-  scadaParameters_[562].max              = 600000;
+  scadaParameters_[562].max              = 120;
   scadaParameters_[562].command          = OPERATION_ERROR;
   scadaParameters_[562].value.float_t    = 0;
-  // Автоматический сброс счетчика защиты по AI1
-  scadaParameters_[563].id               = CCS_PROT_AI_1_RESTART_RESET;
-  scadaParameters_[563].address          = 619;
+  // Задержка срабатывания защиты по AI1
+  scadaParameters_[563].id               = CCS_PROT_AI_1_TRIP_DELAY;
+  scadaParameters_[563].address          = 616;
   scadaParameters_[563].operation        = OPERATION_WRITE;
   scadaParameters_[563].physic           = PHYSIC_TIME;
-  scadaParameters_[563].unit             = TIME_HH;
+  scadaParameters_[563].unit             = TIME_SS;
   scadaParameters_[563].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[563].coefficient      = 1;
   scadaParameters_[563].min              = 0;
-  scadaParameters_[563].max              = 100;
+  scadaParameters_[563].max              = 600;
   scadaParameters_[563].command          = OPERATION_ERROR;
   scadaParameters_[563].value.float_t    = 0;
-  // Количество АПВ, вызывающее блокировку защиты по AI1
-  scadaParameters_[564].id               = CCS_PROT_AI_1_RESTART_LIMIT;
-  scadaParameters_[564].address          = 620;
+  // Задержка АПВ защиты по AI1
+  scadaParameters_[564].id               = CCS_PROT_AI_1_RESTART_DELAY;
+  scadaParameters_[564].address          = 617;
   scadaParameters_[564].operation        = OPERATION_WRITE;
-  scadaParameters_[564].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[564].unit             = 0;
-  scadaParameters_[564].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[564].physic           = PHYSIC_TIME;
+  scadaParameters_[564].unit             = TIME_SS;
+  scadaParameters_[564].typeData         = TYPE_DATA_UINT32;
   scadaParameters_[564].coefficient      = 1;
   scadaParameters_[564].min              = 0;
-  scadaParameters_[564].max              = 200;
+  scadaParameters_[564].max              = 600000;
   scadaParameters_[564].command          = OPERATION_ERROR;
   scadaParameters_[564].value.float_t    = 0;
-  // Тип аналогового входа 2
-  scadaParameters_[565].id               = 0;
-  scadaParameters_[565].address          = 621;
-  scadaParameters_[565].operation        = OPERATION_READ;
-  scadaParameters_[565].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[565].unit             = 0;
+  // Автоматический сброс счетчика защиты по AI1
+  scadaParameters_[565].id               = CCS_PROT_AI_1_RESTART_RESET;
+  scadaParameters_[565].address          = 619;
+  scadaParameters_[565].operation        = OPERATION_WRITE;
+  scadaParameters_[565].physic           = PHYSIC_TIME;
+  scadaParameters_[565].unit             = TIME_HH;
   scadaParameters_[565].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[565].coefficient      = 1;
   scadaParameters_[565].min              = 0;
-  scadaParameters_[565].max              = 2;
+  scadaParameters_[565].max              = 100;
   scadaParameters_[565].command          = OPERATION_ERROR;
   scadaParameters_[565].value.float_t    = 0;
-  // Сигнал на аналоговом входе 2
-  scadaParameters_[566].id               = CCS_PROT_AI_2_PARAMETER;
-  scadaParameters_[566].address          = 622;
+  // Количество АПВ, вызывающее блокировку защиты по AI1
+  scadaParameters_[566].id               = CCS_PROT_AI_1_RESTART_LIMIT;
+  scadaParameters_[566].address          = 620;
   scadaParameters_[566].operation        = OPERATION_WRITE;
   scadaParameters_[566].physic           = PHYSIC_NUMERIC;
   scadaParameters_[566].unit             = 0;
   scadaParameters_[566].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[566].coefficient      = 1;
   scadaParameters_[566].min              = 0;
-  scadaParameters_[566].max              = 5;
+  scadaParameters_[566].max              = 200;
   scadaParameters_[566].command          = OPERATION_ERROR;
   scadaParameters_[566].value.float_t    = 0;
-  // Единицы измерения сигнала на аналоговом входе 2
-  scadaParameters_[567].id               = 0;
-  scadaParameters_[567].address          = 623;
-  scadaParameters_[567].operation        = OPERATION_WRITE;
+  // Тип аналогового входа 2
+  scadaParameters_[567].id               = CCS_AI_2_TYPE;
+  scadaParameters_[567].address          = 621;
+  scadaParameters_[567].operation        = OPERATION_READ;
   scadaParameters_[567].physic           = PHYSIC_NUMERIC;
   scadaParameters_[567].unit             = 0;
   scadaParameters_[567].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[567].coefficient      = 1;
   scadaParameters_[567].min              = 0;
-  scadaParameters_[567].max              = 4;
+  scadaParameters_[567].max              = 2;
   scadaParameters_[567].command          = OPERATION_ERROR;
   scadaParameters_[567].value.float_t    = 0;
-  // Минимум шкалы сигнала на аналоговом входе 2
-  scadaParameters_[568].id               = CCS_PROT_AI_2_TRIP_SETPOINT;
-  scadaParameters_[568].address          = 624;
+  // Сигнал на аналоговом входе 2
+  scadaParameters_[568].id               = 0;
+  scadaParameters_[568].address          = 622;
   scadaParameters_[568].operation        = OPERATION_WRITE;
   scadaParameters_[568].physic           = PHYSIC_NUMERIC;
   scadaParameters_[568].unit             = 0;
-  scadaParameters_[568].typeData         = TYPE_DATA_UINT32;
-  scadaParameters_[568].coefficient      = 0.1;
+  scadaParameters_[568].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[568].coefficient      = 1;
   scadaParameters_[568].min              = 0;
-  scadaParameters_[568].max              = 100000;
+  scadaParameters_[568].max              = 5;
   scadaParameters_[568].command          = OPERATION_ERROR;
   scadaParameters_[568].value.float_t    = 0;
-  // Максимум шкалы сигнала на аналоговом входе 2
-  scadaParameters_[569].id               = CCS_PROT_AI_2_RESTART_SETPOINT;
-  scadaParameters_[569].address          = 626;
+  // Единицы измерения сигнала на аналоговом входе 2
+  scadaParameters_[569].id               = 0;
+  scadaParameters_[569].address          = 623;
   scadaParameters_[569].operation        = OPERATION_WRITE;
   scadaParameters_[569].physic           = PHYSIC_NUMERIC;
   scadaParameters_[569].unit             = 0;
-  scadaParameters_[569].typeData         = TYPE_DATA_UINT32;
-  scadaParameters_[569].coefficient      = 0.1;
+  scadaParameters_[569].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[569].coefficient      = 1;
   scadaParameters_[569].min              = 0;
-  scadaParameters_[569].max              = 100000;
+  scadaParameters_[569].max              = 4;
   scadaParameters_[569].command          = OPERATION_ERROR;
   scadaParameters_[569].value.float_t    = 0;
-  // Минимальное значение срабатывания защиты по AI2
-  scadaParameters_[570].id               = 0;
-  scadaParameters_[570].address          = 628;
+  // Минимум шкалы сигнала на аналоговом входе 2
+  scadaParameters_[570].id               = CCS_AI_2_MINIMUM;
+  scadaParameters_[570].address          = 624;
   scadaParameters_[570].operation        = OPERATION_WRITE;
   scadaParameters_[570].physic           = PHYSIC_NUMERIC;
   scadaParameters_[570].unit             = 0;
@@ -6854,9 +6854,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[570].max              = 100000;
   scadaParameters_[570].command          = OPERATION_ERROR;
   scadaParameters_[570].value.float_t    = 0;
-  // Минимальное значение АПВ защиты по AI2
-  scadaParameters_[571].id               = 0;
-  scadaParameters_[571].address          = 630;
+  // Максимум шкалы сигнала на аналоговом входе 2
+  scadaParameters_[571].id               = CCS_AI_2_MAXIMUM;
+  scadaParameters_[571].address          = 626;
   scadaParameters_[571].operation        = OPERATION_WRITE;
   scadaParameters_[571].physic           = PHYSIC_NUMERIC;
   scadaParameters_[571].unit             = 0;
@@ -6866,9 +6866,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[571].max              = 100000;
   scadaParameters_[571].command          = OPERATION_ERROR;
   scadaParameters_[571].value.float_t    = 0;
-  // Максимальное значение АПВ защиты по AI2
-  scadaParameters_[572].id               = 0;
-  scadaParameters_[572].address          = 632;
+  // Минимальное значение срабатывания защиты по AI2
+  scadaParameters_[572].id               = CCS_PROT_AI_2_TRIP_SETPOINT;
+  scadaParameters_[572].address          = 628;
   scadaParameters_[572].operation        = OPERATION_WRITE;
   scadaParameters_[572].physic           = PHYSIC_NUMERIC;
   scadaParameters_[572].unit             = 0;
@@ -6878,9 +6878,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[572].max              = 100000;
   scadaParameters_[572].command          = OPERATION_ERROR;
   scadaParameters_[572].value.float_t    = 0;
-  // Максимальное значение срабатывания защиты по AI2
-  scadaParameters_[573].id               = 0;
-  scadaParameters_[573].address          = 634;
+  // Минимальное значение АПВ защиты по AI2
+  scadaParameters_[573].id               = -1;
+  scadaParameters_[573].address          = 630;
   scadaParameters_[573].operation        = OPERATION_WRITE;
   scadaParameters_[573].physic           = PHYSIC_NUMERIC;
   scadaParameters_[573].unit             = 0;
@@ -6890,129 +6890,129 @@ void ScadaNovomet::initParameters()
   scadaParameters_[573].max              = 100000;
   scadaParameters_[573].command          = OPERATION_ERROR;
   scadaParameters_[573].value.float_t    = 0;
-  // Задержка активации защиты по AI2
-  scadaParameters_[574].id               = CCS_PROT_AI_2_ACTIV_DELAY;
-  scadaParameters_[574].address          = 636;
+  // Максимальное значение АПВ защиты по AI2
+  scadaParameters_[574].id               = -1;
+  scadaParameters_[574].address          = 632;
   scadaParameters_[574].operation        = OPERATION_WRITE;
-  scadaParameters_[574].physic           = PHYSIC_TIME;
-  scadaParameters_[574].unit             = TIME_SS;
-  scadaParameters_[574].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[574].coefficient      = 1;
+  scadaParameters_[574].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[574].unit             = 0;
+  scadaParameters_[574].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[574].coefficient      = 0.1;
   scadaParameters_[574].min              = 0;
-  scadaParameters_[574].max              = 120;
+  scadaParameters_[574].max              = 100000;
   scadaParameters_[574].command          = OPERATION_ERROR;
   scadaParameters_[574].value.float_t    = 0;
-  // Задержка срабатывания защиты по AI2
-  scadaParameters_[575].id               = CCS_PROT_AI_2_TRIP_DELAY;
-  scadaParameters_[575].address          = 637;
+  // Максимальное значение срабатывания защиты по AI2
+  scadaParameters_[575].id               = CCS_PROT_AI_2_RESTART_SETPOINT;
+  scadaParameters_[575].address          = 634;
   scadaParameters_[575].operation        = OPERATION_WRITE;
-  scadaParameters_[575].physic           = PHYSIC_TIME;
-  scadaParameters_[575].unit             = TIME_SS;
-  scadaParameters_[575].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[575].coefficient      = 1;
+  scadaParameters_[575].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[575].unit             = 0;
+  scadaParameters_[575].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[575].coefficient      = 0.1;
   scadaParameters_[575].min              = 0;
-  scadaParameters_[575].max              = 600;
+  scadaParameters_[575].max              = 100000;
   scadaParameters_[575].command          = OPERATION_ERROR;
   scadaParameters_[575].value.float_t    = 0;
-  // Задержка АПВ защиты по AI2
-  scadaParameters_[576].id               = CCS_PROT_AI_2_RESTART_DELAY;
-  scadaParameters_[576].address          = 638;
+  // Задержка активации защиты по AI2
+  scadaParameters_[576].id               = CCS_PROT_AI_2_ACTIV_DELAY;
+  scadaParameters_[576].address          = 636;
   scadaParameters_[576].operation        = OPERATION_WRITE;
   scadaParameters_[576].physic           = PHYSIC_TIME;
   scadaParameters_[576].unit             = TIME_SS;
-  scadaParameters_[576].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[576].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[576].coefficient      = 1;
   scadaParameters_[576].min              = 0;
-  scadaParameters_[576].max              = 600000;
+  scadaParameters_[576].max              = 120;
   scadaParameters_[576].command          = OPERATION_ERROR;
   scadaParameters_[576].value.float_t    = 0;
-  // Автоматический сброс счетчика защиты по AI2
-  scadaParameters_[577].id               = CCS_PROT_AI_2_RESTART_RESET;
-  scadaParameters_[577].address          = 640;
+  // Задержка срабатывания защиты по AI2
+  scadaParameters_[577].id               = CCS_PROT_AI_2_TRIP_DELAY;
+  scadaParameters_[577].address          = 637;
   scadaParameters_[577].operation        = OPERATION_WRITE;
   scadaParameters_[577].physic           = PHYSIC_TIME;
-  scadaParameters_[577].unit             = TIME_HH;
+  scadaParameters_[577].unit             = TIME_SS;
   scadaParameters_[577].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[577].coefficient      = 1;
   scadaParameters_[577].min              = 0;
-  scadaParameters_[577].max              = 100;
+  scadaParameters_[577].max              = 600;
   scadaParameters_[577].command          = OPERATION_ERROR;
   scadaParameters_[577].value.float_t    = 0;
-  // Количество АПВ, вызывающее блокировку защиты по AI2
-  scadaParameters_[578].id               = CCS_PROT_AI_2_RESTART_LIMIT;
-  scadaParameters_[578].address          = 641;
+  // Задержка АПВ защиты по AI2
+  scadaParameters_[578].id               = CCS_PROT_AI_2_RESTART_DELAY;
+  scadaParameters_[578].address          = 638;
   scadaParameters_[578].operation        = OPERATION_WRITE;
-  scadaParameters_[578].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[578].unit             = 0;
-  scadaParameters_[578].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[578].physic           = PHYSIC_TIME;
+  scadaParameters_[578].unit             = TIME_SS;
+  scadaParameters_[578].typeData         = TYPE_DATA_UINT32;
   scadaParameters_[578].coefficient      = 1;
   scadaParameters_[578].min              = 0;
-  scadaParameters_[578].max              = 200;
+  scadaParameters_[578].max              = 600000;
   scadaParameters_[578].command          = OPERATION_ERROR;
   scadaParameters_[578].value.float_t    = 0;
-  // Тип аналогового входа 3
-  scadaParameters_[579].id               = 0;
-  scadaParameters_[579].address          = 642;
-  scadaParameters_[579].operation        = OPERATION_READ;
-  scadaParameters_[579].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[579].unit             = 0;
+  // Автоматический сброс счетчика защиты по AI2
+  scadaParameters_[579].id               = CCS_PROT_AI_2_RESTART_RESET;
+  scadaParameters_[579].address          = 640;
+  scadaParameters_[579].operation        = OPERATION_WRITE;
+  scadaParameters_[579].physic           = PHYSIC_TIME;
+  scadaParameters_[579].unit             = TIME_HH;
   scadaParameters_[579].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[579].coefficient      = 1;
   scadaParameters_[579].min              = 0;
-  scadaParameters_[579].max              = 2;
+  scadaParameters_[579].max              = 100;
   scadaParameters_[579].command          = OPERATION_ERROR;
   scadaParameters_[579].value.float_t    = 0;
-  // Сигнал на аналоговом входе 3
-  scadaParameters_[580].id               = CCS_PROT_AI_3_PARAMETER;
-  scadaParameters_[580].address          = 643;
+  // Количество АПВ, вызывающее блокировку защиты по AI2
+  scadaParameters_[580].id               = CCS_PROT_AI_2_RESTART_LIMIT;
+  scadaParameters_[580].address          = 641;
   scadaParameters_[580].operation        = OPERATION_WRITE;
   scadaParameters_[580].physic           = PHYSIC_NUMERIC;
   scadaParameters_[580].unit             = 0;
   scadaParameters_[580].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[580].coefficient      = 1;
   scadaParameters_[580].min              = 0;
-  scadaParameters_[580].max              = 5;
+  scadaParameters_[580].max              = 200;
   scadaParameters_[580].command          = OPERATION_ERROR;
   scadaParameters_[580].value.float_t    = 0;
-  // Единицы измерения сигнала на аналоговом входе 3
-  scadaParameters_[581].id               = 0;
-  scadaParameters_[581].address          = 644;
-  scadaParameters_[581].operation        = OPERATION_WRITE;
+  // Тип аналогового входа 3
+  scadaParameters_[581].id               = CCS_AI_3_TYPE;
+  scadaParameters_[581].address          = 642;
+  scadaParameters_[581].operation        = OPERATION_READ;
   scadaParameters_[581].physic           = PHYSIC_NUMERIC;
   scadaParameters_[581].unit             = 0;
   scadaParameters_[581].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[581].coefficient      = 1;
   scadaParameters_[581].min              = 0;
-  scadaParameters_[581].max              = 4;
+  scadaParameters_[581].max              = 2;
   scadaParameters_[581].command          = OPERATION_ERROR;
   scadaParameters_[581].value.float_t    = 0;
-  // Минимум шкалы сигнала на аналоговом входе 3
-  scadaParameters_[582].id               = CCS_PROT_AI_3_TRIP_SETPOINT;
-  scadaParameters_[582].address          = 645;
+  // Сигнал на аналоговом входе 3
+  scadaParameters_[582].id               = 0;
+  scadaParameters_[582].address          = 643;
   scadaParameters_[582].operation        = OPERATION_WRITE;
   scadaParameters_[582].physic           = PHYSIC_NUMERIC;
   scadaParameters_[582].unit             = 0;
-  scadaParameters_[582].typeData         = TYPE_DATA_UINT32;
-  scadaParameters_[582].coefficient      = 0.1;
+  scadaParameters_[582].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[582].coefficient      = 1;
   scadaParameters_[582].min              = 0;
-  scadaParameters_[582].max              = 100000;
+  scadaParameters_[582].max              = 5;
   scadaParameters_[582].command          = OPERATION_ERROR;
   scadaParameters_[582].value.float_t    = 0;
-  // Максимум шкалы сигнала на аналоговом входе 3
-  scadaParameters_[583].id               = CCS_PROT_AI_3_RESTART_SETPOINT;
-  scadaParameters_[583].address          = 647;
+  // Единицы измерения сигнала на аналоговом входе 3
+  scadaParameters_[583].id               = 0;
+  scadaParameters_[583].address          = 644;
   scadaParameters_[583].operation        = OPERATION_WRITE;
   scadaParameters_[583].physic           = PHYSIC_NUMERIC;
   scadaParameters_[583].unit             = 0;
-  scadaParameters_[583].typeData         = TYPE_DATA_UINT32;
-  scadaParameters_[583].coefficient      = 0.1;
+  scadaParameters_[583].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[583].coefficient      = 1;
   scadaParameters_[583].min              = 0;
-  scadaParameters_[583].max              = 100000;
+  scadaParameters_[583].max              = 4;
   scadaParameters_[583].command          = OPERATION_ERROR;
   scadaParameters_[583].value.float_t    = 0;
-  // Минимальное значение срабатывания защиты по AI3
-  scadaParameters_[584].id               = 0;
-  scadaParameters_[584].address          = 649;
+  // Минимум шкалы сигнала на аналоговом входе 3
+  scadaParameters_[584].id               = CCS_AI_3_MINIMUM;
+  scadaParameters_[584].address          = 645;
   scadaParameters_[584].operation        = OPERATION_WRITE;
   scadaParameters_[584].physic           = PHYSIC_NUMERIC;
   scadaParameters_[584].unit             = 0;
@@ -7022,9 +7022,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[584].max              = 100000;
   scadaParameters_[584].command          = OPERATION_ERROR;
   scadaParameters_[584].value.float_t    = 0;
-  // Минимальное значение АПВ защиты по AI3
-  scadaParameters_[585].id               = 0;
-  scadaParameters_[585].address          = 651;
+  // Максимум шкалы сигнала на аналоговом входе 3
+  scadaParameters_[585].id               = CCS_AI_3_MAXIMUM;
+  scadaParameters_[585].address          = 647;
   scadaParameters_[585].operation        = OPERATION_WRITE;
   scadaParameters_[585].physic           = PHYSIC_NUMERIC;
   scadaParameters_[585].unit             = 0;
@@ -7034,9 +7034,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[585].max              = 100000;
   scadaParameters_[585].command          = OPERATION_ERROR;
   scadaParameters_[585].value.float_t    = 0;
-  // Максимальное значение АПВ защиты по AI3
-  scadaParameters_[586].id               = 0;
-  scadaParameters_[586].address          = 653;
+  // Минимальное значение срабатывания защиты по AI3
+  scadaParameters_[586].id               = CCS_PROT_AI_3_TRIP_SETPOINT;
+  scadaParameters_[586].address          = 649;
   scadaParameters_[586].operation        = OPERATION_WRITE;
   scadaParameters_[586].physic           = PHYSIC_NUMERIC;
   scadaParameters_[586].unit             = 0;
@@ -7046,9 +7046,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[586].max              = 100000;
   scadaParameters_[586].command          = OPERATION_ERROR;
   scadaParameters_[586].value.float_t    = 0;
-  // Максимальное значение срабатывания защиты по AI3
-  scadaParameters_[587].id               = 0;
-  scadaParameters_[587].address          = 655;
+  // Минимальное значение АПВ защиты по AI3
+  scadaParameters_[587].id               = -1;
+  scadaParameters_[587].address          = 651;
   scadaParameters_[587].operation        = OPERATION_WRITE;
   scadaParameters_[587].physic           = PHYSIC_NUMERIC;
   scadaParameters_[587].unit             = 0;
@@ -7058,129 +7058,129 @@ void ScadaNovomet::initParameters()
   scadaParameters_[587].max              = 100000;
   scadaParameters_[587].command          = OPERATION_ERROR;
   scadaParameters_[587].value.float_t    = 0;
-  // Задержка активации защиты по AI3
-  scadaParameters_[588].id               = CCS_PROT_AI_3_ACTIV_DELAY;
-  scadaParameters_[588].address          = 657;
+  // Максимальное значение АПВ защиты по AI3
+  scadaParameters_[588].id               = -1;
+  scadaParameters_[588].address          = 653;
   scadaParameters_[588].operation        = OPERATION_WRITE;
-  scadaParameters_[588].physic           = PHYSIC_TIME;
-  scadaParameters_[588].unit             = TIME_SS;
-  scadaParameters_[588].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[588].coefficient      = 1;
+  scadaParameters_[588].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[588].unit             = 0;
+  scadaParameters_[588].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[588].coefficient      = 0.1;
   scadaParameters_[588].min              = 0;
-  scadaParameters_[588].max              = 120;
+  scadaParameters_[588].max              = 100000;
   scadaParameters_[588].command          = OPERATION_ERROR;
   scadaParameters_[588].value.float_t    = 0;
-  // Задержка срабатывания защиты по AI3
-  scadaParameters_[589].id               = CCS_PROT_AI_3_TRIP_DELAY;
-  scadaParameters_[589].address          = 658;
+  // Максимальное значение срабатывания защиты по AI3
+  scadaParameters_[589].id               = CCS_PROT_AI_3_RESTART_SETPOINT;
+  scadaParameters_[589].address          = 655;
   scadaParameters_[589].operation        = OPERATION_WRITE;
-  scadaParameters_[589].physic           = PHYSIC_TIME;
-  scadaParameters_[589].unit             = TIME_SS;
-  scadaParameters_[589].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[589].coefficient      = 1;
+  scadaParameters_[589].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[589].unit             = 0;
+  scadaParameters_[589].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[589].coefficient      = 0.1;
   scadaParameters_[589].min              = 0;
-  scadaParameters_[589].max              = 600;
+  scadaParameters_[589].max              = 100000;
   scadaParameters_[589].command          = OPERATION_ERROR;
   scadaParameters_[589].value.float_t    = 0;
-  // Задержка АПВ защиты по AI3
-  scadaParameters_[590].id               = CCS_PROT_AI_3_RESTART_DELAY;
-  scadaParameters_[590].address          = 659;
+  // Задержка активации защиты по AI3
+  scadaParameters_[590].id               = CCS_PROT_AI_3_ACTIV_DELAY;
+  scadaParameters_[590].address          = 657;
   scadaParameters_[590].operation        = OPERATION_WRITE;
   scadaParameters_[590].physic           = PHYSIC_TIME;
   scadaParameters_[590].unit             = TIME_SS;
-  scadaParameters_[590].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[590].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[590].coefficient      = 1;
   scadaParameters_[590].min              = 0;
-  scadaParameters_[590].max              = 600000;
+  scadaParameters_[590].max              = 120;
   scadaParameters_[590].command          = OPERATION_ERROR;
   scadaParameters_[590].value.float_t    = 0;
-  // Автоматический сброс счетчика защиты по AI3
-  scadaParameters_[591].id               = CCS_PROT_AI_3_RESTART_RESET;
-  scadaParameters_[591].address          = 661;
+  // Задержка срабатывания защиты по AI3
+  scadaParameters_[591].id               = CCS_PROT_AI_3_TRIP_DELAY;
+  scadaParameters_[591].address          = 658;
   scadaParameters_[591].operation        = OPERATION_WRITE;
   scadaParameters_[591].physic           = PHYSIC_TIME;
-  scadaParameters_[591].unit             = TIME_HH;
+  scadaParameters_[591].unit             = TIME_SS;
   scadaParameters_[591].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[591].coefficient      = 1;
   scadaParameters_[591].min              = 0;
-  scadaParameters_[591].max              = 100;
+  scadaParameters_[591].max              = 600;
   scadaParameters_[591].command          = OPERATION_ERROR;
   scadaParameters_[591].value.float_t    = 0;
-  // Количество АПВ, вызывающее блокировку защиты по AI3
-  scadaParameters_[592].id               = CCS_PROT_AI_3_RESTART_LIMIT;
-  scadaParameters_[592].address          = 662;
+  // Задержка АПВ защиты по AI3
+  scadaParameters_[592].id               = CCS_PROT_AI_3_RESTART_DELAY;
+  scadaParameters_[592].address          = 659;
   scadaParameters_[592].operation        = OPERATION_WRITE;
-  scadaParameters_[592].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[592].unit             = 0;
-  scadaParameters_[592].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[592].physic           = PHYSIC_TIME;
+  scadaParameters_[592].unit             = TIME_SS;
+  scadaParameters_[592].typeData         = TYPE_DATA_UINT32;
   scadaParameters_[592].coefficient      = 1;
   scadaParameters_[592].min              = 0;
-  scadaParameters_[592].max              = 200;
+  scadaParameters_[592].max              = 600000;
   scadaParameters_[592].command          = OPERATION_ERROR;
   scadaParameters_[592].value.float_t    = 0;
-  // Тип аналогового входа 4
-  scadaParameters_[593].id               = 0;
-  scadaParameters_[593].address          = 663;
+  // Автоматический сброс счетчика защиты по AI3
+  scadaParameters_[593].id               = CCS_PROT_AI_3_RESTART_RESET;
+  scadaParameters_[593].address          = 661;
   scadaParameters_[593].operation        = OPERATION_WRITE;
-  scadaParameters_[593].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[593].unit             = 0;
+  scadaParameters_[593].physic           = PHYSIC_TIME;
+  scadaParameters_[593].unit             = TIME_HH;
   scadaParameters_[593].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[593].coefficient      = 1;
   scadaParameters_[593].min              = 0;
-  scadaParameters_[593].max              = 2;
+  scadaParameters_[593].max              = 100;
   scadaParameters_[593].command          = OPERATION_ERROR;
   scadaParameters_[593].value.float_t    = 0;
-  // Сигнал на аналоговом входе 4
-  scadaParameters_[594].id               = CCS_PROT_AI_4_PARAMETER;
-  scadaParameters_[594].address          = 664;
-  scadaParameters_[594].operation        = OPERATION_READ;
+  // Количество АПВ, вызывающее блокировку защиты по AI3
+  scadaParameters_[594].id               = CCS_PROT_AI_3_RESTART_LIMIT;
+  scadaParameters_[594].address          = 662;
+  scadaParameters_[594].operation        = OPERATION_WRITE;
   scadaParameters_[594].physic           = PHYSIC_NUMERIC;
   scadaParameters_[594].unit             = 0;
   scadaParameters_[594].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[594].coefficient      = 1;
   scadaParameters_[594].min              = 0;
-  scadaParameters_[594].max              = 5;
+  scadaParameters_[594].max              = 200;
   scadaParameters_[594].command          = OPERATION_ERROR;
   scadaParameters_[594].value.float_t    = 0;
-  // Единицы измерения сигнала на аналоговом входе 4
-  scadaParameters_[595].id               = 0;
-  scadaParameters_[595].address          = 665;
-  scadaParameters_[595].operation        = OPERATION_WRITE;
+  // Тип аналогового входа 4
+  scadaParameters_[595].id               = CCS_AI_4_TYPE;
+  scadaParameters_[595].address          = 663;
+  scadaParameters_[595].operation        = OPERATION_READ;
   scadaParameters_[595].physic           = PHYSIC_NUMERIC;
   scadaParameters_[595].unit             = 0;
   scadaParameters_[595].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[595].coefficient      = 1;
   scadaParameters_[595].min              = 0;
-  scadaParameters_[595].max              = 4;
+  scadaParameters_[595].max              = 2;
   scadaParameters_[595].command          = OPERATION_ERROR;
   scadaParameters_[595].value.float_t    = 0;
-  // Минимум шкалы сигнала на аналоговом входе 4
-  scadaParameters_[596].id               = CCS_PROT_AI_4_TRIP_SETPOINT;
-  scadaParameters_[596].address          = 666;
-  scadaParameters_[596].operation        = OPERATION_WRITE;
+  // Сигнал на аналоговом входе 4
+  scadaParameters_[596].id               = 0;
+  scadaParameters_[596].address          = 664;
+  scadaParameters_[596].operation        = OPERATION_READ;
   scadaParameters_[596].physic           = PHYSIC_NUMERIC;
   scadaParameters_[596].unit             = 0;
-  scadaParameters_[596].typeData         = TYPE_DATA_UINT32;
-  scadaParameters_[596].coefficient      = 0.1;
+  scadaParameters_[596].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[596].coefficient      = 1;
   scadaParameters_[596].min              = 0;
-  scadaParameters_[596].max              = 100000;
+  scadaParameters_[596].max              = 5;
   scadaParameters_[596].command          = OPERATION_ERROR;
   scadaParameters_[596].value.float_t    = 0;
-  // Максимум шкалы сигнала на аналоговом входе 4
-  scadaParameters_[597].id               = CCS_PROT_AI_4_RESTART_SETPOINT;
-  scadaParameters_[597].address          = 668;
+  // Единицы измерения сигнала на аналоговом входе 4
+  scadaParameters_[597].id               = 0;
+  scadaParameters_[597].address          = 665;
   scadaParameters_[597].operation        = OPERATION_WRITE;
   scadaParameters_[597].physic           = PHYSIC_NUMERIC;
   scadaParameters_[597].unit             = 0;
-  scadaParameters_[597].typeData         = TYPE_DATA_UINT32;
-  scadaParameters_[597].coefficient      = 0.1;
+  scadaParameters_[597].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[597].coefficient      = 1;
   scadaParameters_[597].min              = 0;
-  scadaParameters_[597].max              = 100000;
+  scadaParameters_[597].max              = 4;
   scadaParameters_[597].command          = OPERATION_ERROR;
   scadaParameters_[597].value.float_t    = 0;
-  // Минимальное значение срабатывания защиты по AI4
-  scadaParameters_[598].id               = 0;
-  scadaParameters_[598].address          = 670;
+  // Минимум шкалы сигнала на аналоговом входе 4
+  scadaParameters_[598].id               = CCS_AI_4_MINIMUM;
+  scadaParameters_[598].address          = 666;
   scadaParameters_[598].operation        = OPERATION_WRITE;
   scadaParameters_[598].physic           = PHYSIC_NUMERIC;
   scadaParameters_[598].unit             = 0;
@@ -7190,9 +7190,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[598].max              = 100000;
   scadaParameters_[598].command          = OPERATION_ERROR;
   scadaParameters_[598].value.float_t    = 0;
-  // Минимальное значение АПВ защиты по AI4
-  scadaParameters_[599].id               = 0;
-  scadaParameters_[599].address          = 672;
+  // Максимум шкалы сигнала на аналоговом входе 4
+  scadaParameters_[599].id               = CCS_AI_4_MAXIMUM;
+  scadaParameters_[599].address          = 668;
   scadaParameters_[599].operation        = OPERATION_WRITE;
   scadaParameters_[599].physic           = PHYSIC_NUMERIC;
   scadaParameters_[599].unit             = 0;
@@ -7202,9 +7202,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[599].max              = 100000;
   scadaParameters_[599].command          = OPERATION_ERROR;
   scadaParameters_[599].value.float_t    = 0;
-  // Максимальное значение АПВ защиты по AI4
-  scadaParameters_[600].id               = 0;
-  scadaParameters_[600].address          = 674;
+  // Минимальное значение срабатывания защиты по AI4
+  scadaParameters_[600].id               = CCS_PROT_AI_4_TRIP_SETPOINT;
+  scadaParameters_[600].address          = 670;
   scadaParameters_[600].operation        = OPERATION_WRITE;
   scadaParameters_[600].physic           = PHYSIC_NUMERIC;
   scadaParameters_[600].unit             = 0;
@@ -7214,9 +7214,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[600].max              = 100000;
   scadaParameters_[600].command          = OPERATION_ERROR;
   scadaParameters_[600].value.float_t    = 0;
-  // Максимальное значение срабатывания защиты по AI4
-  scadaParameters_[601].id               = 0;
-  scadaParameters_[601].address          = 676;
+  // Минимальное значение АПВ защиты по AI4
+  scadaParameters_[601].id               = -1;
+  scadaParameters_[601].address          = 672;
   scadaParameters_[601].operation        = OPERATION_WRITE;
   scadaParameters_[601].physic           = PHYSIC_NUMERIC;
   scadaParameters_[601].unit             = 0;
@@ -7226,429 +7226,429 @@ void ScadaNovomet::initParameters()
   scadaParameters_[601].max              = 100000;
   scadaParameters_[601].command          = OPERATION_ERROR;
   scadaParameters_[601].value.float_t    = 0;
-  // Задержка активации защиты по AI4
-  scadaParameters_[602].id               = CCS_PROT_AI_4_ACTIV_DELAY;
-  scadaParameters_[602].address          = 678;
+  // Максимальное значение АПВ защиты по AI4
+  scadaParameters_[602].id               = -1;
+  scadaParameters_[602].address          = 674;
   scadaParameters_[602].operation        = OPERATION_WRITE;
-  scadaParameters_[602].physic           = PHYSIC_TIME;
-  scadaParameters_[602].unit             = TIME_SS;
-  scadaParameters_[602].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[602].coefficient      = 1;
+  scadaParameters_[602].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[602].unit             = 0;
+  scadaParameters_[602].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[602].coefficient      = 0.1;
   scadaParameters_[602].min              = 0;
-  scadaParameters_[602].max              = 120;
+  scadaParameters_[602].max              = 100000;
   scadaParameters_[602].command          = OPERATION_ERROR;
   scadaParameters_[602].value.float_t    = 0;
-  // Задержка срабатывания защиты по AI4
-  scadaParameters_[603].id               = CCS_PROT_AI_4_TRIP_DELAY;
-  scadaParameters_[603].address          = 679;
+  // Максимальное значение срабатывания защиты по AI4
+  scadaParameters_[603].id               = CCS_PROT_AI_4_RESTART_SETPOINT;
+  scadaParameters_[603].address          = 676;
   scadaParameters_[603].operation        = OPERATION_WRITE;
-  scadaParameters_[603].physic           = PHYSIC_TIME;
-  scadaParameters_[603].unit             = TIME_SS;
-  scadaParameters_[603].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[603].coefficient      = 1;
+  scadaParameters_[603].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[603].unit             = 0;
+  scadaParameters_[603].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[603].coefficient      = 0.1;
   scadaParameters_[603].min              = 0;
-  scadaParameters_[603].max              = 600;
+  scadaParameters_[603].max              = 100000;
   scadaParameters_[603].command          = OPERATION_ERROR;
   scadaParameters_[603].value.float_t    = 0;
-  // Задержка АПВ защиты по AI4
-  scadaParameters_[604].id               = CCS_PROT_AI_4_RESTART_DELAY;
-  scadaParameters_[604].address          = 680;
+  // Задержка активации защиты по AI4
+  scadaParameters_[604].id               = CCS_PROT_AI_4_ACTIV_DELAY;
+  scadaParameters_[604].address          = 678;
   scadaParameters_[604].operation        = OPERATION_WRITE;
   scadaParameters_[604].physic           = PHYSIC_TIME;
   scadaParameters_[604].unit             = TIME_SS;
-  scadaParameters_[604].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[604].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[604].coefficient      = 1;
   scadaParameters_[604].min              = 0;
-  scadaParameters_[604].max              = 600000;
+  scadaParameters_[604].max              = 120;
   scadaParameters_[604].command          = OPERATION_ERROR;
   scadaParameters_[604].value.float_t    = 0;
-  // Автоматический сброс счетчика защиты по AI4
-  scadaParameters_[605].id               = CCS_PROT_AI_4_RESTART_RESET;
-  scadaParameters_[605].address          = 682;
+  // Задержка срабатывания защиты по AI4
+  scadaParameters_[605].id               = CCS_PROT_AI_4_TRIP_DELAY;
+  scadaParameters_[605].address          = 679;
   scadaParameters_[605].operation        = OPERATION_WRITE;
   scadaParameters_[605].physic           = PHYSIC_TIME;
-  scadaParameters_[605].unit             = TIME_HH;
+  scadaParameters_[605].unit             = TIME_SS;
   scadaParameters_[605].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[605].coefficient      = 1;
   scadaParameters_[605].min              = 0;
-  scadaParameters_[605].max              = 100;
+  scadaParameters_[605].max              = 600;
   scadaParameters_[605].command          = OPERATION_ERROR;
   scadaParameters_[605].value.float_t    = 0;
-  // Количество АПВ, вызывающее блокировку защиты по AI4
-  scadaParameters_[606].id               = CCS_PROT_AI_4_RESTART_LIMIT;
-  scadaParameters_[606].address          = 683;
+  // Задержка АПВ защиты по AI4
+  scadaParameters_[606].id               = CCS_PROT_AI_4_RESTART_DELAY;
+  scadaParameters_[606].address          = 680;
   scadaParameters_[606].operation        = OPERATION_WRITE;
-  scadaParameters_[606].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[606].unit             = 0;
-  scadaParameters_[606].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[606].physic           = PHYSIC_TIME;
+  scadaParameters_[606].unit             = TIME_SS;
+  scadaParameters_[606].typeData         = TYPE_DATA_UINT32;
   scadaParameters_[606].coefficient      = 1;
   scadaParameters_[606].min              = 0;
-  scadaParameters_[606].max              = 200;
+  scadaParameters_[606].max              = 600000;
   scadaParameters_[606].command          = OPERATION_ERROR;
   scadaParameters_[606].value.float_t    = 0;
-  // Тип цифрового входа 1
-  scadaParameters_[607].id               = 0;
-  scadaParameters_[607].address          = 684;
+  // Автоматический сброс счетчика защиты по AI4
+  scadaParameters_[607].id               = CCS_PROT_AI_4_RESTART_RESET;
+  scadaParameters_[607].address          = 682;
   scadaParameters_[607].operation        = OPERATION_WRITE;
-  scadaParameters_[607].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[607].unit             = 0;
+  scadaParameters_[607].physic           = PHYSIC_TIME;
+  scadaParameters_[607].unit             = TIME_HH;
   scadaParameters_[607].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[607].coefficient      = 1;
   scadaParameters_[607].min              = 0;
-  scadaParameters_[607].max              = 1;
+  scadaParameters_[607].max              = 100;
   scadaParameters_[607].command          = OPERATION_ERROR;
   scadaParameters_[607].value.float_t    = 0;
-  // Действие по сигналу на цифровом входе 1
-  scadaParameters_[608].id               = 0;
-  scadaParameters_[608].address          = 685;
+  // Количество АПВ, вызывающее блокировку защиты по AI4
+  scadaParameters_[608].id               = CCS_PROT_AI_4_RESTART_LIMIT;
+  scadaParameters_[608].address          = 683;
   scadaParameters_[608].operation        = OPERATION_WRITE;
   scadaParameters_[608].physic           = PHYSIC_NUMERIC;
   scadaParameters_[608].unit             = 0;
   scadaParameters_[608].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[608].coefficient      = 1;
   scadaParameters_[608].min              = 0;
-  scadaParameters_[608].max              = 6;
+  scadaParameters_[608].max              = 200;
   scadaParameters_[608].command          = OPERATION_ERROR;
   scadaParameters_[608].value.float_t    = 0;
-  // Задержка активации защиты по DI1
-  scadaParameters_[609].id               = CCS_PROT_DI_1_ACTIV_DELAY;
-  scadaParameters_[609].address          = 686;
+  // Тип цифрового входа 1
+  scadaParameters_[609].id               = CCS_DI_1_TYPE;
+  scadaParameters_[609].address          = 684;
   scadaParameters_[609].operation        = OPERATION_WRITE;
-  scadaParameters_[609].physic           = PHYSIC_TIME;
-  scadaParameters_[609].unit             = TIME_SS;
+  scadaParameters_[609].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[609].unit             = 0;
   scadaParameters_[609].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[609].coefficient      = 1;
   scadaParameters_[609].min              = 0;
-  scadaParameters_[609].max              = 120;
+  scadaParameters_[609].max              = 1;
   scadaParameters_[609].command          = OPERATION_ERROR;
   scadaParameters_[609].value.float_t    = 0;
-  // Задержка срабатывания защиты по DI1
-  scadaParameters_[610].id               = CCS_PROT_DI_1_TRIP_DELAY;
-  scadaParameters_[610].address          = 687;
+  // Действие по сигналу на цифровом входе 1
+  scadaParameters_[610].id               = CCS_DI_1_ACTION;
+  scadaParameters_[610].address          = 685;
   scadaParameters_[610].operation        = OPERATION_WRITE;
-  scadaParameters_[610].physic           = PHYSIC_TIME;
-  scadaParameters_[610].unit             = TIME_SS;
+  scadaParameters_[610].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[610].unit             = 0;
   scadaParameters_[610].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[610].coefficient      = 1;
   scadaParameters_[610].min              = 0;
-  scadaParameters_[610].max              = 600;
+  scadaParameters_[610].max              = 6;
   scadaParameters_[610].command          = OPERATION_ERROR;
   scadaParameters_[610].value.float_t    = 0;
-  // Задержка АПВ защиты по DI1
-  scadaParameters_[611].id               = CCS_PROT_DI_1_RESTART_DELAY;
-  scadaParameters_[611].address          = 688;
+  // Задержка активации защиты по DI1
+  scadaParameters_[611].id               = CCS_PROT_DI_1_ACTIV_DELAY;
+  scadaParameters_[611].address          = 686;
   scadaParameters_[611].operation        = OPERATION_WRITE;
   scadaParameters_[611].physic           = PHYSIC_TIME;
   scadaParameters_[611].unit             = TIME_SS;
-  scadaParameters_[611].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[611].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[611].coefficient      = 1;
   scadaParameters_[611].min              = 0;
-  scadaParameters_[611].max              = 600000;
+  scadaParameters_[611].max              = 120;
   scadaParameters_[611].command          = OPERATION_ERROR;
   scadaParameters_[611].value.float_t    = 0;
-  // Период сброса счётчика АПВ защиты по DI1
-  scadaParameters_[612].id               = CCS_PROT_DI_1_RESTART_RESET;
-  scadaParameters_[612].address          = 690;
+  // Задержка срабатывания защиты по DI1
+  scadaParameters_[612].id               = CCS_PROT_DI_1_TRIP_DELAY;
+  scadaParameters_[612].address          = 687;
   scadaParameters_[612].operation        = OPERATION_WRITE;
   scadaParameters_[612].physic           = PHYSIC_TIME;
-  scadaParameters_[612].unit             = TIME_HH;
+  scadaParameters_[612].unit             = TIME_SS;
   scadaParameters_[612].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[612].coefficient      = 1;
   scadaParameters_[612].min              = 0;
-  scadaParameters_[612].max              = 100;
+  scadaParameters_[612].max              = 600;
   scadaParameters_[612].command          = OPERATION_ERROR;
   scadaParameters_[612].value.float_t    = 0;
-  // Число разрешённых АПВ защиты по DI1
-  scadaParameters_[613].id               = CCS_PROT_DI_1_RESTART_LIMIT;
-  scadaParameters_[613].address          = 691;
+  // Задержка АПВ защиты по DI1
+  scadaParameters_[613].id               = CCS_PROT_DI_1_RESTART_DELAY;
+  scadaParameters_[613].address          = 688;
   scadaParameters_[613].operation        = OPERATION_WRITE;
-  scadaParameters_[613].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[613].unit             = 0;
-  scadaParameters_[613].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[613].physic           = PHYSIC_TIME;
+  scadaParameters_[613].unit             = TIME_SS;
+  scadaParameters_[613].typeData         = TYPE_DATA_UINT32;
   scadaParameters_[613].coefficient      = 1;
   scadaParameters_[613].min              = 0;
-  scadaParameters_[613].max              = 200;
+  scadaParameters_[613].max              = 600000;
   scadaParameters_[613].command          = OPERATION_ERROR;
   scadaParameters_[613].value.float_t    = 0;
-  // Тип цифрового входа 2
-  scadaParameters_[614].id               = 0;
-  scadaParameters_[614].address          = 692;
+  // Период сброса счётчика АПВ защиты по DI1
+  scadaParameters_[614].id               = CCS_PROT_DI_1_RESTART_RESET;
+  scadaParameters_[614].address          = 690;
   scadaParameters_[614].operation        = OPERATION_WRITE;
-  scadaParameters_[614].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[614].unit             = 0;
+  scadaParameters_[614].physic           = PHYSIC_TIME;
+  scadaParameters_[614].unit             = TIME_HH;
   scadaParameters_[614].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[614].coefficient      = 1;
   scadaParameters_[614].min              = 0;
-  scadaParameters_[614].max              = 1;
+  scadaParameters_[614].max              = 100;
   scadaParameters_[614].command          = OPERATION_ERROR;
   scadaParameters_[614].value.float_t    = 0;
-  // Действие по сигналу на цифровом входе 2
-  scadaParameters_[615].id               = 0;
-  scadaParameters_[615].address          = 693;
+  // Число разрешённых АПВ защиты по DI1
+  scadaParameters_[615].id               = CCS_PROT_DI_1_RESTART_LIMIT;
+  scadaParameters_[615].address          = 691;
   scadaParameters_[615].operation        = OPERATION_WRITE;
   scadaParameters_[615].physic           = PHYSIC_NUMERIC;
   scadaParameters_[615].unit             = 0;
   scadaParameters_[615].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[615].coefficient      = 1;
   scadaParameters_[615].min              = 0;
-  scadaParameters_[615].max              = 6;
+  scadaParameters_[615].max              = 200;
   scadaParameters_[615].command          = OPERATION_ERROR;
   scadaParameters_[615].value.float_t    = 0;
-  // Задержка активации защиты по DI2
-  scadaParameters_[616].id               = CCS_PROT_DI_2_ACTIV_DELAY;
-  scadaParameters_[616].address          = 694;
+  // Тип цифрового входа 2
+  scadaParameters_[616].id               = CCS_DI_2_TYPE;
+  scadaParameters_[616].address          = 692;
   scadaParameters_[616].operation        = OPERATION_WRITE;
-  scadaParameters_[616].physic           = PHYSIC_TIME;
-  scadaParameters_[616].unit             = TIME_SS;
+  scadaParameters_[616].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[616].unit             = 0;
   scadaParameters_[616].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[616].coefficient      = 1;
   scadaParameters_[616].min              = 0;
-  scadaParameters_[616].max              = 120;
+  scadaParameters_[616].max              = 1;
   scadaParameters_[616].command          = OPERATION_ERROR;
   scadaParameters_[616].value.float_t    = 0;
-  // Задержка срабатывания защиты по DI2
-  scadaParameters_[617].id               = CCS_PROT_DI_2_TRIP_DELAY;
-  scadaParameters_[617].address          = 695;
+  // Действие по сигналу на цифровом входе 2
+  scadaParameters_[617].id               = CCS_DI_2_ACTION;
+  scadaParameters_[617].address          = 693;
   scadaParameters_[617].operation        = OPERATION_WRITE;
-  scadaParameters_[617].physic           = PHYSIC_TIME;
-  scadaParameters_[617].unit             = TIME_SS;
+  scadaParameters_[617].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[617].unit             = 0;
   scadaParameters_[617].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[617].coefficient      = 1;
   scadaParameters_[617].min              = 0;
-  scadaParameters_[617].max              = 600;
+  scadaParameters_[617].max              = 6;
   scadaParameters_[617].command          = OPERATION_ERROR;
   scadaParameters_[617].value.float_t    = 0;
-  // Задержка АПВ защиты по DI2
-  scadaParameters_[618].id               = CCS_PROT_DI_2_RESTART_DELAY;
-  scadaParameters_[618].address          = 696;
+  // Задержка активации защиты по DI2
+  scadaParameters_[618].id               = CCS_PROT_DI_2_ACTIV_DELAY;
+  scadaParameters_[618].address          = 694;
   scadaParameters_[618].operation        = OPERATION_WRITE;
   scadaParameters_[618].physic           = PHYSIC_TIME;
   scadaParameters_[618].unit             = TIME_SS;
-  scadaParameters_[618].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[618].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[618].coefficient      = 1;
   scadaParameters_[618].min              = 0;
-  scadaParameters_[618].max              = 600000;
+  scadaParameters_[618].max              = 120;
   scadaParameters_[618].command          = OPERATION_ERROR;
   scadaParameters_[618].value.float_t    = 0;
-  // Период сброса счётчика АПВ защиты по DI2
-  scadaParameters_[619].id               = CCS_PROT_DI_2_RESTART_RESET;
-  scadaParameters_[619].address          = 698;
+  // Задержка срабатывания защиты по DI2
+  scadaParameters_[619].id               = CCS_PROT_DI_2_TRIP_DELAY;
+  scadaParameters_[619].address          = 695;
   scadaParameters_[619].operation        = OPERATION_WRITE;
   scadaParameters_[619].physic           = PHYSIC_TIME;
-  scadaParameters_[619].unit             = TIME_HH;
+  scadaParameters_[619].unit             = TIME_SS;
   scadaParameters_[619].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[619].coefficient      = 1;
   scadaParameters_[619].min              = 0;
-  scadaParameters_[619].max              = 100;
+  scadaParameters_[619].max              = 600;
   scadaParameters_[619].command          = OPERATION_ERROR;
   scadaParameters_[619].value.float_t    = 0;
-  // Число разрешённых АПВ защиты по DI2
-  scadaParameters_[620].id               = CCS_PROT_DI_2_RESTART_LIMIT;
-  scadaParameters_[620].address          = 699;
+  // Задержка АПВ защиты по DI2
+  scadaParameters_[620].id               = CCS_PROT_DI_2_RESTART_DELAY;
+  scadaParameters_[620].address          = 696;
   scadaParameters_[620].operation        = OPERATION_WRITE;
-  scadaParameters_[620].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[620].unit             = 0;
-  scadaParameters_[620].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[620].physic           = PHYSIC_TIME;
+  scadaParameters_[620].unit             = TIME_SS;
+  scadaParameters_[620].typeData         = TYPE_DATA_UINT32;
   scadaParameters_[620].coefficient      = 1;
   scadaParameters_[620].min              = 0;
-  scadaParameters_[620].max              = 200;
+  scadaParameters_[620].max              = 600000;
   scadaParameters_[620].command          = OPERATION_ERROR;
   scadaParameters_[620].value.float_t    = 0;
-  // Тип цифрового входа 3
-  scadaParameters_[621].id               = 0;
-  scadaParameters_[621].address          = 700;
+  // Период сброса счётчика АПВ защиты по DI2
+  scadaParameters_[621].id               = CCS_PROT_DI_2_RESTART_RESET;
+  scadaParameters_[621].address          = 698;
   scadaParameters_[621].operation        = OPERATION_WRITE;
-  scadaParameters_[621].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[621].unit             = 0;
+  scadaParameters_[621].physic           = PHYSIC_TIME;
+  scadaParameters_[621].unit             = TIME_HH;
   scadaParameters_[621].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[621].coefficient      = 1;
   scadaParameters_[621].min              = 0;
-  scadaParameters_[621].max              = 1;
+  scadaParameters_[621].max              = 100;
   scadaParameters_[621].command          = OPERATION_ERROR;
   scadaParameters_[621].value.float_t    = 0;
-  // Действие по сигналу на цифровом входе 3
-  scadaParameters_[622].id               = 0;
-  scadaParameters_[622].address          = 701;
+  // Число разрешённых АПВ защиты по DI2
+  scadaParameters_[622].id               = CCS_PROT_DI_2_RESTART_LIMIT;
+  scadaParameters_[622].address          = 699;
   scadaParameters_[622].operation        = OPERATION_WRITE;
   scadaParameters_[622].physic           = PHYSIC_NUMERIC;
   scadaParameters_[622].unit             = 0;
   scadaParameters_[622].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[622].coefficient      = 1;
   scadaParameters_[622].min              = 0;
-  scadaParameters_[622].max              = 6;
+  scadaParameters_[622].max              = 200;
   scadaParameters_[622].command          = OPERATION_ERROR;
   scadaParameters_[622].value.float_t    = 0;
-  // Задержка активации защиты по DI3
-  scadaParameters_[623].id               = CCS_PROT_DI_3_ACTIV_DELAY;
-  scadaParameters_[623].address          = 702;
+  // Тип цифрового входа 3
+  scadaParameters_[623].id               = CCS_DI_3_TYPE;
+  scadaParameters_[623].address          = 700;
   scadaParameters_[623].operation        = OPERATION_WRITE;
-  scadaParameters_[623].physic           = PHYSIC_TIME;
-  scadaParameters_[623].unit             = TIME_SS;
+  scadaParameters_[623].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[623].unit             = 0;
   scadaParameters_[623].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[623].coefficient      = 1;
   scadaParameters_[623].min              = 0;
-  scadaParameters_[623].max              = 120;
+  scadaParameters_[623].max              = 1;
   scadaParameters_[623].command          = OPERATION_ERROR;
   scadaParameters_[623].value.float_t    = 0;
-  // Задержка срабатывания защиты по DI3
-  scadaParameters_[624].id               = CCS_PROT_DI_3_TRIP_DELAY;
-  scadaParameters_[624].address          = 703;
+  // Действие по сигналу на цифровом входе 3
+  scadaParameters_[624].id               = CCS_DI_3_ACTION;
+  scadaParameters_[624].address          = 701;
   scadaParameters_[624].operation        = OPERATION_WRITE;
-  scadaParameters_[624].physic           = PHYSIC_TIME;
-  scadaParameters_[624].unit             = TIME_SS;
+  scadaParameters_[624].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[624].unit             = 0;
   scadaParameters_[624].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[624].coefficient      = 1;
   scadaParameters_[624].min              = 0;
-  scadaParameters_[624].max              = 600;
+  scadaParameters_[624].max              = 6;
   scadaParameters_[624].command          = OPERATION_ERROR;
   scadaParameters_[624].value.float_t    = 0;
-  // Задержка АПВ защиты по DI3
-  scadaParameters_[625].id               = CCS_PROT_DI_3_RESTART_DELAY;
-  scadaParameters_[625].address          = 704;
+  // Задержка активации защиты по DI3
+  scadaParameters_[625].id               = CCS_PROT_DI_3_ACTIV_DELAY;
+  scadaParameters_[625].address          = 702;
   scadaParameters_[625].operation        = OPERATION_WRITE;
   scadaParameters_[625].physic           = PHYSIC_TIME;
   scadaParameters_[625].unit             = TIME_SS;
-  scadaParameters_[625].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[625].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[625].coefficient      = 1;
   scadaParameters_[625].min              = 0;
-  scadaParameters_[625].max              = 600000;
+  scadaParameters_[625].max              = 120;
   scadaParameters_[625].command          = OPERATION_ERROR;
   scadaParameters_[625].value.float_t    = 0;
-  // Период сброса счётчика АПВ защиты по DI3
-  scadaParameters_[626].id               = CCS_PROT_DI_3_RESTART_RESET;
-  scadaParameters_[626].address          = 706;
+  // Задержка срабатывания защиты по DI3
+  scadaParameters_[626].id               = CCS_PROT_DI_3_TRIP_DELAY;
+  scadaParameters_[626].address          = 703;
   scadaParameters_[626].operation        = OPERATION_WRITE;
   scadaParameters_[626].physic           = PHYSIC_TIME;
-  scadaParameters_[626].unit             = TIME_HH;
+  scadaParameters_[626].unit             = TIME_SS;
   scadaParameters_[626].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[626].coefficient      = 1;
   scadaParameters_[626].min              = 0;
-  scadaParameters_[626].max              = 100;
+  scadaParameters_[626].max              = 600;
   scadaParameters_[626].command          = OPERATION_ERROR;
   scadaParameters_[626].value.float_t    = 0;
-  // Число разрешённых АПВ защиты по DI3
-  scadaParameters_[627].id               = CCS_PROT_DI_3_RESTART_LIMIT;
-  scadaParameters_[627].address          = 707;
+  // Задержка АПВ защиты по DI3
+  scadaParameters_[627].id               = CCS_PROT_DI_3_RESTART_DELAY;
+  scadaParameters_[627].address          = 704;
   scadaParameters_[627].operation        = OPERATION_WRITE;
-  scadaParameters_[627].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[627].unit             = 0;
-  scadaParameters_[627].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[627].physic           = PHYSIC_TIME;
+  scadaParameters_[627].unit             = TIME_SS;
+  scadaParameters_[627].typeData         = TYPE_DATA_UINT32;
   scadaParameters_[627].coefficient      = 1;
   scadaParameters_[627].min              = 0;
-  scadaParameters_[627].max              = 200;
+  scadaParameters_[627].max              = 600000;
   scadaParameters_[627].command          = OPERATION_ERROR;
   scadaParameters_[627].value.float_t    = 0;
-  // Тип цифрового входа 4
-  scadaParameters_[628].id               = 0;
-  scadaParameters_[628].address          = 708;
+  // Период сброса счётчика АПВ защиты по DI3
+  scadaParameters_[628].id               = CCS_PROT_DI_3_RESTART_RESET;
+  scadaParameters_[628].address          = 706;
   scadaParameters_[628].operation        = OPERATION_WRITE;
-  scadaParameters_[628].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[628].unit             = 0;
+  scadaParameters_[628].physic           = PHYSIC_TIME;
+  scadaParameters_[628].unit             = TIME_HH;
   scadaParameters_[628].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[628].coefficient      = 1;
   scadaParameters_[628].min              = 0;
-  scadaParameters_[628].max              = 1;
+  scadaParameters_[628].max              = 100;
   scadaParameters_[628].command          = OPERATION_ERROR;
   scadaParameters_[628].value.float_t    = 0;
-  // Действие по сигналу на цифровом входе 4
-  scadaParameters_[629].id               = 0;
-  scadaParameters_[629].address          = 709;
+  // Число разрешённых АПВ защиты по DI3
+  scadaParameters_[629].id               = CCS_PROT_DI_3_RESTART_LIMIT;
+  scadaParameters_[629].address          = 707;
   scadaParameters_[629].operation        = OPERATION_WRITE;
   scadaParameters_[629].physic           = PHYSIC_NUMERIC;
   scadaParameters_[629].unit             = 0;
   scadaParameters_[629].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[629].coefficient      = 1;
   scadaParameters_[629].min              = 0;
-  scadaParameters_[629].max              = 6;
+  scadaParameters_[629].max              = 200;
   scadaParameters_[629].command          = OPERATION_ERROR;
   scadaParameters_[629].value.float_t    = 0;
-  // Задержка активации защиты по DI4
-  scadaParameters_[630].id               = CCS_PROT_DI_4_ACTIV_DELAY;
-  scadaParameters_[630].address          = 710;
+  // Тип цифрового входа 4
+  scadaParameters_[630].id               = CCS_DI_4_TYPE;
+  scadaParameters_[630].address          = 708;
   scadaParameters_[630].operation        = OPERATION_WRITE;
-  scadaParameters_[630].physic           = PHYSIC_TIME;
-  scadaParameters_[630].unit             = TIME_SS;
+  scadaParameters_[630].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[630].unit             = 0;
   scadaParameters_[630].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[630].coefficient      = 1;
   scadaParameters_[630].min              = 0;
-  scadaParameters_[630].max              = 120;
+  scadaParameters_[630].max              = 1;
   scadaParameters_[630].command          = OPERATION_ERROR;
   scadaParameters_[630].value.float_t    = 0;
-  // Задержка срабатывания защиты по DI4
-  scadaParameters_[631].id               = CCS_PROT_DI_4_TRIP_DELAY;
-  scadaParameters_[631].address          = 711;
+  // Действие по сигналу на цифровом входе 4
+  scadaParameters_[631].id               = CCS_DI_4_ACTION;
+  scadaParameters_[631].address          = 709;
   scadaParameters_[631].operation        = OPERATION_WRITE;
-  scadaParameters_[631].physic           = PHYSIC_TIME;
-  scadaParameters_[631].unit             = TIME_SS;
+  scadaParameters_[631].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[631].unit             = 0;
   scadaParameters_[631].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[631].coefficient      = 1;
   scadaParameters_[631].min              = 0;
-  scadaParameters_[631].max              = 600;
+  scadaParameters_[631].max              = 6;
   scadaParameters_[631].command          = OPERATION_ERROR;
   scadaParameters_[631].value.float_t    = 0;
-  // Задержка АПВ защиты по DI4
-  scadaParameters_[632].id               = CCS_PROT_DI_4_RESTART_RESET;
-  scadaParameters_[632].address          = 712;
+  // Задержка активации защиты по DI4
+  scadaParameters_[632].id               = CCS_PROT_DI_4_ACTIV_DELAY;
+  scadaParameters_[632].address          = 710;
   scadaParameters_[632].operation        = OPERATION_WRITE;
   scadaParameters_[632].physic           = PHYSIC_TIME;
   scadaParameters_[632].unit             = TIME_SS;
-  scadaParameters_[632].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[632].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[632].coefficient      = 1;
   scadaParameters_[632].min              = 0;
-  scadaParameters_[632].max              = 600000;
+  scadaParameters_[632].max              = 120;
   scadaParameters_[632].command          = OPERATION_ERROR;
   scadaParameters_[632].value.float_t    = 0;
-  // Период сброса счётчика АПВ защиты по DI4
-  scadaParameters_[633].id               = CCS_PROT_DI_4_RESTART_DELAY;
-  scadaParameters_[633].address          = 714;
+  // Задержка срабатывания защиты по DI4
+  scadaParameters_[633].id               = CCS_PROT_DI_4_TRIP_DELAY;
+  scadaParameters_[633].address          = 711;
   scadaParameters_[633].operation        = OPERATION_WRITE;
   scadaParameters_[633].physic           = PHYSIC_TIME;
-  scadaParameters_[633].unit             = TIME_HH;
+  scadaParameters_[633].unit             = TIME_SS;
   scadaParameters_[633].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[633].coefficient      = 1;
   scadaParameters_[633].min              = 0;
-  scadaParameters_[633].max              = 100;
+  scadaParameters_[633].max              = 600;
   scadaParameters_[633].command          = OPERATION_ERROR;
   scadaParameters_[633].value.float_t    = 0;
-  // Число разрешённых АПВ защиты по DI4
-  scadaParameters_[634].id               = CCS_PROT_DI_4_RESTART_LIMIT;
-  scadaParameters_[634].address          = 715;
+  // Задержка АПВ защиты по DI4
+  scadaParameters_[634].id               = CCS_PROT_DI_4_RESTART_RESET;
+  scadaParameters_[634].address          = 712;
   scadaParameters_[634].operation        = OPERATION_WRITE;
-  scadaParameters_[634].physic           = PHYSIC_NUMERIC;
-  scadaParameters_[634].unit             = 0;
-  scadaParameters_[634].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[634].physic           = PHYSIC_TIME;
+  scadaParameters_[634].unit             = TIME_SS;
+  scadaParameters_[634].typeData         = TYPE_DATA_UINT32;
   scadaParameters_[634].coefficient      = 1;
   scadaParameters_[634].min              = 0;
-  scadaParameters_[634].max              = 200;
+  scadaParameters_[634].max              = 600000;
   scadaParameters_[634].command          = OPERATION_ERROR;
   scadaParameters_[634].value.float_t    = 0;
-  // Нет операции
-  scadaParameters_[635].id               = -1;
-  scadaParameters_[635].address          = 716;
-  scadaParameters_[635].operation        = OPERATION_READ;
-  scadaParameters_[635].physic           = 0;
-  scadaParameters_[635].unit             = 0;
+  // Период сброса счётчика АПВ защиты по DI4
+  scadaParameters_[635].id               = CCS_PROT_DI_4_RESTART_DELAY;
+  scadaParameters_[635].address          = 714;
+  scadaParameters_[635].operation        = OPERATION_WRITE;
+  scadaParameters_[635].physic           = PHYSIC_TIME;
+  scadaParameters_[635].unit             = TIME_HH;
   scadaParameters_[635].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[635].coefficient      = 1;
   scadaParameters_[635].min              = 0;
-  scadaParameters_[635].max              = 0;
+  scadaParameters_[635].max              = 100;
   scadaParameters_[635].command          = OPERATION_ERROR;
   scadaParameters_[635].value.float_t    = 0;
-  // Нет операции
-  scadaParameters_[636].id               = -1;
-  scadaParameters_[636].address          = 717;
-  scadaParameters_[636].operation        = OPERATION_READ;
-  scadaParameters_[636].physic           = 0;
+  // Число разрешённых АПВ защиты по DI4
+  scadaParameters_[636].id               = CCS_PROT_DI_4_RESTART_LIMIT;
+  scadaParameters_[636].address          = 715;
+  scadaParameters_[636].operation        = OPERATION_WRITE;
+  scadaParameters_[636].physic           = PHYSIC_NUMERIC;
   scadaParameters_[636].unit             = 0;
   scadaParameters_[636].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[636].coefficient      = 1;
   scadaParameters_[636].min              = 0;
-  scadaParameters_[636].max              = 0;
+  scadaParameters_[636].max              = 200;
   scadaParameters_[636].command          = OPERATION_ERROR;
   scadaParameters_[636].value.float_t    = 0;
   // Нет операции
   scadaParameters_[637].id               = -1;
-  scadaParameters_[637].address          = 718;
+  scadaParameters_[637].address          = 716;
   scadaParameters_[637].operation        = OPERATION_READ;
   scadaParameters_[637].physic           = 0;
   scadaParameters_[637].unit             = 0;
@@ -7660,7 +7660,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[637].value.float_t    = 0;
   // Нет операции
   scadaParameters_[638].id               = -1;
-  scadaParameters_[638].address          = 719;
+  scadaParameters_[638].address          = 717;
   scadaParameters_[638].operation        = OPERATION_READ;
   scadaParameters_[638].physic           = 0;
   scadaParameters_[638].unit             = 0;
@@ -7672,7 +7672,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[638].value.float_t    = 0;
   // Нет операции
   scadaParameters_[639].id               = -1;
-  scadaParameters_[639].address          = 720;
+  scadaParameters_[639].address          = 718;
   scadaParameters_[639].operation        = OPERATION_READ;
   scadaParameters_[639].physic           = 0;
   scadaParameters_[639].unit             = 0;
@@ -7684,7 +7684,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[639].value.float_t    = 0;
   // Нет операции
   scadaParameters_[640].id               = -1;
-  scadaParameters_[640].address          = 721;
+  scadaParameters_[640].address          = 719;
   scadaParameters_[640].operation        = OPERATION_READ;
   scadaParameters_[640].physic           = 0;
   scadaParameters_[640].unit             = 0;
@@ -7696,7 +7696,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[640].value.float_t    = 0;
   // Нет операции
   scadaParameters_[641].id               = -1;
-  scadaParameters_[641].address          = 722;
+  scadaParameters_[641].address          = 720;
   scadaParameters_[641].operation        = OPERATION_READ;
   scadaParameters_[641].physic           = 0;
   scadaParameters_[641].unit             = 0;
@@ -7708,7 +7708,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[641].value.float_t    = 0;
   // Нет операции
   scadaParameters_[642].id               = -1;
-  scadaParameters_[642].address          = 723;
+  scadaParameters_[642].address          = 721;
   scadaParameters_[642].operation        = OPERATION_READ;
   scadaParameters_[642].physic           = 0;
   scadaParameters_[642].unit             = 0;
@@ -7720,7 +7720,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[642].value.float_t    = 0;
   // Нет операции
   scadaParameters_[643].id               = -1;
-  scadaParameters_[643].address          = 724;
+  scadaParameters_[643].address          = 722;
   scadaParameters_[643].operation        = OPERATION_READ;
   scadaParameters_[643].physic           = 0;
   scadaParameters_[643].unit             = 0;
@@ -7732,7 +7732,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[643].value.float_t    = 0;
   // Нет операции
   scadaParameters_[644].id               = -1;
-  scadaParameters_[644].address          = 725;
+  scadaParameters_[644].address          = 723;
   scadaParameters_[644].operation        = OPERATION_READ;
   scadaParameters_[644].physic           = 0;
   scadaParameters_[644].unit             = 0;
@@ -7744,7 +7744,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[644].value.float_t    = 0;
   // Нет операции
   scadaParameters_[645].id               = -1;
-  scadaParameters_[645].address          = 726;
+  scadaParameters_[645].address          = 724;
   scadaParameters_[645].operation        = OPERATION_READ;
   scadaParameters_[645].physic           = 0;
   scadaParameters_[645].unit             = 0;
@@ -7756,7 +7756,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[645].value.float_t    = 0;
   // Нет операции
   scadaParameters_[646].id               = -1;
-  scadaParameters_[646].address          = 727;
+  scadaParameters_[646].address          = 725;
   scadaParameters_[646].operation        = OPERATION_READ;
   scadaParameters_[646].physic           = 0;
   scadaParameters_[646].unit             = 0;
@@ -7768,7 +7768,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[646].value.float_t    = 0;
   // Нет операции
   scadaParameters_[647].id               = -1;
-  scadaParameters_[647].address          = 728;
+  scadaParameters_[647].address          = 726;
   scadaParameters_[647].operation        = OPERATION_READ;
   scadaParameters_[647].physic           = 0;
   scadaParameters_[647].unit             = 0;
@@ -7780,7 +7780,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[647].value.float_t    = 0;
   // Нет операции
   scadaParameters_[648].id               = -1;
-  scadaParameters_[648].address          = 729;
+  scadaParameters_[648].address          = 727;
   scadaParameters_[648].operation        = OPERATION_READ;
   scadaParameters_[648].physic           = 0;
   scadaParameters_[648].unit             = 0;
@@ -7792,7 +7792,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[648].value.float_t    = 0;
   // Нет операции
   scadaParameters_[649].id               = -1;
-  scadaParameters_[649].address          = 730;
+  scadaParameters_[649].address          = 728;
   scadaParameters_[649].operation        = OPERATION_READ;
   scadaParameters_[649].physic           = 0;
   scadaParameters_[649].unit             = 0;
@@ -7804,7 +7804,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[649].value.float_t    = 0;
   // Нет операции
   scadaParameters_[650].id               = -1;
-  scadaParameters_[650].address          = 731;
+  scadaParameters_[650].address          = 729;
   scadaParameters_[650].operation        = OPERATION_READ;
   scadaParameters_[650].physic           = 0;
   scadaParameters_[650].unit             = 0;
@@ -7816,7 +7816,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[650].value.float_t    = 0;
   // Нет операции
   scadaParameters_[651].id               = -1;
-  scadaParameters_[651].address          = 732;
+  scadaParameters_[651].address          = 730;
   scadaParameters_[651].operation        = OPERATION_READ;
   scadaParameters_[651].physic           = 0;
   scadaParameters_[651].unit             = 0;
@@ -7828,7 +7828,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[651].value.float_t    = 0;
   // Нет операции
   scadaParameters_[652].id               = -1;
-  scadaParameters_[652].address          = 733;
+  scadaParameters_[652].address          = 731;
   scadaParameters_[652].operation        = OPERATION_READ;
   scadaParameters_[652].physic           = 0;
   scadaParameters_[652].unit             = 0;
@@ -7840,7 +7840,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[652].value.float_t    = 0;
   // Нет операции
   scadaParameters_[653].id               = -1;
-  scadaParameters_[653].address          = 734;
+  scadaParameters_[653].address          = 732;
   scadaParameters_[653].operation        = OPERATION_READ;
   scadaParameters_[653].physic           = 0;
   scadaParameters_[653].unit             = 0;
@@ -7852,7 +7852,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[653].value.float_t    = 0;
   // Нет операции
   scadaParameters_[654].id               = -1;
-  scadaParameters_[654].address          = 735;
+  scadaParameters_[654].address          = 733;
   scadaParameters_[654].operation        = OPERATION_READ;
   scadaParameters_[654].physic           = 0;
   scadaParameters_[654].unit             = 0;
@@ -7864,7 +7864,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[654].value.float_t    = 0;
   // Нет операции
   scadaParameters_[655].id               = -1;
-  scadaParameters_[655].address          = 736;
+  scadaParameters_[655].address          = 734;
   scadaParameters_[655].operation        = OPERATION_READ;
   scadaParameters_[655].physic           = 0;
   scadaParameters_[655].unit             = 0;
@@ -7876,7 +7876,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[655].value.float_t    = 0;
   // Нет операции
   scadaParameters_[656].id               = -1;
-  scadaParameters_[656].address          = 737;
+  scadaParameters_[656].address          = 735;
   scadaParameters_[656].operation        = OPERATION_READ;
   scadaParameters_[656].physic           = 0;
   scadaParameters_[656].unit             = 0;
@@ -7888,7 +7888,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[656].value.float_t    = 0;
   // Нет операции
   scadaParameters_[657].id               = -1;
-  scadaParameters_[657].address          = 738;
+  scadaParameters_[657].address          = 736;
   scadaParameters_[657].operation        = OPERATION_READ;
   scadaParameters_[657].physic           = 0;
   scadaParameters_[657].unit             = 0;
@@ -7900,7 +7900,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[657].value.float_t    = 0;
   // Нет операции
   scadaParameters_[658].id               = -1;
-  scadaParameters_[658].address          = 739;
+  scadaParameters_[658].address          = 737;
   scadaParameters_[658].operation        = OPERATION_READ;
   scadaParameters_[658].physic           = 0;
   scadaParameters_[658].unit             = 0;
@@ -7912,7 +7912,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[658].value.float_t    = 0;
   // Нет операции
   scadaParameters_[659].id               = -1;
-  scadaParameters_[659].address          = 740;
+  scadaParameters_[659].address          = 738;
   scadaParameters_[659].operation        = OPERATION_READ;
   scadaParameters_[659].physic           = 0;
   scadaParameters_[659].unit             = 0;
@@ -7924,7 +7924,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[659].value.float_t    = 0;
   // Нет операции
   scadaParameters_[660].id               = -1;
-  scadaParameters_[660].address          = 741;
+  scadaParameters_[660].address          = 739;
   scadaParameters_[660].operation        = OPERATION_READ;
   scadaParameters_[660].physic           = 0;
   scadaParameters_[660].unit             = 0;
@@ -7936,7 +7936,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[660].value.float_t    = 0;
   // Нет операции
   scadaParameters_[661].id               = -1;
-  scadaParameters_[661].address          = 742;
+  scadaParameters_[661].address          = 740;
   scadaParameters_[661].operation        = OPERATION_READ;
   scadaParameters_[661].physic           = 0;
   scadaParameters_[661].unit             = 0;
@@ -7948,7 +7948,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[661].value.float_t    = 0;
   // Нет операции
   scadaParameters_[662].id               = -1;
-  scadaParameters_[662].address          = 743;
+  scadaParameters_[662].address          = 741;
   scadaParameters_[662].operation        = OPERATION_READ;
   scadaParameters_[662].physic           = 0;
   scadaParameters_[662].unit             = 0;
@@ -7960,7 +7960,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[662].value.float_t    = 0;
   // Нет операции
   scadaParameters_[663].id               = -1;
-  scadaParameters_[663].address          = 744;
+  scadaParameters_[663].address          = 742;
   scadaParameters_[663].operation        = OPERATION_READ;
   scadaParameters_[663].physic           = 0;
   scadaParameters_[663].unit             = 0;
@@ -7972,7 +7972,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[663].value.float_t    = 0;
   // Нет операции
   scadaParameters_[664].id               = -1;
-  scadaParameters_[664].address          = 745;
+  scadaParameters_[664].address          = 743;
   scadaParameters_[664].operation        = OPERATION_READ;
   scadaParameters_[664].physic           = 0;
   scadaParameters_[664].unit             = 0;
@@ -7984,7 +7984,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[664].value.float_t    = 0;
   // Нет операции
   scadaParameters_[665].id               = -1;
-  scadaParameters_[665].address          = 746;
+  scadaParameters_[665].address          = 744;
   scadaParameters_[665].operation        = OPERATION_READ;
   scadaParameters_[665].physic           = 0;
   scadaParameters_[665].unit             = 0;
@@ -7996,7 +7996,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[665].value.float_t    = 0;
   // Нет операции
   scadaParameters_[666].id               = -1;
-  scadaParameters_[666].address          = 747;
+  scadaParameters_[666].address          = 745;
   scadaParameters_[666].operation        = OPERATION_READ;
   scadaParameters_[666].physic           = 0;
   scadaParameters_[666].unit             = 0;
@@ -8008,7 +8008,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[666].value.float_t    = 0;
   // Нет операции
   scadaParameters_[667].id               = -1;
-  scadaParameters_[667].address          = 748;
+  scadaParameters_[667].address          = 746;
   scadaParameters_[667].operation        = OPERATION_READ;
   scadaParameters_[667].physic           = 0;
   scadaParameters_[667].unit             = 0;
@@ -8020,7 +8020,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[667].value.float_t    = 0;
   // Нет операции
   scadaParameters_[668].id               = -1;
-  scadaParameters_[668].address          = 749;
+  scadaParameters_[668].address          = 747;
   scadaParameters_[668].operation        = OPERATION_READ;
   scadaParameters_[668].physic           = 0;
   scadaParameters_[668].unit             = 0;
@@ -8032,7 +8032,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[668].value.float_t    = 0;
   // Нет операции
   scadaParameters_[669].id               = -1;
-  scadaParameters_[669].address          = 750;
+  scadaParameters_[669].address          = 748;
   scadaParameters_[669].operation        = OPERATION_READ;
   scadaParameters_[669].physic           = 0;
   scadaParameters_[669].unit             = 0;
@@ -8044,7 +8044,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[669].value.float_t    = 0;
   // Нет операции
   scadaParameters_[670].id               = -1;
-  scadaParameters_[670].address          = 751;
+  scadaParameters_[670].address          = 749;
   scadaParameters_[670].operation        = OPERATION_READ;
   scadaParameters_[670].physic           = 0;
   scadaParameters_[670].unit             = 0;
@@ -8056,7 +8056,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[670].value.float_t    = 0;
   // Нет операции
   scadaParameters_[671].id               = -1;
-  scadaParameters_[671].address          = 752;
+  scadaParameters_[671].address          = 750;
   scadaParameters_[671].operation        = OPERATION_READ;
   scadaParameters_[671].physic           = 0;
   scadaParameters_[671].unit             = 0;
@@ -8068,7 +8068,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[671].value.float_t    = 0;
   // Нет операции
   scadaParameters_[672].id               = -1;
-  scadaParameters_[672].address          = 753;
+  scadaParameters_[672].address          = 751;
   scadaParameters_[672].operation        = OPERATION_READ;
   scadaParameters_[672].physic           = 0;
   scadaParameters_[672].unit             = 0;
@@ -8080,7 +8080,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[672].value.float_t    = 0;
   // Нет операции
   scadaParameters_[673].id               = -1;
-  scadaParameters_[673].address          = 754;
+  scadaParameters_[673].address          = 752;
   scadaParameters_[673].operation        = OPERATION_READ;
   scadaParameters_[673].physic           = 0;
   scadaParameters_[673].unit             = 0;
@@ -8092,7 +8092,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[673].value.float_t    = 0;
   // Нет операции
   scadaParameters_[674].id               = -1;
-  scadaParameters_[674].address          = 755;
+  scadaParameters_[674].address          = 753;
   scadaParameters_[674].operation        = OPERATION_READ;
   scadaParameters_[674].physic           = 0;
   scadaParameters_[674].unit             = 0;
@@ -8104,7 +8104,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[674].value.float_t    = 0;
   // Нет операции
   scadaParameters_[675].id               = -1;
-  scadaParameters_[675].address          = 756;
+  scadaParameters_[675].address          = 754;
   scadaParameters_[675].operation        = OPERATION_READ;
   scadaParameters_[675].physic           = 0;
   scadaParameters_[675].unit             = 0;
@@ -8116,7 +8116,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[675].value.float_t    = 0;
   // Нет операции
   scadaParameters_[676].id               = -1;
-  scadaParameters_[676].address          = 757;
+  scadaParameters_[676].address          = 755;
   scadaParameters_[676].operation        = OPERATION_READ;
   scadaParameters_[676].physic           = 0;
   scadaParameters_[676].unit             = 0;
@@ -8128,7 +8128,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[676].value.float_t    = 0;
   // Нет операции
   scadaParameters_[677].id               = -1;
-  scadaParameters_[677].address          = 758;
+  scadaParameters_[677].address          = 756;
   scadaParameters_[677].operation        = OPERATION_READ;
   scadaParameters_[677].physic           = 0;
   scadaParameters_[677].unit             = 0;
@@ -8140,7 +8140,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[677].value.float_t    = 0;
   // Нет операции
   scadaParameters_[678].id               = -1;
-  scadaParameters_[678].address          = 759;
+  scadaParameters_[678].address          = 757;
   scadaParameters_[678].operation        = OPERATION_READ;
   scadaParameters_[678].physic           = 0;
   scadaParameters_[678].unit             = 0;
@@ -8152,7 +8152,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[678].value.float_t    = 0;
   // Нет операции
   scadaParameters_[679].id               = -1;
-  scadaParameters_[679].address          = 760;
+  scadaParameters_[679].address          = 758;
   scadaParameters_[679].operation        = OPERATION_READ;
   scadaParameters_[679].physic           = 0;
   scadaParameters_[679].unit             = 0;
@@ -8164,7 +8164,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[679].value.float_t    = 0;
   // Нет операции
   scadaParameters_[680].id               = -1;
-  scadaParameters_[680].address          = 761;
+  scadaParameters_[680].address          = 759;
   scadaParameters_[680].operation        = OPERATION_READ;
   scadaParameters_[680].physic           = 0;
   scadaParameters_[680].unit             = 0;
@@ -8176,7 +8176,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[680].value.float_t    = 0;
   // Нет операции
   scadaParameters_[681].id               = -1;
-  scadaParameters_[681].address          = 762;
+  scadaParameters_[681].address          = 760;
   scadaParameters_[681].operation        = OPERATION_READ;
   scadaParameters_[681].physic           = 0;
   scadaParameters_[681].unit             = 0;
@@ -8188,7 +8188,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[681].value.float_t    = 0;
   // Нет операции
   scadaParameters_[682].id               = -1;
-  scadaParameters_[682].address          = 763;
+  scadaParameters_[682].address          = 761;
   scadaParameters_[682].operation        = OPERATION_READ;
   scadaParameters_[682].physic           = 0;
   scadaParameters_[682].unit             = 0;
@@ -8200,7 +8200,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[682].value.float_t    = 0;
   // Нет операции
   scadaParameters_[683].id               = -1;
-  scadaParameters_[683].address          = 764;
+  scadaParameters_[683].address          = 762;
   scadaParameters_[683].operation        = OPERATION_READ;
   scadaParameters_[683].physic           = 0;
   scadaParameters_[683].unit             = 0;
@@ -8212,7 +8212,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[683].value.float_t    = 0;
   // Нет операции
   scadaParameters_[684].id               = -1;
-  scadaParameters_[684].address          = 765;
+  scadaParameters_[684].address          = 763;
   scadaParameters_[684].operation        = OPERATION_READ;
   scadaParameters_[684].physic           = 0;
   scadaParameters_[684].unit             = 0;
@@ -8224,7 +8224,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[684].value.float_t    = 0;
   // Нет операции
   scadaParameters_[685].id               = -1;
-  scadaParameters_[685].address          = 766;
+  scadaParameters_[685].address          = 764;
   scadaParameters_[685].operation        = OPERATION_READ;
   scadaParameters_[685].physic           = 0;
   scadaParameters_[685].unit             = 0;
@@ -8236,7 +8236,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[685].value.float_t    = 0;
   // Нет операции
   scadaParameters_[686].id               = -1;
-  scadaParameters_[686].address          = 767;
+  scadaParameters_[686].address          = 765;
   scadaParameters_[686].operation        = OPERATION_READ;
   scadaParameters_[686].physic           = 0;
   scadaParameters_[686].unit             = 0;
@@ -8248,7 +8248,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[686].value.float_t    = 0;
   // Нет операции
   scadaParameters_[687].id               = -1;
-  scadaParameters_[687].address          = 768;
+  scadaParameters_[687].address          = 766;
   scadaParameters_[687].operation        = OPERATION_READ;
   scadaParameters_[687].physic           = 0;
   scadaParameters_[687].unit             = 0;
@@ -8260,7 +8260,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[687].value.float_t    = 0;
   // Нет операции
   scadaParameters_[688].id               = -1;
-  scadaParameters_[688].address          = 769;
+  scadaParameters_[688].address          = 767;
   scadaParameters_[688].operation        = OPERATION_READ;
   scadaParameters_[688].physic           = 0;
   scadaParameters_[688].unit             = 0;
@@ -8272,7 +8272,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[688].value.float_t    = 0;
   // Нет операции
   scadaParameters_[689].id               = -1;
-  scadaParameters_[689].address          = 770;
+  scadaParameters_[689].address          = 768;
   scadaParameters_[689].operation        = OPERATION_READ;
   scadaParameters_[689].physic           = 0;
   scadaParameters_[689].unit             = 0;
@@ -8284,7 +8284,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[689].value.float_t    = 0;
   // Нет операции
   scadaParameters_[690].id               = -1;
-  scadaParameters_[690].address          = 771;
+  scadaParameters_[690].address          = 769;
   scadaParameters_[690].operation        = OPERATION_READ;
   scadaParameters_[690].physic           = 0;
   scadaParameters_[690].unit             = 0;
@@ -8296,7 +8296,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[690].value.float_t    = 0;
   // Нет операции
   scadaParameters_[691].id               = -1;
-  scadaParameters_[691].address          = 772;
+  scadaParameters_[691].address          = 770;
   scadaParameters_[691].operation        = OPERATION_READ;
   scadaParameters_[691].physic           = 0;
   scadaParameters_[691].unit             = 0;
@@ -8308,7 +8308,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[691].value.float_t    = 0;
   // Нет операции
   scadaParameters_[692].id               = -1;
-  scadaParameters_[692].address          = 773;
+  scadaParameters_[692].address          = 771;
   scadaParameters_[692].operation        = OPERATION_READ;
   scadaParameters_[692].physic           = 0;
   scadaParameters_[692].unit             = 0;
@@ -8320,7 +8320,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[692].value.float_t    = 0;
   // Нет операции
   scadaParameters_[693].id               = -1;
-  scadaParameters_[693].address          = 774;
+  scadaParameters_[693].address          = 772;
   scadaParameters_[693].operation        = OPERATION_READ;
   scadaParameters_[693].physic           = 0;
   scadaParameters_[693].unit             = 0;
@@ -8332,7 +8332,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[693].value.float_t    = 0;
   // Нет операции
   scadaParameters_[694].id               = -1;
-  scadaParameters_[694].address          = 775;
+  scadaParameters_[694].address          = 773;
   scadaParameters_[694].operation        = OPERATION_READ;
   scadaParameters_[694].physic           = 0;
   scadaParameters_[694].unit             = 0;
@@ -8344,7 +8344,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[694].value.float_t    = 0;
   // Нет операции
   scadaParameters_[695].id               = -1;
-  scadaParameters_[695].address          = 776;
+  scadaParameters_[695].address          = 774;
   scadaParameters_[695].operation        = OPERATION_READ;
   scadaParameters_[695].physic           = 0;
   scadaParameters_[695].unit             = 0;
@@ -8356,7 +8356,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[695].value.float_t    = 0;
   // Нет операции
   scadaParameters_[696].id               = -1;
-  scadaParameters_[696].address          = 777;
+  scadaParameters_[696].address          = 775;
   scadaParameters_[696].operation        = OPERATION_READ;
   scadaParameters_[696].physic           = 0;
   scadaParameters_[696].unit             = 0;
@@ -8368,7 +8368,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[696].value.float_t    = 0;
   // Нет операции
   scadaParameters_[697].id               = -1;
-  scadaParameters_[697].address          = 778;
+  scadaParameters_[697].address          = 776;
   scadaParameters_[697].operation        = OPERATION_READ;
   scadaParameters_[697].physic           = 0;
   scadaParameters_[697].unit             = 0;
@@ -8380,7 +8380,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[697].value.float_t    = 0;
   // Нет операции
   scadaParameters_[698].id               = -1;
-  scadaParameters_[698].address          = 779;
+  scadaParameters_[698].address          = 777;
   scadaParameters_[698].operation        = OPERATION_READ;
   scadaParameters_[698].physic           = 0;
   scadaParameters_[698].unit             = 0;
@@ -8392,7 +8392,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[698].value.float_t    = 0;
   // Нет операции
   scadaParameters_[699].id               = -1;
-  scadaParameters_[699].address          = 780;
+  scadaParameters_[699].address          = 778;
   scadaParameters_[699].operation        = OPERATION_READ;
   scadaParameters_[699].physic           = 0;
   scadaParameters_[699].unit             = 0;
@@ -8404,7 +8404,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[699].value.float_t    = 0;
   // Нет операции
   scadaParameters_[700].id               = -1;
-  scadaParameters_[700].address          = 781;
+  scadaParameters_[700].address          = 779;
   scadaParameters_[700].operation        = OPERATION_READ;
   scadaParameters_[700].physic           = 0;
   scadaParameters_[700].unit             = 0;
@@ -8416,7 +8416,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[700].value.float_t    = 0;
   // Нет операции
   scadaParameters_[701].id               = -1;
-  scadaParameters_[701].address          = 782;
+  scadaParameters_[701].address          = 780;
   scadaParameters_[701].operation        = OPERATION_READ;
   scadaParameters_[701].physic           = 0;
   scadaParameters_[701].unit             = 0;
@@ -8428,7 +8428,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[701].value.float_t    = 0;
   // Нет операции
   scadaParameters_[702].id               = -1;
-  scadaParameters_[702].address          = 783;
+  scadaParameters_[702].address          = 781;
   scadaParameters_[702].operation        = OPERATION_READ;
   scadaParameters_[702].physic           = 0;
   scadaParameters_[702].unit             = 0;
@@ -8440,7 +8440,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[702].value.float_t    = 0;
   // Нет операции
   scadaParameters_[703].id               = -1;
-  scadaParameters_[703].address          = 784;
+  scadaParameters_[703].address          = 782;
   scadaParameters_[703].operation        = OPERATION_READ;
   scadaParameters_[703].physic           = 0;
   scadaParameters_[703].unit             = 0;
@@ -8452,7 +8452,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[703].value.float_t    = 0;
   // Нет операции
   scadaParameters_[704].id               = -1;
-  scadaParameters_[704].address          = 785;
+  scadaParameters_[704].address          = 783;
   scadaParameters_[704].operation        = OPERATION_READ;
   scadaParameters_[704].physic           = 0;
   scadaParameters_[704].unit             = 0;
@@ -8464,7 +8464,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[704].value.float_t    = 0;
   // Нет операции
   scadaParameters_[705].id               = -1;
-  scadaParameters_[705].address          = 786;
+  scadaParameters_[705].address          = 784;
   scadaParameters_[705].operation        = OPERATION_READ;
   scadaParameters_[705].physic           = 0;
   scadaParameters_[705].unit             = 0;
@@ -8476,7 +8476,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[705].value.float_t    = 0;
   // Нет операции
   scadaParameters_[706].id               = -1;
-  scadaParameters_[706].address          = 787;
+  scadaParameters_[706].address          = 785;
   scadaParameters_[706].operation        = OPERATION_READ;
   scadaParameters_[706].physic           = 0;
   scadaParameters_[706].unit             = 0;
@@ -8488,7 +8488,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[706].value.float_t    = 0;
   // Нет операции
   scadaParameters_[707].id               = -1;
-  scadaParameters_[707].address          = 788;
+  scadaParameters_[707].address          = 786;
   scadaParameters_[707].operation        = OPERATION_READ;
   scadaParameters_[707].physic           = 0;
   scadaParameters_[707].unit             = 0;
@@ -8500,7 +8500,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[707].value.float_t    = 0;
   // Нет операции
   scadaParameters_[708].id               = -1;
-  scadaParameters_[708].address          = 789;
+  scadaParameters_[708].address          = 787;
   scadaParameters_[708].operation        = OPERATION_READ;
   scadaParameters_[708].physic           = 0;
   scadaParameters_[708].unit             = 0;
@@ -8512,7 +8512,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[708].value.float_t    = 0;
   // Нет операции
   scadaParameters_[709].id               = -1;
-  scadaParameters_[709].address          = 790;
+  scadaParameters_[709].address          = 788;
   scadaParameters_[709].operation        = OPERATION_READ;
   scadaParameters_[709].physic           = 0;
   scadaParameters_[709].unit             = 0;
@@ -8524,7 +8524,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[709].value.float_t    = 0;
   // Нет операции
   scadaParameters_[710].id               = -1;
-  scadaParameters_[710].address          = 791;
+  scadaParameters_[710].address          = 789;
   scadaParameters_[710].operation        = OPERATION_READ;
   scadaParameters_[710].physic           = 0;
   scadaParameters_[710].unit             = 0;
@@ -8536,7 +8536,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[710].value.float_t    = 0;
   // Нет операции
   scadaParameters_[711].id               = -1;
-  scadaParameters_[711].address          = 792;
+  scadaParameters_[711].address          = 790;
   scadaParameters_[711].operation        = OPERATION_READ;
   scadaParameters_[711].physic           = 0;
   scadaParameters_[711].unit             = 0;
@@ -8548,7 +8548,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[711].value.float_t    = 0;
   // Нет операции
   scadaParameters_[712].id               = -1;
-  scadaParameters_[712].address          = 793;
+  scadaParameters_[712].address          = 791;
   scadaParameters_[712].operation        = OPERATION_READ;
   scadaParameters_[712].physic           = 0;
   scadaParameters_[712].unit             = 0;
@@ -8560,7 +8560,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[712].value.float_t    = 0;
   // Нет операции
   scadaParameters_[713].id               = -1;
-  scadaParameters_[713].address          = 794;
+  scadaParameters_[713].address          = 792;
   scadaParameters_[713].operation        = OPERATION_READ;
   scadaParameters_[713].physic           = 0;
   scadaParameters_[713].unit             = 0;
@@ -8572,7 +8572,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[713].value.float_t    = 0;
   // Нет операции
   scadaParameters_[714].id               = -1;
-  scadaParameters_[714].address          = 795;
+  scadaParameters_[714].address          = 793;
   scadaParameters_[714].operation        = OPERATION_READ;
   scadaParameters_[714].physic           = 0;
   scadaParameters_[714].unit             = 0;
@@ -8584,7 +8584,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[714].value.float_t    = 0;
   // Нет операции
   scadaParameters_[715].id               = -1;
-  scadaParameters_[715].address          = 796;
+  scadaParameters_[715].address          = 794;
   scadaParameters_[715].operation        = OPERATION_READ;
   scadaParameters_[715].physic           = 0;
   scadaParameters_[715].unit             = 0;
@@ -8596,7 +8596,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[715].value.float_t    = 0;
   // Нет операции
   scadaParameters_[716].id               = -1;
-  scadaParameters_[716].address          = 797;
+  scadaParameters_[716].address          = 795;
   scadaParameters_[716].operation        = OPERATION_READ;
   scadaParameters_[716].physic           = 0;
   scadaParameters_[716].unit             = 0;
@@ -8608,7 +8608,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[716].value.float_t    = 0;
   // Нет операции
   scadaParameters_[717].id               = -1;
-  scadaParameters_[717].address          = 798;
+  scadaParameters_[717].address          = 796;
   scadaParameters_[717].operation        = OPERATION_READ;
   scadaParameters_[717].physic           = 0;
   scadaParameters_[717].unit             = 0;
@@ -8620,7 +8620,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[717].value.float_t    = 0;
   // Нет операции
   scadaParameters_[718].id               = -1;
-  scadaParameters_[718].address          = 799;
+  scadaParameters_[718].address          = 797;
   scadaParameters_[718].operation        = OPERATION_READ;
   scadaParameters_[718].physic           = 0;
   scadaParameters_[718].unit             = 0;
@@ -8632,7 +8632,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[718].value.float_t    = 0;
   // Нет операции
   scadaParameters_[719].id               = -1;
-  scadaParameters_[719].address          = 800;
+  scadaParameters_[719].address          = 798;
   scadaParameters_[719].operation        = OPERATION_READ;
   scadaParameters_[719].physic           = 0;
   scadaParameters_[719].unit             = 0;
@@ -8644,7 +8644,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[719].value.float_t    = 0;
   // Нет операции
   scadaParameters_[720].id               = -1;
-  scadaParameters_[720].address          = 801;
+  scadaParameters_[720].address          = 799;
   scadaParameters_[720].operation        = OPERATION_READ;
   scadaParameters_[720].physic           = 0;
   scadaParameters_[720].unit             = 0;
@@ -8656,7 +8656,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[720].value.float_t    = 0;
   // Нет операции
   scadaParameters_[721].id               = -1;
-  scadaParameters_[721].address          = 802;
+  scadaParameters_[721].address          = 800;
   scadaParameters_[721].operation        = OPERATION_READ;
   scadaParameters_[721].physic           = 0;
   scadaParameters_[721].unit             = 0;
@@ -8668,7 +8668,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[721].value.float_t    = 0;
   // Нет операции
   scadaParameters_[722].id               = -1;
-  scadaParameters_[722].address          = 803;
+  scadaParameters_[722].address          = 801;
   scadaParameters_[722].operation        = OPERATION_READ;
   scadaParameters_[722].physic           = 0;
   scadaParameters_[722].unit             = 0;
@@ -8680,7 +8680,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[722].value.float_t    = 0;
   // Нет операции
   scadaParameters_[723].id               = -1;
-  scadaParameters_[723].address          = 804;
+  scadaParameters_[723].address          = 802;
   scadaParameters_[723].operation        = OPERATION_READ;
   scadaParameters_[723].physic           = 0;
   scadaParameters_[723].unit             = 0;
@@ -8692,7 +8692,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[723].value.float_t    = 0;
   // Нет операции
   scadaParameters_[724].id               = -1;
-  scadaParameters_[724].address          = 805;
+  scadaParameters_[724].address          = 803;
   scadaParameters_[724].operation        = OPERATION_READ;
   scadaParameters_[724].physic           = 0;
   scadaParameters_[724].unit             = 0;
@@ -8704,7 +8704,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[724].value.float_t    = 0;
   // Нет операции
   scadaParameters_[725].id               = -1;
-  scadaParameters_[725].address          = 806;
+  scadaParameters_[725].address          = 804;
   scadaParameters_[725].operation        = OPERATION_READ;
   scadaParameters_[725].physic           = 0;
   scadaParameters_[725].unit             = 0;
@@ -8716,7 +8716,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[725].value.float_t    = 0;
   // Нет операции
   scadaParameters_[726].id               = -1;
-  scadaParameters_[726].address          = 807;
+  scadaParameters_[726].address          = 805;
   scadaParameters_[726].operation        = OPERATION_READ;
   scadaParameters_[726].physic           = 0;
   scadaParameters_[726].unit             = 0;
@@ -8728,7 +8728,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[726].value.float_t    = 0;
   // Нет операции
   scadaParameters_[727].id               = -1;
-  scadaParameters_[727].address          = 808;
+  scadaParameters_[727].address          = 806;
   scadaParameters_[727].operation        = OPERATION_READ;
   scadaParameters_[727].physic           = 0;
   scadaParameters_[727].unit             = 0;
@@ -8740,7 +8740,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[727].value.float_t    = 0;
   // Нет операции
   scadaParameters_[728].id               = -1;
-  scadaParameters_[728].address          = 809;
+  scadaParameters_[728].address          = 807;
   scadaParameters_[728].operation        = OPERATION_READ;
   scadaParameters_[728].physic           = 0;
   scadaParameters_[728].unit             = 0;
@@ -8752,7 +8752,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[728].value.float_t    = 0;
   // Нет операции
   scadaParameters_[729].id               = -1;
-  scadaParameters_[729].address          = 810;
+  scadaParameters_[729].address          = 808;
   scadaParameters_[729].operation        = OPERATION_READ;
   scadaParameters_[729].physic           = 0;
   scadaParameters_[729].unit             = 0;
@@ -8764,7 +8764,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[729].value.float_t    = 0;
   // Нет операции
   scadaParameters_[730].id               = -1;
-  scadaParameters_[730].address          = 811;
+  scadaParameters_[730].address          = 809;
   scadaParameters_[730].operation        = OPERATION_READ;
   scadaParameters_[730].physic           = 0;
   scadaParameters_[730].unit             = 0;
@@ -8776,7 +8776,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[730].value.float_t    = 0;
   // Нет операции
   scadaParameters_[731].id               = -1;
-  scadaParameters_[731].address          = 812;
+  scadaParameters_[731].address          = 810;
   scadaParameters_[731].operation        = OPERATION_READ;
   scadaParameters_[731].physic           = 0;
   scadaParameters_[731].unit             = 0;
@@ -8788,7 +8788,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[731].value.float_t    = 0;
   // Нет операции
   scadaParameters_[732].id               = -1;
-  scadaParameters_[732].address          = 813;
+  scadaParameters_[732].address          = 811;
   scadaParameters_[732].operation        = OPERATION_READ;
   scadaParameters_[732].physic           = 0;
   scadaParameters_[732].unit             = 0;
@@ -8800,7 +8800,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[732].value.float_t    = 0;
   // Нет операции
   scadaParameters_[733].id               = -1;
-  scadaParameters_[733].address          = 814;
+  scadaParameters_[733].address          = 812;
   scadaParameters_[733].operation        = OPERATION_READ;
   scadaParameters_[733].physic           = 0;
   scadaParameters_[733].unit             = 0;
@@ -8812,7 +8812,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[733].value.float_t    = 0;
   // Нет операции
   scadaParameters_[734].id               = -1;
-  scadaParameters_[734].address          = 815;
+  scadaParameters_[734].address          = 813;
   scadaParameters_[734].operation        = OPERATION_READ;
   scadaParameters_[734].physic           = 0;
   scadaParameters_[734].unit             = 0;
@@ -8824,7 +8824,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[734].value.float_t    = 0;
   // Нет операции
   scadaParameters_[735].id               = -1;
-  scadaParameters_[735].address          = 816;
+  scadaParameters_[735].address          = 814;
   scadaParameters_[735].operation        = OPERATION_READ;
   scadaParameters_[735].physic           = 0;
   scadaParameters_[735].unit             = 0;
@@ -8836,7 +8836,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[735].value.float_t    = 0;
   // Нет операции
   scadaParameters_[736].id               = -1;
-  scadaParameters_[736].address          = 817;
+  scadaParameters_[736].address          = 815;
   scadaParameters_[736].operation        = OPERATION_READ;
   scadaParameters_[736].physic           = 0;
   scadaParameters_[736].unit             = 0;
@@ -8848,7 +8848,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[736].value.float_t    = 0;
   // Нет операции
   scadaParameters_[737].id               = -1;
-  scadaParameters_[737].address          = 818;
+  scadaParameters_[737].address          = 816;
   scadaParameters_[737].operation        = OPERATION_READ;
   scadaParameters_[737].physic           = 0;
   scadaParameters_[737].unit             = 0;
@@ -8860,7 +8860,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[737].value.float_t    = 0;
   // Нет операции
   scadaParameters_[738].id               = -1;
-  scadaParameters_[738].address          = 819;
+  scadaParameters_[738].address          = 817;
   scadaParameters_[738].operation        = OPERATION_READ;
   scadaParameters_[738].physic           = 0;
   scadaParameters_[738].unit             = 0;
@@ -8872,7 +8872,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[738].value.float_t    = 0;
   // Нет операции
   scadaParameters_[739].id               = -1;
-  scadaParameters_[739].address          = 820;
+  scadaParameters_[739].address          = 818;
   scadaParameters_[739].operation        = OPERATION_READ;
   scadaParameters_[739].physic           = 0;
   scadaParameters_[739].unit             = 0;
@@ -8884,7 +8884,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[739].value.float_t    = 0;
   // Нет операции
   scadaParameters_[740].id               = -1;
-  scadaParameters_[740].address          = 821;
+  scadaParameters_[740].address          = 819;
   scadaParameters_[740].operation        = OPERATION_READ;
   scadaParameters_[740].physic           = 0;
   scadaParameters_[740].unit             = 0;
@@ -8896,7 +8896,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[740].value.float_t    = 0;
   // Нет операции
   scadaParameters_[741].id               = -1;
-  scadaParameters_[741].address          = 822;
+  scadaParameters_[741].address          = 820;
   scadaParameters_[741].operation        = OPERATION_READ;
   scadaParameters_[741].physic           = 0;
   scadaParameters_[741].unit             = 0;
@@ -8908,7 +8908,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[741].value.float_t    = 0;
   // Нет операции
   scadaParameters_[742].id               = -1;
-  scadaParameters_[742].address          = 823;
+  scadaParameters_[742].address          = 821;
   scadaParameters_[742].operation        = OPERATION_READ;
   scadaParameters_[742].physic           = 0;
   scadaParameters_[742].unit             = 0;
@@ -8920,7 +8920,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[742].value.float_t    = 0;
   // Нет операции
   scadaParameters_[743].id               = -1;
-  scadaParameters_[743].address          = 824;
+  scadaParameters_[743].address          = 822;
   scadaParameters_[743].operation        = OPERATION_READ;
   scadaParameters_[743].physic           = 0;
   scadaParameters_[743].unit             = 0;
@@ -8932,7 +8932,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[743].value.float_t    = 0;
   // Нет операции
   scadaParameters_[744].id               = -1;
-  scadaParameters_[744].address          = 825;
+  scadaParameters_[744].address          = 823;
   scadaParameters_[744].operation        = OPERATION_READ;
   scadaParameters_[744].physic           = 0;
   scadaParameters_[744].unit             = 0;
@@ -8944,7 +8944,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[744].value.float_t    = 0;
   // Нет операции
   scadaParameters_[745].id               = -1;
-  scadaParameters_[745].address          = 826;
+  scadaParameters_[745].address          = 824;
   scadaParameters_[745].operation        = OPERATION_READ;
   scadaParameters_[745].physic           = 0;
   scadaParameters_[745].unit             = 0;
@@ -8956,7 +8956,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[745].value.float_t    = 0;
   // Нет операции
   scadaParameters_[746].id               = -1;
-  scadaParameters_[746].address          = 827;
+  scadaParameters_[746].address          = 825;
   scadaParameters_[746].operation        = OPERATION_READ;
   scadaParameters_[746].physic           = 0;
   scadaParameters_[746].unit             = 0;
@@ -8968,7 +8968,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[746].value.float_t    = 0;
   // Нет операции
   scadaParameters_[747].id               = -1;
-  scadaParameters_[747].address          = 828;
+  scadaParameters_[747].address          = 826;
   scadaParameters_[747].operation        = OPERATION_READ;
   scadaParameters_[747].physic           = 0;
   scadaParameters_[747].unit             = 0;
@@ -8980,7 +8980,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[747].value.float_t    = 0;
   // Нет операции
   scadaParameters_[748].id               = -1;
-  scadaParameters_[748].address          = 829;
+  scadaParameters_[748].address          = 827;
   scadaParameters_[748].operation        = OPERATION_READ;
   scadaParameters_[748].physic           = 0;
   scadaParameters_[748].unit             = 0;
@@ -8992,7 +8992,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[748].value.float_t    = 0;
   // Нет операции
   scadaParameters_[749].id               = -1;
-  scadaParameters_[749].address          = 830;
+  scadaParameters_[749].address          = 828;
   scadaParameters_[749].operation        = OPERATION_READ;
   scadaParameters_[749].physic           = 0;
   scadaParameters_[749].unit             = 0;
@@ -9004,7 +9004,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[749].value.float_t    = 0;
   // Нет операции
   scadaParameters_[750].id               = -1;
-  scadaParameters_[750].address          = 831;
+  scadaParameters_[750].address          = 829;
   scadaParameters_[750].operation        = OPERATION_READ;
   scadaParameters_[750].physic           = 0;
   scadaParameters_[750].unit             = 0;
@@ -9016,7 +9016,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[750].value.float_t    = 0;
   // Нет операции
   scadaParameters_[751].id               = -1;
-  scadaParameters_[751].address          = 832;
+  scadaParameters_[751].address          = 830;
   scadaParameters_[751].operation        = OPERATION_READ;
   scadaParameters_[751].physic           = 0;
   scadaParameters_[751].unit             = 0;
@@ -9028,7 +9028,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[751].value.float_t    = 0;
   // Нет операции
   scadaParameters_[752].id               = -1;
-  scadaParameters_[752].address          = 833;
+  scadaParameters_[752].address          = 831;
   scadaParameters_[752].operation        = OPERATION_READ;
   scadaParameters_[752].physic           = 0;
   scadaParameters_[752].unit             = 0;
@@ -9040,7 +9040,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[752].value.float_t    = 0;
   // Нет операции
   scadaParameters_[753].id               = -1;
-  scadaParameters_[753].address          = 834;
+  scadaParameters_[753].address          = 832;
   scadaParameters_[753].operation        = OPERATION_READ;
   scadaParameters_[753].physic           = 0;
   scadaParameters_[753].unit             = 0;
@@ -9052,7 +9052,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[753].value.float_t    = 0;
   // Нет операции
   scadaParameters_[754].id               = -1;
-  scadaParameters_[754].address          = 835;
+  scadaParameters_[754].address          = 833;
   scadaParameters_[754].operation        = OPERATION_READ;
   scadaParameters_[754].physic           = 0;
   scadaParameters_[754].unit             = 0;
@@ -9064,7 +9064,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[754].value.float_t    = 0;
   // Нет операции
   scadaParameters_[755].id               = -1;
-  scadaParameters_[755].address          = 836;
+  scadaParameters_[755].address          = 834;
   scadaParameters_[755].operation        = OPERATION_READ;
   scadaParameters_[755].physic           = 0;
   scadaParameters_[755].unit             = 0;
@@ -9076,7 +9076,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[755].value.float_t    = 0;
   // Нет операции
   scadaParameters_[756].id               = -1;
-  scadaParameters_[756].address          = 837;
+  scadaParameters_[756].address          = 835;
   scadaParameters_[756].operation        = OPERATION_READ;
   scadaParameters_[756].physic           = 0;
   scadaParameters_[756].unit             = 0;
@@ -9088,7 +9088,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[756].value.float_t    = 0;
   // Нет операции
   scadaParameters_[757].id               = -1;
-  scadaParameters_[757].address          = 838;
+  scadaParameters_[757].address          = 836;
   scadaParameters_[757].operation        = OPERATION_READ;
   scadaParameters_[757].physic           = 0;
   scadaParameters_[757].unit             = 0;
@@ -9100,7 +9100,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[757].value.float_t    = 0;
   // Нет операции
   scadaParameters_[758].id               = -1;
-  scadaParameters_[758].address          = 839;
+  scadaParameters_[758].address          = 837;
   scadaParameters_[758].operation        = OPERATION_READ;
   scadaParameters_[758].physic           = 0;
   scadaParameters_[758].unit             = 0;
@@ -9112,7 +9112,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[758].value.float_t    = 0;
   // Нет операции
   scadaParameters_[759].id               = -1;
-  scadaParameters_[759].address          = 840;
+  scadaParameters_[759].address          = 838;
   scadaParameters_[759].operation        = OPERATION_READ;
   scadaParameters_[759].physic           = 0;
   scadaParameters_[759].unit             = 0;
@@ -9124,7 +9124,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[759].value.float_t    = 0;
   // Нет операции
   scadaParameters_[760].id               = -1;
-  scadaParameters_[760].address          = 841;
+  scadaParameters_[760].address          = 839;
   scadaParameters_[760].operation        = OPERATION_READ;
   scadaParameters_[760].physic           = 0;
   scadaParameters_[760].unit             = 0;
@@ -9136,7 +9136,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[760].value.float_t    = 0;
   // Нет операции
   scadaParameters_[761].id               = -1;
-  scadaParameters_[761].address          = 842;
+  scadaParameters_[761].address          = 840;
   scadaParameters_[761].operation        = OPERATION_READ;
   scadaParameters_[761].physic           = 0;
   scadaParameters_[761].unit             = 0;
@@ -9148,7 +9148,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[761].value.float_t    = 0;
   // Нет операции
   scadaParameters_[762].id               = -1;
-  scadaParameters_[762].address          = 843;
+  scadaParameters_[762].address          = 841;
   scadaParameters_[762].operation        = OPERATION_READ;
   scadaParameters_[762].physic           = 0;
   scadaParameters_[762].unit             = 0;
@@ -9160,7 +9160,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[762].value.float_t    = 0;
   // Нет операции
   scadaParameters_[763].id               = -1;
-  scadaParameters_[763].address          = 844;
+  scadaParameters_[763].address          = 842;
   scadaParameters_[763].operation        = OPERATION_READ;
   scadaParameters_[763].physic           = 0;
   scadaParameters_[763].unit             = 0;
@@ -9172,7 +9172,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[763].value.float_t    = 0;
   // Нет операции
   scadaParameters_[764].id               = -1;
-  scadaParameters_[764].address          = 845;
+  scadaParameters_[764].address          = 843;
   scadaParameters_[764].operation        = OPERATION_READ;
   scadaParameters_[764].physic           = 0;
   scadaParameters_[764].unit             = 0;
@@ -9184,7 +9184,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[764].value.float_t    = 0;
   // Нет операции
   scadaParameters_[765].id               = -1;
-  scadaParameters_[765].address          = 846;
+  scadaParameters_[765].address          = 844;
   scadaParameters_[765].operation        = OPERATION_READ;
   scadaParameters_[765].physic           = 0;
   scadaParameters_[765].unit             = 0;
@@ -9196,7 +9196,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[765].value.float_t    = 0;
   // Нет операции
   scadaParameters_[766].id               = -1;
-  scadaParameters_[766].address          = 847;
+  scadaParameters_[766].address          = 845;
   scadaParameters_[766].operation        = OPERATION_READ;
   scadaParameters_[766].physic           = 0;
   scadaParameters_[766].unit             = 0;
@@ -9208,7 +9208,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[766].value.float_t    = 0;
   // Нет операции
   scadaParameters_[767].id               = -1;
-  scadaParameters_[767].address          = 848;
+  scadaParameters_[767].address          = 846;
   scadaParameters_[767].operation        = OPERATION_READ;
   scadaParameters_[767].physic           = 0;
   scadaParameters_[767].unit             = 0;
@@ -9220,7 +9220,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[767].value.float_t    = 0;
   // Нет операции
   scadaParameters_[768].id               = -1;
-  scadaParameters_[768].address          = 849;
+  scadaParameters_[768].address          = 847;
   scadaParameters_[768].operation        = OPERATION_READ;
   scadaParameters_[768].physic           = 0;
   scadaParameters_[768].unit             = 0;
@@ -9232,7 +9232,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[768].value.float_t    = 0;
   // Нет операции
   scadaParameters_[769].id               = -1;
-  scadaParameters_[769].address          = 850;
+  scadaParameters_[769].address          = 848;
   scadaParameters_[769].operation        = OPERATION_READ;
   scadaParameters_[769].physic           = 0;
   scadaParameters_[769].unit             = 0;
@@ -9244,7 +9244,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[769].value.float_t    = 0;
   // Нет операции
   scadaParameters_[770].id               = -1;
-  scadaParameters_[770].address          = 851;
+  scadaParameters_[770].address          = 849;
   scadaParameters_[770].operation        = OPERATION_READ;
   scadaParameters_[770].physic           = 0;
   scadaParameters_[770].unit             = 0;
@@ -9256,7 +9256,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[770].value.float_t    = 0;
   // Нет операции
   scadaParameters_[771].id               = -1;
-  scadaParameters_[771].address          = 852;
+  scadaParameters_[771].address          = 850;
   scadaParameters_[771].operation        = OPERATION_READ;
   scadaParameters_[771].physic           = 0;
   scadaParameters_[771].unit             = 0;
@@ -9268,7 +9268,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[771].value.float_t    = 0;
   // Нет операции
   scadaParameters_[772].id               = -1;
-  scadaParameters_[772].address          = 853;
+  scadaParameters_[772].address          = 851;
   scadaParameters_[772].operation        = OPERATION_READ;
   scadaParameters_[772].physic           = 0;
   scadaParameters_[772].unit             = 0;
@@ -9280,7 +9280,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[772].value.float_t    = 0;
   // Нет операции
   scadaParameters_[773].id               = -1;
-  scadaParameters_[773].address          = 854;
+  scadaParameters_[773].address          = 852;
   scadaParameters_[773].operation        = OPERATION_READ;
   scadaParameters_[773].physic           = 0;
   scadaParameters_[773].unit             = 0;
@@ -9292,7 +9292,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[773].value.float_t    = 0;
   // Нет операции
   scadaParameters_[774].id               = -1;
-  scadaParameters_[774].address          = 855;
+  scadaParameters_[774].address          = 853;
   scadaParameters_[774].operation        = OPERATION_READ;
   scadaParameters_[774].physic           = 0;
   scadaParameters_[774].unit             = 0;
@@ -9304,7 +9304,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[774].value.float_t    = 0;
   // Нет операции
   scadaParameters_[775].id               = -1;
-  scadaParameters_[775].address          = 856;
+  scadaParameters_[775].address          = 854;
   scadaParameters_[775].operation        = OPERATION_READ;
   scadaParameters_[775].physic           = 0;
   scadaParameters_[775].unit             = 0;
@@ -9316,7 +9316,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[775].value.float_t    = 0;
   // Нет операции
   scadaParameters_[776].id               = -1;
-  scadaParameters_[776].address          = 857;
+  scadaParameters_[776].address          = 855;
   scadaParameters_[776].operation        = OPERATION_READ;
   scadaParameters_[776].physic           = 0;
   scadaParameters_[776].unit             = 0;
@@ -9328,7 +9328,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[776].value.float_t    = 0;
   // Нет операции
   scadaParameters_[777].id               = -1;
-  scadaParameters_[777].address          = 858;
+  scadaParameters_[777].address          = 856;
   scadaParameters_[777].operation        = OPERATION_READ;
   scadaParameters_[777].physic           = 0;
   scadaParameters_[777].unit             = 0;
@@ -9340,7 +9340,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[777].value.float_t    = 0;
   // Нет операции
   scadaParameters_[778].id               = -1;
-  scadaParameters_[778].address          = 859;
+  scadaParameters_[778].address          = 857;
   scadaParameters_[778].operation        = OPERATION_READ;
   scadaParameters_[778].physic           = 0;
   scadaParameters_[778].unit             = 0;
@@ -9352,7 +9352,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[778].value.float_t    = 0;
   // Нет операции
   scadaParameters_[779].id               = -1;
-  scadaParameters_[779].address          = 860;
+  scadaParameters_[779].address          = 858;
   scadaParameters_[779].operation        = OPERATION_READ;
   scadaParameters_[779].physic           = 0;
   scadaParameters_[779].unit             = 0;
@@ -9364,7 +9364,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[779].value.float_t    = 0;
   // Нет операции
   scadaParameters_[780].id               = -1;
-  scadaParameters_[780].address          = 861;
+  scadaParameters_[780].address          = 859;
   scadaParameters_[780].operation        = OPERATION_READ;
   scadaParameters_[780].physic           = 0;
   scadaParameters_[780].unit             = 0;
@@ -9376,7 +9376,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[780].value.float_t    = 0;
   // Нет операции
   scadaParameters_[781].id               = -1;
-  scadaParameters_[781].address          = 862;
+  scadaParameters_[781].address          = 860;
   scadaParameters_[781].operation        = OPERATION_READ;
   scadaParameters_[781].physic           = 0;
   scadaParameters_[781].unit             = 0;
@@ -9388,7 +9388,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[781].value.float_t    = 0;
   // Нет операции
   scadaParameters_[782].id               = -1;
-  scadaParameters_[782].address          = 863;
+  scadaParameters_[782].address          = 861;
   scadaParameters_[782].operation        = OPERATION_READ;
   scadaParameters_[782].physic           = 0;
   scadaParameters_[782].unit             = 0;
@@ -9400,7 +9400,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[782].value.float_t    = 0;
   // Нет операции
   scadaParameters_[783].id               = -1;
-  scadaParameters_[783].address          = 864;
+  scadaParameters_[783].address          = 862;
   scadaParameters_[783].operation        = OPERATION_READ;
   scadaParameters_[783].physic           = 0;
   scadaParameters_[783].unit             = 0;
@@ -9412,7 +9412,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[783].value.float_t    = 0;
   // Нет операции
   scadaParameters_[784].id               = -1;
-  scadaParameters_[784].address          = 865;
+  scadaParameters_[784].address          = 863;
   scadaParameters_[784].operation        = OPERATION_READ;
   scadaParameters_[784].physic           = 0;
   scadaParameters_[784].unit             = 0;
@@ -9424,7 +9424,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[784].value.float_t    = 0;
   // Нет операции
   scadaParameters_[785].id               = -1;
-  scadaParameters_[785].address          = 866;
+  scadaParameters_[785].address          = 864;
   scadaParameters_[785].operation        = OPERATION_READ;
   scadaParameters_[785].physic           = 0;
   scadaParameters_[785].unit             = 0;
@@ -9436,7 +9436,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[785].value.float_t    = 0;
   // Нет операции
   scadaParameters_[786].id               = -1;
-  scadaParameters_[786].address          = 867;
+  scadaParameters_[786].address          = 865;
   scadaParameters_[786].operation        = OPERATION_READ;
   scadaParameters_[786].physic           = 0;
   scadaParameters_[786].unit             = 0;
@@ -9448,7 +9448,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[786].value.float_t    = 0;
   // Нет операции
   scadaParameters_[787].id               = -1;
-  scadaParameters_[787].address          = 868;
+  scadaParameters_[787].address          = 866;
   scadaParameters_[787].operation        = OPERATION_READ;
   scadaParameters_[787].physic           = 0;
   scadaParameters_[787].unit             = 0;
@@ -9460,7 +9460,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[787].value.float_t    = 0;
   // Нет операции
   scadaParameters_[788].id               = -1;
-  scadaParameters_[788].address          = 869;
+  scadaParameters_[788].address          = 867;
   scadaParameters_[788].operation        = OPERATION_READ;
   scadaParameters_[788].physic           = 0;
   scadaParameters_[788].unit             = 0;
@@ -9472,7 +9472,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[788].value.float_t    = 0;
   // Нет операции
   scadaParameters_[789].id               = -1;
-  scadaParameters_[789].address          = 870;
+  scadaParameters_[789].address          = 868;
   scadaParameters_[789].operation        = OPERATION_READ;
   scadaParameters_[789].physic           = 0;
   scadaParameters_[789].unit             = 0;
@@ -9484,7 +9484,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[789].value.float_t    = 0;
   // Нет операции
   scadaParameters_[790].id               = -1;
-  scadaParameters_[790].address          = 871;
+  scadaParameters_[790].address          = 869;
   scadaParameters_[790].operation        = OPERATION_READ;
   scadaParameters_[790].physic           = 0;
   scadaParameters_[790].unit             = 0;
@@ -9496,7 +9496,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[790].value.float_t    = 0;
   // Нет операции
   scadaParameters_[791].id               = -1;
-  scadaParameters_[791].address          = 872;
+  scadaParameters_[791].address          = 870;
   scadaParameters_[791].operation        = OPERATION_READ;
   scadaParameters_[791].physic           = 0;
   scadaParameters_[791].unit             = 0;
@@ -9508,7 +9508,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[791].value.float_t    = 0;
   // Нет операции
   scadaParameters_[792].id               = -1;
-  scadaParameters_[792].address          = 873;
+  scadaParameters_[792].address          = 871;
   scadaParameters_[792].operation        = OPERATION_READ;
   scadaParameters_[792].physic           = 0;
   scadaParameters_[792].unit             = 0;
@@ -9520,7 +9520,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[792].value.float_t    = 0;
   // Нет операции
   scadaParameters_[793].id               = -1;
-  scadaParameters_[793].address          = 874;
+  scadaParameters_[793].address          = 872;
   scadaParameters_[793].operation        = OPERATION_READ;
   scadaParameters_[793].physic           = 0;
   scadaParameters_[793].unit             = 0;
@@ -9532,7 +9532,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[793].value.float_t    = 0;
   // Нет операции
   scadaParameters_[794].id               = -1;
-  scadaParameters_[794].address          = 875;
+  scadaParameters_[794].address          = 873;
   scadaParameters_[794].operation        = OPERATION_READ;
   scadaParameters_[794].physic           = 0;
   scadaParameters_[794].unit             = 0;
@@ -9544,7 +9544,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[794].value.float_t    = 0;
   // Нет операции
   scadaParameters_[795].id               = -1;
-  scadaParameters_[795].address          = 876;
+  scadaParameters_[795].address          = 874;
   scadaParameters_[795].operation        = OPERATION_READ;
   scadaParameters_[795].physic           = 0;
   scadaParameters_[795].unit             = 0;
@@ -9556,7 +9556,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[795].value.float_t    = 0;
   // Нет операции
   scadaParameters_[796].id               = -1;
-  scadaParameters_[796].address          = 877;
+  scadaParameters_[796].address          = 875;
   scadaParameters_[796].operation        = OPERATION_READ;
   scadaParameters_[796].physic           = 0;
   scadaParameters_[796].unit             = 0;
@@ -9568,7 +9568,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[796].value.float_t    = 0;
   // Нет операции
   scadaParameters_[797].id               = -1;
-  scadaParameters_[797].address          = 878;
+  scadaParameters_[797].address          = 876;
   scadaParameters_[797].operation        = OPERATION_READ;
   scadaParameters_[797].physic           = 0;
   scadaParameters_[797].unit             = 0;
@@ -9580,7 +9580,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[797].value.float_t    = 0;
   // Нет операции
   scadaParameters_[798].id               = -1;
-  scadaParameters_[798].address          = 879;
+  scadaParameters_[798].address          = 877;
   scadaParameters_[798].operation        = OPERATION_READ;
   scadaParameters_[798].physic           = 0;
   scadaParameters_[798].unit             = 0;
@@ -9592,7 +9592,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[798].value.float_t    = 0;
   // Нет операции
   scadaParameters_[799].id               = -1;
-  scadaParameters_[799].address          = 880;
+  scadaParameters_[799].address          = 878;
   scadaParameters_[799].operation        = OPERATION_READ;
   scadaParameters_[799].physic           = 0;
   scadaParameters_[799].unit             = 0;
@@ -9604,7 +9604,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[799].value.float_t    = 0;
   // Нет операции
   scadaParameters_[800].id               = -1;
-  scadaParameters_[800].address          = 881;
+  scadaParameters_[800].address          = 879;
   scadaParameters_[800].operation        = OPERATION_READ;
   scadaParameters_[800].physic           = 0;
   scadaParameters_[800].unit             = 0;
@@ -9616,7 +9616,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[800].value.float_t    = 0;
   // Нет операции
   scadaParameters_[801].id               = -1;
-  scadaParameters_[801].address          = 882;
+  scadaParameters_[801].address          = 880;
   scadaParameters_[801].operation        = OPERATION_READ;
   scadaParameters_[801].physic           = 0;
   scadaParameters_[801].unit             = 0;
@@ -9628,7 +9628,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[801].value.float_t    = 0;
   // Нет операции
   scadaParameters_[802].id               = -1;
-  scadaParameters_[802].address          = 883;
+  scadaParameters_[802].address          = 881;
   scadaParameters_[802].operation        = OPERATION_READ;
   scadaParameters_[802].physic           = 0;
   scadaParameters_[802].unit             = 0;
@@ -9640,7 +9640,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[802].value.float_t    = 0;
   // Нет операции
   scadaParameters_[803].id               = -1;
-  scadaParameters_[803].address          = 884;
+  scadaParameters_[803].address          = 882;
   scadaParameters_[803].operation        = OPERATION_READ;
   scadaParameters_[803].physic           = 0;
   scadaParameters_[803].unit             = 0;
@@ -9652,7 +9652,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[803].value.float_t    = 0;
   // Нет операции
   scadaParameters_[804].id               = -1;
-  scadaParameters_[804].address          = 885;
+  scadaParameters_[804].address          = 883;
   scadaParameters_[804].operation        = OPERATION_READ;
   scadaParameters_[804].physic           = 0;
   scadaParameters_[804].unit             = 0;
@@ -9664,7 +9664,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[804].value.float_t    = 0;
   // Нет операции
   scadaParameters_[805].id               = -1;
-  scadaParameters_[805].address          = 886;
+  scadaParameters_[805].address          = 884;
   scadaParameters_[805].operation        = OPERATION_READ;
   scadaParameters_[805].physic           = 0;
   scadaParameters_[805].unit             = 0;
@@ -9676,7 +9676,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[805].value.float_t    = 0;
   // Нет операции
   scadaParameters_[806].id               = -1;
-  scadaParameters_[806].address          = 887;
+  scadaParameters_[806].address          = 885;
   scadaParameters_[806].operation        = OPERATION_READ;
   scadaParameters_[806].physic           = 0;
   scadaParameters_[806].unit             = 0;
@@ -9688,7 +9688,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[806].value.float_t    = 0;
   // Нет операции
   scadaParameters_[807].id               = -1;
-  scadaParameters_[807].address          = 888;
+  scadaParameters_[807].address          = 886;
   scadaParameters_[807].operation        = OPERATION_READ;
   scadaParameters_[807].physic           = 0;
   scadaParameters_[807].unit             = 0;
@@ -9700,7 +9700,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[807].value.float_t    = 0;
   // Нет операции
   scadaParameters_[808].id               = -1;
-  scadaParameters_[808].address          = 889;
+  scadaParameters_[808].address          = 887;
   scadaParameters_[808].operation        = OPERATION_READ;
   scadaParameters_[808].physic           = 0;
   scadaParameters_[808].unit             = 0;
@@ -9712,7 +9712,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[808].value.float_t    = 0;
   // Нет операции
   scadaParameters_[809].id               = -1;
-  scadaParameters_[809].address          = 890;
+  scadaParameters_[809].address          = 888;
   scadaParameters_[809].operation        = OPERATION_READ;
   scadaParameters_[809].physic           = 0;
   scadaParameters_[809].unit             = 0;
@@ -9724,7 +9724,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[809].value.float_t    = 0;
   // Нет операции
   scadaParameters_[810].id               = -1;
-  scadaParameters_[810].address          = 891;
+  scadaParameters_[810].address          = 889;
   scadaParameters_[810].operation        = OPERATION_READ;
   scadaParameters_[810].physic           = 0;
   scadaParameters_[810].unit             = 0;
@@ -9736,7 +9736,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[810].value.float_t    = 0;
   // Нет операции
   scadaParameters_[811].id               = -1;
-  scadaParameters_[811].address          = 892;
+  scadaParameters_[811].address          = 890;
   scadaParameters_[811].operation        = OPERATION_READ;
   scadaParameters_[811].physic           = 0;
   scadaParameters_[811].unit             = 0;
@@ -9748,7 +9748,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[811].value.float_t    = 0;
   // Нет операции
   scadaParameters_[812].id               = -1;
-  scadaParameters_[812].address          = 893;
+  scadaParameters_[812].address          = 891;
   scadaParameters_[812].operation        = OPERATION_READ;
   scadaParameters_[812].physic           = 0;
   scadaParameters_[812].unit             = 0;
@@ -9760,7 +9760,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[812].value.float_t    = 0;
   // Нет операции
   scadaParameters_[813].id               = -1;
-  scadaParameters_[813].address          = 894;
+  scadaParameters_[813].address          = 892;
   scadaParameters_[813].operation        = OPERATION_READ;
   scadaParameters_[813].physic           = 0;
   scadaParameters_[813].unit             = 0;
@@ -9772,7 +9772,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[813].value.float_t    = 0;
   // Нет операции
   scadaParameters_[814].id               = -1;
-  scadaParameters_[814].address          = 895;
+  scadaParameters_[814].address          = 893;
   scadaParameters_[814].operation        = OPERATION_READ;
   scadaParameters_[814].physic           = 0;
   scadaParameters_[814].unit             = 0;
@@ -9784,7 +9784,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[814].value.float_t    = 0;
   // Нет операции
   scadaParameters_[815].id               = -1;
-  scadaParameters_[815].address          = 896;
+  scadaParameters_[815].address          = 894;
   scadaParameters_[815].operation        = OPERATION_READ;
   scadaParameters_[815].physic           = 0;
   scadaParameters_[815].unit             = 0;
@@ -9796,7 +9796,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[815].value.float_t    = 0;
   // Нет операции
   scadaParameters_[816].id               = -1;
-  scadaParameters_[816].address          = 897;
+  scadaParameters_[816].address          = 895;
   scadaParameters_[816].operation        = OPERATION_READ;
   scadaParameters_[816].physic           = 0;
   scadaParameters_[816].unit             = 0;
@@ -9808,7 +9808,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[816].value.float_t    = 0;
   // Нет операции
   scadaParameters_[817].id               = -1;
-  scadaParameters_[817].address          = 898;
+  scadaParameters_[817].address          = 896;
   scadaParameters_[817].operation        = OPERATION_READ;
   scadaParameters_[817].physic           = 0;
   scadaParameters_[817].unit             = 0;
@@ -9820,7 +9820,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[817].value.float_t    = 0;
   // Нет операции
   scadaParameters_[818].id               = -1;
-  scadaParameters_[818].address          = 899;
+  scadaParameters_[818].address          = 897;
   scadaParameters_[818].operation        = OPERATION_READ;
   scadaParameters_[818].physic           = 0;
   scadaParameters_[818].unit             = 0;
@@ -9832,7 +9832,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[818].value.float_t    = 0;
   // Нет операции
   scadaParameters_[819].id               = -1;
-  scadaParameters_[819].address          = 900;
+  scadaParameters_[819].address          = 898;
   scadaParameters_[819].operation        = OPERATION_READ;
   scadaParameters_[819].physic           = 0;
   scadaParameters_[819].unit             = 0;
@@ -9844,7 +9844,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[819].value.float_t    = 0;
   // Нет операции
   scadaParameters_[820].id               = -1;
-  scadaParameters_[820].address          = 901;
+  scadaParameters_[820].address          = 899;
   scadaParameters_[820].operation        = OPERATION_READ;
   scadaParameters_[820].physic           = 0;
   scadaParameters_[820].unit             = 0;
@@ -9856,7 +9856,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[820].value.float_t    = 0;
   // Нет операции
   scadaParameters_[821].id               = -1;
-  scadaParameters_[821].address          = 902;
+  scadaParameters_[821].address          = 900;
   scadaParameters_[821].operation        = OPERATION_READ;
   scadaParameters_[821].physic           = 0;
   scadaParameters_[821].unit             = 0;
@@ -9868,7 +9868,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[821].value.float_t    = 0;
   // Нет операции
   scadaParameters_[822].id               = -1;
-  scadaParameters_[822].address          = 903;
+  scadaParameters_[822].address          = 901;
   scadaParameters_[822].operation        = OPERATION_READ;
   scadaParameters_[822].physic           = 0;
   scadaParameters_[822].unit             = 0;
@@ -9880,7 +9880,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[822].value.float_t    = 0;
   // Нет операции
   scadaParameters_[823].id               = -1;
-  scadaParameters_[823].address          = 904;
+  scadaParameters_[823].address          = 902;
   scadaParameters_[823].operation        = OPERATION_READ;
   scadaParameters_[823].physic           = 0;
   scadaParameters_[823].unit             = 0;
@@ -9892,7 +9892,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[823].value.float_t    = 0;
   // Нет операции
   scadaParameters_[824].id               = -1;
-  scadaParameters_[824].address          = 905;
+  scadaParameters_[824].address          = 903;
   scadaParameters_[824].operation        = OPERATION_READ;
   scadaParameters_[824].physic           = 0;
   scadaParameters_[824].unit             = 0;
@@ -9904,7 +9904,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[824].value.float_t    = 0;
   // Нет операции
   scadaParameters_[825].id               = -1;
-  scadaParameters_[825].address          = 906;
+  scadaParameters_[825].address          = 904;
   scadaParameters_[825].operation        = OPERATION_READ;
   scadaParameters_[825].physic           = 0;
   scadaParameters_[825].unit             = 0;
@@ -9916,7 +9916,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[825].value.float_t    = 0;
   // Нет операции
   scadaParameters_[826].id               = -1;
-  scadaParameters_[826].address          = 907;
+  scadaParameters_[826].address          = 905;
   scadaParameters_[826].operation        = OPERATION_READ;
   scadaParameters_[826].physic           = 0;
   scadaParameters_[826].unit             = 0;
@@ -9928,7 +9928,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[826].value.float_t    = 0;
   // Нет операции
   scadaParameters_[827].id               = -1;
-  scadaParameters_[827].address          = 908;
+  scadaParameters_[827].address          = 906;
   scadaParameters_[827].operation        = OPERATION_READ;
   scadaParameters_[827].physic           = 0;
   scadaParameters_[827].unit             = 0;
@@ -9940,7 +9940,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[827].value.float_t    = 0;
   // Нет операции
   scadaParameters_[828].id               = -1;
-  scadaParameters_[828].address          = 909;
+  scadaParameters_[828].address          = 907;
   scadaParameters_[828].operation        = OPERATION_READ;
   scadaParameters_[828].physic           = 0;
   scadaParameters_[828].unit             = 0;
@@ -9952,7 +9952,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[828].value.float_t    = 0;
   // Нет операции
   scadaParameters_[829].id               = -1;
-  scadaParameters_[829].address          = 910;
+  scadaParameters_[829].address          = 908;
   scadaParameters_[829].operation        = OPERATION_READ;
   scadaParameters_[829].physic           = 0;
   scadaParameters_[829].unit             = 0;
@@ -9964,7 +9964,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[829].value.float_t    = 0;
   // Нет операции
   scadaParameters_[830].id               = -1;
-  scadaParameters_[830].address          = 911;
+  scadaParameters_[830].address          = 909;
   scadaParameters_[830].operation        = OPERATION_READ;
   scadaParameters_[830].physic           = 0;
   scadaParameters_[830].unit             = 0;
@@ -9976,7 +9976,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[830].value.float_t    = 0;
   // Нет операции
   scadaParameters_[831].id               = -1;
-  scadaParameters_[831].address          = 912;
+  scadaParameters_[831].address          = 910;
   scadaParameters_[831].operation        = OPERATION_READ;
   scadaParameters_[831].physic           = 0;
   scadaParameters_[831].unit             = 0;
@@ -9988,7 +9988,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[831].value.float_t    = 0;
   // Нет операции
   scadaParameters_[832].id               = -1;
-  scadaParameters_[832].address          = 913;
+  scadaParameters_[832].address          = 911;
   scadaParameters_[832].operation        = OPERATION_READ;
   scadaParameters_[832].physic           = 0;
   scadaParameters_[832].unit             = 0;
@@ -10000,7 +10000,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[832].value.float_t    = 0;
   // Нет операции
   scadaParameters_[833].id               = -1;
-  scadaParameters_[833].address          = 914;
+  scadaParameters_[833].address          = 912;
   scadaParameters_[833].operation        = OPERATION_READ;
   scadaParameters_[833].physic           = 0;
   scadaParameters_[833].unit             = 0;
@@ -10012,7 +10012,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[833].value.float_t    = 0;
   // Нет операции
   scadaParameters_[834].id               = -1;
-  scadaParameters_[834].address          = 915;
+  scadaParameters_[834].address          = 913;
   scadaParameters_[834].operation        = OPERATION_READ;
   scadaParameters_[834].physic           = 0;
   scadaParameters_[834].unit             = 0;
@@ -10024,7 +10024,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[834].value.float_t    = 0;
   // Нет операции
   scadaParameters_[835].id               = -1;
-  scadaParameters_[835].address          = 916;
+  scadaParameters_[835].address          = 914;
   scadaParameters_[835].operation        = OPERATION_READ;
   scadaParameters_[835].physic           = 0;
   scadaParameters_[835].unit             = 0;
@@ -10036,7 +10036,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[835].value.float_t    = 0;
   // Нет операции
   scadaParameters_[836].id               = -1;
-  scadaParameters_[836].address          = 917;
+  scadaParameters_[836].address          = 915;
   scadaParameters_[836].operation        = OPERATION_READ;
   scadaParameters_[836].physic           = 0;
   scadaParameters_[836].unit             = 0;
@@ -10048,7 +10048,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[836].value.float_t    = 0;
   // Нет операции
   scadaParameters_[837].id               = -1;
-  scadaParameters_[837].address          = 918;
+  scadaParameters_[837].address          = 916;
   scadaParameters_[837].operation        = OPERATION_READ;
   scadaParameters_[837].physic           = 0;
   scadaParameters_[837].unit             = 0;
@@ -10060,7 +10060,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[837].value.float_t    = 0;
   // Нет операции
   scadaParameters_[838].id               = -1;
-  scadaParameters_[838].address          = 919;
+  scadaParameters_[838].address          = 917;
   scadaParameters_[838].operation        = OPERATION_READ;
   scadaParameters_[838].physic           = 0;
   scadaParameters_[838].unit             = 0;
@@ -10072,7 +10072,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[838].value.float_t    = 0;
   // Нет операции
   scadaParameters_[839].id               = -1;
-  scadaParameters_[839].address          = 920;
+  scadaParameters_[839].address          = 918;
   scadaParameters_[839].operation        = OPERATION_READ;
   scadaParameters_[839].physic           = 0;
   scadaParameters_[839].unit             = 0;
@@ -10084,7 +10084,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[839].value.float_t    = 0;
   // Нет операции
   scadaParameters_[840].id               = -1;
-  scadaParameters_[840].address          = 921;
+  scadaParameters_[840].address          = 919;
   scadaParameters_[840].operation        = OPERATION_READ;
   scadaParameters_[840].physic           = 0;
   scadaParameters_[840].unit             = 0;
@@ -10096,7 +10096,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[840].value.float_t    = 0;
   // Нет операции
   scadaParameters_[841].id               = -1;
-  scadaParameters_[841].address          = 922;
+  scadaParameters_[841].address          = 920;
   scadaParameters_[841].operation        = OPERATION_READ;
   scadaParameters_[841].physic           = 0;
   scadaParameters_[841].unit             = 0;
@@ -10108,7 +10108,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[841].value.float_t    = 0;
   // Нет операции
   scadaParameters_[842].id               = -1;
-  scadaParameters_[842].address          = 923;
+  scadaParameters_[842].address          = 921;
   scadaParameters_[842].operation        = OPERATION_READ;
   scadaParameters_[842].physic           = 0;
   scadaParameters_[842].unit             = 0;
@@ -10120,7 +10120,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[842].value.float_t    = 0;
   // Нет операции
   scadaParameters_[843].id               = -1;
-  scadaParameters_[843].address          = 924;
+  scadaParameters_[843].address          = 922;
   scadaParameters_[843].operation        = OPERATION_READ;
   scadaParameters_[843].physic           = 0;
   scadaParameters_[843].unit             = 0;
@@ -10132,7 +10132,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[843].value.float_t    = 0;
   // Нет операции
   scadaParameters_[844].id               = -1;
-  scadaParameters_[844].address          = 925;
+  scadaParameters_[844].address          = 923;
   scadaParameters_[844].operation        = OPERATION_READ;
   scadaParameters_[844].physic           = 0;
   scadaParameters_[844].unit             = 0;
@@ -10144,7 +10144,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[844].value.float_t    = 0;
   // Нет операции
   scadaParameters_[845].id               = -1;
-  scadaParameters_[845].address          = 926;
+  scadaParameters_[845].address          = 924;
   scadaParameters_[845].operation        = OPERATION_READ;
   scadaParameters_[845].physic           = 0;
   scadaParameters_[845].unit             = 0;
@@ -10156,7 +10156,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[845].value.float_t    = 0;
   // Нет операции
   scadaParameters_[846].id               = -1;
-  scadaParameters_[846].address          = 927;
+  scadaParameters_[846].address          = 925;
   scadaParameters_[846].operation        = OPERATION_READ;
   scadaParameters_[846].physic           = 0;
   scadaParameters_[846].unit             = 0;
@@ -10168,7 +10168,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[846].value.float_t    = 0;
   // Нет операции
   scadaParameters_[847].id               = -1;
-  scadaParameters_[847].address          = 928;
+  scadaParameters_[847].address          = 926;
   scadaParameters_[847].operation        = OPERATION_READ;
   scadaParameters_[847].physic           = 0;
   scadaParameters_[847].unit             = 0;
@@ -10180,7 +10180,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[847].value.float_t    = 0;
   // Нет операции
   scadaParameters_[848].id               = -1;
-  scadaParameters_[848].address          = 929;
+  scadaParameters_[848].address          = 927;
   scadaParameters_[848].operation        = OPERATION_READ;
   scadaParameters_[848].physic           = 0;
   scadaParameters_[848].unit             = 0;
@@ -10192,7 +10192,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[848].value.float_t    = 0;
   // Нет операции
   scadaParameters_[849].id               = -1;
-  scadaParameters_[849].address          = 930;
+  scadaParameters_[849].address          = 928;
   scadaParameters_[849].operation        = OPERATION_READ;
   scadaParameters_[849].physic           = 0;
   scadaParameters_[849].unit             = 0;
@@ -10204,7 +10204,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[849].value.float_t    = 0;
   // Нет операции
   scadaParameters_[850].id               = -1;
-  scadaParameters_[850].address          = 931;
+  scadaParameters_[850].address          = 929;
   scadaParameters_[850].operation        = OPERATION_READ;
   scadaParameters_[850].physic           = 0;
   scadaParameters_[850].unit             = 0;
@@ -10216,7 +10216,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[850].value.float_t    = 0;
   // Нет операции
   scadaParameters_[851].id               = -1;
-  scadaParameters_[851].address          = 932;
+  scadaParameters_[851].address          = 930;
   scadaParameters_[851].operation        = OPERATION_READ;
   scadaParameters_[851].physic           = 0;
   scadaParameters_[851].unit             = 0;
@@ -10228,7 +10228,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[851].value.float_t    = 0;
   // Нет операции
   scadaParameters_[852].id               = -1;
-  scadaParameters_[852].address          = 933;
+  scadaParameters_[852].address          = 931;
   scadaParameters_[852].operation        = OPERATION_READ;
   scadaParameters_[852].physic           = 0;
   scadaParameters_[852].unit             = 0;
@@ -10240,7 +10240,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[852].value.float_t    = 0;
   // Нет операции
   scadaParameters_[853].id               = -1;
-  scadaParameters_[853].address          = 934;
+  scadaParameters_[853].address          = 932;
   scadaParameters_[853].operation        = OPERATION_READ;
   scadaParameters_[853].physic           = 0;
   scadaParameters_[853].unit             = 0;
@@ -10252,7 +10252,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[853].value.float_t    = 0;
   // Нет операции
   scadaParameters_[854].id               = -1;
-  scadaParameters_[854].address          = 935;
+  scadaParameters_[854].address          = 933;
   scadaParameters_[854].operation        = OPERATION_READ;
   scadaParameters_[854].physic           = 0;
   scadaParameters_[854].unit             = 0;
@@ -10264,7 +10264,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[854].value.float_t    = 0;
   // Нет операции
   scadaParameters_[855].id               = -1;
-  scadaParameters_[855].address          = 936;
+  scadaParameters_[855].address          = 934;
   scadaParameters_[855].operation        = OPERATION_READ;
   scadaParameters_[855].physic           = 0;
   scadaParameters_[855].unit             = 0;
@@ -10276,7 +10276,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[855].value.float_t    = 0;
   // Нет операции
   scadaParameters_[856].id               = -1;
-  scadaParameters_[856].address          = 937;
+  scadaParameters_[856].address          = 935;
   scadaParameters_[856].operation        = OPERATION_READ;
   scadaParameters_[856].physic           = 0;
   scadaParameters_[856].unit             = 0;
@@ -10288,7 +10288,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[856].value.float_t    = 0;
   // Нет операции
   scadaParameters_[857].id               = -1;
-  scadaParameters_[857].address          = 938;
+  scadaParameters_[857].address          = 936;
   scadaParameters_[857].operation        = OPERATION_READ;
   scadaParameters_[857].physic           = 0;
   scadaParameters_[857].unit             = 0;
@@ -10300,7 +10300,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[857].value.float_t    = 0;
   // Нет операции
   scadaParameters_[858].id               = -1;
-  scadaParameters_[858].address          = 939;
+  scadaParameters_[858].address          = 937;
   scadaParameters_[858].operation        = OPERATION_READ;
   scadaParameters_[858].physic           = 0;
   scadaParameters_[858].unit             = 0;
@@ -10312,7 +10312,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[858].value.float_t    = 0;
   // Нет операции
   scadaParameters_[859].id               = -1;
-  scadaParameters_[859].address          = 940;
+  scadaParameters_[859].address          = 938;
   scadaParameters_[859].operation        = OPERATION_READ;
   scadaParameters_[859].physic           = 0;
   scadaParameters_[859].unit             = 0;
@@ -10324,7 +10324,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[859].value.float_t    = 0;
   // Нет операции
   scadaParameters_[860].id               = -1;
-  scadaParameters_[860].address          = 941;
+  scadaParameters_[860].address          = 939;
   scadaParameters_[860].operation        = OPERATION_READ;
   scadaParameters_[860].physic           = 0;
   scadaParameters_[860].unit             = 0;
@@ -10336,7 +10336,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[860].value.float_t    = 0;
   // Нет операции
   scadaParameters_[861].id               = -1;
-  scadaParameters_[861].address          = 942;
+  scadaParameters_[861].address          = 940;
   scadaParameters_[861].operation        = OPERATION_READ;
   scadaParameters_[861].physic           = 0;
   scadaParameters_[861].unit             = 0;
@@ -10348,7 +10348,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[861].value.float_t    = 0;
   // Нет операции
   scadaParameters_[862].id               = -1;
-  scadaParameters_[862].address          = 943;
+  scadaParameters_[862].address          = 941;
   scadaParameters_[862].operation        = OPERATION_READ;
   scadaParameters_[862].physic           = 0;
   scadaParameters_[862].unit             = 0;
@@ -10360,7 +10360,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[862].value.float_t    = 0;
   // Нет операции
   scadaParameters_[863].id               = -1;
-  scadaParameters_[863].address          = 944;
+  scadaParameters_[863].address          = 942;
   scadaParameters_[863].operation        = OPERATION_READ;
   scadaParameters_[863].physic           = 0;
   scadaParameters_[863].unit             = 0;
@@ -10372,7 +10372,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[863].value.float_t    = 0;
   // Нет операции
   scadaParameters_[864].id               = -1;
-  scadaParameters_[864].address          = 945;
+  scadaParameters_[864].address          = 943;
   scadaParameters_[864].operation        = OPERATION_READ;
   scadaParameters_[864].physic           = 0;
   scadaParameters_[864].unit             = 0;
@@ -10384,7 +10384,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[864].value.float_t    = 0;
   // Нет операции
   scadaParameters_[865].id               = -1;
-  scadaParameters_[865].address          = 946;
+  scadaParameters_[865].address          = 944;
   scadaParameters_[865].operation        = OPERATION_READ;
   scadaParameters_[865].physic           = 0;
   scadaParameters_[865].unit             = 0;
@@ -10396,7 +10396,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[865].value.float_t    = 0;
   // Нет операции
   scadaParameters_[866].id               = -1;
-  scadaParameters_[866].address          = 947;
+  scadaParameters_[866].address          = 945;
   scadaParameters_[866].operation        = OPERATION_READ;
   scadaParameters_[866].physic           = 0;
   scadaParameters_[866].unit             = 0;
@@ -10408,7 +10408,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[866].value.float_t    = 0;
   // Нет операции
   scadaParameters_[867].id               = -1;
-  scadaParameters_[867].address          = 948;
+  scadaParameters_[867].address          = 946;
   scadaParameters_[867].operation        = OPERATION_READ;
   scadaParameters_[867].physic           = 0;
   scadaParameters_[867].unit             = 0;
@@ -10420,7 +10420,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[867].value.float_t    = 0;
   // Нет операции
   scadaParameters_[868].id               = -1;
-  scadaParameters_[868].address          = 949;
+  scadaParameters_[868].address          = 947;
   scadaParameters_[868].operation        = OPERATION_READ;
   scadaParameters_[868].physic           = 0;
   scadaParameters_[868].unit             = 0;
@@ -10432,7 +10432,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[868].value.float_t    = 0;
   // Нет операции
   scadaParameters_[869].id               = -1;
-  scadaParameters_[869].address          = 950;
+  scadaParameters_[869].address          = 948;
   scadaParameters_[869].operation        = OPERATION_READ;
   scadaParameters_[869].physic           = 0;
   scadaParameters_[869].unit             = 0;
@@ -10444,7 +10444,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[869].value.float_t    = 0;
   // Нет операции
   scadaParameters_[870].id               = -1;
-  scadaParameters_[870].address          = 951;
+  scadaParameters_[870].address          = 949;
   scadaParameters_[870].operation        = OPERATION_READ;
   scadaParameters_[870].physic           = 0;
   scadaParameters_[870].unit             = 0;
@@ -10456,7 +10456,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[870].value.float_t    = 0;
   // Нет операции
   scadaParameters_[871].id               = -1;
-  scadaParameters_[871].address          = 952;
+  scadaParameters_[871].address          = 950;
   scadaParameters_[871].operation        = OPERATION_READ;
   scadaParameters_[871].physic           = 0;
   scadaParameters_[871].unit             = 0;
@@ -10468,7 +10468,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[871].value.float_t    = 0;
   // Нет операции
   scadaParameters_[872].id               = -1;
-  scadaParameters_[872].address          = 953;
+  scadaParameters_[872].address          = 951;
   scadaParameters_[872].operation        = OPERATION_READ;
   scadaParameters_[872].physic           = 0;
   scadaParameters_[872].unit             = 0;
@@ -10480,7 +10480,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[872].value.float_t    = 0;
   // Нет операции
   scadaParameters_[873].id               = -1;
-  scadaParameters_[873].address          = 954;
+  scadaParameters_[873].address          = 952;
   scadaParameters_[873].operation        = OPERATION_READ;
   scadaParameters_[873].physic           = 0;
   scadaParameters_[873].unit             = 0;
@@ -10492,7 +10492,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[873].value.float_t    = 0;
   // Нет операции
   scadaParameters_[874].id               = -1;
-  scadaParameters_[874].address          = 955;
+  scadaParameters_[874].address          = 953;
   scadaParameters_[874].operation        = OPERATION_READ;
   scadaParameters_[874].physic           = 0;
   scadaParameters_[874].unit             = 0;
@@ -10504,7 +10504,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[874].value.float_t    = 0;
   // Нет операции
   scadaParameters_[875].id               = -1;
-  scadaParameters_[875].address          = 956;
+  scadaParameters_[875].address          = 954;
   scadaParameters_[875].operation        = OPERATION_READ;
   scadaParameters_[875].physic           = 0;
   scadaParameters_[875].unit             = 0;
@@ -10516,7 +10516,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[875].value.float_t    = 0;
   // Нет операции
   scadaParameters_[876].id               = -1;
-  scadaParameters_[876].address          = 957;
+  scadaParameters_[876].address          = 955;
   scadaParameters_[876].operation        = OPERATION_READ;
   scadaParameters_[876].physic           = 0;
   scadaParameters_[876].unit             = 0;
@@ -10528,7 +10528,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[876].value.float_t    = 0;
   // Нет операции
   scadaParameters_[877].id               = -1;
-  scadaParameters_[877].address          = 958;
+  scadaParameters_[877].address          = 956;
   scadaParameters_[877].operation        = OPERATION_READ;
   scadaParameters_[877].physic           = 0;
   scadaParameters_[877].unit             = 0;
@@ -10540,7 +10540,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[877].value.float_t    = 0;
   // Нет операции
   scadaParameters_[878].id               = -1;
-  scadaParameters_[878].address          = 959;
+  scadaParameters_[878].address          = 957;
   scadaParameters_[878].operation        = OPERATION_READ;
   scadaParameters_[878].physic           = 0;
   scadaParameters_[878].unit             = 0;
@@ -10552,7 +10552,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[878].value.float_t    = 0;
   // Нет операции
   scadaParameters_[879].id               = -1;
-  scadaParameters_[879].address          = 960;
+  scadaParameters_[879].address          = 958;
   scadaParameters_[879].operation        = OPERATION_READ;
   scadaParameters_[879].physic           = 0;
   scadaParameters_[879].unit             = 0;
@@ -10564,7 +10564,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[879].value.float_t    = 0;
   // Нет операции
   scadaParameters_[880].id               = -1;
-  scadaParameters_[880].address          = 961;
+  scadaParameters_[880].address          = 959;
   scadaParameters_[880].operation        = OPERATION_READ;
   scadaParameters_[880].physic           = 0;
   scadaParameters_[880].unit             = 0;
@@ -10576,7 +10576,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[880].value.float_t    = 0;
   // Нет операции
   scadaParameters_[881].id               = -1;
-  scadaParameters_[881].address          = 962;
+  scadaParameters_[881].address          = 960;
   scadaParameters_[881].operation        = OPERATION_READ;
   scadaParameters_[881].physic           = 0;
   scadaParameters_[881].unit             = 0;
@@ -10588,7 +10588,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[881].value.float_t    = 0;
   // Нет операции
   scadaParameters_[882].id               = -1;
-  scadaParameters_[882].address          = 963;
+  scadaParameters_[882].address          = 961;
   scadaParameters_[882].operation        = OPERATION_READ;
   scadaParameters_[882].physic           = 0;
   scadaParameters_[882].unit             = 0;
@@ -10600,7 +10600,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[882].value.float_t    = 0;
   // Нет операции
   scadaParameters_[883].id               = -1;
-  scadaParameters_[883].address          = 964;
+  scadaParameters_[883].address          = 962;
   scadaParameters_[883].operation        = OPERATION_READ;
   scadaParameters_[883].physic           = 0;
   scadaParameters_[883].unit             = 0;
@@ -10612,7 +10612,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[883].value.float_t    = 0;
   // Нет операции
   scadaParameters_[884].id               = -1;
-  scadaParameters_[884].address          = 965;
+  scadaParameters_[884].address          = 963;
   scadaParameters_[884].operation        = OPERATION_READ;
   scadaParameters_[884].physic           = 0;
   scadaParameters_[884].unit             = 0;
@@ -10624,7 +10624,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[884].value.float_t    = 0;
   // Нет операции
   scadaParameters_[885].id               = -1;
-  scadaParameters_[885].address          = 966;
+  scadaParameters_[885].address          = 964;
   scadaParameters_[885].operation        = OPERATION_READ;
   scadaParameters_[885].physic           = 0;
   scadaParameters_[885].unit             = 0;
@@ -10636,7 +10636,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[885].value.float_t    = 0;
   // Нет операции
   scadaParameters_[886].id               = -1;
-  scadaParameters_[886].address          = 967;
+  scadaParameters_[886].address          = 965;
   scadaParameters_[886].operation        = OPERATION_READ;
   scadaParameters_[886].physic           = 0;
   scadaParameters_[886].unit             = 0;
@@ -10648,7 +10648,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[886].value.float_t    = 0;
   // Нет операции
   scadaParameters_[887].id               = -1;
-  scadaParameters_[887].address          = 968;
+  scadaParameters_[887].address          = 966;
   scadaParameters_[887].operation        = OPERATION_READ;
   scadaParameters_[887].physic           = 0;
   scadaParameters_[887].unit             = 0;
@@ -10660,7 +10660,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[887].value.float_t    = 0;
   // Нет операции
   scadaParameters_[888].id               = -1;
-  scadaParameters_[888].address          = 969;
+  scadaParameters_[888].address          = 967;
   scadaParameters_[888].operation        = OPERATION_READ;
   scadaParameters_[888].physic           = 0;
   scadaParameters_[888].unit             = 0;
@@ -10672,7 +10672,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[888].value.float_t    = 0;
   // Нет операции
   scadaParameters_[889].id               = -1;
-  scadaParameters_[889].address          = 970;
+  scadaParameters_[889].address          = 968;
   scadaParameters_[889].operation        = OPERATION_READ;
   scadaParameters_[889].physic           = 0;
   scadaParameters_[889].unit             = 0;
@@ -10684,7 +10684,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[889].value.float_t    = 0;
   // Нет операции
   scadaParameters_[890].id               = -1;
-  scadaParameters_[890].address          = 971;
+  scadaParameters_[890].address          = 969;
   scadaParameters_[890].operation        = OPERATION_READ;
   scadaParameters_[890].physic           = 0;
   scadaParameters_[890].unit             = 0;
@@ -10696,7 +10696,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[890].value.float_t    = 0;
   // Нет операции
   scadaParameters_[891].id               = -1;
-  scadaParameters_[891].address          = 972;
+  scadaParameters_[891].address          = 970;
   scadaParameters_[891].operation        = OPERATION_READ;
   scadaParameters_[891].physic           = 0;
   scadaParameters_[891].unit             = 0;
@@ -10708,7 +10708,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[891].value.float_t    = 0;
   // Нет операции
   scadaParameters_[892].id               = -1;
-  scadaParameters_[892].address          = 973;
+  scadaParameters_[892].address          = 971;
   scadaParameters_[892].operation        = OPERATION_READ;
   scadaParameters_[892].physic           = 0;
   scadaParameters_[892].unit             = 0;
@@ -10720,7 +10720,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[892].value.float_t    = 0;
   // Нет операции
   scadaParameters_[893].id               = -1;
-  scadaParameters_[893].address          = 974;
+  scadaParameters_[893].address          = 972;
   scadaParameters_[893].operation        = OPERATION_READ;
   scadaParameters_[893].physic           = 0;
   scadaParameters_[893].unit             = 0;
@@ -10732,7 +10732,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[893].value.float_t    = 0;
   // Нет операции
   scadaParameters_[894].id               = -1;
-  scadaParameters_[894].address          = 975;
+  scadaParameters_[894].address          = 973;
   scadaParameters_[894].operation        = OPERATION_READ;
   scadaParameters_[894].physic           = 0;
   scadaParameters_[894].unit             = 0;
@@ -10744,7 +10744,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[894].value.float_t    = 0;
   // Нет операции
   scadaParameters_[895].id               = -1;
-  scadaParameters_[895].address          = 976;
+  scadaParameters_[895].address          = 974;
   scadaParameters_[895].operation        = OPERATION_READ;
   scadaParameters_[895].physic           = 0;
   scadaParameters_[895].unit             = 0;
@@ -10756,7 +10756,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[895].value.float_t    = 0;
   // Нет операции
   scadaParameters_[896].id               = -1;
-  scadaParameters_[896].address          = 977;
+  scadaParameters_[896].address          = 975;
   scadaParameters_[896].operation        = OPERATION_READ;
   scadaParameters_[896].physic           = 0;
   scadaParameters_[896].unit             = 0;
@@ -10768,7 +10768,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[896].value.float_t    = 0;
   // Нет операции
   scadaParameters_[897].id               = -1;
-  scadaParameters_[897].address          = 978;
+  scadaParameters_[897].address          = 976;
   scadaParameters_[897].operation        = OPERATION_READ;
   scadaParameters_[897].physic           = 0;
   scadaParameters_[897].unit             = 0;
@@ -10780,7 +10780,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[897].value.float_t    = 0;
   // Нет операции
   scadaParameters_[898].id               = -1;
-  scadaParameters_[898].address          = 979;
+  scadaParameters_[898].address          = 977;
   scadaParameters_[898].operation        = OPERATION_READ;
   scadaParameters_[898].physic           = 0;
   scadaParameters_[898].unit             = 0;
@@ -10792,7 +10792,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[898].value.float_t    = 0;
   // Нет операции
   scadaParameters_[899].id               = -1;
-  scadaParameters_[899].address          = 980;
+  scadaParameters_[899].address          = 978;
   scadaParameters_[899].operation        = OPERATION_READ;
   scadaParameters_[899].physic           = 0;
   scadaParameters_[899].unit             = 0;
@@ -10804,7 +10804,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[899].value.float_t    = 0;
   // Нет операции
   scadaParameters_[900].id               = -1;
-  scadaParameters_[900].address          = 981;
+  scadaParameters_[900].address          = 979;
   scadaParameters_[900].operation        = OPERATION_READ;
   scadaParameters_[900].physic           = 0;
   scadaParameters_[900].unit             = 0;
@@ -10816,7 +10816,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[900].value.float_t    = 0;
   // Нет операции
   scadaParameters_[901].id               = -1;
-  scadaParameters_[901].address          = 982;
+  scadaParameters_[901].address          = 980;
   scadaParameters_[901].operation        = OPERATION_READ;
   scadaParameters_[901].physic           = 0;
   scadaParameters_[901].unit             = 0;
@@ -10828,7 +10828,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[901].value.float_t    = 0;
   // Нет операции
   scadaParameters_[902].id               = -1;
-  scadaParameters_[902].address          = 983;
+  scadaParameters_[902].address          = 981;
   scadaParameters_[902].operation        = OPERATION_READ;
   scadaParameters_[902].physic           = 0;
   scadaParameters_[902].unit             = 0;
@@ -10840,7 +10840,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[902].value.float_t    = 0;
   // Нет операции
   scadaParameters_[903].id               = -1;
-  scadaParameters_[903].address          = 984;
+  scadaParameters_[903].address          = 982;
   scadaParameters_[903].operation        = OPERATION_READ;
   scadaParameters_[903].physic           = 0;
   scadaParameters_[903].unit             = 0;
@@ -10852,7 +10852,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[903].value.float_t    = 0;
   // Нет операции
   scadaParameters_[904].id               = -1;
-  scadaParameters_[904].address          = 985;
+  scadaParameters_[904].address          = 983;
   scadaParameters_[904].operation        = OPERATION_READ;
   scadaParameters_[904].physic           = 0;
   scadaParameters_[904].unit             = 0;
@@ -10864,7 +10864,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[904].value.float_t    = 0;
   // Нет операции
   scadaParameters_[905].id               = -1;
-  scadaParameters_[905].address          = 986;
+  scadaParameters_[905].address          = 984;
   scadaParameters_[905].operation        = OPERATION_READ;
   scadaParameters_[905].physic           = 0;
   scadaParameters_[905].unit             = 0;
@@ -10876,7 +10876,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[905].value.float_t    = 0;
   // Нет операции
   scadaParameters_[906].id               = -1;
-  scadaParameters_[906].address          = 987;
+  scadaParameters_[906].address          = 985;
   scadaParameters_[906].operation        = OPERATION_READ;
   scadaParameters_[906].physic           = 0;
   scadaParameters_[906].unit             = 0;
@@ -10888,7 +10888,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[906].value.float_t    = 0;
   // Нет операции
   scadaParameters_[907].id               = -1;
-  scadaParameters_[907].address          = 988;
+  scadaParameters_[907].address          = 986;
   scadaParameters_[907].operation        = OPERATION_READ;
   scadaParameters_[907].physic           = 0;
   scadaParameters_[907].unit             = 0;
@@ -10900,7 +10900,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[907].value.float_t    = 0;
   // Нет операции
   scadaParameters_[908].id               = -1;
-  scadaParameters_[908].address          = 989;
+  scadaParameters_[908].address          = 987;
   scadaParameters_[908].operation        = OPERATION_READ;
   scadaParameters_[908].physic           = 0;
   scadaParameters_[908].unit             = 0;
@@ -10912,7 +10912,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[908].value.float_t    = 0;
   // Нет операции
   scadaParameters_[909].id               = -1;
-  scadaParameters_[909].address          = 990;
+  scadaParameters_[909].address          = 988;
   scadaParameters_[909].operation        = OPERATION_READ;
   scadaParameters_[909].physic           = 0;
   scadaParameters_[909].unit             = 0;
@@ -10924,7 +10924,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[909].value.float_t    = 0;
   // Нет операции
   scadaParameters_[910].id               = -1;
-  scadaParameters_[910].address          = 991;
+  scadaParameters_[910].address          = 989;
   scadaParameters_[910].operation        = OPERATION_READ;
   scadaParameters_[910].physic           = 0;
   scadaParameters_[910].unit             = 0;
@@ -10936,7 +10936,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[910].value.float_t    = 0;
   // Нет операции
   scadaParameters_[911].id               = -1;
-  scadaParameters_[911].address          = 992;
+  scadaParameters_[911].address          = 990;
   scadaParameters_[911].operation        = OPERATION_READ;
   scadaParameters_[911].physic           = 0;
   scadaParameters_[911].unit             = 0;
@@ -10948,7 +10948,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[911].value.float_t    = 0;
   // Нет операции
   scadaParameters_[912].id               = -1;
-  scadaParameters_[912].address          = 993;
+  scadaParameters_[912].address          = 991;
   scadaParameters_[912].operation        = OPERATION_READ;
   scadaParameters_[912].physic           = 0;
   scadaParameters_[912].unit             = 0;
@@ -10960,7 +10960,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[912].value.float_t    = 0;
   // Нет операции
   scadaParameters_[913].id               = -1;
-  scadaParameters_[913].address          = 994;
+  scadaParameters_[913].address          = 992;
   scadaParameters_[913].operation        = OPERATION_READ;
   scadaParameters_[913].physic           = 0;
   scadaParameters_[913].unit             = 0;
@@ -10972,7 +10972,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[913].value.float_t    = 0;
   // Нет операции
   scadaParameters_[914].id               = -1;
-  scadaParameters_[914].address          = 995;
+  scadaParameters_[914].address          = 993;
   scadaParameters_[914].operation        = OPERATION_READ;
   scadaParameters_[914].physic           = 0;
   scadaParameters_[914].unit             = 0;
@@ -10984,7 +10984,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[914].value.float_t    = 0;
   // Нет операции
   scadaParameters_[915].id               = -1;
-  scadaParameters_[915].address          = 996;
+  scadaParameters_[915].address          = 994;
   scadaParameters_[915].operation        = OPERATION_READ;
   scadaParameters_[915].physic           = 0;
   scadaParameters_[915].unit             = 0;
@@ -10996,7 +10996,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[915].value.float_t    = 0;
   // Нет операции
   scadaParameters_[916].id               = -1;
-  scadaParameters_[916].address          = 997;
+  scadaParameters_[916].address          = 995;
   scadaParameters_[916].operation        = OPERATION_READ;
   scadaParameters_[916].physic           = 0;
   scadaParameters_[916].unit             = 0;
@@ -11008,7 +11008,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[916].value.float_t    = 0;
   // Нет операции
   scadaParameters_[917].id               = -1;
-  scadaParameters_[917].address          = 998;
+  scadaParameters_[917].address          = 996;
   scadaParameters_[917].operation        = OPERATION_READ;
   scadaParameters_[917].physic           = 0;
   scadaParameters_[917].unit             = 0;
@@ -11020,7 +11020,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[917].value.float_t    = 0;
   // Нет операции
   scadaParameters_[918].id               = -1;
-  scadaParameters_[918].address          = 999;
+  scadaParameters_[918].address          = 997;
   scadaParameters_[918].operation        = OPERATION_READ;
   scadaParameters_[918].physic           = 0;
   scadaParameters_[918].unit             = 0;
@@ -11030,21 +11030,21 @@ void ScadaNovomet::initParameters()
   scadaParameters_[918].max              = 0;
   scadaParameters_[918].command          = OPERATION_ERROR;
   scadaParameters_[918].value.float_t    = 0;
-  // Активная мощность
-  scadaParameters_[919].id               = VSD_POWER_ACTIVE;
-  scadaParameters_[919].address          = 1000;
-  scadaParameters_[919].operation        = OPERATION_WRITE;
-  scadaParameters_[919].physic           = PHYSIC_VOLTAGE;
-  scadaParameters_[919].unit             = VOLTAGE_V;
+  // Нет операции
+  scadaParameters_[919].id               = -1;
+  scadaParameters_[919].address          = 998;
+  scadaParameters_[919].operation        = OPERATION_READ;
+  scadaParameters_[919].physic           = 0;
+  scadaParameters_[919].unit             = 0;
   scadaParameters_[919].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[919].coefficient      = 0.1;
+  scadaParameters_[919].coefficient      = 1;
   scadaParameters_[919].min              = 0;
-  scadaParameters_[919].max              = 65535;
+  scadaParameters_[919].max              = 0;
   scadaParameters_[919].command          = OPERATION_ERROR;
   scadaParameters_[919].value.float_t    = 0;
   // Нет операции
   scadaParameters_[920].id               = -1;
-  scadaParameters_[920].address          = 1001;
+  scadaParameters_[920].address          = 999;
   scadaParameters_[920].operation        = OPERATION_READ;
   scadaParameters_[920].physic           = 0;
   scadaParameters_[920].unit             = 0;
@@ -11054,9 +11054,9 @@ void ScadaNovomet::initParameters()
   scadaParameters_[920].max              = 0;
   scadaParameters_[920].command          = OPERATION_ERROR;
   scadaParameters_[920].value.float_t    = 0;
-  // Давление
-  scadaParameters_[921].id               = CCS_UNIT_PRESSURE;
-  scadaParameters_[921].address          = 1002;
+  // Активная мощность
+  scadaParameters_[921].id               = VSD_POWER_ACTIVE;
+  scadaParameters_[921].address          = 1000;
   scadaParameters_[921].operation        = OPERATION_WRITE;
   scadaParameters_[921].physic           = PHYSIC_VOLTAGE;
   scadaParameters_[921].unit             = VOLTAGE_V;
@@ -11068,7 +11068,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[921].value.float_t    = 0;
   // Нет операции
   scadaParameters_[922].id               = -1;
-  scadaParameters_[922].address          = 1003;
+  scadaParameters_[922].address          = 1001;
   scadaParameters_[922].operation        = OPERATION_READ;
   scadaParameters_[922].physic           = 0;
   scadaParameters_[922].unit             = 0;
@@ -11078,53 +11078,77 @@ void ScadaNovomet::initParameters()
   scadaParameters_[922].max              = 0;
   scadaParameters_[922].command          = OPERATION_ERROR;
   scadaParameters_[922].value.float_t    = 0;
-  // Фактор времени
-  scadaParameters_[923].id               = VSD_RESONANCE_TIME;
-  scadaParameters_[923].address          = 1004;
+  // Давление
+  scadaParameters_[923].id               = CCS_UNIT_PRESSURE;
+  scadaParameters_[923].address          = 1002;
   scadaParameters_[923].operation        = OPERATION_WRITE;
   scadaParameters_[923].physic           = PHYSIC_VOLTAGE;
   scadaParameters_[923].unit             = VOLTAGE_V;
   scadaParameters_[923].typeData         = TYPE_DATA_UINT16;
-  scadaParameters_[923].coefficient      = 1;
+  scadaParameters_[923].coefficient      = 0.1;
   scadaParameters_[923].min              = 0;
   scadaParameters_[923].max              = 65535;
   scadaParameters_[923].command          = OPERATION_ERROR;
   scadaParameters_[923].value.float_t    = 0;
-  // Состояние архива
-  scadaParameters_[924].id               = 0;
-  scadaParameters_[924].address          = 4096;
-  scadaParameters_[924].operation        = OPERATION_WRITE;
-  scadaParameters_[924].physic           = PHYSIC_NUMERIC;
+  // Нет операции
+  scadaParameters_[924].id               = -1;
+  scadaParameters_[924].address          = 1003;
+  scadaParameters_[924].operation        = OPERATION_READ;
+  scadaParameters_[924].physic           = 0;
   scadaParameters_[924].unit             = 0;
   scadaParameters_[924].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[924].coefficient      = 1;
   scadaParameters_[924].min              = 0;
-  scadaParameters_[924].max              = 2;
+  scadaParameters_[924].max              = 0;
   scadaParameters_[924].command          = OPERATION_ERROR;
   scadaParameters_[924].value.float_t    = 0;
-  // Нет операции
-  scadaParameters_[925].id               = -1;
-  scadaParameters_[925].address          = 4097;
-  scadaParameters_[925].operation        = OPERATION_READ;
-  scadaParameters_[925].physic           = 0;
-  scadaParameters_[925].unit             = 0;
+  // Фактор времени
+  scadaParameters_[925].id               = VSD_RESONANCE_TIME;
+  scadaParameters_[925].address          = 1004;
+  scadaParameters_[925].operation        = OPERATION_WRITE;
+  scadaParameters_[925].physic           = PHYSIC_VOLTAGE;
+  scadaParameters_[925].unit             = VOLTAGE_V;
   scadaParameters_[925].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[925].coefficient      = 1;
   scadaParameters_[925].min              = 0;
-  scadaParameters_[925].max              = 0;
+  scadaParameters_[925].max              = 65535;
   scadaParameters_[925].command          = OPERATION_ERROR;
   scadaParameters_[925].value.float_t    = 0;
-  // Размер архива
-  scadaParameters_[926].id               = 0;
-  scadaParameters_[926].address          = 4098;
-  scadaParameters_[926].operation        = OPERATION_WRITE;
+  // Состояние архива
+  scadaParameters_[926].id               = -1;
+  scadaParameters_[926].address          = 4096;
+  scadaParameters_[926].operation        = OPERATION_READ;
   scadaParameters_[926].physic           = PHYSIC_NUMERIC;
   scadaParameters_[926].unit             = 0;
-  scadaParameters_[926].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[926].typeData         = TYPE_DATA_UINT16;
   scadaParameters_[926].coefficient      = 1;
   scadaParameters_[926].min              = 0;
-  scadaParameters_[926].max              = 4294836225;
+  scadaParameters_[926].max              = 2;
   scadaParameters_[926].command          = OPERATION_ERROR;
   scadaParameters_[926].value.float_t    = 0;
+  // Нет операции
+  scadaParameters_[927].id               = -1;
+  scadaParameters_[927].address          = 4097;
+  scadaParameters_[927].operation        = OPERATION_READ;
+  scadaParameters_[927].physic           = 0;
+  scadaParameters_[927].unit             = 0;
+  scadaParameters_[927].typeData         = TYPE_DATA_UINT16;
+  scadaParameters_[927].coefficient      = 1;
+  scadaParameters_[927].min              = 0;
+  scadaParameters_[927].max              = 0;
+  scadaParameters_[927].command          = OPERATION_ERROR;
+  scadaParameters_[927].value.float_t    = 0;
+  // Размер архива
+  scadaParameters_[928].id               = -1;
+  scadaParameters_[928].address          = 4098;
+  scadaParameters_[928].operation        = OPERATION_READ;
+  scadaParameters_[928].physic           = PHYSIC_NUMERIC;
+  scadaParameters_[928].unit             = 0;
+  scadaParameters_[928].typeData         = TYPE_DATA_UINT32;
+  scadaParameters_[928].coefficient      = 1;
+  scadaParameters_[928].min              = 0;
+  scadaParameters_[928].max              = 4294836225;
+  scadaParameters_[928].command          = OPERATION_ERROR;
+  scadaParameters_[928].value.float_t    = 0;
 }
 
