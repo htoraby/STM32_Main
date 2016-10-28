@@ -5895,18 +5895,6 @@
 	</param>
 	<param>
 		<id>-1</id>
-		<address>538</address>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<typeData>TYPE_DATA_UINT16</typeData>
-		<coefficient>1</coefficient>
-		<min>0</min>
-		<max>0</max>
-		<command>OPERATION_ERROR</command>
-		<name>Дебит суточный</name>
-	</param>
-	<param>
-		<id>-1</id>
 		<address>539</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>

@@ -5,7 +5,7 @@
 
 ScadaNovomet::ScadaNovomet()
 {
-  countParameters_ = 929;
+  countParameters_ = 928;
   initParameters();
 }
 
@@ -265,19 +265,6 @@ void ScadaNovomet::calcParamsTask()
     }
     scadaParameters_[90].value.float_t = value;
 
-    //129
-    value = 0;
-    int language = parameters.get(CCS_LANGUAGE);
-    switch (language) {
-    case RuLanguage:
-      value = 1; break;
-    case EnLanguage:
-      value = 2; break;
-    case EsLanguage:
-      value = 3; break;
-    }
-    scadaParameters_[119].value.float_t = value;
-
     //133
     value = 0;
     int pressure = parameters.get(CCS_UNIT_PRESSURE);
@@ -415,16 +402,16 @@ void ScadaNovomet::calcParamsTask()
 
     //560
     value = (parameters.get(CCS_RUNNING_TYPE) == Regime::SmoothRegimeRun) ? 1 : 0;
-    scadaParameters_[511].value.float_t = value;
+    scadaParameters_[512].value.float_t = value;
     //561
     value = (parameters.get(CCS_RUNNING_TYPE) == Regime::SwingRegimeRun) ? 1 : 0;
-    scadaParameters_[512].value.float_t = value;
+    scadaParameters_[513].value.float_t = value;
     //562
     value = (parameters.get(CCS_RUNNING_TYPE) == Regime::PushRegimeRun) ? 1 : 0;
-    scadaParameters_[513].value.float_t = value;
+    scadaParameters_[514].value.float_t = value;
     //563
     value = (parameters.get(CCS_RUNNING_TYPE) == Regime::SyncRegimeRun) ? 1 : 0;
-    scadaParameters_[514].value.float_t = value;
+    scadaParameters_[515].value.float_t = value;
 
     // 601-602
     value = 0;
@@ -442,8 +429,8 @@ void ScadaNovomet::calcParamsTask()
     case 12: value = 5; data.uint32_t = 0; break;
     default: value = 0; data.uint32_t = 0; break;
     }
-    scadaParameters_[552].value.float_t = value;
-    scadaParameters_[553].value.float_t = data.uint32_t;
+    scadaParameters_[553].value.float_t = value;
+    scadaParameters_[554].value.float_t = data.uint32_t;
 
     // 622-623
     value = 0;
@@ -461,8 +448,8 @@ void ScadaNovomet::calcParamsTask()
     case 12: value = 5; data.uint32_t = 0; break;
     default: value = 0; data.uint32_t = 0; break;
     }
-    scadaParameters_[566].value.float_t = value;
-    scadaParameters_[567].value.float_t = data.uint32_t;
+    scadaParameters_[567].value.float_t = value;
+    scadaParameters_[568].value.float_t = data.uint32_t;
 
     // 643-644
     value = 0;
@@ -480,8 +467,8 @@ void ScadaNovomet::calcParamsTask()
     case 12: value = 5; data.uint32_t = 0; break;
     default: value = 0; data.uint32_t = 0; break;
     }
-    scadaParameters_[580].value.float_t = value;
-    scadaParameters_[581].value.float_t = data.uint32_t;
+    scadaParameters_[581].value.float_t = value;
+    scadaParameters_[582].value.float_t = data.uint32_t;
 
     // 664-665
     value = 0;
@@ -499,8 +486,8 @@ void ScadaNovomet::calcParamsTask()
     case 12: value = 5; data.uint32_t = 0; break;
     default: value = 0; data.uint32_t = 0; break;
     }
-    scadaParameters_[594].value.float_t = value;
-    scadaParameters_[595].value.float_t = data.uint32_t;
+    scadaParameters_[595].value.float_t = value;
+    scadaParameters_[596].value.float_t = data.uint32_t;
   }
 }
 
