@@ -71,7 +71,8 @@ void LogData::add(uint8_t code)
   float tempVal = 0.0;
   time_t time = ksu.getTime();
 
-  *(uint32_t*)(buffer) = ++id_;
+  ++id_;
+  *(uint32_t*)(buffer) = id_;
   *(uint32_t*)(buffer+4) = time;
   *(uint8_t*)(buffer+8) = code;
 

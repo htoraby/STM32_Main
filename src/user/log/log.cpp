@@ -1,8 +1,8 @@
 #include "log.h"
 #include "user_main.h"
 
-uint32_t Log::id_ = 0;
-uint32_t Log::idDebug_ = 0;
+volatile uint32_t Log::id_ = 0;
+volatile uint32_t Log::idDebug_ = 0;
 
 Log::Log(TypeLog type)
   : type_(type)
