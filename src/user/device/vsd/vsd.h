@@ -77,13 +77,6 @@ public:
   virtual int setMotorSpeed(float value);
 
   /*!
-   * \brief setMotorPower
-   * \param value
-   * \return
-   */
-  virtual int setMotorPower(float value);
-
-  /*!
    * \brief setLimitsMotor
    * \return
    */

@@ -131,20 +131,6 @@ int VsdDanfoss::setMotorSpeed(float value)
   }
 }
 
-int VsdDanfoss::setMotorPower(float value)
-{
-  if (!Vsd::setMotorPower(value)) {
-    // writeToDevice(VSD_MOTOR_POWER, parameters.get(VSD_MOTOR_POWER));
-    // TODO: Автоадаптация
-    setMotorConfig();
-    return ok_r;
-  }
-  else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setMotorPower");
-    return err_r;
-  }
-}
-
 int VsdDanfoss::setMotorCurrent(float value)
 {
   if (!Vsd::setMotorCurrent(value)) {
@@ -1722,9 +1708,6 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
 
   case VSD_MOTOR_CONTROL:
     return setVsdControl(value);
-
-  case VSD_MOTOR_POWER:
-    return setMotorPower(value);
 
   case VSD_MOTOR_VOLTAGE:
     if (!setMotorVoltage(value)) {

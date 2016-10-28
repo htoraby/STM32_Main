@@ -147,7 +147,6 @@ public:
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
   int setMotorSpeed(float value);
-  int setMotorPower(float value);
   int setMotorCurrent(float value);
   int setMotorVoltage(float value);
   int setMotorResistanceStator(float value);
