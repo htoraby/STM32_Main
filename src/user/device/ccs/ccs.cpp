@@ -80,7 +80,6 @@ void Ccs::init()
 void Ccs::initTask()
 {
   conditionOld_ = getValue(CCS_CONDITION);
-  flagOld_ = getValue(CCS_CONDITION_FLAG);
 
   osMessageQDef(LedMessageQ, 5, uint8_t);
   ledMessage_ = osMessageCreate(osMessageQ(LedMessageQ), NULL);
