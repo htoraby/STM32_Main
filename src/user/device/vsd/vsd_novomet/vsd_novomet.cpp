@@ -39,6 +39,7 @@ void VsdNovomet::init()
   initParameters();
   readParameters();
   setLimitsMotor();
+  setLimitsCcsParameters();
   //setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
   //setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 }
@@ -80,15 +81,29 @@ void VsdNovomet::initParameters()
 
 void VsdNovomet::setLimitsCcsParameters()
 {
+  // Читаем и задаём границы уставки останова защиты по максимальному току с ЧРП
   parameters.setMin(CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT , getMin(VSD_CURRENT_LIMIT));
   parameters.setMax(CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT , getMax(VSD_CURRENT_LIMIT));
 
+  // Читаем и задаём границы уставки останова защиты по перегрузу с ЧРП
   parameters.setMin(CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT , getMin(VSD_M_IRMS));
   parameters.setMax(CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT , getMax(VSD_M_IRMS));
+  // Читаем и задаём границы пускового времени защиты по перегрузу с ЧРП
   parameters.setMin(CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY , getMin(VSD_T_BLANK));
   parameters.setMax(CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY , getMax(VSD_T_BLANK));
+  // Читаем и задаём границы времени защиты по перегрузу с ЧРП
   parameters.setMin(CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY , getMin(VSD_M_TRMS));
   parameters.setMax(CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY , getMax(VSD_M_TRMS));
+
+  // Читаем и задаём границы индуктивности выходного фильтра ЧРП
+  parameters.setMin(CCS_FILTER_INDUCTANCE, getMin(VSD_LF));
+  parameters.setMax(CCS_FILTER_INDUCTANCE, getMax(VSD_LF));
+  // Читаем и задаём границы ёмкости выходного фильтра ЧРП
+  parameters.setMin(CCS_FILTER_CAPACITY, getMin(VSD_CF));
+  parameters.setMax(CCS_FILTER_CAPACITY, getMax(VSD_CF));
+
+
+
 }
 
 bool VsdNovomet::isConnect()
@@ -153,9 +168,9 @@ int VsdNovomet::setMotorCurrent(float value)
   return err_r;
 }
 
-int VsdNovomet::setMotorVoltage(float value)
+int VsdNovomet::setMotorVoltage(float value, EventType eventType)
 {
-  if (!Vsd::setMotorVoltage(value)) {
+  if (!setValue(VSD_MOTOR_VOLTAGE, value, eventType)) {
     value = value / parameters.get(CCS_COEF_TRANSFORMATION);
     if (!setBaseVoltage(value))
       return ok_r;
@@ -1157,6 +1172,31 @@ void VsdNovomet::getNewValue(uint16_t id)
   case VSD_M_KU_START:
     setValue(id, value);
     break;
+  case VSD_LF:
+    setValue(id, value);
+    if (parameters.get(CCS_FILTER_INDUCTANCE) != value)
+      parameters.set(CCS_FILTER_INDUCTANCE, value);
+    break;
+  case VSD_CF:
+    setValue(id, value);
+    if (parameters.get(CCS_FILTER_CAPACITY) != value)
+      parameters.set(CCS_FILTER_CAPACITY, value);
+    break;
+  case VSD_T_BLANK:
+    setValue(id, value);
+    if (parameters.get(CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY) != value)
+      parameters.set(CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY, value);
+    break;
+  case VSD_M_TRMS:
+    setValue(id, value);
+    if (parameters.get(CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY) != value)
+      parameters.set(CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY, value);
+    break;
+  case VSD_M_IRMS:
+    setValue(id, value);
+    if (parameters.get(CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT) != value)
+      parameters.set(CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT, value);
+    break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);
     break;
@@ -1196,7 +1236,7 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value, EventType eventType)
     return setMotorCurrent(value);
 
   case VSD_MOTOR_VOLTAGE:
-    if (!setMotorVoltage(value)) {
+    if (!setMotorVoltage(value, eventType)) {
       ksu.calcTransRecommendedTapOff();
       return ok_r;
     }

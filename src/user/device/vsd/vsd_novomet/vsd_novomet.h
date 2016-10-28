@@ -225,7 +225,7 @@ public:
   int setMotorType(float value);
   int setMotorFrequency(float value);
   int setMotorCurrent(float value);
-  int setMotorVoltage(float value);
+  int setMotorVoltage(float value, EventType eventType = NoneType);
   void setLimitsMotor();
 
   // РЕЖИМЫ ПУСКА
