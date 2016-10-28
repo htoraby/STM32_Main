@@ -149,7 +149,6 @@ int VsdDanfoss::setMotorCurrent(float value)
 {
   if (!Vsd::setMotorCurrent(value)) {
     value = value * parameters.get(CCS_COEF_TRANSFORMATION);
-    // writeToDevice(VSD_MOTOR_CURRENT, value);
     setMotorConfig();
     return ok_r;
   }

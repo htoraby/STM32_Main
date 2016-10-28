@@ -509,7 +509,7 @@ static void testLog()
     logEvent.add(0x01, 13, i, 0, 1);
   }
   for (int i = 0; i < 4; ++i) {
-    logDebug.add(CriticalMsg, "Test Test Привет!");
+    logDebug.add(CriticalMsg, "testLog");
   }
 
   logRead(StartAddrEventLog, bufferRx, 20*4);

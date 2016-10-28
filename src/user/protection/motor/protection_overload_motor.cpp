@@ -74,8 +74,10 @@ void ProtectionOverloadMotor::getOtherSetpointProt()
 
 bool ProtectionOverloadMotor::checkAlarm()
 {
-  if (vsd->checkAlarmVsdOverloadMotor()) {
-    lastReasonStop_ = LastReasonStopHardwareVsd;
+  float alarm = vsd->checkAlarmVsdOverloadMotor();
+  if (alarm) {
+    lastReasonStop_ = (LastReasonStop)(int)alarm;
+    //lastReasonStop_ = LastReasonStopHardwareVsd;
     activDelay_ = 0;
     tripDelay_ = 0;
     return true;

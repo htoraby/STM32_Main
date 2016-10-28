@@ -182,7 +182,10 @@ void checkWorkingRunMode()
   if (isWorkingRunMode(CCS_RGM_RUN_PICKUP_STATE))
     return;
 
-  parameters.set(CCS_RGM_RUN_VSD_STATE, Regime::IdleState);
+  // TODO: Надо подумать как это перенести в сами режимы
+  if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_DANFOSS) {
+    parameters.set(CCS_RGM_RUN_VSD_STATE, Regime::IdleState);
+  }
 }
 
 bool isWorkingRunMode(uint16_t id)

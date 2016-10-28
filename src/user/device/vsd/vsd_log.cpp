@@ -34,13 +34,13 @@ bool VsdLog::isConnect()
 
   if (prevConnect_ && !curConnect) {
 #if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Архивы ЧРП: Связь потеряна (numPort = %d, devAdrs = %d)", numPort_, devAdrs_);
+    logDebug.add(WarningMsg, "VsdLog::isConnect() The connection is lost (numPort = %d, devAdrs = %d)", numPort_, devAdrs_);
 #endif
   }
 
   if (!prevConnect_ && curConnect) {
 #if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Архивы ЧРП: Связь восстановлена (numPort = %d, devAdrs = %d)", numPort_, devAdrs_);
+    logDebug.add(WarningMsg, "VsdLog::isConnect() The connection was restored (numPort = %d, devAdrs = %d)", numPort_, devAdrs_);
 #endif
   }
 

@@ -93,7 +93,7 @@ void ProtectionPowerOff::processingStateRun()       // Состояние раб
       (ksu.isAutoMode() && ksu.isWorkMotor() && (parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE) == Protection::ProtModeRestart))) {
     if (alarm_ && !protUnderVoltIn.isRestart()) {
 #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Защиты: Срабатывание --> АПВ (PowerOff)");
+      logDebug.add(DebugMsg, "ProtectionPowerOff::processingStateRun() Trigger -> AR");
 #endif
       addEventReactionProt();
       parameters.set(CCS_RESTART_COUNT, 0);
@@ -126,7 +126,7 @@ void ProtectionPowerOff::proccessingStateStop()
         if (!prevent_) {                      // Параметр защиты в норме
           if (timer_ == 0) {
             timer_ = ksu.getTime();           // Зафиксировали время начала отсёта АПВ
-            logDebug.add(DebugMsg, "prot: time restart (PowerOff)");
+            logDebug.add(DebugMsg, "ProtectionPowerOff::proccessingStateStop() Time restart");
             ksu.setRestart();
           }
           else {

@@ -191,10 +191,9 @@ unsigned short Device::getIndexAtId(unsigned short id)
     if (getFieldId(id - startAddrParams_) == id)
       return (id - startAddrParams_);
   }
-#if (USE_LOG_WARNING == 1)
-  logDebug.add(WarningMsg, "Устройства: не найден параметр (id = %d %d .. %d)",
-               id, startAddrParams_, startAddrParams_ + countParameters_);
-#endif
+  #if (USE_LOG_WARNING == 1)
+  logDebug.add(WarningMsg, "Device::getIndexAtId() Not found the parameter id = %d", id);
+  #endif
   return 0;
 }
 
@@ -236,17 +235,17 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
     novobusSlave.putMessageParams(id);
     if ((check == err_min_r) && (getValidity(index) != VALIDITY_MIN)) {
       setFieldValidity(index, VALIDITY_MIN);
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Device: Значение меньше минимума (id = %d, value = %f, min = %f)",
+      #if (USE_LOG_WARNING == 1)
+      logDebug.add(WarningMsg, "Device::setValue() Value less than the minimum (id = %d; value = %f; min = %f)",
                    id, value, min);
-#endif
+      #endif
     }
     if ((check == err_max_r) && (getValidity(index) != VALIDITY_MAX)) {
       setFieldValidity(index, VALIDITY_MAX);
-#if (USE_LOG_WARNING == 1)
-      logDebug.add(WarningMsg, "Device: Значение больше максимума (id = %d, value = %f, max = %f)",
+      #if (USE_LOG_WARNING == 1)
+      logDebug.add(WarningMsg, "Device::setValue() Value greater than the maximum (id = %d; value = %f; max = %f)",
                    id, value, max);
-#endif
+      #endif
     }
     return check;
   }
@@ -261,10 +260,10 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
     // Формирование сообщения в архив событий об изменении параметра
     if (code && (eventType != NoneType) && !(isnan(value) || isnan(oldValue))) {
       logEvent.add(code, eventType, (EventId)id, oldValue, value, units);
-#if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Device: Изменено значение (id = %d, oldValue = %f, value = %f)",
+      #if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "Device::setValue() Changed value (id = %d; oldValue = %f; value = %f)",
                    id, oldValue, value);
-#endif
+      #endif
     }
   }
 
@@ -438,7 +437,7 @@ StatusType Device::saveParameters()
                                     countParameters_*4);
 
   if (status == StatusError)
-    logDebug.add(CriticalMsg, "Error save parameters %d", startAddrParams_);
+    logDebug.add(CriticalMsg, "Device::saveParameters() Error save parameters (startAddrParams_ = %d)", startAddrParams_);
   return status;
 }
 
@@ -448,7 +447,7 @@ StatusType Device::readParameters()
                                    (uint8_t *)buffer,
                                    countParameters_*4);
   if (status == StatusError)
-    logDebug.add(CriticalMsg, "Error read parameters %d", startAddrParams_);
+    logDebug.add(CriticalMsg, "Device::readParameters() Error read parameters (startAddrParams_ = %d)", startAddrParams_);
 
   uint16_t calcCrc = 0xFFFF;
   for (int i = 0; i < countParameters_; ++i) {
@@ -465,7 +464,7 @@ StatusType Device::readParameters()
     addr = EmParamsCrcAddrFram;
   framReadData(addr, (uint8_t*)&crc, 2);
   if (crc != calcCrc) {
-    logDebug.add(CriticalMsg, "Error CRC parameters %d", startAddrParams_);
+    logDebug.add(CriticalMsg, "Device::readParameters() Error CRC parameters (startAddrParams_ = %d)", startAddrParams_);
   }
 
   return status;

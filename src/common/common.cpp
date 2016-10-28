@@ -6,7 +6,7 @@ void *operator new(size_t size)
 {
   void *p = pvPortMalloc(size);
   if (p == NULL) {
-    logDebug.add(CriticalMsg, "Ошибка: память не выделена");
+    logDebug.add(CriticalMsg, "Error memory is not allocated");
   }
   return p;
 }

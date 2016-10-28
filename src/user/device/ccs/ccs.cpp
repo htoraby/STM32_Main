@@ -259,10 +259,9 @@ void Ccs::vsdConditionTask()
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       }
       else if (vsdCondition != vsdConditionOld) {
-#if (USE_LOG_WARNING == 1)
-        logDebug.add(WarningMsg, "Контроллер: Ошибка останова (Тип ЧРП = %d)",
-                     (int)getValue(CCS_TYPE_VSD));
-#endif
+        #if (USE_LOG_WARNING == 1)
+        logDebug.add(WarningMsg, "Ccs::vsdConditionTask() Error stoping (VSD = %d)", (int)getValue(CCS_TYPE_VSD));
+        #endif
       }
       break;
     case VSD_CONDITION_RUN:
@@ -303,10 +302,9 @@ void Ccs::vsdConditionTask()
         if ((int)getValue(CCS_VSD_CONDITION) == VSD_CONDITION_WAIT_RUN)
           setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
       } else if ((status == err_r) && (init || (status != statusOld))) {
-#if (USE_LOG_WARNING == 1)
-        logDebug.add(WarningMsg, "Контроллер: ошибка запуска (ЧРП = %d)",
-                     (int)getValue(CCS_TYPE_VSD));
-#endif
+        #if (USE_LOG_WARNING == 1)
+        logDebug.add(WarningMsg, "Ccs::vsdConditionTask() Error running (VSD = %d)", (int)getValue(CCS_TYPE_VSD));
+        #endif
       }
       statusOld = status;
       break;
@@ -336,6 +334,7 @@ void Ccs::changedCondition()
       }
       break;
     case CCS_CONDITION_RUN:
+      resetRestart();
       if (flag == CCS_CONDITION_FLAG_DELAY) {
         setNewValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
         setLedCondition(OnGreenToogleYellowLed);
@@ -433,7 +432,7 @@ void Ccs::stop(LastReasonStop reason)
 
 void Ccs::syncStart()
 {
-  logDebug.add(WarningMsg, "ЧРП. Ошибка управления (синхронизация - работа)");
+  logDebug.add(WarningMsg, "Ccs::syncStart() Error control VSD (Synchronization = Work)");
 
   resetBlock();
   setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
@@ -445,7 +444,7 @@ void Ccs::syncStart()
 
 void Ccs::syncStop()
 {
-  logDebug.add(WarningMsg, "ЧРП. Ошибка управления (синхронизация - стоп)");
+  logDebug.add(WarningMsg, "Ccs::syncStop() Error control VSD (Synchronization = Stop)");
 
   setBlock();
   setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopVsdErrControl);
@@ -1024,7 +1023,12 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_FILTER_INDUCTANCE:
     err = setValue(id, value, eventType);
+    parameters.set(VSD_LF, value, eventType);
     calcSystemInduct();
+    return err;
+  case CCS_FILTER_CAPACITY:
+    err = setValue(id, value, eventType);
+    parameters.set(VSD_CF, value, eventType);
     return err;
   case CCS_DATE_TIME_SEC:
     err = setValue(id, value, eventType);
@@ -1861,7 +1865,7 @@ void Ccs::startReboot()
 void Ccs::reboot()
 {
 #if (USE_LOG_WARNING == 1)
-  logDebug.add(WarningMsg, "Контроллер: Перезагрузка");
+  logDebug.add(WarningMsg, "Ccs::reboot() Reboot");
 #endif
   osDelay(200);
   osThreadSuspendAll();
@@ -1878,7 +1882,7 @@ void Ccs::startUpdateSoftware()
 void Ccs::updateSoftware()
 {
 #if (USE_LOG_WARNING == 1)
-  logDebug.add(WarningMsg, "Контроллер: обновление ПО");
+  logDebug.add(WarningMsg, "Ccs::updateSoftware() Update");
 #endif
   osDelay(200);
   if (updateFromUsb()) {
@@ -1894,7 +1898,7 @@ void Ccs::checkConnectMaster()
 {
   bool isConnect = novobusSlave.isConnect();
   if (!isConnect && (isConnect != isConnectMaster_)) {
-    logDebug.add(CriticalMsg, "Ccs. Master reboot");
+    logDebug.add(CriticalMsg, "Ccs::checkConnectMaster() Master reboot");
     resetAm335x();
   }
   isConnectMaster_ = isConnect;

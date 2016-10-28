@@ -10166,12 +10166,11 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>0.001</min>
 		<max>10.0</max>
-		<def>1.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>1</value>
 		<text>Коэф. входного напряжения A</text>
 		<short_text>Коэфф.коррек.напряж.Ua</short_text>
 		<form>5.2 Корректировки</form>
@@ -10187,12 +10186,11 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>0.001</min>
 		<max>10.0</max>
-		<def>1.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>1</value>
 		<text>Коэф. входного напряжения B</text>
 		<short_text>Коэфф.коррек.напряж.Ub</short_text>
 		<form>5.2 Корректировки</form>
@@ -10207,12 +10205,11 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>0.001</min>
 		<max>10.0</max>
-		<def>1.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>1</value>
 		<text>Коэф. входного напряжения C</text>
 		<short_text>Коэфф.коррек.напряж.Uc</short_text>
 		<form>5.2 Корректировки</form>
@@ -10292,7 +10289,6 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>10.0</max>
-		<def>1.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
@@ -29599,6 +29595,137 @@
 	</param>
 	<param>
 		<id>10492</id>
+		<name>VSD_LF</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_LIMITED</operation>
+		<physic>PHYSIC_INDUNCTANCE</physic>
+		<min>0.0</min>
+		<max>2500.0</max>
+		<def>200.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Индуктивность выходного фильтра (114)</text>
+		<short_text>Индуктивность выходного фильтра (114)</short_text>
+		<form>3.2.4 Сервисное меню ЧРП</form>
+		<unit>INDUNCTANCE_MKH</unit>
+		<unit_lcd>INDUNCTANCE_MKH</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Индуктивности по оси D Danfoss 1-37 Используется в проекте</comment>
+	</param>
+	<param>
+		<id>10493</id>
+		<name>VSD_CF</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CAPACITY</physic>
+		<min>0.0</min>
+		<max>1000.0</max>
+		<def>4.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Ёмкость выходного фильтра (115)</text>
+		<short_text>Ёмкость выходного фильтра (115)</short_text>
+		<unit>CAPACITY_MKF</unit>
+		<unit_lcd>CAPACITY_MKF</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Ёмкость выходного фильтра</comment>
+	</param>
+	<param>
+		<id>10494</id>
+		<name>VSD_I_LIM_ADD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>2.0</min>
+		<max>4000.0</max>
+		<def>150.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Добавка уровня токоограничения двигателя (212)</text>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10495</id>
+		<name>VSD_DECEL_I_LIM</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>5.0</min>
+		<max>100.0</max>
+		<def>25.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Токоограничение при подхвате (213)</text>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10496</id>
+		<name>VSD_ROUT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_RESISTANCE</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Суммарное выходное сопротивление (214)</text>
+		<unit>RESISTANCE_MILIOM</unit>
+		<unit_lcd>RESISTANCE_MILIOM</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10497</id>
+		<name>VSD_LOUT_X</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_INDUNCTANCE</physic>
+		<min>-2147483648.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Измеренная индуктивность (176)</text>
+		<short_text>Суммарная индуктивность на выходе ЧРП</short_text>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Суммарная индуктивность на выходе ПЧ, фазное значение</comment>
+	</param>
+	<param>
+		<id>10498</id>
+		<name>VSD_FC_OVERLOAD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>10.0</min>
+		<max>125.0</max>
+		<def>100.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Величина перегрузки по току ПЧ (112)</text>
+		<short_text>Величина перегрузки по току ПЧ (112)</short_text>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>ХХХ</format>
+		<code>0</code>
+		<comment>Величина перегрузки по току ПЧ (112)</comment>
+	</param>
+	<param>
+		<id>10499</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<code>0</code>
@@ -31273,8 +31400,6 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXX</format>
 		<code>0</code>
 		<comment>Дата время, BDC(ГГММ)</comment>
 	</param>
@@ -31290,8 +31415,6 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXX</format>
 		<code>0</code>
 		<comment>Дата время, BDC(ДДЧЧ)</comment>
 	</param>
@@ -31307,8 +31430,6 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXX</format>
 		<code>0</code>
 		<comment>Дата время, BDC(ММСС)</comment>
 	</param>

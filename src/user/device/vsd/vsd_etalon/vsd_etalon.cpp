@@ -172,7 +172,7 @@ int VsdEtalon::setCoefVoltageInAB(float value)
     return ok_r;
   }
   else
-    logDebug.add(WarningMsg, "ЧРП: Ошибка задания коэффициента входного напряжения AB (value = %d)",
+    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInAB() (value = %d)",
                  value);
   return err_r;
 }
@@ -185,7 +185,7 @@ int VsdEtalon::setCoefVoltageInBC(float value)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "ЧРП: Ошибка задания коэффициента входного напряжения BC (value = %d)",
+    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInBC() (value = %d)",
                  value);
   }
   return err_r;
@@ -199,7 +199,7 @@ int VsdEtalon::setCoefVoltageInCA(float value)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "ЧРП: Ошибка задания коэффициента входного напряжения CA (value = %d)",
+    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInCA() (value = %d)",
                  value);
   }
   return err_r;

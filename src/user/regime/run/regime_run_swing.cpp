@@ -387,7 +387,7 @@ int16_t RegimeRunSwing::setMinFreq()
   int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, 1);
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run swing: setMinFreq");
+    logDebug.add(DebugMsg, "RegimeRunSwing::setMinFreq()");
     #endif
   }
   return err;
@@ -398,7 +398,7 @@ int16_t RegimeRunSwing::returnMinFreq()
   int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ));
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run swing: returnMinFreq");
+    logDebug.add(DebugMsg, "RegimeRunSwing::returnMinFreq()");
     #endif
   }
   return err;
@@ -409,7 +409,7 @@ int16_t RegimeRunSwing::setFreqSwing()
   int16_t err = setConfirmation(VSD_FREQUENCY, freqSwing_);
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run swing: setFreqSwing");
+    logDebug.add(DebugMsg, "RegimeRunSwing::setFreqSwing()");
     #endif
   }
   return err;
@@ -420,7 +420,7 @@ int16_t RegimeRunSwing::returnFreq()
   int16_t err = setConfirmation(VSD_FREQUENCY, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_FREQ));
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run swing: returnFreq");
+    logDebug.add(DebugMsg, "RegimeRunSwing::returnFreq()");
     #endif
   }
   return err;
@@ -431,7 +431,7 @@ int16_t RegimeRunSwing::setTimeDispersal()
   int16_t err = setConfirmation(VSD_TIMER_DISPERSAL, (((1 / freqSwing_) * 10 * parameters.get(VSD_MOTOR_FREQUENCY)) / freqSwing_));
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run swing: setTimeDispersal");
+    logDebug.add(DebugMsg, "RegimeRunSwing::setTimeDispersal()");
     #endif
   }
   return err;
@@ -442,7 +442,7 @@ int16_t RegimeRunSwing::returnTimeDispersal()
   int16_t err = setConfirmation(VSD_TIMER_DISPERSAL, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_TIME_UP));
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run swing: returnTimeDispersal");
+    logDebug.add(DebugMsg, "RegimeRunSwing::returnTimeDispersal()");
     #endif
   }
   return err;
@@ -477,7 +477,7 @@ int16_t RegimeRunSwing::setU1()
   err = setConfirmation(point, voltageSwing);
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run swing: setU1");
+    logDebug.add(DebugMsg, "RegimeRunSwing::setU1()");
     #endif
   }
   return err;
@@ -507,7 +507,7 @@ int16_t RegimeRunSwing::returnU1()
   err = setConfirmation(point, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U1));
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run swing: returnU1");
+    logDebug.add(DebugMsg, "RegimeRunSwing::returnU1()");
     #endif
   }
   return err;
@@ -542,7 +542,7 @@ int16_t RegimeRunSwing::setU2()
   err = setConfirmation(point, voltageSwing);
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run swing: setU2");
+    logDebug.add(DebugMsg, "RegimeRunSwing::setU2()");
     #endif
   }
   return err;
@@ -572,7 +572,7 @@ int16_t RegimeRunSwing::returnU2()
   err = setConfirmation(point, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U2));
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run swing: returnU2");
+    logDebug.add(DebugMsg, "RegimeRunSwing::returnU2()");
     #endif
   }
   return err;
@@ -584,7 +584,7 @@ int16_t RegimeRunSwing::setRotation()
   err = setConfirmation(VSD_ROTATION, !rotationSave_);
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run swing: setRotation");
+    logDebug.add(DebugMsg, "RegimeRunSwing::setRotation()");
     #endif
   }
   return err;
@@ -596,7 +596,7 @@ int16_t RegimeRunSwing::returnRotation()
   err = setConfirmation(VSD_ROTATION, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_ROTATION));
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
-    logDebug.add(DebugMsg, "Run swing: returnRotation");
+    logDebug.add(DebugMsg, "RegimeRunSwing::returnRotation()");
     #endif
   }
   return err;
