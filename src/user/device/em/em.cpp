@@ -37,7 +37,7 @@ StatusType Em::sendUart(uint8_t *data, int count)
   StatusType status = StatusOk;
   if (uartWriteData(EM_UART, data, count) == StatusError) {
 #if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Счётчик: ошибка отправки данных (EM_UART = %d)",
+    logDebug.add(WarningMsg, "Em::sendUart() (EM_UART = %d)",
                  EM_UART);
 #endif
     status = StatusError;

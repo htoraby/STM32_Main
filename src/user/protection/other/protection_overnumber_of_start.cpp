@@ -61,7 +61,7 @@ void ProtectionOvernumberOfStart::processingStateRun()
   if (isModeBlock()) {
     if (alarm_&& !restart_ && ksu.isRestart()) {
 #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Защиты: Срабатывание --> блок (idMode = %d, alarm = %d, tripDelay = %d, isModeBlock = %d)",
+      logDebug.add(DebugMsg, "ProtectionOvernumberOfStart::processingStateRun() Trigger --> Block (idMode = %d, alarm = %d, tripDelay = %d, isModeBlock = %d)",
                    idMode_, alarm_, tripDelay_, isModeBlock());
 #endif
       addEventReactionProt();

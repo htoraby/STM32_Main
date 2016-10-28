@@ -193,7 +193,7 @@ void Protection::processingStateRunning()
       }
       else if (ksu.getValue(CCS_RUN_TIME) >= activDelay_) {
 #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Защиты: Активация (idMode = %d)",
+        logDebug.add(DebugMsg, "Protection::processingStateRunning() Activation (idMode = %d)",
                      idMode_);
 #endif
         setStateRun();
@@ -220,7 +220,7 @@ void Protection::processingStateRun()       // Состояние работа
           if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();         // Зафиксировали время начала задержки срабатывания
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "Защиты: Начало срабатывания (idMode = %d, alarm = %d, tripDelay = %d, isModeBlock = %d)",
+            logDebug.add(DebugMsg, "Protection::processingStateRun() Start tripping (idMode = %d, alarm = %d, tripDelay = %d, isModeBlock = %d)",
                          idMode_, alarm_, tripDelay_, isModeBlock());
 #endif
             delay_ = true;
@@ -228,7 +228,7 @@ void Protection::processingStateRun()       // Состояние работа
           else {
             if (ksu.getSecFromCurTime(timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
 #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Защиты: Срабатывание --> блок (idMode = %d, alarm = %d, tripDelay = %d, isModeBlock = %d)",
+              logDebug.add(DebugMsg, "Protection::processingStateRun() Trigger -> Block (idMode = %d, alarm = %d, tripDelay = %d, isModeBlock = %d)",
                          idMode_, alarm_, tripDelay_, isModeBlock());
 #endif
               addEventReactionProt();
@@ -250,7 +250,7 @@ void Protection::processingStateRun()       // Состояние работа
           if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();         // Зафиксировали время начала задержки срабатывания
 #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Защиты: Начало срабатывания (idMode = %d, alarm = %d, tripDelay = %d, isModeRestart = %d)",
+              logDebug.add(DebugMsg, "Protection::processingStateRun() Start tripping (idMode = %d, alarm = %d, tripDelay = %d, isModeRestart = %d)",
                          idMode_, alarm_, tripDelay_, isModeRestart());
 #endif
             delay_ = true;
@@ -258,7 +258,7 @@ void Protection::processingStateRun()       // Состояние работа
           else if (ksu.getSecFromCurTime(timer_) >= tripDelay_) { // Двигатель - работа; Режим - авто; Защита - АПВ; Параметр - не в норме; Срабатывание - конец;
             if (restartCount_ >= restartLimit_) {
 #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Защиты: Блокировка по числу АПВ (idMode = %d, tripDelay = %d, restartCount = %d, restartLimit = %d)",
+              logDebug.add(DebugMsg, "Protection::processingStateRun() Lock in the number of AR (idMode = %d, tripDelay = %d, restartCount = %d, restartLimit = %d)",
                          idMode_, tripDelay_, restartCount_, restartLimit_);
 #endif
               addEventReactionProt();
@@ -271,7 +271,7 @@ void Protection::processingStateRun()       // Состояние работа
             }
             else {
 #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Защиты: Срабатывание --> АПВ (idMode = %d, alarm = %d, tripDelay = %d, isModeRestart = %d)",
+              logDebug.add(DebugMsg, "Protection::processingStateRun() Trigger -> AR (idMode = %d, alarm = %d, tripDelay = %d, isModeRestart = %d)",
                          idMode_, alarm_, tripDelay_, isModeRestart());
 #endif
               addEventReactionProt();
@@ -293,14 +293,14 @@ void Protection::processingStateRun()       // Состояние работа
           if ((timer_ == 0) && tripDelay_) { // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();          // Зафиксировали время начала задержки срабатывания
 #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Защиты: Начало срабатывания (idMode = %d, alarm = %d, tripDelay = %d, isModeOn = %d)",
+              logDebug.add(DebugMsg, "Protection::processingStateRun() Start tripping (idMode = %d, alarm = %d, tripDelay = %d, isModeOn = %d)",
                          idMode_, alarm_, tripDelay_, isModeOn());
 #endif
             delay_ = true;
           }
           else if (timer_ >= tripDelay_) {  // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - конец;
 #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Защиты: Срабатывание --> Стоп (idMode = %d, alarm = %d, tripDelay = %d)",
+              logDebug.add(DebugMsg, "Protection::processingStateRun() Trigger --> Stop (idMode = %d, alarm = %d, tripDelay = %d)",
                          idMode_, alarm_, tripDelay_);
 #endif
             addEventReactionProt();
@@ -324,14 +324,14 @@ void Protection::processingStateRun()       // Состояние работа
           if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();         // Зафиксировали время начала задержки срабатывания
 #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Защиты: Начало срабатывания (idMode = %d, alarm = %d, tripDelay = %d, isManualMode = %d)",
+              logDebug.add(DebugMsg, "Protection::processingStateRun() Start tripping (idMode = %d, alarm = %d, tripDelay = %d, isManualMode = %d)",
                          idMode_, alarm_, tripDelay_, ksu.isManualMode());
 #endif
             delay_ = true;
           }
           else if (ksu.getSecFromCurTime(timer_) >= tripDelay_) {   // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - конец;
 #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Защиты: Срабатывание --> Стоп ручной(idMode = %d, alarm = %d, tripDelay = %d)",
+              logDebug.add(DebugMsg, "Protection::processingStateRun() Trigger --> Stop manual (idMode = %d, alarm = %d, tripDelay = %d)",
                          idMode_, alarm_, tripDelay_);
 #endif
             addEventReactionProt();
@@ -383,7 +383,7 @@ void Protection::proccessingStateStopping()
   else {
     uint32_t state = parameters.get(CCS_CONDITION);
     if (state > CCS_CONDITION_RUN) {
-      logDebug.add(CriticalMsg, "prot: unknown state motor %d, idMode = %d, line = %d",
+      logDebug.add(CriticalMsg, "Protection::proccessingStateStopping(): unknown state motor %d, idMode = %d, line = %d",
                    state, idMode_, __LINE__);
     }
   }
@@ -421,7 +421,7 @@ void Protection::proccessingStateStop()
     else {                                  // Двигатель - работа; Режим - неизвестный
       uint32_t controlMode = parameters.get(CCS_WORKING_MODE);
       if (controlMode > CCS_WORKING_MODE_PROGRAM) {
-        logDebug.add(CriticalMsg, "prot: unknown control mode %d, idMode = %d, line = %d",
+        logDebug.add(CriticalMsg, "Protection::proccessingStateStop() unknown control mode %d, idMode = %d, line = %d",
                      controlMode, idMode_, __LINE__);
       }
     }
@@ -434,7 +434,7 @@ void Protection::proccessingStateStop()
           if (!prevent_) {                  // Параметр защиты в норме
             if (timer_ == 0) {              //
               timer_ = ksu.getTime();       // Зафиксировали время начала отсёта АПВ
-              logDebug.add(DebugMsg, "prot: time restart %d", idMode_);
+              logDebug.add(DebugMsg, "Protection::proccessingStateStop() time restart %d", idMode_);
               ksu.setRestart();
             }
             else {
@@ -490,7 +490,7 @@ void Protection::proccessingStateStop()
   else {
     uint32_t state = parameters.get(CCS_CONDITION);
     if (state > CCS_CONDITION_RUN) {
-      logDebug.add(CriticalMsg, "prot: unknown state motor %d, idMode = %d, line = %d",
+      logDebug.add(CriticalMsg, "Protection::proccessingStateStop() unknown state motor %d, idMode = %d, line = %d",
                    state, idMode_, __LINE__);
     }
   }

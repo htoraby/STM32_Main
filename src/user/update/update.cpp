@@ -172,20 +172,19 @@ static bool saveSwInFlashExt(char *fileName)
         }
       }
       else {
-        logDebug.add(WarningMsg, "Обновление: Ошибка в загаловке файла прошивки (%d %d %d %d %d)",
+        logDebug.add(WarningMsg, "update.saveSwInFlashExt() The error in anything of the firmware file (readSize = %d; size = %d; Production = %d; Equip = %d; %d)",
                      readSize, imageHeader.size, imageHeader.codeProduction,
                      imageHeader.codeEquip, imageHeader.subCodeEquip);
         ksu.setError(HeaderFwUpdateErr);
       }
     } else {
-      logDebug.add(WarningMsg, "Обновление: Ошибка размера файла прошивки (%d)",
-                   file.fsize);
+      logDebug.add(WarningMsg, "update.saveSwInFlashExt() Error the size of the firmware file (file.fsize = %d)", file.fsize);
       ksu.setError(HeaderFwUpdateErr);
     }
     f_close(&file);
   }
   else {
-    logDebug.add(WarningMsg, "Обновление: Ошибка открытия файла прошивки");
+    logDebug.add(WarningMsg, "update.saveSwInFlashExt() Error opening firmware file");
     ksu.setError(OpenFileUsbErr);
   }
 
@@ -197,7 +196,7 @@ bool updateFromUsb()
   static char fileName[_MAX_LFN] = {0};
 
   if (usbState != USB_READY) {
-    logDebug.add(WarningMsg, "Обновление: Не подключен USB накопитель");
+    logDebug.add(WarningMsg, "update.updateFromUsb() Not connected USB drive");
     ksu.setError(NoConnectionUsbErr);
     return false;
   }

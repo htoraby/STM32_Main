@@ -497,7 +497,7 @@ int16_t RegimeRunSkipResonantFreq::setMinFreq()
   int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, 1);
   if (err == 1) {
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Run skip: setMinFreq");
+      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setMinFreq()");
     #endif
   }
   return err;
@@ -508,7 +508,7 @@ int16_t RegimeRunSkipResonantFreq::setBeginFreq()
   int16_t err = setConfirmation(VSD_FREQUENCY, tempBeginFreq_);
   if (err == 1) {
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Run skip: setBeginFreq");
+      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setBeginFreq()");
     #endif
   }
   return err;
@@ -519,7 +519,7 @@ int16_t RegimeRunSkipResonantFreq::setTempSkip()
   int16_t err = setConfirmation(VSD_TIMER_DISPERSAL, time_);
   if (err == 1) {
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Run skip: setTempSkip");
+      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setTempSkip()");
     #endif
   }
   return err;
@@ -530,7 +530,7 @@ int16_t RegimeRunSkipResonantFreq::setTempDownSkip()
   int16_t err = setConfirmation(VSD_TIMER_DELAY, time_);
   if (err == 1) {
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Run skip: setTempDownSkip");
+      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setTempDownSkip()");
     #endif
   }
   return err;
@@ -543,13 +543,13 @@ int16_t RegimeRunSkipResonantFreq::returnTempDown()
     err = setConfirmation(VSD_TIMER_DELAY_FIX_SPEED, parameters.get(CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP));
     if (err == 1) {
       #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Run skip: returnTempDown");
+        logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnTempDown()");
       #endif
     }
   }
   if (err == 1) {
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Run skip: returnTempDown");
+      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnTempDown()");
     #endif
   }
   return err;
@@ -560,7 +560,7 @@ int16_t RegimeRunSkipResonantFreq::setEndFreq()
   int16_t err = setConfirmation(VSD_FREQUENCY, tempEndFreq_);
   if (err == 1) {
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Run skip: setEndFreq");
+      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setEndFreq()");
     #endif
   }
   return err;
@@ -573,13 +573,13 @@ int16_t RegimeRunSkipResonantFreq::returnTemp()
     err = setConfirmation(VSD_TIMER_DISP_FIX_SPEED, parameters.get(CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP));
     if (err == 1) {
       #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "Run skip: returnTemp");
+        logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnTemp()");
       #endif
     }
   }
   if (err == 1) {
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Run skip: returnTemp");
+      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnTemp()");
     #endif
   }
   return err;
@@ -593,7 +593,7 @@ int16_t RegimeRunSkipResonantFreq::returnFreq()
   }
   if (err == 1) {
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Run skip: returnFreq");
+      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnFreq()");
     #endif
   }
   return err;
@@ -604,7 +604,7 @@ int16_t RegimeRunSkipResonantFreq::returnMinFreq()
   int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, parameters.get(CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ));
   if (err == 1) {
     #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Run skip: returnMinFreq");
+      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnMinFreq()");
     #endif
   }
   return err;

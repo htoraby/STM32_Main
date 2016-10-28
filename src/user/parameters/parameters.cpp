@@ -33,7 +33,7 @@ void Parameters::task()
     if (osSemaphoreWait(semaphoreId_, 1) != osEventTimeout) {
       time = 0;
 #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Parameter: Сохранение параметров");
+      logDebug.add(DebugMsg, "Parameters::task()");
 #endif
       save();
     } else {
@@ -279,7 +279,7 @@ float Parameters::checkZero(unsigned short id, bool reset, float value)
         if (parameters.getValueDef(id) == 0) {
           if (parameters.getMin(id) == 0) {
 #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Параметры: Параметр не прошел проверку на 0 (id = %d)");
+              logDebug.add(DebugMsg, "Parameters::checkZero() (id = %d)");
 #endif
             return 1;
           }
