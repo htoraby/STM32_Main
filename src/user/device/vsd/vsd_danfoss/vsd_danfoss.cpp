@@ -160,7 +160,7 @@ int VsdDanfoss::setMotorCurrent(float value)
 
 int VsdDanfoss::setMotorVoltage(float value)
 {
-  if (!Vsd::setMotorVoltage(value)) {
+  if (!setValue(VSD_MOTOR_VOLTAGE, value)) {
     value = value / parameters.get(CCS_COEF_TRANSFORMATION);
     writeToDevice(VSD_MOTOR_VOLTAGE, value);
     setMotorConfig();

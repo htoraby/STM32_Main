@@ -27,10 +27,9 @@ Vsd::~Vsd()
 int Vsd::setMotorType(float value)
 {
   if (setValue(VSD_MOTOR_TYPE, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setMotorType() (value = %d)",
-                 value);
-#endif
+  #if (USE_LOG_WARNING == 1)
+  logDebug.add(WarningMsg, "Vsd::setMotorType() (value = %d)", value);
+  #endif
     return err_r;
   }
   return ok_r;
@@ -53,18 +52,6 @@ int Vsd::setMotorCurrent(float value)
   if (setValue(VSD_MOTOR_CURRENT, value)) {
 #if (USE_LOG_WARNING == 1)
     logDebug.add(WarningMsg, "Vsd::setMotorCurrent() (value = %d)",
-                 value);
-#endif
-    return err_r;
-  }
-  return ok_r;
-}
-
-int Vsd::setMotorVoltage(float value)
-{
-  if (setValue(VSD_MOTOR_VOLTAGE, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setMotorVoltage() (value = %d)",
                  value);
 #endif
     return err_r;

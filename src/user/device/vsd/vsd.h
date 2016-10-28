@@ -70,13 +70,6 @@ public:
   virtual int setMotorCurrent(float value);
 
   /*!
-   * \brief setMotorVoltage
-   * \param value
-   * \return
-   */
-  virtual int setMotorVoltage(float value);
-
-  /*!
    * \brief setMotorSpeed
    * \param value
    * \return
