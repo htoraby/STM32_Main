@@ -25,9 +25,10 @@ void ScadaNovomet::calcParamsTask()
       }
     }
 
-    // 3
     uint16_t value = 0;
     unTypeData data;
+
+    // 3
     if (ksu.isWorkMotor())
       value = 1;
     if (ksu.isDelay())
@@ -497,35 +498,133 @@ int ScadaNovomet::setNewValue(ScadaParameter *param)
     return parameters.set(param->id, param->value.float_t, RemoteType);
   }
 
-  //346-348, 634-636
-  if (((param->address >= 346) && (param->address <= 348)) ||
-      ((param->address >= 634) && (param->address <= 636))) {
-    unTypeData value;
-    value.uint32_t = param->value.float_t;
-    time_t time = parameters.getU32(CCS_DATE_TIME);
-    tm dateTime = *localtime(&time);
+  unTypeData value;
 
-    switch (param->address) {
-    case 634: case 346:
-      dateTime.tm_year = value.char_t[1] + 100;
-      if (value.uint16_t[0] > 0)
-        dateTime.tm_mon = value.char_t[0] - 1;
-      break;
-    case 635: case 347:
-      dateTime.tm_mday = value.char_t[1];
-      if(dateTime.tm_mday == 0)
-        dateTime.tm_mday = 1;
-      dateTime.tm_hour = value.char_t[0];
-      break;
-    case 636: case 348:
-      dateTime.tm_min = value.char_t[1];
-      dateTime.tm_sec = value.char_t[0];
-      break;
+  //215
+  if (param->address >= 215) {
+    value.float_t = -1;
+    switch (int(param->value.float_t)) {
+    case 0:  value.float_t = TYPE_DHS_NONE; break;
+    case 1:  value.float_t = TYPE_DHS_NOVOMET; break;
+    case 12: value.float_t = TYPE_DHS_ALMAZ; break;
+    case 7:  value.float_t = TYPE_DHS_BORETS_1; break;
+    case 2:  value.float_t = TYPE_DHS_ELEKTON_3; break;
+    case 6:  value.float_t = TYPE_DHS_ETALON; break;
+    case 8:  value.float_t = TYPE_DHS_IRZ; break;
+    case 9:  value.float_t = TYPE_DHS_ORION; break;
+    case 11: value.float_t = TYPE_DHS_PIC_V2; break;
+    case 10: value.float_t = TYPE_DHS_SCAD; break;
+    case 3:  value.float_t = TYPE_DHS_SCAN; break;
+    case 5:  value.float_t = TYPE_DHS_TRIOL; break;
+    case 4:  value.float_t = TYPE_DHS_ZENIT; break;
     }
+    if (value.float_t != -1) {
+      parameters.set(CCS_DHS_TYPE, value.float_t, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
 
-    time = mktime(&dateTime);
-    parameters.set(CCS_DATE_TIME, (uint32_t)time, RemoteType);
+  // 560
+  if (param->address == 560) {
+    parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction, RemoteType);
+    parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction, RemoteType);
+    parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction, RemoteType);
+    parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction, RemoteType);
+    parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction, RemoteType);
     return ok_r;
+  }
+
+  // 561
+  if (param->address == 561) {
+    if (param->value.float_t)
+      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::EachRunAction, RemoteType);
+    else
+      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
+  }
+
+  // 562
+  if (param->address == 562) {
+    if (param->value.float_t)
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::EachRunAction, RemoteType);
+    else
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
+  }
+
+  // 563
+  if (param->address == 563) {
+    if (param->value.float_t)
+      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::EachRunAction, RemoteType);
+    else
+      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
+  }
+
+  // 601
+  if (param->address == 601) {
+    value.float_t = -1;
+    switch (int(param->value.float_t)) {
+    case 0: value.float_t = 0; break;
+    case 1: value.float_t = 1; break;
+    case 2: value.float_t = 4; break;
+    case 3: value.float_t = 6; break;
+    case 5: value.float_t = 11; break;
+    }
+    if (value.float_t != -1) {
+      parameters.set(CCS_AI_1_PARAMETER, value.float_t, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
+  // 622
+  if (param->address == 622) {
+    value.float_t = -1;
+    switch (int(param->value.float_t)) {
+    case 0: value.float_t = 0; break;
+    case 1: value.float_t = 1; break;
+    case 2: value.float_t = 4; break;
+    case 3: value.float_t = 6; break;
+    case 5: value.float_t = 11; break;
+    }
+    if (value.float_t != -1) {
+      parameters.set(CCS_AI_2_PARAMETER, value.float_t, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
+  // 643
+  if (param->address == 643) {
+    value.float_t = -1;
+    switch (int(param->value.float_t)) {
+    case 0: value.float_t = 0; break;
+    case 1: value.float_t = 1; break;
+    case 2: value.float_t = 4; break;
+    case 3: value.float_t = 6; break;
+    case 5: value.float_t = 11; break;
+    }
+    if (value.float_t != -1) {
+      parameters.set(CCS_AI_3_PARAMETER, value.float_t, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
+  // 664
+  if (param->address == 664) {
+    value.float_t = -1;
+    switch (int(param->value.float_t)) {
+    case 0: value.float_t = 0; break;
+    case 1: value.float_t = 1; break;
+    case 2: value.float_t = 4; break;
+    case 3: value.float_t = 6; break;
+    case 5: value.float_t = 11; break;
+    }
+    if (value.float_t != -1) {
+      parameters.set(CCS_AI_4_PARAMETER, value.float_t, RemoteType);
+      return ok_r;
+    }
+    return err_r;
   }
 
   return err_r;

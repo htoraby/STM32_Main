@@ -1633,7 +1633,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>-1</id>
 		<address>147</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -7103,7 +7103,7 @@
 	<param>
 		<id>0</id>
 		<address>664</address>
-		<operation>OPERATION_READ</operation>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
