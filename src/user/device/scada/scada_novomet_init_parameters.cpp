@@ -1635,7 +1635,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[135].command          = OPERATION_ERROR;
   scadaParameters_[135].value.float_t    = 0;
   // Время записи аварийных записей СУ
-  scadaParameters_[136].id               = 0;
+  scadaParameters_[136].id               = -1;
   scadaParameters_[136].address          = 147;
   scadaParameters_[136].operation        = OPERATION_WRITE;
   scadaParameters_[136].physic           = PHYSIC_TIME;
@@ -7145,7 +7145,7 @@ void ScadaNovomet::initParameters()
   // Сигнал на аналоговом входе 4
   scadaParameters_[595].id               = 0;
   scadaParameters_[595].address          = 664;
-  scadaParameters_[595].operation        = OPERATION_READ;
+  scadaParameters_[595].operation        = OPERATION_WRITE;
   scadaParameters_[595].physic           = PHYSIC_NUMERIC;
   scadaParameters_[595].unit             = 0;
   scadaParameters_[595].typeData         = TYPE_DATA_UINT16;
