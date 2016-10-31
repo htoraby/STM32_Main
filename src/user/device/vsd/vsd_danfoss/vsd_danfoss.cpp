@@ -1719,7 +1719,7 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
     return setMotorVoltage(value, parameters.get(CCS_COEF_TRANSFORMATION), eventType);
 
   case VSD_MOTOR_CURRENT:
-    return setMotorCurrent(value);
+    return setMotorCurrent(value, eventType);
 
   case VSD_FREQUENCY:
     return ksu.setFreq(value, eventType, false);
