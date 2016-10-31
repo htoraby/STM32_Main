@@ -148,7 +148,17 @@ public:
   int setMotorType(float value);
   int setMotorSpeed(float value);
   int setMotorCurrent(float value);
-  int setMotorVoltage(float value);
+
+  /*!
+   * \brief setMotorVoltage функция задания номинального напряжения двигателя
+   * \param value паспортное номинальное значение напряжения двигателя
+   * \param coef коэффициент трансформации, т.к. ЧРП не знает о существовании
+   * трансформатора, в ЧРП записываем value / coef
+   * \param eventType флаг формирования сообщения
+   * \return
+   */
+  int setMotorVoltage(float value, float coef, EventType eventType);
+
   int setMotorResistanceStator(float value);
   int setCurrentLim(float curLimit, float nomCurMtr, float coefTrans);
   void setMotorConfig();

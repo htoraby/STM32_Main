@@ -144,16 +144,22 @@ int VsdDanfoss::setMotorCurrent(float value)
   }
 }
 
-int VsdDanfoss::setMotorVoltage(float value)
+int VsdDanfoss::setMotorVoltage(float value, float coef, EventType eventType)
 {
-  if (!setValue(VSD_MOTOR_VOLTAGE, value)) {
-    value = value / parameters.get(CCS_COEF_TRANSFORMATION);
+  if (coef <= 0) {                                    // Защиты от деления на 0
+    logDebug.add(CriticalMsg, "VsdDanfoss::setMotorVoltage() (coef = %d)", coef);
+    coef = 1;
+  }
+
+  if (!setValue(VSD_MOTOR_VOLTAGE, value, eventType)) {
+    value = value / coef;
     writeToDevice(VSD_MOTOR_VOLTAGE, value);
     setMotorConfig();
+    ksu.calcTransRecommendedTapOff();
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setMotorVoltage");
+    logDebug.add(WarningMsg, "VsdDanfoss::setMotorVoltage() (value = %d)", value);
     return err_r;
   }
 }
@@ -1709,14 +1715,8 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
   case VSD_MOTOR_CONTROL:
     return setVsdControl(value);
 
-  case VSD_MOTOR_VOLTAGE:
-    if (!setMotorVoltage(value)) {
-      ksu.calcTransRecommendedTapOff();
-      // TODO: Сообщение о правильности отпайки
-      return ok_r;
-    }
-    else
-      return err_r;
+  case VSD_MOTOR_VOLTAGE:                             // Задание номинального напряжения двигателя
+    return setMotorVoltage(value, parameters.get(CCS_COEF_TRANSFORMATION), eventType);
 
   case VSD_MOTOR_CURRENT:
     return setMotorCurrent(value);

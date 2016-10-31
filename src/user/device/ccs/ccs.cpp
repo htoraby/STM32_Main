@@ -953,7 +953,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     vsd->setLimitsMotor();
     vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT));
     parameters.set(VSD_MOTOR_VOLTAGE, parameters.get(VSD_MOTOR_VOLTAGE));
-    // vsd->setMotorVoltage(parameters.get(VSD_MOTOR_VOLTAGE));
     return err;
   case CCS_TRANS_VOLTAGE_SHORT_CIRCUIT:
     err = setValue(id, value, eventType);
@@ -967,7 +966,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     vsd->setLimitsMotor();
     vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT));
     parameters.set(VSD_MOTOR_VOLTAGE, parameters.get(VSD_MOTOR_VOLTAGE));
-    // vsd->setMotorVoltage(parameters.get(VSD_MOTOR_VOLTAGE));
     return err;
   case CCS_TRANS_NOMINAL_VOLTAGE_INPUT:     // Номинальное напряжение питающей сети
     err = setValue(id, value, eventType);
@@ -1009,7 +1007,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     vsd->setLimitsMotor();
     vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT));
     parameters.set(VSD_MOTOR_VOLTAGE, parameters.get(VSD_MOTOR_VOLTAGE));
-    // vsd->setMotorVoltage(parameters.get(VSD_MOTOR_VOLTAGE));
     parameters.set(VSD_TRANS_VOLTAGE_TAP_OFF, value, eventType); // Задаём в ЧРП напряжение отпайки
     return err;
   case CCS_MOTOR_INDUCTANCE:
