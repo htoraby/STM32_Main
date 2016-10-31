@@ -150,6 +150,11 @@ public:
   int setMotorCurrent(float value, EventType eventType = NoneType);
 
   /*!
+   * \brief setLimitsMotor функция задания пределов параметров двигателя
+   */
+  void setLimitsMotor();
+
+  /*!
    * \brief setMotorVoltage функция задания номинального напряжения двигателя
    * \param value паспортное номинальное значение напряжения двигателя
    * \param coef коэффициент трансформации, т.к. ЧРП не знает о существовании

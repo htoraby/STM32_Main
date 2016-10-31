@@ -202,7 +202,7 @@ void Vsd::initParameters()
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].value.float_t                       = 380.0;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].max                                 = 5000.0;
+  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].def                                 = 380.0;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].code                                = 13;
@@ -214,7 +214,7 @@ void Vsd::initParameters()
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].value.float_t                       = 26.5;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].max                                 = 9999.0;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].max                                 = 9999.9;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].def                                 = 26.5;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].code                                = 13;

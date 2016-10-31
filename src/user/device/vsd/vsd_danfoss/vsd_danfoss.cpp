@@ -144,6 +144,14 @@ int VsdDanfoss::setMotorCurrent(float value, EventType eventType)
   }
 }
 
+void VsdDanfoss::setLimitsMotor()
+{
+  setMin(VSD_MOTOR_CURRENT, dm_->getFieldMinimum(dm_->getIndexAtId(VSD_MOTOR_CURRENT)) / parameters.get(CCS_COEF_TRANSFORMATION));
+  setMax(VSD_MOTOR_CURRENT, dm_->getFieldMaximum(dm_->getIndexAtId(VSD_MOTOR_CURRENT)) / parameters.get(CCS_COEF_TRANSFORMATION));
+  setMin(VSD_MOTOR_VOLTAGE, dm_->getFieldMinimum(dm_->getIndexAtId(VSD_MOTOR_VOLTAGE)) * parameters.get(CCS_COEF_TRANSFORMATION));
+  setMax(VSD_MOTOR_VOLTAGE, dm_->getFieldMaximum(dm_->getIndexAtId(VSD_MOTOR_VOLTAGE)) * parameters.get(CCS_COEF_TRANSFORMATION));
+}
+
 int VsdDanfoss::setMotorVoltage(float value, float coef, EventType eventType)
 {
   if (coef <= 0) {                                    // Защиты от деления на 0

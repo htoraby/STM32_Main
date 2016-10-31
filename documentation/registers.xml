@@ -20596,7 +20596,7 @@
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>0.0</min>
-		<max>5000.0</max>
+		<max>999999.0</max>
 		<def>380.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -20617,7 +20617,7 @@
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<min>0.0</min>
-		<max>9999.0</max>
+		<max>9999.9</max>
 		<def>26.5</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>

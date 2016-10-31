@@ -235,6 +235,8 @@ public:
    * \return
    */
   int setMotorVoltage(float value, float coef, EventType eventType = NoneType);
+
+
   void setLimitsMotor();
 
   // РЕЖИМЫ ПУСКА
