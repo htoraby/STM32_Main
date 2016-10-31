@@ -131,9 +131,9 @@ int VsdDanfoss::setMotorSpeed(float value)
   }
 }
 
-int VsdDanfoss::setMotorCurrent(float value)
+int VsdDanfoss::setMotorCurrent(float value, EventType eventType)
 {
-  if (!Vsd::setMotorCurrent(value)) {
+  if (!Vsd::setMotorCurrent(value, eventType)) {
     value = value * parameters.get(CCS_COEF_TRANSFORMATION);
     setMotorConfig();
     return ok_r;

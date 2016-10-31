@@ -951,7 +951,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     calcSystemInduct();
     vsd->setLimitsMotor();
-    vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT));
+    vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT), eventType);
     parameters.set(VSD_MOTOR_VOLTAGE, parameters.get(VSD_MOTOR_VOLTAGE));
     return err;
   case CCS_TRANS_VOLTAGE_SHORT_CIRCUIT:
@@ -964,7 +964,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     calcSystemInduct();                     // Пересчитываем индуктивность системы
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
     vsd->setLimitsMotor();
-    vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT));
+    vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT), eventType);
     parameters.set(VSD_MOTOR_VOLTAGE, parameters.get(VSD_MOTOR_VOLTAGE));
     return err;
   case CCS_TRANS_NOMINAL_VOLTAGE_INPUT:     // Номинальное напряжение питающей сети

@@ -67,7 +67,7 @@ public:
    * \param value
    * \return
    */
-  virtual int setMotorCurrent(float value);
+  virtual int setMotorCurrent(float value, EventType eventType = NoneType);
 
   /*!
    * \brief setMotorSpeed

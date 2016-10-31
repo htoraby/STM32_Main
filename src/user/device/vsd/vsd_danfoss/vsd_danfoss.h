@@ -147,7 +147,7 @@ public:
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
   int setMotorSpeed(float value);
-  int setMotorCurrent(float value);
+  int setMotorCurrent(float value, EventType eventType = NoneType);
 
   /*!
    * \brief setMotorVoltage функция задания номинального напряжения двигателя

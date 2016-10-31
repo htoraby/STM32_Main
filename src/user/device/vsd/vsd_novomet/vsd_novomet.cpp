@@ -158,9 +158,9 @@ int VsdNovomet::setMotorFrequency(float value)
   return err_r;
 }
 
-int VsdNovomet::setMotorCurrent(float value)
+int VsdNovomet::setMotorCurrent(float value, EventType eventType)
 {
-  if (!Vsd::setMotorCurrent(value)) {
+  if (!Vsd::setMotorCurrent(value, eventType)) {
     value = value * parameters.get(CCS_COEF_TRANSFORMATION);
     writeToDevice(VSD_MOTOR_CURRENT, value);
     return ok_r;

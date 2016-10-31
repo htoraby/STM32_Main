@@ -47,9 +47,9 @@ int Vsd::setMotorFrequency(float value)
   return ok_r;
 }
 
-int Vsd::setMotorCurrent(float value)
+int Vsd::setMotorCurrent(float value, EventType eventType)
 {
-  if (setValue(VSD_MOTOR_CURRENT, value)) {
+  if (setValue(VSD_MOTOR_CURRENT, value, eventType)) {
 #if (USE_LOG_WARNING == 1)
     logDebug.add(WarningMsg, "Vsd::setMotorCurrent() (value = %d)",
                  value);
