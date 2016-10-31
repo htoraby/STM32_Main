@@ -20602,7 +20602,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>380.0</value>
 		<text>Номинальное напряжение</text>
-		<short_text>Номинальное напряжение</short_text>
+		<short_text>Ном. напряжение двиг.</short_text>
 		<form>3.1 Двигатель</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -20623,7 +20623,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>26.5</value>
 		<text>Номинальный ток</text>
-		<short_text>Номинальный ток</short_text>
+		<short_text>Ном. ток двиг.</short_text>
 		<form>3.1 Двигатель</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
@@ -20644,7 +20644,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>2895.0</value>
 		<text>Номинальная скорость</text>
-		<short_text>Номинальная скорость</short_text>
+		<short_text>Ном. скорость двиг.</short_text>
 		<form>3.1 Двигатель</form>
 		<unit>RPM_RPM</unit>
 		<unit_lcd>RPM_RPM</unit_lcd>
@@ -20665,7 +20665,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>50.0</value>
 		<text>Номинальная частота</text>
-		<short_text>Номинальная частота</short_text>
+		<short_text>Ном. частота двиг.</short_text>
 		<form>3.1 Двигатель</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -20686,7 +20686,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.85</value>
 		<text>Номин.коэф.мощ.</text>
-		<short_text>Номин.коэф.мощ.</short_text>
+		<short_text>Ном. коэф. мощ. двиг.</short_text>
 		<form>3.1 Двигатель</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
