@@ -155,6 +155,16 @@ public:
   void setLimitsMotor();
 
   /*!
+   * \brief setLimitsMotorCurrent
+   */
+  void setLimitsMotorCurrent();
+
+  /*!
+   * \brief setLimitsMotorVoltage
+   */
+  void setLimitsMotorVoltage();
+
+  /*!
    * \brief setMotorVoltage функция задания номинального напряжения двигателя
    * \param value паспортное номинальное значение напряжения двигателя
    * \param coef коэффициент трансформации, т.к. ЧРП не знает о существовании

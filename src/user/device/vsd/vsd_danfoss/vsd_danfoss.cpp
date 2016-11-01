@@ -78,6 +78,7 @@ void VsdDanfoss::init()
   initParameters();
   readParameters();
 
+  setLimitsMotor();
   setLimitsCcsParameters();
   setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
   setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
@@ -144,14 +145,6 @@ int VsdDanfoss::setMotorCurrent(float value, EventType eventType)
   }
 }
 
-void VsdDanfoss::setLimitsMotor()
-{
-  setMin(VSD_MOTOR_CURRENT, dm_->getFieldMinimum(dm_->getIndexAtId(VSD_MOTOR_CURRENT)) / parameters.get(CCS_COEF_TRANSFORMATION));
-  setMax(VSD_MOTOR_CURRENT, dm_->getFieldMaximum(dm_->getIndexAtId(VSD_MOTOR_CURRENT)) / parameters.get(CCS_COEF_TRANSFORMATION));
-  setMin(VSD_MOTOR_VOLTAGE, dm_->getFieldMinimum(dm_->getIndexAtId(VSD_MOTOR_VOLTAGE)) * parameters.get(CCS_COEF_TRANSFORMATION));
-  setMax(VSD_MOTOR_VOLTAGE, dm_->getFieldMaximum(dm_->getIndexAtId(VSD_MOTOR_VOLTAGE)) * parameters.get(CCS_COEF_TRANSFORMATION));
-}
-
 int VsdDanfoss::setMotorVoltage(float value, float coef, EventType eventType)
 {
   if (coef <= 0) {                                    // Защиты от деления на 0
@@ -169,6 +162,43 @@ int VsdDanfoss::setMotorVoltage(float value, float coef, EventType eventType)
   else {
     logDebug.add(WarningMsg, "VsdDanfoss::setMotorVoltage() (value = %d)", value);
     return err_r;
+  }
+}
+
+void VsdDanfoss::setLimitsMotor()
+{
+  float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
+  if (coefTrans == 0)
+    coefTrans = 1;
+
+  int i = getIndexAtId(VSD_MOTOR_CURRENT);
+  if (i) {
+    float tempVal = dm_->getFieldMinimum(i);
+    tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(i));
+    tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
+    tempVal = tempVal / coefTrans;
+    setMin(VSD_MOTOR_CURRENT, tempVal);
+
+    tempVal = dm_->getFieldMaximum(i);
+    tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(i));
+    tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
+    tempVal = tempVal / coefTrans;
+    setMax(VSD_MOTOR_CURRENT, tempVal);
+  }
+
+  i = getIndexAtId(VSD_MOTOR_VOLTAGE);
+  if (i) {
+    float tempVal = dm_->getFieldMinimum(i);
+    tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(i));
+    tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
+    tempVal = tempVal * coefTrans;
+    setMin(VSD_MOTOR_VOLTAGE, tempVal);
+
+    tempVal = dm_->getFieldMaximum(i);
+    tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(i));
+    tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
+    tempVal = tempVal * coefTrans;
+    setMax(VSD_MOTOR_VOLTAGE, tempVal);
   }
 }
 
