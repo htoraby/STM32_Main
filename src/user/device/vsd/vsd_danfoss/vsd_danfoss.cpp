@@ -135,7 +135,6 @@ int VsdDanfoss::setMotorSpeed(float value)
 int VsdDanfoss::setMotorCurrent(float value, EventType eventType)
 {
   if (!Vsd::setMotorCurrent(value, eventType)) {
-    value = value * parameters.get(CCS_COEF_TRANSFORMATION);
     setMotorConfig();
     return ok_r;
   }
@@ -147,16 +146,8 @@ int VsdDanfoss::setMotorCurrent(float value, EventType eventType)
 
 int VsdDanfoss::setMotorVoltage(float value, float coef, EventType eventType)
 {
-  if (coef <= 0) {                                    // Защиты от деления на 0
-    logDebug.add(CriticalMsg, "VsdDanfoss::setMotorVoltage() (coef = %d)", coef);
-    coef = 1;
-  }
-
   if (!setValue(VSD_MOTOR_VOLTAGE, value, eventType)) {
-    value = value / coef;
-    writeToDevice(VSD_MOTOR_VOLTAGE, value);
     setMotorConfig();
-    ksu.calcTransRecommendedTapOff();
     return ok_r;
   }
   else {
@@ -249,6 +240,7 @@ void VsdDanfoss::setMotorConfig()
    * Запись настроек должна вестись в строгом опредленном порядке
    */
   float pwrMtr = parameters.get(VSD_MOTOR_POWER);
+  float vltMtr = parameters.get(VSD_MOTOR_VOLTAGE);
   float freqMtr = parameters.get(VSD_MOTOR_FREQUENCY);
   float curMtr = parameters.get(VSD_MOTOR_CURRENT);
   float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
@@ -260,6 +252,8 @@ void VsdDanfoss::setMotorConfig()
   //! Номинальный ток станции
   //! 1-20 Номинальная мощность двигателя
   writeToDevice(VSD_MOTOR_POWER, pwrMtr);
+  //! 1-22 Номинальное напряжение двигателя
+  writeToDevice(VSD_MOTOR_VOLTAGE, vltMtr / coefTrans);
   //! 1-23 Номинальная частота двигателя
   writeToDevice(VSD_MOTOR_FREQUENCY, freqMtr);
   //! 1-24 Номинальный ток двигателя
@@ -1630,6 +1624,9 @@ void VsdDanfoss::getNewValue(uint16_t id)
 
   // Применяем единицы измерения
   value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
+
+  if (id == VSD_MOTOR_CURRENT)
+    asm("nop");
 
   // Если получено новое значение параметра
   if (getValue(id) != value) {

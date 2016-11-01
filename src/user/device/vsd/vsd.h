@@ -70,6 +70,13 @@ public:
   virtual int setMotorCurrent(float value, EventType eventType = NoneType);
 
   /*!
+   * \brief setMotorVoltage
+   * \param value
+   * \return
+   */
+  virtual int setMotorVoltage(float value, EventType eventType = NoneType);
+
+  /*!
    * \brief setMotorSpeed
    * \param value
    * \return

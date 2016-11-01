@@ -59,6 +59,18 @@ int Vsd::setMotorCurrent(float value, EventType eventType)
   return ok_r;
 }
 
+int Vsd::setMotorVoltage(float value, EventType eventType)
+{
+  if (setValue(VSD_MOTOR_VOLTAGE, value, eventType)) {
+#if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "Vsd::setMotorVoltage() (value = %d)",
+                 value);
+#endif
+    return err_r;
+  }
+  return ok_r;
+}
+
 int Vsd::setMotorSpeed(float value)
 {
   return setValue(VSD_MOTOR_SPEED, value);
