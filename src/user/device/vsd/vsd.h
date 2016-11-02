@@ -56,6 +56,12 @@ public:
   int setMotorType(float value);
 
   /*!
+   * \brief setMotorTypeProfile
+   * \return
+   */
+  virtual int setMotorTypeProfile();
+
+  /*!
    * \brief setMotorFrequency
    * \param value
    * \return
@@ -81,7 +87,7 @@ public:
    * \param value
    * \return
    */
-  virtual int setMotorSpeed(float value);
+  virtual int setMotorSpeed(float value, EventType eventType = NoneType);
 
   /*!
    * \brief setLimitsMotor

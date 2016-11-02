@@ -35,6 +35,11 @@ int Vsd::setMotorType(float value)
   return ok_r;
 }
 
+int Vsd::setMotorTypeProfile()
+{
+  return ok_r;
+}
+
 int Vsd::setMotorFrequency(float value)
 {
   if (setValue(VSD_MOTOR_FREQUENCY, value)) {
@@ -71,9 +76,9 @@ int Vsd::setMotorVoltage(float value, EventType eventType)
   return ok_r;
 }
 
-int Vsd::setMotorSpeed(float value)
+int Vsd::setMotorSpeed(float value, EventType eventType)
 {
-  return setValue(VSD_MOTOR_SPEED, value);
+  return setValue(VSD_MOTOR_SPEED, value, eventType);
 }
 
 void Vsd::setLimitsMotor()
@@ -245,8 +250,7 @@ int Vsd::setFrequency(float value, EventType eventType)
 { 
   if (setValue(VSD_FREQUENCY, value, eventType)) {
 #if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setFrequency() (value = %d)",
-                 value);
+    logDebug.add(WarningMsg, "Vsd::setFrequency() (value = %d)", value);
 #endif
     return err_r;
   }

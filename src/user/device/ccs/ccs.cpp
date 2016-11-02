@@ -1274,6 +1274,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     parameters.set(VSD_MOTOR_TYPE, value, eventType);
     setMaxBaseFrequency();
     return err;
+  case CCS_MOTOR_TYPE_PROFILE_VSD:
+    err = setValue(id, value, eventType);
+    vsd->setMotorTypeProfile();
+    return err;
   case CCS_PROT_DI_1_MODE:
     err = setValue(id, value, eventType);
     if (value != Protection::ProtModeOff) {

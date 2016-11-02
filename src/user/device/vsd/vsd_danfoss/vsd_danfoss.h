@@ -146,7 +146,16 @@ public:
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
-  int setMotorSpeed(float value);
+  int setMotorTypeProfile();
+  uint16_t setMotorTypeProfileAsync();
+  uint16_t setMotorTypeProfileBldctUf500();
+  uint16_t setMotorTypeProfileBldctUf1000();
+  uint16_t setMotorTypeProfileBldctUf3000();
+  uint16_t setMotorTypeProfileBldctUf6000();
+  uint16_t setMotorTypeProfileBldctVector500();
+  uint16_t setMotorTypeProfileBldcVector1000();
+  uint16_t setMotorTypeProfileBldcVector3000();
+  uint16_t setMotorTypeProfileBldcVector6000();
   int setMotorCurrent(float value, EventType eventType = NoneType);
 
   /*!
@@ -211,17 +220,6 @@ public:
   int calcUfCharacteristicU(float value);
   int calcUfCharacteristicF(float value);
   void readUfCharacterictic();
-
-  uint16_t configVsd();
-  uint16_t configVsdAsync();
-  uint16_t configVsdVentUf500();
-  uint16_t configVsdVentUf1000();
-  uint16_t configVsdVentUf3000();
-  uint16_t configVsdVentUf6000();
-  uint16_t configVsdVentVect500();
-  uint16_t configVsdVentVect1000();
-  uint16_t configVsdVentVect3000();
-  uint16_t configVsdVentVect6000();
 
   float checkAlarmVsd();
   float checkAlarmVsdUnderVoltage();
