@@ -125,6 +125,8 @@ int VsdDanfoss::setMotorTypeProfile()
   uint16_t typeMotor = parameters.get(CCS_MOTOR_TYPE);
   uint16_t typeControl = parameters.get(VSD_MOTOR_CONTROL);
   uint16_t typeProfile = parameters.get(CCS_MOTOR_TYPE_PROFILE_VSD);
+  return setMotorTypeProfileTemp(typeMotor, typeProfile, typeControl);
+  /*
   switch (typeMotor) {
   case VSD_MOTOR_TYPE_ASYNC:
     return setMotorTypeProfileAsync();
@@ -180,6 +182,7 @@ int VsdDanfoss::setMotorTypeProfile()
   default:
     return err_r;
   }
+  */
 }
 
 int VsdDanfoss::setMotorCurrent(float value, EventType eventType)
@@ -625,11 +628,134 @@ int VsdDanfoss::setProtCurrentMotorTripSetpoint(float value)
 }
 
 
+uint16_t VsdDanfoss::setMotorTypeProfileTemp(float motorType, float motorProfile, float motorControl)
+{
+  int quantityParameters = 42;
+  int quantityProfile = 12;
+
+  float profiles[quantityParameters][quantityProfile] = {
+    {CCS_MOTOR_TYPE,                0,    1,    1,    1,    1,    1,    1,    1,    1,    1,    1},
+    {CCS_MOTOR_TYPE_PROFILE_VSD,    3000, 500,  500,  1000, 1000, 3000, 3000, 6000, 6000, 8500, 8500},
+
+    {VSD_MOTOR_CONTROL,             0,    0,    1,    0,    1,    0,    1,    0,    1,    0,    1},
+    {VSD_MOTOR_TYPE,                0,    0,    1,    0,    1,    0,    1,    0,    1,    0,    1},
+
+    {VSD_MAX_OUTPUT_FREQUENCY,      71,   71,   71,   125,  125,  150,  150,  205,  205,  305,  305},
+    {VSD_LOW_LIM_SPEED_MOTOR,       30,   20,   20,   80,   80,   70,   70,   70,   70,   70,   70,},
+    {VSD_HIGH_LIM_SPEED_MOTOR,      50,   59,   59,   117,  117,  100,  100,  200,  200,  283,  283,},
+    {VSD_MIN_REFERENCE,             30,   20,   20,   80,   80,   70,   70,   70,   70,   70,   70},
+    {VSD_MAX_REFERENCE,             70,   59,   59,   117,  117,  100,  100,  200,  200,  283,  283},
+    {VSD_MOTOR_FREQUENCY,           50,   59,   59,   117,  117,  100,  100,  200,  200,  283,  283},
+    {VSD_MOTOR_SPEED,               3000, 504,  504,  1000, 1000, 3000, 3000, 6000, 6000, 8500, 8500},
+    {VSD_MOTOR_POLES,               2,    14,   14,   14,   14,   4,    4,    4,    4,    4,    4},
+    {VSD_RESONANCE_REMOVE,          0,    500,  500,  500,  500,  500,  500,  500,  500,  500,  500},
+    {VSD_RESONANCE_TIME,            0.002,0.003,0.003,0.003,0.003,0.003,0.003,0.003,0.003,0.003,0.003},
+    {VSD_MIN_CURRENT_LOW_SPEED,     100,  70,   70,   70,   70,   70,   70,   70,   70,   70,   70},
+    {VSD_PM_START_MODE,             0,    0,    1,    0,    1,    0,    1,    0,    1,    0,    1},
+    {VSD_STOP_FUNCTION,             0,    0,    5,    0,    5,    0,    5,    0,    5,    0,    5},
+    {VSD_TIMER_DISPERSAL,           30,   30,   120,  30,   120,  30,   120,  60,   120,  60,   120},
+    {VSD_TIMER_DELAY,               30,   30,   30,   30,   30,   30,   30,   60,   60,   60,   60},
+    {VSD_TIMER_DISP_FIX_SPEED,      30,   30,   120,  30,   120,  30,   120,  60,   120,  60,   120},
+    {VSD_TIMER_DELAY_FIX_SPEED,     30,   30,   30,   30,   30,   30,   30,   60,   60,   60,   60},
+    {VSD_TORQUE_LIMIT,              160,  160,  160,  160,  160,  160,  160,  160,  160,  160,  160},
+    {VSD_WARNING_SPEED_LOW,         650,  110,  110,  110,  110,  325,  325,  325,  325,  325,  325},
+    {VSD_DELAY_CURRENT_LIMIT,       5,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0},
+    {VSD_DELAY_TORQUE_LIMIT,        0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0},
+    {VSD_FIL_TIME_CURRENT_LIMIT,    0.1,  0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005},
+    {VSD_DC_COMPENSATION,           1,    1,    1,    1,    1,    1,    1,    1,    1,    1,    1},
+    {VSD_HIGH_START_TORQUE_TIME,    10,   10,   10,   10,   10,   10,   10,   10,   10,   10,   10},
+    {VSD_HIGH_START_TORQUE_CURRENT, 50,   70,   70,   70,   70,   70,   70,   70,   70,   70,   70},
+    {VSD_UF_CHARACTERISTIC_F_1,     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0},
+    {VSD_UF_CHARACTERISTIC_U_1,     5,    13,   13,   13,   13,   13,   13,   13,   13,   13,   13},
+    {VSD_UF_CHARACTERISTIC_F_2,     10,   12,   12,   23,   23,   20,   20,   40,   40,   57,   57},
+    {VSD_UF_CHARACTERISTIC_U_2,     68,   74,   74,   74,   74,   74,   74,   74,   74,   74,   74},
+    {VSD_UF_CHARACTERISTIC_F_3,     20,   23,   23,   46,   46,   40,   40,   80,   80,   113,  113},
+    {VSD_UF_CHARACTERISTIC_U_3,     131,  136,  136,  136,  136,  136,  136,  136,  136,  136,  136},
+    {VSD_UF_CHARACTERISTIC_F_4,     30,   35,   35,   70,   70,   60,   60,   120,  120,  170,  170,},
+    {VSD_UF_CHARACTERISTIC_U_4,     194,  197,  197,  197,  197,  197,  197,  197,  197,  197,  197},
+    {VSD_UF_CHARACTERISTIC_F_5,     40,   47,   47,   93,   93,   80,   80,   160,  160,  226,  226},
+    {VSD_UF_CHARACTERISTIC_U_5,     257,  259,  259,  259,  259,  259,  259,  259,  259,  259,  259},
+    {VSD_UF_CHARACTERISTIC_F_6,     50,   59,   59,   117,  117,  100,  100,  200,  200,  283,  283},
+    {VSD_UF_CHARACTERISTIC_U_6,     320,  320,  320,  320,  320,  320,  320,  320,  320,  320,  320},
+    {VSD_FREQUENCY,                 50,   30,   30,   100,  100,  100,  100,  100,  100,  100,  100},
+  };
+
+  uint16_t cntParameters = 0;
+  uint16_t cntProfile = 1;
+  int profile = 0;
+
+  /*
+  for (cntProfile = 1; cntProfile < quantityProfile; cntProfile++) {
+    if ((profiles[0][cntProfile] == typeMotor)
+      && (profiles[1][cntProfile] == typeProfile)
+      && (profiles[2][cntProfile] == typeControl)) {
+      profile = cntProfile;
+    }
+  }
+
+  */
+  for (cntParameters = 0; cntParameters < quantityParameters; cntParameters++) {              // Цикл по строкам
+    if (profiles[cntParameters][0] == CCS_MOTOR_TYPE) {                                       // Нашли строку с типом двигателя
+      for (cntProfile = 1; cntProfile < quantityProfile; cntProfile++) {                      // Цикл по столбцам
+        if (profiles[cntParameters][cntProfile] == motorType) {                               // Нашли столбец с нужным типом
+          if (motorType == VSD_MOTOR_TYPE_ASYNC) {                                            // Тип асинхронный
+            profile = cntProfile;                                                             // Нашли конфигурацию
+          }
+          else {                                                                              // Тип вентильный
+            for (cntParameters = 0; cntParameters < quantityParameters; cntParameters++) {    // Цикл по строкам
+              if (profiles[cntParameters][0] == CCS_MOTOR_TYPE_PROFILE_VSD) {                 // Нашли строку с профилями
+                if (profiles[cntParameters][cntProfile] == motorProfile) {                     // Профиль совпадает
+                  for (cntParameters = 0; cntParameters < quantityParameters; cntParameters++) {  // Цикл по строкам
+                    if (profiles[cntParameters][0] == VSD_MOTOR_CONTROL) {                    // Нашли строку с управлением
+                      if (profiles[cntParameters][cntProfile] == motorControl) {               // Управление совпадает
+                        profile = cntProfile;                                                 // Нашли конфигурацию
+                      }
+                    }
+                  }
+                  cntParameters = 0;
+                }
+              }
+            }
+            cntParameters = 0;
+          }
+        }
+      }
+      cntParameters = 0;
+    }
+  }
+
+  // Нашли профиль
+  if (profile) {
+    for (cntParameters = 0; cntParameters < quantityParameters; cntParameters++) {
+      if (profiles[cntParameters][0] == VSD_LOW_LIM_SPEED_MOTOR) {
+        if (profiles[cntParameters][profile] > parameters.get(VSD_HIGH_LIM_SPEED_MOTOR)) {
+          for (cntParameters = 0; cntParameters < quantityParameters; cntParameters++) {
+            if (profiles[cntParameters][0] == VSD_HIGH_LIM_SPEED_MOTOR) {
+              parameters.set(VSD_HIGH_LIM_SPEED_MOTOR, profiles[cntParameters][profile]);
+            }
+          }
+        }
+      }
+    }
+
+    for (cntParameters = 2; cntParameters < 4; cntParameters++) {
+      writeToDevice(profiles[cntParameters][0], profiles[cntParameters][profile]);
+    }
+
+    for (cntParameters = 4; cntParameters < quantityParameters; cntParameters++) {
+      parameters.set(profiles[cntParameters][0], profiles[cntParameters][profile], NoneType);
+    }
+    return ok_r;
+  }
+  return err_r;
+}
+
 uint16_t VsdDanfoss::setMotorTypeProfileAsync()
 {
   // TODO: Может тут лучше setNewValue или parameters.set ?
   writeToDevice(VSD_MOTOR_CONTROL, VSD_MOTOR_CONTROL_UF);       // 1-01
   writeToDevice(VSD_MOTOR_TYPE, VSD_MOTOR_TYPE_ASYNC);          // 1-10
+
   parameters.set(VSD_MOTOR_FREQUENCY, 50, NoneType);                       // 1-23
   parameters.set(VSD_MOTOR_SPEED, 3000, NoneType);                        // 1-25
   parameters.set(VSD_MOTOR_POLES, 2, NoneType);                            // 1-39
