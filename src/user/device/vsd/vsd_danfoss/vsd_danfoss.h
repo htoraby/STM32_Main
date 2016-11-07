@@ -266,6 +266,7 @@ private:
   RegimeRunSkipResonantFreq *regimeRunSkipResonantFreq_;
   RegimeRunSynchron *regimeRunSynchron_;
 
+  uint16_t setMotorTypeProfileTemp(float motorType, float motorProfile, float motorControl);
 };
 
 #endif // VSDDANFOSS_H
