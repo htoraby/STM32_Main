@@ -12362,5 +12362,17 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].code                        = 0;
+  // Профиль настроек двигателя в ЧРП
+  parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].id                         = CCS_MOTOR_TYPE_PROFILE_VSD;
+  parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].operation                  = OPERATION_READ;
+  parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].physic                     = PHYSIC_RPM;
+  parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].validity                   = VALIDITY_OK;
+  parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].value.float_t              = 3000.0;
+  parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].min                        = 0.0;
+  parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].max                        = 999999999.9;
+  parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].discret                    = 1;
+  parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].def                        = 3000.0;
+  parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].code                       = 13;
 }
 

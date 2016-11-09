@@ -158,9 +158,9 @@ int VsdNovomet::setMotorFrequency(float value)
   return err_r;
 }
 
-int VsdNovomet::setMotorCurrent(float value)
+int VsdNovomet::setMotorCurrent(float value, EventType eventType)
 {
-  if (!Vsd::setMotorCurrent(value)) {
+  if (!Vsd::setMotorCurrent(value, eventType)) {
     value = value * parameters.get(CCS_COEF_TRANSFORMATION);
     writeToDevice(VSD_MOTOR_CURRENT, value);
     return ok_r;
@@ -168,14 +168,28 @@ int VsdNovomet::setMotorCurrent(float value)
   return err_r;
 }
 
-int VsdNovomet::setMotorVoltage(float value, EventType eventType)
+int VsdNovomet::setMotorVoltage(float value, float coef, EventType eventType)
 {
-  if (!setValue(VSD_MOTOR_VOLTAGE, value, eventType)) {
-    value = value / parameters.get(CCS_COEF_TRANSFORMATION);
-    if (!setBaseVoltage(value))
-      return ok_r;
+  if (coef <= 0) {                                    // Защита от деления на 0
+    logDebug.add(CriticalMsg, "VsdNovomet::setMotorVoltage() (coef = %d)", coef);
+    coef = 1;
   }
-  return err_r;
+
+  if (!setValue(VSD_MOTOR_VOLTAGE, value, eventType)) {         // Пишем в массив параметров
+    value = value / coef;                                       // Вычисляем значение записываемое в ЧРП
+    if (!setBaseVoltage(value)) {                               // Напряжение двигателя равно 6 точке в характеристике в ЧРП
+      ksu.calcTransRecommendedTapOff();                         // Проверяем напряжение отпайки
+      return ok_r;
+    }
+    else {
+      logDebug.add(WarningMsg, "VsdNovomet::setMotorVoltage() setBaseVoltage (value = %d)", value);
+      return err_r;
+    }
+  }
+  else {
+    logDebug.add(WarningMsg, "VsdNovomet::setMotorVoltage() (value = %d)", value);
+    return err_r;
+  }
 }
 
 void VsdNovomet::setLimitsMotor()
@@ -1235,13 +1249,8 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value, EventType eventType)
   case VSD_MOTOR_CURRENT:
     return setMotorCurrent(value);
 
-  case VSD_MOTOR_VOLTAGE:
-    if (!setMotorVoltage(value, eventType)) {
-      ksu.calcTransRecommendedTapOff();
-      return ok_r;
-    }
-    else
-      return err_r;
+  case VSD_MOTOR_VOLTAGE:                             // Задание номинального напряжения двигателя
+    return setMotorVoltage(value, parameters.get(CCS_COEF_TRANSFORMATION), eventType);
 
   case VSD_FREQUENCY:
     return ksu.setFreq(value, eventType, false);

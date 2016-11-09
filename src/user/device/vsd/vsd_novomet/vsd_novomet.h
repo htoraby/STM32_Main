@@ -224,8 +224,19 @@ public:
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
   int setMotorFrequency(float value);
-  int setMotorCurrent(float value);
-  int setMotorVoltage(float value, EventType eventType = NoneType);
+  int setMotorCurrent(float value, EventType eventType = NoneType);
+
+  /*!
+   * \brief setMotorVoltage функция задания номинального напряжения двигателя
+   * \param value паспортное номинальное значение напряжения двигателя
+   * \param coef коэффициент трансформации, т.к. ЧРП не знает о существовании
+   * трансформатора, в ЧРП записываем value / coef
+   * \param eventType флаг формирования сообщения
+   * \return
+   */
+  int setMotorVoltage(float value, float coef, EventType eventType = NoneType);
+
+
   void setLimitsMotor();
 
   // РЕЖИМЫ ПУСКА

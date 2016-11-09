@@ -146,9 +146,43 @@ public:
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
-  int setMotorSpeed(float value);
-  int setMotorCurrent(float value);
-  int setMotorVoltage(float value);
+  int setMotorTypeProfile();
+  uint16_t setMotorTypeProfileAsync();
+  uint16_t setMotorTypeProfileBldctUf500();
+  uint16_t setMotorTypeProfileBldctUf1000();
+  uint16_t setMotorTypeProfileBldctUf3000();
+  uint16_t setMotorTypeProfileBldctUf6000();
+  uint16_t setMotorTypeProfileBldctVector500();
+  uint16_t setMotorTypeProfileBldcVector1000();
+  uint16_t setMotorTypeProfileBldcVector3000();
+  uint16_t setMotorTypeProfileBldcVector6000();
+  int setMotorCurrent(float value, EventType eventType = NoneType);
+
+  /*!
+   * \brief setLimitsMotor функция задания пределов параметров двигателя
+   */
+  void setLimitsMotor();
+
+  /*!
+   * \brief setLimitsMotorCurrent
+   */
+  void setLimitsMotorCurrent();
+
+  /*!
+   * \brief setLimitsMotorVoltage
+   */
+  void setLimitsMotorVoltage();
+
+  /*!
+   * \brief setMotorVoltage функция задания номинального напряжения двигателя
+   * \param value паспортное номинальное значение напряжения двигателя
+   * \param coef коэффициент трансформации, т.к. ЧРП не знает о существовании
+   * трансформатора, в ЧРП записываем value / coef
+   * \param eventType флаг формирования сообщения
+   * \return
+   */
+  int setMotorVoltage(float value, float coef, EventType eventType);
+
   int setMotorResistanceStator(float value);
   int setCurrentLim(float curLimit, float nomCurMtr, float coefTrans);
   void setMotorConfig();
@@ -186,17 +220,6 @@ public:
   int calcUfCharacteristicU(float value);
   int calcUfCharacteristicF(float value);
   void readUfCharacterictic();
-
-  uint16_t configVsd();
-  uint16_t configVsdAsync();
-  uint16_t configVsdVentUf500();
-  uint16_t configVsdVentUf1000();
-  uint16_t configVsdVentUf3000();
-  uint16_t configVsdVentUf6000();
-  uint16_t configVsdVentVect500();
-  uint16_t configVsdVentVect1000();
-  uint16_t configVsdVentVect3000();
-  uint16_t configVsdVentVect6000();
 
   float checkAlarmVsd();
   float checkAlarmVsdUnderVoltage();
@@ -243,6 +266,7 @@ private:
   RegimeRunSkipResonantFreq *regimeRunSkipResonantFreq_;
   RegimeRunSynchron *regimeRunSynchron_;
 
+  uint16_t setMotorTypeProfileTemp(float motorType, float motorProfile, float motorControl);
 };
 
 #endif // VSDDANFOSS_H

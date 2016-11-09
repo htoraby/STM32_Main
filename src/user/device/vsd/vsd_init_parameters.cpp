@@ -202,7 +202,7 @@ void Vsd::initParameters()
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].value.float_t                       = 380.0;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].max                                 = 5000.0;
+  parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].max                                 = 999999.0;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].def                                 = 380.0;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_MOTOR_VOLTAGE - VSD_BEGIN].code                                = 13;
@@ -214,7 +214,7 @@ void Vsd::initParameters()
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].value.float_t                       = 26.5;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].min                                 = 0.0;
-  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].max                                 = 9999.0;
+  parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].max                                 = 9999.9;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].def                                 = 26.5;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].discret                             = 10;
   parameters_[VSD_MOTOR_CURRENT - VSD_BEGIN].code                                = 13;
@@ -278,17 +278,17 @@ void Vsd::initParameters()
   parameters_[VSD_BACK_EMF - VSD_BEGIN].def                                      = 0;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].discret                                  = 1;
   parameters_[VSD_BACK_EMF - VSD_BEGIN].code                                     = 0;
-  // Ток холостого хода
+  // Напряжение холостого хода
   parameters_[VSD_UF_UHH - VSD_BEGIN].id                                         = VSD_UF_UHH;
   parameters_[VSD_UF_UHH - VSD_BEGIN].access                                     = ACCESS_OPERATOR;
   parameters_[VSD_UF_UHH - VSD_BEGIN].operation                                  = OPERATION_LIMITED;
-  parameters_[VSD_UF_UHH - VSD_BEGIN].physic                                     = PHYSIC_CURRENT;
+  parameters_[VSD_UF_UHH - VSD_BEGIN].physic                                     = PHYSIC_VOLTAGE;
   parameters_[VSD_UF_UHH - VSD_BEGIN].validity                                   = VALIDITY_ERROR;
   parameters_[VSD_UF_UHH - VSD_BEGIN].value.float_t                              = 0.0;
   parameters_[VSD_UF_UHH - VSD_BEGIN].min                                        = 0.0;
   parameters_[VSD_UF_UHH - VSD_BEGIN].max                                        = 1000.0;
   parameters_[VSD_UF_UHH - VSD_BEGIN].def                                        = 0.0;
-  parameters_[VSD_UF_UHH - VSD_BEGIN].discret                                    = 10;
+  parameters_[VSD_UF_UHH - VSD_BEGIN].discret                                    = 1;
   parameters_[VSD_UF_UHH - VSD_BEGIN].code                                       = 0;
   // Число полюсов двигателя Danfoss 1-39 Используется в проекте
   parameters_[VSD_MOTOR_POLES - VSD_BEGIN].id                                    = VSD_MOTOR_POLES;
@@ -1990,7 +1990,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].value.float_t                      = 0.005;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].min                                = 0.001;
-  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].max                                = 0.05;
+  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].max                                = 0.050;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].def                                = 0.005;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].discret                            = 3;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].code                               = 0;

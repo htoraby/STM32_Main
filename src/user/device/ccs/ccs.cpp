@@ -951,9 +951,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     calcSystemInduct();
     vsd->setLimitsMotor();
-    vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT));
-    parameters.set(VSD_MOTOR_VOLTAGE, parameters.get(VSD_MOTOR_VOLTAGE));
-    // vsd->setMotorVoltage(parameters.get(VSD_MOTOR_VOLTAGE));
+    vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT), eventType);
+    vsd->setMotorVoltage(parameters.get(VSD_MOTOR_VOLTAGE), eventType);
+    calcTransRecommendedTapOff();
     return err;
   case CCS_TRANS_VOLTAGE_SHORT_CIRCUIT:
     err = setValue(id, value, eventType);
@@ -964,10 +964,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     calcTransCoef();
     calcSystemInduct();                     // Пересчитываем индуктивность системы
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
-    vsd->setLimitsMotor();
-    vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT));
-    parameters.set(VSD_MOTOR_VOLTAGE, parameters.get(VSD_MOTOR_VOLTAGE));
-    // vsd->setMotorVoltage(parameters.get(VSD_MOTOR_VOLTAGE));
     return err;
   case CCS_TRANS_NOMINAL_VOLTAGE_INPUT:     // Номинальное напряжение питающей сети
     err = setValue(id, value, eventType);
@@ -1006,11 +1002,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     calcTransCoef();
     calcTransRecommendedTapOff();           // Пересчитываем рекомендуемое напряжение отпайки
-    vsd->setLimitsMotor();
-    vsd->setMotorCurrent(parameters.get(VSD_MOTOR_CURRENT));
-    parameters.set(VSD_MOTOR_VOLTAGE, parameters.get(VSD_MOTOR_VOLTAGE));
-    // vsd->setMotorVoltage(parameters.get(VSD_MOTOR_VOLTAGE));
-    parameters.set(VSD_TRANS_VOLTAGE_TAP_OFF, value, eventType); // Задаём в ЧРП напряжение отпайки
     return err;
   case CCS_MOTOR_INDUCTANCE:
     err = setValue(id, value, eventType);
@@ -1282,6 +1273,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     parameters.set(VSD_MOTOR_TYPE, value, eventType);
     setMaxBaseFrequency();
+    return err;
+  case CCS_MOTOR_TYPE_PROFILE_VSD:
+    err = setValue(id, value, eventType);
+    vsd->setMotorTypeProfile();
     return err;
   case CCS_PROT_DI_1_MODE:
     err = setValue(id, value, eventType);

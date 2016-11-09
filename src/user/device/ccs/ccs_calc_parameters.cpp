@@ -85,16 +85,6 @@ void Ccs::calcParametersTask()
       tms->getConnect();
       vsd->getConnect();
       em->getConnect();
-/*
-#if (USE_LOG_DEBUG == 1)
-#ifdef USE_RTT
-      vsd->outStatistic();
-      float value = statHost.rxGood/100.0;
-      value = statHost.sizeError/value;
-      SEGGER_RTT_printf(0, "Host rx good - %d, error - %d, *%d\n", statHost.rxGood, statHost.sizeError, (int)value);
-#endif
-#endif
-*/
     }
   }
 }
@@ -108,7 +98,7 @@ float Ccs::calcTransCoef()
     transCoef = voltTapOff / 380;
   else
     transCoef = voltTapOff / voltNom;
-  setValue(CCS_COEF_TRANSFORMATION, transCoef);
+  parameters.set(CCS_COEF_TRANSFORMATION, transCoef);
   return parameters.get(CCS_COEF_TRANSFORMATION);
 }
 
