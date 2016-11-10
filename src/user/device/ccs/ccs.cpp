@@ -1914,20 +1914,11 @@ void Ccs::resetCmd(uint16_t id)
 
 void Ccs::setMaxBaseFrequency()
 {
-  float maxFreq = 0;
-//  float nomFreq = 0;
+  float maxFreq = 70;
   if (parameters.get(CCS_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
     maxFreq = 200;
-//    nomFreq = 100;
-  }
-  else {
-    maxFreq = 70;
-//    nomFreq = 50;
   }
   setMax(CCS_BASE_FREQUENCY, maxFreq);
-  parameters.setMax(VSD_MOTOR_FREQUENCY, maxFreq);
-//  parameters.set(VSD_MOTOR_FREQUENCY, nomFreq);
-//  parameters.setMax(VSD_BASE_FREQUENCY, maxFreq);
 }
 
 void Ccs::setError(int error)
