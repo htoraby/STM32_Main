@@ -9912,7 +9912,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Максимальное отклонение от U/f</text>
-		<short_text>Отп.U. Максимальное отклонение от U/f</short_text>
+		<short_text>Опт.U. Максимальное отклонение от U/f</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -9933,7 +9933,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Шаг изменения напряжения</text>
-		<short_text>Отп.U. Шаг изменения напряжения</short_text>
+		<short_text>Опт.U. Шаг изменения напряжения</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -9954,7 +9954,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Первый цикл после пуска</text>
-		<short_text>Отп.U. Первый цикл после пуска</short_text>
+		<short_text>Опт.U. Первый цикл после пуска</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -9975,7 +9975,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3600.0</value>
 		<text>Периодичность оптимизации</text>
-		<short_text>Отп.U. Периодичность оптимизации</short_text>
+		<short_text>Опт.U. Периодичность оптимизации</short_text>
 		<form>5.1.7 Режим оптимизации напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -13243,7 +13243,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
 		<text>Начальная уставка недогруза</text>
-		<short_text>ВРП. Начальная уставка ЗСП</short_text>
+		<short_text>ВНР. Начальная уставка ЗСП</short_text>
 		<form>5.1.3 Программного изменения частоты</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
