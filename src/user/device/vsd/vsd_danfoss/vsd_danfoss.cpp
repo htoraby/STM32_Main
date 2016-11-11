@@ -125,61 +125,69 @@ int VsdDanfoss::setMotorTypeProfile()
   uint16_t typeMotor = parameters.get(CCS_MOTOR_TYPE);
   uint16_t typeControl = parameters.get(VSD_MOTOR_CONTROL);
   uint16_t typeProfile = parameters.get(CCS_MOTOR_TYPE_PROFILE_VSD);
+
+  uint16_t result = err_r;
+
   switch (typeMotor) {
   case VSD_MOTOR_TYPE_ASYNC:
-    return setMotorTypeProfileAsync();
+    result = setMotorTypeProfileAsync();
+  break;
   case VSD_MOTOR_TYPE_VENT:
     switch (typeControl) {
     case VSD_MOTOR_CONTROL_UF:
-      if (typeProfile <= 500) {
-        return setMotorTypeProfileBldctUf500();
-      }
-      else {
-        if (typeProfile <= 1000) {
-          return setMotorTypeProfileBldctUf1000();
-        }
-        else {
-          if (typeProfile <= 3000) {
-            return setMotorTypeProfileBldctUf3000();
-          }
-          else {
-            if (typeProfile <= 6000) {
-              return setMotorTypeProfileBldctUf6000();
-            }
-            return err_r;
-          }
-
-        }
+      switch (typeProfile) {
+      case 500:
+        result = setMotorTypeProfileBldctUf500();
+        break;
+      case 1000:
+        result = setMotorTypeProfileBldctUf1000();
+        break;
+      case 3000:
+        result = setMotorTypeProfileBldctUf3000();
+        break;
+      case 6000:
+        result = setMotorTypeProfileBldctUf6000();
+        break;
+      case 8500:
+        break;
+      default:
+        break;
       }
       break;
     case VSD_MOTOR_CONTROL_VECT:
-      if (typeProfile <= 500) {
-        return setMotorTypeProfileBldctVector500();
-      }
-      else {
-        if (typeProfile <= 1000) {
-          return setMotorTypeProfileBldcVector1000();
-        }
-        else {
-          if (typeProfile <= 3000) {
-            return setMotorTypeProfileBldcVector3000();
-          }
-          else {
-            if (typeProfile <= 6000) {
-              return setMotorTypeProfileBldcVector6000();
-            }
-            return err_r;
-          }
-        }
+      switch (typeProfile) {
+      case 500:
+        result = setMotorTypeProfileBldctVector500();
+        break;
+      case 1000:
+        result = setMotorTypeProfileBldcVector1000();
+        break;
+      case 3000:
+        result = setMotorTypeProfileBldcVector3000();
+        break;
+      case 6000:
+        result = setMotorTypeProfileBldcVector6000();
+        break;
+      case 8500:
+        break;
+      default:
+        break;
       }
       break;
     default:
-      return err_r;
+      break;
     }
-    break;
   default:
-    return err_r;
+    break;
   }
+  if (result == ok_r) {
+    parameters.set(CCS_CMD_TYPE_PROFILE_VSD, 1);
+  }
+  else {
+    parameters.set(CCS_ERROR_SLAVE, SetProfileVsdErr);
+  }
+  parameters.set(CCS_BASE_VOLTAGE, 320, NoneType);
+  return result;
 }
 
 int VsdDanfoss::setMotorCurrent(float value, EventType eventType)
@@ -561,6 +569,14 @@ int VsdDanfoss::setUf_U6(float value)
 
 int VsdDanfoss::calcUfCharacteristicU(float value)
 {
+  setMax(VSD_UF_CHARACTERISTIC_U, value + 0.5);
+  setMax(VSD_UF_CHARACTERISTIC_U_1, value + 0.5);
+  setMax(VSD_UF_CHARACTERISTIC_U_2, value + 0.5);
+  setMax(VSD_UF_CHARACTERISTIC_U_3, value + 0.5);
+  setMax(VSD_UF_CHARACTERISTIC_U_4, value + 0.5);
+  setMax(VSD_UF_CHARACTERISTIC_U_5, value + 0.5);
+  setMax(VSD_UF_CHARACTERISTIC_U_6, value + 0.5);
+
   float point1 = getValue(VSD_UF_CHARACTERISTIC_U_1);
   setUf_U1((value * 0 + point1 * 5) / 5);
   setUf_U2((value * 1 + point1 * 4) / 5);
@@ -1601,8 +1617,9 @@ void VsdDanfoss::getNewValue(uint16_t id)
   // Применяем единицы измерения
   value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
 
-  if (id == VSD_MOTOR_CURRENT)
-    asm("nop");
+  if ((id == VSD_HIGH_START_TORQUE_CURRENT)
+      && (parameters.get(CCS_CMD_TYPE_PROFILE_VSD) == 1))
+    parameters.set(CCS_CMD_TYPE_PROFILE_VSD, 0);
 
   // Если получено новое значение параметра
   if (getValue(id) != value) {
@@ -1660,12 +1677,18 @@ void VsdDanfoss::getNewValue(uint16_t id)
       if (temp != 0)
         value = value / temp;
       setValue(id, value);
+      ksu.calcTransRecommendedTapOff();
       break;
     case VSD_MOTOR_VOLTAGE:
       temp = parameters.get(CCS_COEF_TRANSFORMATION);
       if (temp != 0)
         value = value * temp;
       setValue(id, value);
+      ksu.calcTransRecommendedTapOff();
+      break;
+    case VSD_MOTOR_FREQUENCY:
+      setMotorFrequency(value);
+      ksu.calcTransRecommendedTapOff();
       break;
     case VSD_STATUS_WORD_1:
       setValue(id, value);
@@ -1785,7 +1808,13 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
 
 void VsdDanfoss::writeToDevice(int id, float value)
 {
-  dm_->writeModbusParameter(id, value);
+  enOperation command = OPERATION_WRITE;
+  if ((id == VSD_MOTOR_CONTROL)
+    ||(id == VSD_MOTOR_TYPE)
+    ||(id == VSD_MAX_OUTPUT_FREQUENCY)) {
+    command = OPERATION_WRITE_DELAY;
+  }
+  dm_->writeModbusParameter(id, value, command);
 }
 
 void VsdDanfoss::readInDevice(int id)
