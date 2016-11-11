@@ -34,7 +34,7 @@ void ScadaNovomet::calcParamsTask()
     if (ksu.isDelay())
       value = 2;
     if (!ksu.isWorkMotor())
-      value = 3;
+      value = 4;
     if (ksu.isRestart())
       value = 8;
     if (ksu.isBlock())
@@ -150,31 +150,31 @@ void ScadaNovomet::calcParamsTask()
     data.uint32_t = 0;
     data.uint32_t |= ((parameters.get(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE) == Protection::ProtModeRestart) << 0);
     data.uint32_t |= ((parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE) == Protection::ProtModeRestart) << 1);
-    data.uint32_t |= ((parameters.get(CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE) == Protection::ProtModeBlock) << 2);
-    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_CURRENT_MODE) == Protection::ProtModeBlock) << 4);
-    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_OVERLOAD_MODE) == Protection::ProtModeBlock) << 5);
-    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_UNDERLOAD_MODE) == Protection::ProtModeBlock) << 6);
-    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE) == Protection::ProtModeBlock) << 7);
+    data.uint32_t |= ((parameters.get(CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE) == Protection::ProtModeRestart) << 2);
+    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_CURRENT_MODE) == Protection::ProtModeRestart) << 4);
+    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_OVERLOAD_MODE) == Protection::ProtModeRestart) << 5);
+    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_UNDERLOAD_MODE) == Protection::ProtModeRestart) << 6);
+    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE) == Protection::ProtModeRestart) << 7);
     data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_ASYNC_MODE) == Protection::ProtModeOn) << 8);
     data.uint32_t |= ((parameters.get(CCS_PROT_DHS_RESISTANCE_MODE) == Protection::ProtModeBlock) << 10);
-    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_PRESSURE_INTAKE_MODE) == Protection::ProtModeBlock) << 11);
-    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_FLOW_DISCHARGE_MODE) == Protection::ProtModeBlock) << 12);
-    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE) == Protection::ProtModeBlock) << 13);
-    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE) == Protection::ProtModeBlock) << 14);
-    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_VIBRATION_MODE) == Protection::ProtModeBlock) << 15);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_PRESSURE_INTAKE_MODE) == Protection::ProtModeRestart) << 11);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_FLOW_DISCHARGE_MODE) == Protection::ProtModeRestart) << 12);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE) == Protection::ProtModeRestart) << 13);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE) == Protection::ProtModeRestart) << 14);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_VIBRATION_MODE) == Protection::ProtModeRestart) << 15);
     data.uint32_t |= ((parameters.get(CCS_PROT_OTHER_LIMIT_RESTART_MODE) == Protection::ProtModeBlock) << 16);
     data.uint32_t |= ((parameters.get(CCS_PROT_OTHER_LOCK_DOOR_MODE) == Protection::ProtModeOn) << 17);
-    data.uint32_t |= ((parameters.get(CCS_PROT_OTHER_VSD_MODE) == Protection::ProtModeBlock) << 18);
-    data.uint32_t |= ((parameters.get(CCS_PROT_DI_1_MODE) == Protection::ProtModeBlock) << 19);
-    data.uint32_t |= ((parameters.get(CCS_PROT_DI_2_MODE) == Protection::ProtModeBlock) << 20);
-    data.uint32_t |= ((parameters.get(CCS_PROT_DI_3_MODE) == Protection::ProtModeBlock) << 21);
-    data.uint32_t |= ((parameters.get(CCS_PROT_DI_4_MODE) == Protection::ProtModeBlock) << 22);
-    data.uint32_t |= ((parameters.get(CCS_PROT_SUPPLY_IMBALANCE_CURRENT_MODE) == Protection::ProtModeBlock) << 23);
-    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_OUT_OF_SYNC_MODE) == Protection::ProtModeBlock) << 24);
-    data.uint32_t |= ((parameters.get(CCS_PROT_AI_1_MODE) == Protection::ProtModeBlock) << 27);
-    data.uint32_t |= ((parameters.get(CCS_PROT_AI_2_MODE) == Protection::ProtModeBlock) << 28);
-    data.uint32_t |= ((parameters.get(CCS_PROT_AI_3_MODE) == Protection::ProtModeBlock) << 29);
-    data.uint32_t |= ((parameters.get(CCS_PROT_AI_4_MODE) == Protection::ProtModeBlock) << 30);
+    data.uint32_t |= ((parameters.get(CCS_PROT_OTHER_VSD_MODE) == Protection::ProtModeRestart) << 18);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DI_1_MODE) == Protection::ProtModeRestart) << 19);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DI_2_MODE) == Protection::ProtModeRestart) << 20);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DI_3_MODE) == Protection::ProtModeRestart) << 21);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DI_4_MODE) == Protection::ProtModeRestart) << 22);
+    data.uint32_t |= ((parameters.get(CCS_PROT_SUPPLY_IMBALANCE_CURRENT_MODE) == Protection::ProtModeRestart) << 23);
+    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_OUT_OF_SYNC_MODE) == Protection::ProtModeRestart) << 24);
+    data.uint32_t |= ((parameters.get(CCS_PROT_AI_1_MODE) == Protection::ProtModeRestart) << 27);
+    data.uint32_t |= ((parameters.get(CCS_PROT_AI_2_MODE) == Protection::ProtModeRestart) << 28);
+    data.uint32_t |= ((parameters.get(CCS_PROT_AI_3_MODE) == Protection::ProtModeRestart) << 29);
+    data.uint32_t |= ((parameters.get(CCS_PROT_AI_4_MODE) == Protection::ProtModeRestart) << 30);
     scadaParameters_[88].value.float_t = data.uint32_t;
 
     //95
@@ -266,6 +266,9 @@ void ScadaNovomet::calcParamsTask()
     }
     scadaParameters_[90].value.float_t = value;
 
+    //129
+    scadaParameters_[119].value.float_t = parameters.get(CCS_LANGUAGE) + 1;
+
     //133
     value = 0;
     int pressure = parameters.get(CCS_UNIT_PRESSURE);
@@ -280,8 +283,8 @@ void ScadaNovomet::calcParamsTask()
       value = 2; break;
     case PRESSURE_PSI:
       value = 3; break;
-    scadaParameters_[123].value.float_t = value;
     }
+    scadaParameters_[123].value.float_t = value;
 
     //135
     value = 0;
@@ -313,6 +316,28 @@ void ScadaNovomet::calcParamsTask()
 
     //151
     scadaParameters_[140].value.float_t = 0;
+
+    //189
+    value = 0;
+    int freq = lround(parameters.get(VSD_SWITCHING_FREQUENCY));
+    switch (freq) {
+    case 1000: value = 0; break;
+    case 1500: value = 1; break;
+    case 2000: value = 2; break;
+    case 2500: value = 3; break;
+    case 3000: value = 4; break;
+    case 3500: value = 5; break;
+    case 4000: value = 6; break;
+    case 5000: value = 7; break;
+    case 6000: value = 8; break;
+    case 7000: value = 9; break;
+    case 8000: value = 10; break;
+    case 10000: value = 11; break;
+    case 12000: value = 12; break;
+    case 14000: value = 13; break;
+    case 16000: value = 14; break;
+    }
+    scadaParameters_[178].value.float_t = value;
 
     //215
     value = 0;
@@ -371,35 +396,102 @@ void ScadaNovomet::calcParamsTask()
     scadaParameters_[251].value.float_t = value;
 
     //415
-    value = 0;
-    value |= ((parameters.get(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE) == Protection::ProtModeBlock) << 0);
-    value |= ((parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE) == Protection::ProtModeBlock) << 1);
-    value |= ((parameters.get(CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE) == Protection::ProtModeBlock) << 2);
-    value |= ((parameters.get(CCS_PROT_MOTOR_CURRENT_MODE) == Protection::ProtModeBlock) << 5);
-    value |= ((parameters.get(CCS_PROT_MOTOR_OVERLOAD_MODE) == Protection::ProtModeBlock) << 5);
-    value |= ((parameters.get(CCS_PROT_MOTOR_UNDERLOAD_MODE) == Protection::ProtModeBlock) << 6);
-    value |= ((parameters.get(CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE) == Protection::ProtModeBlock) << 7);
-    value |= ((parameters.get(CCS_PROT_MOTOR_ASYNC_MODE) == Protection::ProtModeBlock) << 8);
-    value |= ((parameters.get(CCS_PROT_DHS_RESISTANCE_MODE) == Protection::ProtModeBlock) << 10);
-    value |= ((parameters.get(CCS_PROT_DHS_PRESSURE_INTAKE_MODE) == Protection::ProtModeBlock) << 11);
-    value |= ((parameters.get(CCS_PROT_DHS_FLOW_DISCHARGE_MODE) == Protection::ProtModeBlock) << 12);
-    value |= ((parameters.get(CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE) == Protection::ProtModeBlock) << 13);
-    value |= ((parameters.get(CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE) == Protection::ProtModeBlock) << 14);
-    value |= ((parameters.get(CCS_PROT_DHS_VIBRATION_MODE) == Protection::ProtModeBlock) << 15);
-    value |= ((parameters.get(CCS_PROT_OTHER_LIMIT_RESTART_MODE) == Protection::ProtModeBlock) << 16);
-    value |= ((parameters.get(CCS_PROT_OTHER_LOCK_DOOR_MODE) == Protection::ProtModeBlock) << 17);
-    value |= ((parameters.get(CCS_PROT_OTHER_VSD_MODE) == Protection::ProtModeBlock) << 18);
-    value |= ((parameters.get(CCS_PROT_DI_1_MODE) == Protection::ProtModeBlock) << 19);
-    value |= ((parameters.get(CCS_PROT_DI_2_MODE) == Protection::ProtModeBlock) << 20);
-    value |= ((parameters.get(CCS_PROT_DI_3_MODE) == Protection::ProtModeBlock) << 21);
-    value |= ((parameters.get(CCS_PROT_DI_4_MODE) == Protection::ProtModeBlock) << 22);
-    value |= ((parameters.get(CCS_PROT_SUPPLY_IMBALANCE_CURRENT_MODE) == Protection::ProtModeBlock) << 23);
-    value |= ((parameters.get(CCS_PROT_MOTOR_OUT_OF_SYNC_MODE) == Protection::ProtModeBlock) << 24);
-    value |= ((parameters.get(CCS_PROT_AI_1_MODE) == Protection::ProtModeBlock) << 27);
-    value |= ((parameters.get(CCS_PROT_AI_2_MODE) == Protection::ProtModeBlock) << 28);
-    value |= ((parameters.get(CCS_PROT_AI_3_MODE) == Protection::ProtModeBlock) << 29);
-    value |= ((parameters.get(CCS_PROT_AI_4_MODE) == Protection::ProtModeBlock) << 30);
-    scadaParameters_[384].value.float_t = value;
+    data.uint32_t = 0;
+    data.uint32_t |= ((parameters.get(CCS_PROT_SUPPLY_OVERVOLTAGE_MODE) == Protection::ProtModeBlock) << 0);
+    data.uint32_t |= ((parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE) == Protection::ProtModeBlock) << 1);
+    data.uint32_t |= ((parameters.get(CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE) == Protection::ProtModeBlock) << 2);
+    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_CURRENT_MODE) == Protection::ProtModeBlock) << 5);
+    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_OVERLOAD_MODE) == Protection::ProtModeBlock) << 5);
+    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_UNDERLOAD_MODE) == Protection::ProtModeBlock) << 6);
+    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE) == Protection::ProtModeBlock) << 7);
+    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_ASYNC_MODE) == Protection::ProtModeBlock) << 8);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_RESISTANCE_MODE) == Protection::ProtModeBlock) << 10);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_PRESSURE_INTAKE_MODE) == Protection::ProtModeBlock) << 11);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_FLOW_DISCHARGE_MODE) == Protection::ProtModeBlock) << 12);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE) == Protection::ProtModeBlock) << 13);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE) == Protection::ProtModeBlock) << 14);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DHS_VIBRATION_MODE) == Protection::ProtModeBlock) << 15);
+    data.uint32_t |= ((parameters.get(CCS_PROT_OTHER_LIMIT_RESTART_MODE) == Protection::ProtModeBlock) << 16);
+    data.uint32_t |= ((parameters.get(CCS_PROT_OTHER_LOCK_DOOR_MODE) == Protection::ProtModeBlock) << 17);
+    data.uint32_t |= ((parameters.get(CCS_PROT_OTHER_VSD_MODE) == Protection::ProtModeBlock) << 18);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DI_1_MODE) == Protection::ProtModeBlock) << 19);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DI_2_MODE) == Protection::ProtModeBlock) << 20);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DI_3_MODE) == Protection::ProtModeBlock) << 21);
+    data.uint32_t |= ((parameters.get(CCS_PROT_DI_4_MODE) == Protection::ProtModeBlock) << 22);
+    data.uint32_t |= ((parameters.get(CCS_PROT_SUPPLY_IMBALANCE_CURRENT_MODE) == Protection::ProtModeBlock) << 23);
+    data.uint32_t |= ((parameters.get(CCS_PROT_MOTOR_OUT_OF_SYNC_MODE) == Protection::ProtModeBlock) << 24);
+    data.uint32_t |= ((parameters.get(CCS_PROT_AI_1_MODE) == Protection::ProtModeBlock) << 27);
+    data.uint32_t |= ((parameters.get(CCS_PROT_AI_2_MODE) == Protection::ProtModeBlock) << 28);
+    data.uint32_t |= ((parameters.get(CCS_PROT_AI_3_MODE) == Protection::ProtModeBlock) << 29);
+    data.uint32_t |= ((parameters.get(CCS_PROT_AI_4_MODE) == Protection::ProtModeBlock) << 30);
+    scadaParameters_[384].value.float_t = data.uint32_t;
+
+    // 425
+    value = parameters.get(CCS_PROT_MOTOR_ASYNC_MODE) ? 1 : 0;
+    scadaParameters_[393].value.float_t = value;
+
+    //449
+    scadaParameters_[417].value.uint32_t = parameters.getU32(CCS_NUM_PRODUCTION_SU);
+    //451
+    scadaParameters_[418].value.uint32_t = parameters.getU32(CCS_NUM_PRODUCTION_SU_2);
+
+    //453
+    data.uint32_t = 0;
+    if (parameters.get(CCS_PROT_SUPPLY_OVERVOLTAGE_PREVENT))
+      data.uint32_t = 1;
+    else if (parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT))
+      data.uint32_t = 2;
+    else if (parameters.get(CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT))
+      data.uint32_t = 3;
+    else if (parameters.get(CCS_PROT_DHS_RESISTANCE_PREVENT))
+      data.uint32_t = 4;
+    else if (parameters.get(CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT))
+      data.uint32_t = 5;
+    else if (parameters.get(CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT))
+      data.uint32_t = 6;
+    else if (parameters.get(CCS_PROT_MOTOR_ASYNC_PREVENT))
+      data.uint32_t = 7;
+    else if (parameters.get(CCS_PROT_OTHER_LOCK_DOOR_PREVENT))
+      data.uint32_t = 8;
+    else if (parameters.get(CCS_PROT_OTHER_VSD_PREVENT))
+      data.uint32_t = 9;
+    else if (parameters.get(CCS_PROT_DI_1_PREVENT))
+      data.uint32_t = 10;
+    else if (parameters.get(CCS_PROT_DI_2_PREVENT))
+      data.uint32_t = 11;
+    else if (parameters.get(CCS_PROT_DI_3_PREVENT))
+      data.uint32_t = 12;
+    else if (parameters.get(CCS_PROT_DI_4_PREVENT))
+      data.uint32_t = 13;
+    else if (parameters.get(CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PREVENT))
+      data.uint32_t = 18;
+    else if (parameters.get(CCS_PROT_AI_1_PREVENT))
+      data.uint32_t = 19;
+    else if (parameters.get(CCS_PROT_AI_2_PREVENT))
+      data.uint32_t = 20;
+    else if (parameters.get(CCS_PROT_AI_3_PREVENT))
+      data.uint32_t = 21;
+    else if (parameters.get(CCS_PROT_AI_4_PREVENT))
+      data.uint32_t = 22;
+    else if (parameters.get(CCS_PROT_DHS_PRESSURE_DISCHARGE_PREVENT))
+      data.uint32_t = 23;
+    scadaParameters_[419].value.float_t = data.uint32_t;
+
+    // 475
+    value = parameters.get(CCS_RGM_MAINTENANCE_PARAM_MODE) ? 1 : 0;
+    scadaParameters_[441].value.float_t = value;
+
+    // 481
+    value = parameters.get(CCS_RGM_ALTERNATION_FREQ_MODE) ? 1 : 0;
+    scadaParameters_[447].value.float_t = value;
+
+    // 482
+    value = parameters.get(CCS_RGM_JARRING_MODE) ? 1 : 0;
+    scadaParameters_[448].value.float_t = value;
+
+    // 485
+    value = parameters.get(CCS_RGM_PERIODIC_MODE) ? 1 : 0;
+    scadaParameters_[451].value.float_t = value;
 
     //560
     value = (parameters.get(CCS_RUNNING_TYPE) == Regime::SmoothRegimeRun) ? 1 : 0;
@@ -500,8 +592,49 @@ int ScadaNovomet::setNewValue(ScadaParameter *param)
 
   unTypeData value;
 
+  //119
+  if (param->address == 119) {
+    if (param->value.float_t)
+      ksu.start(LastReasonRunRemote);
+    return ok_r;
+  }
+
+  //121
+  if (param->address == 121) {
+    if (param->value.float_t)
+      ksu.stop(LastReasonStopRemote);
+    return ok_r;
+  }
+
+  //189
+  if (param->address == 189) {
+    value.float_t = -1;
+    switch (int(param->value.float_t)) {
+    case 0: value.float_t = 1000; break;
+    case 1: value.float_t = 1500; break;
+    case 2: value.float_t = 2000; break;
+    case 3: value.float_t = 2500; break;
+    case 4: value.float_t = 3000; break;
+    case 5: value.float_t = 3500; break;
+    case 6: value.float_t = 4000; break;
+    case 7: value.float_t = 5000; break;
+    case 8: value.float_t = 6000; break;
+    case 9: value.float_t = 7000; break;
+    case 10: value.float_t = 8000; break;
+    case 11: value.float_t = 10000; break;
+    case 12: value.float_t = 12000; break;
+    case 13: value.float_t = 14000; break;
+    case 14: value.float_t = 16000; break;
+    }
+    if (value.float_t != -1) {
+      parameters.set(VSD_SWITCHING_FREQUENCY, value.float_t, RemoteType);
+      return ok_r;
+    }
+    return err_r;
+  }
+
   //215
-  if (param->address >= 215) {
+  if (param->address == 215) {
     value.float_t = -1;
     switch (int(param->value.float_t)) {
     case 0:  value.float_t = TYPE_DHS_NONE; break;
@@ -523,6 +656,60 @@ int ScadaNovomet::setNewValue(ScadaParameter *param)
       return ok_r;
     }
     return err_r;
+  }
+
+  // 425
+  if (param->address == 425) {
+    if (param->value.float_t)
+      parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ProtModeOn, RemoteType);
+    else
+      parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ProtModeOff, RemoteType);
+    return ok_r;
+  }
+
+  //449
+  if (param->address == 449) {
+    return parameters.set(CCS_NUM_PRODUCTION_SU, param->value.uint32_t, RemoteType);
+  }
+  //451
+  if (param->address == 451) {
+    return parameters.set(CCS_NUM_PRODUCTION_SU_2, param->value.uint32_t, RemoteType);
+  }
+
+  // 475
+  if (param->address == 475) {
+    if (param->value.float_t)
+      parameters.set(CCS_RGM_MAINTENANCE_PARAM_MODE, Regime::OnAction, RemoteType);
+    else
+      parameters.set(CCS_RGM_MAINTENANCE_PARAM_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
+  }
+
+  // 481
+  if (param->address == 481) {
+    if (param->value.float_t)
+      parameters.set(CCS_RGM_ALTERNATION_FREQ_MODE, Regime::OnAction, RemoteType);
+    else
+      parameters.set(CCS_RGM_ALTERNATION_FREQ_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
+  }
+
+  // 482
+  if (param->address == 482) {
+    if (param->value.float_t)
+      parameters.set(CCS_RGM_JARRING_MODE, Regime::OnAction, RemoteType);
+    else
+      parameters.set(CCS_RGM_JARRING_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
+  }
+
+  // 485
+  if (param->address == 485) {
+    if (param->value.float_t)
+      parameters.set(CCS_RGM_PERIODIC_MODE, Regime::OnAction, RemoteType);
+    else
+      parameters.set(CCS_RGM_PERIODIC_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
   }
 
   // 560

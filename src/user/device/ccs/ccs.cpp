@@ -333,7 +333,6 @@ void Ccs::changedCondition()
       }
       break;
     case CCS_CONDITION_RUN:
-      resetRestart();
       if (flag == CCS_CONDITION_FLAG_DELAY) {
         setNewValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
         setLedCondition(OnGreenToogleYellowLed);
@@ -434,6 +433,7 @@ void Ccs::syncStart()
   logDebug.add(WarningMsg, "Ccs::syncStart() Error control VSD (Synchronization = Work)");
 
   resetBlock();
+  resetRestart();
   setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
   setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
   setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);

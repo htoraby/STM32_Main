@@ -16,7 +16,7 @@
 #define USE_LOG_DEBUG 0           // Предлагаю формат сообщения "Группа - 10 масимум символов: Сообщение - 50 символов (Значения переменных и другая информация - максимум 100 символов)
 #define USE_LOG_WARNING 1
 #define USE_LOG_CRITICAL 1
-#define USE_POWER_OFF 1
+#define USE_POWER_OFF 0
 
 #define WATCHDOG_TIMEOUT 30 // сек
 
