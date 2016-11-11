@@ -42,11 +42,16 @@ int Vsd::setMotorTypeProfile()
 
 int Vsd::setMotorFrequency(float value)
 {
+  float maxFreq = 70;
+  if (parameters.get(CCS_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
+    maxFreq = 200;
+  }
+  setMax(VSD_MOTOR_FREQUENCY, maxFreq);
+
   if (setValue(VSD_MOTOR_FREQUENCY, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setMotorFrequency() (value = %d)",
-                 value);
-#endif
+    #if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "Vsd::setMotorFrequency() (value = %d)", value);
+    #endif
     return err_r;
   }
   return ok_r;
@@ -55,10 +60,9 @@ int Vsd::setMotorFrequency(float value)
 int Vsd::setMotorCurrent(float value, EventType eventType)
 {
   if (setValue(VSD_MOTOR_CURRENT, value, eventType)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setMotorCurrent() (value = %d)",
-                 value);
-#endif
+    #if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "Vsd::setMotorCurrent() (value = %d)", value);
+    #endif
     return err_r;
   }
   return ok_r;
@@ -67,10 +71,9 @@ int Vsd::setMotorCurrent(float value, EventType eventType)
 int Vsd::setMotorVoltage(float value, EventType eventType)
 {
   if (setValue(VSD_MOTOR_VOLTAGE, value, eventType)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setMotorVoltage() (value = %d)",
-                 value);
-#endif
+    #if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "Vsd::setMotorVoltage() (value = %d)", value);
+    #endif
     return err_r;
   }
   return ok_r;
@@ -223,6 +226,7 @@ int Vsd::setLimitsMaxFrequence(float value)
   if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) {   // Если записали максимум частоты
     setMax(VSD_LOW_LIM_SPEED_MOTOR, value);           // Меняем поле максимум для уставки "Минимальной частоты"
     setMax(VSD_FREQUENCY, value);                     // Меняем поле максимум для уставки "Частота" 
+    parameters.setMax(CCS_BASE_FREQUENCY, value);
     if (value < parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1))
       parameters.setMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1, value);
     if (value < parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_2))
@@ -240,7 +244,7 @@ int Vsd::setLimitsMaxFrequence(float value)
     if (value < parameters.getMax(CCS_RGM_JARRING_FREQ_1))
       parameters.setMax(CCS_RGM_JARRING_FREQ_1, value);
     if (value < parameters.getMax(CCS_RGM_JARRING_FREQ_2))
-      parameters.setMax(CCS_RGM_JARRING_FREQ_2, value);
+      parameters.setMax(CCS_RGM_JARRING_FREQ_2, value); 
     return ok_r;
   }
   return err_r;
