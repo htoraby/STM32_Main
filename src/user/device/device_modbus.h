@@ -224,8 +224,9 @@ public:
    * \brief Метод записи параметра в устройство
    * \param ID идентификатор параметра
    * \param Value значение
+   * \param operation
   */
-  void writeModbusParameter(int id, float value);
+  void writeModbusParameter(int id, float value, enOperation operation = OPERATION_WRITE);
 
   /*!
    * \brief readModbusParameter

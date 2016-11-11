@@ -205,7 +205,7 @@ int DeviceModbus::putMessageUpdateId(int id)
     return 0;
 }
 
-void DeviceModbus::writeModbusParameter(int id, float value)
+void DeviceModbus::writeModbusParameter(int id, float value, enOperation operation)
 {
   int index = getIndexAtId(id);
   if (index) {
@@ -247,7 +247,7 @@ void DeviceModbus::writeModbusParameter(int id, float value)
     default:
       break;
     }
-    param->command = OPERATION_WRITE;
+    param->command = operation;
     putMessageOutOfTurn(index);
   }
 }
@@ -317,11 +317,13 @@ bool DeviceModbus::isConnect()
 void DeviceModbus::exchangeTask()
 {
   uint16_t count = 1;
+
   while (1) {
     osDelay(1);
     // Проверяем очередь параметров для обработки вне очереди
     int outOfTurn = getMessageOutOfTurn();  // Проверка если параметр вне очереди
-    if (outOfTurn && (mbParams_[outOfTurn].command == OPERATION_WRITE)) {
+    uint8_t command = mbParams_[outOfTurn].command;
+    if (outOfTurn && ((command == OPERATION_WRITE) || (command == OPERATION_WRITE_DELAY))) {
       mbParams_[outOfTurn].validity = err_r;
       switch (mbParams_[outOfTurn].typeData) {                // Тип данных
       case TYPE_DATA_COIL:
@@ -351,19 +353,11 @@ void DeviceModbus::exchangeTask()
       default:
         break;
       }
-// NOTE: Т.к. ПЧ Новомет, работает не по modbus, и меняет значение регистров
-// через некоторое время после получения команды на запись, а отвечает корректным
-// ответом сразу. Для него в случае записи параметра по modbus, проверяем если параметр
-// читается достаточно редко, настраиваем счётчик циклов чтения параметра, на частота опроса - 10 циклов.
-      if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_NOVOMET) {   // Тип
-        if (mbParams_[outOfTurn].freqExchange > 20/*VERY_OFTEN*/) {
-          mbParams_[outOfTurn].cntExchange = mbParams_[outOfTurn].freqExchange - 20/*VERY_OFTEN*/;
-        }
+      if (command == OPERATION_WRITE_DELAY) {
+        osDelay(499);
       }
-      else {
-        mbParams_[outOfTurn].command = OPERATION_READ;
-        putMessageOutOfTurn(outOfTurn);
-      }
+      mbParams_[outOfTurn].command = OPERATION_READ;
+      putMessageOutOfTurn(outOfTurn);
     }
     else {
       if (!(outOfTurn && (mbParams_[outOfTurn].command == OPERATION_READ))) {
