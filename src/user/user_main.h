@@ -11,6 +11,7 @@
 #include "tms_elekton_2.h"
 #include "tms_elekton_3.h"
 #include "tms_borets.h"
+#include "tms_borets_2.h"
 #include "tms_irz.h"
 #include "tms_etalon.h"
 #include "tms_almaz.h"

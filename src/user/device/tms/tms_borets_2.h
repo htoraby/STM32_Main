@@ -1,17 +1,17 @@
-#ifndef TMSBORETS_H
-#define TMSBORETS_H
+#ifndef TMSBORETS2_H
+#define TMSBORETS2_H
 
 #include "tms.h"
 #include "device_modbus.h"
 
 /*!
- * \brief Класс системы телеметрической "Борец СПТ-1"
+ * \brief Класс системы телеметрической "Борец СПТ-2"
  */
-class TmsBorets : public Tms
+class TmsBorets2 : public Tms
 {
 public:
-  TmsBorets();
-  virtual ~TmsBorets();
+  TmsBorets2();
+  virtual ~TmsBorets2();
 
   /*!
    * \brief Функция инициализации ТМС
@@ -56,9 +56,8 @@ public:
   void resetConnect();
 
 private:
-  ModbusParameter modbusParameters_[9];
+  ModbusParameter modbusParameters_[13];
   DeviceModbus *dm_;
 
 };
-
-#endif // TMSBORETS_H
+#endif // TMSBORETS2_H

@@ -90,6 +90,9 @@ void createDhs(bool init)
   case TYPE_DHS_BORETS_1:
     tms = new TmsBorets();
     break;
+  case TYPE_DHS_BORETS_2:
+    tms = new TmsBorets2();
+    break;
   case TYPE_DHS_IRZ:
     tms = new TmsIrz();
     break;
