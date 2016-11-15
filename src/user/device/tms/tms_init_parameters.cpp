@@ -72,7 +72,7 @@ void Tms::initParameters()
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].min                         = 0.0;
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].max                         = 999999999.9;
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].def                         = 0;
-  parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].discret                     = 1;
+  parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].discret                     = 100;
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].code                        = 0;
   // Ускорение по оси Y на приёме
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].id                          = TMS_ACCELERATION_Y_INTAKE;
@@ -84,7 +84,7 @@ void Tms::initParameters()
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].min                         = 0.0;
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].max                         = 999999999.9;
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].def                         = 0;
-  parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].discret                     = 1;
+  parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].discret                     = 100;
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].code                        = 0;
   // Ускорение по оси Z на приёме
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].id                          = TMS_ACCELERATION_Z_INTAKE;
