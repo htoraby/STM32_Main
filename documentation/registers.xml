@@ -30967,6 +30967,8 @@
 		<short_text>Т двигателя</short_text>
 		<form>1.5 Текущие параметры ТМС</form>
 		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXX_XX</format>
 		<code>0</code>
 		<comment>Температура масла двигателя</comment>
 	</param>
