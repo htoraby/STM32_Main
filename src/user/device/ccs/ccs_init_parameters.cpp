@@ -12374,5 +12374,17 @@ void Ccs::initParameters()
   parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].discret                    = 1;
   parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].def                        = 3000.0;
   parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].code                       = 13;
+  // Команда применения профиля ЧРП
+  parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].id                           = CCS_CMD_TYPE_PROFILE_VSD;
+  parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].max                          = 1.0;
+  parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].code                         = 0;
 }
 

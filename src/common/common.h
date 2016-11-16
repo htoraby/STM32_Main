@@ -28,6 +28,7 @@ enum ErrorSlave {
   TimeoutMasterUpdateErr,      //!< Тайм-аут сохранения файла прошивки GUI
   MiniLzoInitUsbErr,           //!< Ошибка инициализации архиватора MiniLZO
   MiniLzoUsbErr,               //!< Ошибка архиватора MiniLZO
+  SetProfileVsdErr,            //!< Ошибка конфигурирования ЧРП
 };
 
 /*!

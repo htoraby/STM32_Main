@@ -20558,6 +20558,27 @@
 	</param>
 	<param>
 		<id>1031</id>
+		<name>CCS_CMD_TYPE_PROFILE_VSD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Команда применения профиля ЧРП</comment>
+	</param>
+	<param>
+		<id>1032</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 	</param>

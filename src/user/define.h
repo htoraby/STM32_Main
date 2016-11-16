@@ -101,6 +101,7 @@ enum enOperation
   OPERATION_READ				= 1,                //!< Параметр только для чтения
   OPERATION_WRITE				= 2,                //!< Параметр только для записи
   OPERATION_LIMITED			= 3,                //!< Параметр для записи только во время останова
+  OPERATION_WRITE_DELAY = 4,                //!< Параметр с задержкой после записи
 	OPERATION_LAST
 };
 

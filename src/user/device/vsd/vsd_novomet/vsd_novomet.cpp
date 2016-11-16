@@ -1304,7 +1304,8 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value, EventType eventType)
 
 void VsdNovomet::writeToDevice(int id, float value)
 {
-  dm_->writeModbusParameter(id, value);
+  enOperation command = OPERATION_WRITE_DELAY;
+  dm_->writeModbusParameter(id, value, command);
 }
 
 void VsdNovomet::readInDevice(int id)
