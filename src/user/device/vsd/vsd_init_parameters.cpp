@@ -25,7 +25,7 @@ void Vsd::initParameters()
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].discret                             = 100;
-  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].code                                = 13;
+  parameters_[VSD_FREQUENCY_NOW - VSD_BEGIN].code                                = 0;
   // Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
   parameters_[VSD_FREQUENCY - VSD_BEGIN].id                                      = VSD_FREQUENCY;
   parameters_[VSD_FREQUENCY - VSD_BEGIN].access                                  = ACCESS_OPERATOR;
@@ -325,7 +325,7 @@ void Vsd::initParameters()
   parameters_[VSD_HIGH_LIM_SPEED_MOTOR - VSD_BEGIN].max                          = 500.0;
   parameters_[VSD_HIGH_LIM_SPEED_MOTOR - VSD_BEGIN].def                          = 60.0;
   parameters_[VSD_HIGH_LIM_SPEED_MOTOR - VSD_BEGIN].discret                      = 100;
-  parameters_[VSD_HIGH_LIM_SPEED_MOTOR - VSD_BEGIN].code                         = 13;
+  parameters_[VSD_HIGH_LIM_SPEED_MOTOR - VSD_BEGIN].code                         = 0;
   // Период нарастания частоты Novomet 0х0038 IREG_T_SPEEDUP
   parameters_[VSD_T_SPEEDUP - VSD_BEGIN].id                                      = VSD_T_SPEEDUP;
   parameters_[VSD_T_SPEEDUP - VSD_BEGIN].access                                  = ACCESS_OPERATOR;
@@ -1681,7 +1681,7 @@ void Vsd::initParameters()
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].max                                 = 999999999.9;
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].def                                 = 0;
   parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].discret                             = 1;
-  parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].code                                = 0;
+  parameters_[VSD_FC_T_OVERLOAD - VSD_BEGIN].code                                = 13;
   // Ограничение тока для импульсов
   parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].id                                   = VSD_FC_ILIM_LONG;
   parameters_[VSD_FC_ILIM_LONG - VSD_BEGIN].access                               = ACCESS_OPERATOR;
@@ -2957,7 +2957,7 @@ void Vsd::initParameters()
   // Температура радиатора Danfoss 16-34 Используется в проекте
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].id                           = VSD_RADIATOR_TEMPERATURE;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].operation                    = OPERATION_READ;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].physic                       = PHYSIC_TEMPERATURE;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[VSD_RADIATOR_TEMPERATURE - VSD_BEGIN].value.float_t                = 0;
@@ -2969,7 +2969,7 @@ void Vsd::initParameters()
   // Температура платы управления Danfoss 16-39 Используется в проекте
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].id                            = VSD_CONTROL_TEMPERATURE;
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].operation                     = OPERATION_READ;
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].physic                        = PHYSIC_TEMPERATURE;
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[VSD_CONTROL_TEMPERATURE - VSD_BEGIN].value.float_t                 = 0;

@@ -511,9 +511,9 @@ enum enID
   CCS_RGM_CURRENT_LIMIT_STEPDOWN = 505,                      //!< Режим ограничения тока шаг снижения частоты
   CCS_RGM_CURRENT_LIMIT_DELAY_REACTION = 506,                //!< Режим ограничения тока задержка отключения
   CCS_RGM_CURRENT_LIMIT_DELAY_RESTART = 507,                 //!< Режим ограничения тока задержка АПВ
-  CCS_COEF_VOLTAGE_IN_A = 508,                               //!< Коэффициент корректировки входного напряжения
-  CCS_COEF_VOLTAGE_IN_B = 509,                               //!< 
-  CCS_COEF_VOLTAGE_IN_C = 510,                               //!< 
+  CCS_COEF_VOLTAGE_IN_A = 508,                               //!< Коэффициент корректировки входного напряжения A
+  CCS_COEF_VOLTAGE_IN_B = 509,                               //!< Коэффициент корректировки входного напряжения B
+  CCS_COEF_VOLTAGE_IN_C = 510,                               //!< Коэффициент корректировки входного напряжения C
   CCS_COEF_OUT_CURRENT_1 = 511,                              //!< Коэффициент корректировки выходного тока фаза U
   CCS_COEF_OUT_CURRENT_2 = 512,                              //!< Коэффициент корректировки выходного тока фаза V
   CCS_COEF_OUT_CURRENT_3 = 513,                              //!< Коэффициент корректировки выходного тока фаза W

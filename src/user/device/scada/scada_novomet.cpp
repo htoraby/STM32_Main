@@ -348,6 +348,7 @@ void ScadaNovomet::calcParamsTask()
     case TYPE_DHS_ALMAZ:
       value = 12; break;
     case TYPE_DHS_BORETS_1:
+    case TYPE_DHS_BORETS_2:
       value = 7; break;
     case TYPE_DHS_ELEKTON_2:
     case TYPE_DHS_ELEKTON_3:

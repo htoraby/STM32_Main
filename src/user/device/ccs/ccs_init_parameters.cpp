@@ -478,7 +478,7 @@ void Ccs::initParameters()
   parameters_[CCS_DHS_TYPE - CCS_BEGIN].validity                                 = VALIDITY_OK;
   parameters_[CCS_DHS_TYPE - CCS_BEGIN].value.float_t                            = 0.0;
   parameters_[CCS_DHS_TYPE - CCS_BEGIN].min                                      = 0.0;
-  parameters_[CCS_DHS_TYPE - CCS_BEGIN].max                                      = 14.0;
+  parameters_[CCS_DHS_TYPE - CCS_BEGIN].max                                      = 15.0;
   parameters_[CCS_DHS_TYPE - CCS_BEGIN].discret                                  = 1;
   parameters_[CCS_DHS_TYPE - CCS_BEGIN].def                                      = 0.0;
   parameters_[CCS_DHS_TYPE - CCS_BEGIN].code                                     = 0;
@@ -625,7 +625,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT - CCS_BEGIN].max      = 125.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT - CCS_BEGIN].discret  = 1;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT - CCS_BEGIN].def      = 120.0;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT - CCS_BEGIN].code     = 13;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_SETPOINT - CCS_BEGIN].code     = 0;
   // Уставка Параметр защиты, для этой защиты работать по ВРП
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].id              = CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].access          = ACCESS_OPERATOR;
@@ -793,7 +793,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT - CCS_BEGIN].max        = 100.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT - CCS_BEGIN].discret    = 1;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT - CCS_BEGIN].def        = 80.0;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT - CCS_BEGIN].code       = 13;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT - CCS_BEGIN].code       = 0;
   // Условие АПВ уставка
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_SETPOINT - CCS_BEGIN].id      = CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_SETPOINT;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_SETPOINT - CCS_BEGIN].access  = ACCESS_OPERATOR;
@@ -6073,7 +6073,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].max                    = 999999999.9;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].discret                = 100;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].def                    = 0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].code                   = 13;
+  parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].code                   = 0;
   // Режим ограничения тока задержка отключения
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].id               = CCS_RGM_CURRENT_LIMIT_DELAY_REACTION;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].access           = ACCESS_OPERATOR;
@@ -6097,8 +6097,8 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].max               = 999999999.9;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].discret           = 1;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].def               = 0;
-  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].code              = 13;
-  // Коэффициент корректировки входного напряжения
+  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].code              = 0;
+  // Коэффициент корректировки входного напряжения A
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].id                              = CCS_COEF_VOLTAGE_IN_A;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].access                          = ACCESS_TECHNOLOG;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].operation                       = OPERATION_WRITE;
@@ -6110,7 +6110,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].discret                         = 1000;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].def                             = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].code                            = 13;
-  // 
+  // Коэффициент корректировки входного напряжения B
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].id                              = CCS_COEF_VOLTAGE_IN_B;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].access                          = ACCESS_TECHNOLOG;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].operation                       = OPERATION_WRITE;
@@ -6122,7 +6122,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].discret                         = 1000;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].def                             = 0;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].code                            = 13;
-  // 
+  // Коэффициент корректировки входного напряжения C
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].id                              = CCS_COEF_VOLTAGE_IN_C;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].access                          = ACCESS_TECHNOLOG;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].operation                       = OPERATION_WRITE;
@@ -8225,7 +8225,7 @@ void Ccs::initParameters()
   // Тип подключенного ЧРП
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].id                                       = CCS_TYPE_VSD;
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].access                                   = ACCESS_OPERATOR;
-  parameters_[CCS_TYPE_VSD - CCS_BEGIN].operation                                = OPERATION_WRITE;
+  parameters_[CCS_TYPE_VSD - CCS_BEGIN].operation                                = OPERATION_LIMITED;
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].physic                                   = PHYSIC_NUMERIC;
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].validity                                 = VALIDITY_OK;
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].value.float_t                            = 0.0;
@@ -8597,7 +8597,7 @@ void Ccs::initParameters()
   // Напряжение двигателя фаза A
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].id                          = CCS_MOTOR_VOLTAGE_PHASE_1;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].physic                      = PHYSIC_VOLTAGE;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_1 - CCS_BEGIN].value.float_t               = 0.0;
@@ -8609,7 +8609,7 @@ void Ccs::initParameters()
   // Напряжение двигателя фаза B
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].id                          = CCS_MOTOR_VOLTAGE_PHASE_2;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].physic                      = PHYSIC_VOLTAGE;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_2 - CCS_BEGIN].value.float_t               = 0.0;
@@ -8621,7 +8621,7 @@ void Ccs::initParameters()
   // Напряжение двигателя фаза C
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].id                          = CCS_MOTOR_VOLTAGE_PHASE_3;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].physic                      = PHYSIC_VOLTAGE;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_PHASE_3 - CCS_BEGIN].value.float_t               = 0.0;
@@ -8633,7 +8633,7 @@ void Ccs::initParameters()
   // Дисбаланс напряжений
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].id                        = CCS_MOTOR_VOLTAGE_IMBALANCE;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].physic                    = PHYSIC_PERCENT;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_IMBALANCE - CCS_BEGIN].value.float_t             = 0.0;
@@ -9337,7 +9337,7 @@ void Ccs::initParameters()
   parameters_[CCS_RESERVED_777 - CCS_BEGIN].max                                  = 1.0;
   parameters_[CCS_RESERVED_777 - CCS_BEGIN].discret                              = 10000;
   parameters_[CCS_RESERVED_777 - CCS_BEGIN].def                                  = 0.0;
-  parameters_[CCS_RESERVED_777 - CCS_BEGIN].code                                 = 13;
+  parameters_[CCS_RESERVED_777 - CCS_BEGIN].code                                 = 0;
   // "Защита от потери связи с ЧРП"
   parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].id                 = CCS_PROT_OTHER_VSD_NO_CONNECT_MODE;
   parameters_[CCS_PROT_OTHER_VSD_NO_CONNECT_MODE - CCS_BEGIN].access             = ACCESS_SERVICE;
@@ -9425,7 +9425,7 @@ void Ccs::initParameters()
   // Падение напряжения на кабеле
   parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].id                             = CCS_DPOR_VOLTAGE_CABLE;
   parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].operation                      = OPERATION_READ;
   parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].physic                         = PHYSIC_VOLTAGE;
   parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_DPOR_VOLTAGE_CABLE - CCS_BEGIN].value.float_t                  = 0.0;
@@ -9437,7 +9437,7 @@ void Ccs::initParameters()
   // Падение напряжения на фильтре
   parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].id                            = CCS_DROP_VOLTAGE_FILTER;
   parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].physic                        = PHYSIC_VOLTAGE;
   parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_DROP_VOLTAGE_FILTER - CCS_BEGIN].value.float_t                 = 0.0;
@@ -9701,7 +9701,7 @@ void Ccs::initParameters()
   // Расчётное напряжение двигателя
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].id                             = CCS_MOTOR_VOLTAGE_CALC;
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].operation                      = OPERATION_READ;
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].physic                         = PHYSIC_VOLTAGE;
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_MOTOR_VOLTAGE_CALC - CCS_BEGIN].value.float_t                  = 0.0;
@@ -10249,7 +10249,7 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].max                                 = 500.0;
   parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].discret                             = 100;
   parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].def                                 = 50.0;
-  parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].code                                = 13;
+  parameters_[CCS_VSD_FREQUENCY - CCS_BEGIN].code                                = 0;
   // Коэффициент корректировки входного тока фаза A
   parameters_[CCS_COEF_CURRENT_IN_A - CCS_BEGIN].id                              = CCS_COEF_CURRENT_IN_A;
   parameters_[CCS_COEF_CURRENT_IN_A - CCS_BEGIN].access                          = ACCESS_TECHNOLOG;
@@ -11641,7 +11641,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY - CCS_BEGIN].max  = 3600.0;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY - CCS_BEGIN].discret = 1;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY - CCS_BEGIN].def  = 0.0;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY - CCS_BEGIN].code = 13;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY - CCS_BEGIN].code = 0;
   // Перегрев вх.фильтра. Время
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].id    = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].access = ACCESS_OPERATOR;
@@ -11653,7 +11653,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].max   = 3600.0;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].discret = 1;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].def   = 0.0;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].code  = 13;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].code  = 0;
   // Перегрев вх.фильтра. Зад.АПВ
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_DELAY - CCS_BEGIN].id = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_DELAY;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_DELAY - CCS_BEGIN].access = ACCESS_OPERATOR;
@@ -12365,7 +12365,7 @@ void Ccs::initParameters()
   // Профиль настроек двигателя в ЧРП
   parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].id                         = CCS_MOTOR_TYPE_PROFILE_VSD;
   parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].operation                  = OPERATION_READ;
+  parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].operation                  = OPERATION_LIMITED;
   parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].physic                     = PHYSIC_RPM;
   parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_MOTOR_TYPE_PROFILE_VSD - CCS_BEGIN].value.float_t              = 3000.0;
