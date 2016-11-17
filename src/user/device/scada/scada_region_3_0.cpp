@@ -30,6 +30,8 @@ void ScadaRegion30::calcParamsTask()
     value |= ((parameters.get(CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT) > 3) << 2);
     value |= (ksu.isAutoMode() << 4);
     value |= (ksu.isManualMode() << 5);
+    value |= ((parameters.get(CCS_DHS_CONNECTION) && parameters.get(CCS_DHS_TYPE)) << 6);
+    value |= ((parameters.get(CCS_EM_CONNECTION) && parameters.get(CCS_EM_TYPE)) << 7);
     scadaParameters_[0].value.float_t = value;
 
     // 257-258
