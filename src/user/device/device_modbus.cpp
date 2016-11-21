@@ -377,11 +377,17 @@ void DeviceModbus::exchangeTask()
         case TYPE_DATA_UINT16:
           readUint16Registers(devAdrs_, mbParams_[outOfTurn].address, uint16Arr_, count);
           break;
+        case TYPE_DATA_UINT16_4:
+          readUint16InputRegisters(devAdrs_, mbParams_[outOfTurn].address, uint16Arr_, count);
+          break;
         case TYPE_DATA_INT32:
           readInt32Registers(devAdrs_, mbParams_[outOfTurn].address, uint32Arr_, count);
           break;
         case TYPE_DATA_UINT32:
           readUint32Registers(devAdrs_, mbParams_[outOfTurn].address, uint32Arr_, count);
+          break;
+        case TYPE_DATA_UINT32_4:
+          readUint32InputRegisters(devAdrs_, mbParams_[outOfTurn].address, uint32Arr_, count);
           break;
         case TYPE_DATA_FLOAT:
           readFloatsRegisters(devAdrs_, mbParams_[outOfTurn].address, floatArr_, count);
@@ -539,6 +545,38 @@ void DeviceModbus::readUint16Registers(uint8_t slaveAddr, uint16_t startRef, uin
   }
 }
 
+void DeviceModbus::readUint16InputRegisters(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt)
+{
+  uint8_t res = mms_->readInputRegisters(slaveAddr, startRef, regArr, refCnt);
+  if (res == ok_r) {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_UINT16_4);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].value.uint16_t[0] = regArr[i];
+      uint8_t validity = checkRange(mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, true);
+      if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
+        logDebug.add(WarningMsg, "DeviceModbus::readUint16InputRegisters() Error validity (port = %d; slaveAddr = %d; com = 0x04; startRef = %d; value = %d; min = %f; max = %f; validity = %d)",
+                     numPort_, slaveAddr, startRef, mbParams_[index].value.uint16_t[0], mbParams_[index].min, mbParams_[index].max, mbParams_[index].validity);
+      }
+      mbParams_[index].validity = validity;
+
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+  else {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_UINT16_4);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].validity = err_r;
+      if (isConnect()) {
+        logDebug.add(WarningMsg, "DeviceModbus::readUint16InputRegisters() Error read (port = %d; slaveAddr = %d; com = 0x04; startRef = %d)",
+                     numPort_, slaveAddr, startRef);
+      }
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+}
+
 void DeviceModbus::readInt32Registers(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt)
 {
   uint8_t res = mms_->readMultipleLongInts(slaveAddr, startRef, int32Arr, refCnt);
@@ -594,6 +632,37 @@ void DeviceModbus::readUint32Registers(uint8_t slaveAddr, uint16_t startRef, uin
       mbParams_[index].validity = err_r;
       if (isConnect()) {
         logDebug.add(WarningMsg, "DeviceModbus. Error read uint32 register, port:%d slaveAddr:%d command:0x03 startRef:%d",
+                     numPort_, slaveAddr, startRef);
+      }
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+}
+
+void DeviceModbus::readUint32InputRegisters(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt)
+{
+  uint8_t res = mms_->readInputLongInts(slaveAddr, startRef, int32Arr, refCnt);
+  if (res == ok_r) {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_UINT32_4);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].value.uint32_t = int32Arr[i];
+      uint8_t validity = checkRange(mbParams_[index].value.uint32_t, mbParams_[index].min, mbParams_[index].max, true);
+      if ((validity != ok_r) && (validity != mbParams_[index].validity)) {
+        logDebug.add(WarningMsg, "DeviceModbus::readUint32InputRegisters() Error validity (port = %d; slaveAddr = %d; com = 0x04; startRef = %d; value = %d; min = %f; max = %f; validity = %d)",
+                     numPort_, slaveAddr, startRef, mbParams_[index].value.uint32_t, mbParams_[index].min, mbParams_[index].max, mbParams_[index].validity);
+      }
+      mbParams_[index].validity = validity;
+      putMessageUpdateId(mbParams_[index].id);
+      index++;
+    }
+  }
+  else {
+    int index = getIndexAtAddress(startRef, TYPE_DATA_UINT32_4);
+    for (int i = 0; i < refCnt; i++) {
+      mbParams_[index].validity = err_r;
+      if (isConnect()) {
+        logDebug.add(WarningMsg, "DeviceModbus::readUint32InputRegisters() Error read (port = %d; slaveAddr = %d; com = 0x04; startRef = %d)",
                      numPort_, slaveAddr, startRef);
       }
       putMessageUpdateId(mbParams_[index].id);

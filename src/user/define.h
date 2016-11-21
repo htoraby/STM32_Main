@@ -41,6 +41,8 @@ enum enTypeData {
   TYPE_DATA_STR,
   TYPE_DATA_UINT16_B,
   TYPE_DATA_UINT32_B,
+  TYPE_DATA_UINT16_4,
+  TYPE_DATA_UINT32_4,
   TYPE_DATA_LAST
 };
 
@@ -206,6 +208,7 @@ enum enTypeDHS {
   TYPE_DHS_ZENIT,                           //!< Зенит
   TYPE_DHS_SNG,                             //!< СНГ
   TYPE_DHS_BORETS_2,                        //!< Борец СПТ-2
+  TYPE_DHS_TRANSFER,                        //!< РН-Transfer
 };
 
 /*!

@@ -331,6 +331,15 @@ private:
   void readUint16Registers(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt);
 
   /*!
+   * \brief readUint16InputRegisters
+   * \param slaveAddr
+   * \param startRef
+   * \param regArr
+   * \param refCnt
+   */
+  void readUint16InputRegisters(uint8_t slaveAddr, uint16_t startRef, uint16_t *regArr, uint16_t refCnt);
+
+  /*!
    * \brief readInt32Registers
    * \param slaveAddr
    * \param startRef
@@ -347,6 +356,15 @@ private:
    * \param refCnt
    */
   void readUint32Registers(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt);
+
+  /*!
+   * \brief readUint32InputRegisters
+   * \param slaveAddr
+   * \param startRef
+   * \param int32Arr
+   * \param refCnt
+   */
+  void readUint32InputRegisters(uint8_t slaveAddr, uint16_t startRef, uint32_t *int32Arr, uint16_t refCnt);
 
   /*!
    * \brief readFloatsRegisters
