@@ -1642,7 +1642,12 @@ enum enID
   TMS_DATE_TIME_DDHH = 15103,                                //!< Дата время, BDC(ДДЧЧ)
   TMS_DATE_TIME_MMSS = 15104,                                //!< Дата время, BDC(ММСС)
   TMS_PRESSURE_MOTOR = 15105,                                //!< Давление масла двигателя
-  TMS_END = 15106,                                           //!< 
+  TMS_SERVICE_INFO = 15106,                                  //!< Служебная информация
+  TMS_TYPE_FRAME = 15107,                                    //!< Тип кадра
+  TMS_FAIL_LINK_TIME = 15108,                                //!< Время определения отказа связи с ТМСП
+  TMS_POWER_RESET_TMSP_TIME = 15109,                         //!< Время сброса ТМСП
+  TMS_POWER_RESET_TMSP = 15110,                              //!< Сброс питания ТМСП
+  TMS_END = 15111,                                           //!< 
   EM_BEGIN = 20000,                                          //!< Первый параметр группы счётчиков электроэнергии
   EM_VOLTAGE_PHASE_1 = 20001,                                //!< Напряжение первой фазы
   EM_VOLTAGE_PHASE_2 = 20002,                                //!< Напряжение второй фазы

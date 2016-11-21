@@ -114,6 +114,9 @@ void createDhs(bool init)
   case TYPE_DHS_SNG:
     tms = new TmsSng();
     break;
+  case TYPE_DHS_TRANSFER:
+    tms = new TmsTransfer();
+    break;
   default:
     tms = new Tms();
     break;

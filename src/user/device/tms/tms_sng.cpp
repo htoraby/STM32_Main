@@ -741,7 +741,7 @@ void TmsSng::initModbusParameters()
                             VALIDITY_ERROR,            // Поле состояния параметра
                             0                          // Значение
                           };
-  modbusParameters_[41] = { // Скорость Modbus RS-232/RS-485
+  modbusParameters_[41] = { // Код скорости Modbus RS-232/RS-485
                             TMS_MODBUS_SPEED,// Идентификатор параметра
                             114,                        // Адрес регистра в устройстве
                             OPERATION_READ,            // Операции с параметром
@@ -759,7 +759,7 @@ void TmsSng::initModbusParameters()
                             VALIDITY_ERROR,            // Поле состояния параметра
                             0                          // Значение
                           };
-  modbusParameters_[42] = { // Скорость Modbus RS-485
+  modbusParameters_[42] = { // Код скорости Modbus RS-485
                             TMS_MODBUS_SPEED_2,// Идентификатор параметра
                             115,                        // Адрес регистра в устройстве
                             OPERATION_READ,            // Операции с параметром

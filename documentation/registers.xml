@@ -828,7 +828,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>15.0</max>
+		<max>16.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -840,7 +840,7 @@
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<code>0</code>
-		<values>0-Откл;1-Новомет</values>
+		<values>0-Откл;1-Новомет;2-Алмаз;3-Борец СПТ-1;4-Электон;5-Эталон ТМСН-2;6-Эталон ТМСН-3;7-Ирз;8-Орион;9-PICv2;10-Скад;11-Скан;12-Триол;13-Зенит;14-СНГ;15-Борец СПТ-2;16-РН-Transfer</values>
 		<comment>Тип ТМС</comment>
 	</param>
 	<param>
@@ -31090,11 +31090,16 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
+		<max>1000.0</max>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<form>NULL</form>
+		<text>Обводненность</text>
+		<short_text>Обводненность</short_text>
+		<form>1.5 Текущие параметры ТМС</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XX_X</format>
 		<code>0</code>
 		<comment>Обводненность</comment>
 	</param>
@@ -31909,6 +31914,7 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -31972,6 +31978,7 @@
 		<physic>PHYSIC_PRESSURE</physic>
 		<min>0.0</min>
 		<max>999999999.9</max>
+		<def>0.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
@@ -31986,6 +31993,107 @@
 	</param>
 	<param>
 		<id>15106</id>
+		<name>TMS_SERVICE_INFO</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Служебная информация</text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<code>0</code>
+		<comment>Служебная информация</comment>
+	</param>
+	<param>
+		<id>15107</id>
+		<name>TMS_TYPE_FRAME</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Тип кадра</text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<code>0</code>
+		<comment>Тип кадра</comment>
+	</param>
+	<param>
+		<id>15108</id>
+		<name>TMS_FAIL_LINK_TIME</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Время определения отказа связи с ТМСП</text>
+		<short_text>Время определения отказа связи с ТМСП</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM</unit_lcd>
+		<format>XX</format>
+		<code>13</code>
+		<comment>Время определения отказа связи с ТМСП</comment>
+	</param>
+	<param>
+		<id>15109</id>
+		<name>TMS_POWER_RESET_TMSP_TIME</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>10.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Время сброса ТМСП</text>
+		<short_text>Время сброса ТМСП</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXX</format>
+		<code>13</code>
+		<comment>Время сброса ТМСП</comment>
+	</param>
+	<param>
+		<id>15110</id>
+		<name>TMS_POWER_RESET_TMSP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Сброс питания ТМСП</text>
+		<short_text>Сброс питания ТМСП</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>X</format>
+		<code>13</code>
+		<comment>Сброс питания ТМСП</comment>
+	</param>
+	<param>
+		<id>15111</id>
 		<name>TMS_END</name>
 		<form>NULL</form>
 		<code>0</code>

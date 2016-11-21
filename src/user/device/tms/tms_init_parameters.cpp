@@ -682,9 +682,9 @@ void Tms::initParameters()
   parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].validity                      = VALIDITY_ERROR;
   parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].value.float_t                 = NAN;
   parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].min                           = 0.0;
-  parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].max                           = 999999999.9;
+  parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].max                           = 1000.0;
   parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].def                           = 0;
-  parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].discret                       = 1;
+  parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].discret                       = 10;
   parameters_[TMS_HOWMIDITY_DISCHARGE - TMS_BEGIN].code                          = 0;
   // Радиальная виброскорость насоса
   parameters_[TMS_SPEED_XY_DISCHARGE - TMS_BEGIN].id                             = TMS_SPEED_XY_DISCHARGE;
@@ -1223,7 +1223,7 @@ void Tms::initParameters()
   parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].value.float_t                      = NAN;
   parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].min                                = 0.0;
   parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].max                                = 999999999.9;
-  parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].def                                = 0;
+  parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].def                                = 0.0;
   parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].discret                            = 1;
   parameters_[TMS_MODBUS_SPEED_2 - TMS_BEGIN].code                               = 0;
   // Дата время, BDC(ГГММ)
@@ -1271,8 +1271,68 @@ void Tms::initParameters()
   parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].value.float_t                      = NAN;
   parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].min                                = 0.0;
   parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].max                                = 999999999.9;
-  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].def                                = 0;
+  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].def                                = 0.0;
   parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].discret                            = 100;
   parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].code                               = 0;
+  // Служебная информация
+  parameters_[TMS_SERVICE_INFO - TMS_BEGIN].id                                   = TMS_SERVICE_INFO;
+  parameters_[TMS_SERVICE_INFO - TMS_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[TMS_SERVICE_INFO - TMS_BEGIN].operation                            = OPERATION_READ;
+  parameters_[TMS_SERVICE_INFO - TMS_BEGIN].physic                               = PHYSIC_NUMERIC;
+  parameters_[TMS_SERVICE_INFO - TMS_BEGIN].validity                             = VALIDITY_ERROR;
+  parameters_[TMS_SERVICE_INFO - TMS_BEGIN].value.float_t                        = NAN;
+  parameters_[TMS_SERVICE_INFO - TMS_BEGIN].min                                  = 0.0;
+  parameters_[TMS_SERVICE_INFO - TMS_BEGIN].max                                  = 65535.0;
+  parameters_[TMS_SERVICE_INFO - TMS_BEGIN].def                                  = 0.0;
+  parameters_[TMS_SERVICE_INFO - TMS_BEGIN].discret                              = 1;
+  parameters_[TMS_SERVICE_INFO - TMS_BEGIN].code                                 = 0;
+  // Тип кадра
+  parameters_[TMS_TYPE_FRAME - TMS_BEGIN].id                                     = TMS_TYPE_FRAME;
+  parameters_[TMS_TYPE_FRAME - TMS_BEGIN].access                                 = ACCESS_OPERATOR;
+  parameters_[TMS_TYPE_FRAME - TMS_BEGIN].operation                              = OPERATION_READ;
+  parameters_[TMS_TYPE_FRAME - TMS_BEGIN].physic                                 = PHYSIC_NUMERIC;
+  parameters_[TMS_TYPE_FRAME - TMS_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[TMS_TYPE_FRAME - TMS_BEGIN].value.float_t                          = NAN;
+  parameters_[TMS_TYPE_FRAME - TMS_BEGIN].min                                    = 0.0;
+  parameters_[TMS_TYPE_FRAME - TMS_BEGIN].max                                    = 65535.0;
+  parameters_[TMS_TYPE_FRAME - TMS_BEGIN].def                                    = 0.0;
+  parameters_[TMS_TYPE_FRAME - TMS_BEGIN].discret                                = 1;
+  parameters_[TMS_TYPE_FRAME - TMS_BEGIN].code                                   = 0;
+  // Время определения отказа связи с ТМСП
+  parameters_[TMS_FAIL_LINK_TIME - TMS_BEGIN].id                                 = TMS_FAIL_LINK_TIME;
+  parameters_[TMS_FAIL_LINK_TIME - TMS_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[TMS_FAIL_LINK_TIME - TMS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[TMS_FAIL_LINK_TIME - TMS_BEGIN].physic                             = PHYSIC_TIME;
+  parameters_[TMS_FAIL_LINK_TIME - TMS_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[TMS_FAIL_LINK_TIME - TMS_BEGIN].value.float_t                      = NAN;
+  parameters_[TMS_FAIL_LINK_TIME - TMS_BEGIN].min                                = 0.0;
+  parameters_[TMS_FAIL_LINK_TIME - TMS_BEGIN].max                                = 65535.0;
+  parameters_[TMS_FAIL_LINK_TIME - TMS_BEGIN].def                                = 0.0;
+  parameters_[TMS_FAIL_LINK_TIME - TMS_BEGIN].discret                            = 1;
+  parameters_[TMS_FAIL_LINK_TIME - TMS_BEGIN].code                               = 13;
+  // Время сброса ТМСП
+  parameters_[TMS_POWER_RESET_TMSP_TIME - TMS_BEGIN].id                          = TMS_POWER_RESET_TMSP_TIME;
+  parameters_[TMS_POWER_RESET_TMSP_TIME - TMS_BEGIN].access                      = ACCESS_OPERATOR;
+  parameters_[TMS_POWER_RESET_TMSP_TIME - TMS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[TMS_POWER_RESET_TMSP_TIME - TMS_BEGIN].physic                      = PHYSIC_TIME;
+  parameters_[TMS_POWER_RESET_TMSP_TIME - TMS_BEGIN].validity                    = VALIDITY_ERROR;
+  parameters_[TMS_POWER_RESET_TMSP_TIME - TMS_BEGIN].value.float_t               = NAN;
+  parameters_[TMS_POWER_RESET_TMSP_TIME - TMS_BEGIN].min                         = 10.0;
+  parameters_[TMS_POWER_RESET_TMSP_TIME - TMS_BEGIN].max                         = 65535.0;
+  parameters_[TMS_POWER_RESET_TMSP_TIME - TMS_BEGIN].def                         = 0.0;
+  parameters_[TMS_POWER_RESET_TMSP_TIME - TMS_BEGIN].discret                     = 1;
+  parameters_[TMS_POWER_RESET_TMSP_TIME - TMS_BEGIN].code                        = 13;
+  // Сброс питания ТМСП
+  parameters_[TMS_POWER_RESET_TMSP - TMS_BEGIN].id                               = TMS_POWER_RESET_TMSP;
+  parameters_[TMS_POWER_RESET_TMSP - TMS_BEGIN].access                           = ACCESS_OPERATOR;
+  parameters_[TMS_POWER_RESET_TMSP - TMS_BEGIN].operation                        = OPERATION_WRITE;
+  parameters_[TMS_POWER_RESET_TMSP - TMS_BEGIN].physic                           = PHYSIC_NUMERIC;
+  parameters_[TMS_POWER_RESET_TMSP - TMS_BEGIN].validity                         = VALIDITY_ERROR;
+  parameters_[TMS_POWER_RESET_TMSP - TMS_BEGIN].value.float_t                    = NAN;
+  parameters_[TMS_POWER_RESET_TMSP - TMS_BEGIN].min                              = 0.0;
+  parameters_[TMS_POWER_RESET_TMSP - TMS_BEGIN].max                              = 1.0;
+  parameters_[TMS_POWER_RESET_TMSP - TMS_BEGIN].def                              = 0.0;
+  parameters_[TMS_POWER_RESET_TMSP - TMS_BEGIN].discret                          = 1;
+  parameters_[TMS_POWER_RESET_TMSP - TMS_BEGIN].code                             = 13;
 }
 
