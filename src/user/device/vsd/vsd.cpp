@@ -40,21 +40,10 @@ int Vsd::setMotorTypeProfile()
   return ok_r;
 }
 
-int Vsd::setMotorFrequency(float value)
+enReturns Vsd::setMotorFrequency(float value, EventType eventType)
 {
-  float maxFreq = 70;
-  if (parameters.get(CCS_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
-    maxFreq = 200;
-  }
-  setMax(VSD_MOTOR_FREQUENCY, maxFreq);
-
-  if (setValue(VSD_MOTOR_FREQUENCY, value)) {
-    #if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setMotorFrequency() (value = %d)", value);
-    #endif
-    return err_r;
-  }
-  return ok_r;
+  return (enReturns)setValue(VSD_MOTOR_FREQUENCY, value, eventType);
+  // TODO: тут была функция задания максимума частоты в зависимости от типа двигателя, считаю её туда и надо перенести
 }
 
 int Vsd::setMotorCurrent(float value, EventType eventType)

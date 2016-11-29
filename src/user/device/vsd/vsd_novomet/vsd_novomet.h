@@ -223,7 +223,7 @@ public:
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
-  int setMotorFrequency(float value);
+  enReturns setMotorFrequency(float value, EventType eventType = NoneType);
   int setMotorCurrent(float value, EventType eventType = NoneType);
 
   /*!

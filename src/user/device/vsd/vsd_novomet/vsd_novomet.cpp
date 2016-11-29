@@ -144,18 +144,19 @@ int VsdNovomet::setMotorType(float value)
   return err_r;
 }
 
-int VsdNovomet::setMotorFrequency(float value)
+enReturns VsdNovomet::setMotorFrequency(float value, EventType eventType)
 {
-  if (!Vsd::setMotorFrequency(value)) {
-    if (!setBaseFrequency(value)) {
+  enReturns err = (enReturns)setValue(VSD_MOTOR_FREQUENCY, value, eventType);
+  if (!err) {
+    err = (enReturns)setBaseFrequency(value);
+    if (!err) {
       setMin(VSD_TIMER_DISPERSAL, value * 0.064);
       setMax(VSD_TIMER_DISPERSAL, value * 3.2);
       setMin(VSD_TIMER_DELAY, value * 0.064);
       setMax(VSD_TIMER_DELAY, value * 3.2);
-      return ok_r;
     }
   }
-  return err_r;
+  return err;
 }
 
 int VsdNovomet::setMotorCurrent(float value, EventType eventType)
@@ -1244,7 +1245,7 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value, EventType eventType)
     return err_r;
 
   case VSD_MOTOR_FREQUENCY:
-    return setMotorFrequency(value);
+    return setMotorFrequency(value, eventType);
 
   case VSD_MOTOR_CURRENT:
     return setMotorCurrent(value);

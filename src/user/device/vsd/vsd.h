@@ -64,9 +64,10 @@ public:
   /*!
    * \brief setMotorFrequency
    * \param value
+   * \param eventType
    * \return
    */
-  virtual int setMotorFrequency(float value);
+  virtual enReturns setMotorFrequency(float value, EventType eventType = NoneType);
 
   /*!
    * \brief setMotorCurrent
