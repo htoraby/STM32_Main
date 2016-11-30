@@ -19,7 +19,6 @@ int shell_task(int argc, char *argv[])
 
 #ifdef USE_RTT
   SEGGER_RTT_Write(0, (char*)bufferTx, strlen((char*)bufferTx));
-  SEGGER_RTT_WriteString(0, "\n");
 #endif
   uartWriteData(HOST_UART, bufferTx, strlen((char*)bufferTx));
 
@@ -34,11 +33,10 @@ int shell_memuse(int argc, char *argv[])
     return 1;
 
   int size = xPortGetFreeHeapSize();
-  sprintf((char*)bufferTx, "\nHeap size: %d\n", size);
+  sprintf((char*)bufferTx, "Heap size: %d\n", size);
 
 #ifdef USE_RTT
   SEGGER_RTT_Write(0, (char*)bufferTx, strlen((char*)bufferTx));
-  SEGGER_RTT_WriteString(0, "\n");
 #endif
   uartWriteData(HOST_UART, bufferTx, strlen((char*)bufferTx));
 

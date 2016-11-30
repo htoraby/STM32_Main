@@ -42,11 +42,17 @@ uint32_t LogDebug::add(MsgType type, const char *msg, ...)
   tm *dateTime = localtime(&time);
   memset(msg1251_, 0, sizeof(msg1251_));
   convert_utf8_to_windows1251(msg_, msg1251_, size);
-  SEGGER_RTT_printf(0, "LogDebug (%d): %02d.%02d.%d %02d:%02d:%02d  %s\n",
+  if ((type == CriticalMsg) || (type == FatalMsg))
+    SEGGER_RTT_printf(0, "\033[31m");
+  else
+    SEGGER_RTT_printf(0, "\033[0m");
+  SEGGER_RTT_printf(0, "LOG(%d): %02d.%02d.%d %02d:%02d:%02d  %s\n",
                     type,
                     dateTime->tm_mday, dateTime->tm_mon + 1, dateTime->tm_year + 1900,
                     dateTime->tm_hour, dateTime->tm_min, dateTime->tm_sec,
                     msg1251_);
+  if ((type == CriticalMsg) || (type == FatalMsg))
+    SEGGER_RTT_printf(0, "\033[0m");
 #endif
 
   return idDebug_;
