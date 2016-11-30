@@ -743,8 +743,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_LENGHT</physic>
-		<min>0.0</min>
-		<max>10000.0</max>
+		<min>1.0</min>
+		<max>9999.9</max>
 		<def>2000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -754,7 +754,7 @@
 		<form>3.2 ТМПН</form>
 		<unit>LENGTH_M</unit>
 		<unit_lcd>LENGTH_M</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Длина кабеля</comment>
 	</param>
@@ -764,18 +764,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_SPACE</physic>
-		<min>0.0</min>
-		<max>100.0</max>
-		<def>0.0</def>
+		<min>1.0</min>
+		<max>99.9</max>
+		<def>16.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>16.0</value>
 		<text>Сечение кабеля</text>
 		<short_text>Сечение кабеля</short_text>
 		<form>3.2 ТМПН</form>
 		<unit>SPACE_MM2</unit>
 		<unit_lcd>SPACE_MM2</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>13</code>
 		<comment>Сечение кабеля</comment>
 	</param>
@@ -14318,14 +14318,14 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
-		<min>0.0</min>
-		<max>999.0</max>
+		<min>300.0</min>
+		<max>999.9</max>
 		<def>380.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>380.0</value>
 		<text>Напряжение питающей сети</text>
-		<short_text>Напряжение питающей сети</short_text>
+		<short_text>U питающей сети</short_text>
 		<form>3.2 ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -14346,7 +14346,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>380.0</value>
 		<text>Максимальное рабочее напряжение</text>
-		<short_text>Макс. рабочее напряжение</short_text>
+		<short_text>Макс. рабочее U</short_text>
 		<form>3.2 ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -15384,7 +15384,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
 		<text>Максимальная рабочая частота</text>
-		<short_text>Максимальная рабочая частота</short_text>
+		<short_text>Макс. рабочая частота</short_text>
 		<form>3.2 ТМПН</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
