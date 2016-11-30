@@ -1762,9 +1762,6 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
   case VSD_MOTOR_CURRENT:
     return setMotorCurrent(value, eventType);
 
-  case VSD_MOTOR_FREQUENCY:
-    return setMotorFrequency(value);
-
   case VSD_FREQUENCY:
     return ksu.setFreq(value, eventType, false);
 

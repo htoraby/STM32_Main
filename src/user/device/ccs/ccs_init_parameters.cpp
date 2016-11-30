@@ -429,8 +429,8 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].physic                         = PHYSIC_LENGHT;
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].value.float_t                  = 2000.0;
-  parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].max                            = 10000.0;
+  parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].min                            = 1.0;
+  parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].max                            = 9999.9;
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].def                            = 2000.0;
   parameters_[CCS_TRANS_CABLE_LENGHT - CCS_BEGIN].code                           = 13;
@@ -440,11 +440,11 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].operation                       = OPERATION_LIMITED;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].physic                          = PHYSIC_SPACE;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].value.float_t                   = 0.0;
-  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].min                             = 0.0;
-  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].max                             = 100.0;
+  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].value.float_t                   = 16.0;
+  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].min                             = 1.0;
+  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].max                             = 99.9;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].discret                         = 1;
-  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].def                             = 0.0;
+  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].def                             = 16.0;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].code                            = 13;
   // Рекомендуемое напряжение отпайки
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].id                     = CCS_TRANS_NEED_VOLTAGE_TAP_OFF;
@@ -8649,8 +8649,8 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].physic                = PHYSIC_VOLTAGE;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].value.float_t         = 380.0;
-  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].max                   = 999.0;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].min                   = 300.0;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].max                   = 999.9;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].discret               = 1;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].def                   = 380.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].code                  = 13;

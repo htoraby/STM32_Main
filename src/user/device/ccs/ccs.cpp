@@ -1214,6 +1214,15 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       parameters.set(VSD_OUT_FILTER, value, eventType);
     }
     return err;
+  case CCS_FILTER_INPUT:
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      if (value)
+        logEvent.add(AddDeviceCode, eventType, AddDeviceFiltInputId, oldValue, value);
+      else
+        logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltInputId, oldValue, value);
+    }
+    return err;
   case CCS_SCADA_TYPE:
   case CCS_SCADA_ADDRESS:
   case CCS_SCADA_BYTERATE:
