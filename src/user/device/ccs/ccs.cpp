@@ -1868,6 +1868,7 @@ void Ccs::startReboot()
   setCmd(CCS_CMD_START_REBOOT_SLAVE);
   logEvent.add(PowerCode, AutoType, RebootSoftwareId);
   parameters.startSave();
+  osDelay(200);
   osSemaphoreRelease(rebootSemaphoreId_);
 }
 
