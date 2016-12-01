@@ -1252,7 +1252,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, 0.0, eventType);
     if (value && !err) {
       setCmd(CCS_CMD_REBOOT_MASTER);
-      logEvent.add(PowerCode, AutoType, RebootSoftwareId);
       startReboot();
     }
     return err;
