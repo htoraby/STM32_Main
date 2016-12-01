@@ -749,7 +749,7 @@ uint32_t Ccs::getSecFromCurTime(uint32_t time)
 
 uint32_t Ccs::getSecFromCurTime(enID timeId)
 {
-  int32_t sec = getTime() - getValueUint32(timeId);
+  int32_t sec = getTime() - parameters.getU32(timeId);
   if (sec > 0)
     return sec;
   else
