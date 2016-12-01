@@ -29,7 +29,7 @@ void Parameters::init()
 void Parameters::task()
 {
   static int time = 0;
-  while (1) {  
+  while (1) {
     if (osSemaphoreWait(semaphoreId_, 1) != osEventTimeout) {
       time = 0;
 #if (USE_LOG_DEBUG == 1)
@@ -279,7 +279,7 @@ float Parameters::checkZero(unsigned short id, bool reset, float value)
         if (parameters.getValueDef(id) == 0) {
           if (parameters.getMin(id) == 0) {
 #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Parameters::checkZero() (id = %d)");
+            logDebug.add(DebugMsg, "Parameters::checkZero() (id = %d)");
 #endif
             return 1;
           }

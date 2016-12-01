@@ -27,9 +27,6 @@ Vsd::~Vsd()
 int Vsd::setMotorType(float value)
 {
   if (setValue(VSD_MOTOR_TYPE, value)) {
-  #if (USE_LOG_WARNING == 1)
-  logDebug.add(WarningMsg, "Vsd::setMotorType() (value = %d)", value);
-  #endif
     return err_r;
   }
   return ok_r;
@@ -49,9 +46,6 @@ enReturns Vsd::setMotorFrequency(float value, EventType eventType)
 int Vsd::setMotorCurrent(float value, EventType eventType)
 {
   if (setValue(VSD_MOTOR_CURRENT, value, eventType)) {
-    #if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setMotorCurrent() (value = %d)", value);
-    #endif
     return err_r;
   }
   return ok_r;
@@ -60,9 +54,6 @@ int Vsd::setMotorCurrent(float value, EventType eventType)
 int Vsd::setMotorVoltage(float value, EventType eventType)
 {
   if (setValue(VSD_MOTOR_VOLTAGE, value, eventType)) {
-    #if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setMotorVoltage() (value = %d)", value);
-    #endif
     return err_r;
   }
   return ok_r;
@@ -83,7 +74,7 @@ int Vsd::setMotorResistanceStator(float value)
   return setValue(VSD_RESISTANCE_STATOR, value);
 }
 
-  // РЕЖИМЫ ПУСКА
+// РЕЖИМЫ ПУСКА
 int Vsd::onRegimePush()
 {
   return 0;
@@ -159,8 +150,8 @@ int Vsd::setMinFrequency(float value)
 {
   if (value > getValue(VSD_HIGH_LIM_SPEED_MOTOR)) {   // Присваиваемая минимальная частота больше максимальной
 #if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setMinFrequency() (value = %d)",
-                 value);
+    logDebug.add(WarningMsg, "Vsd::setMinFrequency() (minFreq = %d, maxFreq = %d)",
+                 value, getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 #endif
     return err_r;                                     // Возвращаем ошибку
   }
@@ -201,8 +192,8 @@ int Vsd::setMaxFrequency(float value)
 {
   if (value < getValue(VSD_LOW_LIM_SPEED_MOTOR)) {
 #if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setMaxFrequency() (value = %d)",
-                 value);
+    logDebug.add(WarningMsg, "Vsd::setMaxFrequency() (minFreq = %d, maxFreq = %d)",
+                 getValue(VSD_LOW_LIM_SPEED_MOTOR), value);
 #endif
     return err_r;
   }
@@ -214,7 +205,7 @@ int Vsd::setLimitsMaxFrequence(float value)
 {
   if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) {   // Если записали максимум частоты
     setMax(VSD_LOW_LIM_SPEED_MOTOR, value);           // Меняем поле максимум для уставки "Минимальной частоты"
-    setMax(VSD_FREQUENCY, value);                     // Меняем поле максимум для уставки "Частота" 
+    setMax(VSD_FREQUENCY, value);                     // Меняем поле максимум для уставки "Частота"
     if (value < parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1))
       parameters.setMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1, value);
     if (value < parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_2))
@@ -232,7 +223,7 @@ int Vsd::setLimitsMaxFrequence(float value)
     if (value < parameters.getMax(CCS_RGM_JARRING_FREQ_1))
       parameters.setMax(CCS_RGM_JARRING_FREQ_1, value);
     if (value < parameters.getMax(CCS_RGM_JARRING_FREQ_2))
-      parameters.setMax(CCS_RGM_JARRING_FREQ_2, value); 
+      parameters.setMax(CCS_RGM_JARRING_FREQ_2, value);
     return ok_r;
   }
   return err_r;
@@ -241,9 +232,6 @@ int Vsd::setLimitsMaxFrequence(float value)
 int Vsd::setFrequency(float value, EventType eventType)
 { 
   if (setValue(VSD_FREQUENCY, value, eventType)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setFrequency() (value = %d)", value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -251,15 +239,11 @@ int Vsd::setFrequency(float value, EventType eventType)
 
 int Vsd::setTimeSpeedUp(float value)
 { 
-  if (!setValue(VSD_TIMER_DISPERSAL, value)) {  
+  if (!setValue(VSD_TIMER_DISPERSAL, value)) {
     if (!setValue(VSD_TEMP_SPEEDUP, getValue(VSD_MOTOR_FREQUENCY)/getValue(VSD_TIMER_DISPERSAL))) {
       return setValue(VSD_T_SPEEDUP, 1/getValue(VSD_TEMP_SPEEDUP));
     }
   }
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setTimeSpeedUp() (value = %d)",
-                 value);
-#endif
   return err_r;
 }
 
@@ -270,20 +254,12 @@ int Vsd::setTimeSpeedDown(float value)
       return setValue(VSD_T_SPEEDDOWN, 1/getValue(VSD_TEMP_SPEEDDOWN));
     }
   }
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setTimeSpeedDown() (value = %d)",
-                 value);
-#endif
   return err_r;
 }
 
 int Vsd::setSwitchingFrequency(float value)
 {
   if (setValue(VSD_SWITCHING_FREQUENCY, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setSwitchingFrequency() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -312,20 +288,12 @@ int Vsd::setSwitchingFrequencyCode(float value)
     }
     return setSwitchingFrequency(value);
   }
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setSwitchingFrequencyCode() (value = %d)",
-                 value);
-#endif
   return err_r;
 }
 
 int Vsd::setSwitchingFrequencyMode(float value)
 {
   if (setValue(VSD_SWITCHING_FREQUENCY_MODE, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setSwitchingFrequencyMode() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -334,10 +302,6 @@ int Vsd::setSwitchingFrequencyMode(float value)
 int Vsd::setResonanceRemoveSource(float value)
 {
   if (setValue(VSD_RES_MODE, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setResonanceRemoveSource() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -375,10 +339,6 @@ bool Vsd::checkResetAdaptationVector()
 int Vsd::setUf_f1(float value)
 {
   if (setValue(VSD_UF_CHARACTERISTIC_F_1, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setUf_f1() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -388,10 +348,6 @@ int Vsd::setUf_f1(float value)
 int Vsd::setUf_f2(float value)
 {
   if (setValue(VSD_UF_CHARACTERISTIC_F_2, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setUf_f2() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -401,10 +357,6 @@ int Vsd::setUf_f2(float value)
 int Vsd::setUf_f3(float value)
 {
   if (setValue(VSD_UF_CHARACTERISTIC_F_3, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setUf_f3() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -414,10 +366,6 @@ int Vsd::setUf_f3(float value)
 int Vsd::setUf_f4(float value)
 {
   if (setValue(VSD_UF_CHARACTERISTIC_F_4, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setUf_f4() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -426,10 +374,6 @@ int Vsd::setUf_f4(float value)
 int Vsd::setUf_f5(float value)
 {
   if (setValue(VSD_UF_CHARACTERISTIC_F_5, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setUf_f5() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -439,10 +383,6 @@ int Vsd::setUf_f5(float value)
 int Vsd::setUf_f6(float value)
 {
   if (setValue(VSD_UF_CHARACTERISTIC_F_6, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setUf_f6() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -451,10 +391,6 @@ int Vsd::setUf_f6(float value)
 int Vsd::setUf_U1(float value)
 {
   if (setValue(VSD_UF_CHARACTERISTIC_U_1, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setUf_U1() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -463,10 +399,6 @@ int Vsd::setUf_U1(float value)
 int Vsd::setUf_U2(float value)
 {
   if (setValue(VSD_UF_CHARACTERISTIC_U_2, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setUf_U2() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -475,10 +407,6 @@ int Vsd::setUf_U2(float value)
 int Vsd::setUf_U3(float value)
 {
   if (setValue(VSD_UF_CHARACTERISTIC_U_3, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setUf_U3() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -487,10 +415,6 @@ int Vsd::setUf_U3(float value)
 int Vsd::setUf_U4(float value)
 {
   if (setValue(VSD_UF_CHARACTERISTIC_U_4, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setUf_U4() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -499,10 +423,6 @@ int Vsd::setUf_U4(float value)
 int Vsd::setUf_U5(float value)
 {
   if (setValue(VSD_UF_CHARACTERISTIC_U_5, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setUf_U5() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -511,10 +431,6 @@ int Vsd::setUf_U5(float value)
 int Vsd::setUf_U6(float value)
 { 
   if (setValue(VSD_UF_CHARACTERISTIC_U_6, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setUf_U6() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -573,10 +489,6 @@ int Vsd::setCurrentLim(float value)
 int Vsd::setSumInduct(float value)
 {
   if (setValue(VSD_LOUT, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setSumInduct() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -590,10 +502,6 @@ int Vsd::resetBlock()
 int Vsd::setUfU(uint16_t id, float value)
 {
   if (setValue(id, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setUfU() (id = %d, value = %d)",
-                 id, value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -694,10 +602,6 @@ float Vsd::getTypeStop()
 int Vsd::setProtOverloadMotorTripSetpoint(float value)
 {
   if (setValue(VSD_M_IRMS, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setProtOverloadMotorTripSetpoint() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -706,10 +610,6 @@ int Vsd::setProtOverloadMotorTripSetpoint(float value)
 int Vsd::setProtOverloadMotorActivDelay(float value)
 {
   if (setValue(VSD_T_BLANK, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setProtOverloadMotorActivDelay() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -718,10 +618,6 @@ int Vsd::setProtOverloadMotorActivDelay(float value)
 int Vsd::setProtOverloadMotorTripDelay(float value)
 {
   if (setValue(VSD_M_TRMS, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setProtOverloadMotorTripDelay() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;
@@ -730,10 +626,6 @@ int Vsd::setProtOverloadMotorTripDelay(float value)
 int Vsd::setProtCurrentMotorTripSetpoint(float value)
 {
   if (setValue(VSD_CURRENT_LIMIT, value)) {
-#if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "Vsd::setProtCurrentMotorTripSetpoint() (value = %d)",
-                 value);
-#endif
     return err_r;
   }
   return ok_r;

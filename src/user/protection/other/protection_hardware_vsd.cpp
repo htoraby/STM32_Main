@@ -69,8 +69,11 @@ bool ProtectionHardwareVsd::checkAlarm()
   float alarmOld = parameters.get(CCS_VSD_ALARM_CODE);
   parameters.set(CCS_VSD_ALARM_CODE, alarm);
   if (alarm != VSD_ALARM_NONE) {
-    if (alarm != alarmOld)
-      logDebug.add(WarningMsg, "VSD: Error № (%d)", (int)alarm);
+    if (alarm != alarmOld) {
+#if (USE_LOG_WARNING == 1)
+      logDebug.add(WarningMsg, "ProtectionHardwareVsd::checkAlarm() Alarm code (%d)", (int)alarm);
+#endif
+    }
     return true;
   }
   return false;
@@ -89,7 +92,9 @@ bool ProtectionHardwareVsd::checkWarning()
   if (warning != VSD_WARNING_NONE) {
     if (warning != warningOld) {
       logEvent.add(ProtectVsdCode, AutoType, (EventId)warning);
-      logDebug.add(WarningMsg, "VSD: Warning № (%d)", (int)warning);
+#if (USE_LOG_WARNING == 1)
+      logDebug.add(WarningMsg, "ProtectionHardwareVsd::checkWarning() Warning code (%d)", (int)warning);
+#endif
     }
     return true;
   }

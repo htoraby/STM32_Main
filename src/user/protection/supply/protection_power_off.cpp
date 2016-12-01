@@ -126,7 +126,9 @@ void ProtectionPowerOff::proccessingStateStop()
         if (!prevent_) {                      // Параметр защиты в норме
           if (timer_ == 0) {
             timer_ = ksu.getTime();           // Зафиксировали время начала отсёта АПВ
+#if (USE_LOG_DEBUG == 1)
             logDebug.add(DebugMsg, "ProtectionPowerOff::proccessingStateStop() Time restart");
+#endif
             ksu.setRestart();
           }
           else {

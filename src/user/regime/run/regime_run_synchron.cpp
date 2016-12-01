@@ -121,9 +121,9 @@ int16_t RegimeRunSynchron::setMinFreq()
 {
   int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, 1);
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSynchron::setMinFreq()");
-    #endif
+#endif
   }
   return err;
 }
@@ -132,9 +132,9 @@ int16_t RegimeRunSynchron::returnMinFreq()
 {
   int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, parameters.get(CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ));
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSynchron::returnMinFreq()");
-    #endif
+#endif
   }
   return err;
 }
@@ -143,9 +143,9 @@ int16_t RegimeRunSynchron::setFreqSynchron()
 {
   int16_t err = setConfirmation(VSD_FREQUENCY, parameters.get(CCS_RGM_RUN_SYNCHRON_FREQ));
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSynchron::setFreqSynchron()");
-    #endif
+#endif
   }
   return err;
 }
@@ -154,9 +154,9 @@ int16_t RegimeRunSynchron::returnFreq()
 {
   int16_t err = setConfirmation(VSD_FREQUENCY, parameters.get(CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ));
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSynchron::returnFreq()");
-    #endif
+#endif
   }
   return err;
 }
@@ -165,7 +165,7 @@ int16_t RegimeRunSynchron::setConfirmation(uint16_t id, float value)
 {
   int16_t err = -1;
   if ((parameters.getValidity(id) == ok_r)
-    && (parameters.get(id) == value)) {
+      && (parameters.get(id) == value)) {
     repeat_ = 0;
     delay_ = 0;
     err = 0;

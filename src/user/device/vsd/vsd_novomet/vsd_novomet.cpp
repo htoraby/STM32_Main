@@ -183,12 +183,10 @@ int VsdNovomet::setMotorVoltage(float value, float coef, EventType eventType)
       return ok_r;
     }
     else {
-      logDebug.add(WarningMsg, "VsdNovomet::setMotorVoltage() setBaseVoltage (value = %d)", value);
       return err_r;
     }
   }
   else {
-    logDebug.add(WarningMsg, "VsdNovomet::setMotorVoltage() (value = %d)", value);
     return err_r;
   }
 }

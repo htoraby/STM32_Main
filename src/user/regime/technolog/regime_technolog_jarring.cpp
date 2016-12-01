@@ -32,9 +32,9 @@ void RegimeTechnologJarring::processing()
   if ((action_ == OffAction) || ksu.isStopMotor()) {              // Выключен режим
     if ((state_ != IdleState) && (state_ != RunningState) && (state_ != PauseState)) {             // Режим выключили во время работы
       state_ = WorkState + 6;               // Возвращаем настройки работы установки
-      #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() off in work (state_=%5.0f, action_=%5.0f)", state_, action_);
-      #endif
+#endif
     }
   }
 
@@ -42,50 +42,50 @@ void RegimeTechnologJarring::processing()
   case IdleState:                                     // Режим не активен
     if ((action_ != OffAction) && ksu.isWorkMotor() ) {
       state_ = RunningState;
-      #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() On Idle -> Running (state_=%5.0f, action_=%5.0f)", state_, action_);
-      #endif
+#endif
     }
     break;
 
   case RunningState:                                  // Активация таймера
     beginPeriod_ = ksu.getTime();                     // Запоминаем время когда начался отсчёт периода встряхивания
     state_ = PauseState;
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() Running -> Pause (state_=%5.0f, beginPeriod_=%d)", state_, beginPeriod_);
-    #endif
+#endif
     break;
 
   case PauseState:
     if (ksu.getSecFromCurTime(beginPeriod_) > period_) {
       state_ = WorkState;                             // Переход в состояние задания частоты 1
-      #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() Pause -> Work (state_=%5.0f, period_=%d)", state_, period_);
-      #endif
+#endif
     }
     break;
   case WorkState:                                     // Задание настроек режима встряхивания
     saveBeforeJarring();                              // Сохраняем настройки перед включением режима
     configJarring();                                  // Задаём настройки режима
     state_ = WorkState + 1;
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() Work -> Work + 1 (state_=%5.0f)", state_);
-    #endif
+#endif
     break;
   case WorkState + 1:                                 // Задание частоты 1
     ksu.setFreq(firstFreq_, NoneType, false);
     state_ = WorkState + 2;
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() Work + 1 -> Work + 2 (firstFreq_ = %5.0f)", firstFreq_);
-    #endif
+#endif
     break;
   case WorkState + 2:                                 // Ожидание перехода на частоту
     if ((vsd->isSetPointFreq()) && (parameters.get(VSD_FREQUENCY_NOW) == firstFreq_)) {
       state_ = WorkState + 3;
       logEvent.add(OtherCode, AutoType, RgmJarringF1Id);
-      #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() Work + 2 -> Work + 3");
-      #endif
+#endif
     }
     else {
       delay_++;
@@ -98,17 +98,17 @@ void RegimeTechnologJarring::processing()
   case WorkState + 3:                                 // Выход на частоту 2
     ksu.setFreq(secondFreq_, NoneType, false);
     state_ = WorkState + 4;
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() Work + 3 -> Work + 4 (secondFreq_ = %5.0f)", secondFreq_);
-    #endif
+#endif
     break;
   case WorkState + 4:                                 // Ожидание перехода на частоту 2
     if ((vsd->isSetPointFreq()) && (parameters.get(VSD_FREQUENCY_NOW) == secondFreq_)) {
       state_ = WorkState + 5;
       logEvent.add(OtherCode, AutoType, RgmJarringF2Id);
-      #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() Work + 4 -> Work + 5");
-      #endif
+#endif
     }
     else {
       delay_++;
@@ -122,28 +122,28 @@ void RegimeTechnologJarring::processing()
     count_++;
     if (count_ >= countJar_) {
       state_ = WorkState + 6;                         // Выход из цикла встряхивания
-      #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() Work + 5 -> Work + 6 (count_ = %5.0f, countJar_ = %5.0f)", count_, countJar_);
-      #endif
+#endif
       count_ = 0;
     }
     else {
       state_ = WorkState + 1;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() Work + 5 -> Work + 1 (count_ = %5.0f, countJar_ = %5.0f)",
-                     count_, countJar_);
-      #endif
+#if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() Work + 5 -> Work + 1 (count_ = %5.0f, countJar_ = %5.0f)",
+                   count_, countJar_);
+#endif
     }
     break;
   case WorkState + 6:                                 // Возвращение настроек
     loadAfterJarring();
     state_ = IdleState;
-    #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() Work + 6 -> Idle");
-    #endif
+#if (USE_LOG_DEBUG == 1)
+    logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() Work + 6 -> Idle");
+#endif
     break;
   default:
-      state_ = IdleState;
+    state_ = IdleState;
     break;
   }
   parameters.set(CCS_RGM_JARRING_STATE, state_);

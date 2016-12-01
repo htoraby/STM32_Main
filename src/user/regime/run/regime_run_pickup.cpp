@@ -29,9 +29,9 @@ void RegimeRunPickup::processingStateIdle()
         saveBeforeRegimeRun();                                // Сохраняем настройки ЧРП
         onRegime();
         state_ = RunningState;
-        #if (USE_LOG_DEBUG == 1)
-          logDebug.add(DebugMsg, "RegimeRunPickup::processingStateIdle() IdleState --> RunningState");
-        #endif
+#if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "RegimeRunPickup::processingStateIdle() IdleState --> RunningState");
+#endif
       }
     }
   }
@@ -45,9 +45,9 @@ void RegimeRunPickup::processingStateRunning()
     if (delay_ >= 10) {
       delay_ = 0;
       state_ = RunningState + 1;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "RegimeRunPickup::processingStateRunning() RunningState  --> RunningState + 1");
-      #endif
+#if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "RegimeRunPickup::processingStateRunning() RunningState  --> RunningState + 1");
+#endif
     }
     break;
   case RunningState + 1:
@@ -55,16 +55,16 @@ void RegimeRunPickup::processingStateRunning()
       ksu.start(runReason_);
       logEvent.add(OtherCode, AutoType, RegimeRunPickupStartId);
       state_ = WorkState;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "RegimeRunPickup::processingStateRunning() RunningState --> WorkState");
-      #endif
+#if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "RegimeRunPickup::processingStateRunning() RunningState --> WorkState");
+#endif
     }
     else {
       onRegime();
       state_ = RunningState;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "RegimeRunPickup::processingStateRunning() RunningState + 1 --> RunningState");
-      #endif
+#if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "RegimeRunPickup::processingStateRunning() RunningState + 1 --> RunningState");
+#endif
     }
   }
 }
@@ -80,9 +80,9 @@ void RegimeRunPickup::processingStateWork()
     }
     else {
       state_ = WorkState + 1;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "RegimeRunPickup::processingStateWork() WorkState --> WorkState + 1");
-      #endif
+#if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "RegimeRunPickup::processingStateWork() WorkState --> WorkState + 1");
+#endif
     }
     break;
   case WorkState + 1:
@@ -90,18 +90,18 @@ void RegimeRunPickup::processingStateWork()
     if (delay_ >= 10) {
       delay_ = 0;
       state_ = WorkState + 2;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "RegimeRunPickup::processingStateWork() WorkState + 1 --> WorkState + 2");
-      #endif
+#if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "RegimeRunPickup::processingStateWork() WorkState + 1 --> WorkState + 2");
+#endif
     }
     break;
   case WorkState + 2:
     if ((parameters.get(VSD_FREQUENCY) == parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_FREQ))
-      && (parameters.get(VSD_TIMER_DISPERSAL) == parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP))) {
+        && (parameters.get(VSD_TIMER_DISPERSAL) == parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP))) {
       state_ = WorkState + 3;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "RegimeRunPickup::processingStateWork() WorkState + 2 --> WorkState + 3");
-      #endif
+#if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "RegimeRunPickup::processingStateWork() WorkState + 2 --> WorkState + 3");
+#endif
     }
     else {
       parameters.set(VSD_FREQUENCY, parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_FREQ), NoneType);
@@ -111,9 +111,9 @@ void RegimeRunPickup::processingStateWork()
   case WorkState + 3:
     if (vsd->isSetPointFreq()) {
       state_ = StopState;
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "RegimeRunPickup::processingStateWork() WorkState + 3 --> StopState");
-      #endif
+#if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "RegimeRunPickup::processingStateWork() WorkState + 3 --> StopState");
+#endif
     }
     break;
   }
@@ -124,9 +124,9 @@ void RegimeRunPickup::processingStateStop()
   if (checkOffRegime()) {
     logEvent.add(OtherCode, AutoType, RegimeRunPickupFinishId);
     state_ = IdleState;
-    #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "RegimeRunPickup::processingStateWork() StopState --> IdleState");
-    #endif
+#if (USE_LOG_DEBUG == 1)
+    logDebug.add(DebugMsg, "RegimeRunPickup::processingStateWork() StopState --> IdleState");
+#endif
   }
   else {
     offRegime();
@@ -202,7 +202,7 @@ void RegimeRunPickup::offRegime()
 bool RegimeRunPickup::checkOnRegime()
 {
   if ((parameters.get(VSD_ROTATION) != parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION))
-    && (parameters.get(VSD_LOW_LIM_SPEED_MOTOR) == 1)) {
+      && (parameters.get(VSD_LOW_LIM_SPEED_MOTOR) == 1)) {
     return true;
   }
   return false;
@@ -211,10 +211,10 @@ bool RegimeRunPickup::checkOnRegime()
 bool RegimeRunPickup::checkOffRegime()
 {
   if ((parameters.get(VSD_FREQUENCY) == parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_FREQ))
-    && (parameters.get(VSD_LOW_LIM_SPEED_MOTOR) == parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ))
-    && (parameters.get(VSD_TIMER_DISPERSAL) ==  parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP))
-    && (parameters.get(VSD_TIMER_DELAY) ==  parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN))
-    && (parameters.get(VSD_ROTATION) == parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION))) {
+      && (parameters.get(VSD_LOW_LIM_SPEED_MOTOR) == parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ))
+      && (parameters.get(VSD_TIMER_DISPERSAL) ==  parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP))
+      && (parameters.get(VSD_TIMER_DELAY) ==  parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN))
+      && (parameters.get(VSD_ROTATION) == parameters.get(CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION))) {
     return true;
   }
   return false;

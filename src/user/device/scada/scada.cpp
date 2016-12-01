@@ -84,7 +84,7 @@ inline int Scada::getIndexAtAddress(int address)
     }
   }
 #if (USE_LOG_WARNING == 1)
-  logDebug.add(WarningMsg, "Телемеханика: не найден регистр (address = %d)", address);
+  logDebug.add(WarningMsg, "Scada::getIndexAtAddress() Not found register (address = %d)", address);
 #endif
   return -1;
 }

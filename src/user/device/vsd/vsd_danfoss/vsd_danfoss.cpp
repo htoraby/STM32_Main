@@ -131,7 +131,7 @@ int VsdDanfoss::setMotorTypeProfile()
   switch (typeMotor) {
   case VSD_MOTOR_TYPE_ASYNC:
     result = setMotorTypeProfileAsync();
-  break;
+    break;
   case VSD_MOTOR_TYPE_VENT:
     switch (typeControl) {
     case VSD_MOTOR_CONTROL_UF:
@@ -197,7 +197,6 @@ int VsdDanfoss::setMotorCurrent(float value, EventType eventType)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setMotorCurrent");
     return err_r;
   }
 }
@@ -209,7 +208,6 @@ int VsdDanfoss::setMotorVoltage(float value, float coef, EventType eventType)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setMotorVoltage() (value = %d)", value);
     return err_r;
   }
 }
@@ -258,7 +256,6 @@ int VsdDanfoss::setMotorResistanceStator(float value)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setMotorResistanceStator");
     return err_r;
   }
 }
@@ -286,7 +283,6 @@ int VsdDanfoss::setCurrentLim(float curLimit, float nomCurMtr, float coefTrans)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setMotorCurrent");
     return err_r;
   }
 }
@@ -356,7 +352,6 @@ int VsdDanfoss::setVsdControl(float value)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setVsdControl");
     return err_r;
   }
 }
@@ -368,7 +363,6 @@ int VsdDanfoss::setMinFrequency(float value)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setMinFrequency");
     return err_r;
   }
 }
@@ -380,7 +374,6 @@ int VsdDanfoss::setMaxFrequency(float value)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setMaxFrequency");
     return err_r;
   }
 }
@@ -392,7 +385,6 @@ int VsdDanfoss::setFrequency(float value, EventType eventType)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setFrequency");
     return err_r;
   }
 }
@@ -405,9 +397,8 @@ int VsdDanfoss::setTimeSpeedUp(float value)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setTimeSpeedUp");
     return err_r;
-  }    
+  }
 }
 
 int VsdDanfoss::setTimeSpeedDown(float value)
@@ -418,7 +409,6 @@ int VsdDanfoss::setTimeSpeedDown(float value)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setTimeSpeedDown");
     return err_r;
   }
 }
@@ -430,7 +420,6 @@ int VsdDanfoss::setSwitchingFrequencyCode(float value)
     return ok_r;
   }
   else {
-    logDebug.add(WarningMsg, "VsdDanfoss::setSwitchingFrequencyCode");
     return err_r;
   }
 }
@@ -1216,7 +1205,7 @@ float VsdDanfoss::checkAlarmVsdCurrentMotor()
 bool VsdDanfoss::checkPreventVsd()
 {
   if ((checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_TRIP))
-    && (parameters.get(CCS_VSD_ALARM_CODE) != VSD_ALARM_NONE)) {
+      && (parameters.get(CCS_VSD_ALARM_CODE) != VSD_ALARM_NONE)) {
     return true;
   }
   return false;
@@ -1344,7 +1333,7 @@ bool VsdDanfoss::checkStop()
 bool VsdDanfoss::isSetPointFreq()
 {
   if ((checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_SPEED))
-    && (parameters.get(VSD_FREQUENCY_NOW) == parameters.get(VSD_FREQUENCY)))
+      && (parameters.get(VSD_FREQUENCY_NOW) == parameters.get(VSD_FREQUENCY)))
     return true;
   return false;
 }
@@ -1632,7 +1621,7 @@ void VsdDanfoss::getNewValue(uint16_t id)
     case VSD_OUT_FILTER:
       setValue(VSD_OUT_FILTER, value);
       if (value) {
-         parameters.set(CCS_FILTER_OUTPUT, 1);
+        parameters.set(CCS_FILTER_OUTPUT, 1);
       }
       else {
         parameters.set(CCS_FILTER_OUTPUT, value);
@@ -1777,7 +1766,7 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
   case VSD_HIGH_LIM_SPEED_MOTOR:
     if (!setMaxFrequency(value)) {
       if (parameters.get(CCS_BASE_FREQUENCY) != value) {
-         parameters.set(CCS_BASE_FREQUENCY, value);
+        parameters.set(CCS_BASE_FREQUENCY, value);
       }
       if (getValue(VSD_HIGH_LIM_SPEED_MOTOR) < getValue(VSD_FREQUENCY)) {
         return ksu.setFreq(getValue(VSD_HIGH_LIM_SPEED_MOTOR), AutoType);
@@ -1807,8 +1796,8 @@ void VsdDanfoss::writeToDevice(int id, float value)
 {
   enOperation command = OPERATION_WRITE;
   if ((id == VSD_MOTOR_CONTROL)
-    ||(id == VSD_MOTOR_TYPE)
-    ||(id == VSD_MAX_OUTPUT_FREQUENCY)) {
+      ||(id == VSD_MOTOR_TYPE)
+      ||(id == VSD_MAX_OUTPUT_FREQUENCY)) {
     command = OPERATION_WRITE_DELAY;
   }
   dm_->writeModbusParameter(id, value, command);

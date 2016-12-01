@@ -167,18 +167,18 @@ static bool saveSwInFlashExt(char *fileName)
           isSaveSw = true;
         }
         else {
-          logDebug.add(WarningMsg, "update.saveSwInFlashExt() CRC error in the firmware file (crc = %x; calcCrc = %x; calcCrcRx = %x; finish = %x)", crc, calcCrc, calcCrcRx, finish);
+          logDebug.add(WarningMsg, "update.saveSwInFlashExt() CRC error in firmware file (crc = %x; calcCrc = %x; calcCrcRx = %x; finish = %x)", crc, calcCrc, calcCrcRx, finish);
           ksu.setError(CrcFwUpdateErr);
         }
       }
       else {
-        logDebug.add(WarningMsg, "update.saveSwInFlashExt() The error in anything of the firmware file (readSize = %d; size = %d; Production = %d; Equip = %d; %d)",
+        logDebug.add(WarningMsg, "update.saveSwInFlashExt() Error in anything of firmware file (readSize = %d; size = %d; Production = %d; Equip = %d; %d)",
                      readSize, imageHeader.size, imageHeader.codeProduction,
                      imageHeader.codeEquip, imageHeader.subCodeEquip);
         ksu.setError(HeaderFwUpdateErr);
       }
     } else {
-      logDebug.add(WarningMsg, "update.saveSwInFlashExt() Error the size of the firmware file (file.fsize = %d)", file.fsize);
+      logDebug.add(WarningMsg, "update.saveSwInFlashExt() Error size of firmware file (file.fsize = %d)", file.fsize);
       ksu.setError(HeaderFwUpdateErr);
     }
     f_close(&file);

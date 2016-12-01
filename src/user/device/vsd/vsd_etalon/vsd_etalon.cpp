@@ -171,9 +171,6 @@ int VsdEtalon::setCoefVoltageInAB(float value)
     readInDevice(VSD_VOLTAGE_PHASE_1_2);
     return ok_r;
   }
-  else
-    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInAB() (value = %d)",
-                 value);
   return err_r;
 }
 
@@ -184,10 +181,6 @@ int VsdEtalon::setCoefVoltageInBC(float value)
     readInDevice(VSD_VOLTAGE_PHASE_2_3);
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInBC() (value = %d)",
-                 value);
-  }
   return err_r;
 }
 
@@ -197,10 +190,6 @@ int VsdEtalon::setCoefVoltageInCA(float value)
     writeToDevice(VSD_COEF_VOLTAGE_IN_CA, getValue(VSD_COEF_VOLTAGE_IN_CA));
     readInDevice(VSD_VOLTAGE_PHASE_3_1);
     return ok_r;
-  }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInCA() (value = %d)",
-                 value);
   }
   return err_r;
 }

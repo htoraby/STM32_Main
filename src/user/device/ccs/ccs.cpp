@@ -258,9 +258,9 @@ void Ccs::vsdConditionTask()
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       }
       else if (vsdCondition != vsdConditionOld) {
-        #if (USE_LOG_WARNING == 1)
+#if (USE_LOG_WARNING == 1)
         logDebug.add(WarningMsg, "Ccs::vsdConditionTask() Error stoping (VSD = %d)", (int)getValue(CCS_TYPE_VSD));
-        #endif
+#endif
       }
       break;
     case VSD_CONDITION_RUN:
@@ -301,9 +301,9 @@ void Ccs::vsdConditionTask()
         if ((int)getValue(CCS_VSD_CONDITION) == VSD_CONDITION_WAIT_RUN)
           setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
       } else if ((status == err_r) && (init || (status != statusOld))) {
-        #if (USE_LOG_WARNING == 1)
+#if (USE_LOG_WARNING == 1)
         logDebug.add(WarningMsg, "Ccs::vsdConditionTask() Error running (VSD = %d)", (int)getValue(CCS_TYPE_VSD));
-        #endif
+#endif
       }
       statusOld = status;
       break;
@@ -430,7 +430,9 @@ void Ccs::stop(LastReasonStop reason)
 
 void Ccs::syncStart()
 {
+#if (USE_LOG_WARNING == 1)
   logDebug.add(WarningMsg, "Ccs::syncStart() Error control VSD (Synchronization = Work)");
+#endif
 
   resetBlock();
   resetRestart();
@@ -443,7 +445,9 @@ void Ccs::syncStart()
 
 void Ccs::syncStop()
 {
+#if (USE_LOG_WARNING == 1)
   logDebug.add(WarningMsg, "Ccs::syncStop() Error control VSD (Synchronization = Stop)");
+#endif
 
   setBlock();
   setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopVsdErrControl);
