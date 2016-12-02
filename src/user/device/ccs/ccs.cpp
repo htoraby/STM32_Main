@@ -110,6 +110,7 @@ void Ccs::initTask()
   resetCmd(CCS_CMD_START_REBOOT_SLAVE);
   resetCmd(CCS_CMD_START_UPDATE_SW_SLAVE);
   resetCmd(CCS_CMD_UPDATE_SW_MASTER);
+  resetCmd(CCS_CMD_TYPE_PROFILE_VSD);
   resetCmd(CCS_ERROR_SLAVE);
 
   setMaxBaseFrequency();
