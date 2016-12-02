@@ -863,6 +863,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
       parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction); // Отключаем режим подхвата
+      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction); // Отключаем режим пропуска резонансных частот
+      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
       vsd->onRegimePush();
     }
     else {
@@ -874,6 +877,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим толчковый
       parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction); // Отключаем режим подхвата
+      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction); // Отключаем режим пропуска резонансных частот
+      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
       vsd->onRegimeSwing();
     }
     else {
@@ -899,6 +905,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим толчковый
       parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
+      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction); // Отключаем режим пропуска резонансных частот
+      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
       parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ProtModeOff); // Отключаем защиту турбин. вращен.
       vsd->onRegimePickup();
     }
