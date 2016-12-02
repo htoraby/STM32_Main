@@ -119,18 +119,23 @@ void Ccs::initTask()
 
 void Ccs::mainTask()
 {
+  int time10ms = HAL_GetTick();
   while (1) {
-    osDelay(10);
+    osDelay(1);
 
     controlPower();
 
-    if (!isPowerOff()) {
-      changedWorkMode();
-      changedCondition();
+    if ((HAL_GetTick() - time10ms) >= 10) {
+      time10ms = HAL_GetTick();
 
-      calcTime();
-      checkConnectDevice();
-      setRelayOutputs();
+      if (!isPowerOff()) {
+        changedWorkMode();
+        changedCondition();
+
+        calcTime();
+        checkConnectDevice();
+        setRelayOutputs();
+      }
     }
   }
 }
@@ -141,7 +146,7 @@ void Ccs::toolsTask()
     osDelay(50);
 
     if (isPowerOff())
-      osDelay(osWaitForever);
+      continue;
 
     if (osSemaphoreWait(rebootSemaphoreId_, 0) != osEventTimeout)
       reboot();
@@ -222,7 +227,7 @@ void Ccs::vsdConditionTask()
     osDelay(10);
 
     if (isPowerOff())
-      osDelay(osWaitForever);
+      continue;
 
     int vsdCondition = getValue(CCS_VSD_CONDITION);
     if (vsdCondition != vsdConditionOld)
@@ -1442,7 +1447,7 @@ void Ccs::controlPower()
 
         // Запись в журнал "Отключение питания"
         logEvent.add(PowerCode, AutoType, PowerOffId);
-
+        logDebug.add(CriticalMsg, "*** Power Off ***");
         powerOffFlag_ = true;
       }
     }
