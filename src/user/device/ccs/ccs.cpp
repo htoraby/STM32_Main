@@ -916,6 +916,36 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       vsd->offRegimePickup();
     }
     return err;
+  case CCS_RGM_RUN_SKIP_RESONANT_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Regime::OffAction) {
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+    }
+    return err;
+  case CCS_RGM_RUN_AUTO_ADAPTATION_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Regime::OffAction) {
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+    }
+    return err;
+  case CCS_RGM_RUN_SYNCHRON_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Regime::OffAction) {
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
+    }
+    return err;
   case CCS_RGM_OPTIM_VOLTAGE_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
