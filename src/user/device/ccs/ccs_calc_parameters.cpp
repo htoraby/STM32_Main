@@ -745,8 +745,8 @@ void Ccs::calcDigitalInputs()
     valueOld[i] = value[i];
   }
 
-  if (count[DI6] < 940) {                      // Счётчик сколько раз попадём в функцию за 1 секунду
-    value[DI6] = !getDigitalInput(DI6);     // Получаем текущее состояние дискретного входа
+  value[DI6] = !getDigitalInput(DI6);       // Получаем текущее состояние дискретного входа
+  if (count[DI6] < 940) {                   // Счётчик сколько раз попадём в функцию за 1 секунду
     if (valueOld[DI6] != value[DI6])        // Если предыдущее состояние не равно текущему
       impulse++;                            // Увеличиваем счётчик переходов
     valueOld[DI6] = value[DI6];             // Запоминаем текущее состояние
@@ -758,7 +758,6 @@ void Ccs::calcDigitalInputs()
     if ((parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {
       if (!isWorkMotor() || (parameters.get(CCS_RGM_RUN_PICKUP_STATE) != Regime::IdleState))
         setValue(CCS_TURBO_ROTATION_NOW, impulse / 2);
-
       else
         setValue(CCS_TURBO_ROTATION_NOW, 0);
     }
