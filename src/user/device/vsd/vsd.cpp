@@ -636,7 +636,7 @@ int Vsd::start(bool /*init*/)
   return 0;
 }
 
-int Vsd::stop(float /*type*/)
+int Vsd::stop(bool /*isAlarm*/)
 {
   return 0;
 }

@@ -235,7 +235,7 @@ public:
   void readInDevice(int id);
 
   int start(bool init);
-  int stop(float type);
+  int stop(bool isAlarm);
 
   bool checkStart();
   bool checkStop();

@@ -532,7 +532,7 @@ private:
    */
   bool checkCanStop();
 
-  float checkTypeStop();
+  float isAlarmStop();
 
   /*!
    * \brief Метод подсчёта времени работы и останова

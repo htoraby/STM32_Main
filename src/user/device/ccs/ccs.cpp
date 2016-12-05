@@ -260,7 +260,7 @@ void Ccs::vsdConditionTask()
       }
       break;
     case VSD_CONDITION_WAIT_STOP:
-      if (vsd->stop(checkTypeStop()) == ok_r) {
+      if (vsd->stop(isAlarmStop()) == ok_r) {
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       }
       else if (vsdCondition != vsdConditionOld) {
@@ -573,7 +573,7 @@ bool Ccs::checkCanStop()
   return true;
 }
 
-float Ccs::checkTypeStop()
+float Ccs::isAlarmStop()
 {
   float reason = getValue(CCS_LAST_STOP_REASON_TMP);
   if ((reason == LastReasonStopOperator) ||
@@ -583,11 +583,12 @@ float Ccs::checkTypeStop()
       (reason == LastReasonStopDigital2) ||
       (reason == LastReasonStopDigital3) ||
       (reason == LastReasonStopDigital4)) {
-    return parameters.get(VSD_TYPE_STOP);
+    return false;
   }
   else {
-    return TYPE_STOP_ALARM;
+    return true;
   }
+
 }
 
 bool Ccs::isStopMotor()

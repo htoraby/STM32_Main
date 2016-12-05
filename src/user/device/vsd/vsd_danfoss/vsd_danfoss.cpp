@@ -1281,7 +1281,7 @@ int VsdDanfoss::start(bool init)
   return -1;
 }
 
-int VsdDanfoss::stop(float /*type*/)
+int VsdDanfoss::stop(bool /*isAlarm*/)
 {
   // Если нет бита "В работе"
 //  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_OPERATION))
