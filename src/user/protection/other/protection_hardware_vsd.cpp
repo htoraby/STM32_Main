@@ -88,8 +88,8 @@ bool ProtectionHardwareVsd::checkWarning()
   parameters.set(CCS_VSD_WARNING_CODE, warning);
   if (warning != VSD_WARNING_NONE) {
     if (warning != warningOld) {
-      logEvent.add(ProtectVsdCode, AutoType, (EventId)warning);
-      logDebug.add(WarningMsg, "VSD: Warning № (%d)", (int)warning);
+//      logEvent.add(WarningVsdCode, AutoType, (EventId)warning);
+//      logDebug.add(WarningMsg, "VSD: Warning № (%d)", (int)warning);
     }
     return true;
   }

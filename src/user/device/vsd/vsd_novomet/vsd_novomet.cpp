@@ -1162,7 +1162,7 @@ void VsdNovomet::getNewValue(uint16_t id)
     break;
   case VSD_DRV_2_T_AIR:
     setValue(id, value);
-    setValue(VSD_RADIATOR_TEMPERATURE_1, max(getValue(VSD_DRV_0_T_AIR),
+    setValue(VSD_TEMPERATURE_AIR, max(getValue(VSD_DRV_0_T_AIR),
                                            max(getValue(VSD_DRV_1_T_AIR),
                                                (getValue(VSD_DRV_2_T_AIR)))));
     break;

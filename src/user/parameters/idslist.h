@@ -1535,7 +1535,8 @@ enum enID
   VSD_ROUT = 10496,                                          //!< 
   VSD_LOUT_X = 10497,                                        //!< Суммарная индуктивность на выходе ПЧ, фазное значение
   VSD_FC_OVERLOAD = 10498,                                   //!< Величина перегрузки по току ПЧ (112)
-  VSD_END = 10499,                                           //!< 
+  VSD_TEMPERATURE_AIR = 10499,                               //!< 
+  VSD_END = 10500,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

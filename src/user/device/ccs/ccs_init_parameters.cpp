@@ -489,8 +489,8 @@ void Ccs::initParameters()
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].physic                              = PHYSIC_FLOW;
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].value.float_t                       = 0.0;
-  parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].max                                 = 10000.0;
+  parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].min                                 = 1.0;
+  parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].max                                 = 9999.9;
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].def                                 = 0.0;
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].code                                = 13;
@@ -501,8 +501,8 @@ void Ccs::initParameters()
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].physic                                  = PHYSIC_LENGHT;
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].value.float_t                           = 0.0;
-  parameters_[CCS_PUMP_HEAD - CCS_BEGIN].min                                     = 0.0;
-  parameters_[CCS_PUMP_HEAD - CCS_BEGIN].max                                     = 10000.0;
+  parameters_[CCS_PUMP_HEAD - CCS_BEGIN].min                                     = 1.0;
+  parameters_[CCS_PUMP_HEAD - CCS_BEGIN].max                                     = 9999.9;
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].discret                                 = 1;
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].def                                     = 0.0;
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].code                                    = 13;
@@ -513,8 +513,8 @@ void Ccs::initParameters()
   parameters_[CCS_DEPTH - CCS_BEGIN].physic                                      = PHYSIC_LENGHT;
   parameters_[CCS_DEPTH - CCS_BEGIN].validity                                    = VALIDITY_OK;
   parameters_[CCS_DEPTH - CCS_BEGIN].value.float_t                               = 0.0;
-  parameters_[CCS_DEPTH - CCS_BEGIN].min                                         = 0.0;
-  parameters_[CCS_DEPTH - CCS_BEGIN].max                                         = 10000.0;
+  parameters_[CCS_DEPTH - CCS_BEGIN].min                                         = 1.0;
+  parameters_[CCS_DEPTH - CCS_BEGIN].max                                         = 9999.9;
   parameters_[CCS_DEPTH - CCS_BEGIN].discret                                     = 1;
   parameters_[CCS_DEPTH - CCS_BEGIN].def                                         = 0.0;
   parameters_[CCS_DEPTH - CCS_BEGIN].code                                        = 13;
@@ -2565,8 +2565,8 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT - CCS_BEGIN].physic     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT - CCS_BEGIN].value.float_t = 5.0;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT - CCS_BEGIN].min        = 0.0;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT - CCS_BEGIN].max        = 9999.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT - CCS_BEGIN].min        = 1.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT - CCS_BEGIN].max        = 999.9;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT - CCS_BEGIN].discret    = 1;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT - CCS_BEGIN].def        = 5.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT - CCS_BEGIN].code       = 13;
@@ -2589,7 +2589,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT - CCS_BEGIN].physic     = PHYSIC_PRESSURE;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 4.0;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT - CCS_BEGIN].min        = 0.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT - CCS_BEGIN].min        = 0.01;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT - CCS_BEGIN].max        = 99.99;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT - CCS_BEGIN].discret    = 100;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT - CCS_BEGIN].def        = 4.0;
@@ -2601,7 +2601,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT - CCS_BEGIN].physic  = PHYSIC_PRESSURE;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 25.0;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT - CCS_BEGIN].min     = 0.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT - CCS_BEGIN].min     = 0.01;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT - CCS_BEGIN].max     = 99.99;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT - CCS_BEGIN].discret = 100;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT - CCS_BEGIN].def     = 25.0;
@@ -6188,11 +6188,11 @@ void Ccs::initParameters()
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].operation                             = OPERATION_WRITE;
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].validity                              = VALIDITY_OK;
-  parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].value.float_t                         = 0;
-  parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].max                                   = 999999999.9;
+  parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].value.float_t                         = 1.0;
+  parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].min                                   = 1.0;
+  parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].max                                   = 99999.9;
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].discret                               = 1;
-  parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].def                                   = 0;
+  parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].def                                   = 1.0;
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].code                                  = 13;
   // Номер куста
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].id                                    = CCS_NUMBER_BUSH;
@@ -6200,11 +6200,11 @@ void Ccs::initParameters()
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].operation                             = OPERATION_WRITE;
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].validity                              = VALIDITY_OK;
-  parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].value.float_t                         = 0;
-  parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].max                                   = 999999999.9;
+  parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].value.float_t                         = 1.0;
+  parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].min                                   = 1.0;
+  parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].max                                   = 99999.9;
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].discret                               = 1;
-  parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].def                                   = 0;
+  parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].def                                   = 1.0;
   parameters_[CCS_NUMBER_BUSH - CCS_BEGIN].code                                  = 13;
   // Номер скважины
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].id                                    = CCS_NUMBER_WELL;
@@ -6212,11 +6212,11 @@ void Ccs::initParameters()
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].operation                             = OPERATION_WRITE;
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].validity                              = VALIDITY_OK;
-  parameters_[CCS_NUMBER_WELL - CCS_BEGIN].value.float_t                         = 0;
-  parameters_[CCS_NUMBER_WELL - CCS_BEGIN].min                                   = 0.0;
-  parameters_[CCS_NUMBER_WELL - CCS_BEGIN].max                                   = 999999999.9;
+  parameters_[CCS_NUMBER_WELL - CCS_BEGIN].value.float_t                         = 1.0;
+  parameters_[CCS_NUMBER_WELL - CCS_BEGIN].min                                   = 1.0;
+  parameters_[CCS_NUMBER_WELL - CCS_BEGIN].max                                   = 99999.9;
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].discret                               = 1;
-  parameters_[CCS_NUMBER_WELL - CCS_BEGIN].def                                   = 0;
+  parameters_[CCS_NUMBER_WELL - CCS_BEGIN].def                                   = 1.0;
   parameters_[CCS_NUMBER_WELL - CCS_BEGIN].code                                  = 13;
   // Количество пусков
   parameters_[CCS_COUNT_START - CCS_BEGIN].id                                    = CCS_COUNT_START;
@@ -6469,7 +6469,7 @@ void Ccs::initParameters()
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].max                                      = 9999.0;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].discret                                  = 1;
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].def                                      = 2.0;
-  parameters_[CCS_TYPE_CCS - CCS_BEGIN].code                                     = 0;
+  parameters_[CCS_TYPE_CCS - CCS_BEGIN].code                                     = 13;
   // Код производителя КСУ
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].id                            = CCS_CODE_PRODUCTION_CCS;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].access                        = ACCESS_SERVICE;
@@ -6481,7 +6481,7 @@ void Ccs::initParameters()
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].max                           = 9999.0;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].def                           = 3.0;
-  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].code                          = 0;
+  parameters_[CCS_CODE_PRODUCTION_CCS - CCS_BEGIN].code                          = 13;
   // Заводской номер КСУ
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].id                             = CCS_NUM_PRODUCTION_CCS;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].access                         = ACCESS_SERVICE;
@@ -6505,7 +6505,7 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].max                                = 999999999.9;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].discret                            = 100;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].def                                = 0;
-  parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].code                               = 0;
+  parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].code                               = 13;
   // Версия ПО МС
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].id                                  = CCS_VERSION_SW_MS;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].access                              = ACCESS_SERVICE;
@@ -6517,7 +6517,7 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].max                                 = 999999999.9;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].discret                             = 100;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].def                                 = 0;
-  parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].code                                = 0;
+  parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].code                                = 13;
   // Версия ПО ПЧ
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].id                                 = CCS_VERSION_SW_VSD;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].access                             = ACCESS_SERVICE;
@@ -6529,7 +6529,7 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].max                                = 999999999.9;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].discret                            = 100;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].def                                = 0;
-  parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].code                               = 0;
+  parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].code                               = 13;
   // Дата изготовления КСУ
   parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].id                            = CCS_DATE_PRODUCTION_CCS;
   parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].access                        = ACCESS_SERVICE;
@@ -6541,7 +6541,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].max                           = 4294967296;
   parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].def                           = 0;
-  parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].code                          = 0;
+  parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].code                          = 13;
   // Дата установки ПО КСУ
   parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].id                            = CCS_DATE_INSTALL_SW_CCS;
   parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].access                        = ACCESS_SERVICE;
@@ -6553,7 +6553,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].max                           = 4294967296;
   parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].def                           = 0;
-  parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].code                          = 0;
+  parameters_[CCS_DATE_INSTALL_SW_CCS - CCS_BEGIN].code                          = 13;
   // Дата генерации ПО КСУ
   parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].id                             = CCS_DATE_CREATE_SW_CCS;
   parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].access                         = ACCESS_SERVICE;
@@ -6565,7 +6565,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].max                            = 4294967296;
   parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].def                            = 0;
-  parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].code                           = 0;
+  parameters_[CCS_DATE_CREATE_SW_CCS - CCS_BEGIN].code                           = 13;
   // Дата установки ПО ПЧ
   parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].id                            = CCS_DATE_INSTALL_SW_VSD;
   parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].access                        = ACCESS_SERVICE;
@@ -6577,7 +6577,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].max                           = 4294967296;
   parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].def                           = 0;
-  parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].code                          = 0;
+  parameters_[CCS_DATE_INSTALL_SW_VSD - CCS_BEGIN].code                          = 13;
   // Тип СУ
   parameters_[CCS_TYPE_SU - CCS_BEGIN].id                                        = CCS_TYPE_SU;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].access                                    = ACCESS_SERVICE;
@@ -10616,11 +10616,11 @@ void Ccs::initParameters()
   parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].operation                      = OPERATION_WRITE;
   parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].validity                       = VALIDITY_OK;
-  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].value.float_t                  = 0;
-  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].max                            = 999999999.9;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].value.float_t                  = 160.0;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].min                            = 160.0;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].max                            = 1000.0;
   parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].discret                        = 1;
-  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].def                            = 0;
+  parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].def                            = 160.0;
   parameters_[CCS_SU_NOMINAL_CURRENT - CCS_BEGIN].code                           = 13;
   // Заводской номер КСУ (2 часть)
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].id                           = CCS_NUM_PRODUCTION_CCS_2;
