@@ -493,10 +493,10 @@ public:
 
   /*!
    * \brief Метод останова ЧРП
-   * \param type - тип останова
+   * \param isAlarm - тип останова
    * \return
    */
-  virtual int stop(float type);
+  virtual int stop(bool isAlarm);
 
   /*!
    * \brief Метод проверки запуска ЧРП

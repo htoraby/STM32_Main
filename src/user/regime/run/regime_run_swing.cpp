@@ -386,9 +386,9 @@ int16_t RegimeRunSwing::setMinFreq()
 {
   int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, 1);
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSwing::setMinFreq()");
-    #endif
+#endif
   }
   return err;
 }
@@ -397,9 +397,9 @@ int16_t RegimeRunSwing::returnMinFreq()
 {
   int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ));
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSwing::returnMinFreq()");
-    #endif
+#endif
   }
   return err;
 }
@@ -408,9 +408,9 @@ int16_t RegimeRunSwing::setFreqSwing()
 {
   int16_t err = setConfirmation(VSD_FREQUENCY, freqSwing_);
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSwing::setFreqSwing()");
-    #endif
+#endif
   }
   return err;
 }
@@ -419,9 +419,9 @@ int16_t RegimeRunSwing::returnFreq()
 {
   int16_t err = setConfirmation(VSD_FREQUENCY, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_FREQ));
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSwing::returnFreq()");
-    #endif
+#endif
   }
   return err;
 }
@@ -430,9 +430,9 @@ int16_t RegimeRunSwing::setTimeDispersal()
 {
   int16_t err = setConfirmation(VSD_TIMER_DISPERSAL, (((1 / freqSwing_) * 10 * parameters.get(VSD_MOTOR_FREQUENCY)) / freqSwing_));
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSwing::setTimeDispersal()");
-    #endif
+#endif
   }
   return err;
 }
@@ -441,9 +441,9 @@ int16_t RegimeRunSwing::returnTimeDispersal()
 {
   int16_t err = setConfirmation(VSD_TIMER_DISPERSAL, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_TIME_UP));
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSwing::returnTimeDispersal()");
-    #endif
+#endif
   }
   return err;
 }
@@ -476,9 +476,9 @@ int16_t RegimeRunSwing::setU1()
 
   err = setConfirmation(point, voltageSwing);
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSwing::setU1()");
-    #endif
+#endif
   }
   return err;
 }
@@ -506,9 +506,9 @@ int16_t RegimeRunSwing::returnU1()
 
   err = setConfirmation(point, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U1));
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSwing::returnU1()");
-    #endif
+#endif
   }
   return err;
 }
@@ -541,9 +541,9 @@ int16_t RegimeRunSwing::setU2()
 
   err = setConfirmation(point, voltageSwing);
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSwing::setU2()");
-    #endif
+#endif
   }
   return err;
 }
@@ -571,9 +571,9 @@ int16_t RegimeRunSwing::returnU2()
 
   err = setConfirmation(point, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_U2));
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSwing::returnU2()");
-    #endif
+#endif
   }
   return err;
 }
@@ -583,9 +583,9 @@ int16_t RegimeRunSwing::setRotation()
   int16_t err = 0;
   err = setConfirmation(VSD_ROTATION, !rotationSave_);
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSwing::setRotation()");
-    #endif
+#endif
   }
   return err;
 }
@@ -595,9 +595,9 @@ int16_t RegimeRunSwing::returnRotation()
   int16_t err = 0;
   err = setConfirmation(VSD_ROTATION, parameters.get(CCS_RGM_RUN_SWING_SETPOINT_ROTATION));
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSwing::returnRotation()");
-    #endif
+#endif
   }
   return err;
 }
@@ -606,7 +606,7 @@ int16_t RegimeRunSwing::setConfirmation(uint16_t id, float value)
 {
   int16_t err = -1;
   if ((parameters.getValidity(id) == ok_r)
-    && (parameters.get(id) == value)) {
+      && (parameters.get(id) == value)) {
     repeat_ = 0;
     delay_ = 0;
     err = 0;

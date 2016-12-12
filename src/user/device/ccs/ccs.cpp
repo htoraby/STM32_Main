@@ -110,6 +110,7 @@ void Ccs::initTask()
   resetCmd(CCS_CMD_START_REBOOT_SLAVE);
   resetCmd(CCS_CMD_START_UPDATE_SW_SLAVE);
   resetCmd(CCS_CMD_UPDATE_SW_MASTER);
+  resetCmd(CCS_CMD_TYPE_PROFILE_VSD);
   resetCmd(CCS_ERROR_SLAVE);
 
   setMaxBaseFrequency();
@@ -119,18 +120,23 @@ void Ccs::initTask()
 
 void Ccs::mainTask()
 {
+  int time10ms = HAL_GetTick();
   while (1) {
-    osDelay(10);
+    osDelay(1);
 
     controlPower();
 
-    if (!isPowerOff()) {
-      changedWorkMode();
-      changedCondition();
+    if ((HAL_GetTick() - time10ms) >= 10) {
+      time10ms = HAL_GetTick();
 
-      calcTime();
-      checkConnectDevice();
-      setRelayOutputs();
+      if (!isPowerOff()) {
+        changedWorkMode();
+        changedCondition();
+
+        calcTime();
+        checkConnectDevice();
+        setRelayOutputs();
+      }
     }
   }
 }
@@ -141,7 +147,7 @@ void Ccs::toolsTask()
     osDelay(50);
 
     if (isPowerOff())
-      osDelay(osWaitForever);
+      continue;
 
     if (osSemaphoreWait(rebootSemaphoreId_, 0) != osEventTimeout)
       reboot();
@@ -222,7 +228,7 @@ void Ccs::vsdConditionTask()
     osDelay(10);
 
     if (isPowerOff())
-      osDelay(osWaitForever);
+      continue;
 
     int vsdCondition = getValue(CCS_VSD_CONDITION);
     if (vsdCondition != vsdConditionOld)
@@ -254,13 +260,13 @@ void Ccs::vsdConditionTask()
       }
       break;
     case VSD_CONDITION_WAIT_STOP:
-      if (vsd->stop(checkTypeStop()) == ok_r) {
+      if (vsd->stop(isAlarmStop()) == ok_r) {
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       }
       else if (vsdCondition != vsdConditionOld) {
-        #if (USE_LOG_WARNING == 1)
+#if (USE_LOG_WARNING == 1)
         logDebug.add(WarningMsg, "Ccs::vsdConditionTask() Error stoping (VSD = %d)", (int)getValue(CCS_TYPE_VSD));
-        #endif
+#endif
       }
       break;
     case VSD_CONDITION_RUN:
@@ -301,9 +307,9 @@ void Ccs::vsdConditionTask()
         if ((int)getValue(CCS_VSD_CONDITION) == VSD_CONDITION_WAIT_RUN)
           setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
       } else if ((status == err_r) && (init || (status != statusOld))) {
-        #if (USE_LOG_WARNING == 1)
+#if (USE_LOG_WARNING == 1)
         logDebug.add(WarningMsg, "Ccs::vsdConditionTask() Error running (VSD = %d)", (int)getValue(CCS_TYPE_VSD));
-        #endif
+#endif
       }
       statusOld = status;
       break;
@@ -430,7 +436,9 @@ void Ccs::stop(LastReasonStop reason)
 
 void Ccs::syncStart()
 {
+#if (USE_LOG_WARNING == 1)
   logDebug.add(WarningMsg, "Ccs::syncStart() Error control VSD (Synchronization = Work)");
+#endif
 
   resetBlock();
   resetRestart();
@@ -443,7 +451,9 @@ void Ccs::syncStart()
 
 void Ccs::syncStop()
 {
+#if (USE_LOG_WARNING == 1)
   logDebug.add(WarningMsg, "Ccs::syncStop() Error control VSD (Synchronization = Stop)");
+#endif
 
   setBlock();
   setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopVsdErrControl);
@@ -563,7 +573,7 @@ bool Ccs::checkCanStop()
   return true;
 }
 
-float Ccs::checkTypeStop()
+float Ccs::isAlarmStop()
 {
   float reason = getValue(CCS_LAST_STOP_REASON_TMP);
   if ((reason == LastReasonStopOperator) ||
@@ -573,11 +583,12 @@ float Ccs::checkTypeStop()
       (reason == LastReasonStopDigital2) ||
       (reason == LastReasonStopDigital3) ||
       (reason == LastReasonStopDigital4)) {
-    return parameters.get(VSD_TYPE_STOP);
+    return false;
   }
   else {
-    return TYPE_STOP_ALARM;
+    return true;
   }
+
 }
 
 bool Ccs::isStopMotor()
@@ -745,7 +756,7 @@ uint32_t Ccs::getSecFromCurTime(uint32_t time)
 
 uint32_t Ccs::getSecFromCurTime(enID timeId)
 {
-  int32_t sec = getTime() - getValueUint32(timeId);
+  int32_t sec = getTime() - parameters.getU32(timeId);
   if (sec > 0)
     return sec;
   else
@@ -854,6 +865,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
       parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction); // Отключаем режим подхвата
+      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction); // Отключаем режим пропуска резонансных частот
+      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
       vsd->onRegimePush();
     }
     else {
@@ -865,6 +879,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим толчковый
       parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction); // Отключаем режим подхвата
+      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction); // Отключаем режим пропуска резонансных частот
+      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
       vsd->onRegimeSwing();
     }
     else {
@@ -890,11 +907,44 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (value != Regime::OffAction) {
       parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим толчковый
       parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
+      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction); // Отключаем режим пропуска резонансных частот
+      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
       parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ProtModeOff); // Отключаем защиту турбин. вращен.
       vsd->onRegimePickup();
     }
     else {
       vsd->offRegimePickup();
+    }
+    return err;
+  case CCS_RGM_RUN_SKIP_RESONANT_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Regime::OffAction) {
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+    }
+    return err;
+  case CCS_RGM_RUN_AUTO_ADAPTATION_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Regime::OffAction) {
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+    }
+    return err;
+  case CCS_RGM_RUN_SYNCHRON_MODE:
+    err = setValue(id, value, eventType);
+    if (value != Regime::OffAction) {
+      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
     }
     return err;
   case CCS_RGM_OPTIM_VOLTAGE_MODE:
@@ -1248,7 +1298,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, 0.0, eventType);
     if (value && !err) {
       setCmd(CCS_CMD_REBOOT_MASTER);
-      logEvent.add(PowerCode, AutoType, RebootSoftwareId);
       startReboot();
     }
     return err;
@@ -1439,7 +1488,7 @@ void Ccs::controlPower()
 
         // Запись в журнал "Отключение питания"
         logEvent.add(PowerCode, AutoType, PowerOffId);
-
+        logDebug.add(CriticalMsg, "*** Power Off ***");
         powerOffFlag_ = true;
       }
     }
@@ -1865,6 +1914,7 @@ void Ccs::startReboot()
   setCmd(CCS_CMD_START_REBOOT_SLAVE);
   logEvent.add(PowerCode, AutoType, RebootSoftwareId);
   parameters.startSave();
+  osDelay(200);
   osSemaphoreRelease(rebootSemaphoreId_);
 }
 

@@ -311,9 +311,9 @@ int16_t RegimeRunPush::setMinFreq()
 {
   int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, 1);
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunPush::setMinFreq()");
-    #endif
+#endif
   }
   return err;
 }
@@ -322,9 +322,9 @@ int16_t RegimeRunPush::returnMinFreq()
 {
   int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, parameters.get(CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ));
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunPush::returnMinFreq()");
-    #endif
+#endif
   }
   return err;
 }
@@ -333,9 +333,9 @@ int16_t RegimeRunPush::setFreqPush()
 {
   int16_t err = setConfirmation(VSD_FREQUENCY, freqPush_);
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunPush::setFreqPush()");
-    #endif
+#endif
   }
   return err;
 }
@@ -344,9 +344,9 @@ int16_t RegimeRunPush::returnFreq()
 {
   int16_t err = setConfirmation(VSD_FREQUENCY, parameters.get(CCS_RGM_RUN_PUSH_SETPOINT_FREQ));
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunPush::returnFreq()");
-    #endif
+#endif
   }
   return err;
 }
@@ -379,9 +379,9 @@ int16_t RegimeRunPush::setU1()
 
   err = setConfirmation(point, voltagePush);
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunPush::setU1()");
-    #endif
+#endif
   }
   return err;
 }
@@ -410,9 +410,9 @@ int16_t RegimeRunPush::returnU1()
 
   err = setConfirmation(point, voltagePush);
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunPush::returnU1()");
-    #endif
+#endif
   }
   return err;
 }
@@ -445,9 +445,9 @@ int16_t RegimeRunPush::setU2()
 
   err = setConfirmation(point, voltagePush);
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunPush::setU2()");
-    #endif
+#endif
   }
   return err;
 }
@@ -476,9 +476,9 @@ int16_t RegimeRunPush::returnU2()
 
   err = setConfirmation(point, voltagePush);
   if (err == err_r) {
-    #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunPush::returnU2()");
-    #endif
+#endif
   }
   return err;
 }
@@ -487,7 +487,7 @@ int16_t RegimeRunPush::setConfirmation(uint16_t id, float value)
 {
   int16_t err = -1;
   if ((parameters.getValidity(id) == ok_r)
-    && (parameters.get(id) == value)) {
+      && (parameters.get(id) == value)) {
     repeat_ = 0;
     delay_ = 0;
     err = 0;

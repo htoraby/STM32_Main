@@ -56,9 +56,9 @@ void RegimeRunSkipResonantFreq::processingStateWork()
     tempBeginFreq_ = beginFreq_;
     tempEndFreq_ = endFreq_;
     if (!(((freq_ <= beginFreq_)            // Состояние анализа, прохода через диапазон пропуска частот
-          && (setpointFreq_ <= beginFreq_))
-        ||((freq_ >= endFreq_)
-           && (setpointFreq_ >= endFreq_)))) {
+           && (setpointFreq_ <= beginFreq_))
+          ||((freq_ >= endFreq_)
+             && (setpointFreq_ >= endFreq_)))) {
       if (freq_ < setpointFreq_) {          // Если текущая частота меньше уставки, т.е набор частоты
         if (setpointFreq_ < endFreq_) {     // Если уставка частоты лежит в диапазоне пропуска частот
           tempEndFreq_ = setpointFreq_;     // Во временную переменную конечной частоты, записываем уставку, чтобы не повышать частоту до уставки по умолчанию
@@ -86,7 +86,7 @@ void RegimeRunSkipResonantFreq::processingStateWork()
         }
       }
       saveBeforeRegimeRun();                // Сохраняем настройки ЧРП
-    }      
+    }
     break;
 
   case WorkState + 1:                       // Состояние набора частоты из диапазона пропуска частот
@@ -442,7 +442,7 @@ void RegimeRunSkipResonantFreq::automatRegime()
   case WorkState + 1:                       // 1-4 состояние набора частоты из диапазона пропуска
   case WorkState + 2:
   case WorkState + 3:
-  case WorkState + 4:  
+  case WorkState + 4:
   case WorkState + 11:                      // 11-15 состояние набора частоты
   case WorkState + 12:
   case WorkState + 13:
@@ -496,9 +496,9 @@ int16_t RegimeRunSkipResonantFreq::setMinFreq()
 {
   int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, 1);
   if (err == 1) {
-    #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setMinFreq()");
-    #endif
+#if (USE_LOG_DEBUG == 1)
+    logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setMinFreq()");
+#endif
   }
   return err;
 }
@@ -507,9 +507,9 @@ int16_t RegimeRunSkipResonantFreq::setBeginFreq()
 {
   int16_t err = setConfirmation(VSD_FREQUENCY, tempBeginFreq_);
   if (err == 1) {
-    #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setBeginFreq()");
-    #endif
+#if (USE_LOG_DEBUG == 1)
+    logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setBeginFreq()");
+#endif
   }
   return err;
 }
@@ -518,9 +518,9 @@ int16_t RegimeRunSkipResonantFreq::setTempSkip()
 {
   int16_t err = setConfirmation(VSD_TIMER_DISPERSAL, time_);
   if (err == 1) {
-    #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setTempSkip()");
-    #endif
+#if (USE_LOG_DEBUG == 1)
+    logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setTempSkip()");
+#endif
   }
   return err;
 }
@@ -529,9 +529,9 @@ int16_t RegimeRunSkipResonantFreq::setTempDownSkip()
 {
   int16_t err = setConfirmation(VSD_TIMER_DELAY, time_);
   if (err == 1) {
-    #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setTempDownSkip()");
-    #endif
+#if (USE_LOG_DEBUG == 1)
+    logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setTempDownSkip()");
+#endif
   }
   return err;
 }
@@ -542,15 +542,15 @@ int16_t RegimeRunSkipResonantFreq::returnTempDown()
   if (!err) {
     err = setConfirmation(VSD_TIMER_DELAY_FIX_SPEED, parameters.get(CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP));
     if (err == 1) {
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnTempDown()");
-      #endif
+#if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnTempDown()");
+#endif
     }
   }
   if (err == 1) {
-    #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnTempDown()");
-    #endif
+#if (USE_LOG_DEBUG == 1)
+    logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnTempDown()");
+#endif
   }
   return err;
 }
@@ -559,9 +559,9 @@ int16_t RegimeRunSkipResonantFreq::setEndFreq()
 {
   int16_t err = setConfirmation(VSD_FREQUENCY, tempEndFreq_);
   if (err == 1) {
-    #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setEndFreq()");
-    #endif
+#if (USE_LOG_DEBUG == 1)
+    logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::setEndFreq()");
+#endif
   }
   return err;
 }
@@ -572,15 +572,15 @@ int16_t RegimeRunSkipResonantFreq::returnTemp()
   if (!err) {
     err = setConfirmation(VSD_TIMER_DISP_FIX_SPEED, parameters.get(CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP));
     if (err == 1) {
-      #if (USE_LOG_DEBUG == 1)
-        logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnTemp()");
-      #endif
+#if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnTemp()");
+#endif
     }
   }
   if (err == 1) {
-    #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnTemp()");
-    #endif
+#if (USE_LOG_DEBUG == 1)
+    logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnTemp()");
+#endif
   }
   return err;
 }
@@ -592,9 +592,9 @@ int16_t RegimeRunSkipResonantFreq::returnFreq()
     offRegime();
   }
   if (err == 1) {
-    #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnFreq()");
-    #endif
+#if (USE_LOG_DEBUG == 1)
+    logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnFreq()");
+#endif
   }
   return err;
 }
@@ -603,9 +603,9 @@ int16_t RegimeRunSkipResonantFreq::returnMinFreq()
 {
   int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, parameters.get(CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ));
   if (err == 1) {
-    #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnMinFreq()");
-    #endif
+#if (USE_LOG_DEBUG == 1)
+    logDebug.add(DebugMsg, "RegimeRunSkipResonantFreq::returnMinFreq()");
+#endif
   }
   return err;
 }
@@ -614,7 +614,7 @@ int16_t RegimeRunSkipResonantFreq::setConfirmation(uint16_t id, float value)
 {
   int16_t err = -1;
   if ((parameters.getValidity(id) == ok_r)
-    && (parameters.get(id) == value)) {
+      && (parameters.get(id) == value)) {
     repeat_ = 0;
     delay_ = 0;
     err = 0;

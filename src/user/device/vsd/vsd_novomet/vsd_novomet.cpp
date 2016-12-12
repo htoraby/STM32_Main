@@ -183,12 +183,10 @@ int VsdNovomet::setMotorVoltage(float value, float coef, EventType eventType)
       return ok_r;
     }
     else {
-      logDebug.add(WarningMsg, "VsdNovomet::setMotorVoltage() setBaseVoltage (value = %d)", value);
       return err_r;
     }
   }
   else {
-    logDebug.add(WarningMsg, "VsdNovomet::setMotorVoltage() (value = %d)", value);
     return err_r;
   }
 }
@@ -1366,7 +1364,7 @@ bool VsdNovomet::checkStart()
   return false;
 }
 
-int VsdNovomet::stop(float type)
+int VsdNovomet::stop(bool isAlarm)
 {
 #if USE_DEBUG
   return ok_r;
@@ -1394,17 +1392,12 @@ int VsdNovomet::stop(float type)
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      switch((uint16_t)type) {
-      case TYPE_STOP_ALARM:
+      if (isAlarm || (parameters.get(VSD_TYPE_STOP) == TYPE_STOP_ALARM))
         setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_ALARM);
-        break;
-      default:
+      else
         setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_STOP);
-        break;
 
        resetBlock();
-
-      }
     } else {
       timeMs = timeMs + 100;
     }

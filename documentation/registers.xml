@@ -20716,7 +20716,7 @@
 		<id>10007</id>
 		<name>VSD_ROTATION</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_LIMITED</operation>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>2.0</max>

@@ -191,9 +191,9 @@ unsigned short Device::getIndexAtId(unsigned short id)
     if (getFieldId(id - startAddrParams_) == id)
       return (id - startAddrParams_);
   }
-  #if (USE_LOG_WARNING == 1)
-  logDebug.add(WarningMsg, "Device::getIndexAtId() Not found the parameter id = %d", id);
-  #endif
+#if (USE_LOG_WARNING == 1)
+  logDebug.add(WarningMsg, "Device::getIndexAtId() Not found parameter id = %d", id);
+#endif
   return 0;
 }
 
@@ -235,17 +235,17 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
     novobusSlave.putMessageParams(id);
     if ((check == err_min_r) && (getValidity(index) != VALIDITY_MIN)) {
       setFieldValidity(index, VALIDITY_MIN);
-      #if (USE_LOG_WARNING == 1)
-      logDebug.add(WarningMsg, "Device::setValue() Value less than the minimum (id = %d; value = %f; min = %f)",
+#if (USE_LOG_WARNING == 1)
+      logDebug.add(WarningMsg, "Device::setValue() Value less than min (id = %d; value = %f; min = %f)",
                    id, value, min);
-      #endif
+#endif
     }
     if ((check == err_max_r) && (getValidity(index) != VALIDITY_MAX)) {
       setFieldValidity(index, VALIDITY_MAX);
-      #if (USE_LOG_WARNING == 1)
-      logDebug.add(WarningMsg, "Device::setValue() Value greater than the maximum (id = %d; value = %f; max = %f)",
+#if (USE_LOG_WARNING == 1)
+      logDebug.add(WarningMsg, "Device::setValue() Value greater than max (id = %d; value = %f; max = %f)",
                    id, value, max);
-      #endif
+#endif
     }
     return check;
   }
@@ -260,10 +260,10 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
     // Формирование сообщения в архив событий об изменении параметра
     if (code && (eventType != NoneType) && !(isnan(value) || isnan(oldValue))) {
       logEvent.add(code, eventType, (EventId)id, oldValue, value, units);
-      #if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Device::setValue() Changed value (id = %d; oldValue = %f; value = %f)",
+#if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "Device::setValue() Changed value (id = %d; oldValue = %f; newValue = %f)",
                    id, oldValue, value);
-      #endif
+#endif
     }
   }
 

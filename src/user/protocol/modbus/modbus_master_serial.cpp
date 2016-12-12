@@ -54,14 +54,14 @@ int ModbusMasterSerial::closeProtocol(int PortName)
 uint8_t ModbusMasterSerial::txBuf(uint8_t *buf, uint8_t num)
 {
   uint16_t res = err_r;
-  if (uartWriteData((uartNum)numberComPort_, txBuffer_, num, timeOut_) == ok_r) {
+  if (uartWriteData((uartNum)numberComPort_, buf, num, timeOut_) == ok_r) {
     counters_.transmite++;
     calcConnect();
     res = ok_r;
   }
   else {
 #if (USE_LOG_WARNING == 1)
-    logDebug.add(WarningMsg, "ModbusMasterSerial::txBuf() Error writing data to port (numberComPort_= %d)",
+    logDebug.add(WarningMsg, "ModbusMasterSerial::txBuf() Error writing (numberComPort_= %d)",
                  numberComPort_);
 #endif
   }

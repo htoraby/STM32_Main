@@ -171,9 +171,6 @@ int VsdEtalon::setCoefVoltageInAB(float value)
     readInDevice(VSD_VOLTAGE_PHASE_1_2);
     return ok_r;
   }
-  else
-    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInAB() (value = %d)",
-                 value);
   return err_r;
 }
 
@@ -184,10 +181,6 @@ int VsdEtalon::setCoefVoltageInBC(float value)
     readInDevice(VSD_VOLTAGE_PHASE_2_3);
     return ok_r;
   }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInBC() (value = %d)",
-                 value);
-  }
   return err_r;
 }
 
@@ -197,10 +190,6 @@ int VsdEtalon::setCoefVoltageInCA(float value)
     writeToDevice(VSD_COEF_VOLTAGE_IN_CA, getValue(VSD_COEF_VOLTAGE_IN_CA));
     readInDevice(VSD_VOLTAGE_PHASE_3_1);
     return ok_r;
-  }
-  else {
-    logDebug.add(WarningMsg, "VsdEtalon::setCoefVoltageInCA() (value = %d)",
-                 value);
   }
   return err_r;
 }
@@ -662,7 +651,7 @@ bool VsdEtalon::checkStart()
   return false;
 }
 
-int VsdEtalon::stop(float type)
+int VsdEtalon::stop(bool isAlarm)
 {
   // Если стоит бит остановки по внешней команде
   if (getValue(VSD_ETALON_OFF_STATE) == 1)
@@ -670,8 +659,6 @@ int VsdEtalon::stop(float type)
 
   int timeMs = VSD_CMD_TIMEOUT;
   int countRepeats = 0;
-
-  float oldTypeStop = getValue(VSD_TYPE_STOP);
 
   while (1) {
     if (timeMs >= VSD_CMD_TIMEOUT) {
@@ -681,15 +668,11 @@ int VsdEtalon::stop(float type)
       if (countRepeats > VSD_CMD_NUMBER_REPEATS)
         return err_r;
 
-      if (type == TYPE_STOP_ALARM) {
+      if (isAlarm) {
         setNewValue(VSD_ETALON_FAST_OFF, 1);
       }
       else {
-        if (type != oldTypeStop)
-          writeToDevice(VSD_TYPE_STOP, type);
-
-        if (setNewValue(VSD_OFF, 1))
-          return err_r;
+        setNewValue(VSD_OFF, 1);
       }
 
       resetBlock();
@@ -701,7 +684,6 @@ int VsdEtalon::stop(float type)
     osDelay(100);
 
     if (getValue(VSD_ETALON_OFF_STATE) == 1) {
-      writeToDevice(VSD_TYPE_STOP, oldTypeStop);
       return ok_r;
     }
   }

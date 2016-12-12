@@ -29,16 +29,13 @@ public:
    * \brief Метод добавления отладочного сообщения в архив
    *
    * \param type - тип события @ref MsgType
-   * \param msg - сообщение, максимальная длина 250 байт
+   * \param msg - сообщение, максимальная длина 245 байт (SIZE_MSG_DEBUG)
    * \return id записанного события
    */
   uint32_t add(MsgType type, const char *msg, ...);
 
 private:
-  char msg_[SIZE_BUF_LOG*2];
-#ifdef USE_RTT
-  char msg1251_[SIZE_BUF_LOG*2];
-#endif
+  char msg_[SIZE_BUF_LOG];
 
 };
 

@@ -30,15 +30,15 @@ void RegimeTechnologAlternationFreq::processing()
   switch (state_) {
   case IdleState:
     if (action_ != OffAction) {                       // Режим - включен
-     if ((((parameters.get(CCS_CONDITION) == CCS_CONDITION_RUNNING) &&
-           (parameters.get(VSD_FREQUENCY_NOW) >= parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1))) ||
-          (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN)) && ksu.isAutoMode()) {
+      if ((((parameters.get(CCS_CONDITION) == CCS_CONDITION_RUNNING) &&
+            (parameters.get(VSD_FREQUENCY_NOW) >= parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1))) ||
+           (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN)) && ksu.isAutoMode()) {
         ksu.setFreq(firstFreq_);                      // Устанавливаем первую частоту
         beginTime_ = ksu.getTime();                   // Запоминаем время когда перешли на частоту
         state_ = RunningState;                        // Переходим на работу на первой частоте
-        #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
         logDebug.add(DebugMsg, "Alter Freq: Idle -> F1 (firstFreq = %6.2f state = %d)", firstFreq_, state_);
-        #endif
+#endif
       }
     }
     break;
@@ -52,19 +52,19 @@ void RegimeTechnologAlternationFreq::processing()
         ksu.setFreq(secondFreq_);               // Посылаем команду на изменение частоты
         beginTime_ = ksu.getTime();
         state_ = RunningState + 1;
-        #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
         logDebug.add(DebugMsg, "Alter Freq: F1 -> F2 (firstFreq = %6.2f, secondFreq = %6.2f, state = %d)", firstFreq_, secondFreq_, state_);
-        #endif
+#endif
       }
     }
     else {
       state_ = IdleState;
-      #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "Alter Freq: F1 -> Idle (firstFreq = %6.2f, state = %d)", firstFreq_, state_);
-      #endif
+#endif
     }
     break;
-  case RunningState + 1: 
+  case RunningState + 1:
     state_ = WorkState + 1;                           // TODO: Задержка для перехода на новую частоту
     break;
   case WorkState + 1:
@@ -74,16 +74,16 @@ void RegimeTechnologAlternationFreq::processing()
         ksu.setFreq(firstFreq_);
         beginTime_ = ksu.getTime();
         state_ = RunningState;
-        #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
         logDebug.add(DebugMsg, "Alter Freq: F2 -> F1 (firstFreq = %6.2f, secondFreq = %6.2f, state = %d)", firstFreq_, secondFreq_, state_);
-        #endif
+#endif
       }
     }
     else {
       state_ = IdleState;
-      #if (USE_LOG_DEBUG == 1)
+#if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "Alter Freq: F2 -> Idle (secondFreq = %6.2f, state = %d)", secondFreq_, state_);
-      #endif
+#endif
     }
     break;
   default:

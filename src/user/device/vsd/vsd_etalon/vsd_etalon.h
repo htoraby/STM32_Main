@@ -226,10 +226,10 @@ public:
 
   /*!
    * \brief Метод останова
-   * \param type - тип останова
+   * \param isAlarm - тип останова
    * \return Код выполнения операции
    */
-  int stop(float type);
+  int stop(bool isAlarm);
 
   /*!
    * \brief alarmstop

@@ -89,7 +89,7 @@ void Vsd::initParameters()
   // Направления вращения Danfoss 4-10 Не используется в проекте, только при конфигурировании
   parameters_[VSD_ROTATION - VSD_BEGIN].id                                       = VSD_ROTATION;
   parameters_[VSD_ROTATION - VSD_BEGIN].access                                   = ACCESS_OPERATOR;
-  parameters_[VSD_ROTATION - VSD_BEGIN].operation                                = OPERATION_LIMITED;
+  parameters_[VSD_ROTATION - VSD_BEGIN].operation                                = OPERATION_WRITE;
   parameters_[VSD_ROTATION - VSD_BEGIN].physic                                   = PHYSIC_NUMERIC;
   parameters_[VSD_ROTATION - VSD_BEGIN].validity                                 = VALIDITY_ERROR;
   parameters_[VSD_ROTATION - VSD_BEGIN].value.float_t                            = 0.0;

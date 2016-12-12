@@ -57,7 +57,7 @@ static void shellThread(void *argument)
 #endif
 
     if (key >= 0) {
-      if (key == '\n') {
+      if ((key == '\n') || (key == '\r')) {
         shellParseRequest(buf);
         count = 0;
         memset(buf, 0, sizeof(buf));

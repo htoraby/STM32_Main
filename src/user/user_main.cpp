@@ -25,7 +25,7 @@ void userInit()
 
   // Запись в журнал "Включение питания"
   logEvent.add(PowerCode, AutoType, PowerOnId);
-  logDebug.add(WarningMsg, "*** Power On ***");
+  logDebug.add(CriticalMsg, "*** Power On ***");
   checkRegistersFromStack();
   checkIrqError();
   checkRcauseCounters();

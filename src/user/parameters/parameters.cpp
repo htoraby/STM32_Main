@@ -29,20 +29,21 @@ void Parameters::init()
 void Parameters::task()
 {
   static int time = 0;
-  while (1) {  
-    if (osSemaphoreWait(semaphoreId_, 1) != osEventTimeout) {
+  while (1) {
+    osDelay(1);
+
+    if ((osSemaphoreWait(semaphoreId_, 0) != osEventTimeout) || ksu.isPowerOff()) {
       time = 0;
-#if (USE_LOG_DEBUG == 1)
-      logDebug.add(DebugMsg, "Parameters::task()");
-#endif
       save();
-    } else {
-      if ((++time >= PARAMS_SAVE_TIME) || ksu.isPowerOff()) {
-        time = 0;
-        save();
-        if (ksu.isPowerOff())
-          osDelay(osWaitForever);
-      }
+    }
+
+    if (++time >= PARAMS_SAVE_TIME) {
+      time = 0;
+      save();
+    }
+
+    while (ksu.isPowerOff()) {
+      osDelay(1);
     }
   }
 }
@@ -53,7 +54,7 @@ void Parameters::startSave()
 }
 
 void Parameters::save()
-{ 
+{  
   ksu.saveParameters();
   vsd->saveParameters();
   tms->saveParameters();
@@ -279,7 +280,7 @@ float Parameters::checkZero(unsigned short id, bool reset, float value)
         if (parameters.getValueDef(id) == 0) {
           if (parameters.getMin(id) == 0) {
 #if (USE_LOG_DEBUG == 1)
-              logDebug.add(DebugMsg, "Parameters::checkZero() (id = %d)");
+            logDebug.add(DebugMsg, "Parameters::checkZero() (id = %d)");
 #endif
             return 1;
           }
