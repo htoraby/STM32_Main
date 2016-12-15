@@ -13,9 +13,10 @@ static uint8_t buf[10];
  \brief Спискок возможных производителей
 */
 enum {
-  VENDOR_ATMEL	  =	0x1F,
-  VENDOR_WINBOND	=	0xEF,
-  VENDOR_MACRONIX	=	0xC2,
+  VENDOR_ATMEL	    =	0x1F,
+  VENDOR_WINBOND	  =	0xEF,
+  VENDOR_MACRONIX	  =	0xC2,
+  VENDOR_GIGADEVICE	=	0xC8,
 };
 
 /*!
@@ -30,7 +31,7 @@ enum {
 };
 
 /*!
- \brief Команды для Flash WINBOND и MACRONIX
+ \brief Команды для Flash WINBOND, MACRONIX и GIGADEVICE
 */
 enum {
   CMD_W_FAST_READ          = 0x0B,
@@ -48,6 +49,7 @@ enum {
   CMD_W_WAKE_UP            = 0xAB,
   CMD_W_WRITE_SR           = 0x01,
   CMD_W_FAST_READ_DUAL_OUT = 0x3B,
+  CMD_W_ADDRESS_MODE       = 0xB7,
 };
 
 DMA_HandleTypeDef hdma_spi1_tx;
@@ -59,6 +61,7 @@ FlashTypeDef flashExts[FlashSpiMax];
 static StatusType spiTransmitReceive(FlashSpiNum num, uint8_t *txData,
                                      uint8_t *rxData, uint16_t txSize,
                                      uint16_t rxSize);
+static void flashSetAddressMode(FlashSpiNum num);
 static void flashWriteEnable(FlashSpiNum num);
 static void flashWriteDisable(FlashSpiNum num);
 
@@ -177,26 +180,34 @@ void flashExtInit(FlashSpiNum num)
   // Определение производителя
   flashExts[num].manufacturer = buf[0];
   switch (flashExts[num].manufacturer) {
-    case VENDOR_ATMEL:
-      flashExts[num].size = 0;
-      flashExts[num].pageSize = 256;
-      flashExts[num].sectorSize = 4096;
-      flashExts[num].blockSize = 65536;
-      break;
-    case VENDOR_WINBOND:
-      flashExts[num].size = 0x00800000;
-      flashExts[num].pageSize = 256;
-      flashExts[num].sectorSize = 4096;
-      flashExts[num].blockSize = 65536;
-      break;
-    case VENDOR_MACRONIX:
-      flashExts[num].size = 0x01000000;
-      flashExts[num].pageSize = 256;
-      flashExts[num].sectorSize = 4096;
-      flashExts[num].blockSize = 65536;
-      break;
-    default:
-      break;
+  case VENDOR_ATMEL:
+    flashExts[num].size = 0;
+    flashExts[num].pageSize = 256;
+    flashExts[num].sectorSize = 4096;
+    flashExts[num].blockSize = 65536;
+    break;
+  case VENDOR_WINBOND:
+    flashExts[num].size = 0x00800000;
+    flashExts[num].pageSize = 256;
+    flashExts[num].sectorSize = 4096;
+    flashExts[num].blockSize = 65536;
+    break;
+  case VENDOR_MACRONIX:
+    flashExts[num].size = 0x01000000;
+    flashExts[num].pageSize = 256;
+    flashExts[num].sectorSize = 4096;
+    flashExts[num].blockSize = 65536;
+    break;
+  case VENDOR_GIGADEVICE:
+    flashExts[num].size = 0x02000000;
+    flashExts[num].pageSize = 256;
+    flashExts[num].sectorSize = 4096;
+    flashExts[num].blockSize = 65536;
+
+    flashSetAddressMode(num);
+    break;
+  default:
+    break;
   }
 
   asm("nop");
@@ -231,6 +242,21 @@ StatusType spiTransmitReceive(FlashSpiNum num, uint8_t *txData, uint8_t *rxData,
   }
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
   return status;
+}
+
+static void flashSetAddressMode(FlashSpiNum num)
+{
+  buf[0] = CMD_W_ADDRESS_MODE;
+  clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+  HAL_SPI_Transmit(&flashExts[num].spi, buf, 1, FLASH_TIMEOUT);
+  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+
+  buf[0] = 0x35;
+  buf[1] = 0xFF;
+  clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+  HAL_SPI_TransmitReceive(&flashExts[num].spi, buf, buf, 2, FLASH_TIMEOUT);
+  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+  asm("nop");
 }
 
 static void flashReady(FlashSpiNum num)
@@ -282,13 +308,22 @@ StatusType flashExtEraseSector4k(FlashSpiNum num, uint32_t address)
 
   flashWriteEnable(num);
 
+  uint8_t sizeTx = 5;
   buf[0] = CMD_W_SECTOR_ERASE;
+#if (HARDWARE_VERSION >= 0x0200)
+  buf[1] = address>>24;
+  buf[2] = address>>16;
+  buf[3] = address>>8;
+  buf[4] = address&0xFF;
+#else
   buf[1] = address>>16;
   buf[2] = address>>8;
   buf[3] = address&0xFF;
+  sizeTx = 4;
+#endif
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 4, FLASH_TIMEOUT) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
     status = StatusOk;
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
@@ -312,13 +347,22 @@ StatusType flashExtEraseBlock(FlashSpiNum num, uint32_t address)
 
   flashWriteEnable(num);
 
+  uint8_t sizeTx = 5;
   buf[0] = CMD_W_BLOCK64k_ERASE;
+#if (HARDWARE_VERSION >= 0x0200)
+  buf[1] = address>>24;
+  buf[2] = address>>16;
+  buf[3] = address>>8;
+  buf[4] = address&0xFF;
+#else
   buf[1] = address>>16;
   buf[2] = address>>8;
   buf[3] = address&0xFF;
+  sizeTx = 4;
+#endif
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 4, FLASH_TIMEOUT) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
     status = StatusOk;
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
@@ -343,14 +387,24 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
 
   osDelay(1);
 
+  uint8_t sizeTx = 6;
   buf[0] = CMD_W_FAST_READ;
+#if (HARDWARE_VERSION >= 0x0200)
+  buf[1] = address>>24;
+  buf[2] = address>>16;
+  buf[3] = address>>8;
+  buf[4] = address&0xFF;
+  buf[5] = 0xFF;
+#else
   buf[1] = address>>16;
   buf[2] = address>>8;
   buf[3] = address&0xFF;
   buf[4] = 0xFF;
+  sizeTx = 5;
+#endif
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 5, FLASH_TIMEOUT) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
     status = StatusOk;
 
   if (status == StatusOk) {
@@ -379,13 +433,22 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
 
   flashWriteEnable(num);
 
+  uint8_t sizeTx = 5;
   buf[0] = CMD_W_PAGE_PROGRAM;
+#if (HARDWARE_VERSION >= 0x0200)
+  buf[1] = address>>24;
+  buf[2] = address>>16;
+  buf[3] = address>>8;
+  buf[4] = address&0xFF;
+#else
   buf[1] = address>>16;
   buf[2] = address>>8;
   buf[3] = address&0xFF;
+  sizeTx = 4;
+#endif
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 4, FLASH_TIMEOUT) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
     status = StatusOk;
   if (status == StatusOk) {
     flashExts[num].spiReady = false;

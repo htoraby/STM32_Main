@@ -32,8 +32,7 @@ extern FlashTypeDef flashExts[];
 #ifdef __cplusplus
 
 /*!
- \brief Инициализация внешней Flash:
- SPI1 - W25Q64BV, SPI5 - MX25L128
+ \brief Инициализация внешней Flash: SPI1, SPI5
  \param num - номер spi @ref FlashSpiNum
 */
 void flashExtInit(FlashSpiNum num);
