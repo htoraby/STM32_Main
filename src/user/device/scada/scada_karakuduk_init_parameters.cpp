@@ -543,7 +543,7 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[44].command           = OPERATION_ERROR;
   scadaParameters_[44].value.float_t     = 0;
   // Температура IGBT
-  scadaParameters_[45].id                = VSD_RADIATOR_TEMPERATURE;
+  scadaParameters_[45].id                = VSD_RADIATOR_TEMPERATURE_1;
   scadaParameters_[45].address           = 301;
   scadaParameters_[45].operation         = OPERATION_READ;
   scadaParameters_[45].physic            = PHYSIC_TEMPERATURE;
