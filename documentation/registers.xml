@@ -849,8 +849,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FLOW</physic>
-		<min>0.0</min>
-		<max>10000.0</max>
+		<min>1.0</min>
+		<max>9999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -860,7 +860,7 @@
 		<form>3.7 Насос</form>
 		<unit>FLOW_M3_DD</unit>
 		<unit_lcd>FLOW_M3_DD</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Производительность насоса</comment>
 	</param>
@@ -870,8 +870,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_LENGHT</physic>
-		<min>0.0</min>
-		<max>10000.0</max>
+		<min>1.0</min>
+		<max>9999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -881,7 +881,7 @@
 		<form>3.7 Насос</form>
 		<unit>LENGTH_M</unit>
 		<unit_lcd>LENGTH_M</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Напор ЭЦН</comment>
 	</param>
@@ -891,8 +891,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_LENGHT</physic>
-		<min>0.0</min>
-		<max>10000.0</max>
+		<min>1.0</min>
+		<max>9999.9</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -902,7 +902,7 @@
 		<form>3.7 Насос</form>
 		<unit>LENGTH_M</unit>
 		<unit_lcd>LENGTH_M</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Глубина спуска</comment>
 	</param>
@@ -919,7 +919,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Повышен.напряж.</short_text>
+		<short_text>Повышенное U</short_text>
 		<form>4.1.1 Повышенное напряжение сети</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -4262,7 +4262,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Действие защиты</text>
-		<short_text>Рвх.нас.РРЗ</short_text>
+		<short_text>Рвх. насоса</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
@@ -4304,7 +4304,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Рвх.Пуск.время</short_text>
+		<short_text>Рвх. пуск. время</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -4325,7 +4325,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Рвх.Время</short_text>
+		<short_text>Рвх. время</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -4346,7 +4346,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Рвх.Зад.АПВ</short_text>
+		<short_text>Рвх. зад.АПВ</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -4360,14 +4360,14 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>9999.0</max>
+		<min>1.0</min>
+		<max>999.9</max>
 		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Рвх.Раз.АПВ</short_text>
+		<short_text>Рвх. раз.АПВ</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -4388,7 +4388,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ</text>
-		<short_text>Рвх.сброс счет</short_text>
+		<short_text>Рвх. сброс счет</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -4402,14 +4402,14 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PRESSURE</physic>
-		<min>0.0</min>
+		<min>0.01</min>
 		<max>99.99</max>
 		<def>4.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>4.0</value>
 		<text>Уставка останова</text>
-		<short_text>Рвх.Уставка останова</short_text>
+		<short_text>Рвх. уставка останова</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>PRESSURE_MPA</unit>
 		<unit_lcd>PRESSURE_MPA</unit_lcd>
@@ -4423,14 +4423,14 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PRESSURE</physic>
-		<min>0.0</min>
+		<min>0.01</min>
 		<max>99.99</max>
 		<def>25.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>25.0</value>
 		<text>Уставка пуска</text>
-		<short_text>Рвх.Уставка пуска</short_text>
+		<short_text>Рвх. уставка пуска</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>PRESSURE_MPA</unit>
 		<unit_lcd>PRESSURE_MPA</unit_lcd>
@@ -4451,7 +4451,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Нормализация</text>
-		<short_text>Рвх.Нормализация</short_text>
+		<short_text>Рвх. нормализация</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -10388,16 +10388,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<min>1.0</min>
+		<max>99999.9</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Номер ЦДНГ</text>
-		<short_text>№ЦДНГ</short_text>
+		<short_text>№ ЦДНГ</short_text>
 		<form>6.1 Скважина</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXX</format>
 		<code>13</code>
 		<comment>Номер ЦДНГ</comment>
 	</param>
@@ -10407,16 +10409,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<min>1.0</min>
+		<max>99999.9</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Номер куста</text>
-		<short_text>№Куст.</short_text>
+		<short_text>№ Куст</short_text>
 		<form>6.1 Скважина</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXX</format>
 		<code>13</code>
 		<comment>Номер куста</comment>
 	</param>
@@ -10426,16 +10430,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<min>1.0</min>
+		<max>99999.9</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
 		<text>Номер скважины</text>
-		<short_text>№Скв.</short_text>
+		<short_text>№ Скв.</short_text>
 		<form>6.1 Скважина</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXX</format>
 		<code>13</code>
 		<comment>Номер скважины</comment>
 	</param>
@@ -10838,7 +10844,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
-		<code>0</code>
+		<code>13</code>
 		<comment>Тип КСУ</comment>
 	</param>
 	<param>
@@ -10859,7 +10865,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
-		<code>0</code>
+		<code>13</code>
 		<comment>Код производителя КСУ</comment>
 	</param>
 	<param>
@@ -10897,7 +10903,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXX_XX</format>
-		<code>0</code>
+		<code>13</code>
 		<comment>Версия ПО КСУ</comment>
 	</param>
 	<param>
@@ -10916,7 +10922,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXX_XX</format>
-		<code>0</code>
+		<code>13</code>
 		<comment>Версия ПО МС</comment>
 	</param>
 	<param>
@@ -10935,7 +10941,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXX_XX</format>
-		<code>0</code>
+		<code>13</code>
 		<comment>Версия ПО ПЧ</comment>
 	</param>
 	<param>
@@ -10955,7 +10961,7 @@
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD</unit_lcd>
 		<format>XX_XX_XX</format>
-		<code>0</code>
+		<code>13</code>
 		<comment>Дата изготовления КСУ</comment>
 	</param>
 	<param>
@@ -10975,7 +10981,7 @@
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD</unit_lcd>
 		<format>XX_XX_XX</format>
-		<code>0</code>
+		<code>13</code>
 		<comment>Дата установки ПО КСУ</comment>
 	</param>
 	<param>
@@ -10995,7 +11001,7 @@
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD</unit_lcd>
 		<format>XX_XX_XX</format>
-		<code>0</code>
+		<code>13</code>
 		<comment>Дата генерации ПО КСУ</comment>
 	</param>
 	<param>
@@ -11015,7 +11021,7 @@
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD</unit_lcd>
 		<format>XX_XX_XX</format>
-		<code>0</code>
+		<code>13</code>
 		<comment>Дата установки ПО ПЧ</comment>
 	</param>
 	<param>
@@ -13793,7 +13799,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Индуктивность выходного фильтра</text>
-		<short_text>Индуктивность выходного фильтра</short_text>
+		<short_text>Индукт. вых. фильтра</short_text>
 		<form>3.6 Фильтры</form>
 		<unit>INDUNCTANCE_MH</unit>
 		<unit_lcd>INDUNCTANCE_MKH</unit_lcd>
@@ -14199,7 +14205,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ёмкость выходного фильтра</text>
-		<short_text>Ёмкость выходного фильтра</short_text>
+		<short_text>Ёмк. вых. фильтра</short_text>
 		<form>3.6 Фильтры</form>
 		<unit>CAPACITY_MKF</unit>
 		<unit_lcd>CAPACITY_MKF</unit_lcd>
@@ -17712,12 +17718,14 @@
 		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<min>160.0</min>
+		<max>1000.0</max>
+		<def>160.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>160.0</value>
 		<text>Номинальный ток СУ</text>
-		<short_text>Номинальный ток СУ</short_text>
+		<short_text>Номинал. ток СУ</short_text>
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -30158,6 +30166,24 @@
 	</param>
 	<param>
 		<id>10499</id>
+		<name>VSD_TEMPERATURE_AIR</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<text>Tемпер. Воздуха</text>
+		<short_text>Т воздуха, ⁰С</short_text>
+		<form>NULL</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>10500</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<form>NULL</form>
