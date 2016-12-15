@@ -224,7 +224,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Частота турб.</text>
-		<short_text>Частота турб.</short_text>
+		<short_text>F турб., Гц</short_text>
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -352,7 +352,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Дисбал. напряж.</text>
-		<short_text>Дисбал.вх.напряж.</short_text>
+		<short_text>Дисб.U, %</short_text>
 		<form>1.3 Текущие параметры сети</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -12594,7 +12594,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Вых.напр.ТМПН</text>
-		<short_text>Вых.напр.ТМПН</short_text>
+		<short_text>U ТМПН, В</short_text>
 		<form>1.4 Текущие параметры двигателя</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -20717,7 +20717,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Направ.вращения</text>
-		<short_text>Направ.вращения</short_text>
+		<short_text>Направ.вращ.</short_text>
 		<form>1.1 Текущие параметры - Состояние; 3.3 Настройка ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>

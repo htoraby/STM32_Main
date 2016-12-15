@@ -141,12 +141,15 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+217) = parameters.get(CCS_VSD_STATUS_WORD_7);
   *(float*)(buffer+221) = parameters.get(TMS_PSW_TMS);
   *(float*)(buffer+225) = parameters.get(TMS_PSW_TMSN);
-//  *(float*)(buffer+229) =
-//  *(float*)(buffer+233) =
-//  *(float*)(buffer+237) =
-//  *(float*)(buffer+241) =
+  *(float*)(buffer+229) = parameters.get(CCS_VOLTAGE_IMBALANCE_IN);
+  *(float*)(buffer+233) = parameters.get(CCS_VOLTAGE_TRANS_OUT);
+  *(float*)(buffer+237) = parameters.get(CCS_TURBO_ROTATION_NOW);
+  *(float*)(buffer+241) = parameters.get(VSD_ROTATION);
 //  *(float*)(buffer+245) =
 //  *(float*)(buffer+249) =
-  write(buffer, 253);
+  write(buffer, 253, false);
+
+  memset(buffer, 0, sizeof(buffer));
+  write(buffer, 256);
 }
 

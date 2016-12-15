@@ -6,7 +6,7 @@
 #include "minilzo.h"
 
 #define LOG_DIR USB_DISK ":ksu_log"
-#define FILE_MASK "М-е%d куст%d скв%d(%d).log"
+#define FILE_MASK "М-е%d_куст%d_скв%d_%02d%02d%02d_%02d%02d%02d.log"
 
 #define IN_BUF_SIZE 4096
 #define OUT_BUF_SIZE (IN_BUF_SIZE + IN_BUF_SIZE / 16 + 64 + 3 + 8)
@@ -69,7 +69,7 @@ void logStartSave(EventType type)
   eventType = type;
   parameters.set(CCS_PROGRESS_VALUE, 0);
   parameters.set(CCS_PROGRESS_MAX, 0);
-  parameters.set(CCS_PROGRESS_MAX, (EndAddrDebugLog + EndAddrTmsLog + PARAMETERS_SIZE)/1024);
+  parameters.set(CCS_PROGRESS_MAX, (float)(EndAddrDebugLog + flashExts[FlashSpi5].size + PARAMETERS_SIZE)/1024);
   osSemaphoreRelease(saveSemaphoreId_);
 }
 
@@ -79,9 +79,9 @@ void logStartDelete(EventType type)
   parameters.set(CCS_PROGRESS_VALUE, 0);
   parameters.set(CCS_PROGRESS_MAX, 0);
   if (parameters.get(CCS_CMD_LOG_DELETE))
-    parameters.set(CCS_PROGRESS_MAX, EndAddrTmsLog/1024);
+    parameters.set(CCS_PROGRESS_MAX, (float)flashExts[FlashSpi5].size/1024);
   else
-    parameters.set(CCS_PROGRESS_MAX, EndAddrDebugLog/1024);
+    parameters.set(CCS_PROGRESS_MAX, (float)EndAddrDebugLog/1024);
   osSemaphoreRelease(deleteSemaphoreId_);
 }
 
@@ -104,7 +104,7 @@ void logHeader(LOG_FILE_HEADER *header)
       (toBcd(dateTime.tm_mday) << 8) |
       (toBcd(dateTime.tm_hour) & 0xFF);
 
-  header->mainLogSize = EndAddrTmsLog;
+  header->mainLogSize = flashExts[FlashSpi5].size;
   header->debugLogSize = EndAddrDebugLog;
   header->parametersSize = PARAMETERS_SIZE;
   header->size = header->mainLogSize + header->debugLogSize +
@@ -152,44 +152,21 @@ bool logCompressRead(uint8_t *data)
 
 static void getFilePath(char *path)
 {
-  FRESULT result;
-  FILINFO fileInfo;
-  DIR dir;
-  char *fn;
-#if _USE_LFN
-  static char lfn[_MAX_LFN + 1];
-  fileInfo.lfname = lfn;
-  fileInfo.lfsize = sizeof(lfn);
-#endif
   char buf[_MAX_LFN + 1];
   char *fileName = buf;
 
   int cdng = parameters.get(CCS_NUMBER_CDNG);
   int bush = parameters.get(CCS_NUMBER_BUSH);
-  int well = parameters.get(CCS_NUMBER_WELL);
-  int count = 0;
-  sprintf(fileName, FILE_MASK, cdng, bush, well, count);
-  convert_utf8_to_windows1251(fileName, fileName, _MAX_LFN + 1);
+  int well = parameters.get(CCS_NUMBER_WELL);  
+  time_t time = parameters.getU32(CCS_DATE_TIME);
+  tm dateTime = *localtime(&time);
+  if (dateTime.tm_year > 100)
+    dateTime.tm_year = dateTime.tm_year - 100;
+  else
+    dateTime.tm_year = 0;
 
-  result = f_opendir(&dir, path);
-  if (result == FR_OK) {
-    while (1) {
-      result = f_readdir(&dir, &fileInfo);
-      if (result != FR_OK || fileInfo.fname[0] == 0)
-        break;
-#if _USE_LFN
-      fn = *fileInfo.lfname ? fileInfo.lfname : fileInfo.fname;
-#else
-      fileName = fileInfo.fname;
-#endif
-      if (!strcmp(fn, fileName)) {
-        count++;
-        sprintf(fileName, FILE_MASK, cdng, bush, well, count);
-        convert_utf8_to_windows1251(fileName, fileName, _MAX_LFN + 1);
-      }
-    }
-  }
-  f_closedir(&dir);
+  sprintf(fileName, FILE_MASK, cdng, bush, well, dateTime.tm_year, dateTime.tm_mon + 1, dateTime.tm_mday, dateTime.tm_hour, dateTime.tm_min, dateTime.tm_sec);
+  convert_utf8_to_windows1251(fileName, fileName, _MAX_LFN + 1);
 
   strcat(path, "\\");
   strcat(path, fileName);
@@ -279,7 +256,7 @@ static bool logSave()
           count = 0;
           parameters.set(CCS_PROGRESS_VALUE, (float)(addr)/1024);
         }
-        if (addr >= EndAddrTmsLog)
+        if (addr >= flashExts[FlashSpi5].size)
           break;
       }
 
@@ -319,7 +296,7 @@ static bool logSave()
         count++;
         if (count >= 60) {
           count = 0;
-          parameters.set(CCS_PROGRESS_VALUE, (float)(addr + EndAddrTmsLog)/1024);
+          parameters.set(CCS_PROGRESS_VALUE, (float)(addr + flashExts[FlashSpi5].size)/1024);
         }
         if (addr >= EndAddrDebugLog)
           break;
@@ -361,7 +338,7 @@ static bool logSave()
         count++;
         if (count >= 60) {
           count = 0;
-          parameters.set(CCS_PROGRESS_VALUE, (float)(addr + EndAddrTmsLog + EndAddrDebugLog)/1024);
+          parameters.set(CCS_PROGRESS_VALUE, (float)(addr + flashExts[FlashSpi5].size + EndAddrDebugLog)/1024);
         }
         if (addr >= PARAMETERS_SIZE)
           break;
@@ -410,7 +387,7 @@ void logDeleted()
 
     addr = addr + flashExts[FlashSpi5].blockSize;
     parameters.set(CCS_PROGRESS_VALUE, (float)addr/1024);
-    if (addr >= EndAddrTmsLog)
+    if (addr >= flashExts[FlashSpi5].size)
       break;
   }
 
