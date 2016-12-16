@@ -20547,9 +20547,9 @@
 		<name>CCS_MOTOR_TYPE_PROFILE_VSD</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_LIMITED</operation>
-		<physic>PHYSIC_RPM</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>8500.0</max>
 		<def>3000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -20557,11 +20557,11 @@
 		<text>Профиль настроек двигателя в ЧРП</text>
 		<short_text>Профиль ЧРП</short_text>
 		<form>3.1 Двигатель</form>
-		<unit>PHYSIC_RPM</unit>
-		<unit_lcd>PHYSIC_RPM</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
 		<code>13</code>
-		<values>500;1000;3000;6000;8500;10000</values>
+		<values>1;2;500;1000;3000;6000;8500</values>
 		<comment>Профиль настроек двигателя в ЧРП</comment>
 	</param>
 	<param>

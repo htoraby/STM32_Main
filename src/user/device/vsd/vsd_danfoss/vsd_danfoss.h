@@ -148,14 +148,20 @@ public:
   int setMotorType(float value);
   int setMotorTypeProfile();
   uint16_t setMotorTypeProfileAsync();
-  uint16_t setMotorTypeProfileBldctUf500();
-  uint16_t setMotorTypeProfileBldctUf1000();
-  uint16_t setMotorTypeProfileBldctUf3000();
-  uint16_t setMotorTypeProfileBldctUf6000();
-  uint16_t setMotorTypeProfileBldctVector500();
+  uint16_t setMotorTypeProfileBldcUf500();
+  uint16_t setMotorTypeProfileBldcUf1000();
+  uint16_t setMotorTypeProfileBldcUf3000();
+  uint16_t setMotorTypeProfileBldcUf6000();
+  uint16_t setMotorTypeProfileBldcUf8500();
+  uint16_t setMotorTypeProfileBldcUfVDM();
+  uint16_t setMotorTypeProfileBldcUfVVD();
+  uint16_t setMotorTypeProfileBldcVector500();
   uint16_t setMotorTypeProfileBldcVector1000();
   uint16_t setMotorTypeProfileBldcVector3000();
   uint16_t setMotorTypeProfileBldcVector6000();
+  uint16_t setMotorTypeProfileBldcVector8500();
+  uint16_t setMotorTypeProfileBldcVectorVDM();
+  uint16_t setMotorTypeProfileBldcVectorVVD();
   int setMotorCurrent(float value, EventType eventType = NoneType);
 
   /*!
