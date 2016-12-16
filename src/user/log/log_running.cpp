@@ -85,7 +85,7 @@ void LogRunning::add()
   memset(buffer, 0, sizeof(buffer));
   *(uint32_t*)(buffer) = eventId_;
   *(float*)(buffer+4) = parameters.get(CCS_RESISTANCE_ISOLATION);
-  write(buffer, SIZE_BUF_LOG);
+  write(buffer, SIZE_BUF_LOG, false);
 
   int idxU = 0;
   int idxVsd = 0;
@@ -123,7 +123,7 @@ void LogRunning::add()
       i++;
     }
     if (i == ADC_POINTS_NUM)
-      write(buffer, SIZE_BUF_LOG, false, true);
+      write(buffer, SIZE_BUF_LOG, true, true);
     else
       write(buffer, SIZE_BUF_LOG, false);
   }

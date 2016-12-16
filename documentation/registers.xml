@@ -224,7 +224,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Частота турб.</text>
-		<short_text>Частота турб.</short_text>
+		<short_text>F турб., Гц</short_text>
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -335,7 +335,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>0</code>
+		<code>3</code>
 		<values>1-Ручной;2-Автоматический;3-По программе</values>
 		<comment>Режим работы</comment>
 	</param>
@@ -352,7 +352,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Дисбал. напряж.</text>
-		<short_text>Дисбал.вх.напряж.</short_text>
+		<short_text>Дисб.U, %</short_text>
 		<form>1.3 Текущие параметры сети</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -839,7 +839,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>0</code>
+		<code>20</code>
 		<values>0-Откл;1-Новомет;2-Алмаз;3-Борец СПТ-1;4-Электон;5-Эталон ТМСН-2;6-Эталон ТМСН-3;7-Ирз;8-Орион;9-PICv2;10-Скад;11-Скан;12-Триол;13-Зенит;14-СНГ;15-Борец СПТ-2;16-РН-Transfer</values>
 		<comment>Тип ТМС</comment>
 	</param>
@@ -12600,7 +12600,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<text>Вых.напр.ТМПН</text>
-		<short_text>Вых.напр.ТМПН</short_text>
+		<short_text>U ТМПН, В</short_text>
 		<form>1.4 Текущие параметры двигателя</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -13650,7 +13650,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
-		<code>0</code>
+		<code>20</code>
 		<values>0-Откл;1-Новомет;2-Данфос;3-Эталон</values>
 		<comment>Тип подключенного ЧРП</comment>
 	</param>
@@ -14018,7 +14018,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>0</code>
+		<code>20</code>
 		<values>0-Нет;1-СЭТ-4ТМ;2-ABB;3-ABB A44</values>
 		<comment>Тип счётчика электроэнергии</comment>
 	</param>
@@ -14166,7 +14166,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>0</code>
+		<code>20</code>
 		<values>0-Откл;1-Вкл</values>
 		<comment>Входной фильтр</comment>
 	</param>
@@ -14188,7 +14188,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>0</code>
+		<code>20</code>
 		<values>0-Откл;1-Вкл</values>
 		<comment>Выходной фильтр</comment>
 	</param>
@@ -20725,7 +20725,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Направ.вращения</text>
-		<short_text>Направ.вращения</short_text>
+		<short_text>Направ.вращ.</short_text>
 		<form>1.1 Текущие параметры - Состояние; 3.3 Настройка ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>

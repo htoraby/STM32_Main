@@ -21,7 +21,12 @@
 #define WATCHDOG_TIMEOUT 15 // сек (максимум 16 сек!)
 
 
-#define FIRMWARE_VERSION 0x0101 // 1.1
+#define HARDWARE_VERSION 0x0200 // 1.0 - Ext Flash - 32мб, 2.0 - Ext Flash - 64мб
+#if (HARDWARE_VERSION >= 0x0200)
+  #define FIRMWARE_VERSION 0x0200 //
+#else
+  #define FIRMWARE_VERSION 0x0102 //
+#endif
 #define FIRMWARE_DATE __DATE__
 #define FIRMWARE_TIME __TIME__
 

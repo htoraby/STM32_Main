@@ -72,6 +72,35 @@ typedef enum {
   LatchType,    //!< Защёлка
 } EventType;
 
+#if (HARDWARE_VERSION >= 0x0200)
+/*!
+ * \brief Начальные адреса журналов на FLASH
+*/
+typedef enum {
+  //! FlashSpi5
+  StartAddrEventLog = 0x00000000,  //!< 4+1 сектора
+  StartAddrDataLog  = 0x00005000,  //!< 6453+1 сектора
+  StartAddrRunLog   = 0x0193B000,  //!< 640+1 секторов
+  StartAddrAlarmLog = 0x01BBC000,  //!< 640+1 секторов
+  StartAddrTmsLog   = 0x01E3D000,  //!< 450+1 секторов
+  //! FlashSpi1
+  StartAddrDebugLog = 0x00000000,  //!< все сектора
+} StartAddrLog;
+
+/*!
+ * \brief Конечные адреса журналов на FLASH
+*/
+typedef enum {
+  //! FlashSpi5
+  EndAddrEventLog = 0x00005000,
+  EndAddrDataLog  = 0x0193B000,
+  EndAddrRunLog   = 0x01BBC000,
+  EndAddrAlarmLog = 0x01E3D000,
+  EndAddrTmsLog   = 0x02000000,
+  //! FlashSpi1
+  EndAddrDebugLog = 0x00800000,
+} EndAddrLog;
+#else
 /*!
  * \brief Начальные адреса журналов на FLASH
 */
@@ -99,6 +128,7 @@ typedef enum {
   //! FlashSpi1
   EndAddrDebugLog = 0x00800000,
 } EndAddrLog;
+#endif
 
 /*!
  * \brief Базовый класс журналов

@@ -815,7 +815,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 
   switch (id) {
   case CCS_WORKING_MODE:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
     if ((value != oldValue) && !err) {
       if (value == CCS_WORKING_MODE_MANUAL) {
         logEvent.add(ModeCode, eventType, ModeCodeManualId, oldValue, value);
@@ -1222,7 +1222,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     cmdCountersAllReset();
     return err;
   case CCS_DHS_TYPE:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
     if ((value != oldValue) && !err) {
       if (value)
         logEvent.add(AddDeviceCode, eventType, AddDeviceDhsId, oldValue, value);
@@ -1233,7 +1233,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     return err;
   case CCS_TYPE_VSD:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
     if ((value != oldValue) && !err) {
       if (value)
         logEvent.add(AddDeviceCode, eventType, AddDeviceVsdId, oldValue, value);
@@ -1244,7 +1244,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     return err;
   case CCS_EM_TYPE:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
     if ((value != oldValue) && !err) {
       if (value)
         logEvent.add(AddDeviceCode, eventType, AddDeviceEmId, oldValue, value);
@@ -1255,7 +1255,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     return err;
   case CCS_FILTER_OUTPUT:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
     if ((value != oldValue) && !err) {
       if (value)
         logEvent.add(AddDeviceCode, eventType, AddDeviceFiltOutId, oldValue, value);
@@ -1265,7 +1265,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     return err;
   case CCS_FILTER_INPUT:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
     if ((value != oldValue) && !err) {
       if (value)
         logEvent.add(AddDeviceCode, eventType, AddDeviceFiltInputId, oldValue, value);
