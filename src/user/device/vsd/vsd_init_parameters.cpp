@@ -6002,5 +6002,17 @@ void Vsd::initParameters()
   parameters_[VSD_TEMPERATURE_AIR - VSD_BEGIN].def                               = 0;
   parameters_[VSD_TEMPERATURE_AIR - VSD_BEGIN].discret                           = 1;
   parameters_[VSD_TEMPERATURE_AIR - VSD_BEGIN].code                              = 0;
+  // Реле функций Danfoss 5-40 Не используется в проекте, только при конфигурировании
+  parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].id                                = VSD_FUNCTION_RELE_7;
+  parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].access                            = ACCESS_OPERATOR;
+  parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].physic                            = PHYSIC_NUMERIC;
+  parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].value.float_t                     = 70.0;
+  parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].min                               = 0.0;
+  parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].max                               = 199.0;
+  parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].def                               = 70.0;
+  parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].discret                           = 1;
+  parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].code                              = 0;
 }
 

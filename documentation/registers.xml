@@ -30184,6 +30184,25 @@
 	</param>
 	<param>
 		<id>10500</id>
+		<name>VSD_FUNCTION_RELE_7</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>199.0</max>
+		<def>70.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>70.0</value>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Реле функций Danfoss 5-40 Не используется в проекте, только при конфигурировании</comment>
+	</param>
+	<param>
+		<id>10501</id>
 		<name>VSD_END</name>
 		<discret>1</discret>
 		<form>NULL</form>
