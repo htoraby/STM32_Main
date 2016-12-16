@@ -193,7 +193,7 @@ void Ccs::initParameters()
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].max                                  = 2.0;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].discret                              = 1;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].def                                  = 0.0;
-  parameters_[CCS_WORKING_MODE - CCS_BEGIN].code                                 = 0;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].code                                 = 3;
   // Дисбаланс входного напряжения
   parameters_[CCS_VOLTAGE_IMBALANCE_IN - CCS_BEGIN].id                           = CCS_VOLTAGE_IMBALANCE_IN;
   parameters_[CCS_VOLTAGE_IMBALANCE_IN - CCS_BEGIN].access                       = ACCESS_OPERATOR;
@@ -481,7 +481,7 @@ void Ccs::initParameters()
   parameters_[CCS_DHS_TYPE - CCS_BEGIN].max                                      = 16.0;
   parameters_[CCS_DHS_TYPE - CCS_BEGIN].discret                                  = 1;
   parameters_[CCS_DHS_TYPE - CCS_BEGIN].def                                      = 0.0;
-  parameters_[CCS_DHS_TYPE - CCS_BEGIN].code                                     = 0;
+  parameters_[CCS_DHS_TYPE - CCS_BEGIN].code                                     = 20;
   // Производительность насоса
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].id                                  = CCS_PUMP_CAPACITY;
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].access                              = ACCESS_OPERATOR;
@@ -8233,7 +8233,7 @@ void Ccs::initParameters()
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].max                                      = 3.0;
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].discret                                  = 1;
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].def                                      = 0.0;
-  parameters_[CCS_TYPE_VSD - CCS_BEGIN].code                                     = 0;
+  parameters_[CCS_TYPE_VSD - CCS_BEGIN].code                                     = 20;
   // Режим поддержания параметра. Состояние автомата
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].id                    = CCS_RGM_MAINTENANCE_PARAM_STATE;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].access                = ACCESS_OPERATOR;
@@ -8473,7 +8473,7 @@ void Ccs::initParameters()
   parameters_[CCS_EM_TYPE - CCS_BEGIN].max                                       = 3.0;
   parameters_[CCS_EM_TYPE - CCS_BEGIN].discret                                   = 1;
   parameters_[CCS_EM_TYPE - CCS_BEGIN].def                                       = 0.0;
-  parameters_[CCS_EM_TYPE - CCS_BEGIN].code                                      = 0;
+  parameters_[CCS_EM_TYPE - CCS_BEGIN].code                                      = 20;
   // Напряжение первой фазы
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].id                                = CCS_VOLTAGE_PHASE_1;
   parameters_[CCS_VOLTAGE_PHASE_1 - CCS_BEGIN].access                            = ACCESS_OPERATOR;
@@ -8557,7 +8557,7 @@ void Ccs::initParameters()
   parameters_[CCS_FILTER_INPUT - CCS_BEGIN].max                                  = 1.0;
   parameters_[CCS_FILTER_INPUT - CCS_BEGIN].discret                              = 1;
   parameters_[CCS_FILTER_INPUT - CCS_BEGIN].def                                  = 0.0;
-  parameters_[CCS_FILTER_INPUT - CCS_BEGIN].code                                 = 0;
+  parameters_[CCS_FILTER_INPUT - CCS_BEGIN].code                                 = 20;
   // Выходной фильтр
   parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].id                                  = CCS_FILTER_OUTPUT;
   parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].access                              = ACCESS_OPERATOR;
@@ -8569,7 +8569,7 @@ void Ccs::initParameters()
   parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].max                                 = 1.0;
   parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].def                                 = 0.0;
-  parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].code                                = 0;
+  parameters_[CCS_FILTER_OUTPUT - CCS_BEGIN].code                                = 20;
   // Ёмкость выходного фильтра
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].id                                = CCS_FILTER_CAPACITY;
   parameters_[CCS_FILTER_CAPACITY - CCS_BEGIN].access                            = ACCESS_OPERATOR;

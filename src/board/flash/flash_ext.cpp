@@ -207,6 +207,12 @@ void flashExtInit(FlashSpiNum num)
     flashSetAddressMode(num);
     break;
   default:
+    flashExts[num].size = 0x02000000;
+    flashExts[num].pageSize = 256;
+    flashExts[num].sectorSize = 4096;
+    flashExts[num].blockSize = 65536;
+
+    flashSetAddressMode(num);
     break;
   }
 
