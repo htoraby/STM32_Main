@@ -252,10 +252,12 @@ StatusType spiTransmitReceive(FlashSpiNum num, uint8_t *txData, uint8_t *rxData,
 
 static void flashSetAddressMode(FlashSpiNum num)
 {
+#if (HARDWARE_VERSION >= 0x0200)
   buf[0] = CMD_W_ADDRESS_MODE;
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
   HAL_SPI_Transmit(&flashExts[num].spi, buf, 1, FLASH_TIMEOUT);
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+#endif
 
   buf[0] = 0x35;
   buf[1] = 0xFF;

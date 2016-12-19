@@ -147,9 +147,14 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+241) = parameters.get(VSD_ROTATION);
 //  *(float*)(buffer+245) =
 //  *(float*)(buffer+249) =
+
+#if (HARDWARE_VERSION >= 0x0200)
   write(buffer, 253, false);
 
   memset(buffer, 0, sizeof(buffer));
   write(buffer, 256);
+#else
+  write(buffer, 253);
+#endif
 }
 
