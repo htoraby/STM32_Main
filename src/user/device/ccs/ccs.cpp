@@ -113,6 +113,12 @@ void Ccs::initTask()
   resetCmd(CCS_CMD_TYPE_PROFILE_VSD);
   resetCmd(CCS_ERROR_SLAVE);
 
+  uint32_t installSw = getValueUint32(CCS_DATE_INSTALL_SW_CCS);
+  if (installSw == 0) {
+    installSw = getTime();
+    setValue(CCS_DATE_INSTALL_SW_CCS, installSw, NoneType);
+  }
+
   setMaxBaseFrequency();
 
   intRestartCount();
@@ -1942,6 +1948,7 @@ void Ccs::updateSoftware()
 #endif
   osDelay(200);
   if (updateFromUsb()) {
+    setValue(CCS_DATE_INSTALL_SW_CCS, getTime(), NoneType);
     setValue(CCS_CMD_UPDATE_SOFTWARE, 2);
     startReboot();
   }
