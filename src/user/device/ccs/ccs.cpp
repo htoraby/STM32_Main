@@ -775,13 +775,13 @@ void Ccs::calcTime()
   if ((HAL_GetTick() - timer) >= 100) {
     timer = HAL_GetTick();
     time_t time = getTime();
-    setValue(CCS_DATE_TIME, (uint32_t)time);
+    setValue(CCS_DATE_TIME, (uint32_t)time, NoneType);
     tm dateTime = *localtime(&time);
     setValue(CCS_DATE_TIME_SEC, dateTime.tm_sec, NoneType);
     setValue(CCS_DATE_TIME_MIN, dateTime.tm_min, NoneType);
     setValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour, NoneType);
     setValue(CCS_DATE_TIME_DAY, dateTime.tm_mday, NoneType);
-    setValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon+1, NoneType);
+    setValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon + 1, NoneType);
     setValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year, NoneType);
     // TODO: Синхронизация времени
   }
@@ -1457,12 +1457,12 @@ uint8_t Ccs::setNewValue(uint16_t id, uint32_t value, EventType eventType)
       time_t time = value;
       rtcSetTime(&time);
       tm dateTime = *localtime(&time);
-      setNewValue(CCS_DATE_TIME_SEC, dateTime.tm_sec);
-      setNewValue(CCS_DATE_TIME_MIN, dateTime.tm_min);
-      setNewValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour);
-      setNewValue(CCS_DATE_TIME_DAY, dateTime.tm_mday);
-      setNewValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon);
-      setNewValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year);
+      setNewValue(CCS_DATE_TIME_SEC, dateTime.tm_sec, NoneType);
+      setNewValue(CCS_DATE_TIME_MIN, dateTime.tm_min, NoneType);
+      setNewValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour, NoneType);
+      setNewValue(CCS_DATE_TIME_DAY, dateTime.tm_mday, NoneType);
+      setNewValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon + 1, NoneType);
+      setNewValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year, NoneType);
     }
     break;
   }

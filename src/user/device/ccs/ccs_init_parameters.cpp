@@ -6757,7 +6757,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_TIME - CCS_BEGIN].max                                     = 4294967296;
   parameters_[CCS_DATE_TIME - CCS_BEGIN].discret                                 = 1;
   parameters_[CCS_DATE_TIME - CCS_BEGIN].def                                     = 0;
-  parameters_[CCS_DATE_TIME - CCS_BEGIN].code                                    = 0;
+  parameters_[CCS_DATE_TIME - CCS_BEGIN].code                                    = 13;
   // Дата время год
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].id                                 = CCS_DATE_TIME_YEAR;
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].access                             = ACCESS_OPERATOR;

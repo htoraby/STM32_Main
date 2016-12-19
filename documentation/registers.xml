@@ -11308,7 +11308,7 @@
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD_HH_MM_SS</unit_lcd>
 		<format>XX_XX_XX_XX_XX_XX</format>
-		<code>0</code>
+		<code>13</code>
 		<comment>Дата время в формате POSIX</comment>
 	</param>
 	<param>
