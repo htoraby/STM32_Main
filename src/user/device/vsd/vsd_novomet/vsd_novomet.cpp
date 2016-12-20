@@ -1396,8 +1396,6 @@ int VsdNovomet::stop(bool isAlarm)
         setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_ALARM);
       else
         setNewValue(VSD_CONTROL_WORD_1, VSD_CONTROL_STOP);
-
-       resetBlock();
     } else {
       timeMs = timeMs + 100;
     }
