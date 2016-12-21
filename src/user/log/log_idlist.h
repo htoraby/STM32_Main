@@ -197,7 +197,7 @@ typedef enum {
   RegimeRunSkipResonantFinishId,      //!< Пропуск F завершен
   RegimeRunSkipResonantFailId,        //!< Пропуск F ошибка
   RegimeRunSkipResonantAbortId,       //!< Пропуск F прерван
-  RegimeRunSkipResonantOffId,
+  RegimeRunSkipResonantOffId,         //!< "Режим Пропуск F отключен"
 
   RegimeRunSynchronStartId,           //!< Пуск с синхронизацией
   RegimeRunSynchronFinishId,          //!< Пуск с синхронизацией завершен

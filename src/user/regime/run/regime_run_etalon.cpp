@@ -29,7 +29,8 @@ void RegimeRunEtalon::getOtherSetpoint()
 {
   action_ = (parameters.get(CCS_RGM_RUN_PICKUP_MODE) ||
              parameters.get(CCS_RGM_RUN_PUSH_MODE) ||
-             parameters.get(CCS_RGM_RUN_SWING_MODE));
+             parameters.get(CCS_RGM_RUN_SWING_MODE) ||
+             parameters.get(CCS_RGM_RUN_SKIP_RESONANT_MODE));
   state_ = parameters.get(CCS_RGM_RUN_VSD_STATE);
 }
 
@@ -68,6 +69,11 @@ void RegimeRunEtalon::processingStateWork()
         parameters.set(CCS_RGM_RUN_SWING_MODE, OffAction);         // Выключаем режим
         vsd->offRegimeSwing();
         logEvent.add(SetpointCode, AutoType, RegimeRunSwingOffId); // Записываем данные в лог
+      }
+      if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_MODE) == SingleAction) {
+        parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, OffAction);         // Выключаем режим
+        vsd->offRegimeSwing();
+        logEvent.add(SetpointCode, AutoType, RegimeRunSkipResonantOffId); // Записываем данные в лог
       }
       state_ = IdleState;
     }

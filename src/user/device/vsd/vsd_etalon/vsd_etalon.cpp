@@ -348,6 +348,21 @@ void VsdEtalon::getNewValue(uint16_t id)
           parameters.get(CCS_RGM_RUN_SWING_MODE))
         parameters.set(CCS_RGM_RUN_SWING_FREQ, value);
       break;
+    case VSD_FREQ_SKIP_START_FREQ:
+      setValue(id, value);
+      if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ) != value)
+        parameters.set(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ, value);
+      break;
+    case VSD_FREQ_SKIP_STOP_FREQ:
+      setValue(id, value);
+      if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ) != value)
+        parameters.set(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ, value);
+      break;
+    case VSD_FREQ_SKIP_ACCEL:
+      setValue(id, value);
+      if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_TEMP) != value)
+        parameters.set(CCS_RGM_RUN_SKIP_RESONANT_TEMP, value);
+      break;
     case VSD_ETALON_AUTO_OPTIM_MODE:
       setValue(id, value);
       parameters.set(CCS_RGM_OPTIM_VOLTAGE_MODE, value);
@@ -762,6 +777,12 @@ int VsdEtalon::offRegimePickup()
 
 int VsdEtalon::onRegimeSkipFreq()
 {
+  if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_MODE) == Regime::OffAction)
+    return 1;
+
+  setNewValue(VSD_FREQ_SKIP_START_FREQ, parameters.get(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ));
+  setNewValue(VSD_FREQ_SKIP_STOP_FREQ, parameters.get(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ));
+  setNewValue(VSD_FREQ_SKIP_ACCEL, parameters.get(CCS_RGM_RUN_SKIP_RESONANT_TEMP));
   return setNewValue(VSD_FREQ_SKIP_MODE, 1);
 }
 
@@ -917,4 +938,11 @@ void VsdEtalon::setLimitsCcsParameters()
   // Задание пределов для Режим ограничения тока задержка срабатывания
   parameters.setMin(CCS_RGM_CURRENT_LIMIT_DELAY_REACTION, getMin(VSD_I_LIMIT_TM));
   parameters.setMax(CCS_RGM_CURRENT_LIMIT_DELAY_REACTION, getMax(VSD_I_LIMIT_TM));
+  // Задание пределов для Режим Пропуска F
+  parameters.setMin(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ, getMin(VSD_FREQ_SKIP_START_FREQ));
+  parameters.setMax(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ, getMax(VSD_FREQ_SKIP_START_FREQ));
+  parameters.setMin(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ, getMin(VSD_FREQ_SKIP_STOP_FREQ));
+  parameters.setMax(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ, getMax(VSD_FREQ_SKIP_STOP_FREQ));
+  parameters.setMin(CCS_RGM_RUN_SKIP_RESONANT_TEMP, getMin(VSD_FREQ_SKIP_ACCEL));
+  parameters.setMax(CCS_RGM_RUN_SKIP_RESONANT_TEMP, getMax(VSD_FREQ_SKIP_ACCEL));
 }

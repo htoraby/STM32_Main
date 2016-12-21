@@ -931,6 +931,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction);
       parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
       parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+      vsd->onRegimeSkipFreq();
+    }
+    else {
+      vsd->offRegimeSkipFreq();
     }
     return err;
   case CCS_RGM_RUN_AUTO_ADAPTATION_MODE:
@@ -1437,6 +1441,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ) < value) {
         parameters.set(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ, value);
       }
+      vsd->onRegimeSkipFreq();
     }
     return err;
   case CCS_RGM_RUN_SKIP_RESONANT_END_FREQ:
@@ -1446,7 +1451,13 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ) > value) {
         parameters.set(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ, value);
       }
+      vsd->onRegimeSkipFreq();
     }
+    return err;
+  case CCS_RGM_RUN_SKIP_RESONANT_TEMP:
+    err = setValue(id, value, eventType);
+    if (!err)
+      vsd->onRegimeSkipFreq();
     return err;
   default:
     return setValue(id, value, eventType);
