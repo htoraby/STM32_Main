@@ -34,7 +34,7 @@ enum DiNum {
  * \brief Список цифровых выходов
 */
 enum DoNum {
-  DO1, DO2, DO3, DO4,
+  DO1, DO2, DO3,
   DigitalOutputMax
 };
 

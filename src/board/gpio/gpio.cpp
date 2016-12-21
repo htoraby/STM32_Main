@@ -19,10 +19,10 @@ const uint16_t pinDI[DigitalInputMax] = {
 };
 
 GPIO_TypeDef* portDO[DigitalOutputMax] = {
-  GPIOB, GPIOH, GPIOH, GPIOH,
+  GPIOH, GPIOH, GPIOH,
 };
 const uint16_t pinDO[DigitalOutputMax] = {
-  GPIO_PIN_12, GPIO_PIN_12, GPIO_PIN_11, GPIO_PIN_10,
+  GPIO_PIN_10, GPIO_PIN_12, GPIO_PIN_11,
 };
 
 GPIO_TypeDef* portRO[RelayOutputMax] = {
