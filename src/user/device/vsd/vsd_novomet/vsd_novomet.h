@@ -469,6 +469,21 @@ public:
 
   void resetConnect();
 
+  /*!
+   * \brief Функция преобразования времени в период снижения уставки в режиме
+   * остановки турбинного вращения
+   * \param value
+   * \return
+   */
+  int setDecelSpeedDown(float value);
+
+  /*!
+   * \brief Функция преобразования периода во время снижения уставки в режиме
+   * остановки турбинного вращения
+   * \param value
+   */
+  void getDecelSpeedDown(float value);
+
 private:
   ModbusParameter modbusParameters_[162];
   DeviceModbus *dm_;

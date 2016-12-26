@@ -1264,6 +1264,9 @@ void VsdNovomet::getNewValue(uint16_t id)
       parameters.set(CCS_SW_STARTUP_I_LIM_PULSE_SWING, value);
     }
     break;
+  case VSD_DECEL_SPEEDDOWN:
+    getDecelSpeedDown(value);
+    break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);
     break;
@@ -1346,6 +1349,9 @@ uint8_t VsdNovomet::setNewValue(uint16_t id, float value, EventType eventType)
 
   case VSD_TEMPERATURE_AIR_MODE:
     return setTemperatureAirMode(value);
+
+  case VSD_DECEL_SPEEDDOWN:
+    return setDecelSpeedDown(value);
 
   default:
     int result = setValue(id, value, eventType);
@@ -1669,3 +1675,20 @@ void VsdNovomet::resetConnect()
   dm_->getMms()->resetCounters();
 }
 
+int VsdNovomet::setDecelSpeedDown(float value)
+{
+  if (!setValue(VSD_DECEL_SPEEDDOWN, value)) {
+    float temp = getValue(VSD_DECEL_F_MAX)/value;
+    temp = 1/temp;
+    writeToDevice(VSD_DECEL_SPEEDDOWN, temp);
+    return ok_r;
+  }
+  return err_r;
+}
+
+void VsdNovomet::getDecelSpeedDown(float value)
+{
+  float temp = 1/value;
+  temp = getValue(VSD_DECEL_F_MAX)/temp;
+  setValue(VSD_DECEL_SPEEDDOWN, temp);
+}
