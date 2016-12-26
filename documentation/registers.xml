@@ -30096,13 +30096,14 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Токоограничение при подхвате (213)</text>
-		<short_text>Токоограничение при подхвате (213)</short_text>
-		<form>3.3.4 Сервисное меню ЧРП</form>
+		<text>Токоограничение при подхвате</text>
+		<short_text>Токоограничение при подхвате</short_text>
+		<form>Режим подхвата</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
 		<code>0</code>
+		<comment>Токоограничение при подхвате</comment>
 	</param>
 	<param>
 		<id>10496</id>

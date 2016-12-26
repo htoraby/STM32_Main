@@ -5942,7 +5942,7 @@ void Vsd::initParameters()
   parameters_[VSD_I_LIM_ADD - VSD_BEGIN].def                                     = 150.0;
   parameters_[VSD_I_LIM_ADD - VSD_BEGIN].discret                                 = 1;
   parameters_[VSD_I_LIM_ADD - VSD_BEGIN].code                                    = 0;
-  // 
+  // Токоограничение при подхвате
   parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].id                                    = VSD_DECEL_I_LIM;
   parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].access                                = ACCESS_OPERATOR;
   parameters_[VSD_DECEL_I_LIM - VSD_BEGIN].operation                             = OPERATION_WRITE;
