@@ -1459,6 +1459,34 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (!err)
       vsd->onRegimeSkipFreq();
     return err;
+  case CCS_SW_STARTUP_FREQUENCY_PUSH: case CCS_SW_STARTUP_FREQUENCY_SWING:
+    err = setValue(id, value, eventType);
+    parameters.set(VSD_SW_STARTUP_FREQUENCY, value);
+    return err;
+  case CCS_SW_STARTUP_ANGLE_OSC_PUSH: case CCS_SW_STARTUP_ANGLE_OSC_SWING:
+    err = setValue(id, value, eventType);
+    parameters.set(VSD_SW_STARTUP_ANGLE_OSC, value);
+    return err;
+  case CCS_SW_STARTUP_OSC_COUNT_SWING:
+    err = setValue(id, value, eventType);
+    parameters.set(VSD_SW_STARTUP_OSC_COUNT, value);
+    return err;
+  case CCS_SW_STARTUP_ROTATIONS_PUSH: case CCS_SW_STARTUP_ROTATIONS_SWING:
+    err = setValue(id, value, eventType);
+    parameters.set(VSD_SW_STARTUP_ROTATIONS, value);
+    return err;
+  case CCS_SW_STARTUP_U_PULSE_PUSH: case CCS_SW_STARTUP_U_PULSE_SWING:
+    err = setValue(id, value, eventType);
+    parameters.set(VSD_SW_STARTUP_U_PULSE, value);
+    return err;
+  case CCS_SW_STARTUP_I_LIM_PUSH: case CCS_SW_STARTUP_I_LIM_SWING:
+    err = setValue(id, value, eventType);
+    parameters.set(VSD_SW_STARTUP_I_LIM, value);
+    return err;
+  case CCS_SW_STARTUP_I_LIM_PULSE_PUSH: case CCS_SW_STARTUP_I_LIM_PULSE_SWING:
+    err = setValue(id, value, eventType);
+    parameters.set(VSD_SW_STARTUP_I_LIM_PULSE, value);
+    return err;
   default:
     return setValue(id, value, eventType);
   }

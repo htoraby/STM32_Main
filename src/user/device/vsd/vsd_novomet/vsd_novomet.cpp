@@ -1210,6 +1210,60 @@ void VsdNovomet::getNewValue(uint16_t id)
     if (parameters.get(CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT) != value)
       parameters.set(CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT, value);
     break;
+  case VSD_SW_STARTUP_FREQUENCY:
+    setValue(id, value);
+    if (parameters.get(CCS_SW_STARTUP_FREQUENCY_PUSH) != value ||
+        parameters.get(CCS_SW_STARTUP_FREQUENCY_SWING) != value) {
+      parameters.set(CCS_SW_STARTUP_FREQUENCY_PUSH, value);
+      parameters.set(CCS_SW_STARTUP_FREQUENCY_SWING, value);
+    }
+    break;
+  case VSD_SW_STARTUP_ANGLE_OSC:
+    setValue(id, value);
+    if (parameters.get(CCS_SW_STARTUP_ANGLE_OSC_PUSH) != value ||
+        parameters.get(CCS_SW_STARTUP_ANGLE_OSC_SWING) != value) {
+      parameters.set(CCS_SW_STARTUP_ANGLE_OSC_PUSH, value);
+      parameters.set(CCS_SW_STARTUP_ANGLE_OSC_SWING, value);
+    }
+    break;
+  case VSD_SW_STARTUP_OSC_COUNT:
+    setValue(id, value);
+    if (parameters.get(CCS_SW_STARTUP_OSC_COUNT_SWING) != value) {
+      parameters.set(CCS_SW_STARTUP_OSC_COUNT_SWING, value);
+    }
+    break;
+  case VSD_SW_STARTUP_ROTATIONS:
+    setValue(id, value);
+    if (parameters.get(CCS_SW_STARTUP_ROTATIONS_PUSH) != value ||
+        parameters.get(CCS_SW_STARTUP_ROTATIONS_SWING) != value) {
+      parameters.set(CCS_SW_STARTUP_ROTATIONS_PUSH, value);
+      parameters.set(CCS_SW_STARTUP_ROTATIONS_SWING, value);
+    }
+    break;
+  case VSD_SW_STARTUP_U_PULSE:
+    setValue(id, value);
+    if (parameters.get(CCS_SW_STARTUP_U_PULSE_PUSH) != value ||
+        parameters.get(CCS_SW_STARTUP_U_PULSE_SWING) != value) {
+      parameters.set(CCS_SW_STARTUP_U_PULSE_PUSH, value);
+      parameters.set(CCS_SW_STARTUP_U_PULSE_SWING, value);
+    }
+    break;
+  case VSD_SW_STARTUP_I_LIM:
+    setValue(id, value);
+    if (parameters.get(CCS_SW_STARTUP_I_LIM_PUSH) != value ||
+        parameters.get(CCS_SW_STARTUP_I_LIM_SWING) != value) {
+      parameters.set(CCS_SW_STARTUP_I_LIM_PUSH, value);
+      parameters.set(CCS_SW_STARTUP_I_LIM_SWING, value);
+    }
+    break;
+  case VSD_SW_STARTUP_I_LIM_PULSE:
+    setValue(id, value);
+    if (parameters.get(CCS_SW_STARTUP_I_LIM_PULSE_PUSH) != value ||
+        parameters.get(CCS_SW_STARTUP_I_LIM_PULSE_SWING) != value) {
+      parameters.set(CCS_SW_STARTUP_I_LIM_PULSE_PUSH, value);
+      parameters.set(CCS_SW_STARTUP_I_LIM_PULSE_SWING, value);
+    }
+    break;
   default:                                  // Прямая запись в массив параметров
     setValue(id, value);
     break;
