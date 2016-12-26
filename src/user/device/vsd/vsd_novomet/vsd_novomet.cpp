@@ -102,8 +102,8 @@ void VsdNovomet::setLimitsCcsParameters()
   parameters.setMin(CCS_FILTER_CAPACITY, getMin(VSD_CF));
   parameters.setMax(CCS_FILTER_CAPACITY, getMax(VSD_CF));
 
-
-
+  parameters.setMin(CCS_SW_STARTUP_OSC_COUNT_SWING, getMin(VSD_SW_STARTUP_OSC_COUNT));
+  parameters.setMax(CCS_SW_STARTUP_OSC_COUNT_SWING, getMax(VSD_SW_STARTUP_OSC_COUNT));
 }
 
 bool VsdNovomet::isConnect()
