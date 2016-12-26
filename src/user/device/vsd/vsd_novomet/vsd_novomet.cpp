@@ -238,7 +238,7 @@ int VsdNovomet::onRegimePush()
     return 1;
   setNewValue(VSD_SW_STARTUP_FREQUENCY, parameters.get(CCS_SW_STARTUP_FREQUENCY_PUSH));
   setNewValue(VSD_SW_STARTUP_ANGLE_OSC, parameters.get(CCS_SW_STARTUP_ANGLE_OSC_PUSH));
-  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 1.0);
+  setNewValue(VSD_SW_STARTUP_OSC_COUNT, 0.0);
   setNewValue(VSD_SW_STARTUP_ROTATIONS, parameters.get(CCS_SW_STARTUP_ROTATIONS_PUSH));
   setNewValue(VSD_SW_STARTUP_U_PULSE, parameters.get(CCS_SW_STARTUP_U_PULSE_PUSH));
   setNewValue(VSD_SW_STARTUP_I_LIM, parameters.get(CCS_SW_STARTUP_I_LIM_PUSH));
