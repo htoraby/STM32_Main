@@ -233,14 +233,14 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
   uint8_t check = checkRange(value, min, max, true, discret);
   if((check != 0) && !isnan(value) && !isinf(value) && (value != -1)) {
     novobusSlave.putMessageParams(id);
-    if ((check == err_min_r) && (getValidity(index) != VALIDITY_MIN)) {
+    if ((check == err_min_r) && (getFieldValidity(index) != VALIDITY_MIN)) {
       setFieldValidity(index, VALIDITY_MIN);
 #if (USE_LOG_WARNING == 1)
       logDebug.add(WarningMsg, "Device::setValue() Value less than min (id = %d; value = %f; min = %f)",
                    id, value, min);
 #endif
     }
-    if ((check == err_max_r) && (getValidity(index) != VALIDITY_MAX)) {
+    if ((check == err_max_r) && (getFieldValidity(index) != VALIDITY_MAX)) {
       setFieldValidity(index, VALIDITY_MAX);
 #if (USE_LOG_WARNING == 1)
       logDebug.add(WarningMsg, "Device::setValue() Value greater than max (id = %d; value = %f; max = %f)",
