@@ -183,13 +183,13 @@ void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
           ud[field] = (((float)val - difCoefVolt) * propCoefVolt);
           i++;
           val = (int)buffer[i];
-          ia[field] = (((float)val - difCoefCur) * propCoefCur);
+          ia[field] = int16_t((val - difCoefCur) * propCoefCur);
           i++;
           val = (int)buffer[i];
-          ib[field] = (((float)val - difCoefCur) * propCoefCur);
+          ib[field] = int16_t((val - difCoefCur) * propCoefCur);
           i++;
           val = (int)buffer[i];
-          ic[field] = (((float)val - difCoefCur) * propCoefCur);
+          ic[field] = int16_t((val - difCoefCur) * propCoefCur);
           i++;
           field--;
         }
