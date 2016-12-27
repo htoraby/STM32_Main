@@ -14,7 +14,8 @@
 #include "adc_ext.h"
 #include "usb_host.h"
 
-#define TIMEOUT_POWER_OFF 6000 //!< 1 минута на отключение питания ИБП
+#define DELAY_MAIN_TASK 1
+#define TIMEOUT_POWER_OFF 60000 //!< 1 минута на отключение питания ИБП
 #define DELAY_CHECK_CONNECT_DEVICE 1000 //!< Задержка проверки подключения устройств - 20 сек
 
 //! Массив параметров устройства
@@ -128,7 +129,7 @@ void Ccs::mainTask()
 {
   int time10ms = HAL_GetTick();
   while (1) {
-    osDelay(1);
+    osDelay(DELAY_MAIN_TASK);
 
     controlPower();
 
@@ -1522,12 +1523,12 @@ uint8_t Ccs::setNewValue(uint16_t id, int value, EventType eventType)
 void Ccs::controlPower()
 {
   if (!isPowerGood()) {
-    if (powerOffTimeout_ == (TIMEOUT_POWER_OFF - 1000)) {
+    if (powerOffTimeout_ == (TIMEOUT_POWER_OFF - 10000)/DELAY_MAIN_TASK) {
       setCmd(CCS_CMD_AM335_POWER_OFF);
       offLcd();
     }
 
-    if ((powerOffTimeout_ == 1000) || !isUpsGood()) {
+    if ((powerOffTimeout_ == 10000/DELAY_MAIN_TASK) || !isUpsGood()) {
       if (!powerOffFlag_) {
         setCmd(CCS_CMD_AM335_POWER_OFF);
 
@@ -1547,7 +1548,7 @@ void Ccs::controlPower()
   } else {
     resetCmd(CCS_CMD_AM335_POWER_OFF);
 
-    if (powerOffTimeout_ <= (TIMEOUT_POWER_OFF - 1000)) {
+    if (powerOffTimeout_ <= (TIMEOUT_POWER_OFF - 10000)/DELAY_MAIN_TASK) {
       onLcd();
       resetAm335x();
     }
