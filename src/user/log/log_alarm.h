@@ -26,8 +26,6 @@ private:
    */
   void add();
 
-  bool protPoweroff_;
-
 };
 
 #endif // LOGALARM_H

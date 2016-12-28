@@ -3,6 +3,7 @@
 
 VsdEtalonLog::VsdEtalonLog()
   : VsdLog(VSD_LOG_UART, 115200, 8, UART_STOPBITS_1, UART_PARITY_NONE, 1)
+  , protPoweroff_(true)
 {
 
 }
@@ -14,14 +15,22 @@ VsdEtalonLog::~VsdEtalonLog()
 
 bool VsdEtalonLog::checkAlarm()
 {
-  return (!parameters.get(CCS_DI_11_VALUE) && parameters.isValidity(CCS_DI_11_VALUE));
+  bool isAlarm = false;
+  if (!protPoweroff_ && parameters.get(CCS_PROT_SUPPLY_POWEROFF_PREVENT))
+    isAlarm = true;
+  else if (!parameters.get(CCS_DI_11_VALUE) && parameters.isValidity(CCS_DI_11_VALUE))
+    isAlarm = true;
+
+  protPoweroff_ = parameters.get(CCS_PROT_SUPPLY_POWEROFF_PREVENT);
+
+  return isAlarm;
 }
 
 bool VsdEtalonLog::checkReady()
 {
   uint16_t flag = 0;
-  VsdLog::readLog(0x9FFF, &flag, 1);
-  if (flag == 1)
+  uint8_t res = VsdLog::readLog(0x9FFF, &flag, 1);
+  if ((res == MODBUS_ERROR_TIMEOUT) || (flag == 1))
     return true;
   return false;
 }

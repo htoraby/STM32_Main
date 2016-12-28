@@ -98,11 +98,11 @@ void VsdLog::writeReg(uint32_t addr, int16_t value)
   osSemaphoreRelease(semaphoreId_);
 }
 
-void VsdLog::readLog(uint32_t addr, uint16_t *buf, uint32_t size)
+uint8_t VsdLog::readLog(uint32_t addr, uint16_t *buf, uint32_t size)
 {
   osSemaphoreWait(semaphoreId_, osWaitForever);
 
-  uint16_t res = 1;
+  uint16_t res = MODBUS_ERROR_TIMEOUT;
   uint16_t address = addr;
   uint32_t count = MAX_COUNT;
   uint32_t readAll = 0;
@@ -111,6 +111,7 @@ void VsdLog::readLog(uint32_t addr, uint16_t *buf, uint32_t size)
       count = size - readAll;
     res = mms_->readMultipleRegisters(devAdrs_, address, &buf[readAll], count);
     if (res != MODBUS_OK) {
+      logDebug.add(CriticalMsg, "VsdLog::readLog() Error reading");
       break;
     }
     readAll += count;
@@ -120,6 +121,8 @@ void VsdLog::readLog(uint32_t addr, uint16_t *buf, uint32_t size)
   }
 
   osSemaphoreRelease(semaphoreId_);
+
+  return res;
 }
 
 void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
@@ -150,6 +153,7 @@ void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
   while (field >= 0) {                            // Пока не все записи
     res = mms_->readLogNovomet(devAdrs_, fieldShift, buffer, fieldCnt);
     if (res == 0) {                                       // Нет ответа зануляем то что опрашивали
+      logDebug.add(CriticalMsg, "VsdLog::readNovometLog() Error reading");
       while (field >= 0) {                    // Все последующие данные зануляем
         ic[field] = 0;
         ib[field] = 0;
@@ -169,15 +173,6 @@ void VsdLog::readNovometLog(uint16_t *ia, uint16_t *ib, uint16_t *ic,
         }
       }
       else {
-//        i = res - 1;
-//        while (i >= 3) {
-//          ic[field] = (int)(((float)((int)buffer[i]) - difCoefCur) * propCoefCur);
-//          ib[field] = (int)(((float)((int)buffer[i - 1])- difCoefCur) * propCoefCur);
-//          ia[field] = (int)(((float)((int)buffer[i - 2]) - difCoefCur) * propCoefCur);
-//          ud[field] = (int)(((float)((int)buffer[i - 3]) - difCoefVolt) * propCoefVolt);
-//          i = i - 4;
-//          field--;
-//        }
         while (i <= res - 1) {
           val = (int)buffer[i];
           ud[field] = (((float)val - difCoefVolt) * propCoefVolt);

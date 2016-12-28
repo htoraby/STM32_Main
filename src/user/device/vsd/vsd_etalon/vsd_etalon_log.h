@@ -34,6 +34,9 @@ public:
    */
   void readRunningLog(uint16_t *ia, uint16_t *ib, uint16_t *ic, uint16_t *ud, uint16_t *cos);
 
+private:
+  bool protPoweroff_;
+
 };
 
 #endif // VSDETALONLOG_H

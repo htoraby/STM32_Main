@@ -113,6 +113,7 @@ void Ccs::initTask()
   resetCmd(CCS_CMD_UPDATE_SW_MASTER);
   resetCmd(CCS_CMD_TYPE_PROFILE_VSD);
   resetCmd(CCS_ERROR_SLAVE);
+  setValue(CCS_PROT_SUPPLY_POWEROFF_PREVENT, 0);
 
   uint32_t installSw = getValueUint32(CCS_DATE_INSTALL_SW_CCS);
   if (installSw == 0) {

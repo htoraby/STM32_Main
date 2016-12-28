@@ -70,7 +70,7 @@ protected:
    * \param buf
    * \param size
    */
-  void readLog(uint32_t addr, uint16_t *buf, uint32_t size);
+  uint8_t readLog(uint32_t addr, uint16_t *buf, uint32_t size);
 
   /*!
    * \brief readNovometLog

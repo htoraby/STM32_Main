@@ -19,7 +19,6 @@ static uint16_t udValue[ADC_POINTS_NUM];
 
 LogAlarm::LogAlarm()
   : LogRunning(AlarmTypeLog)
-  , protPoweroff_(false)
 {
 
 }
@@ -44,37 +43,37 @@ int timeTest;
 
 void LogAlarm::task()
 {
+  osDelay(10);
   while (1) {
     osDelay(1);
 
     if (vsd->log()) {
-      if (vsd->log()->checkAlarm() ||
-          (!protPoweroff_ && parameters.get(CCS_PROT_SUPPLY_POWEROFF_PREVENT))) {
+      if (vsd->log()->checkAlarm()) {
         add();
       }
     }
-    protPoweroff_ = parameters.get(CCS_PROT_SUPPLY_POWEROFF_PREVENT);
   }
 }
 
 void LogAlarm::add()
 {
-  int t = HAL_GetTick();
+  int time = HAL_GetTick();
   eventId_ = logEvent.add(AlarmCode, AutoType, WriteAlarmLogId);
 
   // Получение значений Ua, Ub, Uc
   copyAdcData(uValue);
 
-  while (!(protPoweroff_ || vsd->log()->checkReady())) {
-    protPoweroff_ = parameters.get(CCS_PROT_SUPPLY_POWEROFF_PREVENT);
+  int timeout = HAL_GetTick();
+  while (!vsd->log()->checkReady()) {
     osDelay(10);
+    if ((HAL_GetTick() - timeout) > 500)
+      break;
   }
 
   uint16_t typeVsd = parameters.get(CCS_TYPE_VSD);
-  t = HAL_GetTick() - t;
+
   // Получение значений с ЧРП Ia, Ib, Ic, Ud
-  if (!protPoweroff_)
-    vsd->log()->readAlarmLog(iaValue, ibValue, icValue, udValue);
+  vsd->log()->readAlarmLog(iaValue, ibValue, icValue, udValue);
 
   memset(buffer, 0, sizeof(buffer));
   *(uint32_t*)(buffer) = eventId_;
@@ -91,28 +90,24 @@ void LogAlarm::add()
       switch (typeVsd) {
       case VSD_TYPE_ETALON:
         if (i >= ADC_POINTS_NUM/2) {
-          if (!protPoweroff_) {
-            *(float*)(buffer + j*64) = (int16_t)iaValue[idxI];
-            *(float*)(buffer + 4 + j*64) = (int16_t)ibValue[idxI];
-            *(float*)(buffer + 8 + j*64) = (int16_t)icValue[idxI];
-            *(float*)(buffer + 12 + j*64) = udValue[idxUd];
-            shiftUd++;
-            if (shiftUd >= 10) {
-              shiftUd = 0;
-              idxUd++;
-            }
-            idxI++;
-          }
-        }
-        break;
-      case VSD_TYPE_NOVOMET:
-        if (!protPoweroff_) {
           *(float*)(buffer + j*64) = (int16_t)iaValue[idxI];
           *(float*)(buffer + 4 + j*64) = (int16_t)ibValue[idxI];
           *(float*)(buffer + 8 + j*64) = (int16_t)icValue[idxI];
-          *(float*)(buffer + 12 + j*64) = udValue[idxI];
+          *(float*)(buffer + 12 + j*64) = udValue[idxUd];
+          shiftUd++;
+          if (shiftUd >= 10) {
+            shiftUd = 0;
+            idxUd++;
+          }
           idxI++;
         }
+        break;
+      case VSD_TYPE_NOVOMET:
+        *(float*)(buffer + j*64) = (int16_t)iaValue[idxI];
+        *(float*)(buffer + 4 + j*64) = (int16_t)ibValue[idxI];
+        *(float*)(buffer + 8 + j*64) = (int16_t)icValue[idxI];
+        *(float*)(buffer + 12 + j*64) = udValue[idxI];
+        idxI++;
         break;
       }
 
@@ -128,6 +123,9 @@ void LogAlarm::add()
       write(buffer, SIZE_BUF_LOG, false);
   }
 
+  time = HAL_GetTick() - time;
+  logDebug.add(WarningMsg, "LogAlarm::add() Recording time %d", time);
+
   vsd->log()->resetReady();
-  osDelay(1000);
+  osDelay(500);
 }
