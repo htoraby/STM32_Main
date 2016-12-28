@@ -534,7 +534,7 @@ float Ccs::calcTransRecommendedTapOff()
 
 void Ccs::calcResistanceIsolation()
 {
-  float resIso = 9999;
+  float resIso = 9999000;
   if ((parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE) &&
       parameters.isValidity(TMS_RESISTANCE_ISOLATION)) {
     resIso = parameters.get(TMS_RESISTANCE_ISOLATION);
@@ -553,11 +553,14 @@ void Ccs::calcResistanceIsolation()
   if (parameters.isValidity(CCS_AI_5_VALUE)) {
     resIso = getValue(CCS_AI_5_VALUE);
     if (resIso > 0.02) {
-      resIso = 185.4 / resIso  - 34.6;
+      resIso = 141 / resIso  - 34.6;
       if ((resIso > 9999) || (resIso < 0)) {
         resIso = 9999;
       }
+    } else {
+      resIso = 9999;
     }
+    resIso = resIso*1000;
   }
   setValue(CCS_RESISTANCE_ISOLATION, applyCoef(resIso, parameters.get(CCS_COEF_RESISTANCE_ISOLATION)));
 }
