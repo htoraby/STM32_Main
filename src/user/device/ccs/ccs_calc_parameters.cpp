@@ -553,7 +553,7 @@ void Ccs::calcResistanceIsolation()
   if (parameters.isValidity(CCS_AI_5_VALUE)) {
     resIso = getValue(CCS_AI_5_VALUE);
     if (resIso > 0.02) {
-      resIso = 141 / resIso  - 34.6;
+      resIso = 140 / resIso  - 34.6;
       if ((resIso > 9999) || (resIso < 0)) {
         resIso = 9999;
       }
