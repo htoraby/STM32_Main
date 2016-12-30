@@ -36,6 +36,8 @@ public:
 
 private:
   char msg_[SIZE_BUF_LOG];
+  //! Идентификатор семафора начала записи архива
+  osSemaphoreId semaphoreId_;
 
 };
 

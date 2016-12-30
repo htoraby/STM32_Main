@@ -26,6 +26,11 @@ public:
    */
   uint32_t add(EventCode code, EventType type, EventId id,
                float oldValue = 0, float newValue = 0, uint8_t units = 0);
+
+private:
+  //! Идентификатор семафора начала записи архива
+  osSemaphoreId semaphoreId_;
+
 };
 
 #endif // LOGEVENT_H

@@ -4,7 +4,7 @@
 
 LogEvent::LogEvent() : Log(EventTypeLog)
 {
-
+  semaphoreId_ = osSemaphoreCreate(NULL, 1);
 }
 
 LogEvent::~LogEvent()
@@ -15,6 +15,8 @@ LogEvent::~LogEvent()
 uint32_t LogEvent::add(EventCode code, EventType type, EventId id,
                        float oldValue, float newValue, uint8_t units)
 {
+  osSemaphoreWait(semaphoreId_, osWaitForever);
+
   memset(buffer, 0, sizeof(buffer));
 
   const uint32_t addr = address();
@@ -35,6 +37,7 @@ uint32_t LogEvent::add(EventCode code, EventType type, EventId id,
   if (status == StatusOk)
     novobusSlave.putMessageEvents(addr);
 
+  osSemaphoreRelease(semaphoreId_);
   return id_;
 }
 

@@ -7,7 +7,7 @@
 
 LogDebug::LogDebug() : Log(DebugTypeLog)
 {
-
+  semaphoreId_ = osSemaphoreCreate(NULL, 1);
 }
 
 LogDebug::~LogDebug()
@@ -17,6 +17,8 @@ LogDebug::~LogDebug()
 
 uint32_t LogDebug::add(MsgType type, const char *msg, ...)
 {
+  osSemaphoreWait(semaphoreId_, osWaitForever);
+
   memset(msg_, 0, sizeof(msg_));
   memset(buffer, 0, sizeof(buffer));
 
@@ -53,5 +55,6 @@ uint32_t LogDebug::add(MsgType type, const char *msg, ...)
     SEGGER_RTT_printf(0, "\033[0m");
 #endif
 
+  osSemaphoreRelease(semaphoreId_);
   return idDebug_;
 }

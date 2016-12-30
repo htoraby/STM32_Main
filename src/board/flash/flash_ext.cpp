@@ -390,7 +390,7 @@ StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32
   if (address > flashExts[num].size)
     return status;
 
-  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, 3*FLASH_TIMEOUT) != osOK)
     return status;
 
   osDelay(1);
@@ -436,7 +436,7 @@ StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint
   if (address > flashExts[num].size)
     return status;
 
-  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, 3*FLASH_TIMEOUT) != osOK)
     return status;
 
   flashWriteEnable(num);
