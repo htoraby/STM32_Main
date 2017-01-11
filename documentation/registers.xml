@@ -32140,6 +32140,128 @@
 	</param>
 	<param>
 		<id>15111</id>
+		<name>TMS_TOOL_CURRENT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Ct</text>
+		<short_text>Ct</short_text>
+		<form>NULL</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_MA</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+		<comment>Tool Current - Ct</comment>
+	</param>
+	<param>
+		<id>15112</id>
+		<name>TMS_TOOL_VOLTAGE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>65535.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Vt</text>
+		<short_text>Vt</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+		<comment>Tool Voltage - Vt</comment>
+	</param>
+	<param>
+		<id>15113</id>
+		<name>TMS_PRESSURE_INTAKE_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PRESSURE</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<discret>10</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>P на приёме 2</text>
+		<short_text>P на приёме 2</short_text>
+		<form>NULL</form>
+		<unit>PRESSURE_MPA</unit>
+		<unit_lcd>PRESSURE_PSI</unit_lcd>
+		<format>XXX_X</format>
+		<code>0</code>
+		<comment>Давление на приёме 2</comment>
+	</param>
+	<param>
+		<id>15114</id>
+		<name>TMS_PRESSURE_DISCHARGE_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PRESSURE</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<discret>10</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Р на выкиде 2</text>
+		<short_text>Р на выкиде 2</short_text>
+		<form>NULL</form>
+		<unit>PRESSURE_MPA</unit>
+		<unit_lcd>PRESSURE_PSI</unit_lcd>
+		<format>XXX_X</format>
+		<code>0</code>
+		<comment>Давление на выкиде 2</comment>
+	</param>
+	<param>
+		<id>15115</id>
+		<name>TMS_TEMPERATURE_INTAKE_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<discret>10</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Т на приёме 2</text>
+		<short_text>Т на приёме 2</short_text>
+		<form>NULL</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_F</unit_lcd>
+		<format>XXX_X</format>
+		<code>0</code>
+		<comment>Температура на приёме 2</comment>
+	</param>
+	<param>
+		<id>15116</id>
+		<name>TMS_TEMPERATURE_WINDING_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<discret>10</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Т двигателя 2</text>
+		<short_text>Т двигателя 2</short_text>
+		<form>NULL</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_F</unit_lcd>
+		<format>XXX_X</format>
+		<code>0</code>
+		<comment>Температура обмоток двигателя 2</comment>
+	</param>
+	<param>
+		<id>15117</id>
 		<name>TMS_END</name>
 		<form>NULL</form>
 		<code>0</code>

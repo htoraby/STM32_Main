@@ -117,6 +117,9 @@ void createDhs(bool init)
   case TYPE_DHS_TRANSFER:
     tms = new TmsTransfer();
     break;
+  case TYPE_DHS_ZENITH:
+    tms = new TmsZenith();
+    break;
   default:
     tms = new Tms();
     break;
