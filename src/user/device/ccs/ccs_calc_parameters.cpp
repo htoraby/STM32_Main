@@ -559,22 +559,20 @@ void Ccs::calcResistanceIsolation()
   }
 
   if (parameters.isValidity(CCS_AI_5_VALUE)) {
-    resIso = getValue(CCS_AI_5_VALUE);
-    if (resIso > 0.02) {
-      resIso = 140 / resIso  - 34.6;
-      if ((resIso > 9999) || (resIso < 0)) {
-        resIso = 9999;
-      }
-    } else {
-      resIso = 9999;
+    float volt = getValue(CCS_AI_5_VALUE);
+    if (volt > 0.02) {
+      resIso = 140 / volt  - 34.6;
+      resIso = resIso * 1000;
+      resIso = resIso + parameters.get(CCS_SHIFT_RESISTANCE_ISOLATION) * parameters.get(CCS_AXIS_SHIFT_RESISTANCE_ISOLATION);
+      resIso = resIso * parameters.get(CCS_COEF_RESISTANCE_ISOLATION);
+      resIso = (resIso < 0) ? 0 : resIso;
     }
-    resIso = resIso * 1000;
-    resIso = resIso + parameters.get(CCS_SHIFT_RESISTANCE_ISOLATION) * parameters.get(CCS_AXIS_SHIFT_RESISTANCE_ISOLATION);
-    resIso = resIso * parameters.get(CCS_COEF_RESISTANCE_ISOLATION);
-    resIso = (resIso < 0) ? 0 : resIso;
+    else {
+      resIso = 9999 * 1000;
+    }
     parameters.set(CCS_RESISTANCE_ISOLATION, resIso);
-  }
-  setValue(CCS_RESISTANCE_ISOLATION, resIso);
+  }  
+  parameters.set(CCS_RESISTANCE_ISOLATION, resIso);
 }
 
 void Ccs::calcRegimeChangeFreqPeriodOneStep()

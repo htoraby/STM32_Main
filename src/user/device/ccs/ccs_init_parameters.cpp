@@ -12405,7 +12405,7 @@ void Ccs::initParameters()
   parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].physic            = PHYSIC_NUMERIC;
   parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].value.float_t     = 1.0;
-  parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].min               = 0.0;
+  parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].min               = -1.0;
   parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].max               = 1.0;
   parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].discret           = 1;
   parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].def               = 1.0;
