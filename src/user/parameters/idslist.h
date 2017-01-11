@@ -1651,7 +1651,13 @@ enum enID
   TMS_FAIL_LINK_TIME = 15108,                                //!< Время определения отказа связи с ТМСП
   TMS_POWER_RESET_TMSP_TIME = 15109,                         //!< Время сброса ТМСП
   TMS_POWER_RESET_TMSP = 15110,                              //!< Сброс питания ТМСП
-  TMS_END = 15111,                                           //!< 
+  TMS_TOOL_CURRENT = 15111,                                  //!< Tool Current - Ct
+  TMS_TOOL_VOLTAGE = 15112,                                  //!< Tool Voltage - Vt
+  TMS_PRESSURE_INTAKE_2 = 15113,                             //!< Давление на приёме 2
+  TMS_PRESSURE_DISCHARGE_2 = 15114,                          //!< Давление на выкиде 2
+  TMS_TEMPERATURE_INTAKE_2 = 15115,                          //!< Температура на приёме 2
+  TMS_TEMPERATURE_WINDING_2 = 15116,                         //!< Температура обмоток двигателя 2
+  TMS_END = 15117,                                           //!< 
   EM_BEGIN = 20000,                                          //!< Первый параметр группы счётчиков электроэнергии
   EM_VOLTAGE_PHASE_1 = 20001,                                //!< Напряжение первой фазы
   EM_VOLTAGE_PHASE_2 = 20002,                                //!< Напряжение второй фазы

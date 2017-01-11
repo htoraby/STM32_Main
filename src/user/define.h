@@ -205,7 +205,7 @@ enum enTypeDHS {
   TYPE_DHS_SCAD,                            //!< Скад
   TYPE_DHS_SCAN,                            //!< Скан
   TYPE_DHS_TRIOL,                           //!< Триол
-  TYPE_DHS_ZENIT,                           //!< Зенит
+  TYPE_DHS_ZENITH,                           //!< Зенит
   TYPE_DHS_SNG,                             //!< СНГ
   TYPE_DHS_BORETS_2,                        //!< Борец СПТ-2
   TYPE_DHS_TRANSFER,                        //!< РН-Transfer

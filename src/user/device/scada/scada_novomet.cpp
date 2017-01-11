@@ -367,7 +367,7 @@ void ScadaNovomet::calcParamsTask()
       value = 3; break;
     case TYPE_DHS_TRIOL:
       value = 5; break;
-    case TYPE_DHS_ZENIT:
+    case TYPE_DHS_ZENITH:
       value = 4; break;
     }
     scadaParameters_[204].value.float_t = value;
@@ -650,7 +650,7 @@ int ScadaNovomet::setNewValue(ScadaParameter *param)
     case 10: value.float_t = TYPE_DHS_SCAD; break;
     case 3:  value.float_t = TYPE_DHS_SCAN; break;
     case 5:  value.float_t = TYPE_DHS_TRIOL; break;
-    case 4:  value.float_t = TYPE_DHS_ZENIT; break;
+    case 4:  value.float_t = TYPE_DHS_ZENITH; break;
     }
     if (value.float_t != -1) {
       parameters.set(CCS_DHS_TYPE, value.float_t, RemoteType);

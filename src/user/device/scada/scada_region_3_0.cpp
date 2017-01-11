@@ -217,7 +217,7 @@ void ScadaRegion30::calcParamsTask()
       value = 13; break;
     case TYPE_DHS_TRIOL:
       value = 10; break;
-    case TYPE_DHS_ZENIT:
+    case TYPE_DHS_ZENITH:
       value = 4; break;
     }
     scadaParameters_[45].value.float_t = value;
