@@ -6177,10 +6177,10 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].value.float_t           = 1.0;
-  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].min                     = 0.0;
-  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].max                     = 10.0;
+  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].min                     = 0.001;
+  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].max                     = 10.000;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].discret                 = 1000;
-  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].def                     = 0;
+  parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].def                     = 1.0;
   parameters_[CCS_COEF_RESISTANCE_ISOLATION - CCS_BEGIN].code                    = 13;
   // Номер ЦДНГ
   parameters_[CCS_NUMBER_CDNG - CCS_BEGIN].id                                    = CCS_NUMBER_CDNG;
@@ -12386,5 +12386,29 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].code                         = 0;
+  // Смещение сопротивления изоляции
+  parameters_[CCS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].id                     = CCS_SHIFT_RESISTANCE_ISOLATION;
+  parameters_[CCS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].access                 = ACCESS_TECHNOLOG;
+  parameters_[CCS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].physic                 = PHYSIC_RESISTANCE;
+  parameters_[CCS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].value.float_t          = 0.0;
+  parameters_[CCS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].min                    = 0.0;
+  parameters_[CCS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].max                    = 30000.0;
+  parameters_[CCS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].discret                = 1;
+  parameters_[CCS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].def                    = 0.0;
+  parameters_[CCS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].code                   = 13;
+  // Ось смещение сопротивления изоляции
+  parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].id                = CCS_AXIS_SHIFT_RESISTANCE_ISOLATION;
+  parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].access            = ACCESS_TECHNOLOG;
+  parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].physic            = PHYSIC_NUMERIC;
+  parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].validity          = VALIDITY_OK;
+  parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].value.float_t     = 1.0;
+  parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].min               = 0.0;
+  parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].max               = 1.0;
+  parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].discret           = 1;
+  parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].def               = 1.0;
+  parameters_[CCS_AXIS_SHIFT_RESISTANCE_ISOLATION - CCS_BEGIN].code              = 13;
 }
 

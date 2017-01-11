@@ -1035,7 +1035,9 @@ enum enID
   CCS_RGM_RUN_SWING_COUNTER = 1029,                          //!< Количество текущих толчков в режиме пуска "Раскачка"
   CCS_MOTOR_TYPE_PROFILE_VSD = 1030,                         //!< Профиль настроек двигателя в ЧРП
   CCS_CMD_TYPE_PROFILE_VSD = 1031,                           //!< Команда применения профиля ЧРП
-  CCS_END = 1032,                                            //!< 
+  CCS_SHIFT_RESISTANCE_ISOLATION = 1032,                     //!< Смещение сопротивления изоляции
+  CCS_AXIS_SHIFT_RESISTANCE_ISOLATION = 1033,                //!< Ось смещение сопротивления изоляции
+  CCS_END = 1034,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

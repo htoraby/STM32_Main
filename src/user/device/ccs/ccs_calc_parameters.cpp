@@ -538,18 +538,26 @@ void Ccs::calcResistanceIsolation()
   if ((parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE) &&
       parameters.isValidity(TMS_RESISTANCE_ISOLATION)) {
     resIso = parameters.get(TMS_RESISTANCE_ISOLATION);
-    parameters.set(CCS_RESISTANCE_ISOLATION, applyCoef(resIso, parameters.get(CCS_COEF_RESISTANCE_ISOLATION)));
+    resIso = resIso + parameters.get(CCS_SHIFT_RESISTANCE_ISOLATION) * parameters.get(CCS_AXIS_SHIFT_RESISTANCE_ISOLATION);
+    resIso = resIso * parameters.get(CCS_COEF_RESISTANCE_ISOLATION);
+    resIso = (resIso < 0) ? 0 : resIso;
+    parameters.set(CCS_RESISTANCE_ISOLATION, resIso);
     return;
   }
 
   if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) {
     resIso = parameters.get(VSD_ETALON_RESISTANCE_ISOLATION);
-    parameters.set(CCS_RESISTANCE_ISOLATION, applyCoef(resIso, parameters.get(CCS_COEF_RESISTANCE_ISOLATION)));
+    resIso = resIso + parameters.get(CCS_SHIFT_RESISTANCE_ISOLATION) * parameters.get(CCS_AXIS_SHIFT_RESISTANCE_ISOLATION);
+    resIso = resIso * parameters.get(CCS_COEF_RESISTANCE_ISOLATION);
+    resIso = (resIso < 0) ? 0 : resIso;
+    parameters.set(CCS_RESISTANCE_ISOLATION, resIso);
     return;
   }
+
   if (parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE) {
     return;
   }
+
   if (parameters.isValidity(CCS_AI_5_VALUE)) {
     resIso = getValue(CCS_AI_5_VALUE);
     if (resIso > 0.02) {
@@ -560,9 +568,13 @@ void Ccs::calcResistanceIsolation()
     } else {
       resIso = 9999;
     }
-    resIso = resIso*1000;
+    resIso = resIso * 1000;
+    resIso = resIso + parameters.get(CCS_SHIFT_RESISTANCE_ISOLATION) * parameters.get(CCS_AXIS_SHIFT_RESISTANCE_ISOLATION);
+    resIso = resIso * parameters.get(CCS_COEF_RESISTANCE_ISOLATION);
+    resIso = (resIso < 0) ? 0 : resIso;
+    parameters.set(CCS_RESISTANCE_ISOLATION, resIso);
   }
-  setValue(CCS_RESISTANCE_ISOLATION, applyCoef(resIso, parameters.get(CCS_COEF_RESISTANCE_ISOLATION)));
+  setValue(CCS_RESISTANCE_ISOLATION, resIso);
 }
 
 void Ccs::calcRegimeChangeFreqPeriodOneStep()
