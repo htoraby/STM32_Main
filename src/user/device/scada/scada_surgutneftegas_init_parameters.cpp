@@ -2427,7 +2427,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[201].command          = OPERATION_ERROR;
   scadaParameters_[201].value.float_t    = 0;
   // Поддерживаемое значение аналогового входа режима поддержания параметра
-  scadaParameters_[202].id               = 0;
+  scadaParameters_[202].id               = CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN;
   scadaParameters_[202].address          = 202;
   scadaParameters_[202].operation        = OPERATION_WRITE;
   scadaParameters_[202].physic           = PHYSIC_NUMERIC;
