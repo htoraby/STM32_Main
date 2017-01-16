@@ -561,7 +561,7 @@ void Ccs::calcResistanceIsolation()
   if (parameters.isValidity(CCS_AI_5_VALUE)) {
     float volt = getValue(CCS_AI_5_VALUE);
     if (volt > 0.02) {
-      resIso = 140 / volt  - 34.6;
+      resIso = 142 / volt  - 35.42;
       resIso = resIso * 1000;
       resIso = resIso + parameters.get(CCS_SHIFT_RESISTANCE_ISOLATION) * parameters.get(CCS_AXIS_SHIFT_RESISTANCE_ISOLATION);
       resIso = resIso * parameters.get(CCS_COEF_RESISTANCE_ISOLATION);
