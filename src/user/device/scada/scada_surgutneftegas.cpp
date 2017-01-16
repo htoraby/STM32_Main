@@ -43,10 +43,18 @@ void ScadaSurgutneftegas::calcParamsTask()
     scadaParameters_[77].value.uint32_t = data.uint16_t[1];
     scadaParameters_[78].value.uint32_t = data.uint16_t[0];
 
+    // 85
+    value = parameters.get(CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY);
+    scadaParameters_[85].value.float_t = value;
+
     // 91-92
     data.uint32_t = parameters.get(EM_REACTIVE_ENERGY);
     scadaParameters_[91].value.uint32_t = data.uint16_t[1];
     scadaParameters_[92].value.uint32_t = data.uint16_t[0];
+
+    // 125
+    value = parameters.get(CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_RESET);
+    scadaParameters_[85].value.float_t = value;
 
     // 143-144
     time_t time = parameters.getU32(CCS_DATE_CREATE_SW_CCS);
@@ -216,6 +224,9 @@ void ScadaSurgutneftegas::calcParamsTask()
 
 int ScadaSurgutneftegas::setNewValue(ScadaParameter *param)
 {
+  unTypeData value;
+  time_t time;
+
   if (param->id > 0) {
     return parameters.set(param->id, param->value.float_t, RemoteType);
   }
@@ -226,6 +237,131 @@ int ScadaSurgutneftegas::setNewValue(ScadaParameter *param)
       parameters.set(CCS_RGM_PERIODIC_MODE, Regime::OnAction, RemoteType);
     else
       parameters.set(CCS_RGM_PERIODIC_MODE, Regime::OffAction, RemoteType);
+    return ok_r;
+  }
+
+  // 85
+  if (param->address == 85) {
+    parameters.set(CCS_PROT_DHS_FLOW_DISCHARGE_ACTIV_DELAY, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_DHS_PRESSURE_DISCHARGE_ACTIV_DELAY, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_DHS_VIBRATION_ACTIV_DELAY, param->value.float_t, RemoteType);
+    return ok_r;
+  }
+
+  // 125
+  if (param->address == 125) {
+    parameters.set(CCS_PROT_DI_1_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_DI_2_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_DI_3_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_DI_4_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_AI_1_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_AI_2_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_AI_3_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_AI_4_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_DHS_VIBRATION_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_OTHER_VSD_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET, param->value.float_t, RemoteType);
+    parameters.set(CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET, param->value.float_t, RemoteType);
+    return ok_r;
+  }
+
+  // 158-161
+  if ((param->address >= 158) && (param->address <= 161)) {
+
+  }
+//  data.uint32_t = parameters.get(CCS_NUM_PRODUCTION_SU);
+//  sprintf(numProd, "%09d", (int)data.uint32_t);
+//  memcpy(&numProd[0], &numProd[1], 8);
+//  scadaParameters_[158].value.char_t[0] = numProd[7];
+//  scadaParameters_[158].value.char_t[1] = numProd[6];
+//  scadaParameters_[159].value.char_t[0] = numProd[5];
+//  scadaParameters_[159].value.char_t[1] = numProd[4];
+//  scadaParameters_[160].value.char_t[0] = numProd[3];
+//  scadaParameters_[160].value.char_t[1] = numProd[2];
+//  scadaParameters_[161].value.char_t[0] = numProd[1];
+//  scadaParameters_[161].value.char_t[1] = numProd[0];
+
+  // 162-163
+  if ((param->address >= 162) && (param->address <= 163)) {
+    time = parameters.getU32(CCS_DATE_PRODUCTION_SU);
+    tm dateTime = *localtime(&time);
+
+    switch (param->address) {
+    case 162:
+      dateTime.tm_year = param->value.uint32_t/100 + 100;
+      dateTime.tm_mon = param->value.uint32_t%100 - 1;
+      break;
+    case 163:
+      dateTime.tm_mday = param->value.uint32_t/100;
+      break;
+    }
+
+    if ((dateTime.tm_mon < 0) || (dateTime.tm_mon > 11) || (dateTime.tm_mday > 31))
+      return err_r;
+
+    time = mktime(&dateTime);
+    parameters.set(CCS_DATE_PRODUCTION_SU, (uint32_t)time, RemoteType);
+    return ok_r;
+  }
+
+  // 168
+  if (param->address == 168) {
+    switch (param->value.uint32_t) {
+    case 0: value.float_t = 1200; break;
+    case 1: value.float_t = 2400; break;
+    case 2: value.float_t = 4800; break;
+    case 3: value.float_t = 9600; break;
+    case 4: value.float_t = 19200; break;
+    case 5: value.float_t = 38400; break;
+    case 6: value.float_t = 57600; break;
+    case 7: value.float_t = 115200; break;
+    default:
+      return err_r;
+    }
+    parameters.set(CCS_SCADA_BYTERATE, value.float_t, RemoteType);
+    return ok_r;
+  }
+
+  // 214-216
+  if ((param->address >= 214) && (param->address <= 216)) {
+    time = parameters.getU32(CCS_DATE_TIME);
+    tm dateTime = *localtime(&time);
+
+    switch (param->address) {
+    case 214:
+      dateTime.tm_year = param->value.uint32_t/100 + 100;
+      dateTime.tm_mon = param->value.uint32_t%100 - 1;
+      break;
+    case 215:
+      dateTime.tm_mday = param->value.uint32_t/100;
+      dateTime.tm_hour = param->value.uint32_t%100;
+      break;
+    case 216:
+      dateTime.tm_min = param->value.uint32_t/100;
+      dateTime.tm_sec = param->value.uint32_t%100;
+      break;
+    }
+
+    if ((dateTime.tm_mon < 0) || (dateTime.tm_mon > 11) || (dateTime.tm_mday > 31) ||
+        (dateTime.tm_hour > 24) || (dateTime.tm_min > 60) || (dateTime.tm_sec > 60))
+      return err_r;
+
+    time = mktime(&dateTime);
+    parameters.set(CCS_DATE_TIME, (uint32_t)time, RemoteType);
+    return ok_r;
   }
 
   return err_r;
