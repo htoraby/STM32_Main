@@ -11,6 +11,9 @@ class RegimeRunPickup;
 class RegimeRunSkipResonantFreq;
 class RegimeRunSynchron;
 
+#define QUNTITY_PROFILES_MOTOR    15
+#define QUANTITY_PARAMETER_MOTOR  45
+
 enum enVsdDanfosStatus1
 {
   VSD_DANFOSS_STATUS_CONTROL_READY= 0,
@@ -147,21 +150,6 @@ public:
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
   int setMotorTypeProfile();
-  uint16_t setMotorTypeProfileAsync();
-  uint16_t setMotorTypeProfileBldcUf500();
-  uint16_t setMotorTypeProfileBldcUf1000();
-  uint16_t setMotorTypeProfileBldcUf3000();
-  uint16_t setMotorTypeProfileBldcUf6000();
-  uint16_t setMotorTypeProfileBldcUf8500();
-  uint16_t setMotorTypeProfileBldcUfVDM();
-  uint16_t setMotorTypeProfileBldcUfVVD();
-  uint16_t setMotorTypeProfileBldcVector500();
-  uint16_t setMotorTypeProfileBldcVector1000();
-  uint16_t setMotorTypeProfileBldcVector3000();
-  uint16_t setMotorTypeProfileBldcVector6000();
-  uint16_t setMotorTypeProfileBldcVector8500();
-  uint16_t setMotorTypeProfileBldcVectorVDM();
-  uint16_t setMotorTypeProfileBldcVectorVVD();
   int setMotorCurrent(float value, EventType eventType = NoneType);
 
   /*!
@@ -271,8 +259,6 @@ private:
   RegimeRunPickup *regimeRunPickup_;
   RegimeRunSkipResonantFreq *regimeRunSkipResonantFreq_;
   RegimeRunSynchron *regimeRunSynchron_;
-
-  uint16_t setMotorTypeProfileTemp(float motorType, float motorProfile, float motorControl);
 };
 
 #endif // VSDDANFOSS_H
