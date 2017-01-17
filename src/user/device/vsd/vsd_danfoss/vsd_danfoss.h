@@ -189,6 +189,7 @@ public:
   int setFrequency(float value, EventType eventType = NoneType);
   int setTimeSpeedUp(float value); 
   int setTimeSpeedDown(float value);
+  int setSwitchingFrequency(float value);
   int setSwitchingFrequencyCode(float value);
   int calcFiltTimeCurLim(float value);
 

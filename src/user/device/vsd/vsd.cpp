@@ -206,6 +206,7 @@ int Vsd::setLimitsMaxFrequence(float value)
   if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) {   // Если записали максимум частоты
     setMax(VSD_LOW_LIM_SPEED_MOTOR, value);           // Меняем поле максимум для уставки "Минимальной частоты"
     setMax(VSD_FREQUENCY, value);                     // Меняем поле максимум для уставки "Частота"
+    parameters.setMax(CCS_BASE_FREQUENCY, value);
     if (value < parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1))
       parameters.setMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1, value);
     if (value < parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_2))
@@ -265,31 +266,7 @@ int Vsd::setSwitchingFrequency(float value)
   return ok_r;
 }
 
-int Vsd::setSwitchingFrequencyCode(float value)
-{
-  if (!setValue(VSD_SWITCHING_FREQUENCY_CODE, value)) {
-    switch((int)getValue(VSD_SWITCHING_FREQUENCY_CODE)) {
-    case 0:   value = 1000;   break;
-    case 1:   value = 1500;   break;
-    case 2:   value = 2000;   break;
-    case 3:   value = 2500;   break;
-    case 4:   value = 3000;   break;
-    case 5:   value = 3500;   break;
-    case 6:   value = 4000;   break;
-    case 7:   value = 5000;   break;
-    case 8:   value = 6000;   break;
-    case 9:   value = 7000;   break;
-    case 10:  value = 8000;   break;
-    case 11:  value = 10000;  break;
-    case 12:  value = 12000;  break;
-    case 13:  value = 14000;  break;
-    case 14:  value = 16000;  break;
-    default:  value = 2500;   break;
-    }
-    return setSwitchingFrequency(value);
-  }
-  return err_r;
-}
+
 
 int Vsd::setSwitchingFrequencyMode(float value)
 {

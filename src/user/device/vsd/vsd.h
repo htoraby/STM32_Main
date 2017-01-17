@@ -252,13 +252,6 @@ public:
   virtual int setSwitchingFrequency(float value);
 
   /*!
-   * \brief setSwitchingFrequencyCode
-   * \param value
-   * \return
-   */
-  virtual int setSwitchingFrequencyCode(float value);
-
-  /*!
    * \brief setSwitchingFrequencyMode
    * \param value
    * \return
