@@ -867,14 +867,19 @@ int VsdEtalon::setBaseFrequency(float value)
 
 void VsdEtalon::readTransNeedVoltageTapOff()
 {
-  float value = getValue(VSD_BASE_VOLTAGE) + 10;
+  osDelay(500);
+  readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
+  osDelay(200);
+
+  float value = BASE_VOLTAGE + 10;
+  if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT)
+    value = BASE_VOLTAGE*(getValue(VSD_TRANS_NEED_VOLTAGE_TAP_OFF)/getValue(VSD_TRANS_VOLTAGE_TAP_OFF)) + 10;
+
   setMax(VSD_UF_CHARACTERISTIC_U_1, value);
   setMax(VSD_UF_CHARACTERISTIC_U_2, value);
   setMax(VSD_UF_CHARACTERISTIC_U_3, value);
   setMax(VSD_UF_CHARACTERISTIC_U_4, value);
   setMax(VSD_UF_CHARACTERISTIC_U_5, value);
-  osDelay(750);
-  readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
   readUfCharacterictic();
 }
 
