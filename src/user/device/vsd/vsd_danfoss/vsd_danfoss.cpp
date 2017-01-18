@@ -434,15 +434,37 @@ int VsdDanfoss::setTimeSpeedDown(float value)
   }
 }
 
+int VsdDanfoss::setSwitchingFrequency(float value)
+{
+  if (!Vsd::setSwitchingFrequency(value)) {
+    return setSwitchingFrequencyCode(value);
+  }
+  return err_r;
+}
+
 int VsdDanfoss::setSwitchingFrequencyCode(float value)
 {
-  if (!Vsd::setSwitchingFrequencyCode(value)) {
-    writeToDevice(VSD_SWITCHING_FREQUENCY_CODE, getValue(VSD_SWITCHING_FREQUENCY_CODE));
-    return ok_r;
+  float code = 4;
+  switch ((uint16_t)value) {
+  case 1000:  code = 0;   break;
+  case 1500:  code = 1;   break;
+  case 2000:  code = 2;   break;
+  case 2500:  code = 3;   break;
+  case 3000:  code = 4;   break;
+  case 3500:  code = 5;   break;
+  case 4000:  code = 6;   break;
+  case 5000:  code = 7;   break;
+  case 6000:  code = 8;   break;
+  case 7000:  code = 9;   break;
+  case 8000:  code = 10;  break;
+  case 9000:  code = 11;  break;
+  case 12000: code = 12;  break;
+  case 14000: code = 13;  break;
+  case 16000: code = 14;  break;
+  default:    code = 4;   break;
   }
-  else {
-    return err_r;
-  }
+  writeToDevice(VSD_SWITCHING_FREQUENCY_CODE, code);
+  return ok_r;
 }
 
 int VsdDanfoss::calcFiltTimeCurLim(float value)
@@ -1277,7 +1299,7 @@ void VsdDanfoss::getNewValue(uint16_t id)
       parameters.set(CCS_BASE_FREQUENCY, value);
       break;
     default:
-      setValue(id, value);
+      setValueForce(id, value);
       break;
     }
   }
@@ -1330,8 +1352,8 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
     }
     return err_r;
 
-  case VSD_SWITCHING_FREQUENCY_CODE:
-    return setSwitchingFrequencyCode(value);
+  case VSD_SWITCHING_FREQUENCY:
+    return setSwitchingFrequency(value);
 
   case VSD_TIMER_DISPERSAL:
     return setTimeSpeedUp(value);

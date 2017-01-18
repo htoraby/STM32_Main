@@ -136,7 +136,7 @@ public:
    * \return 0 - значение присвоено или код ошибки
    */
   uint8_t setValue(uint16_t id, float value, EventType eventType = NoneType);
-
+  uint8_t setValueForce(uint16_t id, float value, EventType eventType = NoneType);
   /*!
    * \brief Метод присвоения значения параметра типа uint32_t
    * \param id - уникальный идентификатор параметра
@@ -152,6 +152,8 @@ public:
    * \return 0 - значение присвоено или код ошибки
    */
   uint8_t setValue(uint16_t id, int value, EventType eventType = AutoType);
+
+
 
   /*!
    * \brief Функция сброса значения параметра на значение по умолчанию

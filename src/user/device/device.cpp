@@ -273,6 +273,67 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
   return ok_r;
 }
 
+uint8_t Device::setValueForce(uint16_t id, float value, EventType eventType)
+{
+  uint16_t index = getIndexAtId(id);
+  float oldValue = getFieldValue(index);
+  EventCode code = getFieldCode(index);
+  uint8_t units = getFieldPhysic(index);
+  uint16_t discret = getFieldDiscret(index);
+  uint8_t operation = getFieldOperation(index);
+
+  if ((operation == OPERATION_LIMITED) && ksu.isWorkMotor()) {
+    novobusSlave.putMessageParams(id);
+    return RETURN_ERROR_OPERATION;
+  }
+
+  // Проверка на диапазон
+  float min = getFieldMinimum(index);
+  float max = getFieldMaximum(index);
+  uint8_t check = checkRange(value, min, max, true, discret);
+
+  if((check != 0) && !isnan(value) && !isinf(value) && (value != -1)) {
+    novobusSlave.putMessageParams(id);
+    if (check == err_min_r) {
+      setFieldMin(index, value);
+      setFieldValidity(index, VALIDITY_OK);
+      #if (USE_LOG_WARNING == 1)
+      logDebug.add(WarningMsg, "Device::setForciblyValue() Value less than min (id = %d; value = %f; min = %f)",
+                   id, value, min);
+      #endif
+    }
+    if (check == err_max_r) {
+      setFieldMax(index, value);
+      setFieldValidity(index, VALIDITY_OK);
+      #if (USE_LOG_WARNING == 1)
+      logDebug.add(WarningMsg, "Device::setForciblyValue() Value greater than max (id = %d; value = %f; max = %f)",
+                   id, value, max);
+      #endif
+    }
+  }
+
+  setFieldValue(index, value);
+  setFieldValidity(index, isnan(value) ? VALIDITY_ERROR : VALIDITY_OK);
+
+  if ((value != oldValue) && !(isnan(value) && isnan(oldValue))) {
+    // Сообщить контроллеру визуализации об обновлении параметра
+    novobusSlave.putMessageParams(id);
+    // Формирование сообщения в архив событий об изменении параметра
+    if (code && (eventType != NoneType) && !(isnan(value) || isnan(oldValue))) {
+      logEvent.add(code, eventType, (EventId)id, oldValue, value, units);
+      #if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "Device::setValue() Changed value (id = %d; oldValue = %f; newValue = %f)",
+                   id, oldValue, value);
+      #endif
+    }
+  }
+
+  if(isnan(value))
+    return err_r;
+
+  return ok_r;
+}
+
 uint8_t Device::setValue(uint16_t id, uint32_t value, EventType eventType)
 {
   uint16_t index = getIndexAtId(id);
