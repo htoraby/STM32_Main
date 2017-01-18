@@ -871,7 +871,7 @@ void VsdEtalon::readTransNeedVoltageTapOff()
   readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
   osDelay(200);
 
-  float value = BASE_VOLTAGE + 10;
+  float value = getValue(VSD_BASE_VOLTAGE) + 10;
   if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT)
     value = BASE_VOLTAGE*(getValue(VSD_TRANS_NEED_VOLTAGE_TAP_OFF)/getValue(VSD_TRANS_VOLTAGE_TAP_OFF)) + 10;
 
