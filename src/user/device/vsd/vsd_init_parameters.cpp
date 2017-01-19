@@ -1978,7 +1978,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].validity                         = VALIDITY_ERROR;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].value.float_t                    = 100.0;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].min                              = 0.0;
-  parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].max                              = 500.0;
+  parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].max                              = 1000.0;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].def                              = 100.0;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].discret                          = 1;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].code                             = 0;
