@@ -537,6 +537,12 @@ bool Ccs::checkCanStart()
     }
   }
 
+  if ((parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) && (parameters.get(VSD_UF_CHARACTERISTIC_U_5_PERCENT) > 100)) {
+    setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+    ksu.setError(SetVoltageTapOfErr);
+    return false;
+  }
+
   if (!interceptionStartRegime())
     return false;
 

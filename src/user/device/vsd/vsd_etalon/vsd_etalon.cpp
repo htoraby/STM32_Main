@@ -328,6 +328,8 @@ void VsdEtalon::getNewValue(uint16_t id)
     case VSD_UF_CHARACTERISTIC_U_5_PERCENT:
       setValue(id, value);
       setValue(VSD_UF_CHARACTERISTIC_U_5, roundf(BASE_VOLTAGE * value / 100.0));
+      if (value > 100)
+        ksu.setError(SetVoltageTapOfErr);
       break;
     case VSD_LOW_LIM_SPEED_MOTOR:
       setLimitsMinFrequence(value);

@@ -29,6 +29,7 @@ enum ErrorSlave {
   MiniLzoInitUsbErr,           //!< Ошибка инициализации архиватора MiniLZO
   MiniLzoUsbErr,               //!< Ошибка архиватора MiniLZO
   SetProfileVsdErr,            //!< Ошибка конфигурирования ЧРП
+  SetVoltageTapOfErr,          //!< Неправильно выбрано напряжение отпайки ТМПН
 };
 
 /*!
