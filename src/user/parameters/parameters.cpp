@@ -2,6 +2,8 @@
 #include "user_main.h"
 #include "gpio.h"
 
+#define MAX_QUEUE_SIZE_PARAMS 100
+
 Parameters::Parameters()
 {
 
@@ -17,13 +19,28 @@ static void parametersTask(void *p)
   (static_cast<Parameters*>(p))->task();
 }
 
+static void parametersSetDelayTask(void *p)
+{
+  (static_cast<Parameters*>(p))->setDelayTask();
+}
+
 void Parameters::init()
 {
   semaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(semaphoreId_, 0);
 
-  osThreadDef_t t = {"SaveParameters", parametersTask, osPriorityNormal, 0, 2 * configMINIMAL_STACK_SIZE};
-  osThreadCreate(&t, this);
+  osThreadDef(SaveParameters, parametersTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(SaveParameters), this);
+
+  osThreadDef(SetDelayTask, parametersSetDelayTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(SetDelayTask), this);
+
+  // Создаём очередь сообщений id параметров
+  osMessageQDef(MessageIdParams, MAX_QUEUE_SIZE_PARAMS, uint32_t);
+  messageIdParams_ = osMessageCreate(osMessageQ(MessageIdParams), NULL);
+  // Создаём очередь сообщений значений параметров
+  osMessageQDef(MessageValueParams, MAX_QUEUE_SIZE_PARAMS, uint32_t);
+  messageValueParams_ = osMessageCreate(osMessageQ(MessageValueParams), NULL);
 }
 
 void Parameters::task()
@@ -321,4 +338,34 @@ float Parameters::convertTo(float value, int physic, int unit)
   if (unit >= MAX_CONV_ELEMS)
     unit = 0;
   return (value - (units[physic][unit][1]))/(units[physic][unit][0]);
+}
+
+void Parameters::setDelayTask()
+{
+  osEvent event;
+  while (1) {
+    osDelay(1);
+
+    event = osMessageGet(messageIdParams_, 0);
+    if (event.status == osEventMessage) {
+      EventType eventType = EventType(event.value.v >> 16);
+      uint16_t id = event.value.v;
+      event = osMessageGet(messageValueParams_, 0);
+      if (event.status == osEventMessage) {
+        unTypeData value;
+        value.uint32_t = event.value.v;
+        if (getPhysic(id) == PHYSIC_DATE_TIME)
+          set(id, (uint32_t)value.uint32_t, eventType);
+        else
+          set(id, value.float_t, eventType);
+      }
+    }
+  }
+}
+
+void Parameters::setDelay(uint16_t id, uint32_t value, EventType eventType)
+{
+  uint32_t message = (eventType << 16) + id;
+  osMessagePut(messageIdParams_, message, 0);
+  osMessagePut(messageValueParams_, value, 0);
 }
