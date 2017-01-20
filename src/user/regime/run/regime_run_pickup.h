@@ -45,8 +45,7 @@ private:
   // Запись параметров в ЧРП
   float delay_;                                       // Задержка между попытками записать настройки режима в ЧРП
   float repeat_;                                      // Количество попыток записать настройки режима в ЧРП
-  float oldSpeed_;
-  float nowSpeed_;
+  uint32_t beginWait_;
 };
 
 #endif // REGIMERUNPICKUP_H

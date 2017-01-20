@@ -16,7 +16,6 @@ void RegimeRunPickup::getOtherSetpoint()
   action_ = parameters.get(CCS_RGM_RUN_PICKUP_MODE);            // Активность режима
    // Текущие параметры режима
   state_ = parameters.get(CCS_RGM_RUN_PICKUP_STATE);            // Состояние режима
-  nowSpeed_ = parameters.get(CCS_MOTOR_SPEED_NOW);
 }
 
 void RegimeRunPickup::setOtherSetpoint()
@@ -101,12 +100,13 @@ void RegimeRunPickup::processingStateWork()
   switch (state_) {
   case WorkState:                                     // Состояние ожидания выхода на заданную частоту
     if (vsd->isSetPointFreq()) {                      // Вышли на заданную частоту
-      parameters.set(CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN, ksu.getTime());                     // Запоминаем время выхода на частоту ожидания
+      //beginWait_ = ksu.getTime();                     // Запоминаем время выхода на частоту ожидания
+      parameters.set(CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN, ksu.getTime());
       state_ = WorkState + 1;                         // Переход на состояние времени ожидания
     }
     break;
   case WorkState + 1:                                 // Состояние ожидания истечения "Времени ожидания"
-    time = ksu.getSecFromCurTime(parameters.get(CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN));
+    time = ksu.getSecFromCurTime(parameters.getU32(CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN));
     if (time >= parameters.get(CCS_RGM_RUN_PICKUP_TIME_WAIT)) {
       state_ = WorkState + 2;                         // Истекло время ожидания
     }
@@ -361,7 +361,9 @@ int16_t RegimeRunPickup::returnFreq()
 
 int16_t RegimeRunPickup::setTimeDispersal()
 {
-  int16_t err = setConfirmation(VSD_TIMER_DISPERSAL, parameters.get(CCS_RGM_RUN_PICKUP_TIME_UP));
+  float time = (parameters.get(VSD_MOTOR_FREQUENCY) *
+                parameters.get(CCS_RGM_RUN_PICKUP_TIME_UP)) / parameters.get(CCS_RGM_RUN_PICKUP_FREQ_WAIT);
+  int16_t err = setConfirmation(VSD_TIMER_DISPERSAL, time);
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunPickup::setTimeDispersal()");
@@ -372,7 +374,9 @@ int16_t RegimeRunPickup::setTimeDispersal()
 
 int16_t RegimeRunPickup::setTimeDelay()
 {
-  int16_t err = setConfirmation(VSD_TIMER_DISPERSAL, parameters.get(CCS_RGM_RUN_PICKUP_TIME_DOWN));
+  float time = (parameters.get(VSD_MOTOR_FREQUENCY) *
+                parameters.get(CCS_RGM_RUN_PICKUP_TIME_DOWN)) / parameters.get(CCS_RGM_RUN_PICKUP_FREQ_WAIT);
+  int16_t err = setConfirmation(VSD_TIMER_DISPERSAL, time);
   if (err == err_r) {
     #if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunPickup::setTimeDelay()");
