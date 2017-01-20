@@ -288,10 +288,6 @@ private:
 
   RegimeRunEtalon *regimeRun_;
 
-  /*!
-   * \brief convertBitVsdStatus
-   * \param value
-   */
 };
 
 #endif /* VSD_NOVOMET_H_ */
