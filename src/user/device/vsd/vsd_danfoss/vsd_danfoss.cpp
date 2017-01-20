@@ -1262,7 +1262,11 @@ void VsdDanfoss::getNewValue(uint16_t id)
       break;
     case VSD_FREQUENCY_NOW:
       setValue(id, value);
-      ksu.calcMotorSpeed();
+      // ksu.calcMotorSpeed();
+      break;
+    case VSD_SPEED_RPM_NOW:
+      setValue(id, value);
+      parameters.set(CCS_MOTOR_SPEED_NOW, value);
       break;
     case VSD_PROT_NO_CONNECT_MODE:
       setValue(id, value);

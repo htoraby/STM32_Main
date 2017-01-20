@@ -1012,7 +1012,7 @@ enum enID
   CCS_RGM_RUN_PICKUP_SETPOINT_FREQ = 1006,                   //!< Подхват. Сохраненная уставка частоты до подхвата
   CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ = 1007,           //!< Подхват. Сохранённая уставка минимальной частоты
   CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP = 1008,                //!< Подхват. Сохранённая уставка времени разгона
-  CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN = 1009,              //!< Подхват. Сохранённая уставка времени торможения
+  CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN = 1009,                 //!< Подхват. Сохранённая уставка времени торможения
   CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION = 1010,               //!< Подхват. Сохранённая уставка направления вращения
   CCS_PROT_VALUE_PARAMETER = 1011,                           //!< Значение по которому активирована защита
   CCS_RGM_RUN_SKIP_RESONANT_MODE = 1012,                     //!< Действие режима пуска "Пропуск резонансных частот"
@@ -1037,7 +1037,12 @@ enum enID
   CCS_CMD_TYPE_PROFILE_VSD = 1031,                           //!< Команда применения профиля ЧРП
   CCS_SHIFT_RESISTANCE_ISOLATION = 1032,                     //!< Смещение сопротивления изоляции
   CCS_AXIS_SHIFT_RESISTANCE_ISOLATION = 1033,                //!< Ось смещение сопротивления изоляции
-  CCS_END = 1034,                                            //!< 
+  CCS_RGM_RUN_PICKUP_FREQ_WAIT = 1034,                       //!< Частота ожидания
+  CCS_RGM_RUN_PICKUP_TIME_WAIT = 1035,                       //!< Время ожидания
+  CCS_RGM_RUN_PICKUP_TIME_UP = 1036,                         //!< Время разгона
+  CCS_RGM_RUN_PICKUP_TIME_DOWN = 1037,                       //!< Время торможения
+  CCS_RGM_RUN_PICKUP_SPEED_PREVIEW = 1038,                   //!< Предыдущие обороты двигателя
+  CCS_END = 1039,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
