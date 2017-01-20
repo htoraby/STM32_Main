@@ -250,6 +250,8 @@ public:
   int offProtConnect();
 
   bool isControl();
+
+  void getSwitchFreqCode(float value);
 private:
   ModbusParameter modbusParameters_[230];
   DeviceModbus *dm_;

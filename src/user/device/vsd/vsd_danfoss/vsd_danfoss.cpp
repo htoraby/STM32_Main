@@ -1262,7 +1262,11 @@ void VsdDanfoss::getNewValue(uint16_t id)
       break;
     case VSD_FREQUENCY_NOW:
       setValue(id, value);
-      ksu.calcMotorSpeed();
+      // ksu.calcMotorSpeed();
+      break;
+    case VSD_SPEED_RPM_NOW:
+      setValue(id, value);
+      parameters.set(CCS_MOTOR_SPEED_NOW, value);
       break;
     case VSD_PROT_NO_CONNECT_MODE:
       setValue(id, value);
@@ -1298,11 +1302,39 @@ void VsdDanfoss::getNewValue(uint16_t id)
       setLimitsMaxFrequence(value);
       parameters.set(CCS_BASE_FREQUENCY, value);
       break;
+    case VSD_SWITCHING_FREQUENCY_CODE:
+      getSwitchFreqCode(value);
+      break;
     default:
       setValueForce(id, value);
       break;
     }
   }
+}
+
+void VsdDanfoss::getSwitchFreqCode(float value)
+{
+  float freq = 3000;
+  switch ((uint16_t)value) {
+  case 0:  freq = 1000;   break;
+  case 1:  freq = 1500;   break;
+  case 2:  freq = 2000;   break;
+  case 3:  freq = 2500;   break;
+  case 4:  freq = 3000;   break;
+  case 5:  freq = 3500;   break;
+  case 6:  freq = 4000;   break;
+  case 7:  freq = 5000;   break;
+  case 8:  freq = 6000;   break;
+  case 9:  freq = 7000;   break;
+  case 10: freq = 8000;   break;
+  case 11: freq = 9000;   break;
+  case 12: freq = 12000;  break;
+  case 13: freq = 14000;  break;
+  case 14: freq = 16000;  break;
+  default: freq = 3000;   break;
+  }
+  setValue(VSD_SWITCHING_FREQUENCY_CODE, value);
+  parameters.set(VSD_SWITCHING_FREQUENCY, freq);
 }
 
 uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)

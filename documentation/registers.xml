@@ -28,8 +28,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_RPM</physic>
-		<min>0.0</min>
-		<max>20000.0</max>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -20104,7 +20104,7 @@
 	</param>
 	<param>
 		<id>1009</id>
-		<name>CCS_RGM_RUN_PICKUP_SETPOINT_TIME_DOWN</name>
+		<name>CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
@@ -20630,6 +20630,107 @@
 	</param>
 	<param>
 		<id>1034</id>
+		<name>CCS_RGM_RUN_PICKUP_FREQ_WAIT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>1.0</min>
+		<max>500.0</max>
+		<def>20.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>20.0</value>
+		<text>Частота ожидания</text>
+		<short_text>Подхват. F ожидания</short_text>
+		<form>NULL</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Частота ожидания</comment>
+	</param>
+	<param>
+		<id>1035</id>
+		<name>CCS_RGM_RUN_PICKUP_TIME_WAIT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>1.0</min>
+		<max>3600.0</max>
+		<def>30.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>30.0</value>
+		<text>Время ожидания</text>
+		<short_text>Подхват. Время ожидания</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Время ожидания</comment>
+	</param>
+	<param>
+		<id>1036</id>
+		<name>CCS_RGM_RUN_PICKUP_TIME_UP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>1.0</min>
+		<max>3600.0</max>
+		<def>30.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>30.0</value>
+		<text>Время разгона</text>
+		<short_text>Подхват. Время разгона</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXX_X</format>
+		<code>13</code>
+		<comment>Время разгона</comment>
+	</param>
+	<param>
+		<id>1037</id>
+		<name>CCS_RGM_RUN_PICKUP_TIME_DOWN</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>1.0</min>
+		<max>3600.0</max>
+		<def>30.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>30.0</value>
+		<text>Время торможения</text>
+		<short_text>Подхват. Время торм.</short_text>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XXXX_X</format>
+		<code>13</code>
+		<comment>Время торможения</comment>
+	</param>
+	<param>
+		<id>1038</id>
+		<name>CCS_RGM_RUN_PICKUP_SPEED_PREVIEW</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_RPM</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Предыдущие обороты двигателя</text>
+		<short_text>Предыдущие обороты двигателя</short_text>
+		<unit>RPM_RPM</unit>
+		<unit_lcd>RPM_RPM</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Предыдущие обороты двигателя</comment>
+	</param>
+	<param>
+		<id>1039</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 	</param>
@@ -20684,8 +20785,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_RPM</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<form>NULL</form>

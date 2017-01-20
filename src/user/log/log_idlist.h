@@ -211,7 +211,10 @@ typedef enum {
   RegimeRunSwingAbortId,              //!< Пуск с раскачкой прерван
 
   AddDeviceFiltInputId,               //!< "Выбрано наличие входного фильтра"
-  RemoveDeviceFiltInputId             //!< "Выбрано отсутствие входного фильтра"
+  RemoveDeviceFiltInputId,            //!< "Выбрано отсутствие входного фильтра"
+
+  RegimeRunPickupFailId,              //!< Пуск толчками ошибка
+  RegimeRunPickupAbortId              //!< Пуск толчками прерван
 
 } EventId;
 
