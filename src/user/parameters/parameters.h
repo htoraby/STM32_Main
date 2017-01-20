@@ -21,6 +21,7 @@ public:
    */
   void init();
   void task();
+  void setDelayTask();
 
   /*!
    * \brief Запуск сохранения параметров из ОЗУ в Flash
@@ -82,6 +83,14 @@ public:
   int set(unsigned short id, int value, EventType eventType = AutoType);
 
   /*!
+   * \brief Метод записи параметра по ID с постановкой в очередь
+   * \param id - уникальный идентификатор параметра
+   * \param value присваемое значение
+   * \param eventType - тип события для фиксирования изменений в журнале
+   */
+  void setDelay(uint16_t id, uint32_t value, EventType eventType);
+
+  /*!
    * \brief Метод получения типа физической величины по ID
    * с определением необходимого массива
    * \param id уникальный идентификатор параметра
@@ -139,6 +148,9 @@ public:
 private:
   //! Идентификатор семафора
   osSemaphoreId semaphoreId_;
+
+  osMessageQId messageIdParams_;
+  osMessageQId messageValueParams_;
 
 };
 
