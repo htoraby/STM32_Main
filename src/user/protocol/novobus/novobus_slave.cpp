@@ -55,6 +55,7 @@ bool NovobusSlave::isConnect()
 void NovobusSlave::task()
 {
   osSemaphoreId semaphoreId = getHostSemaphore();
+  osDelay(10000);
   hostEnable();
 
   while(1) {

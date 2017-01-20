@@ -5,7 +5,7 @@
 #include "user_debug.h"
 
 //! Время таймаута запроса от мастера для сброса SPI (n*10 мс)
-#define TIMEOUT_RX 3000
+#define TIMEOUT_RX 1500
 
 SPI_HandleTypeDef hspi4;
 

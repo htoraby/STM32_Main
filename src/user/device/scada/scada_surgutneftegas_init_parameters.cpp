@@ -1906,8 +1906,8 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[158].unit             = 0;
   scadaParameters_[158].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[158].coefficient      = 1;
-  scadaParameters_[158].min              = 1;
-  scadaParameters_[158].max              = 9999;
+  scadaParameters_[158].min              = 0;
+  scadaParameters_[158].max              = 65535;
   scadaParameters_[158].command          = OPERATION_ERROR;
   scadaParameters_[158].value.float_t    = 0;
   // Серийный номер СУ для СНГ
@@ -1918,8 +1918,8 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[159].unit             = 0;
   scadaParameters_[159].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[159].coefficient      = 1;
-  scadaParameters_[159].min              = 1;
-  scadaParameters_[159].max              = 9999;
+  scadaParameters_[159].min              = 0;
+  scadaParameters_[159].max              = 65535;
   scadaParameters_[159].command          = OPERATION_ERROR;
   scadaParameters_[159].value.float_t    = 0;
   // Серийный номер СУ для СНГ
@@ -1930,8 +1930,8 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[160].unit             = 0;
   scadaParameters_[160].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[160].coefficient      = 1;
-  scadaParameters_[160].min              = 1;
-  scadaParameters_[160].max              = 9999;
+  scadaParameters_[160].min              = 0;
+  scadaParameters_[160].max              = 65535;
   scadaParameters_[160].command          = OPERATION_ERROR;
   scadaParameters_[160].value.float_t    = 0;
   // Серийный номер СУ для СНГ
@@ -1943,7 +1943,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[161].typeData         = TYPE_DATA_UINT16_B;
   scadaParameters_[161].coefficient      = 1;
   scadaParameters_[161].min              = 1;
-  scadaParameters_[161].max              = 9999;
+  scadaParameters_[161].max              = 65535;
   scadaParameters_[161].command          = OPERATION_ERROR;
   scadaParameters_[161].value.float_t    = 0;
   // Дата изготовления СУ (ГГ.ММ)

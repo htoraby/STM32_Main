@@ -68,17 +68,16 @@ void ScadaSurgutneftegas::calcParamsTask()
 
     // 145-148
     char numProd[20];
-    data.uint32_t = parameters.get(CCS_NUM_PRODUCTION_CCS);
+    data.uint32_t = parameters.getU32(CCS_NUM_PRODUCTION_CCS);
     sprintf(numProd, "%09d", (int)data.uint32_t);
-    memcpy(&numProd[0], &numProd[1], 8);
-    scadaParameters_[145].value.char_t[0] = numProd[7];
-    scadaParameters_[145].value.char_t[1] = numProd[6];
-    scadaParameters_[146].value.char_t[0] = numProd[5];
-    scadaParameters_[146].value.char_t[1] = numProd[4];
-    scadaParameters_[147].value.char_t[0] = numProd[3];
-    scadaParameters_[147].value.char_t[1] = numProd[2];
-    scadaParameters_[148].value.char_t[0] = numProd[1];
-    scadaParameters_[148].value.char_t[1] = numProd[0];
+    scadaParameters_[145].value.char_t[0] = numProd[8];
+    scadaParameters_[145].value.char_t[1] = numProd[7];
+    scadaParameters_[146].value.char_t[0] = numProd[6];
+    scadaParameters_[146].value.char_t[1] = numProd[5];
+    scadaParameters_[147].value.char_t[0] = numProd[4];
+    scadaParameters_[147].value.char_t[1] = numProd[3];
+    scadaParameters_[148].value.char_t[0] = numProd[2];
+    scadaParameters_[148].value.char_t[1] = numProd[1];
 
     // 149-150
     time = parameters.getU32(CCS_DATE_PRODUCTION_CCS);
@@ -101,17 +100,16 @@ void ScadaSurgutneftegas::calcParamsTask()
     scadaParameters_[153].value.uint32_t = dateTime.tm_mday*100;
 
     // 158-161
-    data.uint32_t = parameters.get(CCS_NUM_PRODUCTION_SU);
+    data.uint32_t = parameters.getU32(CCS_NUM_PRODUCTION_SU);
     sprintf(numProd, "%09d", (int)data.uint32_t);
-    memcpy(&numProd[0], &numProd[1], 8);
-    scadaParameters_[158].value.char_t[0] = numProd[7];
-    scadaParameters_[158].value.char_t[1] = numProd[6];
-    scadaParameters_[159].value.char_t[0] = numProd[5];
-    scadaParameters_[159].value.char_t[1] = numProd[4];
-    scadaParameters_[160].value.char_t[0] = numProd[3];
-    scadaParameters_[160].value.char_t[1] = numProd[2];
-    scadaParameters_[161].value.char_t[0] = numProd[1];
-    scadaParameters_[161].value.char_t[1] = numProd[0];
+    scadaParameters_[158].value.char_t[0] = numProd[8];
+    scadaParameters_[158].value.char_t[1] = numProd[7];
+    scadaParameters_[159].value.char_t[0] = numProd[6];
+    scadaParameters_[159].value.char_t[1] = numProd[5];
+    scadaParameters_[160].value.char_t[0] = numProd[4];
+    scadaParameters_[160].value.char_t[1] = numProd[3];
+    scadaParameters_[161].value.char_t[0] = numProd[2];
+    scadaParameters_[161].value.char_t[1] = numProd[1];
 
     // 162-163
     time = parameters.getU32(CCS_DATE_PRODUCTION_SU);
@@ -224,7 +222,7 @@ void ScadaSurgutneftegas::calcParamsTask()
 
 int ScadaSurgutneftegas::setNewValue(ScadaParameter *param)
 {
-  unTypeData value;
+  unTypeData data;
   time_t time;
 
   if (param->id > 0) {
@@ -280,19 +278,31 @@ int ScadaSurgutneftegas::setNewValue(ScadaParameter *param)
 
   // 158-161
   if ((param->address >= 158) && (param->address <= 161)) {
-
+    char numProd[20];
+    data.uint32_t = parameters.getU32(CCS_NUM_PRODUCTION_SU);
+    sprintf(numProd, "%09d", (int)data.uint32_t);
+    switch (param->address) {
+    case 158:
+      numProd[8] = param->value.char_t[0];
+      numProd[7] = param->value.char_t[1];
+      break;
+    case 159:
+      numProd[6] = param->value.char_t[0];
+      numProd[5] = param->value.char_t[1];
+      break;
+    case 160:
+      numProd[4] = param->value.char_t[0];
+      numProd[3] = param->value.char_t[1];
+      break;
+    case 161:
+      numProd[2] = param->value.char_t[0];
+      numProd[1] = param->value.char_t[1];
+      break;
+    }
+    data.uint32_t = atoi(numProd);
+    parameters.set(CCS_NUM_PRODUCTION_SU, (uint32_t)data.uint32_t, RemoteType);
+    return ok_r;
   }
-//  data.uint32_t = parameters.get(CCS_NUM_PRODUCTION_SU);
-//  sprintf(numProd, "%09d", (int)data.uint32_t);
-//  memcpy(&numProd[0], &numProd[1], 8);
-//  scadaParameters_[158].value.char_t[0] = numProd[7];
-//  scadaParameters_[158].value.char_t[1] = numProd[6];
-//  scadaParameters_[159].value.char_t[0] = numProd[5];
-//  scadaParameters_[159].value.char_t[1] = numProd[4];
-//  scadaParameters_[160].value.char_t[0] = numProd[3];
-//  scadaParameters_[160].value.char_t[1] = numProd[2];
-//  scadaParameters_[161].value.char_t[0] = numProd[1];
-//  scadaParameters_[161].value.char_t[1] = numProd[0];
 
   // 162-163
   if ((param->address >= 162) && (param->address <= 163)) {
@@ -320,18 +330,18 @@ int ScadaSurgutneftegas::setNewValue(ScadaParameter *param)
   // 168
   if (param->address == 168) {
     switch (param->value.uint32_t) {
-    case 0: value.float_t = 1200; break;
-    case 1: value.float_t = 2400; break;
-    case 2: value.float_t = 4800; break;
-    case 3: value.float_t = 9600; break;
-    case 4: value.float_t = 19200; break;
-    case 5: value.float_t = 38400; break;
-    case 6: value.float_t = 57600; break;
-    case 7: value.float_t = 115200; break;
+    case 0: data.float_t = 1200; break;
+    case 1: data.float_t = 2400; break;
+    case 2: data.float_t = 4800; break;
+    case 3: data.float_t = 9600; break;
+    case 4: data.float_t = 19200; break;
+    case 5: data.float_t = 38400; break;
+    case 6: data.float_t = 57600; break;
+    case 7: data.float_t = 115200; break;
     default:
       return err_r;
     }
-    parameters.set(CCS_SCADA_BYTERATE, value.float_t, RemoteType);
+    parameters.set(CCS_SCADA_BYTERATE, data.float_t, RemoteType);
     return ok_r;
   }
 
