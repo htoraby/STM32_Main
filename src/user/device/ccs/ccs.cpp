@@ -416,11 +416,11 @@ void Ccs::changedWorkMode()
   }
 }
 
-void Ccs::start(LastReasonRun reason)
+void Ccs::start(LastReasonRun reason, bool force)
 {
   setNewValue(CCS_LAST_RUN_REASON_TMP, reason);
 
-  if (checkCanStart()) {
+  if (checkCanStart(force)) {
     initStart();
     setNewValue(CCS_LAST_RUN_REASON, reason);
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
@@ -510,7 +510,7 @@ void Ccs::cmdStop(int value)
   }
 }
 
-bool Ccs::checkCanStart()
+bool Ccs::checkCanStart(bool isForce)
 {
   if (getValue(CCS_VSD_CONDITION) != VSD_CONDITION_STOP) {
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
@@ -543,8 +543,10 @@ bool Ccs::checkCanStart()
     return false;
   }
 
-  if (!interceptionStartRegime())
-    return false;
+  if (!isForce) {
+    if (!interceptionStartRegime())
+      return false;
+  }
 
 #if (USE_DEBUG == 0)
   if (!vsd->isConnect())

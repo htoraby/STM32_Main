@@ -34,11 +34,13 @@ void regimeTask(void *argument)
   while (1) {
     osDelay(100);
 
+    vsd->processingRegimeRun();
+    checkWorkingRunMode();
+
     for (int i = 0; i < COUNT_REGIMES; ++i) {
       regimes[i]->processing();
     }  
-    vsd->processingRegimeRun();
-    checkWorkingRunMode();
+
   }
 }
 
@@ -56,12 +58,12 @@ bool interceptionStartRegime()
     switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
     case VSD_TYPE_NOVOMET:
     case VSD_TYPE_ETALON:
-      if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) < Regime::WorkState) {
         return false;
       }
       break;
     default:
-      if (parameters.get(CCS_RGM_RUN_PICKUP_STATE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_PICKUP_STATE) < Regime::WorkState) {
         return false;
       }
       break;
@@ -72,12 +74,12 @@ bool interceptionStartRegime()
     switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
     case VSD_TYPE_NOVOMET:
     case VSD_TYPE_ETALON:
-      if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) < Regime::WorkState) {
         return false;
       }
       break;
     default:
-      if (parameters.get(CCS_RGM_RUN_PUSH_STATE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_PUSH_STATE) < Regime::WorkState) {
         return false;
       }
       break;
@@ -88,12 +90,12 @@ bool interceptionStartRegime()
     switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
     case VSD_TYPE_NOVOMET:
     case VSD_TYPE_ETALON:
-      if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) < Regime::WorkState) {
         return false;
       }
       break;
     default:
-      if (parameters.get(CCS_RGM_RUN_SWING_STATE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_SWING_STATE) < Regime::WorkState) {
         return false;
       }
       break;
@@ -104,12 +106,12 @@ bool interceptionStartRegime()
     switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
     case VSD_TYPE_NOVOMET:
     case VSD_TYPE_ETALON:
-      if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) < Regime::WorkState) {
         return false;
       }
       break;
     default:
-      if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_STATE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_STATE) < Regime::WorkState) {
         return false;
       }
       break;
@@ -119,12 +121,12 @@ bool interceptionStartRegime()
   if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_MODE) != Regime::OffAction) {
     switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
     case VSD_TYPE_NOVOMET:
-      if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) < Regime::WorkState) {
         return false;
       }
       break;
     default:
-      if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_STATE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_STATE) < Regime::WorkState) {
         return false;
       }
       break;
@@ -135,12 +137,12 @@ bool interceptionStartRegime()
     switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
     case VSD_TYPE_NOVOMET:
     case VSD_TYPE_ETALON:
-      if (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) < Regime::WorkState) {
         return false;
       }
       break;
     default:
-      if (parameters.get(CCS_RGM_RUN_SYNCHRON_STATE) == Regime::IdleState) {
+      if (parameters.get(CCS_RGM_RUN_SYNCHRON_STATE) < Regime::WorkState) {
         return false;
       }
       break;

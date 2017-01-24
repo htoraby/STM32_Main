@@ -48,7 +48,7 @@ void RegimeRunPickup::processingStateRunning()
         if (!err) {                                   // Задали время изменения частоты
           err = setRotation();                        // Пытаемся задать направление вращения
           if (!err) {                                 // Задали направление вращения
-            ksu.start(runReason_);                    // Подаём команду на пуск
+            ksu.start(runReason_, true);              // Подаём команду на пуск
             logEvent.add(OtherCode, AutoType, RegimeRunPickupStartId);
             state_ = WorkState;                       // Переходим в состояние работа
           }
@@ -87,7 +87,7 @@ void RegimeRunPickup::processingStateRunning()
     }
     break;
   case RunningState + 4:
-    ksu.start(runReason_);                            // Подаём команду на пуск
+    ksu.start(runReason_, true);                      // Подаём команду на пуск
     state_ = WorkState + 9;                           // Состояние формирования ошибки режима
     break;
   }

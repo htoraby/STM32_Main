@@ -93,7 +93,7 @@ void RegimeRunNovomet::processingStateRunning()
   parameters.set(VSD_REGULATOR_QUEUE_4, queue[3]);
   parameters.set(VSD_REGULATOR_QUEUE_5, queue[4]);
 
-  ksu.start(runReason_);
+  ksu.start(runReason_, true);
   state_ = WorkState;
 }
 

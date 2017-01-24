@@ -46,7 +46,7 @@ void RegimeRunSynchron::processingStateRunning()
   if (!err) {                                         // Задали минимальную частоту
     err = setFreqSynchron();                          // Задаём частоту синхронизации
     if (!err) {                                       // Задали частоту синхронизации
-      ksu.start(runReason_);                          // Команда на запуск ЧРП
+      ksu.start(runReason_, true);                    // Команда на запуск ЧРП
       state_ = WorkState;                             // Переход на состояние работа
     }
   }

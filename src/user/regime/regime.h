@@ -37,8 +37,8 @@ public:
   */
   typedef enum {
     IdleState = 0,
-    WorkState = 100,
-    RunningState = 200,
+    RunningState = 100,
+    WorkState = 200,
     WaitPauseState = 300,
     PauseState = 400,
     RestartState = 500,

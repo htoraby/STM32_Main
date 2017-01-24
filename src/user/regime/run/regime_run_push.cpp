@@ -56,7 +56,7 @@ void RegimeRunPush::processingStateRunning()
     if (!err) {                                       // Если задали минимальную частоту
       err = setFreqPush();                            // Пытаемся задать частоту толчка
       if (!err) {                                     // Если задали частоту толчка
-        ksu.start(runReason_);                        // Подаём команду на пуск
+        ksu.start(runReason_, true);                  // Подаём команду на пуск
         logEvent.add(OtherCode, AutoType, RegimeRunPushStartId);
         state_ = WorkState;                           // Переходим в состояние работа
       }
@@ -77,7 +77,7 @@ void RegimeRunPush::processingStateRunning()
     break;
 
   case RunningState + 2:
-    ksu.start(runReason_);                            // Подаём команду на пуск
+    ksu.start(runReason_, true);                      // Подаём команду на пуск
     state_ = WorkState + 7;                           // Переходим на состояние формирования ошибки задания параметров режима
     break;
   }
