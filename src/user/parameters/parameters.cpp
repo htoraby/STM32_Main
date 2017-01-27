@@ -32,7 +32,7 @@ void Parameters::init()
   osThreadDef(SaveParameters, parametersTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(SaveParameters), this);
 
-  osThreadDef(SetDelayTask, parametersSetDelayTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
+  osThreadDef(SetDelayTask, parametersSetDelayTask, osPriorityNormal, 0, 3*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(SetDelayTask), this);
 
   // Создаём очередь сообщений id параметров
