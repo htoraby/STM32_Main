@@ -243,7 +243,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[19].command           = OPERATION_ERROR;
   scadaParameters_[19].value.float_t     = 0;
   // Режим работы СУ (СНГ)
-  scadaParameters_[20].id                = CCS_WORKING_MODE;
+  scadaParameters_[20].id                = 0;
   scadaParameters_[20].address           = 20;
   scadaParameters_[20].operation         = OPERATION_READ;
   scadaParameters_[20].physic            = PHYSIC_NUMERIC;

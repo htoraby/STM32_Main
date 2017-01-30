@@ -9,6 +9,7 @@
 
 #include "mb.h"
 #include "mbport.h"
+#include "mb_slave_sng.h"
 
 //! Структура для хранения полей параметра из карты Скады
 struct ScadaParameter
@@ -94,6 +95,13 @@ public:
 
   float delay() const { return delay_; }
 
+  /*!
+   * \brief Получение параметра массива по адресу
+   * \param address
+   * \return
+   */
+  ScadaParameter *parameter(uint16_t address);
+
 protected:
   /*!
    * \brief Метод обработки значения параметра полученного от Скады
@@ -103,18 +111,18 @@ protected:
   virtual int setNewValue(ScadaParameter *param);
 
   /*!
-   * \brief Метод получения индекса в массиве параметров
-   * \param address - адрес регистра
-   * \return
-   */
-  int getIndexAtAddress(int address);
-
-  /*!
    * \brief Метод получения размера типа переменной
    * \param typeData
    * \return
    */
   int sizeDataFromTypeData(uint8_t typeData);
+
+  /*!
+   * \brief Метод получения индекса в массиве параметров
+   * \param address - адрес регистра
+   * \return
+   */
+  int getIndexAtAddress(int address);
 
   //! Указатель на массив параметров Скады
   ScadaParameter *scadaParameters_;

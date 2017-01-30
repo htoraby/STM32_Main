@@ -29,6 +29,10 @@ void ScadaSurgutneftegas::calcParamsTask()
 
     uint16_t value = 0;
 
+    // 20
+    value = ((uint8_t)(parameters.get(CCS_WORKING_MODE)+1) << 8) + ((uint8_t)parameters.get(CCS_LAST_RUN_REASON) & 0x1F);
+    scadaParameters_[20].value.float_t = value;
+
     // 25
     value = !parameters.get(CCS_PHASE_ROTATION);
     scadaParameters_[25].value.float_t = value;
@@ -375,4 +379,85 @@ int ScadaSurgutneftegas::setNewValue(ScadaParameter *param)
   }
 
   return err_r;
+}
+
+static void getParam(uint16_t address, UCHAR * pucFrame, USHORT * usLen)
+{
+  USHORT usLength = *usLen;
+  ScadaParameter *param = scada->parameter(address);
+
+  float value = param->value.float_t;
+  value = parameters.convertFrom(value, param->physic, param->unit);
+  value = value / param->coefficient;
+  unTypeData data;
+  data.uint32_t = 0;
+  data.uint16_t[0] = decToBCD(lround(value));
+
+  pucFrame[usLength++] = data.char_t[0];
+  pucFrame[usLength++] = data.char_t[1];
+  *usLen = usLength;
+}
+
+eMbSngException eMbSngFuncReadCurrentState(UCHAR * pucFrame, USHORT * usLen)
+{
+  eMbSngException eStatus = MB_SNG_EX_NONE;
+  UCHAR *pucFrameCur;
+
+  pucFrameCur = &pucFrame[MB_SNG_DATA_FUNC_OFF];
+  *usLen = MB_SNG_DATA_FUNC_OFF;
+
+  *pucFrameCur++ = 0x10;
+  *usLen += 1;
+
+  *pucFrameCur++ = 0;
+  *usLen += 1;
+
+  ScadaParameter *param = scada->parameter(254);
+  *pucFrameCur++ = param->value.char_t[0];
+  *pucFrameCur++ = param->value.char_t[1];
+  *usLen += 2;
+
+  *pucFrameCur++ = ((uint8_t)parameters.get(CCS_LAST_STOP_REASON) & 0x3F);
+  *usLen += 1;
+
+  *pucFrameCur++ = 0xFF;
+  *pucFrameCur++ = 0xFF;
+  *pucFrameCur++ = 0xFF;
+  *usLen += 3;
+
+  for (int i = 0; i < 24; ++i) {
+    getParam(i, pucFrame, usLen);
+  }
+
+  pucFrame[MB_SNG_DATA_FUNC_OFF+1] = (UCHAR)(*usLen - 2);
+
+  return eStatus;
+}
+
+eMbSngException eMbSngFuncRandomSample(UCHAR * pucFrame, USHORT * usLen)
+{
+  eMbSngException eStatus = MB_SNG_EX_NONE;
+
+  return eStatus;
+}
+
+eMbSngException eMbSngFuncSampleArchive(UCHAR * pucFrame, USHORT * usLen)
+{
+  eMbSngException eStatus = MB_SNG_EX_NONE;
+
+  return eStatus;
+}
+
+eMbSngException eMbSngFuncWriteRegister(UCHAR * pucFrame, USHORT * usLen)
+{
+  eMbSngException eStatus = MB_SNG_EX_NONE;
+
+  return eStatus;
+}
+
+eMbSngException eMbSngFuncRestartInterfaceUnit(UCHAR * pucFrame, USHORT * usLen)
+{
+  eMbSngException eStatus = MB_SNG_EX_NONE;
+
+  return eStatus;
 }

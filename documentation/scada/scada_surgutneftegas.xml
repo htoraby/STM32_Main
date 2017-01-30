@@ -258,7 +258,7 @@
 		<name>Расход жидкости</name>
 	</param>
 	<param>
-		<id>CCS_WORKING_MODE</id>
+		<id>0</id>
 		<address>20</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>

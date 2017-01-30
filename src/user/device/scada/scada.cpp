@@ -30,8 +30,13 @@ Scada::Scada()
 
 Scada::~Scada()
 {
-  eMBDisable();
-  eMBClose();
+  if (parameters.get(CCS_SCADA_TYPE) == Scada::SurgutneftegasType) {
+    eMbSngDisable();
+    eMbSngClose();
+  } else {
+    eMBDisable();
+    eMBClose();
+  }
 
   osThreadTerminate(mbThreadId_);
   osThreadTerminate(calcParamsThreadId_);
@@ -44,11 +49,20 @@ void Scada::task()
   eMBParity parity = (eMBParity)parameters.get(CCS_SCADA_PARITY);
   delay_ = parameters.get(CCS_SCADA_DELAY);
 
-  eMBInit(MB_RTU, address, SCADA_UART, baudRate,  parity);
-  eMBEnable();
-  while (1) {
-    eMBPoll();
-    osDelay(1);
+  if (parameters.get(CCS_SCADA_TYPE) == Scada::SurgutneftegasType) {
+    eMbSngInit(address, SCADA_UART, baudRate,  parity);
+    eMbSngEnable();
+    while (1) {
+      eMbSngPoll();
+      osDelay(1);
+    }
+  } else {
+    eMBInit(MB_RTU, address, SCADA_UART, baudRate,  parity);
+    eMBEnable();
+    while (1) {
+      eMBPoll();
+      osDelay(1);
+    }
   }
 }
 
@@ -87,6 +101,14 @@ inline int Scada::getIndexAtAddress(int address)
   logDebug.add(WarningMsg, "Scada::getIndexAtAddress() Not found register (address = %d)", address);
 #endif
   return -1;
+}
+
+ScadaParameter * Scada::parameter(uint16_t address) {
+  int index = getIndexAtAddress(address);
+  if (index == -1)
+    return 0;
+
+  return &scadaParameters_[index];
 }
 
 eMBErrorCode Scada::readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs)
