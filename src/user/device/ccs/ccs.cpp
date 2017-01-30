@@ -2035,6 +2035,7 @@ void Ccs::setMaxBaseFrequency()
 
 void Ccs::setError(int error)
 {
+  setValue(CCS_ERROR_SLAVE, 0.0);
   setValue(CCS_ERROR_SLAVE, error);
 }
 
