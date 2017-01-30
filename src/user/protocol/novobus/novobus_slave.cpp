@@ -269,8 +269,15 @@ void NovobusSlave::receivePackage(uint16_t sizePkt)
           value.char_t[1] = rxBuffer_[6 + i*7];
           value.char_t[0] = rxBuffer_[7 + i*7];
           eventType = (EventType)rxBuffer_[8 + i*7];
+
+          // Вызываем функцию записи значения параметра
+          if (parameters.getPhysic(id.uint16_t[0]) == PHYSIC_DATE_TIME)
+            parameters.set(id.uint16_t[0], (uint32_t)value.uint32_t, eventType);
+          else
+            parameters.set(id.uint16_t[0], value.float_t, eventType);
+
           // Вызываем функцию постановки записи значения параметра в очередь
-          parameters.setDelay(id.uint16_t[0], value.uint32_t, eventType);
+//          parameters.setDelay(id.uint16_t[0], value.uint32_t, eventType);
         }
 
         checkMessage();
