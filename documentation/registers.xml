@@ -20868,7 +20868,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Направ.вращения</text>
+		<text>Напр.вращения</text>
 		<short_text>Направ.вращ.</short_text>
 		<form>1.1 Текущие параметры - Состояние; 3.3 Настройка ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
