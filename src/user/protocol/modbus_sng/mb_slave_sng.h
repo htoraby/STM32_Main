@@ -113,11 +113,11 @@ eMBErrorCode eMbSngDisable();
  */
 eMBErrorCode eMbSngPoll();
 
-eMbSngException eMbSngFuncReadCurrentState(UCHAR * pucFrame, USHORT * usLen);
-eMbSngException eMbSngFuncRandomSample(UCHAR * pucFrame, USHORT * usLen);
-eMbSngException eMbSngFuncSampleArchive(UCHAR * pucFrame, USHORT * usLen);
-eMbSngException eMbSngFuncWriteRegister(UCHAR * pucFrame, USHORT * usLen);
-eMbSngException eMbSngFuncRestartInterfaceUnit(UCHAR * pucFrame, USHORT * usLen);
+eMbSngException eMbSngFuncReadCurrentState(uint8_t * pucFrame, uint16_t * usLen);
+eMbSngException eMbSngFuncRandomSample(uint8_t * pucFrame, uint16_t * usLen);
+eMbSngException eMbSngFuncSampleArchive(uint8_t * pucFrame, uint16_t * usLen);
+eMbSngException eMbSngFuncWriteRegister(uint8_t * pucFrame, uint16_t * usLen);
+eMbSngException eMbSngFuncRestartInterfaceUnit(uint8_t * pucFrame, uint16_t * usLen);
 
 #ifdef __cplusplus
 PR_END_EXTERN_C

@@ -381,81 +381,95 @@ int ScadaSurgutneftegas::setNewValue(ScadaParameter *param)
   return err_r;
 }
 
-static void getParam(uint16_t address, UCHAR * pucFrame, USHORT * usLen)
+static void getParam(uint16_t address, uint8_t * pucFrame, uint16_t * usLen)
 {
-  USHORT usLength = *usLen;
-  ScadaParameter *param = scada->parameter(address);
-
-  float value = param->value.float_t;
-  value = parameters.convertFrom(value, param->physic, param->unit);
-  value = value / param->coefficient;
+  uint16_t usLength = *usLen;
   unTypeData data;
   data.uint32_t = 0;
-  data.uint16_t[0] = decToBCD(lround(value));
+  ScadaParameter *param = scada->parameter(address);
+
+  if (param != NULL) {
+    float value = param->value.float_t;
+    value = parameters.convertFrom(value, param->physic, param->unit);
+    value = value / param->coefficient;
+    data.uint16_t[0] = decToBCD(lround(value));
+  }
 
   pucFrame[usLength++] = data.char_t[0];
   pucFrame[usLength++] = data.char_t[1];
   *usLen = usLength;
 }
 
-eMbSngException eMbSngFuncReadCurrentState(UCHAR * pucFrame, USHORT * usLen)
+eMbSngException eMbSngFuncReadCurrentState(uint8_t * pucFrame, uint16_t *usLen)
 {
   eMbSngException eStatus = MB_SNG_EX_NONE;
-  UCHAR *pucFrameCur;
+  uint16_t usLength = 0;
 
-  pucFrameCur = &pucFrame[MB_SNG_DATA_FUNC_OFF];
-  *usLen = MB_SNG_DATA_FUNC_OFF;
-
-  *pucFrameCur++ = 0x10;
-  *usLen += 1;
-
-  *pucFrameCur++ = 0;
-  *usLen += 1;
+  pucFrame[usLength++] = 0x10;
+  pucFrame[usLength++] = 0;
 
   ScadaParameter *param = scada->parameter(254);
-  *pucFrameCur++ = param->value.char_t[0];
-  *pucFrameCur++ = param->value.char_t[1];
-  *usLen += 2;
+  pucFrame[usLength++] = param->value.char_t[0];
+  pucFrame[usLength++] = param->value.char_t[1];
 
-  *pucFrameCur++ = ((uint8_t)parameters.get(CCS_LAST_STOP_REASON) & 0x3F);
-  *usLen += 1;
+  pucFrame[usLength++] = ((uint8_t)parameters.get(CCS_LAST_STOP_REASON) & 0x3F);
 
-  *pucFrameCur++ = 0xFF;
-  *pucFrameCur++ = 0xFF;
-  *pucFrameCur++ = 0xFF;
-  *usLen += 3;
+  pucFrame[usLength++] = 0xFF;
+  pucFrame[usLength++] = 0xFF;
+  pucFrame[usLength++] = 0xFF;
 
   for (int i = 0; i < 24; ++i) {
-    getParam(i, pucFrame, usLen);
+    getParam(i, pucFrame, &usLength);
   }
 
-  pucFrame[MB_SNG_DATA_FUNC_OFF+1] = (UCHAR)(*usLen - 2);
+  pucFrame[MB_SNG_DATA_FUNC_OFF+1] = (uint8_t)(usLength - 2);
+  *usLen = usLength;
 
   return eStatus;
 }
 
-eMbSngException eMbSngFuncRandomSample(UCHAR * pucFrame, USHORT * usLen)
+eMbSngException eMbSngFuncRandomSample(uint8_t * pucFrame, uint16_t * usLen)
+{
+  eMbSngException eStatus = MB_SNG_EX_NONE;
+  uint16_t usLength = 0;
+
+  uint8_t paramCount = pucFrame[MB_SNG_DATA_FUNC_OFF+1];
+  if (paramCount > 10)
+    paramCount = 10;
+  uint8_t paramIndex[10];
+  for (int i = 0; i < paramCount; ++i) {
+    paramIndex[i] = pucFrame[MB_SNG_DATA_FUNC_OFF+2 + i];
+  }
+
+  pucFrame[usLength++] = 0x20;
+  pucFrame[usLength++] = 0;
+
+  for (int i = 0; i < paramCount; ++i) {
+    pucFrame[usLength++] = paramIndex[i];
+    getParam(paramIndex[i], pucFrame, &usLength);
+  }
+
+  pucFrame[MB_SNG_DATA_FUNC_OFF+1] = (uint8_t)(usLength - 2);
+  *usLen = usLength;
+
+  return eStatus;
+}
+
+eMbSngException eMbSngFuncSampleArchive(uint8_t * pucFrame, uint16_t * usLen)
 {
   eMbSngException eStatus = MB_SNG_EX_NONE;
 
   return eStatus;
 }
 
-eMbSngException eMbSngFuncSampleArchive(UCHAR * pucFrame, USHORT * usLen)
+eMbSngException eMbSngFuncWriteRegister(uint8_t * pucFrame, uint16_t * usLen)
 {
   eMbSngException eStatus = MB_SNG_EX_NONE;
 
   return eStatus;
 }
 
-eMbSngException eMbSngFuncWriteRegister(UCHAR * pucFrame, USHORT * usLen)
-{
-  eMbSngException eStatus = MB_SNG_EX_NONE;
-
-  return eStatus;
-}
-
-eMbSngException eMbSngFuncRestartInterfaceUnit(UCHAR * pucFrame, USHORT * usLen)
+eMbSngException eMbSngFuncRestartInterfaceUnit(uint8_t * pucFrame, uint16_t * usLen)
 {
   eMbSngException eStatus = MB_SNG_EX_NONE;
 
