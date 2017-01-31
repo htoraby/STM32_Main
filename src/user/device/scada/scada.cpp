@@ -47,17 +47,18 @@ void Scada::task()
   uint8_t address = parameters.get(CCS_SCADA_ADDRESS);
   uint32_t baudRate = parameters.get(CCS_SCADA_BYTERATE);
   eMBParity parity = (eMBParity)parameters.get(CCS_SCADA_PARITY);
+  uint8_t stopBits = parameters.get(CCS_SCADA_STOPBIT);
   delay_ = parameters.get(CCS_SCADA_DELAY);
 
   if (parameters.get(CCS_SCADA_TYPE) == Scada::SurgutneftegasType) {
-    eMbSngInit(address, SCADA_UART, baudRate,  parity);
+    eMbSngInit(address, SCADA_UART, baudRate,  parity, stopBits);
     eMbSngEnable();
     while (1) {
       eMbSngPoll();
       osDelay(1);
     }
   } else {
-    eMBInit(MB_RTU, address, SCADA_UART, baudRate,  parity);
+    eMBInit(MB_RTU, address, SCADA_UART, baudRate,  parity, stopBits);
     eMBEnable();
     while (1) {
       eMBPoll();

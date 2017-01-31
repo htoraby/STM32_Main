@@ -1294,6 +1294,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_SCADA_ADDRESS:
   case CCS_SCADA_BYTERATE:
   case CCS_SCADA_PARITY:
+  case CCS_SCADA_STOPBIT:
   case CCS_SCADA_DELAY:
     err = setValue(id, value, eventType);
     if ((value != oldValue) && !err)

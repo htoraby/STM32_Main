@@ -9,7 +9,7 @@ static volatile eMbSngState eState = STATE_NOT_INITIALIZED;
 static volatile eMbSngSndState eSndState;
 static volatile eMbSngRcvState eRcvState;
 
-volatile UCHAR  ucBuf[MB_SNG_SIZE_MAX];
+volatile UCHAR ucBuf[MB_SNG_SIZE_MAX];
 
 static volatile UCHAR *pucSndBufferCur;
 static volatile USHORT usSndBufferCount;
@@ -26,7 +26,7 @@ BOOL(*pxMBFrameCBTransmitterEmpty)(void);
 BOOL(*pxMBPortCBTimerExpired)(void);
 
 eMBErrorCode eMbSngInit(UCHAR ucSlaveAddress, UCHAR ucPort,
-                        ULONG ulBaudRate, eMBParity eParity)
+                        ULONG ulBaudRate, eMBParity eParity, UCHAR stopBits)
 {
   eMBErrorCode eStatus = MB_ENOERR;
   ULONG usTimerT35_50us;
@@ -42,7 +42,7 @@ eMBErrorCode eMbSngInit(UCHAR ucSlaveAddress, UCHAR ucPort,
     pxMBPortCBTimerExpired = xMbSngTimerT35Expired;
 
     ENTER_CRITICAL_SECTION();
-    if (xMBPortSerialInit(ucPort, ulBaudRate, 8, eParity) != TRUE) {
+    if (xMBPortSerialInit(ucPort, ulBaudRate, 8, eParity, stopBits) != TRUE) {
       eStatus = MB_EPORTERR;
     }
     else {

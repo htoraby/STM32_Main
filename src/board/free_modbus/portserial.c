@@ -61,7 +61,7 @@ void vMBPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable)
 }
 
 BOOL xMBPortSerialInit(UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits,
-                       eMBParity eParity)
+                       eMBParity eParity, UCHAR stopBits)
 {
   UNUSED(ucDataBits);
 
@@ -106,7 +106,11 @@ BOOL xMBPortSerialInit(UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits,
     break;
   };
 
-  uart->Init.StopBits = UART_STOPBITS_1;
+  if (stopBits == 2)
+    uart->Init.StopBits = UART_STOPBITS_2;
+  else
+    uart->Init.StopBits = UART_STOPBITS_1;
+
   uart->Init.Mode = UART_MODE_TX_RX;
   uart->Init.HwFlowCtl = UART_HWCONTROL_NONE;
   uart->Init.OverSampling = UART_OVERSAMPLING_16;

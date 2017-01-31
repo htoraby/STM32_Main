@@ -67,11 +67,12 @@ typedef enum
  * \param ucPort
  * \param ulBaudRate
  * \param eParity
+ * \param stopBits
  *
  * \return Ошибка типа eMBErrorCode
  */
 eMBErrorCode eMbSngInit(UCHAR ucSlaveAddress, UCHAR ucPort,
-                        ULONG ulBaudRate, eMBParity eParity);
+                        ULONG ulBaudRate, eMBParity eParity, UCHAR stopBits);
 
 /*! \ingroup modbus SNG
  * \brief Release resources used by the protocol stack.
