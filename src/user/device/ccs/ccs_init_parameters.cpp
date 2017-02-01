@@ -7586,7 +7586,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_COUNTER_ALL_RESET - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_CMD_COUNTER_ALL_RESET - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_CMD_COUNTER_ALL_RESET - CCS_BEGIN].code                        = 18;
-  // 
+  // Напряжение на выходе ТМПН
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].id                              = CCS_VOLTAGE_TRANS_OUT;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].operation                       = OPERATION_READ;

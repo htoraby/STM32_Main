@@ -145,13 +145,18 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+233) = parameters.get(CCS_VOLTAGE_TRANS_OUT);
   *(float*)(buffer+237) = parameters.get(CCS_TURBO_ROTATION_NOW);
   *(float*)(buffer+241) = parameters.get(VSD_ROTATION);
-//  *(float*)(buffer+245) =
-//  *(float*)(buffer+249) =
+  *(float*)(buffer+245) = parameters.get(TMS_HOWMIDITY_DISCHARGE);
+  *(float*)(buffer+249) = parameters.get(CCS_VOLTAGE_TRANS_OUT);
 
 #if (HARDWARE_VERSION >= 0x0200)
   write(buffer, 253, false);
 
   memset(buffer, 0, sizeof(buffer));
+
+  *(float*)(buffer+0) = parameters.get(CCS_VOLTAGE_PHASE_1_2);
+  *(float*)(buffer+4) = parameters.get(CCS_VOLTAGE_PHASE_2_3);
+  *(float*)(buffer+8) = parameters.get(CCS_VOLTAGE_PHASE_3_1);
+
   write(buffer, 256);
 #else
   write(buffer, 253);

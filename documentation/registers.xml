@@ -12607,6 +12607,7 @@
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>XXXXXX</format>
 		<code>0</code>
+		<comment>Напряжение на выходе ТМПН</comment>
 	</param>
 	<param>
 		<id>633</id>
@@ -31285,7 +31286,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>Обводненность</text>
-		<short_text>Обводненность</short_text>
+		<short_text>Обв., %</short_text>
 		<form>1.5 Текущие параметры ТМС</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
