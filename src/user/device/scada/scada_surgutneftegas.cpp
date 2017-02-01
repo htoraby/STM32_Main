@@ -435,7 +435,8 @@ eMbSngException eMbSngFuncRandomSample(uint8_t * pucFrame, uint16_t * usLen)
 
   uint8_t paramCount = pucFrame[MB_SNG_DATA_FUNC_OFF+1];
   if (paramCount > 10)
-    paramCount = 10;
+    return MB_SNG_EX_ILLEGAL_LEN;
+
   uint8_t paramIndex[10];
   for (int i = 0; i < paramCount; ++i) {
     paramIndex[i] = pucFrame[MB_SNG_DATA_FUNC_OFF+2 + i];
@@ -457,7 +458,7 @@ eMbSngException eMbSngFuncRandomSample(uint8_t * pucFrame, uint16_t * usLen)
 
 eMbSngException eMbSngFuncSampleArchive(uint8_t * pucFrame, uint16_t * usLen)
 {
-  eMbSngException eStatus = MB_SNG_EX_NONE;
+  eMbSngException eStatus = MB_SNG_EX_ILLEGAL_DATA;
 
   return eStatus;
 }
@@ -465,13 +466,45 @@ eMbSngException eMbSngFuncSampleArchive(uint8_t * pucFrame, uint16_t * usLen)
 eMbSngException eMbSngFuncWriteRegister(uint8_t * pucFrame, uint16_t * usLen)
 {
   eMbSngException eStatus = MB_SNG_EX_NONE;
+  uint16_t usLength = 0;
+  unTypeData data;
+
+  uint8_t paramCount = (pucFrame[MB_SNG_DATA_FUNC_OFF+1]-2)/3;
+  for (int i = 0; i < paramCount; ++i) {
+    uint8_t address = pucFrame[MB_SNG_DATA_FUNC_OFF+2 + i*3];
+    ScadaParameter *param = scada->parameter(address);
+    if (param == NULL)
+      continue;
+    if (param->operation == OPERATION_READ)
+      return MB_SNG_EX_ERROR_WRITE;
+    if ((param->operation == OPERATION_LIMITED) && ksu.isWorkMotor())
+      return MB_SNG_EX_CMD_BLOCK;
+
+    data.uint32_t = 0;
+    data.char_t[0] = pucFrame[MB_SNG_DATA_FUNC_OFF+2 + i*3 + 1];
+    data.char_t[1] = pucFrame[MB_SNG_DATA_FUNC_OFF+2 + i*3 + 2];
+    data.uint32_t = bcdToDec(data.uint16_t[0]);
+    if (checkRange(data.uint32_t, param->min, param->max, true) != ok_r)
+      return MB_SNG_EX_ILLEGAL_DATA;
+
+    float value = (float)data.uint32_t;
+    value = value * param->coefficient;
+    value = parameters.convertTo(value, param->physic, param->unit);
+    param->value.float_t = value;
+    if (scada->setNewValue(param) != ok_r)
+      return MB_SNG_EX_ILLEGAL_DATA;
+  }
+
+  pucFrame[usLength++] = 0x40;
+  pucFrame[usLength++] = 0;
+  *usLen = usLength;
 
   return eStatus;
 }
 
 eMbSngException eMbSngFuncRestartInterfaceUnit(uint8_t * pucFrame, uint16_t * usLen)
 {
-  eMbSngException eStatus = MB_SNG_EX_NONE;
+  eMbSngException eStatus = MB_SNG_EX_ILLEGAL_DATA;
 
   return eStatus;
 }

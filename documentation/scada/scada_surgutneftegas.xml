@@ -1653,7 +1653,7 @@
 	<param>
 		<id>CCS_MOTOR_TYPE</id>
 		<address>137</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>0</min>
@@ -1664,7 +1664,7 @@
 	<param>
 		<id>VSD_MOTOR_POLES</id>
 		<address>138</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
 		<min>1</min>
@@ -2158,7 +2158,7 @@
 	<param>
 		<id>VSD_MOTOR_VOLTAGE</id>
 		<address>182</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -2171,7 +2171,7 @@
 	<param>
 		<id>VSD_MOTOR_CURRENT</id>
 		<address>183</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -2184,7 +2184,7 @@
 	<param>
 		<id>VSD_MOTOR_POWER</id>
 		<address>184</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_POWER</physic>
 		<unit>POWER_KW</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -2197,7 +2197,7 @@
 	<param>
 		<id>VSD_MOTOR_COS_PHI</id>
 		<address>185</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>0.001</coefficient>
 		<min>0</min>
@@ -2234,7 +2234,7 @@
 	<param>
 		<id>CCS_TRANS_VOLTAGE_TAP_OFF</id>
 		<address>188</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<unit>VOLTAGE_V</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>
@@ -2346,7 +2346,7 @@
 	<param>
 		<id>VSD_UF_UHH</id>
 		<address>198</address>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_CURRENT</physic>
 		<unit>CURRENT_A</unit>
 		<typeData>TYPE_DATA_UINT16</typeData>

@@ -102,7 +102,6 @@ public:
    */
   ScadaParameter *parameter(uint16_t address);
 
-protected:
   /*!
    * \brief Метод обработки значения параметра полученного от Скады
    * \param param
@@ -110,6 +109,7 @@ protected:
    */
   virtual int setNewValue(ScadaParameter *param);
 
+protected:
   /*!
    * \brief Метод получения размера типа переменной
    * \param typeData
@@ -119,7 +119,7 @@ protected:
 
   /*!
    * \brief Метод получения индекса в массиве параметров
-   * \param address - адрес регистра
+   * \param address - адрес регистра + 1
    * \return
    */
   int getIndexAtAddress(int address);

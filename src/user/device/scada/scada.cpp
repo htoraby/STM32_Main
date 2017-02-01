@@ -105,7 +105,7 @@ inline int Scada::getIndexAtAddress(int address)
 }
 
 ScadaParameter * Scada::parameter(uint16_t address) {
-  int index = getIndexAtAddress(address);
+  int index = getIndexAtAddress(address+1);
   if (index == -1)
     return NULL;
 
