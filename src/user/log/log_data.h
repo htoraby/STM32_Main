@@ -17,6 +17,8 @@ public:
   void deInit();
   void task();
 
+  void add();
+
 private:
   /*!
    * \brief Метод добавления записи в архив
@@ -27,6 +29,7 @@ private:
 
   //! Идентификатор задачи
   osThreadId threadId_;
+  osSemaphoreId addSemaphoreId_;
 
 };
 

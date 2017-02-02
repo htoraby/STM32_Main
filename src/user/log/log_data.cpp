@@ -23,11 +23,15 @@ void LogData::init()
 
   osThreadDef_t t = {"LogData", logDataTask, osPriorityNormal, 0, 3 * configMINIMAL_STACK_SIZE};
   threadId_ = osThreadCreate(&t, this);
+
+  addSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(addSemaphoreId_, 0);
 }
 
 void LogData::deInit()
 {
   osThreadTerminate(threadId_);
+  osSemaphoreDelete(addSemaphoreId_);
   Log::deInit();
 }
 
@@ -36,33 +40,44 @@ void LogData::task()
   int normTimeCnt = 0;
   int fastTimeCnt = 0;
   bool startFastMode = false;
+  int time1s = HAL_GetTick();
 
-  while (1) {
-    osDelay(1000);
+  while (1) {  
+    if (osSemaphoreWait(addSemaphoreId_, 1) != osEventTimeout)
+      add(NormModeCode);
 
-    if (ksu.isDelay()) {
-      if (!startFastMode) {
-        startFastMode = true;
-        add(FastModeCode);
-      } else {
-        int period = parameters.get(CCS_LOG_PERIOD_FAST);
-        if (++fastTimeCnt >= period) {
-          fastTimeCnt = 0;
+    if ((HAL_GetTick() - time1s) >= 1000) {
+      time1s = HAL_GetTick();
+
+      if (ksu.isDelay()) {
+        if (!startFastMode) {
+          startFastMode = true;
           add(FastModeCode);
+        } else {
+          int period = parameters.get(CCS_LOG_PERIOD_FAST);
+          if (++fastTimeCnt >= period) {
+            fastTimeCnt = 0;
+            add(FastModeCode);
+          }
         }
+      } else {
+        startFastMode = false;
+        fastTimeCnt = 0;
       }
-    } else {
-      startFastMode = false;
-      fastTimeCnt = 0;
-    }
 
-    int period = parameters.get(CCS_LOG_PERIOD_NORMAL);
-    if (++normTimeCnt >= period) {
-      normTimeCnt = 0;
-      if (!ksu.isDelay())
-        add(NormModeCode);
+      int period = parameters.get(CCS_LOG_PERIOD_NORMAL);
+      if (++normTimeCnt >= period) {
+        normTimeCnt = 0;
+        if (!ksu.isDelay())
+          add(NormModeCode);
+      }
     }
   }
+}
+
+void LogData::add()
+{
+  osSemaphoreRelease(addSemaphoreId_);
 }
 
 void LogData::add(uint8_t code)

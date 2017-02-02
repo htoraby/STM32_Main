@@ -433,6 +433,7 @@ void Ccs::start(LastReasonRun reason)
 void Ccs::stop(LastReasonStop reason)
 {
   if (checkCanStop()) {
+    logData.add();
     setNewValue(CCS_LAST_STOP_REASON_TMP, reason);
     if (reason == LastReasonStopRemote)
       setBlock();
@@ -496,6 +497,7 @@ void Ccs::cmdStop(int value)
 {
   resetCmd(CCS_CMD_STOP);
   if (checkCanStop()) {
+    logData.add();
     switch (value) {
     case CmdStopRemote:
       setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopRemote);
