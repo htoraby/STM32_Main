@@ -43,7 +43,7 @@ void RegimeRunSkipResonantFreq::processingStateIdle()
 
 void RegimeRunSkipResonantFreq::processingStateRunning()
 {
-  ksu.start(runReason_);
+  ksu.start(runReason_, true);
   state_ = WorkState;
 }
 

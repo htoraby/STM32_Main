@@ -98,7 +98,7 @@ public:
    * \brief Метод запуска двигателя
    * \param reason - Причина запуска
    */
-  void start(LastReasonRun reason);
+  void start(LastReasonRun reason, bool force = false);
 
   /*!
    * \brief Метод останова двигателя
@@ -519,7 +519,7 @@ private:
    * \brief Метод проверки возможности пуска
    * \return
    */
-  bool checkCanStart();
+  bool checkCanStart(bool isForce = false);
 
   /*!
    * \brief initStart

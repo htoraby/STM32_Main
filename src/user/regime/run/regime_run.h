@@ -3,8 +3,6 @@
 
 #include "regime.h"
 
-
-
 class RegimeRun : public Regime
 {
 public:

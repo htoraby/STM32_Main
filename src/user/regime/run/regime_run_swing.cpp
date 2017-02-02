@@ -60,7 +60,7 @@ void RegimeRunSwing::processingStateRunning()
           if (!err) {                                 // Задали напряжение в нижней точке диапазона
             err = setU2();                            // Пытаемся задать напряжение в верхней точке диапазона
             if (!err) {                               // Задали напряжение в верхней точке диапазона
-              ksu.start(runReason_);                  // Подаём команду на пуск
+              ksu.start(runReason_, true);            // Подаём команду на пуск
               logEvent.add(OtherCode, AutoType, RegimeRunSwingStartId);
               state_ = WorkState;                     // Переходим в состояние работа
             }
@@ -109,7 +109,7 @@ void RegimeRunSwing::processingStateRunning()
     }
     break;
   case RunningState + 5:
-    ksu.start(runReason_);                            // Подаём команду на пуск
+    ksu.start(runReason_, true);                      // Подаём команду на пуск
     state_ = WorkState + 9;                           // Состояние формирования ошибки режима
     break;
   }
