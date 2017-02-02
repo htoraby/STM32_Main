@@ -2,6 +2,8 @@
 #include "regime_main.h"
 #include "protection_main.h"
 
+#define MIN_VOLTAGE 2  // Процент от номинала
+
 ProtectionPowerOff::ProtectionPowerOff()
   : isInit_(false)
 {
@@ -48,7 +50,7 @@ void ProtectionPowerOff::setCurrentParamProt()
 bool ProtectionPowerOff::checkAlarm()
 {
   bool alarm = false;
-  alarm = Protection::isLowerLimit(1);
+  alarm = Protection::isLowerLimit(MIN_VOLTAGE);
 
 #if (USE_POWER_OFF == 1)
   alarm = false;
@@ -84,28 +86,36 @@ float ProtectionPowerOff::calcValue()
 
 void ProtectionPowerOff::addEventReactionProt()
 {
-  logEvent.add(ProtectCode, AutoType, protReactEventId_, 1, valueParameter_);
+  logEvent.add(ProtectCode, AutoType, protReactEventId_, MIN_VOLTAGE, valueParameter_);
 }
 
 void ProtectionPowerOff::processingStateRun()       // Состояние работа
 {
-  if ((ksu.isProgramMode() && (parameters.get(CCS_RGM_PERIODIC_MODE) != Regime::OffAction)) ||
-      (ksu.isAutoMode() && ksu.isWorkMotor() && (parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE) == Protection::ProtModeRestart))) {
+  if (ksu.isWorkMotor() ||
+      (ksu.isProgramMode() && (parameters.get(CCS_RGM_PERIODIC_MODE) != Regime::OffAction))) {
     if (alarm_ && !protUnderVoltIn.isRestart()) {
 #if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "ProtectionPowerOff::processingStateRun() Trigger -> AR");
 #endif
       addEventReactionProt();
-      parameters.set(CCS_RESTART_COUNT, 0);
-      ksu.setRestart();
+      if ((ksu.isProgramMode() && (parameters.get(CCS_RGM_PERIODIC_MODE) != Regime::OffAction)) ||
+          (ksu.isAutoMode() && (parameters.get(CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE) == Protection::ProtModeRestart))) {
+        restart_ = true;
+        parameters.set(CCS_RESTART_COUNT, 0);
+        ksu.setRestart();
+      }
+      else {
+        restart_ = false;
+      }
+
       if (ksu.isWorkMotor()) {
         ksu.stop(lastReasonStop_);
       }
       else if (ksu.isStopMotor() && (parameters.get(CCS_LAST_STOP_REASON_TMP) == LastReasonStopProgram)) {
         parameters.set(CCS_LAST_STOP_REASON_TMP, lastReasonStop_);
       }
+
       timer_ = 0;
-      restart_ = true;
       state_ = StateStop;
       return;
     }
