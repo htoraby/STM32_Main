@@ -137,17 +137,18 @@ void Ccs::mainTask()
 
     controlPower();
 
+    if (isPowerOff())
+      continue;
+
     if ((HAL_GetTick() - time10ms) >= 10) {
       time10ms = HAL_GetTick();
 
-      if (!isPowerOff()) {
-        changedWorkMode();
-        changedCondition();
+      changedWorkMode();
+      changedCondition();
 
-        calcTime();
-        checkConnectDevice();
-        setRelayOutputs();
-      }
+      calcTime();
+      checkConnectDevice();
+      setRelayOutputs();
     }
   }
 }

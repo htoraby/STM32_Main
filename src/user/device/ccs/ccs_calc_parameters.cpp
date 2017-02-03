@@ -27,7 +27,7 @@ void Ccs::calcParametersTask()
     osDelay(1);
 
     if (isPowerOff())
-      osDelay(osWaitForever);
+      continue;
 
     calcDigitalInputs();
 
