@@ -15,7 +15,10 @@
 #include "usb_host.h"
 
 #define DELAY_MAIN_TASK 1
-#define TIMEOUT_POWER_OFF 60000 //!< 1 минута на отключение питания ИБП
+#define TIMEOUT_POWER_OFF 60000 //!< мс на отключение питания ИБП
+#define TIMEOUT_LCD_OFF 1000 //!< Время на отключение подсветки (мс)
+#define TIMEOUT_MASTER_OFF 3000 //!< Время на отключение верхнего контроллера (мс)
+#define TIMEOUT_SLAVE_OFF 10000 //!< Время на отключение нижнего контроллера (мс)
 #define DELAY_CHECK_CONNECT_DEVICE 1000 //!< Задержка проверки подключения устройств - 20 сек
 
 //! Массив параметров устройства
@@ -52,7 +55,7 @@ Ccs::Ccs()
   , flagOld_(-1)
   , workModeOld_(-1)
   , powerOffFlag_(false)
-  , powerOffTimeout_(TIMEOUT_POWER_OFF)
+  , powerOffTimeout_(0)
   , checkConnectDeviceTimer_(DELAY_CHECK_CONNECT_DEVICE)
   , isConnectMaster_(true)
   , countPhaseRotation_(0)
@@ -1534,13 +1537,16 @@ uint8_t Ccs::setNewValue(uint16_t id, int value, EventType eventType)
 void Ccs::controlPower()
 {
   if (!isPowerGood()) {
-    if (powerOffTimeout_ == (TIMEOUT_POWER_OFF - 10000)/DELAY_MAIN_TASK) {
-      setCmd(CCS_CMD_AM335_POWER_OFF);
+    if (powerOffTimeout_ == TIMEOUT_LCD_OFF/DELAY_MAIN_TASK) {
       offLcd();
     }
+    if (powerOffTimeout_ == TIMEOUT_MASTER_OFF/DELAY_MAIN_TASK) {
+      setCmd(CCS_CMD_AM335_POWER_OFF);
+    }
 
-    if ((powerOffTimeout_ == 10000/DELAY_MAIN_TASK) || !isUpsGood()) {
+    if ((powerOffTimeout_ == TIMEOUT_SLAVE_OFF/DELAY_MAIN_TASK) || !isUpsGood()) {
       if (!powerOffFlag_) {
+        offLcd();
         setCmd(CCS_CMD_AM335_POWER_OFF);
 
         // Запись в журнал "Отключение питания"
@@ -1550,22 +1556,22 @@ void Ccs::controlPower()
       }
     }
 
-    if (!powerOffTimeout_) {
+    if (powerOffTimeout_ == TIMEOUT_POWER_OFF/DELAY_MAIN_TASK) {
       turnPowerBattery(false);
     }
-    else {
-      powerOffTimeout_--;
-    }
+    powerOffTimeout_++;
   } else {
     resetCmd(CCS_CMD_AM335_POWER_OFF);
 
-    if (powerOffTimeout_ <= (TIMEOUT_POWER_OFF - 10000)/DELAY_MAIN_TASK) {
+    if (powerOffTimeout_ > TIMEOUT_LCD_OFF/DELAY_MAIN_TASK) {
       onLcd();
+    }
+    if (powerOffTimeout_ > TIMEOUT_MASTER_OFF/DELAY_MAIN_TASK) {
       resetAm335x();
     }
 
     powerOffFlag_ = false;
-    powerOffTimeout_ = TIMEOUT_POWER_OFF;
+    powerOffTimeout_ = 0;
   }
 }
 
