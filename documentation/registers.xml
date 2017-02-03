@@ -604,8 +604,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
-		<text>Период записи в работе</text>
-		<short_text>Период записи в работе</short_text>
+		<text>Период записи</text>
+		<short_text>Период записи</short_text>
 		<form>2.0 Архивы</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -625,8 +625,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
-		<text>Экстрен. запись в работе</text>
-		<short_text>Экстрен. запись в работе</short_text>
+		<text>Период экстренной записи</text>
+		<short_text>Период экстренной записи</short_text>
 		<form>2.0 Архивы</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -646,8 +646,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>300.0</value>
-		<text>Период записи в останове</text>
-		<short_text>Период записи в останове</short_text>
+		<text>Период записи ТМС</text>
+		<short_text>Период записи ТМС</short_text>
 		<form>2.0 Архивы</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
