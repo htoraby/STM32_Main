@@ -37,10 +37,14 @@ void LogTms::task()
   while (1) {
     osDelay(1000);
 
-    int period = parameters.get(CCS_LOG_PERIOD_DHS);
-    if (++timeCnt >= period) {
-      timeCnt = 0;
-      add();
+    if (parameters.get(CCS_CONDITION) == CCS_CONDITION_STOP) {
+      int period = parameters.get(CCS_LOG_PERIOD_DHS);
+      if (++timeCnt >= period) {
+        timeCnt = 0;
+        add();
+      }
+    } else {
+      timeCnt = parameters.get(CCS_LOG_PERIOD_DHS);
     }
   }
 }
