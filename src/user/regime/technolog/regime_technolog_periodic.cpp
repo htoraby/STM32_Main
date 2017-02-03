@@ -187,23 +187,13 @@ void RegimeTechnologPeriodic::processing()
 #endif
         }
       }
-      else {
-        state_ = PauseState + 1;
-      }
     } else {
       state_ = IdleState;
 #if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "RegimeTechnologPeriodic::processing() During pause proved to be (state = %d))", state_);
 #endif
     }
-    break;
-  case PauseState + 1:
-    if (ksu.isStopMotor()) {     // Двигатель - останов;
-      if (!protPowerOff.isRestart())
-        state_ = PauseState;
-    } else {
-      state_ = IdleState;
-    }
+
     break;
   case RestartState:
     if (ksu.isProgramMode()) { // Режим - программа;
