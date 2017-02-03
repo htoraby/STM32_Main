@@ -49,7 +49,10 @@ void LogData::task()
     if ((HAL_GetTick() - time1s) >= 1000) {
       time1s = HAL_GetTick();
 
-      if (ksu.isDelay()) {
+      if ((ksu.isDelay()) || (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUNNING) ||
+          (parameters.get(CCS_CONDITION) == CCS_CONDITION_STOPPING)) {
+        normTimeCnt = 0;
+
         if (!startFastMode) {
           startFastMode = true;
           add(FastModeCode);
@@ -63,13 +66,12 @@ void LogData::task()
       } else {
         startFastMode = false;
         fastTimeCnt = 0;
-      }
 
-      int period = parameters.get(CCS_LOG_PERIOD_NORMAL);
-      if (++normTimeCnt >= period) {
-        normTimeCnt = 0;
-        if (!ksu.isDelay())
+        int period = parameters.get(CCS_LOG_PERIOD_NORMAL);
+        if (++normTimeCnt >= period) {
+          normTimeCnt = 0;
           add(NormModeCode);
+        }
       }
     }
   }
