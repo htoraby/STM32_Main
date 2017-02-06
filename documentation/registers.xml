@@ -14100,7 +14100,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Напряжение Uab</text>
-		<short_text>Напряжение Uab</short_text>
+		<short_text>Uвх.АB, В</short_text>
 		<form>1.3 Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -14121,7 +14121,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Напряжение Ubc</text>
-		<short_text>Напряжение Ubc</short_text>
+		<short_text>Uвх.BC, В</short_text>
 		<form>1.3 Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -14142,7 +14142,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Напряжение Uca</text>
-		<short_text>Напряжение Uca</short_text>
+		<short_text>Uвх.CA, В</short_text>
 		<form>1.3 Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
