@@ -9639,11 +9639,13 @@
 		<min>0.0</min>
 		<max>1000.0</max>
 		<def>0.0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
 		<text>Поддерживаемое значение</text>
-		<short_text>Поддержание. Значение</short_text>
+		<short_text>Поддержание. Значение - Ток</short_text>
 		<form>5.1.4 Поддержание параметра</form>
+		<format>XXXX_X</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Поддержка значения - Ток</comment>
 	</param>
@@ -13695,12 +13697,19 @@
 		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMERIC</physic>
+		<physic>PHYSIC_PRESSURE</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
+		<max>650.0</max>
+		<def>0.0</def>
+		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
-		<form>NULL</form>
+		<value>0.0</value>
+		<text>Поддерживаемое значение</text>
+		<short_text>Поддержание. Значение  - Давление</short_text>
+		<form>5.1.4 Поддержание параметра</form>
+		<unit>PRESSURE_MPA</unit>
+		<unit_lcd>PRESSURE_MPA</unit_lcd>
+		<format>XXX_XXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Поддержка значения - Давление</comment>
 	</param>
@@ -13709,12 +13718,19 @@
 		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMERIC</physic>
+		<physic>PHYSIC_TEMPERATURE</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
-		<discret>1</discret>
+		<max>150.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
-		<form>NULL</form>
+		<value>0.0</value>
+		<text>Поддерживаемое значение</text>
+		<short_text>Поддержание. Значение - Температура</short_text>
+		<form>5.1.4 Поддержание параметра</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXX_X</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Поддержка значения - Температура</comment>
 	</param>
@@ -13725,10 +13741,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>10000.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<form>NULL</form>
+		<value>0.0</value>
+		<text>Поддерживаемое значение</text>
+		<short_text>Поддержание. Значение - Аналоговый вход</short_text>
+		<form>5.1.4 Поддержание параметра</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Поддержка значения - Аналоговый вход</comment>
 	</param>
