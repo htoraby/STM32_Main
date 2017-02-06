@@ -795,6 +795,257 @@ void TmsTransfer::getNewValue(uint16_t id)
       setValue(id, value);
     }
     break;
+  case TMS_PRESSURE_INTAKE:
+    {
+      float state = 0;
+      // Анализ отказа датчика "Давление на приёме насоса"
+      if (checkBit((uint32_t)parameters.get(TMS_PSW_TMSP_1), 0)) {
+        value = NAN;
+        state = 2;
+      }
+      // Анализ наличия датчика "Давление на приёме насоса"
+      if (checkBit((uint32_t)parameters.get(TMS_SENSOR_TMSP), 0)) {
+        value = NAN;
+        state = 1;
+      }
+      // Обрыв связи
+      if (parameters.get(TMS_FAIL_LINK_TMSP)) {
+        value = NAN;
+        state = 0;
+      }
+      parameters.set(CCS_DHS_STATE_SENSOR_PRESSURE_INTAKE, state);
+      setValue(id, value);
+    }
+    break;
+  case TMS_TEMPERATURE_INTAKE:
+    {
+      float state = 0;
+      // Анализ отказа датчика "Температура на приёме насоса"
+      if (checkBit((uint32_t)parameters.get(TMS_PSW_TMSP_1), 1)) {
+        value = NAN;
+        state = 2;
+      }
+      // Анализ наличия датчика "Температура на приёме насоса"
+      if (checkBit((uint32_t)parameters.get(TMS_SENSOR_TMSP), 1)) {
+        value = NAN;
+        state = 1;
+      }
+      // Отказ, отсутствие датчика или обрыв связи
+      if (parameters.get(TMS_FAIL_LINK_TMSP)) {
+        value = NAN;
+        state = 0;
+      }
+      parameters.set(CCS_DHS_STATE_SENSOR_TEMPERATURE_INTAKE, state);
+      setValue(id, value);
+    }
+    break;
+  case TMS_TEMPERATURE_WINDING:
+    {
+      float state = 0;
+      // Анализ отказа датчика "Температура обмоток двигателя"
+      if (checkBit((uint32_t)parameters.get(TMS_PSW_TMSP_1), 2)) {
+        value = NAN;
+        state = 2;
+      }
+      // Анализ наличия датчика "Температура обмоток двигателя"
+      if (checkBit((uint32_t)parameters.get(TMS_SENSOR_TMSP), 2)) {
+        value = NAN;
+        state = 1;
+      }
+      // Отказ, отсутствие датчика или обрыв связи
+      if (parameters.get(TMS_FAIL_LINK_TMSP)) {
+        value = NAN;
+        state = 0;
+      }
+      parameters.set(CCS_DHS_STATE_SENSOR_TEMPERATURE_WINDING, state);
+      setValue(id, value);
+    }
+    break;
+  case TMS_TEMPERATURE_MOTOR:
+    {
+      float state = 0;
+      // Анализ отказа датчика "Температура масла двигателя"
+      if (checkBit((uint32_t)parameters.get(TMS_PSW_TMSP_1), 3)) {
+        value = NAN;
+        state = 2;
+      }
+      // Анализ наличия датчика "Температура масла двигателя"
+      if (checkBit((uint32_t)parameters.get(TMS_SENSOR_TMSP), 3)) {
+        value = NAN;
+        state = 1;
+      }
+      // Отказ, отсутствие датчика или обрыв связи
+      if (parameters.get(TMS_FAIL_LINK_TMSP)) {
+        value = NAN;
+        state = 0;
+      }
+      parameters.set(CCS_DHS_STATE_SENSOR_TEMPERATURE_MOTOR, state);
+      setValue(id, value);
+    }
+    break;
+  case TMS_ACCELERATION_X_INTAKE:
+    {
+      float state = 0;
+      // Анализ отказа датчика "Вибрация по оси X"
+      if (checkBit((uint32_t)parameters.get(TMS_PSW_TMSP_1), 5)) {
+        value = NAN;
+        state = 2;
+      }
+      // Анализ наличия датчика "Вибрация по оси X"
+      if (checkBit((uint32_t)parameters.get(TMS_SENSOR_TMSP), 5)) {
+        value = NAN;
+        state = 1;
+      }
+      // Отказ, отсутствие датчика или обрыв связи
+      if (parameters.get(TMS_FAIL_LINK_TMSP)) {
+        value = NAN;
+        state = 0;
+      }
+      parameters.set(CCS_DHS_STATE_SENSOR_ACCELERATION_X_INTAKE, state);
+      setValue(id, value);
+    }
+    break;
+  case TMS_ACCELERATION_Y_INTAKE:
+    {
+      float state = 0;
+      // Анализ отказа датчика "Вибрация по оси Y"
+      if (checkBit((uint32_t)parameters.get(TMS_PSW_TMSP_1), 6)) {
+        value = NAN;
+        state = 2;
+      }
+      // Анализ наличия датчика "Вибрация по оси Y"
+      if (checkBit((uint32_t)parameters.get(TMS_SENSOR_TMSP), 6)) {
+        value = NAN;
+        state = 1;
+      }
+      // Отказ, отсутствие датчика или обрыв связи
+      if (parameters.get(TMS_FAIL_LINK_TMSP)) {
+        value = NAN;
+        state = 0;
+      }
+      parameters.set(CCS_DHS_STATE_SENSOR_ACCELERATION_Y_INTAKE, state);
+      setValue(id, value);
+    }
+    break;
+  case TMS_ACCELERATION_Z_INTAKE:
+    {
+      float state = 0;
+      // Анализ отказа датчика "Вибрация по оси Z"
+      if (checkBit((uint32_t)parameters.get(TMS_PSW_TMSP_1), 7)) {
+        value = NAN;
+        state = 2;
+      }
+      // Анализ наличия датчика "Вибрация по оси Z"
+      if (checkBit((uint32_t)parameters.get(TMS_SENSOR_TMSP), 7)) {
+        value = NAN;
+        state = 1;
+      }
+      // Отказ, отсутствие датчика или обрыв связи
+      if (parameters.get(TMS_FAIL_LINK_TMSP)) {
+        value = NAN;
+        state = 0;
+      }
+      parameters.set(CCS_DHS_STATE_SENSOR_ACCELERATION_Z_INTAKE, state);
+      setValue(id, value);
+    }
+    break;
+  case TMS_PRESSURE_DISCHARGE:
+    {
+      float state = 0;
+      // Анализ отказа датчика "Давление на выкиде насоса в НКТ"
+      if (checkBit((uint32_t)parameters.get(TMS_PSW_TMSP_1), 8)) {
+        value = NAN;
+        state = 2;
+      }
+      // Анализ наличия датчика "Давление на выкиде насоса в НКТ"
+      if (checkBit((uint32_t)parameters.get(TMS_SENSOR_TMSP), 8)) {
+        value = NAN;
+        state = 1;
+      }
+      // Отказ, отсутствие датчика или обрыв связи
+      if (parameters.get(TMS_FAIL_LINK_TMSP)) {
+        value = NAN;
+        state = 0;
+      }
+      parameters.set(CCS_DHS_STATE_SENSOR_PRESSURE_DISCHARGE, state);
+      setValue(id, value);
+    }
+    break;
+  case TMS_TEMPERATURE_DISCHARGE:
+    {
+      float state = 0;
+      // Анализ отказа датчика "Температура на выкиде насоса"
+      if (checkBit((uint32_t)parameters.get(TMS_PSW_TMSP_1), 10)) {
+        value = NAN;
+        state = 2;
+      }
+      // Анализ наличия датчика "Температура на выкиде насоса"
+      if (checkBit((uint32_t)parameters.get(TMS_SENSOR_TMSP), 10)) {
+        value = NAN;
+        state = 1;
+      }
+      // Отказ, отсутствие датчика или обрыв связи
+      if (parameters.get(TMS_FAIL_LINK_TMSP)) {
+        value = NAN;
+        state = 0;
+      }
+      parameters.set(CCS_DHS_STATE_SENSOR_TEMPERATURE_DISCHARGE, state);
+      setValue(id, value);
+    }
+    break;
+  case TMS_FLOW_DISCHARGE:
+    {
+      float state = 0;
+      // Анализ отказа датчика "Расход жидкости на выкиде насоса"
+      if (checkBit((uint32_t)parameters.get(TMS_PSW_TMSP_1), 11)) {
+        value = NAN;
+        state = 2;
+      }
+      // Анализ наличия датчика "Расход жидкости на выкиде насоса"
+      if (checkBit((uint32_t)parameters.get(TMS_SENSOR_TMSP), 11)) {
+        value = NAN;
+        state = 1;
+      }
+      // Отказ, отсутствие датчика или обрыв связи
+      if (parameters.get(TMS_FAIL_LINK_TMSP)) {
+        value = NAN;
+        state = 0;
+      }
+      parameters.set(CCS_DHS_STATE_SENSOR_FLOW_DISCHARGE, state);
+      setValue(id, value);
+    }
+    break;
+  case TMS_HOWMIDITY_DISCHARGE:
+    {
+      float state = 0;
+      // Анализ отказа датчика "Обводненность"
+      if (checkBit((uint32_t)parameters.get(TMS_PSW_TMSP_1), 12)) {
+        value = NAN;
+        state = 2;
+      }
+      // Анализ наличия датчика "Обводненность"
+      if (checkBit((uint32_t)parameters.get(TMS_SENSOR_TMSP), 12)) {
+        value = NAN;
+        state = 1;
+      }
+      // Отказ, отсутствие датчика или обрыв связи
+      if (parameters.get(TMS_FAIL_LINK_TMSP)) {
+        value = NAN;
+        state = 0;
+      }
+      parameters.set(CCS_DHS_STATE_SENSOR_HOWMIDITY, state);
+      setValue(id, value);
+    }
+    break;
+  case TMS_FAIL_LINK_TMSP:
+    if (!parameters.get(TMS_FAIL_LINK_TMSP) && value) {
+      logEvent.add(OtherCode, AutoType, DhsLinkTMSPFailId);
+    }
+    if (parameters.get(TMS_FAIL_LINK_TMSP) && !value) {
+      logEvent.add(OtherCode, AutoType, DhsLinkTMSPOkId);
+    }
+    setValue(id, value);
+    break;
   default:
     setValue(id, value);
     break;
