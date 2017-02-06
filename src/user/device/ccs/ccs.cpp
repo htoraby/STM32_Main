@@ -1496,6 +1496,114 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     parameters.set(VSD_SW_STARTUP_I_LIM_PULSE, value);
     return err;
+  case CCS_DHS_STATE_SENSOR_PRESSURE_INTAKE:
+    if ((value != oldValue) && (value == 0)) {
+      logEvent.add(OtherCode, AutoType, DhsPressureIntakeSensorOkId);
+    }
+    if ((value != oldValue) && (value == 2)) {
+      logEvent.add(OtherCode, AutoType, DhsPressureIntakeSensorFailId);
+    }
+    err = setValue(id, value, eventType);
+    return err;
+  case CCS_DHS_STATE_SENSOR_TEMPERATURE_INTAKE:
+    if ((value != oldValue) && (value == 0)) {
+      logEvent.add(OtherCode, AutoType, DhsTemperatureIntakeSensorOkId);
+    }
+    if ((value != oldValue) && (value == 2)) {
+      logEvent.add(OtherCode, AutoType, DhsTemperatureIntakeSensorFailId);
+    }
+    err = setValue(id, value, eventType);
+    return err;
+  case CCS_DHS_STATE_SENSOR_TEMPERATURE_WINDING:
+    if ((value != oldValue) && (value == 0)) {
+      logEvent.add(OtherCode, AutoType, DhsTemperatureWindingSensorOkId);
+    }
+    if ((value != oldValue) && (value == 2)) {
+      logEvent.add(OtherCode, AutoType, DhsTemperatureWindingSensorFailId);
+    }
+    err = setValue(id, value, eventType);
+    return err;
+  case CCS_DHS_STATE_SENSOR_TEMPERATURE_MOTOR:
+    if ((value != oldValue) && (value == 0)) {
+      logEvent.add(OtherCode, AutoType, DhsTemperatureMotorSensorOkId);
+    }
+    if ((value != oldValue) && (value == 2)) {
+      logEvent.add(OtherCode, AutoType, DhsTemperatureMotorSensorFailId);
+    }
+    err = setValue(id, value, eventType);
+    return err;
+  case CCS_DHS_STATE_SENSOR_ACCELERATION_X_INTAKE:
+    if ((value != oldValue) && (value == 0)) {
+      logEvent.add(OtherCode, AutoType, DhsAccelerationXIntakeSensorOkId);
+    }
+    if ((value != oldValue) && (value == 2)) {
+      logEvent.add(OtherCode, AutoType, DhsAccelerationXIntakeSensorFailId);
+    }
+    err = setValue(id, value, eventType);
+    return err;
+  case CCS_DHS_STATE_SENSOR_ACCELERATION_Y_INTAKE:
+    if ((value != oldValue) && (value == 0)) {
+      logEvent.add(OtherCode, AutoType, DhsAccelerationYIntakeSensorOkId);
+    }
+    if ((value != oldValue) && (value == 2)) {
+      logEvent.add(OtherCode, AutoType, DhsAccelerationYIntakeSensorFailId);
+    }
+    err = setValue(id, value, eventType);
+    return err;
+  case CCS_DHS_STATE_SENSOR_ACCELERATION_Z_INTAKE:
+    if ((value != oldValue) && (value == 0)) {
+      logEvent.add(OtherCode, AutoType, DhsAccelerationZIntakeSensorOkId);
+    }
+    if ((value != oldValue) && (value == 2)) {
+      logEvent.add(OtherCode, AutoType, DhsAccelerationZIntakeSensorFailId);
+    }
+    err = setValue(id, value, eventType);
+    return err;
+  case CCS_DHS_STATE_SENSOR_PRESSURE_DISCHARGE:
+    if ((value != oldValue) && (value == 0)) {
+      logEvent.add(OtherCode, AutoType, DhsPressureDischargeSensorOkId);
+    }
+    if ((value != oldValue) && (value == 2)) {
+      logEvent.add(OtherCode, AutoType, DhsPressureDischargeSensorFailId);
+    }
+    err = setValue(id, value, eventType);
+    return err;
+  case CCS_DHS_STATE_SENSOR_PRESSURE_DISCHARGE_ANNULUS:
+    if ((value != oldValue) && (value == 0)) {
+      logEvent.add(OtherCode, AutoType, DhsPressureDischargeZTSensorOkId);
+    }
+    if ((value != oldValue) && (value == 2)) {
+      logEvent.add(OtherCode, AutoType, DhsPressureDischargeZTSensorFailId);
+    }
+    err = setValue(id, value, eventType);
+    return err;
+  case CCS_DHS_STATE_SENSOR_TEMPERATURE_DISCHARGE:
+    if ((value != oldValue) && (value == 0)) {
+      logEvent.add(OtherCode, AutoType, DhsTemperatureDischargeSensorOkId);
+    }
+    if ((value != oldValue) && (value == 2)) {
+      logEvent.add(OtherCode, AutoType, DhsTemperatureDischargeSensorFailId);
+    }
+    err = setValue(id, value, eventType);
+    return err;
+  case CCS_DHS_STATE_SENSOR_FLOW_DISCHARGE:
+    if ((value != oldValue) && (value == 0)) {
+      logEvent.add(OtherCode, AutoType, DhsFlowDischargeSensorOkId);
+    }
+    if ((value != oldValue) && (value == 2)) {
+      logEvent.add(OtherCode, AutoType, DhsFlowDischargeSensorFailId);
+    }
+    err = setValue(id, value, eventType);
+    return err;
+  case CCS_DHS_STATE_SENSOR_HOWMIDITY:
+    if ((value != oldValue) && (value == 0)) {
+      logEvent.add(OtherCode, AutoType, DhsHowmidityDischargeSensorOkId);
+    }
+    if ((value != oldValue) && (value == 2)) {
+      logEvent.add(OtherCode, AutoType, DhsHowmidityDischargeSensorFailId);
+    }
+    err = setValue(id, value, eventType);
+    return err;
   default:
     return setValue(id, value, eventType);
   }
