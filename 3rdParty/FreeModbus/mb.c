@@ -130,7 +130,7 @@ static xMBFunctionHandler xFuncHandlers[MB_FUNC_HANDLERS_MAX] = {
 
 /* ----------------------- Start implementation -----------------------------*/
 eMBErrorCode
-eMBInit( eMBMode eMode, UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity )
+eMBInit( eMBMode eMode, UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity, UCHAR stopBits)
 {
     eMBErrorCode    eStatus = MB_ENOERR;
 
@@ -157,7 +157,7 @@ eMBInit( eMBMode eMode, UCHAR ucSlaveAddress, UCHAR ucPort, ULONG ulBaudRate, eM
             pxMBFrameCBTransmitterEmpty = xMBRTUTransmitFSM;
             pxMBPortCBTimerExpired = xMBRTUTimerT35Expired;
 
-            eStatus = eMBRTUInit( ucMBAddress, ucPort, ulBaudRate, eParity );
+            eStatus = eMBRTUInit( ucMBAddress, ucPort, ulBaudRate, eParity, stopBits );
             break;
 #endif
 #if MB_ASCII_ENABLED > 0

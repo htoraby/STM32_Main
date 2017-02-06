@@ -593,6 +593,8 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value, EventType eventType)
   case VSD_TRANS_CABLE_CROSS:
   case VSD_MOTOR_VOLTAGE:
   case VSD_MOTOR_CURRENT:
+  case VSD_BLDC_COEF_NORM_UF:
+  case VSD_TEMPERATURE_INTAKE:
   case VSD_TRANS_VOLTAGE_TAP_OFF:
     result = setValue(id, value, eventType);
     if (!result) {

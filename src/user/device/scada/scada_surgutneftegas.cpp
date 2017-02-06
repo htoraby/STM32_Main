@@ -29,6 +29,10 @@ void ScadaSurgutneftegas::calcParamsTask()
 
     uint16_t value = 0;
 
+    // 20
+    value = ((uint8_t)(parameters.get(CCS_WORKING_MODE)+1) << 8) + ((uint8_t)parameters.get(CCS_LAST_RUN_REASON) & 0x1F);
+    scadaParameters_[20].value.float_t = value;
+
     // 25
     value = !parameters.get(CCS_PHASE_ROTATION);
     scadaParameters_[25].value.float_t = value;
@@ -375,4 +379,132 @@ int ScadaSurgutneftegas::setNewValue(ScadaParameter *param)
   }
 
   return err_r;
+}
+
+static void getParam(uint16_t address, uint8_t * pucFrame, uint16_t * usLen)
+{
+  uint16_t usLength = *usLen;
+  unTypeData data;
+  data.uint32_t = 0;
+  ScadaParameter *param = scada->parameter(address);
+
+  if (param != NULL) {
+    float value = param->value.float_t;
+    value = parameters.convertFrom(value, param->physic, param->unit);
+    value = value / param->coefficient;
+    data.uint16_t[0] = decToBCD(lround(value));
+  }
+
+  pucFrame[usLength++] = data.char_t[0];
+  pucFrame[usLength++] = data.char_t[1];
+  *usLen = usLength;
+}
+
+eMbSngException eMbSngFuncReadCurrentState(uint8_t * pucFrame, uint16_t *usLen)
+{
+  eMbSngException eStatus = MB_SNG_EX_NONE;
+  uint16_t usLength = 0;
+
+  pucFrame[usLength++] = 0x10;
+  pucFrame[usLength++] = 0;
+
+  ScadaParameter *param = scada->parameter(254);
+  pucFrame[usLength++] = param->value.char_t[0];
+  pucFrame[usLength++] = param->value.char_t[1];
+
+  pucFrame[usLength++] = ((uint8_t)parameters.get(CCS_LAST_STOP_REASON) & 0x3F);
+
+  pucFrame[usLength++] = 0xFF;
+  pucFrame[usLength++] = 0xFF;
+  pucFrame[usLength++] = 0xFF;
+
+  for (int i = 0; i < 24; ++i) {
+    getParam(i, pucFrame, &usLength);
+  }
+
+  pucFrame[MB_SNG_DATA_FUNC_OFF+1] = (uint8_t)(usLength - 2);
+  *usLen = usLength;
+
+  return eStatus;
+}
+
+eMbSngException eMbSngFuncRandomSample(uint8_t * pucFrame, uint16_t * usLen)
+{
+  eMbSngException eStatus = MB_SNG_EX_NONE;
+  uint16_t usLength = 0;
+
+  uint8_t paramCount = pucFrame[MB_SNG_DATA_FUNC_OFF+1];
+  if (paramCount > 10)
+    return MB_SNG_EX_ILLEGAL_LEN;
+
+  uint8_t paramIndex[10];
+  for (int i = 0; i < paramCount; ++i) {
+    paramIndex[i] = pucFrame[MB_SNG_DATA_FUNC_OFF+2 + i];
+  }
+
+  pucFrame[usLength++] = 0x20;
+  pucFrame[usLength++] = 0;
+
+  for (int i = 0; i < paramCount; ++i) {
+    pucFrame[usLength++] = paramIndex[i];
+    getParam(paramIndex[i], pucFrame, &usLength);
+  }
+
+  pucFrame[MB_SNG_DATA_FUNC_OFF+1] = (uint8_t)(usLength - 2);
+  *usLen = usLength;
+
+  return eStatus;
+}
+
+eMbSngException eMbSngFuncSampleArchive(uint8_t * pucFrame, uint16_t * usLen)
+{
+  eMbSngException eStatus = MB_SNG_EX_ILLEGAL_DATA;
+
+  return eStatus;
+}
+
+eMbSngException eMbSngFuncWriteRegister(uint8_t * pucFrame, uint16_t * usLen)
+{
+  eMbSngException eStatus = MB_SNG_EX_NONE;
+  uint16_t usLength = 0;
+  unTypeData data;
+
+  uint8_t paramCount = (pucFrame[MB_SNG_DATA_FUNC_OFF+1]-2)/3;
+  for (int i = 0; i < paramCount; ++i) {
+    uint8_t address = pucFrame[MB_SNG_DATA_FUNC_OFF+2 + i*3];
+    ScadaParameter *param = scada->parameter(address);
+    if (param == NULL)
+      continue;
+    if (param->operation == OPERATION_READ)
+      return MB_SNG_EX_ERROR_WRITE;
+    if ((param->operation == OPERATION_LIMITED) && ksu.isWorkMotor())
+      return MB_SNG_EX_CMD_BLOCK;
+
+    data.uint32_t = 0;
+    data.char_t[0] = pucFrame[MB_SNG_DATA_FUNC_OFF+2 + i*3 + 1];
+    data.char_t[1] = pucFrame[MB_SNG_DATA_FUNC_OFF+2 + i*3 + 2];
+    data.uint32_t = bcdToDec(data.uint16_t[0]);
+    if (checkRange(data.uint32_t, param->min, param->max, true) != ok_r)
+      return MB_SNG_EX_ILLEGAL_DATA;
+
+    float value = (float)data.uint32_t;
+    value = value * param->coefficient;
+    value = parameters.convertTo(value, param->physic, param->unit);
+    param->value.float_t = value;
+    if (scada->setNewValue(param) != ok_r)
+      return MB_SNG_EX_ILLEGAL_DATA;
+  }
+
+  pucFrame[usLength++] = 0x40;
+  pucFrame[usLength++] = 0;
+  *usLen = usLength;
+
+  return eStatus;
+}
+
+eMbSngException eMbSngFuncRestartInterfaceUnit(uint8_t * pucFrame, uint16_t * usLen)
+{
+  eMbSngException eStatus = MB_SNG_EX_ILLEGAL_DATA;
+
+  return eStatus;
 }

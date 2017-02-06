@@ -23,11 +23,15 @@ void LogData::init()
 
   osThreadDef_t t = {"LogData", logDataTask, osPriorityNormal, 0, 3 * configMINIMAL_STACK_SIZE};
   threadId_ = osThreadCreate(&t, this);
+
+  addSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(addSemaphoreId_, 0);
 }
 
 void LogData::deInit()
 {
   osThreadTerminate(threadId_);
+  osSemaphoreDelete(addSemaphoreId_);
   Log::deInit();
 }
 
@@ -36,33 +40,46 @@ void LogData::task()
   int normTimeCnt = 0;
   int fastTimeCnt = 0;
   bool startFastMode = false;
+  int time1s = HAL_GetTick();
 
-  while (1) {
-    osDelay(1000);
+  while (1) {  
+    if (osSemaphoreWait(addSemaphoreId_, 1) != osEventTimeout)
+      add(NormModeCode);
 
-    if (ksu.isDelay()) {
-      if (!startFastMode) {
-        startFastMode = true;
-        add(FastModeCode);
-      } else {
-        int period = parameters.get(CCS_LOG_PERIOD_FAST);
-        if (++fastTimeCnt >= period) {
-          fastTimeCnt = 0;
+    if ((HAL_GetTick() - time1s) >= 1000) {
+      time1s = HAL_GetTick();
+
+      if ((ksu.isDelay()) || (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUNNING) ||
+          (parameters.get(CCS_CONDITION) == CCS_CONDITION_STOPPING)) {
+        normTimeCnt = 0;
+
+        if (!startFastMode) {
+          startFastMode = true;
           add(FastModeCode);
+        } else {
+          int period = parameters.get(CCS_LOG_PERIOD_FAST);
+          if (++fastTimeCnt >= period) {
+            fastTimeCnt = 0;
+            add(FastModeCode);
+          }
+        }
+      } else {
+        startFastMode = false;
+        fastTimeCnt = 0;
+
+        int period = parameters.get(CCS_LOG_PERIOD_NORMAL);
+        if (++normTimeCnt >= period) {
+          normTimeCnt = 0;
+          add(NormModeCode);
         }
       }
-    } else {
-      startFastMode = false;
-      fastTimeCnt = 0;
-    }
-
-    int period = parameters.get(CCS_LOG_PERIOD_NORMAL);
-    if (++normTimeCnt >= period) {
-      normTimeCnt = 0;
-      if (!ksu.isDelay())
-        add(NormModeCode);
     }
   }
+}
+
+void LogData::add()
+{
+  osSemaphoreRelease(addSemaphoreId_);
 }
 
 void LogData::add(uint8_t code)
@@ -145,13 +162,18 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+233) = parameters.get(CCS_VOLTAGE_TRANS_OUT);
   *(float*)(buffer+237) = parameters.get(CCS_TURBO_ROTATION_NOW);
   *(float*)(buffer+241) = parameters.get(VSD_ROTATION);
-//  *(float*)(buffer+245) =
-//  *(float*)(buffer+249) =
+  *(float*)(buffer+245) = parameters.get(TMS_HOWMIDITY_DISCHARGE);
+  *(float*)(buffer+249) = parameters.get(CCS_VOLTAGE_TRANS_OUT);
 
 #if (HARDWARE_VERSION >= 0x0200)
   write(buffer, 253, false);
 
   memset(buffer, 0, sizeof(buffer));
+
+  *(float*)(buffer+0) = parameters.get(CCS_VOLTAGE_PHASE_1_2);
+  *(float*)(buffer+4) = parameters.get(CCS_VOLTAGE_PHASE_2_3);
+  *(float*)(buffer+8) = parameters.get(CCS_VOLTAGE_PHASE_3_1);
+
   write(buffer, 256);
 #else
   write(buffer, 253);

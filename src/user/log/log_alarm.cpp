@@ -66,8 +66,10 @@ void LogAlarm::add()
   int timeout = HAL_GetTick();
   while (!vsd->log()->checkReady()) {
     osDelay(10);
-    if ((HAL_GetTick() - timeout) > 500)
+    if ((HAL_GetTick() - timeout) > 1500) {
+      logDebug.add(CriticalMsg, "LogAlarm::add() CheckReady - timeout");
       break;
+    }
   }
 
   uint16_t typeVsd = parameters.get(CCS_TYPE_VSD);

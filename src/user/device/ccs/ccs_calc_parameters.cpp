@@ -27,7 +27,7 @@ void Ccs::calcParametersTask()
     osDelay(1);
 
     if (isPowerOff())
-      osDelay(osWaitForever);
+      continue;
 
     calcDigitalInputs();
 
@@ -252,6 +252,8 @@ void Ccs::calcVoltageTransOut()
   float voltageTransOut;
   float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
   voltageTransOut = (parameters.get(VSD_OUT_VOLTAGE_MOTOR) - parameters.get(CCS_DROP_VOLTAGE_FILTER))*coefTrans;
+  if (voltageTransOut < 0)
+    voltageTransOut = 0;
   parameters.set(CCS_VOLTAGE_TRANS_OUT, voltageTransOut);
 }
 

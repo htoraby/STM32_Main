@@ -243,7 +243,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[19].command           = OPERATION_ERROR;
   scadaParameters_[19].value.float_t     = 0;
   // Режим работы СУ (СНГ)
-  scadaParameters_[20].id                = CCS_WORKING_MODE;
+  scadaParameters_[20].id                = 0;
   scadaParameters_[20].address           = 20;
   scadaParameters_[20].operation         = OPERATION_READ;
   scadaParameters_[20].physic            = PHYSIC_NUMERIC;
@@ -1649,7 +1649,7 @@ void ScadaSurgutneftegas::initParameters()
   // Тип двигателя
   scadaParameters_[137].id               = CCS_MOTOR_TYPE;
   scadaParameters_[137].address          = 137;
-  scadaParameters_[137].operation        = OPERATION_WRITE;
+  scadaParameters_[137].operation        = OPERATION_LIMITED;
   scadaParameters_[137].physic           = 0;
   scadaParameters_[137].unit             = 0;
   scadaParameters_[137].typeData         = TYPE_DATA_UINT16;
@@ -1661,7 +1661,7 @@ void ScadaSurgutneftegas::initParameters()
   // Число пар полюсов ПВЭД
   scadaParameters_[138].id               = VSD_MOTOR_POLES;
   scadaParameters_[138].address          = 138;
-  scadaParameters_[138].operation        = OPERATION_WRITE;
+  scadaParameters_[138].operation        = OPERATION_LIMITED;
   scadaParameters_[138].physic           = 0;
   scadaParameters_[138].unit             = 0;
   scadaParameters_[138].typeData         = TYPE_DATA_UINT16;
@@ -2189,7 +2189,7 @@ void ScadaSurgutneftegas::initParameters()
   // Номинальное напряжение ПЭД
   scadaParameters_[182].id               = VSD_MOTOR_VOLTAGE;
   scadaParameters_[182].address          = 182;
-  scadaParameters_[182].operation        = OPERATION_WRITE;
+  scadaParameters_[182].operation        = OPERATION_LIMITED;
   scadaParameters_[182].physic           = PHYSIC_VOLTAGE;
   scadaParameters_[182].unit             = VOLTAGE_V;
   scadaParameters_[182].typeData         = TYPE_DATA_UINT16;
@@ -2201,7 +2201,7 @@ void ScadaSurgutneftegas::initParameters()
   // Номинальный ток ПЭД
   scadaParameters_[183].id               = VSD_MOTOR_CURRENT;
   scadaParameters_[183].address          = 183;
-  scadaParameters_[183].operation        = OPERATION_WRITE;
+  scadaParameters_[183].operation        = OPERATION_LIMITED;
   scadaParameters_[183].physic           = PHYSIC_CURRENT;
   scadaParameters_[183].unit             = CURRENT_A;
   scadaParameters_[183].typeData         = TYPE_DATA_UINT16;
@@ -2213,7 +2213,7 @@ void ScadaSurgutneftegas::initParameters()
   // Номинальная мощность ПЭД
   scadaParameters_[184].id               = VSD_MOTOR_POWER;
   scadaParameters_[184].address          = 184;
-  scadaParameters_[184].operation        = OPERATION_WRITE;
+  scadaParameters_[184].operation        = OPERATION_LIMITED;
   scadaParameters_[184].physic           = PHYSIC_POWER;
   scadaParameters_[184].unit             = POWER_KW;
   scadaParameters_[184].typeData         = TYPE_DATA_UINT16;
@@ -2225,7 +2225,7 @@ void ScadaSurgutneftegas::initParameters()
   // Номинальный коэффициент мощности
   scadaParameters_[185].id               = VSD_MOTOR_COS_PHI;
   scadaParameters_[185].address          = 185;
-  scadaParameters_[185].operation        = OPERATION_WRITE;
+  scadaParameters_[185].operation        = OPERATION_LIMITED;
   scadaParameters_[185].physic           = 0;
   scadaParameters_[185].unit             = 0;
   scadaParameters_[185].typeData         = TYPE_DATA_UINT16;
@@ -2261,7 +2261,7 @@ void ScadaSurgutneftegas::initParameters()
   // Напряжение отпайки ТМПН
   scadaParameters_[188].id               = CCS_TRANS_VOLTAGE_TAP_OFF;
   scadaParameters_[188].address          = 188;
-  scadaParameters_[188].operation        = OPERATION_WRITE;
+  scadaParameters_[188].operation        = OPERATION_LIMITED;
   scadaParameters_[188].physic           = PHYSIC_VOLTAGE;
   scadaParameters_[188].unit             = VOLTAGE_V;
   scadaParameters_[188].typeData         = TYPE_DATA_UINT16;
@@ -2381,7 +2381,7 @@ void ScadaSurgutneftegas::initParameters()
   // Ток холостого хода ПЭД
   scadaParameters_[198].id               = VSD_UF_UHH;
   scadaParameters_[198].address          = 198;
-  scadaParameters_[198].operation        = OPERATION_WRITE;
+  scadaParameters_[198].operation        = OPERATION_LIMITED;
   scadaParameters_[198].physic           = PHYSIC_CURRENT;
   scadaParameters_[198].unit             = CURRENT_A;
   scadaParameters_[198].typeData         = TYPE_DATA_UINT16;

@@ -99,6 +99,7 @@ Product {
         "src/user/protection/tms/",
         "src/user/protocol/",
         "src/user/protocol/modbus/",
+        "src/user/protocol/modbus_sng/",
         "src/user/protocol/novobus",
         "src/user/regime/",
         "src/user/regime/run",

@@ -635,7 +635,7 @@ enum enID
   CCS_CMD_PROT_DI_4_SETPOINT_RESET = 629,                    //!< 
   CCS_CMD_RGM_MODE_SAVE = 630,                               //!< 
   CCS_CMD_COUNTER_ALL_RESET = 631,                           //!< 
-  CCS_VOLTAGE_TRANS_OUT = 632,                               //!< 
+  CCS_VOLTAGE_TRANS_OUT = 632,                               //!< Напряжение на выходе ТМПН
   CCS_CONDITION_FLAG = 633,                                  //!< 
   CCS_LAST_RUN_REASON_TMP = 634,                             //!< Причина последнего пуска - регистр временного хранения значения
   CCS_PROT_PREVENT = 635,                                    //!< Наличие хотя бы одного запрещающего параметра
