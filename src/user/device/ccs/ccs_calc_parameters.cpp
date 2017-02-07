@@ -628,6 +628,9 @@ void Ccs::calcInputVoltageFromAdc()
   float uaValue = 0;
   float ubValue = 0;
   float ucValue = 0;
+  float uabValue = 0;
+  float ubcValue = 0;
+  float ucaValue = 0;
   float valueOld[3] = { 1 };
   int checkPhase[3] = { 0 };
   int count[3] = { 0 };
@@ -643,6 +646,7 @@ void Ccs::calcInputVoltageFromAdc()
     }
     if (checkPhase[0] == 1) {
       uaValue += (uValue[0 + i*3] - 2048)*(uValue[0 + i*3] - 2048);
+      uabValue += ((uValue[0 + i*3] - 2048) - (uValue[1 + i*3] - 2048))*((uValue[0 + i*3] - 2048) - (uValue[1 + i*3] - 2048));
       count[0]++;
     }
 
@@ -655,11 +659,12 @@ void Ccs::calcInputVoltageFromAdc()
 
         checkPhase[1] = 1;
       } else {
-        checkPhase[1] = 2;
+          checkPhase[1] = 2;
       }
     }
     if (checkPhase[1] == 1) {
       ubValue += (uValue[1 + i*3] - 2048)*(uValue[1 + i*3] - 2048);
+      ubcValue += ((uValue[1 + i*3] - 2048) - (uValue[2 + i*3] - 2048))*((uValue[1 + i*3] - 2048) - (uValue[2 + i*3] - 2048));
       count[1]++;
     }
 
@@ -671,6 +676,7 @@ void Ccs::calcInputVoltageFromAdc()
     }
     if (checkPhase[2] == 1) {
       ucValue += (uValue[2 + i*3] - 2048)*(uValue[2 + i*3] - 2048);
+      ucaValue += ((uValue[2 + i*3] - 2048) - (uValue[0 + i*3] - 2048))*((uValue[2 + i*3] - 2048) - (uValue[0 + i*3] - 2048));
       count[2]++;
     }
 
@@ -678,18 +684,31 @@ void Ccs::calcInputVoltageFromAdc()
     valueOld[1] = (uValue[1 + i*3] - 2048);
     valueOld[2] = (uValue[2 + i*3] - 2048);
   }
-  if (count[0])
+
+  if (count[0]) {
     uaValue = (sqrt(uaValue/count[0]) * 627.747 * 2.5) / 0xFFF;
-  else
+    uabValue = (sqrt(uabValue/count[0]) * 627.747 * 2.5) / 0xFFF;
+  }
+  else {
     uaValue = 0;
-  if (count[1])
+    uabValue = 0;
+  }
+  if (count[1]) {
     ubValue = (sqrt(ubValue/count[1]) * 627.747 * 2.5) / 0xFFF;
-  else
+    ubcValue = (sqrt(ubcValue/count[1]) * 627.747 * 2.5) / 0xFFF;
+  }
+  else {
     ubValue = 0;
-  if (count[2])
+    ubcValue = 0;
+  }
+  if (count[2]) {
     ucValue = (sqrt(ucValue/count[2]) * 627.747 * 2.5) / 0xFFF;
-  else
+    ucaValue = (sqrt(ucaValue/count[2]) * 627.747 * 2.5) / 0xFFF;
+  }
+  else {
     ucValue = 0;
+    ucaValue = 0;
+  }
 
   if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_A)) {
     setValue(CCS_VOLTAGE_PHASE_1, (float)NAN);
@@ -698,7 +717,7 @@ void Ccs::calcInputVoltageFromAdc()
   else {
     uaValue = applyCoef(uaValue, parameters.get(CCS_COEF_VOLTAGE_IN_A));
     setValue(CCS_VOLTAGE_PHASE_1, uaValue);
-    setValue(CCS_VOLTAGE_PHASE_1_2, uaValue*SQRT_3);
+    setValue(CCS_VOLTAGE_PHASE_1_2, uabValue);
   }
 
   if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_B)) {
@@ -708,7 +727,7 @@ void Ccs::calcInputVoltageFromAdc()
   else {
     ubValue = applyCoef(ubValue, parameters.get(CCS_COEF_VOLTAGE_IN_B));
     setValue(CCS_VOLTAGE_PHASE_2, ubValue);
-    setValue(CCS_VOLTAGE_PHASE_2_3, ubValue*SQRT_3);
+    setValue(CCS_VOLTAGE_PHASE_2_3, ubcValue);
   }
 
   if (!parameters.isValidity(CCS_COEF_VOLTAGE_IN_C)) {
@@ -718,7 +737,7 @@ void Ccs::calcInputVoltageFromAdc()
   else {
     ucValue = applyCoef(ucValue, parameters.get(CCS_COEF_VOLTAGE_IN_C));
     setValue(CCS_VOLTAGE_PHASE_3, ucValue);
-    setValue(CCS_VOLTAGE_PHASE_3_1, ucValue*SQRT_3);
+    setValue(CCS_VOLTAGE_PHASE_3_1, ucaValue);
   }
 
   if (countPhaseRotation_ >= 10) {
