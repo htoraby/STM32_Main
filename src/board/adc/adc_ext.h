@@ -12,9 +12,8 @@ enum AiNum {
 };
 
 /*!
- \brief Список режимов аналогового входа: напряжение (мВ), ток (мкА)
-
-*/
+ * \brief Список режимов аналогового входа: напряжение, ток
+ */
 enum AnalogInModeType {
   AnalogInModeVoltage,  //!< В
   AnalogInModeCurrent,  //!< мА
