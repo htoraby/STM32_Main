@@ -9972,7 +9972,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Состояние</text>
-		<short_text>Опт.U. Состояние</short_text>
+		<short_text>Опт.U.</short_text>
 		<form>5.1.5 Режим оптимизации напряжения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
@@ -9993,7 +9993,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Максимальное отклонение от U/f</text>
-		<short_text>Опт.U. Максимальное отклонение от U/f</short_text>
+		<short_text>Опт.U. Макс. U/f</short_text>
 		<form>5.1.5 Режим оптимизации напряжения</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -10014,7 +10014,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Шаг изменения напряжения</text>
-		<short_text>Опт.U. Шаг изменения напряжения</short_text>
+		<short_text>Опт.U. Шаг изм. U</short_text>
 		<form>5.1.5 Режим оптимизации напряжения</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -10035,7 +10035,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Первый цикл после пуска</text>
-		<short_text>Опт.U. Первый цикл после пуска</short_text>
+		<short_text>Опт.U. 1 цикл после пуска</short_text>
 		<form>5.1.5 Режим оптимизации напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -10056,7 +10056,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3600.0</value>
 		<text>Периодичность оптимизации</text>
-		<short_text>Опт.U. Периодичность оптимизации</short_text>
+		<short_text>Опт.U. Период оптимизации</short_text>
 		<form>5.1.5 Режим оптимизации напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -20755,13 +20755,275 @@
 	</param>
 	<param>
 		<id>1039</id>
-		<name>CCS_END</name>
+		<name>CCS_DHS_STATE_SENSOR_PRESSURE_INTAKE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние датчика "Давление на приёме насоса"</text>
+		<short_text>Состояние датчика "Давление на приёме насоса"</short_text>
 		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-В норме;1-Нет;2-Отказ</values>
+		<comment>Состояние датчика "Давление на приёме насоса"</comment>
+	</param>
+	<param>
+		<id>1040</id>
+		<name>CCS_DHS_STATE_SENSOR_TEMPERATURE_INTAKE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние датчика "Температура на приеме насоса"</text>
+		<short_text>Состояние датчика "Температура на приеме насоса"</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-В норме;1-Нет;2-Отказ</values>
+		<comment>Состояние датчика "Температура на приеме насоса"</comment>
+	</param>
+	<param>
+		<id>1041</id>
+		<name>CCS_DHS_STATE_SENSOR_TEMPERATURE_WINDING</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние датчика "Температура обмотки ПЭД"</text>
+		<short_text>Состояние датчика "Температура обмотки ПЭД"</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-В норме;1-Нет;2-Отказ</values>
+		<comment>Состояние датчика "Температура обмотки ПЭД"</comment>
+	</param>
+	<param>
+		<id>1042</id>
+		<name>CCS_DHS_STATE_SENSOR_TEMPERATURE_MOTOR</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние датчика "Температура масла ПЭД"</text>
+		<short_text>Состояние датчика "Температура масла ПЭД"</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-В норме;1-Нет;2-Отказ</values>
+		<comment>Состояние датчика "Температура масла ПЭД"</comment>
+	</param>
+	<param>
+		<id>1043</id>
+		<name>CCS_DHS_STATE_SENSOR_ACCELERATION_X_INTAKE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние датчика "Вибрация по оси X"</text>
+		<short_text>Состояние датчика "Вибрация по оси X"</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-В норме;1-Нет;2-Отказ</values>
+		<comment>Состояние датчика "Вибрация по оси X"</comment>
+	</param>
+	<param>
+		<id>1044</id>
+		<name>CCS_DHS_STATE_SENSOR_ACCELERATION_Y_INTAKE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние датчика "Вибрация по оси Y"</text>
+		<short_text>Состояние датчика "Вибрация по оси Y"</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-В норме;1-Нет;2-Отказ</values>
+		<comment>Состояние датчика "Вибрация по оси Y"</comment>
+	</param>
+	<param>
+		<id>1045</id>
+		<name>CCS_DHS_STATE_SENSOR_ACCELERATION_Z_INTAKE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние датчика "Вибрация по оси Z"</text>
+		<short_text>Состояние датчика "Вибрация по оси Z"</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-В норме;1-Нет;2-Отказ</values>
+		<comment>Состояние датчика "Вибрация по оси Z"</comment>
+	</param>
+	<param>
+		<id>1046</id>
+		<name>CCS_DHS_STATE_SENSOR_PRESSURE_DISCHARGE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние датчика "Давление на выкиде насоса в НКТ"</text>
+		<short_text>Состояние датчика "Давление на выкиде насоса в НКТ"</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-В норме;1-Нет;2-Отказ</values>
+		<comment>Состояние датчика "Давление на выкиде насоса в НКТ"</comment>
+	</param>
+	<param>
+		<id>1047</id>
+		<name>CCS_DHS_STATE_SENSOR_PRESSURE_DISCHARGE_ANNULUS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние датчика "Давление на выкиде насоса затрубное"</text>
+		<short_text>Состояние датчика "Давление на выкиде насоса затрубное"</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-В норме;1-Нет;2-Отказ</values>
+		<comment>Состояние датчика "Давление на выкиде насоса затрубное"</comment>
+	</param>
+	<param>
+		<id>1048</id>
+		<name>CCS_DHS_STATE_SENSOR_TEMPERATURE_DISCHARGE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние датчика "Температура на выкиде насоса"</text>
+		<short_text>Состояние датчика "Температура на выкиде насоса"</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-В норме;1-Нет;2-Отказ</values>
+		<comment>Состояние датчика "Температура на выкиде насоса"</comment>
+	</param>
+	<param>
+		<id>1049</id>
+		<name>CCS_DHS_STATE_SENSOR_FLOW_DISCHARGE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние датчика "Расход жидкости на выкиде насоса"</text>
+		<short_text>Состояние датчика "Расход жидкости на выкиде насоса"</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-В норме;1-Нет;2-Отказ</values>
+		<comment>Состояние датчика "Расход жидкости на выкиде насоса"</comment>
+	</param>
+	<param>
+		<id>1050</id>
+		<name>CCS_DHS_STATE_SENSOR_HOWMIDITY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние датчика "Обводненность"</text>
+		<short_text>Состояние датчика "Обводненность"</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-В норме;1-Нет;2-Отказ</values>
+		<comment>Состояние датчика "Обводненность"</comment>
+	</param>
+	<param>
+		<id>1051</id>
+		<name>CCS_END</name>
 	</param>
 	<param>
 		<id>10000</id>
 		<name>VSD_BEGIN</name>
-		<form>NULL</form>
 		<comment>Первый параметр ЧРП</comment>
 	</param>
 	<param>

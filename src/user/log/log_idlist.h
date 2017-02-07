@@ -214,7 +214,35 @@ typedef enum {
   RemoveDeviceFiltInputId,            //!< "Выбрано отсутствие входного фильтра"
 
   RegimeRunPickupFailId,              //!< Пуск толчками ошибка
-  RegimeRunPickupAbortId              //!< Пуск толчками прерван
+  RegimeRunPickupAbortId,             //!< Пуск толчками прерван
+
+  DhsLinkTMSPOkId,                    //!< Восстановление связи с ТМСП
+  DhsLinkTMSPFailId,                  //!< Отказ связи с ТМСП
+
+  DhsPressureIntakeSensorOkId,        //!< Датчик давления на приёме насоса в норме
+  DhsPressureIntakeSensorFailId,      //!< Отказ датчика давления на приёме насоса
+  DhsTemperatureIntakeSensorOkId,     //!< Датчик температуры на приеме насоса в норме
+  DhsTemperatureIntakeSensorFailId,   //!< Отказ датчика температуры на приеме насоса
+  DhsTemperatureWindingSensorOkId,    //!< Датчик температуры обмотки ПЭД в норме
+  DhsTemperatureWindingSensorFailId,  //!< Отказ датчика температуры обмотки ПЭД
+  DhsTemperatureMotorSensorOkId,      //!< Датчик температуры масла ПЭД в норме
+  DhsTemperatureMotorSensorFailId,    //!< Отказ датчика температуры масла ПЭД
+  DhsAccelerationXIntakeSensorOkId,   //!< Датчик вибрации по оси X в норме
+  DhsAccelerationXIntakeSensorFailId, //!< Отказ датчика вибрации по оси X
+  DhsAccelerationYIntakeSensorOkId,   //!< Датчик вибрации по оси Y в норме
+  DhsAccelerationYIntakeSensorFailId, //!< Отказ датчика вибрации по оси Y
+  DhsAccelerationZIntakeSensorOkId,   //!< Датчик вибрации по оси Z в норме
+  DhsAccelerationZIntakeSensorFailId, //!< Отказ датчика вибрации по оси Z
+  DhsPressureDischargeSensorOkId,     //!< Датчик давления на выкиде насоса в НКТ в норме
+  DhsPressureDischargeSensorFailId,   //!< Отказ датчика давления на выкиде насоса в НКТ
+  DhsPressureDischargeZTSensorOkId,   //!< Датчик давления на выкиде насоса, затрубное в норме
+  DhsPressureDischargeZTSensorFailId, //!< Отказ датчика давления на выкиде насоса, затрубное
+  DhsTemperatureDischargeSensorOkId,  //!< Датчик температуры на выкиде насоса в норме
+  DhsTemperatureDischargeSensorFailId,//!< Отказ датчика температуры на выкиде насоса
+  DhsFlowDischargeSensorOkId,         //!< Датчик расхода жидкости на выкиде насоса в норме
+  DhsFlowDischargeSensorFailId,       //!< Отказ датчика расхода жидкости на выкиде насоса
+  DhsHowmidityDischargeSensorOkId,    //!< Датчик обводненности в норме
+  DhsHowmidityDischargeSensorFailId   //!< Отказ датчика обводненности
 
 } EventId;
 
