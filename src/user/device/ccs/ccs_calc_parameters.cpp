@@ -716,6 +716,7 @@ void Ccs::calcInputVoltageFromAdc()
   }
   else {
     uaValue = applyCoef(uaValue, parameters.get(CCS_COEF_VOLTAGE_IN_A));
+    uabValue = applyCoef(uabValue, parameters.get(CCS_COEF_VOLTAGE_IN_A));
     setValue(CCS_VOLTAGE_PHASE_1, uaValue);
     setValue(CCS_VOLTAGE_PHASE_1_2, uabValue);
   }
@@ -726,6 +727,7 @@ void Ccs::calcInputVoltageFromAdc()
   }
   else {
     ubValue = applyCoef(ubValue, parameters.get(CCS_COEF_VOLTAGE_IN_B));
+    ubcValue = applyCoef(ubcValue, parameters.get(CCS_COEF_VOLTAGE_IN_B));
     setValue(CCS_VOLTAGE_PHASE_2, ubValue);
     setValue(CCS_VOLTAGE_PHASE_2_3, ubcValue);
   }
@@ -736,6 +738,7 @@ void Ccs::calcInputVoltageFromAdc()
   }
   else {
     ucValue = applyCoef(ucValue, parameters.get(CCS_COEF_VOLTAGE_IN_C));
+    ucaValue = applyCoef(ucaValue, parameters.get(CCS_COEF_VOLTAGE_IN_B));
     setValue(CCS_VOLTAGE_PHASE_3, ucValue);
     setValue(CCS_VOLTAGE_PHASE_3_1, ucaValue);
   }
