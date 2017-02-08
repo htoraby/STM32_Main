@@ -41,6 +41,7 @@ enum enPhysic
   PHYSIC_RATE,                              //!< Номинальный момент
   PHYSIC_INDUNCTANCE,                       //!< Индуктивность Гн
   PHYSIC_CAPACITY,                          //!< Ёмкость
+  PHYSIC_EMF_SPECIFIC,                      //!< Удельная ЭДС
   PHYSIC_LAST
 };
 
@@ -229,6 +230,11 @@ enum enPhysicIndunctance {
 enum enPhysicCapacity {
   CAPACITY_MKF,
   CAPACITY_LAST
+};
+
+enum enPhysicEmfSpecific {
+  EMF_SPECIFIC_V_RMP,
+  EMF_SPECIFIC_LAST
 };
 
 /*!

@@ -360,4 +360,10 @@
 		<a>1</a>
 		<b>0</b>
 	</param>
+	<param>
+		<midIn>PHYSIC_EMF_SPECIFIC</midIn>
+		<midOut>EMF_SPECIFIC_V_RMP</midOut>
+		<a>1</a>
+		<b>0</b>
+	</param>
 </KSU-02measure_conv>
