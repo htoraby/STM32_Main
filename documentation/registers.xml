@@ -21023,8 +21023,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_EMF_SPECIFIC</physic>
-		<min>-2147483647.0</min>
-		<max>2147483647.0</max>
+		<min>0.001</min>
+		<max>10.0</max>
 		<def>0.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
@@ -21034,7 +21034,7 @@
 		<form>NULL</form>
 		<unit>EMF_SPECIFIC_V_RMP</unit>
 		<unit_lcd>EMF_SPECIFIC_V_RMP</unit_lcd>
-		<format>ХХ_ХХХ</format>
+		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Удельная ЭДС</comment>
 	</param>
