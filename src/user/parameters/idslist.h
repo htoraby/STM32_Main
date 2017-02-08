@@ -1054,7 +1054,8 @@ enum enID
   CCS_DHS_STATE_SENSOR_TEMPERATURE_DISCHARGE = 1048,         //!< Состояние датчика "Температура на выкиде насоса"
   CCS_DHS_STATE_SENSOR_FLOW_DISCHARGE = 1049,                //!< Состояние датчика "Расход жидкости на выкиде насоса"
   CCS_DHS_STATE_SENSOR_HOWMIDITY = 1050,                     //!< Состояние датчика "Обводненность"
-  CCS_END = 1051,                                            //!< 
+  CCS_EMF_MOTOR = 1051,                                      //!< Удельная ЭДС
+  CCS_END = 1052,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

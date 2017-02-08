@@ -21019,6 +21019,27 @@
 	</param>
 	<param>
 		<id>1051</id>
+		<name>CCS_EMF_MOTOR</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_EMF_SPECIFIC</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Удельная ЭДС</text>
+		<short_text>Удел. ЭДС</short_text>
+		<form>NULL</form>
+		<unit>EMF_SPECIFIC_V_RMP</unit>
+		<unit_lcd>EMF_SPECIFIC_V_RMP</unit_lcd>
+		<format>ХХ_ХХХ</format>
+		<code>13</code>
+		<comment>Удельная ЭДС</comment>
+	</param>
+	<param>
+		<id>1052</id>
 		<name>CCS_END</name>
 	</param>
 	<param>

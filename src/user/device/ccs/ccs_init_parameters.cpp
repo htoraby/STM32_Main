@@ -12614,5 +12614,17 @@ void Ccs::initParameters()
   parameters_[CCS_DHS_STATE_SENSOR_HOWMIDITY - CCS_BEGIN].discret                = 1;
   parameters_[CCS_DHS_STATE_SENSOR_HOWMIDITY - CCS_BEGIN].def                    = 0.0;
   parameters_[CCS_DHS_STATE_SENSOR_HOWMIDITY - CCS_BEGIN].code                   = 0;
+  // Удельная ЭДС
+  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].id                                      = CCS_EMF_MOTOR;
+  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
+  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].physic                                  = PHYSIC_EMF_SPECIFIC;
+  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].validity                                = VALIDITY_OK;
+  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].value.float_t                           = 0.0;
+  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].min                                     = -2147483647.0;
+  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].max                                     = 2147483647.0;
+  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].discret                                 = 1000;
+  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].def                                     = 0.0;
+  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].code                                    = 13;
 }
 
