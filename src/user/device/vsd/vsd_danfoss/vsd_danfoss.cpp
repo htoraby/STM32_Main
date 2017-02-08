@@ -319,10 +319,11 @@ void VsdDanfoss::setMotorConfig()
   float freqMtr = parameters.get(VSD_MOTOR_FREQUENCY);
   float curMtr = parameters.get(VSD_MOTOR_CURRENT);
   float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
+  coefTrans = (coefTrans < 1) ? 1 : coefTrans;
   float rpmMtr = parameters.get(VSD_MOTOR_SPEED);
   float plsMtr = parameters.get(VSD_MOTOR_POLES);
   float limMtr = parameters.get(CCS_VSD_CURRENT_LIMIT);
-  float emfMtr = parameters.get(VSD_BACK_EMF);
+  float emfMtr = parameters.get(CCS_EMF_MOTOR);
   float highMtr = parameters.get(VSD_HIGH_LIM_SPEED_MOTOR);
   //! Номинальный ток станции
   //! 1-20 Номинальная мощность двигателя
@@ -342,7 +343,7 @@ void VsdDanfoss::setMotorConfig()
   //! 13-12.2
   writeToDevice(VSD_SL_12, curMtr * coefTrans * plsMtr * 0.95 / 100);
   //! 12-60
-  writeToDevice(VSD_RATE_TORQUE_MOTOR, pwrMtr / rpmMtr * 9550);
+  writeToDevice(VSD_RATE_TORQUE_MOTOR, pwrMtr / rpmMtr * 9.550);
   //! 14-00
   writeToDevice(VSD_BACK_EMF, emfMtr / coefTrans * 1000);
   //! 4-14
@@ -1304,6 +1305,12 @@ void VsdDanfoss::getNewValue(uint16_t id)
       break;
     case VSD_SWITCHING_FREQUENCY_CODE:
       getSwitchFreqCode(value);
+      break;
+    case VSD_BACK_EMF:
+      setValue(id, value);
+      value = value * parameters.get(CCS_COEF_TRANSFORMATION) * 0.001;
+      if (value != parameters.get(CCS_EMF_MOTOR))
+        parameters.set(CCS_EMF_MOTOR, value);
       break;
     default:
       setValueForce(id, value);

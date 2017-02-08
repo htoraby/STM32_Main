@@ -1611,6 +1611,12 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     err = setValue(id, value, eventType);
     return err;
+  case CCS_EMF_MOTOR:
+    err = setValue(id, value, eventType);
+    if (!err) {
+      parameters.set(VSD_BACK_EMF, value / parameters.get(CCS_COEF_TRANSFORMATION) * 1000);
+    }
+    break;
   default:
     return setValue(id, value, eventType);
   }
