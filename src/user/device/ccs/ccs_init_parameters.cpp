@@ -12626,5 +12626,89 @@ void Ccs::initParameters()
   parameters_[CCS_EMF_MOTOR - CCS_BEGIN].discret                                 = 1000;
   parameters_[CCS_EMF_MOTOR - CCS_BEGIN].def                                     = 0.0;
   parameters_[CCS_EMF_MOTOR - CCS_BEGIN].code                                    = 13;
+  // Байпасные контакторы
+  parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].id                              = CCS_BYPASS_CONTACTORS;
+  parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
+  parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].value.float_t                   = 0.0;
+  parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].min                             = 0.0;
+  parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].max                             = 1.0;
+  parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].discret                         = 1;
+  parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].def                             = 0.0;
+  parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].code                            = 20;
+  // Управляющий сигнал на KM1
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].id                   = CCS_BYPASS_CONTACTOR_KM1_CONTROL;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].access               = ACCESS_OPERATOR;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].validity             = VALIDITY_OK;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].value.float_t        = 0.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].min                  = 0.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].max                  = 1.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].discret              = 1;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].def                  = 0.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].code                 = 13;
+  // Управляющий сигнал на KM2
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].id                   = CCS_BYPASS_CONTACTOR_KM2_CONTROL;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].access               = ACCESS_OPERATOR;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].validity             = VALIDITY_OK;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].value.float_t        = 0.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].min                  = 0.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].max                  = 1.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].discret              = 1;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].def                  = 0.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].code                 = 13;
+  // Состояние KM1
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_STATE - CCS_BEGIN].id                     = CCS_BYPASS_CONTACTOR_KM1_STATE;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_STATE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_STATE - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_STATE - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_STATE - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_STATE - CCS_BEGIN].value.float_t          = 0.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_STATE - CCS_BEGIN].min                    = 0.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_STATE - CCS_BEGIN].max                    = 1.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_STATE - CCS_BEGIN].discret                = 1;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_STATE - CCS_BEGIN].def                    = 0.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_STATE - CCS_BEGIN].code                   = 0;
+  // Состояние KM2
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_STATE - CCS_BEGIN].id                     = CCS_BYPASS_CONTACTOR_KM2_STATE;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_STATE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_STATE - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_STATE - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_STATE - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_STATE - CCS_BEGIN].value.float_t          = 0.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_STATE - CCS_BEGIN].min                    = 0.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_STATE - CCS_BEGIN].max                    = 1.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_STATE - CCS_BEGIN].discret                = 1;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_STATE - CCS_BEGIN].def                    = 0.0;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_STATE - CCS_BEGIN].code                   = 0;
+  // Действие режима пуска "Прямой пуск"
+  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].id                            = CCS_RGM_RUN_DIRECT_MODE;
+  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].validity                      = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].value.float_t                 = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].min                           = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].max                           = 1.0;
+  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].discret                       = 1;
+  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].def                           = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].code                          = 13;
+  // Состояние автомата режима пуска "Пуск с синхронизацией"
+  parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].id                           = CCS_RGM_RUN_DIRECT_STATE;
+  parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].max                          = 4294967296.0;
+  parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].code                         = 0;
 }
 

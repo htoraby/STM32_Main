@@ -1055,7 +1055,14 @@ enum enID
   CCS_DHS_STATE_SENSOR_FLOW_DISCHARGE = 1049,                //!< Состояние датчика "Расход жидкости на выкиде насоса"
   CCS_DHS_STATE_SENSOR_HOWMIDITY = 1050,                     //!< Состояние датчика "Обводненность"
   CCS_EMF_MOTOR = 1051,                                      //!< Удельная ЭДС
-  CCS_END = 1052,                                            //!< 
+  CCS_BYPASS_CONTACTORS = 1052,                              //!< Байпасные контакторы
+  CCS_BYPASS_CONTACTOR_KM1_CONTROL = 1053,                   //!< Управляющий сигнал на KM1
+  CCS_BYPASS_CONTACTOR_KM2_CONTROL = 1054,                   //!< Управляющий сигнал на KM2
+  CCS_BYPASS_CONTACTOR_KM1_STATE = 1055,                     //!< Состояние KM1
+  CCS_BYPASS_CONTACTOR_KM2_STATE = 1056,                     //!< Состояние KM2
+  CCS_RGM_RUN_DIRECT_MODE = 1057,                            //!< Действие режима пуска "Прямой пуск"
+  CCS_RGM_RUN_DIRECT_STATE = 1058,                           //!< Состояние автомата режима пуска "Пуск с синхронизацией"
+  CCS_END = 1059,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

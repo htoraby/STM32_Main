@@ -10252,8 +10252,8 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1</value>
-		<text>Коэф. входного напряжения A</text>
-		<short_text>Коэфф.коррек.напряж.Ua</short_text>
+		<text>Коэф. входного напряжения A(AB)</text>
+		<short_text>Коэфф.коррек.напряж.Ua(ab)</short_text>
 		<form>5.2 Корректировки</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -10272,8 +10272,8 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1</value>
-		<text>Коэф. входного напряжения B</text>
-		<short_text>Коэфф.коррек.напряж.Ub</short_text>
+		<text>Коэф. входного напряжения B(BC)</text>
+		<short_text>Коэфф.коррек.напряж.Ub(bc)</short_text>
 		<form>5.2 Корректировки</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -10292,8 +10292,8 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1</value>
-		<text>Коэф. входного напряжения C</text>
-		<short_text>Коэфф.коррек.напряж.Uc</short_text>
+		<text>Коэф. входного напряжения C(CA)</text>
+		<short_text>Коэфф.коррек.напряж.Uc(ca)</short_text>
 		<form>5.2 Корректировки</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -21040,6 +21040,159 @@
 	</param>
 	<param>
 		<id>1052</id>
+		<name>CCS_BYPASS_CONTACTORS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Байпасные контакторы</text>
+		<short_text>Байпасные контакторы</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>20</code>
+		<values>0-Откл;1-Вкл</values>
+		<comment>Байпасные контакторы</comment>
+	</param>
+	<param>
+		<id>1053</id>
+		<name>CCS_BYPASS_CONTACTOR_KM1_CONTROL</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Управляющий сигнал на KM1</text>
+		<short_text>Управляющий сигнал на KM1</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Вкл</values>
+		<comment>Управляющий сигнал на KM1</comment>
+	</param>
+	<param>
+		<id>1054</id>
+		<name>CCS_BYPASS_CONTACTOR_KM2_CONTROL</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Управляющий сигнал на KM2</text>
+		<short_text>Управляющий сигнал на KM2</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Вкл</values>
+		<comment>Управляющий сигнал на KM2</comment>
+	</param>
+	<param>
+		<id>1055</id>
+		<name>CCS_BYPASS_CONTACTOR_KM1_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние KM1</text>
+		<short_text>Состояние KM1</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Откл;1-Вкл</values>
+		<comment>Состояние KM1</comment>
+	</param>
+	<param>
+		<id>1056</id>
+		<name>CCS_BYPASS_CONTACTOR_KM2_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Состояние KM2</text>
+		<short_text>Состояние KM2</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Откл;1-Вкл</values>
+		<comment>Состояние KM2</comment>
+	</param>
+	<param>
+		<id>1057</id>
+		<name>CCS_RGM_RUN_DIRECT_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Прямой пуск</text>
+		<short_text>Прямой пуск</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Вкл;</values>
+		<comment>Действие режима пуска "Прямой пуск"</comment>
+	</param>
+	<param>
+		<id>1058</id>
+		<name>CCS_RGM_RUN_DIRECT_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Состояние автомата режима пуска "Пуск с синхронизацией"</comment>
+	</param>
+	<param>
+		<id>1059</id>
 		<name>CCS_END</name>
 	</param>
 	<param>
