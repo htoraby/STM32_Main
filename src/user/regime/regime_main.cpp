@@ -53,6 +53,22 @@ bool interceptionStartRegime()
     }
   }
 
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) != Regime::OffAction) {
+    switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
+    case VSD_TYPE_NOVOMET:
+    case VSD_TYPE_ETALON:
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) < Regime::WorkState) {
+        return false;
+      }
+      break;
+    default:
+      if (parameters.get(CCS_RGM_RUN_DIRECT_STATE) < Regime::WorkState) {
+        return false;
+      }
+      break;
+    }
+  }
+
   if (parameters.get(CCS_RGM_RUN_PICKUP_MODE) != Regime::OffAction) {
     switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
     case VSD_TYPE_NOVOMET:

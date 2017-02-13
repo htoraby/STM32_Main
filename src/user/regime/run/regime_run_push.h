@@ -18,7 +18,6 @@ public:
   void processingStateRunning();
   void processingStateWork();
   void processingStateStop();
-  void processingStateError();
   void automatRegime();
 
 private:
