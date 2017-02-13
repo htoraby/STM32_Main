@@ -811,6 +811,9 @@ void Ccs::calcDigitalInputs()
   setValue(CCS_DI_12_VALUE, !getDigitalInput(DI12));
   setValue(CCS_DI_13_VALUE, !getDigitalInput(DI13));
   setValue(CCS_DI_14_VALUE, !getDigitalInput(DI14));
+
+  setValue(CCS_BYPASS_CONTACTOR_KM1_STATE, !getValue(CCS_DI_7_VALUE));
+  setValue(CCS_BYPASS_CONTACTOR_KM2_STATE, !getValue(CCS_DI_8_VALUE));
 }
 
 void Ccs::calcTest()

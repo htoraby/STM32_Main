@@ -42,7 +42,7 @@ enum DoNum {
  * \brief Список релейных выходов
 */
 enum RoNum {
-  RO1, RO2, RO3, RO4, RO5,
+  RO1, RO2, RO3, RO4, RO5, RO6,
   RelayOutputMax
 };
 
