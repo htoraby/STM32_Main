@@ -251,7 +251,7 @@ void Ccs::vsdConditionTask()
       if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP) {
         setNewValue(CCS_CONDITION, CCS_CONDITION_STOP);
       } else {
-        if (vsd->checkStart()) {
+        if (checkStartDevice()) {
           if (++timer >= 500) {
             syncStart();
           }
@@ -261,18 +261,18 @@ void Ccs::vsdConditionTask()
       }
       break;
     case VSD_CONDITION_STOPPING:
-      if (vsd->checkStop()) {
-        vsd->resetBlock();
+      if (checkStopDevice()) {
+        resetBlockDevice();
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
       }
-      if (vsd->checkStart()) {
+      if (checkStartDevice()) {
         if (++timer >= 18000) {
           syncStart();
         }
       }
       break;
     case VSD_CONDITION_WAIT_STOP:
-      if (vsd->stop(isAlarmStop()) == ok_r) {
+      if (stopDevice() == ok_r) {
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       }
       else if (vsdCondition != vsdConditionOld) {
@@ -290,7 +290,7 @@ void Ccs::vsdConditionTask()
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #endif
       }
-      if (vsd->checkStop()) {
+      if (checkStopDevice()) {
         if (++timer >= 500) {
           syncStop();
         }
@@ -299,14 +299,14 @@ void Ccs::vsdConditionTask()
       }
       break;
     case VSD_CONDITION_RUNNING:
-      if (vsd->checkStart()) {
+      if (checkStartDevice()) {
         setLedCondition(ToogleGreenLed);
         // Запуск сохранения пускового архива
         logRunning.start();
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
       }
 
-      if (vsd->checkStop()) {
+      if (checkStopDevice()) {
         if (++timer >= 500) {
           syncStop();
         }
@@ -314,7 +314,7 @@ void Ccs::vsdConditionTask()
       break;
     case VSD_CONDITION_WAIT_RUN:
       int init = (vsdCondition != vsdConditionOld);
-      int status = vsd->start(init);
+      int status = startDevice(init);
       if (status == ok_r) {
         if ((int)getValue(CCS_VSD_CONDITION) == VSD_CONDITION_WAIT_RUN)
           setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
@@ -558,8 +558,19 @@ bool Ccs::checkCanStart(bool isForce)
   if (!vsd->isConnect())
     return false;
 #endif
-
   return true;
+}
+
+bool Ccs::checkStartDevice()
+{
+  bool result = false;
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {                                // Если прямой пуск
+    result = parameters.get(CCS_BYPASS_CONTACTOR_KM1_STATE);                    // Состояние контактора прямого пуска
+  }
+  else {
+    result = vsd->checkStart();
+  }
+  return result;
 }
 
 void Ccs::initStart()
@@ -593,6 +604,42 @@ bool Ccs::checkCanStop()
 //    return false;
 
   return true;
+}
+
+bool Ccs::checkStopDevice()
+{
+  bool result = false;
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {                                // Если прямой пуск
+    result = !parameters.get(CCS_BYPASS_CONTACTOR_KM1_STATE);                   // Состояние контактора прямого пуска
+  }
+  else {
+    result = vsd->checkStop();
+  }
+  return result;
+}
+
+int Ccs::stopDevice()
+{
+  int err = ok_r;
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+    err = parameters.set(CCS_BYPASS_CONTACTOR_KM1_CONTROL, 0);
+  }
+  else {
+    err = vsd->stop(isAlarmStop());
+  }
+  return err;
+}
+
+int Ccs::startDevice(bool init)
+{
+  int err = ok_r;
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+    err = parameters.set(CCS_BYPASS_CONTACTOR_KM1_CONTROL, 1);
+  }
+  else {
+    err = vsd->start(init);
+  }
+  return err;
 }
 
 float Ccs::isAlarmStop()
@@ -719,6 +766,13 @@ void Ccs::resetBlock()
   if (getValue(CCS_CONDITION_FLAG) == CCS_CONDITION_FLAG_BLOCK) {
     resetRestartCount();
     setNewValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
+    resetBlockDevice();
+  }
+}
+
+void Ccs::resetBlockDevice()
+{
+  if (!parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
     vsd->resetBlock();
   }
 }
@@ -1616,7 +1670,35 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (!err) {
       parameters.set(VSD_BACK_EMF, value / parameters.get(CCS_COEF_TRANSFORMATION) * 1000);
     }
-    break;
+    return err;
+  case CCS_RGM_RUN_DIRECT_MODE:                                                 // Прямой пуск
+    err = parameters.set(CCS_BYPASS_CONTACTOR_KM2_CONTROL, !value);             // Посылаем команду на контактор ЧРП
+    if (!err) {                                                                 // Прошла команда на контактор ЧРП
+      err = setValue(id, value, eventType);                                     // Меняем состояние регистра
+    }
+    return err;
+  case CCS_BYPASS_CONTACTOR_KM1_CONTROL:                                        // Контактор ПП
+    if ((value) && (getValue(CCS_BYPASS_CONTACTOR_KM2_STATE))) {                // Если включить контактор ПП и включен контактор ЧРП
+      err = err_r;                                                              // Выход с ошибкой
+    }
+    else {                                                                      // Включить контактор ПП и выключен контактор ЧРП или выключить ПП
+      err = setValue(id, value, eventType);                                     // Записываем в регистр
+      if (!err) {
+        setRelayOutput(RO5, (PinState)value);                                   // Переключаем реле
+      }
+    }
+    return err;
+  case CCS_BYPASS_CONTACTOR_KM2_CONTROL:                                        // Контактор ЧРП
+    if ((value) && (getValue(CCS_BYPASS_CONTACTOR_KM1_STATE))) {                // Если включить контактор ЧРП и включен контактор ПП                                                                // Если включаем контактор ЧРП
+      err = err_r;
+    }
+    else {
+      err = setValue(id, value, eventType);
+      if (!err) {
+        setRelayOutput(RO6, (PinState)value);
+      }
+    }
+    return err;
   default:
     return setValue(id, value, eventType);
   }
@@ -2244,3 +2326,4 @@ void Ccs::setRelayOutputs()
     valueOld[i] = value;
   }
 }
+

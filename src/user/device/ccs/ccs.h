@@ -178,6 +178,35 @@ public:
   void resetBlock();
 
   /*!
+   * \brief resetBlockDevice метод сброса блокировки устройства
+   */
+  void resetBlockDevice();
+
+  /*!
+   * \brief checkStartDevice Метод прослойка проверки запуска от различных устройтв пуска
+   * \return
+   */
+  bool checkStartDevice();
+
+  /*!
+   * \brief checkStopDevice метод проверки останова от различных устройств
+   * \return
+   */
+  bool checkStopDevice();
+
+  /*!
+   * \brief stopDevice метод вызова функции останова управляющего устройства
+   * \return
+   */
+  int stopDevice();
+
+  /*!
+   * \brief startDeviceметод вызова функции запуска управляющего устройства
+   * \return
+   */
+  int startDevice(bool init);
+
+  /*!
    * \brief isPrevent
    * \return
    */
