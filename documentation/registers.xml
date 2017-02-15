@@ -9037,7 +9037,7 @@
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<code>13</code>
-		<values>0-Откл;1-Вкл</values>
+		<values>0-Откл;3-Вкл</values>
 		<comment>Режим периодический</comment>
 	</param>
 	<param>
@@ -21042,7 +21042,7 @@
 		<id>1052</id>
 		<name>CCS_BYPASS_CONTACTORS</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
@@ -21078,7 +21078,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>13</code>
+		<code>0</code>
 		<values>0-Откл;1-Вкл</values>
 		<comment>Управляющий сигнал на KM1</comment>
 	</param>
@@ -21100,7 +21100,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
-		<code>13</code>
+		<code>0</code>
 		<values>0-Откл;1-Вкл</values>
 		<comment>Управляющий сигнал на KM2</comment>
 	</param>
@@ -21152,10 +21152,10 @@
 		<id>1057</id>
 		<name>CCS_RGM_RUN_DIRECT_MODE</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1.0</max>
+		<max>3.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -21167,7 +21167,7 @@
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<code>13</code>
-		<values>0-Откл;1-Вкл;</values>
+		<values>0-Откл;3-Вкл;</values>
 		<comment>Действие режима пуска "Прямой пуск"</comment>
 	</param>
 	<param>
@@ -21193,6 +21193,69 @@
 	</param>
 	<param>
 		<id>1059</id>
+		<name>CCS_RGM_RUN_DIRECT_LOAD_PHASE_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Загрузка Ia</text>
+		<short_text>Загр., %</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Текущая загрузка двигателя</comment>
+	</param>
+	<param>
+		<id>1060</id>
+		<name>CCS_RGM_RUN_DIRECT_LOAD_PHASE_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Загрузка Ib</text>
+		<short_text>Загр., %</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Текущая загрузка двигателя</comment>
+	</param>
+	<param>
+		<id>1061</id>
+		<name>CCS_RGM_RUN_DIRECT_LOAD_PHASE_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Загрузка Ic</text>
+		<short_text>Загр., %</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Текущая загрузка двигателя</comment>
+	</param>
+	<param>
+		<id>1062</id>
 		<name>CCS_END</name>
 	</param>
 	<param>

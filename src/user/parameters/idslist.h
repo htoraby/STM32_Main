@@ -1062,7 +1062,10 @@ enum enID
   CCS_BYPASS_CONTACTOR_KM2_STATE = 1056,                     //!< Состояние KM2
   CCS_RGM_RUN_DIRECT_MODE = 1057,                            //!< Действие режима пуска "Прямой пуск"
   CCS_RGM_RUN_DIRECT_STATE = 1058,                           //!< Состояние автомата режима пуска "Пуск с синхронизацией"
-  CCS_END = 1059,                                            //!< 
+  CCS_RGM_RUN_DIRECT_LOAD_PHASE_1 = 1059,                    //!< Текущая загрузка двигателя
+  CCS_RGM_RUN_DIRECT_LOAD_PHASE_2 = 1060,                    //!< Текущая загрузка двигателя
+  CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 = 1061,                    //!< Текущая загрузка двигателя
+  CCS_END = 1062,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
