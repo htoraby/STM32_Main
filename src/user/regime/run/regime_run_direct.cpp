@@ -43,7 +43,7 @@ void RegimeRunDirect::processingStateRunning()
     err = parameters.set(CCS_BYPASS_CONTACTOR_KM1_CONTROL, 1);
     if (!err) {
       ksu.start(runReason_, true);
-      logEvent.add(OtherCode, AutoType, RegimeRunPushStartId);
+      logEvent.add(OtherCode, AutoType, RegimeRunDirectStartId);
       state_ = WorkState;
     }
     break;
@@ -57,6 +57,7 @@ void RegimeRunDirect::processingStateWork()
 
 void RegimeRunDirect::processingStateStop()
 {
+  logEvent.add(OtherCode, AutoType, RegimeRunDirectFinishId);
   state_ = IdleState;
 }
 
