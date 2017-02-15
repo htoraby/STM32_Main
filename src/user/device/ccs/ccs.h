@@ -267,11 +267,10 @@ public:
    * \param vsdCurOut - ток фазы на выходе ЧРП с учётом коэффициента коррекции
    * \return ток на фазе двигателя
    */
-  float calcMotorCurrentPhase(float vsdCurOut);
+  float applyCoefTransForCurrent(float vsdCurOut);
   float calcMotorCurrentPhase1();
   float calcMotorCurrentPhase2();
   float calcMotorCurrentPhase3();
-  void calcMotorCurrent();
   float calcMotorCurrentAverage();
   float calcMotorCurrentImbalance();
 

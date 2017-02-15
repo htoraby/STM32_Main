@@ -6,6 +6,7 @@
 #include "regime_run_pickup.h"
 #include "regime_run_skip_resonant_freq.h"
 #include "regime_run_synchron.h"
+#include "regime_run_direct.h"
 
 const float profileMotor[QUNTITY_PROFILES_MOTOR][QUANTITY_PARAMETER_MOTOR] = {
 // 0,    1,    2,    3,    4,    5,      6,      7,      8,      9,      10,     11,     12,     13,     14,     15,     16,     17,   18,   19,   20,   21,   22,   23,   24,   25,   26,   27,   28,   29,   30,   31,   32,   33,   34,   35,    36,    37,    38,    39,    40,    41
@@ -35,6 +36,7 @@ VsdDanfoss::VsdDanfoss()
   regimeRunPickup_ = new RegimeRunPickup();
   regimeRunSkipResonantFreq_ = new RegimeRunSkipResonantFreq();
   regimeRunSynchron_ = new RegimeRunSynchron();
+  regimeRunDirect_ = new RegimeRunDirect();
 }
 
 VsdDanfoss::~VsdDanfoss()
@@ -45,6 +47,7 @@ VsdDanfoss::~VsdDanfoss()
   delete regimeRunPickup_;
   delete regimeRunSkipResonantFreq_;
   delete regimeRunSynchron_;
+  delete regimeRunDirect_;
 }
 
 void VsdDanfoss::initParameters()
@@ -1074,6 +1077,7 @@ void VsdDanfoss::processingRegimeRun()
   regimeRunPickup_->processing();
   regimeRunSkipResonantFreq_->processing();
   regimeRunSynchron_->processing();
+  regimeRunDirect_->processing();
 }
 
 void VsdDanfoss::resetAdaptationVector(uint16_t type)
@@ -1208,22 +1212,16 @@ void VsdDanfoss::getNewValue(uint16_t id)
       setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
       calcVsdPowerFull();
       calcMotorCos();
-      ksu.calcMotorCurrentPhase1();           // Вычисляем ток двигателя фаза 1
-      ksu.calcMotorCurrent();
       break;
     case VSD_CURRENT_OUT_PHASE_2:             // Выходной ток ЧРП Фаза 2
       setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
       calcVsdPowerFull();
       calcMotorCos();
-      ksu.calcMotorCurrentPhase2();
-      ksu.calcMotorCurrent();
       break;
     case VSD_CURRENT_OUT_PHASE_3:             // Выходной ток ЧРП Фаза 3
       setValue(id, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
       calcVsdPowerFull();
       calcMotorCos();
-      ksu.calcMotorCurrentPhase3();
-      ksu.calcMotorCurrent();
       break;
     case VSD_OUT_VOLTAGE_MOTOR:
       setValue(id, value);

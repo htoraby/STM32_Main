@@ -690,8 +690,6 @@ void VsdNovomet::getNewCurOutPhase1(float value)
 {
   if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
     setValue(VSD_CURRENT_OUT_PHASE_1, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
-    ksu.calcMotorCurrentPhase1();
-    ksu.calcMotorCurrent();
   }
 }
 
@@ -699,8 +697,6 @@ void VsdNovomet::getNewCurOutPhase2(float value)
 {
   if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
     setValue(VSD_CURRENT_OUT_PHASE_2, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
-    ksu.calcMotorCurrentPhase2();
-    ksu.calcMotorCurrent();
   }
 }
 
@@ -708,8 +704,6 @@ void VsdNovomet::getNewCurOutPhase3(float value)
 {
   if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 0) {
     setValue(VSD_CURRENT_OUT_PHASE_3, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
-    ksu.calcMotorCurrentPhase3();
-    ksu.calcMotorCurrent();
   };
 }
 
@@ -718,8 +712,6 @@ void VsdNovomet::getNewIaRms(float value)
   setValue(VSD_IA_RMS, value);
   if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
     setValue(VSD_CURRENT_OUT_PHASE_1, parameters.get(CCS_COEF_OUT_CURRENT_1) * value);
-    ksu.calcMotorCurrentPhase1();
-    ksu.calcMotorCurrent();
   }
 }
 
@@ -728,8 +720,6 @@ void VsdNovomet::getNewIbRms(float value)
   setValue(VSD_IB_RMS, value);
   if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
     setValue(VSD_CURRENT_OUT_PHASE_2, parameters.get(CCS_COEF_OUT_CURRENT_2) * value);
-    ksu.calcMotorCurrentPhase2();
-    ksu.calcMotorCurrent();
   }
 }
 
@@ -738,8 +728,6 @@ void VsdNovomet::getNewIcRms(float value)
   setValue(VSD_IC_RMS, value);
   if (parameters.get(CCS_SRC_CURRENT_OUT_PHASE) == 1) {
     setValue(VSD_CURRENT_OUT_PHASE_3, parameters.get(CCS_COEF_OUT_CURRENT_3) * value);
-    ksu.calcMotorCurrentPhase3();
-    ksu.calcMotorCurrent();
   }
 }
 

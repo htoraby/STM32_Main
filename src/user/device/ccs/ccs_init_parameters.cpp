@@ -12629,7 +12629,7 @@ void Ccs::initParameters()
   // Байпасные контакторы
   parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].id                              = CCS_BYPASS_CONTACTORS;
   parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].operation                       = OPERATION_LIMITED;
   parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].value.float_t                   = 0.0;
@@ -12649,7 +12649,7 @@ void Ccs::initParameters()
   parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].max                  = 1.0;
   parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].discret              = 1;
   parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].def                  = 0.0;
-  parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].code                 = 13;
+  parameters_[CCS_BYPASS_CONTACTOR_KM1_CONTROL - CCS_BEGIN].code                 = 0;
   // Управляющий сигнал на KM2
   parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].id                   = CCS_BYPASS_CONTACTOR_KM2_CONTROL;
   parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].access               = ACCESS_OPERATOR;
@@ -12661,7 +12661,7 @@ void Ccs::initParameters()
   parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].max                  = 1.0;
   parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].discret              = 1;
   parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].def                  = 0.0;
-  parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].code                 = 13;
+  parameters_[CCS_BYPASS_CONTACTOR_KM2_CONTROL - CCS_BEGIN].code                 = 0;
   // Состояние KM1
   parameters_[CCS_BYPASS_CONTACTOR_KM1_STATE - CCS_BEGIN].id                     = CCS_BYPASS_CONTACTOR_KM1_STATE;
   parameters_[CCS_BYPASS_CONTACTOR_KM1_STATE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
@@ -12689,12 +12689,12 @@ void Ccs::initParameters()
   // Действие режима пуска "Прямой пуск"
   parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].id                            = CCS_RGM_RUN_DIRECT_MODE;
   parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].operation                     = OPERATION_LIMITED;
   parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].value.float_t                 = 0.0;
   parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].min                           = 0.0;
-  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].max                           = 1.0;
+  parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].max                           = 3.0;
   parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].def                           = 0.0;
   parameters_[CCS_RGM_RUN_DIRECT_MODE - CCS_BEGIN].code                          = 13;
@@ -12710,5 +12710,41 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_RGM_RUN_DIRECT_STATE - CCS_BEGIN].code                         = 0;
+  // Текущая загрузка двигателя
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_1 - CCS_BEGIN].id                    = CCS_RGM_RUN_DIRECT_LOAD_PHASE_1;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_1 - CCS_BEGIN].access                = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_1 - CCS_BEGIN].operation             = OPERATION_READ;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_1 - CCS_BEGIN].physic                = PHYSIC_PERCENT;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_1 - CCS_BEGIN].validity              = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_1 - CCS_BEGIN].value.float_t         = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_1 - CCS_BEGIN].min                   = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_1 - CCS_BEGIN].max                   = 10000.0;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_1 - CCS_BEGIN].discret               = 1;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_1 - CCS_BEGIN].def                   = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_1 - CCS_BEGIN].code                  = 0;
+  // Текущая загрузка двигателя
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_2 - CCS_BEGIN].id                    = CCS_RGM_RUN_DIRECT_LOAD_PHASE_2;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_2 - CCS_BEGIN].access                = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_2 - CCS_BEGIN].operation             = OPERATION_READ;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_2 - CCS_BEGIN].physic                = PHYSIC_PERCENT;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_2 - CCS_BEGIN].validity              = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_2 - CCS_BEGIN].value.float_t         = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_2 - CCS_BEGIN].min                   = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_2 - CCS_BEGIN].max                   = 10000.0;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_2 - CCS_BEGIN].discret               = 1;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_2 - CCS_BEGIN].def                   = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_2 - CCS_BEGIN].code                  = 0;
+  // Текущая загрузка двигателя
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].id                    = CCS_RGM_RUN_DIRECT_LOAD_PHASE_3;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].access                = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].operation             = OPERATION_READ;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].physic                = PHYSIC_PERCENT;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].validity              = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].value.float_t         = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].min                   = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].max                   = 10000.0;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].discret               = 1;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].def                   = 0.0;
+  parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].code                  = 0;
 }
 

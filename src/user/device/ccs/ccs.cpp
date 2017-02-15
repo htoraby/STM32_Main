@@ -944,6 +944,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction); // Отключаем режим пропуска резонансных частот
       parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
       parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+      parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OffAction);
       vsd->onRegimePush();
     }
     else {
@@ -1409,8 +1410,15 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_MOTOR_TYPE:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_MOTOR_TYPE, value, eventType);
-    setMaxBaseFrequency();
+    if (!err) {
+      parameters.set(VSD_MOTOR_TYPE, value, eventType);
+      setMaxBaseFrequency();
+      if (value == VSD_MOTOR_TYPE_VENT) {                                       // Переключили на вентильный двигатель
+        if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) == Regime::OnAction) {      // Был включен прямой пуск
+          parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OffAction);           // Выключаем прямой пуск
+        }
+      }
+    }
     return err;
   case CCS_MOTOR_TYPE_PROFILE_VSD:
     err = setValue(id, value, eventType);
@@ -1677,6 +1685,18 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       err = setValue(id, value, eventType);                                     // Меняем состояние регистра
     }
     return err;
+  case CCS_BYPASS_CONTACTORS:
+    err = setValue(id, value, NoneType);
+    if ((value != oldValue) && !err) {
+      if (value) {
+        logEvent.add(AddDeviceCode, eventType, AddDeviceBypassContactorsInputId, oldValue, value);
+      }
+      else {
+        logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceBypassContactorsInputId, oldValue, value);
+        parameters.set(CCS_RGM_RUN_DIRECT_MODE, value);                         // Отключаем прямой пуск если нет контакторов
+      }
+    }
+    return err;
   case CCS_BYPASS_CONTACTOR_KM1_CONTROL:                                        // Контактор ПП
     if ((value) && (getValue(CCS_BYPASS_CONTACTOR_KM2_STATE))) {                // Если включить контактор ПП и включен контактор ЧРП
       err = err_r;                                                              // Выход с ошибкой
@@ -1684,7 +1704,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     else {                                                                      // Включить контактор ПП и выключен контактор ЧРП или выключить ПП
       err = setValue(id, value, eventType);                                     // Записываем в регистр
       if (!err) {
-        setRelayOutput(RO5, (PinState)value);                                   // Переключаем реле
+        if (value) {
+          setRelayOutput(RO6, (PinState)!value);
+        }
+        setRelayOutput(RO5, (PinState)value);                                 // Переключаем реле
       }
     }
     return err;
@@ -1695,6 +1718,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     else {
       err = setValue(id, value, eventType);
       if (!err) {
+        if (value) {
+          setRelayOutput(RO5, (PinState)!value);
+        }
         setRelayOutput(RO6, (PinState)value);
       }
     }
