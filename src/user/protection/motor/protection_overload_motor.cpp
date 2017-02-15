@@ -75,6 +75,11 @@ void ProtectionOverloadMotor::getOtherSetpointProt()
 bool ProtectionOverloadMotor::checkAlarm()
 {
   float alarm = vsd->checkAlarmVsdOverloadMotor();
+
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+    return false;
+  }
+
   if (alarm) {
     lastReasonStop_ = (LastReasonStop)(int)alarm;
     //lastReasonStop_ = LastReasonStopHardwareVsd;
