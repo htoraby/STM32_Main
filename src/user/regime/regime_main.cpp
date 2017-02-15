@@ -53,19 +53,10 @@ bool interceptionStartRegime()
     }
   }
 
+  // Перехватываем запуск режимом прямого пуска
   if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) != Regime::OffAction) {
-    switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
-    case VSD_TYPE_NOVOMET:
-    case VSD_TYPE_ETALON:
-      if (parameters.get(CCS_RGM_RUN_VSD_STATE) < Regime::WorkState) {
-        return false;
-      }
-      break;
-    default:
-      if (parameters.get(CCS_RGM_RUN_DIRECT_STATE) < Regime::WorkState) {
-        return false;
-      }
-      break;
+    if (parameters.get(CCS_RGM_RUN_DIRECT_STATE) < Regime::WorkState) {
+      return false;
     }
   }
 
@@ -197,6 +188,12 @@ void checkWorkingRunMode()
   if (isWorkingRunMode(CCS_RGM_RUN_AUTO_ADAPTATION_STATE))
     return;
   if (isWorkingRunMode(CCS_RGM_RUN_PICKUP_STATE))
+    return;
+  if (isWorkingRunMode(CCS_RGM_RUN_SKIP_RESONANT_STATE))
+    return;
+  if (isWorkingRunMode(CCS_RGM_RUN_SYNCHRON_STATE))
+    return;
+  if (isWorkingRunMode(CCS_RGM_RUN_DIRECT_STATE))
     return;
 
   // TODO: Надо подумать как это перенести в сами режимы
