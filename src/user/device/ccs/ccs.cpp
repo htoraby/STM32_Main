@@ -939,12 +939,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_PUSH_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
-      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction); // Отключаем режим подхвата
-      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction); // Отключаем режим пропуска резонансных частот
-      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OffAction);
+      offRunModeExcept(CCS_RGM_RUN_PUSH_MODE);
       vsd->onRegimePush();
     }
     else {
@@ -954,11 +949,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_SWING_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим толчковый
-      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction); // Отключаем режим подхвата
-      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction); // Отключаем режим пропуска резонансных частот
-      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+      offRunModeExcept(CCS_RGM_RUN_SWING_MODE);
       vsd->onRegimeSwing();
     }
     else {
@@ -982,11 +973,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_PICKUP_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим толчковый
-      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
-      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction); // Отключаем режим пропуска резонансных частот
-      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+      offRunModeExcept(CCS_RGM_RUN_PICKUP_MODE);
       parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ProtModeOff); // Отключаем защиту турбин. вращен.
       vsd->onRegimePickup();
     }
@@ -997,11 +984,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_SKIP_RESONANT_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+      offRunModeExcept(CCS_RGM_RUN_SKIP_RESONANT_MODE);
       vsd->onRegimeSkipFreq();
     }
     else {
@@ -1011,21 +994,13 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_AUTO_ADAPTATION_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+      offRunModeExcept(CCS_RGM_RUN_AUTO_ADAPTATION_MODE);
     }
     return err;
   case CCS_RGM_RUN_SYNCHRON_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
+      offRunModeExcept(CCS_RGM_RUN_SYNCHRON_MODE);
     }
     return err;
   case CCS_RGM_OPTIM_VOLTAGE_MODE:
@@ -1683,6 +1658,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = parameters.set(CCS_BYPASS_CONTACTOR_KM2_CONTROL, !value);             // Посылаем команду на контактор ЧРП
     if (!err) {                                                                 // Прошла команда на контактор ЧРП
       err = setValue(id, value, eventType);                                     // Меняем состояние регистра
+      if (value != Regime::OffAction) {
+        offRunModeExcept(CCS_RGM_RUN_DIRECT_MODE);
+      }
     }
     return err;
   case CCS_BYPASS_CONTACTORS:

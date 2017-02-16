@@ -1,8 +1,19 @@
 #include "regime_main.h"
 
-#define COUNT_REGIMES 6                     //!< Количество режимов, увеличивать при добавлении нового
+#define COUNT_RUN_REGIMES  7                  //!< Количество пусковых режимов, увеличивать при добавлении нового
+#define COUNT_REGIMES 6
 
-Regime *regimes[COUNT_REGIMES];
+const uint16_t run[COUNT_RUN_REGIMES] = {     //!<
+  CCS_RGM_RUN_PUSH_MODE,
+  CCS_RGM_RUN_SWING_MODE,
+  CCS_RGM_RUN_PICKUP_MODE,
+  CCS_RGM_RUN_AUTO_ADAPTATION_MODE,
+  CCS_RGM_RUN_SKIP_RESONANT_MODE,
+  CCS_RGM_RUN_SYNCHRON_MODE,
+  CCS_RGM_RUN_DIRECT_MODE
+};
+
+Regime *regimes[COUNT_REGIMES];               //!< Количество режимов, увеличивать при добавлении нового
 
 RegimeTechnologPeriodic regimeTechnologPeriodic;
 RegimeTechnologSoftChangeFreq regimeTechnologSoftChangeFreq;
@@ -210,4 +221,14 @@ bool isWorkingRunMode(uint16_t id)
     return true;
   }
   return false;
+}
+
+
+void offRunModeExcept(uint16_t id)
+{
+  for (int i = 0; i < COUNT_RUN_REGIMES; i++) {
+    if (id != run[i]) {
+      parameters.set(run[i], Regime::OffAction);
+    }
+  }
 }
