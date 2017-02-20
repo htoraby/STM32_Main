@@ -164,6 +164,7 @@ int VsdDanfoss::setMotorTypeProfile()
     writeToDevice(VSD_MOTOR_CONTROL,            profileMotor[profile][3]);   // 1-01
     writeToDevice(VSD_MOTOR_TYPE,               profileMotor[profile][4]);   // 1-10
     writeToDevice(VSD_MAX_OUTPUT_FREQUENCY,     profileMotor[profile][32]);  // 4-19
+    parameters.setMax(CCS_BASE_FREQUENCY, profileMotor[profile][34]);
     if (profileMotor[profile][33] > parameters.get(VSD_HIGH_LIM_SPEED_MOTOR))
       writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR,   profileMotor[profile][34]);  // 4-14
     writeToDevice(VSD_LOW_LIM_SPEED_MOTOR,      profileMotor[profile][33]);  // 4-12

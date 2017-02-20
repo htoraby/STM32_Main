@@ -124,7 +124,7 @@ void Ccs::initTask()
     setValue(CCS_DATE_INSTALL_SW_CCS, installSw, NoneType);
   }
 
-  setMaxBaseFrequency();
+  //setMaxBaseFrequency();
 
   intRestartCount();
 }
@@ -888,7 +888,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 {
   uint8_t err = ok_r;
   float oldValue = getValue(id);
-
   switch (id) {
   case CCS_WORKING_MODE:
     err = setValue(id, value, NoneType);
@@ -1085,9 +1084,11 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_BASE_FREQUENCY:                  // Максимальная рабочая частота (базовая)
     err = setValue(id, value, eventType);
-    parameters.set(VSD_HIGH_LIM_SPEED_MOTOR, value, eventType);
-    calcTransRecommendedTapOff();
-    vsd->calcUfCharacteristicF(value);
+    if (!err) {
+      parameters.set(VSD_HIGH_LIM_SPEED_MOTOR, value, eventType);
+      calcTransRecommendedTapOff();
+      vsd->calcUfCharacteristicF(value);
+    }
     return err;
   case CCS_TRANS_NOMINAL_FREQUENCY_INPUT:
     err = setValue(id, value, eventType);
@@ -2240,6 +2241,7 @@ void Ccs::setMaxBaseFrequency()
 {
   float maxFreq = 70;
   if (parameters.get(CCS_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
+
     maxFreq = 200;
   }
   setMax(CCS_BASE_FREQUENCY, maxFreq);
