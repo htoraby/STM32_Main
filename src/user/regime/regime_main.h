@@ -26,13 +26,10 @@ bool interceptionStartRegime();
 bool interceptionStopRegime();
 
 /*!
- * \brief Метод проверки работы пускового режима
- * функция проверяет состояние автоматов пусковых режимов, и если хотя бы один из
- * них не в состоянии Idle возвращает это состояниие. При добавлении новых пусковых
- * режимов нужно добавить в эту функцию.
- * \return
+ * \brief Метод аккумуляции и установки в общий регистр состояния пусковых режимов
+ * если один из режимов работает устанавливается его состояние, иначе состояние Idle
  */
-void checkWorkingRunMode();
+void setGeneralStateRunMode();
 
 /*!
  * \brief Функция выключает (переводит MODE в Off) все пусковые режимы кроме
@@ -40,12 +37,7 @@ void checkWorkingRunMode();
  */
 void offRunModeExcept(uint16_t id);
 
-/*!
- * \brief isWorkingRunMode
- * \param id
- * \return
- */
-bool isWorkingRunMode(uint16_t id);
+
 
 
 #endif // REGIMEMAIN_H

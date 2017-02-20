@@ -3,7 +3,7 @@
 #define COUNT_RUN_REGIMES  7                  //!< Количество пусковых режимов, увеличивать при добавлении нового
 #define COUNT_REGIMES 6
 
-const uint16_t run[COUNT_RUN_REGIMES] = {     //!<
+const uint16_t runRgmMode[COUNT_RUN_REGIMES] = {     //!<
   CCS_RGM_RUN_PUSH_MODE,
   CCS_RGM_RUN_SWING_MODE,
   CCS_RGM_RUN_PICKUP_MODE,
@@ -11,6 +11,16 @@ const uint16_t run[COUNT_RUN_REGIMES] = {     //!<
   CCS_RGM_RUN_SKIP_RESONANT_MODE,
   CCS_RGM_RUN_SYNCHRON_MODE,
   CCS_RGM_RUN_DIRECT_MODE
+};
+
+const uint16_t runRgmState[COUNT_RUN_REGIMES] = {     //!<
+  CCS_RGM_RUN_PUSH_STATE,
+  CCS_RGM_RUN_SWING_STATE,
+  CCS_RGM_RUN_PICKUP_STATE,
+  CCS_RGM_RUN_AUTO_ADAPTATION_STATE,
+  CCS_RGM_RUN_SKIP_RESONANT_STATE,
+  CCS_RGM_RUN_SYNCHRON_STATE,
+  CCS_RGM_RUN_DIRECT_STATE
 };
 
 Regime *regimes[COUNT_REGIMES];               //!< Количество режимов, увеличивать при добавлении нового
@@ -46,7 +56,7 @@ void regimeTask(void *argument)
     osDelay(100);
 
     vsd->processingRegimeRun();
-    checkWorkingRunMode();
+    setGeneralStateRunMode();
 
     for (int i = 0; i < COUNT_REGIMES; ++i) {
       regimes[i]->processing();
@@ -189,46 +199,25 @@ bool interceptionStopRegime()
   return true;
 }
 
-
-void checkWorkingRunMode()
+void setGeneralStateRunMode()
 {
-  if (isWorkingRunMode(CCS_RGM_RUN_PUSH_STATE))
-    return;
-  if (isWorkingRunMode(CCS_RGM_RUN_SWING_STATE))
-    return;
-  if (isWorkingRunMode(CCS_RGM_RUN_AUTO_ADAPTATION_STATE))
-    return;
-  if (isWorkingRunMode(CCS_RGM_RUN_PICKUP_STATE))
-    return;
-  if (isWorkingRunMode(CCS_RGM_RUN_SKIP_RESONANT_STATE))
-    return;
-  if (isWorkingRunMode(CCS_RGM_RUN_SYNCHRON_STATE))
-    return;
-  if (isWorkingRunMode(CCS_RGM_RUN_DIRECT_STATE))
-    return;
+  for (int i = 0; i < COUNT_RUN_REGIMES; i++) {
+    if (parameters.get(runRgmState[i]) != Regime::IdleState) {
+      parameters.set(CCS_RGM_RUN_VSD_STATE, parameters.get(runRgmState[i]));
+    }
+  }
 
-  // TODO: Надо подумать как это перенести в сами режимы
   if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_DANFOSS) {
     parameters.set(CCS_RGM_RUN_VSD_STATE, Regime::IdleState);
   }
-}
-
-bool isWorkingRunMode(uint16_t id)
-{
-  float state = parameters.get(id);
-  if (state != Regime::IdleState) {
-    parameters.set(CCS_RGM_RUN_VSD_STATE, state);
-    return true;
-  }
-  return false;
 }
 
 
 void offRunModeExcept(uint16_t id)
 {
   for (int i = 0; i < COUNT_RUN_REGIMES; i++) {
-    if (id != run[i]) {
-      parameters.set(run[i], Regime::OffAction);
+    if (id != runRgmMode[i]) {
+      parameters.set(runRgmMode[i], Regime::OffAction);
     }
   }
 }
