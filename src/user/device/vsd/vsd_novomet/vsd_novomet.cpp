@@ -138,6 +138,7 @@ int VsdNovomet::setMotorType(float value)
       freq = 200;
     }
     writeToDevice(VSD_CONTROL_WORD_1, value);
+    ksu.setMaxBaseFrequency(freq);
     setMotorFrequency(freq);
     return ok_r;
   }

@@ -124,8 +124,6 @@ void Ccs::initTask()
     setValue(CCS_DATE_INSTALL_SW_CCS, installSw, NoneType);
   }
 
-  //setMaxBaseFrequency();
-
   intRestartCount();
 }
 
@@ -1388,7 +1386,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     if (!err) {
       parameters.set(VSD_MOTOR_TYPE, value, eventType);
-      setMaxBaseFrequency();
       if (value == VSD_MOTOR_TYPE_VENT) {                                       // Переключили на вентильный двигатель
         if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) == Regime::OnAction) {      // Был включен прямой пуск
           parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OffAction);           // Выключаем прямой пуск
@@ -2237,14 +2234,9 @@ void Ccs::resetCmd(uint16_t id)
   setValue(id, 0.0);
 }
 
-void Ccs::setMaxBaseFrequency()
+void Ccs::setMaxBaseFrequency(float freq)
 {
-  float maxFreq = 70;
-  if (parameters.get(CCS_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
-
-    maxFreq = 200;
-  }
-  setMax(CCS_BASE_FREQUENCY, maxFreq);
+  setMax(CCS_BASE_FREQUENCY, freq);
 }
 
 void Ccs::setError(int error)

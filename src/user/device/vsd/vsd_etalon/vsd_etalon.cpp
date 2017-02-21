@@ -103,8 +103,13 @@ bool VsdEtalon::isConnect()
 // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
 int VsdEtalon::setMotorType(float value)
 {
+  float freq = 200;
   if (!Vsd::setMotorType(value)) {          // Записываем в массив
+    if (value == VSD_MOTOR_TYPE_VENT) {
+      freq = 200;
+    }
     writeToDevice(VSD_MOTOR_TYPE, value);   // Записываем в ЧРП
+    ksu.setMaxBaseFrequency(freq);
     return ok_r;
   }
   return err_r;
