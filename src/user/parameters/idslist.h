@@ -1055,7 +1055,12 @@ enum enID
   CCS_DHS_STATE_SENSOR_FLOW_DISCHARGE = 1049,                //!< Состояние датчика "Расход жидкости на выкиде насоса"
   CCS_DHS_STATE_SENSOR_HOWMIDITY = 1050,                     //!< Состояние датчика "Обводненность"
   CCS_EMF_MOTOR = 1051,                                      //!< Удельная ЭДС
-  CCS_END = 1052,                                            //!< 
+  CCS_CMD_SAVE_SETPOINT = 1052,                              //!< Конфигурации. Сохрание текущих параметров в профиль
+  CCS_CMD_LOAD_SETPOINT = 1053,                              //!< Конфигурации. Загрузка параметров из профиля
+  CCS_PROFILE_DEFAULT_SETPOINT = 1054,                       //!< Конфигурации. Профиль уставок по умолчанию
+  CCS_CMD_ALL_SETPOINT_RESET = 1055,                         //!< Конфигурации. Сброс всех уставок
+  CCS_SAVE_SETPOINT = 1056,                                  //!< Биты сохранённых профилей
+  CCS_END = 1057,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

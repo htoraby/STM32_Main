@@ -605,7 +605,7 @@ void Em::initParameters()
   // Коэффициент трансформации напряжения
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].id                        = EM_COEFFICIENT_TRANS_VOLTAGE;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].operation                 = OPERATION_READ;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].validity                  = VALIDITY_ERROR;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].value.float_t             = 1.0;
