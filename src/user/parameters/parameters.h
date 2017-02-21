@@ -3,6 +3,7 @@
 
 #include "device.h"
 #include "fram.h"
+#include "parameters_default.h"
 
 #define PARAMS_SAVE_TIME 60000 //!< Период сохранения параметров в миллисекундах
 
@@ -145,12 +146,41 @@ public:
    */
   float convertTo(float value, int physic, int unit);
 
+  /*!
+   * \brief Сохрание текущих параметров в профиль
+   */
+  void saveConfig();
+
+  /*!
+   * \brief Загрузка параметров из профиля
+   */
+  void loadConfig();
+
+  /*!
+   * \brief Загрузка значений из профиля в массив уставок по умолчанию
+   */
+  void setProfileDefaultSetpoint();
+
+  /*!
+   * \brief Сброс всех уставок по умолчанию
+   */
+  void setAllDefault();
+
+  /*!
+   * \brief Сброс значения параметра по умолчанию
+   * в зависимости от выбранного профиля
+   * \param id - уникальный идентификатор параметра
+   */
+  void setDefault(uint16_t id);
+
 private:
   //! Идентификатор семафора
   osSemaphoreId semaphoreId_;
 
   osMessageQId messageIdParams_;
   osMessageQId messageValueParams_;
+
+  float profileDefaultParams_[COUNT_PARAMETERS_DEFAULT];
 
 };
 

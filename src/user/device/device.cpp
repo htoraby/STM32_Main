@@ -9,7 +9,7 @@
 #include "user_main.h"
 #include "novobus_slave.h"
 
-static float buffer[CCS_END - CCS_BEGIN];
+static float volatile buffer[CCS_END - CCS_BEGIN];
 
 static void deviceUpdateValueTask(void *p)
 {
@@ -482,19 +482,29 @@ uint8_t Device::setNewValue(uint16_t id, int value, EventType eventType)
 
 StatusType Device::saveParameters()
 {
+  uint32_t countAddr = CcsParamsCountAddrFram;
+  uint32_t crcAddr = CcsParamsCrcAddrFram;
+  if (startAddrParams_ == VSD_BEGIN) {
+    countAddr = VsdParamsCountAddrFram;
+    crcAddr = VsdParamsCrcAddrFram;
+  }
+  if (startAddrParams_ == TMS_BEGIN) {
+    countAddr = TmsParamsCountAddrFram;
+    crcAddr = TmsParamsCrcAddrFram;
+  }
+  if (startAddrParams_ == EM_BEGIN) {
+    countAddr = EmParamsCountAddrFram;
+    crcAddr = EmParamsCrcAddrFram;
+  }
+
   uint16_t calcCrc = 0xFFFF;
   for (int i = 0; i < countParameters_; ++i) {
     buffer[i] = parameters_[i].value.float_t;
     calcCrc = crc16_ibm((uint8_t*)&buffer[i], sizeof(buffer[i]), calcCrc);
   }
-  uint32_t addr = CcsParamsCrcAddrFram;
-  if (startAddrParams_ == VSD_BEGIN)
-    addr = VsdParamsCrcAddrFram;
-  if (startAddrParams_ == TMS_BEGIN)
-    addr = TmsParamsCrcAddrFram;
-  if (startAddrParams_ == EM_BEGIN)
-    addr = EmParamsCrcAddrFram;
-  framWriteData(addr, (uint8_t*)&calcCrc, 2);
+
+  framWriteData(countAddr, (uint8_t*)&countParameters_, 2);
+  framWriteData(crcAddr, (uint8_t*)&calcCrc, 2);
 
   StatusType status = framWriteData(startAddrParams_*4,
                                     (uint8_t *)buffer,
@@ -513,22 +523,128 @@ StatusType Device::readParameters()
   if (status == StatusError)
     logDebug.add(CriticalMsg, "Device::readParameters() Error read parameters (startAddrParams_ = %d)", startAddrParams_);
 
+  uint32_t countAddr = CcsParamsCountAddrFram;
+  uint32_t crcAddr = CcsParamsCrcAddrFram;
+  if (startAddrParams_ == VSD_BEGIN) {
+    countAddr = VsdParamsCountAddrFram;
+    crcAddr = VsdParamsCrcAddrFram;
+  }
+  if (startAddrParams_ == TMS_BEGIN) {
+    countAddr = TmsParamsCountAddrFram;
+    crcAddr = TmsParamsCrcAddrFram;
+  }
+  if (startAddrParams_ == EM_BEGIN) {
+    countAddr = EmParamsCountAddrFram;
+    crcAddr = EmParamsCrcAddrFram;
+  }
+  uint16_t count = 0;
+  framReadData(countAddr, (uint8_t*)&count, 2);
+
   uint16_t calcCrc = 0xFFFF;
   for (int i = 0; i < countParameters_; ++i) {
     parameters_[i].value.float_t = buffer[i];
+    if (i >= count) {
+      parameters_[i].value.float_t = parameters_[i].def;
+    } else {
+      if (parameters_[i].physic != PHYSIC_DATE_TIME) {
+        if (buffer[i] < parameters_[i].min) {
+          parameters_[i].value.float_t = parameters_[i].def;
+        }
+      }
+    }
     calcCrc = crc16_ibm((uint8_t*)&buffer[i], sizeof(buffer[i]), calcCrc);
   }
+
   uint16_t crc = 0;
-  uint32_t addr = CcsParamsCrcAddrFram;
-  if (startAddrParams_ == VSD_BEGIN)
-    addr = VsdParamsCrcAddrFram;
-  if (startAddrParams_ == TMS_BEGIN)
-    addr = TmsParamsCrcAddrFram;
-  if (startAddrParams_ == EM_BEGIN)
-    addr = EmParamsCrcAddrFram;
-  framReadData(addr, (uint8_t*)&crc, 2);
+  framReadData(crcAddr, (uint8_t*)&crc, 2);
   if (crc != calcCrc) {
     logDebug.add(CriticalMsg, "Device::readParameters() Error CRC parameters (startAddrParams_ = %d)", startAddrParams_);
+  }
+
+  return status;
+}
+
+StatusType Device::saveConfig(uint32_t address)
+{
+  uint16_t calcCrc = 0xFFFF;
+  for (int i = 0; i < countParameters_; ++i) {
+    buffer[1+i] = parameters_[i].value.float_t;
+    calcCrc = crc16_ibm((uint8_t*)&buffer[1+i], sizeof(buffer[1+i]), calcCrc);
+  }
+  unTypeData value;
+  value.uint32_t = (countParameters_ << 16) + calcCrc;
+  buffer[0] = value.float_t;
+  StatusType status = flashExtWriteEx(FlashSpi1, address + startAddrParams_*4,
+                                      (uint8_t *)buffer, countParameters_*4+4);
+
+  if (status == StatusError)
+    logDebug.add(CriticalMsg, "Device::saveConfig() Error save config (startAddrParams_ = %d)", startAddrParams_);
+
+  return status;
+}
+
+StatusType Device::loadConfig(uint32_t address)
+{
+  StatusType status = flashExtRead(FlashSpi1, address + startAddrParams_*4,
+                                   (uint8_t *)buffer, 4);
+  unTypeData value;
+  value.float_t = buffer[0];
+  uint16_t count = (value.uint32_t >> 16);
+  uint16_t crc = value.uint32_t;
+
+  status = flashExtRead(FlashSpi1, address + startAddrParams_*4 + 4,
+                        (uint8_t *)buffer, count*4);
+  if (status == StatusError)
+    logDebug.add(CriticalMsg, "Device::loadConfig() Error load config (startAddrParams_ = %d)", startAddrParams_);
+
+  uint16_t calcCrc = 0xFFFF;
+  calcCrc = crc16_ibm((uint8_t*)&buffer[0], sizeof(buffer[0])*count, calcCrc);
+  if (crc != calcCrc) {
+    logDebug.add(CriticalMsg, "Device::loadConfig() Error CRC load config (startAddrParams_ = %d)", startAddrParams_);
+  } else {
+    for (int i = 0; i < count; ++i) {
+      if (((parameters_[i].code == 3) || (parameters_[i].code == 13)) &&
+          ((parameters_[i].operation == OPERATION_LIMITED) ||
+           (parameters_[i].operation == OPERATION_WRITE))) {
+        if (parameters_[i].physic == PHYSIC_DATE_TIME) {
+          value.float_t = buffer[i];
+          setNewValue(parameters_[i].id, (uint32_t)value.uint32_t, NoneType);
+        } else {
+          setNewValue(parameters_[i].id, buffer[i], NoneType);
+        }
+      }
+    }
+  }
+
+  return status;
+}
+
+StatusType Device::loadConfigInProfileDefault(uint32_t address, float *data)
+{
+  StatusType status = flashExtRead(FlashSpi1, address + startAddrParams_*4,
+                                   (uint8_t *)buffer, 4);
+  unTypeData value;
+  value.float_t = buffer[0];
+  uint16_t count = (value.uint32_t >> 16);
+  uint16_t crc = value.uint32_t;
+
+  status = flashExtRead(FlashSpi1, address + startAddrParams_*4 + 4,
+                        (uint8_t *)buffer, count*4);
+  if (status == StatusError)
+    logDebug.add(CriticalMsg, "Device::loadConfigInProfile() Error load config (startAddrParams_ = %d)", startAddrParams_);
+
+  uint16_t calcCrc = 0xFFFF;
+  calcCrc = crc16_ibm((uint8_t*)&buffer[0], sizeof(buffer[0])*count, calcCrc);
+  if (crc != calcCrc) {
+    logDebug.add(CriticalMsg, "Device::loadConfigInProfile() Error CRC load config (startAddrParams_ = %d)", startAddrParams_);
+  } else {
+    for (int i = 0; i < count; ++i) {
+      for (int y = 0; y < COUNT_PARAMETERS_DEFAULT; ++y) {
+        if (defaultParams[y][0] == parameters_[i].id) {
+          data[y] = buffer[i];
+        }
+      }
+    }
   }
 
   return status;

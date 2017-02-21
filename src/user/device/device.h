@@ -219,6 +219,28 @@ public:
   StatusType readParameters();
 
   /*!
+   * \brief Сохранить текущую конфигурацию в профиль
+   * \param address - адрес на Flash с которого начинается запись конфигурации
+   * \return
+   */
+  StatusType saveConfig(uint32_t address);
+
+  /*!
+   * \brief Загрузить конфигурацию из профиля
+   * \param address - адрес на Flash с которого начинается чтение конфигурации
+   * \return
+   */
+  StatusType loadConfig(uint32_t address);
+
+  /*!
+   * \brief Загрузка значений конфигурации из профиля в массив уставок по умолчанию
+   * \param address - адрес на Flash с которого начинается чтение конфигурации
+   * \param data - указатель на массив уставок по умолчанию
+   * \return
+   */
+  StatusType loadConfigInProfileDefault(uint32_t address, float *data);
+
+  /*!
    * \brief Функция проверки есть ли связь с утройством
    * \return
    */

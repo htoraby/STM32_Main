@@ -612,6 +612,12 @@ private:
   osSemaphoreId updateSemaphoreId_;
   //! Идентификатор семафора переинициализации скады
   osSemaphoreId scadaSemaphoreId_;
+  //! Идентификатор семафора Установки профиля уставок по умолчанию
+  osSemaphoreId setProfileDefaultSemaphoreId_;
+  //! Идентификатор семафора Сохранения конфигурации
+  osSemaphoreId saveConfigSemaphoreId_;
+  //! Идентификатор семафора Загрузки конфигурации
+  osSemaphoreId loadConfigSemaphoreId_;
 
   bool isConnectMaster_;
 

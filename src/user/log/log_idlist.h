@@ -242,7 +242,10 @@ typedef enum {
   DhsFlowDischargeSensorOkId,         //!< Датчик расхода жидкости на выкиде насоса в норме
   DhsFlowDischargeSensorFailId,       //!< Отказ датчика расхода жидкости на выкиде насоса
   DhsHowmidityDischargeSensorOkId,    //!< Датчик обводненности в норме
-  DhsHowmidityDischargeSensorFailId   //!< Отказ датчика обводненности
+  DhsHowmidityDischargeSensorFailId,   //!< Отказ датчика обводненности
+
+  SaveConfigId,                       //!< Сохранение конфигурации
+  LoadConfigId,                       //!< Загрузка конфигурации
 
 } EventId;
 

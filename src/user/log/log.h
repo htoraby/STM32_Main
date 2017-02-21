@@ -29,6 +29,7 @@ typedef enum {
   ModeCode             = 3,           //!< Изменение режима работы СУ
   BlockCode            = 4,           //!< Блокировка СУ
   UnblockCode          = 5,           //!< Деблокировка СУ
+  ResetApvCode         = 6,           //!< Обнуление счетчиков ограничения количества АПВ
   TripDelayCode        = 8,           //!< Задержка срабатывания
   RestartDelayCode     = 9,           //!< Задержка АПВ
   OpenDoorOperatorCode = 12,          //!< ОткрытаДверь
@@ -56,6 +57,7 @@ typedef enum {
   OtherCode,                          //!< Другие события
   ProtectVsdCode,                     //!< Аппаратная защита ЧРП
   WarningVsdCode,                     //!< Предупреждение ЧРП
+  SetpiontResetCode    = 106,         //!< Сброс уставок
 
   LastCode,
 } EventCode;
