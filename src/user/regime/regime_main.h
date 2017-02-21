@@ -6,7 +6,7 @@
 #include "regime_technolog_maintenance_param.h"
 #include "regime_technolog_alternation_freq.h"
 #include "regime_technolog_optimization_voltage.h"
-#include "regime_technolog_jarring.h"
+#include "regime_technolog_jarring.h"      
 
 /*!
  * \brief Функция инициализации задачи обработки всех режимов
@@ -26,17 +26,18 @@ bool interceptionStartRegime();
 bool interceptionStopRegime();
 
 /*!
- * \brief Метод проверки работы пускового режима
- * \return
+ * \brief Метод аккумуляции и установки в общий регистр состояния пусковых режимов
+ * если один из режимов работает устанавливается его состояние, иначе состояние Idle
  */
-void checkWorkingRunMode();
+void setGeneralStateRunMode();
 
 /*!
- * \brief isWorkingRunMode
- * \param id
- * \return
+ * \brief Функция выключает (переводит MODE в Off) все пусковые режимы кроме
+ * id указанного в параметре
  */
-bool isWorkingRunMode(uint16_t id);
+void offRunModeExcept(uint16_t id);
+
+
 
 
 #endif // REGIMEMAIN_H

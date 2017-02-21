@@ -132,8 +132,6 @@ void Ccs::initTask()
   if (getValueUint32(CCS_LAST_STOP_DATE_TIME) == 0)
     setValue(CCS_LAST_STOP_DATE_TIME, getTime());
 
-  setMaxBaseFrequency();
-
   intRestartCount();
 }
 
@@ -267,7 +265,7 @@ void Ccs::vsdConditionTask()
       if (getValue(CCS_CONDITION) != CCS_CONDITION_STOP) {
         setNewValue(CCS_CONDITION, CCS_CONDITION_STOP);
       } else {
-        if (vsd->checkStart()) {
+        if (checkStartDevice()) {
           if (++timer >= 500) {
             syncStart();
           }
@@ -277,18 +275,18 @@ void Ccs::vsdConditionTask()
       }
       break;
     case VSD_CONDITION_STOPPING:
-      if (vsd->checkStop()) {
-        vsd->resetBlock();
+      if (checkStopDevice()) {
+        resetBlockDevice();
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
       }
-      if (vsd->checkStart()) {
+      if (checkStartDevice()) {
         if (++timer >= 18000) {
           syncStart();
         }
       }
       break;
     case VSD_CONDITION_WAIT_STOP:
-      if (vsd->stop(isAlarmStop()) == ok_r) {
+      if (stopDevice() == ok_r) {
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOPPING);
       }
       else if (vsdCondition != vsdConditionOld) {
@@ -306,7 +304,7 @@ void Ccs::vsdConditionTask()
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #endif
       }
-      if (vsd->checkStop()) {
+      if (checkStopDevice()) {
         if (++timer >= 500) {
           syncStop();
         }
@@ -315,14 +313,14 @@ void Ccs::vsdConditionTask()
       }
       break;
     case VSD_CONDITION_RUNNING:
-      if (vsd->checkStart()) {
+      if (checkStartDevice()) {
         setLedCondition(ToogleGreenLed);
         // Запуск сохранения пускового архива
         logRunning.start();
         setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
       }
 
-      if (vsd->checkStop()) {
+      if (checkStopDevice()) {
         if (++timer >= 500) {
           syncStop();
         }
@@ -330,7 +328,7 @@ void Ccs::vsdConditionTask()
       break;
     case VSD_CONDITION_WAIT_RUN:
       int init = (vsdCondition != vsdConditionOld);
-      int status = vsd->start(init);
+      int status = startDevice(init);
       if (status == ok_r) {
         if ((int)getValue(CCS_VSD_CONDITION) == VSD_CONDITION_WAIT_RUN)
           setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUNNING);
@@ -574,8 +572,19 @@ bool Ccs::checkCanStart(bool isForce)
   if (!vsd->isConnect())
     return false;
 #endif
-
   return true;
+}
+
+bool Ccs::checkStartDevice()
+{
+  bool result = false;
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {                                // Если прямой пуск
+    result = parameters.get(CCS_BYPASS_CONTACTOR_KM1_STATE);                    // Состояние контактора прямого пуска
+  }
+  else {
+    result = vsd->checkStart();
+  }
+  return result;
 }
 
 void Ccs::initStart()
@@ -609,6 +618,42 @@ bool Ccs::checkCanStop()
 //    return false;
 
   return true;
+}
+
+bool Ccs::checkStopDevice()
+{
+  bool result = false;
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {                                // Если прямой пуск
+    result = !parameters.get(CCS_BYPASS_CONTACTOR_KM1_STATE);                   // Состояние контактора прямого пуска
+  }
+  else {
+    result = vsd->checkStop();
+  }
+  return result;
+}
+
+int Ccs::stopDevice()
+{
+  int err = ok_r;
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+    err = parameters.set(CCS_BYPASS_CONTACTOR_KM1_CONTROL, 0);
+  }
+  else {
+    err = vsd->stop(isAlarmStop());
+  }
+  return err;
+}
+
+int Ccs::startDevice(bool init)
+{
+  int err = ok_r;
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+    err = parameters.set(CCS_BYPASS_CONTACTOR_KM1_CONTROL, 1);
+  }
+  else {
+    err = vsd->start(init);
+  }
+  return err;
 }
 
 float Ccs::isAlarmStop()
@@ -735,6 +780,13 @@ void Ccs::resetBlock()
   if (getValue(CCS_CONDITION_FLAG) == CCS_CONDITION_FLAG_BLOCK) {
     resetRestartCount();
     setNewValue(CCS_CONDITION_FLAG, CCS_CONDITION_FLAG_NULL);
+    resetBlockDevice();
+  }
+}
+
+void Ccs::resetBlockDevice()
+{
+  if (!parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
     vsd->resetBlock();
   }
 }
@@ -850,7 +902,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 {
   uint8_t err = ok_r;
   float oldValue = getValue(id);
-
   switch (id) {
   case CCS_WORKING_MODE:
     err = setValue(id, value, NoneType);
@@ -901,11 +952,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_PUSH_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
-      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction); // Отключаем режим подхвата
-      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction); // Отключаем режим пропуска резонансных частот
-      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+      offRunModeExcept(CCS_RGM_RUN_PUSH_MODE);
       vsd->onRegimePush();
     }
     else {
@@ -915,11 +962,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_SWING_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим толчковый
-      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction); // Отключаем режим подхвата
-      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction); // Отключаем режим пропуска резонансных частот
-      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+      offRunModeExcept(CCS_RGM_RUN_SWING_MODE);
       vsd->onRegimeSwing();
     }
     else {
@@ -943,11 +986,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_PICKUP_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction); // Отключаем режим толчковый
-      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction); // Отключаем режим раскачки
-      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction); // Отключаем режим пропуска резонансных частот
-      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+      offRunModeExcept(CCS_RGM_RUN_PICKUP_MODE);
       parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ProtModeOff); // Отключаем защиту турбин. вращен.
       vsd->onRegimePickup();
     }
@@ -958,11 +997,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_SKIP_RESONANT_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+      offRunModeExcept(CCS_RGM_RUN_SKIP_RESONANT_MODE);
       vsd->onRegimeSkipFreq();
     }
     else {
@@ -972,21 +1007,13 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_AUTO_ADAPTATION_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SYNCHRON_MODE, Regime::OffAction);
+      offRunModeExcept(CCS_RGM_RUN_AUTO_ADAPTATION_MODE);
     }
     return err;
   case CCS_RGM_RUN_SYNCHRON_MODE:
     err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      parameters.set(CCS_RGM_RUN_PUSH_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SWING_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_PICKUP_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_SKIP_RESONANT_MODE, Regime::OffAction);
-      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
+      offRunModeExcept(CCS_RGM_RUN_SYNCHRON_MODE);
     }
     return err;
   case CCS_RGM_OPTIM_VOLTAGE_MODE:
@@ -1071,9 +1098,11 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_BASE_FREQUENCY:                  // Максимальная рабочая частота (базовая)
     err = setValue(id, value, eventType);
-    parameters.set(VSD_HIGH_LIM_SPEED_MOTOR, value, eventType);
-    calcTransRecommendedTapOff();
-    vsd->calcUfCharacteristicF(value);
+    if (!err) {
+      parameters.set(VSD_HIGH_LIM_SPEED_MOTOR, value, eventType);
+      calcTransRecommendedTapOff();
+      vsd->calcUfCharacteristicF(value);
+    }
     return err;
   case CCS_TRANS_NOMINAL_FREQUENCY_INPUT:
     err = setValue(id, value, eventType);
@@ -1371,8 +1400,14 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_MOTOR_TYPE:
     err = setValue(id, value, eventType);
-    parameters.set(VSD_MOTOR_TYPE, value, eventType);
-    setMaxBaseFrequency();
+    if (!err) {
+      parameters.set(VSD_MOTOR_TYPE, value, eventType);
+      if (value == VSD_MOTOR_TYPE_VENT) {                                       // Переключили на вентильный двигатель
+        if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) == Regime::OnAction) {      // Был включен прямой пуск
+          parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OffAction);           // Выключаем прямой пуск
+        }
+      }
+    }
     return err;
   case CCS_MOTOR_TYPE_PROFILE_VSD:
     err = setValue(id, value, eventType);
@@ -1632,7 +1667,56 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (!err) {
       parameters.set(VSD_BACK_EMF, value / parameters.get(CCS_COEF_TRANSFORMATION) * 1000);
     }
-    break;
+    return err;
+  case CCS_RGM_RUN_DIRECT_MODE:                                                 // Прямой пуск
+    err = parameters.set(CCS_BYPASS_CONTACTOR_KM2_CONTROL, !value);             // Посылаем команду на контактор ЧРП
+    if (!err) {                                                                 // Прошла команда на контактор ЧРП
+      err = setValue(id, value, eventType);                                     // Меняем состояние регистра
+      if (value != Regime::OffAction) {
+        offRunModeExcept(CCS_RGM_RUN_DIRECT_MODE);
+      }
+    }
+    return err;
+  case CCS_BYPASS_CONTACTORS:
+    err = setValue(id, value, NoneType);
+    if ((value != oldValue) && !err) {
+      if (value) {
+        logEvent.add(AddDeviceCode, eventType, AddDeviceBypassContactorsInputId, oldValue, value);
+      }
+      else {
+        logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceBypassContactorsInputId, oldValue, value);
+        parameters.set(CCS_RGM_RUN_DIRECT_MODE, value);                         // Отключаем прямой пуск если нет контакторов
+      }
+    }
+    return err;
+  case CCS_BYPASS_CONTACTOR_KM1_CONTROL:                                        // Контактор ПП
+    if ((value) && (getValue(CCS_BYPASS_CONTACTOR_KM2_STATE))) {                // Если включить контактор ПП и включен контактор ЧРП
+      err = err_r;                                                              // Выход с ошибкой
+    }
+    else {                                                                      // Включить контактор ПП и выключен контактор ЧРП или выключить ПП
+      err = setValue(id, value, eventType);                                     // Записываем в регистр
+      if (!err) {
+        if (value) {
+          setRelayOutput(RO6, (PinState)!value);
+        }
+        setRelayOutput(RO5, (PinState)value);                                 // Переключаем реле
+      }
+    }
+    return err;
+  case CCS_BYPASS_CONTACTOR_KM2_CONTROL:                                        // Контактор ЧРП
+    if ((value) && (getValue(CCS_BYPASS_CONTACTOR_KM1_STATE))) {                // Если включить контактор ЧРП и включен контактор ПП                                                                // Если включаем контактор ЧРП
+      err = err_r;
+    }
+    else {
+      err = setValue(id, value, eventType);
+      if (!err) {
+        if (value) {
+          setRelayOutput(RO5, (PinState)!value);
+        }
+        setRelayOutput(RO6, (PinState)value);
+      }
+    }
+    return err;
   case CCS_PROFILE_DEFAULT_SETPOINT:
     err = setValue(id, value, eventType);
     if (!err && (value != oldValue)) {
@@ -2190,13 +2274,9 @@ void Ccs::resetCmd(uint16_t id)
   setValue(id, 0.0);
 }
 
-void Ccs::setMaxBaseFrequency()
+void Ccs::setMaxBaseFrequency(float freq)
 {
-  float maxFreq = 70;
-  if (parameters.get(CCS_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT) {
-    maxFreq = 200;
-  }
-  setMax(CCS_BASE_FREQUENCY, maxFreq);
+  setMax(CCS_BASE_FREQUENCY, freq);
 }
 
 void Ccs::setError(int error)
@@ -2284,3 +2364,4 @@ void Ccs::setRelayOutputs()
     valueOld[i] = value;
   }
 }
+

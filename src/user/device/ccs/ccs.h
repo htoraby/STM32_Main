@@ -178,6 +178,35 @@ public:
   void resetBlock();
 
   /*!
+   * \brief resetBlockDevice метод сброса блокировки устройства
+   */
+  void resetBlockDevice();
+
+  /*!
+   * \brief checkStartDevice Метод прослойка проверки запуска от различных устройтв пуска
+   * \return
+   */
+  bool checkStartDevice();
+
+  /*!
+   * \brief checkStopDevice метод проверки останова от различных устройств
+   * \return
+   */
+  bool checkStopDevice();
+
+  /*!
+   * \brief stopDevice метод вызова функции останова управляющего устройства
+   * \return
+   */
+  int stopDevice();
+
+  /*!
+   * \brief startDeviceметод вызова функции запуска управляющего устройства
+   * \return
+   */
+  int startDevice(bool init);
+
+  /*!
    * \brief isPrevent
    * \return
    */
@@ -238,11 +267,10 @@ public:
    * \param vsdCurOut - ток фазы на выходе ЧРП с учётом коэффициента коррекции
    * \return ток на фазе двигателя
    */
-  float calcMotorCurrentPhase(float vsdCurOut);
+  float applyCoefTransForCurrent(float vsdCurOut);
   float calcMotorCurrentPhase1();
   float calcMotorCurrentPhase2();
   float calcMotorCurrentPhase3();
-  void calcMotorCurrent();
   float calcMotorCurrentAverage();
   float calcMotorCurrentImbalance();
 
@@ -409,8 +437,9 @@ public:
 
   /*!
    * \brief Метод задания максимального значения параметра "Максимальная рабочая частота"
+   * Задаётся в зависимости от типа двигателя и профиля
    */
-  void setMaxBaseFrequency();
+  void setMaxBaseFrequency(float freq);
 
   /*!
    * \brief calcTest

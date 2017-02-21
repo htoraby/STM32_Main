@@ -31,6 +31,7 @@ public:
     PickupRegimeRun,                        //!< Подхват
     SkipFreqRegimeRun,                      //!< Пропуск резонансных частот
     AutoAdaptationRegimeRun,                //!< Автоадаптация
+    DirectRegimeRun,                        //!< Прямой пуск
   } TypeRegimeRun;
   /*!
    * \brief Список состояний режима

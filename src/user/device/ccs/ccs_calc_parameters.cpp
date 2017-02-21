@@ -42,6 +42,11 @@ void Ccs::calcParametersTask()
     if ((HAL_GetTick() - time100ms) >= 100) {
       time100ms = HAL_GetTick();
 
+      calcMotorCurrentPhase1();         // Расчёт тока двигателя фазы 1
+      calcMotorCurrentPhase2();         // Расчёт тока двигателя фазы 2
+      calcMotorCurrentPhase3();         // Расчёт тока двигателя фазы 3
+      calcMotorCurrentAverage();        // Расчёт среднего тока двигателя
+      calcMotorCurrentImbalance();      // Расчёт дисбаланса тока двигателя
       calcMotorVoltagePhase1();
       calcMotorVoltagePhase2();
       calcMotorVoltagePhase3();
@@ -50,15 +55,6 @@ void Ccs::calcParametersTask()
       calcVoltageTransOut();
       calcMotorCos();
       calcMotorLoad();
-
-// TODO: Возможно нужно перенести вычисления в счётчик после получения данных
-//    calcInputVoltagePhase1();
-//    calcInputVoltagePhase2();
-//    calcInputVoltagePhase3();
-//    calcInputVoltagePhase12();
-//    calcInputVoltagePhase23();
-//    calcInputVoltagePhase31();
-
       calcInputVoltageFromAdc();
       calcInputVoltageImbalance();
 
@@ -102,7 +98,7 @@ float Ccs::calcTransCoef()
   return parameters.get(CCS_COEF_TRANSFORMATION);
 }
 
-float Ccs::calcMotorCurrentPhase(float vsdCurOut)
+float Ccs::applyCoefTransForCurrent(float vsdCurOut)
 {
   float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
   if (coefTrans == 0)
@@ -113,29 +109,38 @@ float Ccs::calcMotorCurrentPhase(float vsdCurOut)
 
 float Ccs::calcMotorCurrentPhase1()
 {
-  setValue(CCS_MOTOR_CURRENT_PHASE_1,
-           calcMotorCurrentPhase(parameters.get(VSD_CURRENT_OUT_PHASE_1)));
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+    setValue(CCS_MOTOR_CURRENT_PHASE_1, applyCoefTransForCurrent(parameters.get(CCS_CURRENT_PHASE_1)));
+    setValue(CCS_RGM_RUN_DIRECT_LOAD_PHASE_1, parameters.get(CCS_MOTOR_CURRENT_PHASE_1) / parameters.get(VSD_MOTOR_CURRENT) * 100.0);
+  }
+  else {
+    setValue(CCS_MOTOR_CURRENT_PHASE_1, applyCoefTransForCurrent(parameters.get(VSD_CURRENT_OUT_PHASE_1)));
+  }
   return parameters.get(CCS_MOTOR_CURRENT_PHASE_1);
 }
 
 float Ccs::calcMotorCurrentPhase2()
 {
-  setValue(CCS_MOTOR_CURRENT_PHASE_2,
-           calcMotorCurrentPhase(parameters.get(VSD_CURRENT_OUT_PHASE_2)));
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+    setValue(CCS_MOTOR_CURRENT_PHASE_2, applyCoefTransForCurrent(parameters.get(CCS_CURRENT_PHASE_2)));
+    setValue(CCS_RGM_RUN_DIRECT_LOAD_PHASE_2, parameters.get(CCS_MOTOR_CURRENT_PHASE_2) / parameters.get(VSD_MOTOR_CURRENT) * 100.0);
+  }
+  else {
+    setValue(CCS_MOTOR_CURRENT_PHASE_2, applyCoefTransForCurrent(parameters.get(VSD_CURRENT_OUT_PHASE_2)));
+  }
   return parameters.get(CCS_MOTOR_CURRENT_PHASE_2);
 }
 
 float Ccs::calcMotorCurrentPhase3()
 {
-  setValue(CCS_MOTOR_CURRENT_PHASE_3,
-           calcMotorCurrentPhase(parameters.get(VSD_CURRENT_OUT_PHASE_3)));
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+    setValue(CCS_MOTOR_CURRENT_PHASE_3, applyCoefTransForCurrent(parameters.get(CCS_CURRENT_PHASE_3)));
+    setValue(CCS_RGM_RUN_DIRECT_LOAD_PHASE_3, parameters.get(CCS_MOTOR_CURRENT_PHASE_3) / parameters.get(VSD_MOTOR_CURRENT) * 100.0);
+  }
+  else {
+    setValue(CCS_MOTOR_CURRENT_PHASE_3, applyCoefTransForCurrent(parameters.get(VSD_CURRENT_OUT_PHASE_3)));
+  }
   return parameters.get(CCS_MOTOR_CURRENT_PHASE_3);
-}
-
-void Ccs::calcMotorCurrent()
-{
-  calcMotorCurrentAverage();
-  calcMotorCurrentImbalance();
 }
 
 float Ccs::calcMotorCurrentAverage()
@@ -622,6 +627,10 @@ void Ccs::calcRegimeRun()
      parameters.set(CCS_RUNNING_TYPE, Regime::SyncRegimeRun);
      return;
   }
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) != Regime::OffAction) {
+     parameters.set(CCS_RUNNING_TYPE, Regime::DirectRegimeRun);
+     return;
+  }
   parameters.set(CCS_RUNNING_TYPE, Regime::SmoothRegimeRun);
   return;
 }
@@ -814,6 +823,9 @@ void Ccs::calcDigitalInputs()
   setValue(CCS_DI_12_VALUE, !getDigitalInput(DI12));
   setValue(CCS_DI_13_VALUE, !getDigitalInput(DI13));
   setValue(CCS_DI_14_VALUE, !getDigitalInput(DI14));
+
+  setValue(CCS_BYPASS_CONTACTOR_KM1_STATE, !getValue(CCS_DI_7_VALUE));
+  setValue(CCS_BYPASS_CONTACTOR_KM2_STATE, !getValue(CCS_DI_8_VALUE));
 }
 
 void Ccs::calcTest()

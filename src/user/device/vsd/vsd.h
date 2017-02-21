@@ -53,7 +53,7 @@ public:
    * \param value - тип двигателя: VSD_MOTOR_TYPE_ASYNC = 0, VSD_MOTOR_TYPE_VENT = 1
    * \return 0 - задание успешно, !0 - ошибки
    */
-  int setMotorType(float value);
+  virtual int setMotorType(float value);
 
   /*!
    * \brief setMotorTypeProfile

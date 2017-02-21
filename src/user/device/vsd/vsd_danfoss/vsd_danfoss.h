@@ -10,6 +10,7 @@ class RegimeRunAdaptationVector;
 class RegimeRunPickup;
 class RegimeRunSkipResonantFreq;
 class RegimeRunSynchron;
+class RegimeRunDirect;
 
 #define QUNTITY_PROFILES_MOTOR    15
 #define QUANTITY_PARAMETER_MOTOR  45
@@ -262,6 +263,8 @@ private:
   RegimeRunPickup *regimeRunPickup_;
   RegimeRunSkipResonantFreq *regimeRunSkipResonantFreq_;
   RegimeRunSynchron *regimeRunSynchron_;
+  RegimeRunDirect *regimeRunDirect_;
+
 };
 
 #endif // VSDDANFOSS_H
