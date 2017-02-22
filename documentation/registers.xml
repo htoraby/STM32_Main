@@ -21533,15 +21533,15 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Сохранить текущие параметры в профиль</text>
-		<short_text>Конфигурации. Сохрание текущих параметров в профиль</short_text>
+		<text>Сохранить конфигурацию в профиль</text>
+		<short_text>Конфигурации. Сохранение конфигурации в профиль</short_text>
 		<form>7.6 Конфигурации</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
 		<values>0-Нет;1-Профиль 1;2-Профиль 2;3-Профиль 3;4-Профиль 4;5-Профиль 5</values>
-		<comment>Конфигурации. Сохрание текущих параметров в профиль</comment>
+		<comment>Конфигурации. Сохранение конфигурации в профиль</comment>
 	</param>
 	<param>
 		<id>1063</id>
@@ -21555,15 +21555,15 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Загрузить параметры из профиля</text>
-		<short_text>Конфигурации. Загрузка параметров из профиля</short_text>
+		<text>Загрузить конфигурацию из профиля</text>
+		<short_text>Конфигурации. Загрузка конфигурации из профиля</short_text>
 		<form>7.6 Конфигурации</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
 		<values>0-Нет;1-Профиль 1;2-Профиль 2;3-Профиль 3;4-Профиль 4;5-Профиль 5</values>
-		<comment>Конфигурации. Загрузка параметров из профиля</comment>
+		<comment>Конфигурации. Загрузка конфигурации из профиля</comment>
 	</param>
 	<param>
 		<id>1064</id>

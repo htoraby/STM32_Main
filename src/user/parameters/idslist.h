@@ -1065,8 +1065,8 @@ enum enID
   CCS_RGM_RUN_DIRECT_LOAD_PHASE_1 = 1059,                    //!< Текущая загрузка двигателя
   CCS_RGM_RUN_DIRECT_LOAD_PHASE_2 = 1060,                    //!< Текущая загрузка двигателя
   CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 = 1061,                    //!< Текущая загрузка двигателя
-  CCS_CMD_SAVE_SETPOINT = 1062,                              //!< Конфигурации. Сохрание текущих параметров в профиль
-  CCS_CMD_LOAD_SETPOINT = 1063,                              //!< Конфигурации. Загрузка параметров из профиля
+  CCS_CMD_SAVE_SETPOINT = 1062,                              //!< Конфигурации. Сохранение конфигурации в профиль
+  CCS_CMD_LOAD_SETPOINT = 1063,                              //!< Конфигурации. Загрузка конфигурации из профиля
   CCS_PROFILE_DEFAULT_SETPOINT = 1064,                       //!< Конфигурации. Профиль уставок по умолчанию
   CCS_CMD_ALL_SETPOINT_RESET = 1065,                         //!< Конфигурации. Сброс всех уставок
   CCS_SAVE_SETPOINT = 1066,                                  //!< Биты сохранённых профилей

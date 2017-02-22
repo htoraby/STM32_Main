@@ -12746,7 +12746,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].discret               = 1;
   parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].def                   = 0.0;
   parameters_[CCS_RGM_RUN_DIRECT_LOAD_PHASE_3 - CCS_BEGIN].code                  = 0;
-  // Конфигурации. Сохрание текущих параметров в профиль
+  // Конфигурации. Сохранение конфигурации в профиль
   parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].id                              = CCS_CMD_SAVE_SETPOINT;
   parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
   parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].operation                       = OPERATION_WRITE;
@@ -12758,7 +12758,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].code                            = 0;
-  // Конфигурации. Загрузка параметров из профиля
+  // Конфигурации. Загрузка конфигурации из профиля
   parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].id                              = CCS_CMD_LOAD_SETPOINT;
   parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
   parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].operation                       = OPERATION_WRITE;
