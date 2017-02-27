@@ -157,7 +157,8 @@ void Device::setFieldMin(unsigned short index, float min)
 
 void Device::setFieldMax(unsigned short index, float max)
 {
-  parameters_[index].max = max;
+  if (!isnan(max) && !isinf(max))
+    parameters_[index].max = max;
 }
 
 void Device::setFieldDef(unsigned short index, float def)
