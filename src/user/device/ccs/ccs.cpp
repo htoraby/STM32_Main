@@ -1460,6 +1460,11 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (!err)
       setModeAnalogInExt(AI4, value);
     return err;
+  case CCS_AI_6_TYPE:
+    err = setValue(id, value, eventType);
+    if (!err)
+      setModeAnalogInExt(AI6, value);
+    return err;
   case CCS_PROT_SUPPLY_RESTART_DELAY:
   case CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY:
   case CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY:
@@ -1698,6 +1703,22 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
           setRelayOutput(RO5, (PinState)!value);
         }
         setRelayOutput(RO6, (PinState)value);
+      }
+    }
+    return err;
+  case CCS_SU_NOMINAL_CURRENT:
+    err = setValue(id, value, eventType);
+    if (!err) {
+      if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_DANFOSS) {
+        switch ((uint16_t)value) {
+        case 160: value = 195; break;
+        case 250: value = 286; break;
+        case 400: value = 435; break;
+        case 630: value = 724; break;
+        case 800: value = 880; break;
+        default:  value = 195; break;
+        }
+        parameters.set(CCS_SU_MAX_CURRENT, value);
       }
     }
     return err;
