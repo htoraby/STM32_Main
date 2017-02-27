@@ -96,9 +96,8 @@ float Parameters::get(unsigned short id)
     return vsd->getValue(id);
   if ((id > TMS_BEGIN) && (id < TMS_END))
     return tms->getValue(id);
-  if ((id > EM_BEGIN) && (id < EM_END)) {
+  if ((id > EM_BEGIN) && (id < EM_END))
     return em->getValue(id);
-  }
 
   return 0;
 }
@@ -127,6 +126,7 @@ int Parameters::set(unsigned short id, float value, EventType eventType)
     return tms->setNewValue(id, value, eventType);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->setNewValue(id, value, eventType);
+
   return 0;
 }
 
@@ -140,6 +140,7 @@ int Parameters::set(unsigned short id, uint32_t value, EventType eventType)
     return tms->setNewValue(id, value, eventType);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->setNewValue(id, value, eventType);
+
   return 0;
 }
 
@@ -212,6 +213,7 @@ float Parameters::getMin(uint16_t id)
     return tms->getMin(id);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->getMin(id);
+
   return err_r;
 }
 
@@ -225,6 +227,7 @@ uint8_t Parameters::setMin(uint16_t id, float value)
     return tms->setMin(id, value);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->setMin(id, value);
+
   return err_r;
 }
 
@@ -238,6 +241,7 @@ float Parameters::getMax(uint16_t id)
     return tms->getMax(id);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->getMax(id);
+
   return err_r;
 }
 
@@ -251,6 +255,7 @@ float Parameters::getValueDef(uint16_t id)
     return tms->getValueDef(id);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->getValueDef(id);
+
   return err_r;
 }
 
@@ -264,6 +269,7 @@ uint8_t Parameters::setMax(uint16_t id, float value)
     return tms->setMax(id, value);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->setMax(id, value);
+
   return err_r;
 }
 
