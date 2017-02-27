@@ -1,5 +1,6 @@
 #include "log_alarm.h"
 #include "user_main.h"
+#include "adc_ext.h"
 
 #include <string.h>
 
@@ -86,6 +87,9 @@ void LogAlarm::add()
   int idxI = 0;
   int idxUd = 0;
   int shiftUd = 0;
+  int shiftIa = 0;
+  float current = 0;
+  float maxCurrent = parameters.get(CCS_SU_MAX_CURRENT);
   for (int i = 0; i < ADC_POINTS_NUM; ) {
     memset(buffer, 0xFF, sizeof(buffer));
     for (int j = 0; j < 4; ++j) {
@@ -110,6 +114,29 @@ void LogAlarm::add()
         *(float*)(buffer + 8 + j*64) = (int16_t)icValue[idxI];
         *(float*)(buffer + 12 + j*64) = udValue[idxI];
         idxI++;
+        break;
+
+      case VSD_TYPE_DANFOSS:
+        if (shiftIa == 0) {                                           // Если новая точка тока
+          current = iaValue[idxI] * 10000 / 0xFFF / 493;              // Вычисляем милиА на входе
+          if (current < 4100) {                                       // Граница "разумности" параметра 4100 милиапмер
+            current = 0;                                              // Ток ЧРП 0
+          }
+          else {
+            current = (maxCurrent * (current - 4000)) / 16000;        // Вычисляем ток ЧРП
+          }
+        }
+
+        *(float*)(buffer + j*64) = current;                           // Переписываем токи
+        *(float*)(buffer + 4 + j*64) = current;
+        *(float*)(buffer + 8 + j*64) = current;
+
+        shiftIa++;
+        if (shiftIa >= (ADC_POINTS_NUM / ADC_EXT_INPUTS_6_POINTS)) {
+          shiftIa = 0;
+          idxI++;
+        }
+
         break;
       }
 
