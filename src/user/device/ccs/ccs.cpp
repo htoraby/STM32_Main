@@ -75,9 +75,7 @@ void Ccs::init()
   readParameters();
 
   if (getValue(CCS_PARAMETERS_CONTROL) != getValueDef(CCS_PARAMETERS_CONTROL)) {
-    initParameters();
-    isParametersControl_ = false;
-    setValue(CCS_PARAMETERS_CONTROL, getValueDef(CCS_PARAMETERS_CONTROL));
+    asm("nop");
   }
 }
 
@@ -108,6 +106,12 @@ void Ccs::initTask()
   osSemaphoreWait(updateSemaphoreId_, 0);
   scadaSemaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(scadaSemaphoreId_, 0);
+  setProfileDefaultSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(setProfileDefaultSemaphoreId_, 0);
+  saveConfigSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(saveConfigSemaphoreId_, 0);
+  loadConfigSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(loadConfigSemaphoreId_, 0);
 
   setCmd(CCS_CMD_SYNC_ALL_PARAMS);
   resetCmd(CCS_CMD_REBOOT_MASTER);
@@ -116,6 +120,8 @@ void Ccs::initTask()
   resetCmd(CCS_CMD_UPDATE_SW_MASTER);
   resetCmd(CCS_CMD_TYPE_PROFILE_VSD);
   resetCmd(CCS_ERROR_SLAVE);
+  resetCmd(CCS_CMD_SAVE_SETPOINT);
+  resetCmd(CCS_CMD_LOAD_SETPOINT);
   setValue(CCS_PROT_SUPPLY_POWEROFF_PREVENT, 0);
 
   uint32_t installSw = getValueUint32(CCS_DATE_INSTALL_SW_CCS);
@@ -123,6 +129,8 @@ void Ccs::initTask()
     installSw = getTime();
     setValue(CCS_DATE_INSTALL_SW_CCS, installSw, NoneType);
   }
+  if (getValueUint32(CCS_LAST_STOP_DATE_TIME) == 0)
+    setValue(CCS_LAST_STOP_DATE_TIME, getTime());
 
   intRestartCount();
 }
@@ -166,6 +174,14 @@ void Ccs::toolsTask()
     if (osSemaphoreWait(scadaSemaphoreId_, 0) != osEventTimeout) {
       createScada();
     }
+
+    if (osSemaphoreWait(setProfileDefaultSemaphoreId_, 0) != osEventTimeout)
+      parameters.setProfileDefaultSetpoint();
+    if (osSemaphoreWait(saveConfigSemaphoreId_, 0) != osEventTimeout)
+      parameters.saveConfig();
+    if (osSemaphoreWait(loadConfigSemaphoreId_, 0) != osEventTimeout)
+      parameters.loadConfig();
+
     checkConnectMaster();
   }
 }
@@ -1722,6 +1738,30 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       }
     }
     return err;
+  case CCS_PROFILE_DEFAULT_SETPOINT:
+    err = setValue(id, value, eventType);
+    if (!err && (value != oldValue)) {
+      osSemaphoreRelease(setProfileDefaultSemaphoreId_);
+    }
+    return err;
+  case CCS_CMD_SAVE_SETPOINT:
+    err = setValue(id, value, eventType);
+    if (!err && value) {
+      osSemaphoreRelease(saveConfigSemaphoreId_);
+    }
+    return err;
+  case CCS_CMD_LOAD_SETPOINT:
+    err = setValue(id, value, eventType);
+    if (!err && value) {
+      osSemaphoreRelease(loadConfigSemaphoreId_);
+    }
+    return err;
+  case CCS_CMD_ALL_SETPOINT_RESET:
+    err = setValue(id, value, eventType);
+    if (!err && value) {
+      parameters.setAllDefault();
+    }
+    return err;
   default:
     return setValue(id, value, eventType);
   }
@@ -1832,7 +1872,7 @@ void Ccs::cmdProtSupplyOvervoltageSetpointReset()
 {
   for (uint16_t i = CCS_PROT_SUPPLY_OVERVOLTAGE_MODE;
        i <= CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1840,7 +1880,7 @@ void Ccs::cmdProtSupplyUndervoltageSetpointReset()
 {
   for (uint16_t i = CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE;
        i <= CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1848,7 +1888,7 @@ void Ccs::cmdProtSupplyImbalanceVoltageSetpointReset()
 {
   for (uint16_t i = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE;
        i <= CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1856,7 +1896,7 @@ void Ccs::cmdProtSupplyImbalanceCurrentSetpointReset()
 {
   for (uint16_t i = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_MODE;
        i <= CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1872,7 +1912,7 @@ void Ccs::cmdProtMotorOverloadSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_OVERLOAD_MODE;
        i <=  CCS_PROT_MOTOR_OVERLOAD_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1880,7 +1920,7 @@ void Ccs::cmdProtMotorCurrentSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_CURRENT_MODE;
        i <=  CCS_PROT_MOTOR_CURRENT_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1888,10 +1928,10 @@ void Ccs::cmdProtMotorUnderloadSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_UNDERLOAD_MODE;
        i <= CCS_PROT_MOTOR_UNDERLOAD_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
-  resetValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY);
-  resetValue(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_FLAG);
+  parameters.setDefault(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY);
+  parameters.setDefault(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_FLAG);
 
 }
 
@@ -1899,7 +1939,7 @@ void Ccs::cmdProtMotorImbalanceCurrentSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE;
        i <= CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1907,7 +1947,7 @@ void Ccs::cmdProtMotorAsyncModeSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_ASYNC_MODE;
        i <= CCS_PROT_MOTOR_ASYNC_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1915,7 +1955,7 @@ void Ccs::cmdProtMotorOutOfSyncSetpointReset()
 {
   for (uint16_t i = CCS_PROT_MOTOR_OUT_OF_SYNC_MODE;
        i <= CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1933,7 +1973,7 @@ void Ccs::cmdProtDhsPressureIntakeSetpointReset()
 {
   for (uint16_t i = CCS_PROT_DHS_PRESSURE_INTAKE_MODE;
        i <= CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1941,7 +1981,7 @@ void Ccs::cmdProtDhsPressureDischargeSetpointReset()
 {
   for (uint16_t i = CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE;
        i <= CCS_PROT_DHS_PRESSURE_DISCHARGE_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1949,7 +1989,7 @@ void Ccs::cmdProtDhsTemperatureMotorSetpointReset()
 {
   for (uint16_t i = CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE;
        i <= CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1957,7 +1997,7 @@ void Ccs::cmdProtDhsResistanceSetpointReset()
 {
   for (uint16_t i = CCS_PROT_DHS_RESISTANCE_MODE;
        i <= CCS_PROT_DHS_RESISTANCE_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1965,7 +2005,7 @@ void Ccs::cmdProtDhsVibrationSetpointReset()
 {
   for (uint16_t i = CCS_PROT_DHS_VIBRATION_MODE;
        i <= CCS_PROT_DHS_VIBRATION_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1973,7 +2013,7 @@ void Ccs::cmdProtDhsFlowDischargeSetpointReset()
 {
   for (uint16_t i = CCS_PROT_DHS_FLOW_DISCHARGE_MODE;
        i <= CCS_PROT_DHS_FLOW_DISCHARGE_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1991,7 +2031,7 @@ void Ccs::cmdProtOvernumberOfStartSetpointReset()
 {
   for (uint16_t i = CCS_PROT_OTHER_LIMIT_RESTART_MODE;
        i <= CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -1999,7 +2039,7 @@ void Ccs::cmdProtOtherHardwareVsdSetpointReset()
 {
   for (uint16_t i = CCS_PROT_OTHER_VSD_MODE;
        i <= CCS_PROT_OTHER_VSD_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -2007,7 +2047,7 @@ void Ccs::cmdProtOtherVsdNoConnectSetpointReset()
 {
   for (uint16_t i = CCS_PROT_OTHER_VSD_NO_CONNECT_MODE;
        i <= CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -2015,7 +2055,7 @@ void Ccs::cmdProtOtherOverheatInputFilterSetpointReset()
 {
   for (uint16_t i = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_MODE;
        i <= CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -2031,36 +2071,36 @@ void Ccs::cmdProtDigitalInput1SetpointReset()
 {
   for (uint16_t i = CCS_PROT_DI_1_MODE;
        i <= CCS_PROT_DI_1_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
-  resetValue(CCS_DI_1_TYPE);
+  parameters.setDefault(CCS_DI_1_TYPE);
 }
 
 void Ccs::cmdProtDigitalInput2SetpointReset()
 {
   for (uint16_t i = CCS_PROT_DI_2_MODE;
        i <= CCS_PROT_DI_2_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
-  resetValue(CCS_DI_2_TYPE);
+  parameters.setDefault(CCS_DI_2_TYPE);
 }
 
 void Ccs::cmdProtDigitalInput3SetpointReset()
 {
   for (uint16_t i = CCS_PROT_DI_3_MODE;
        i <= CCS_PROT_DI_3_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
-  resetValue(CCS_DI_3_TYPE);
+  parameters.setDefault(CCS_DI_3_TYPE);
 }
 
 void Ccs::cmdProtDigitalInput4SetpointReset()
 {
   for (uint16_t i = CCS_PROT_DI_4_MODE;
        i <= CCS_PROT_DI_4_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
-  resetValue(CCS_DI_4_TYPE);
+  parameters.setDefault(CCS_DI_4_TYPE);
 }
 
 void Ccs::cmdProtDigitalSetpointReset()
@@ -2075,7 +2115,7 @@ void Ccs::cmdProtAnalogInput1SetpointReset()
 {
   for (uint16_t i = CCS_PROT_AI_1_MODE;
        i <= CCS_PROT_AI_1_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -2083,7 +2123,7 @@ void Ccs::cmdProtAnalogInput2SetpointReset()
 {
   for (uint16_t i = CCS_PROT_AI_2_MODE;
        i <= CCS_PROT_AI_2_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -2091,7 +2131,7 @@ void Ccs::cmdProtAnalogInput3SetpointReset()
 {
   for (uint16_t i = CCS_PROT_AI_3_MODE;
        i <= CCS_PROT_AI_3_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 
@@ -2099,7 +2139,7 @@ void Ccs::cmdProtAnalogInput4SetpointReset()
 {
   for (uint16_t i = CCS_PROT_AI_4_MODE;
        i <= CCS_PROT_AI_4_PARAMETER; i++) {
-    resetValue(i);
+    parameters.setDefault(i);
   }
 }
 

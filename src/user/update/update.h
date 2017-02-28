@@ -42,16 +42,6 @@ typedef enum {
 } TypeUpdate;
 
 /*!
-  * \brief Адреса на FLASH
- */
-typedef enum {
-  //! FlashSpi1
-  AddrUpdateHeader = 0x00800000,
-  AddrUpdateFile1  = 0x00800100,
-  AddrUpdateFile2  = 0x00C00000,
-} AddrFlashSpi;
-
-/*!
  * \brief Метод получения прошивки с Usb flash и сохранения на внешнюю flash
  * \return
  */

@@ -11,6 +11,10 @@
 
 */
 typedef enum {
+  CcsParamsCountAddrFram = 0x01FFA4,
+  VsdParamsCountAddrFram = 0x01FFA8,
+  TmsParamsCountAddrFram = 0x01FFAC,
+  EmParamsCountAddrFram  = 0x01FFB0,
   CcsParamsCrcAddrFram = 0x01FFB4,
   VsdParamsCrcAddrFram = 0x01FFB8,
   TmsParamsCrcAddrFram = 0x01FFBC,

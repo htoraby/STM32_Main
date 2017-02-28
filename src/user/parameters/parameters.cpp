@@ -2,6 +2,8 @@
 #include "user_main.h"
 #include "gpio.h"
 
+#include <string.h>
+
 #define MAX_QUEUE_SIZE_PARAMS 100
 
 Parameters::Parameters()
@@ -94,9 +96,8 @@ float Parameters::get(unsigned short id)
     return vsd->getValue(id);
   if ((id > TMS_BEGIN) && (id < TMS_END))
     return tms->getValue(id);
-  if ((id > EM_BEGIN) && (id < EM_END)) {
+  if ((id > EM_BEGIN) && (id < EM_END))
     return em->getValue(id);
-  }
 
   return 0;
 }
@@ -125,6 +126,7 @@ int Parameters::set(unsigned short id, float value, EventType eventType)
     return tms->setNewValue(id, value, eventType);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->setNewValue(id, value, eventType);
+
   return 0;
 }
 
@@ -138,6 +140,7 @@ int Parameters::set(unsigned short id, uint32_t value, EventType eventType)
     return tms->setNewValue(id, value, eventType);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->setNewValue(id, value, eventType);
+
   return 0;
 }
 
@@ -210,6 +213,7 @@ float Parameters::getMin(uint16_t id)
     return tms->getMin(id);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->getMin(id);
+
   return err_r;
 }
 
@@ -223,6 +227,7 @@ uint8_t Parameters::setMin(uint16_t id, float value)
     return tms->setMin(id, value);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->setMin(id, value);
+
   return err_r;
 }
 
@@ -236,6 +241,7 @@ float Parameters::getMax(uint16_t id)
     return tms->getMax(id);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->getMax(id);
+
   return err_r;
 }
 
@@ -249,6 +255,7 @@ float Parameters::getValueDef(uint16_t id)
     return tms->getValueDef(id);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->getValueDef(id);
+
   return err_r;
 }
 
@@ -262,6 +269,7 @@ uint8_t Parameters::setMax(uint16_t id, float value)
     return tms->setMax(id, value);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->setMax(id, value);
+
   return err_r;
 }
 
@@ -368,4 +376,137 @@ void Parameters::setDelay(uint16_t id, uint32_t value, EventType eventType)
   uint32_t message = (eventType << 16) + id;
   osMessagePut(messageIdParams_, message, 0);
   osMessagePut(messageValueParams_, value, 0);
+}
+
+void Parameters::saveConfig()
+{
+  int profile = parameters.get(CCS_CMD_SAVE_SETPOINT);
+  if ((profile < 1) || (profile > 5))
+    return;
+
+  int time = HAL_GetTick();
+  logEvent.add(OtherCode, AutoType, SaveConfigId, 0, profile);
+
+  uint32_t address;
+
+  uint32_t save = parameters.getU32(CCS_SAVE_SETPOINT);
+  save |= (1 << (profile-1));
+  parameters.set(CCS_SAVE_SETPOINT, save);
+  switch (profile) {
+  case 1: address = AddrSaveConfig1; break;
+  case 2: address = AddrSaveConfig2; break;
+  case 3: address = AddrSaveConfig3; break;
+  case 4: address = AddrSaveConfig4; break;
+  case 5: address = AddrSaveConfig5; break;
+  }
+  ksu.saveConfig(address);
+  vsd->saveConfig(address);
+  tms->saveConfig(address);
+  em->saveConfig(address);
+
+  parameters.set(CCS_CMD_SAVE_SETPOINT, 0.0);
+  logDebug.add(WarningMsg, "Parameters::saveConfig() Save config completed %d ms", HAL_GetTick() - time);
+}
+
+void Parameters::loadConfig()
+{
+  int profile = parameters.get(CCS_CMD_LOAD_SETPOINT);
+  if ((profile < 1) || (profile > 5))
+    return;
+
+  int time = HAL_GetTick();
+  logEvent.add(OtherCode, AutoType, LoadConfigId, 0, profile);
+
+  uint32_t address;
+
+  switch (profile) {
+  case 1: address = AddrSaveConfig1; break;
+  case 2: address = AddrSaveConfig2; break;
+  case 3: address = AddrSaveConfig3; break;
+  case 4: address = AddrSaveConfig4; break;
+  case 5: address = AddrSaveConfig5; break;
+  }
+  ksu.loadConfig(address);
+  vsd->loadConfig(address);
+
+  parameters.set(CCS_CMD_LOAD_SETPOINT, 0.0);
+  logDebug.add(WarningMsg, "Parameters::loadConfig() Load config completed %d ms", HAL_GetTick() - time);
+}
+
+void Parameters::setProfileDefaultSetpoint()
+{
+  int profile = parameters.get(CCS_PROFILE_DEFAULT_SETPOINT);
+  if ((profile < 1) || (profile > 5))
+    return;
+
+  int time = HAL_GetTick();
+  uint32_t address;
+
+  switch (profile) {
+  case 1: address = AddrSaveConfig1; break;
+  case 2: address = AddrSaveConfig2; break;
+  case 3: address = AddrSaveConfig3; break;
+  case 4: address = AddrSaveConfig4; break;
+  case 5: address = AddrSaveConfig5; break;
+  }
+  ksu.loadConfigInProfileDefault(address, profileDefaultParams_);
+  vsd->loadConfigInProfileDefault(address, profileDefaultParams_);
+
+  logDebug.add(WarningMsg, "Parameters::setProfileDefaultSetpoint() Сompleted %d ms", HAL_GetTick() - time);
+}
+
+void Parameters::setAllDefault()
+{
+  int profile = parameters.get(CCS_PROFILE_DEFAULT_SETPOINT);
+
+  switch (profile) {
+  case NovometDefaultSetpoint:
+    for (int i = 0; i < COUNT_PARAMETERS_DEFAULT; ++i) {
+      set(defaultParams[i][0], getValueDef(defaultParams[i][0]), NoneType);
+    }
+    break;
+  case RosneftDefaultSetpoint:
+    for (int i = 0; i < COUNT_PARAMETERS_DEFAULT; ++i) {
+      set(defaultParams[i][0], defaultParams[i][1], NoneType);
+    }
+    break;
+  case Profile1DefaultSetpoint: case Profile2DefaultSetpoint:
+  case Profile3DefaultSetpoint: case Profile4DefaultSetpoint:
+  case Profile5DefaultSetpoint:
+    for (int i = 0; i < COUNT_PARAMETERS_DEFAULT; ++i) {
+      set(defaultParams[i][0], profileDefaultParams_[i], NoneType);
+    }
+    break;
+  }
+}
+
+void Parameters::setDefault(uint16_t id)
+{
+  int profile = parameters.get(CCS_PROFILE_DEFAULT_SETPOINT);
+
+  switch (profile) {
+  case NovometDefaultSetpoint:
+    set(id, getValueDef(id), NoneType);
+    break;
+  case RosneftDefaultSetpoint:
+    for (int i = 0; i < COUNT_PARAMETERS_DEFAULT; ++i) {
+      if (defaultParams[i][0] == id) {
+        set(defaultParams[i][0], defaultParams[i][1], NoneType);
+        return;
+      }
+    }
+    set(id, getValueDef(id), NoneType);
+    break;
+  case Profile1DefaultSetpoint: case Profile2DefaultSetpoint:
+  case Profile3DefaultSetpoint: case Profile4DefaultSetpoint:
+  case Profile5DefaultSetpoint:
+    for (int i = 0; i < COUNT_PARAMETERS_DEFAULT; ++i) {
+      if (defaultParams[i][0] == id) {
+        set(defaultParams[i][0], profileDefaultParams_[i], NoneType);
+        return;
+      }
+    }
+    set(id, getValueDef(id), NoneType);
+    break;
+  }
 }

@@ -250,7 +250,10 @@ typedef enum {
   RegimeRunDirectOffId,               //!< Прямой пуск отключен
 
   AddDeviceBypassContactorsInputId,   //!< "Выбрано наличие байпасных контакторов"
-  RemoveDeviceBypassContactorsInputId //!< "Выбрано отсутствие байпасных контакторов"
+  RemoveDeviceBypassContactorsInputId,//!< "Выбрано отсутствие байпасных контакторов"
+  
+  SaveConfigId,                       //!< Сохранение конфигурации
+  LoadConfigId,                       //!< Загрузка конфигурации
 
 } EventId;
 

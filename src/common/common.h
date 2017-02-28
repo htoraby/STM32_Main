@@ -11,6 +11,21 @@ enum StatusType {
 };
 
 /*!
+  * \brief Адреса на FLASH
+ */
+typedef enum {
+  //! FlashSpi1
+  AddrUpdateHeader = 0x00800000,
+  AddrUpdateFile1  = 0x00800100,
+  AddrUpdateFile2  = 0x00C00000,
+  AddrSaveConfig1  = 0x01000000,
+  AddrSaveConfig2  = 0x01019000,
+  AddrSaveConfig3  = 0x01032000,
+  AddrSaveConfig4  = 0x0104B000,
+  AddrSaveConfig5  = 0x01064000,
+} AddrFlashSpi;
+
+/*!
  * \brief Список ошибок Slave для отображения в GUI
  */
 enum ErrorSlave {
@@ -39,6 +54,19 @@ enum LanguageList {
   RuLanguage,
   EnLanguage,
   EsLanguage,
+};
+
+/*!
+ * \brief Список профилей с уставками по умолчанию
+ */
+enum ProfileDefaultSetpoint {
+  NovometDefaultSetpoint,     //!< Новомет
+  Profile1DefaultSetpoint,    //!< Профиль 1
+  Profile2DefaultSetpoint,    //!< Профиль 2
+  Profile3DefaultSetpoint,    //!< Профиль 3
+  Profile4DefaultSetpoint,    //!< Профиль 4
+  Profile5DefaultSetpoint,    //!< Профиль 5
+  RosneftDefaultSetpoint,     //!< Роснефть
 };
 
 /*!
