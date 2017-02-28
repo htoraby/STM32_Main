@@ -181,7 +181,7 @@ void Ccs::initParameters()
   parameters_[CCS_RUNNING_TYPE - CCS_BEGIN].max                                  = 65535.0;
   parameters_[CCS_RUNNING_TYPE - CCS_BEGIN].discret                              = 1;
   parameters_[CCS_RUNNING_TYPE - CCS_BEGIN].def                                  = 0.0;
-  parameters_[CCS_RUNNING_TYPE - CCS_BEGIN].code                                 = 13;
+  parameters_[CCS_RUNNING_TYPE - CCS_BEGIN].code                                 = 0;
   // Режим работы
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].id                                   = CCS_WORKING_MODE;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].access                               = ACCESS_OPERATOR;
@@ -192,7 +192,7 @@ void Ccs::initParameters()
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].min                                  = 0.0;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].max                                  = 2.0;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].discret                              = 1;
-  parameters_[CCS_WORKING_MODE - CCS_BEGIN].def                                  = 0.0;
+  parameters_[CCS_WORKING_MODE - CCS_BEGIN].def                                  = 1.0;
   parameters_[CCS_WORKING_MODE - CCS_BEGIN].code                                 = 3;
   // Дисбаланс входного напряжения
   parameters_[CCS_VOLTAGE_IMBALANCE_IN - CCS_BEGIN].id                           = CCS_VOLTAGE_IMBALANCE_IN;
@@ -488,11 +488,11 @@ void Ccs::initParameters()
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].operation                           = OPERATION_WRITE;
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].physic                              = PHYSIC_FLOW;
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].validity                            = VALIDITY_OK;
-  parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].value.float_t                       = 0.0;
+  parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].value.float_t                       = 1.0;
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].min                                 = 1.0;
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].max                                 = 9999.9;
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].discret                             = 1;
-  parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].def                                 = 0.0;
+  parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].def                                 = 1.0;
   parameters_[CCS_PUMP_CAPACITY - CCS_BEGIN].code                                = 13;
   // Напор ЭЦН
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].id                                      = CCS_PUMP_HEAD;
@@ -500,11 +500,11 @@ void Ccs::initParameters()
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].operation                               = OPERATION_WRITE;
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].physic                                  = PHYSIC_LENGHT;
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].validity                                = VALIDITY_OK;
-  parameters_[CCS_PUMP_HEAD - CCS_BEGIN].value.float_t                           = 0.0;
+  parameters_[CCS_PUMP_HEAD - CCS_BEGIN].value.float_t                           = 1.0;
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].min                                     = 1.0;
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].max                                     = 9999.9;
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].discret                                 = 1;
-  parameters_[CCS_PUMP_HEAD - CCS_BEGIN].def                                     = 0.0;
+  parameters_[CCS_PUMP_HEAD - CCS_BEGIN].def                                     = 1.0;
   parameters_[CCS_PUMP_HEAD - CCS_BEGIN].code                                    = 13;
   // Глубина спуска
   parameters_[CCS_DEPTH - CCS_BEGIN].id                                          = CCS_DEPTH;
@@ -512,11 +512,11 @@ void Ccs::initParameters()
   parameters_[CCS_DEPTH - CCS_BEGIN].operation                                   = OPERATION_WRITE;
   parameters_[CCS_DEPTH - CCS_BEGIN].physic                                      = PHYSIC_LENGHT;
   parameters_[CCS_DEPTH - CCS_BEGIN].validity                                    = VALIDITY_OK;
-  parameters_[CCS_DEPTH - CCS_BEGIN].value.float_t                               = 0.0;
+  parameters_[CCS_DEPTH - CCS_BEGIN].value.float_t                               = 1.0;
   parameters_[CCS_DEPTH - CCS_BEGIN].min                                         = 1.0;
   parameters_[CCS_DEPTH - CCS_BEGIN].max                                         = 9999.9;
   parameters_[CCS_DEPTH - CCS_BEGIN].discret                                     = 1;
-  parameters_[CCS_DEPTH - CCS_BEGIN].def                                         = 0.0;
+  parameters_[CCS_DEPTH - CCS_BEGIN].def                                         = 1.0;
   parameters_[CCS_DEPTH - CCS_BEGIN].code                                        = 13;
   // Режим работа защиты
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_MODE - CCS_BEGIN].id                   = CCS_PROT_SUPPLY_OVERVOLTAGE_MODE;
@@ -629,7 +629,7 @@ void Ccs::initParameters()
   // Уставка Параметр защиты, для этой защиты работать по ВРП
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].id              = CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].physic          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].value.float_t   = 0.0;
@@ -637,11 +637,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].max             = 1.0;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].discret         = 1;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].def             = 0.0;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].code            = 13;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_PARAMETER - CCS_BEGIN].code            = 0;
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG - CCS_BEGIN].id           = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG - CCS_BEGIN].access       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG - CCS_BEGIN].operation    = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG - CCS_BEGIN].operation    = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG - CCS_BEGIN].physic       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -653,7 +653,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_STATE - CCS_BEGIN].id                  = CCS_PROT_SUPPLY_OVERVOLTAGE_STATE;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_STATE - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_STATE - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_STATE - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_STATE - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_STATE - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_STATE - CCS_BEGIN].value.float_t       = 0.0;
@@ -665,7 +665,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].id                   = CCS_PROT_SUPPLY_OVERVOLTAGE_TIME;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].physic               = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_TIME - CCS_BEGIN].value.float_t        = 0.0;
@@ -677,7 +677,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT - CCS_BEGIN].id          = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_COUNT - CCS_BEGIN].value.float_t = 0.0;
@@ -689,7 +689,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].id     = CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].physic = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
@@ -713,7 +713,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT - CCS_BEGIN].id               = CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT - CCS_BEGIN].operation        = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT - CCS_BEGIN].physic           = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PREVENT - CCS_BEGIN].value.float_t    = 0.0;
@@ -793,7 +793,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT - CCS_BEGIN].max        = 100.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT - CCS_BEGIN].discret    = 1;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT - CCS_BEGIN].def        = 80.0;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT - CCS_BEGIN].code       = 0;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT - CCS_BEGIN].code       = 13;
   // Условие АПВ уставка
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_SETPOINT - CCS_BEGIN].id      = CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_SETPOINT;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_SETPOINT - CCS_BEGIN].access  = ACCESS_OPERATOR;
@@ -809,7 +809,7 @@ void Ccs::initParameters()
   // Уставка Параметр защиты, для этой защиты работать по ВРП
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER - CCS_BEGIN].id             = CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER - CCS_BEGIN].physic         = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER - CCS_BEGIN].value.float_t  = 0.0;
@@ -817,11 +817,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER - CCS_BEGIN].max            = 1.0;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER - CCS_BEGIN].discret        = 1;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER - CCS_BEGIN].def            = 0.0;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER - CCS_BEGIN].code           = 13;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_PARAMETER - CCS_BEGIN].code           = 0;
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG - CCS_BEGIN].id          = CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -833,7 +833,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE - CCS_BEGIN].id                 = CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_STATE - CCS_BEGIN].value.float_t      = 0.0;
@@ -845,7 +845,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].id                  = CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].physic              = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_TIME - CCS_BEGIN].value.float_t       = 0.0;
@@ -857,7 +857,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT - CCS_BEGIN].id         = CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT - CCS_BEGIN].access     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT - CCS_BEGIN].operation  = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT - CCS_BEGIN].operation  = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT - CCS_BEGIN].physic     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_COUNT - CCS_BEGIN].value.float_t = 0.0;
@@ -869,7 +869,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].id    = CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].physic = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
@@ -893,7 +893,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT - CCS_BEGIN].id          = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT - CCS_BEGIN].value.float_t = 0.0;
@@ -989,7 +989,7 @@ void Ccs::initParameters()
   // Уставка Параметр защиты, для этой защиты работать по ВРП
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER - CCS_BEGIN].id        = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER - CCS_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER - CCS_BEGIN].physic    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER - CCS_BEGIN].value.float_t = 0.0;
@@ -997,11 +997,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER - CCS_BEGIN].max       = 1.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER - CCS_BEGIN].discret   = 1;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER - CCS_BEGIN].def       = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER - CCS_BEGIN].code      = 13;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PARAMETER - CCS_BEGIN].code      = 0;
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG - CCS_BEGIN].id     = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -1013,7 +1013,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE - CCS_BEGIN].id            = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE - CCS_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_STATE - CCS_BEGIN].value.float_t = 0.0;
@@ -1025,7 +1025,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].id             = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].physic         = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TIME - CCS_BEGIN].value.float_t  = 0.0;
@@ -1037,7 +1037,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT - CCS_BEGIN].id    = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_COUNT - CCS_BEGIN].value.float_t = 0.0;
@@ -1049,7 +1049,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].id = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].physic = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
@@ -1073,7 +1073,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].id          = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].value.float_t = 0.0;
@@ -1169,7 +1169,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].id        = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].physic    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].value.float_t = 0.0;
@@ -1177,11 +1177,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].max       = 1.0;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].discret   = 1;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].def       = 0.0;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].code      = 13;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].code      = 0;
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].id     = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -1193,7 +1193,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE - CCS_BEGIN].id            = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE - CCS_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_STATE - CCS_BEGIN].value.float_t = 0.0;
@@ -1205,7 +1205,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].id             = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].physic         = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TIME - CCS_BEGIN].value.float_t  = 0.0;
@@ -1217,7 +1217,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].id    = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].value.float_t = 0.0;
@@ -1229,7 +1229,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].id = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].physic = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
@@ -1253,7 +1253,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT - CCS_BEGIN].id             = CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT - CCS_BEGIN].physic         = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PREVENT - CCS_BEGIN].value.float_t  = 0.0;
@@ -1268,7 +1268,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].operation  = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].physic     = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].validity   = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].value.float_t = 0.0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].value.float_t = 60.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].min        = 0.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].max        = 60.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_ACTIV_DELAY - CCS_BEGIN].discret    = 1;
@@ -1280,7 +1280,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].operation   = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].physic      = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].validity    = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].value.float_t = 0.0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].value.float_t = 30.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].min         = 0.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].max         = 60.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_DELAY - CCS_BEGIN].discret     = 1;
@@ -1292,7 +1292,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].physic   = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].value.float_t = 0.0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].value.float_t = 3600.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].min      = 1.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].max      = 86400.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_DELAY - CCS_BEGIN].discret  = 1;
@@ -1328,11 +1328,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].physic   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].min      = 0.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].max      = 999999999.9;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].discret  = 1;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].def      = 0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].def      = 0.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT - CCS_BEGIN].code     = 13;
   // Условие АПВ уставка
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].id    = CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT;
@@ -1340,16 +1340,16 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].min   = 0.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].max   = 999999999.9;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].discret = 1;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].def   = 0;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].def   = 0.0;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_SETPOINT - CCS_BEGIN].code  = 13;
   // Уставка параметр защиты
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PARAMETER - CCS_BEGIN].id           = CCS_PROT_SUPPLY_PHASE_ROTATION_PARAMETER;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PARAMETER - CCS_BEGIN].access       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PARAMETER - CCS_BEGIN].operation    = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PARAMETER - CCS_BEGIN].operation    = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PARAMETER - CCS_BEGIN].physic       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PARAMETER - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_PARAMETER - CCS_BEGIN].value.float_t = 0.0;
@@ -1361,7 +1361,7 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FLAG - CCS_BEGIN].id        = CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FLAG;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FLAG - CCS_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FLAG - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FLAG - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FLAG - CCS_BEGIN].physic    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FLAG - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -1373,7 +1373,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_STATE - CCS_BEGIN].id               = CCS_PROT_SUPPLY_PHASE_ROTATION_STATE;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_STATE - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_STATE - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_STATE - CCS_BEGIN].operation        = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_STATE - CCS_BEGIN].physic           = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_STATE - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_STATE - CCS_BEGIN].value.float_t    = 0.0;
@@ -1385,7 +1385,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TIME - CCS_BEGIN].id                = CCS_PROT_SUPPLY_PHASE_ROTATION_TIME;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TIME - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TIME - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TIME - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TIME - CCS_BEGIN].physic            = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TIME - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_TIME - CCS_BEGIN].value.float_t     = 0.0;
@@ -1397,7 +1397,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_COUNT - CCS_BEGIN].id       = CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_COUNT;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_COUNT - CCS_BEGIN].access   = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_COUNT - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_COUNT - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_COUNT - CCS_BEGIN].physic   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_COUNT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_COUNT - CCS_BEGIN].value.float_t = 0.0;
@@ -1409,7 +1409,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME - CCS_BEGIN].id  = CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME - CCS_BEGIN].physic = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
@@ -1433,7 +1433,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_MOTOR_OVERLOAD_PREVENT - CCS_BEGIN].id                    = CCS_PROT_MOTOR_OVERLOAD_PREVENT;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_PREVENT - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_PREVENT - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_PREVENT - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_PREVENT - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_PREVENT - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_PREVENT - CCS_BEGIN].value.float_t         = 0.0;
@@ -1517,7 +1517,7 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_SETPOINT - CCS_BEGIN].id           = CCS_PROT_MOTOR_OVERLOAD_RESTART_SETPOINT;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_SETPOINT - CCS_BEGIN].access       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_SETPOINT - CCS_BEGIN].operation    = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_SETPOINT - CCS_BEGIN].operation    = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_SETPOINT - CCS_BEGIN].physic       = PHYSIC_PERCENT;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_SETPOINT - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0.0;
@@ -1529,7 +1529,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_MOTOR_OVERLOAD_PARAMETER - CCS_BEGIN].id                  = CCS_PROT_MOTOR_OVERLOAD_PARAMETER;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_PARAMETER - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_PARAMETER - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_PARAMETER - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_PARAMETER - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_PARAMETER - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_PARAMETER - CCS_BEGIN].value.float_t       = 0.0;
@@ -1541,7 +1541,7 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FLAG - CCS_BEGIN].id               = CCS_PROT_MOTOR_OVERLOAD_RESTART_FLAG;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FLAG - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FLAG - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FLAG - CCS_BEGIN].operation        = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FLAG - CCS_BEGIN].physic           = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FLAG - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FLAG - CCS_BEGIN].value.float_t    = 0.0;
@@ -1553,7 +1553,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_MOTOR_OVERLOAD_STATE - CCS_BEGIN].id                      = CCS_PROT_MOTOR_OVERLOAD_STATE;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_STATE - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_STATE - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_STATE - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_STATE - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_STATE - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_STATE - CCS_BEGIN].value.float_t           = 0.0;
@@ -1565,7 +1565,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].id                       = CCS_PROT_MOTOR_OVERLOAD_TIME;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].access                   = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].operation                = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].physic                   = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_TIME - CCS_BEGIN].value.float_t            = 0.0;
@@ -1577,7 +1577,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT - CCS_BEGIN].id              = CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT - CCS_BEGIN].physic          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT - CCS_BEGIN].value.float_t   = 0.0;
@@ -1589,7 +1589,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].id         = CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].access     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].operation  = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].operation  = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].physic     = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
@@ -1613,7 +1613,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PREVENT - CCS_BEGIN].id                   = CCS_PROT_MOTOR_UNDERLOAD_PREVENT;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PREVENT - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_PREVENT - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_PREVENT - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PREVENT - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PREVENT - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PREVENT - CCS_BEGIN].value.float_t        = 0.0;
@@ -1697,7 +1697,7 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT - CCS_BEGIN].id          = CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT - CCS_BEGIN].physic      = PHYSIC_PERCENT;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 60.0;
@@ -1709,7 +1709,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PARAMETER - CCS_BEGIN].id                 = CCS_PROT_MOTOR_UNDERLOAD_PARAMETER;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PARAMETER - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_PARAMETER - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_PARAMETER - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PARAMETER - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PARAMETER - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PARAMETER - CCS_BEGIN].value.float_t      = 0.0;
@@ -1717,11 +1717,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PARAMETER - CCS_BEGIN].max                = 1.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PARAMETER - CCS_BEGIN].discret            = 1;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PARAMETER - CCS_BEGIN].def                = 0.0;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_PARAMETER - CCS_BEGIN].code               = 13;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_PARAMETER - CCS_BEGIN].code               = 0;
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FLAG - CCS_BEGIN].id              = CCS_PROT_MOTOR_UNDERLOAD_RESTART_FLAG;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FLAG - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FLAG - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FLAG - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FLAG - CCS_BEGIN].physic          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FLAG - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FLAG - CCS_BEGIN].value.float_t   = 0.0;
@@ -1733,7 +1733,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_STATE - CCS_BEGIN].id                     = CCS_PROT_MOTOR_UNDERLOAD_STATE;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_STATE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_STATE - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_STATE - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_STATE - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_STATE - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_STATE - CCS_BEGIN].value.float_t          = 0.0;
@@ -1745,19 +1745,19 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_TIME - CCS_BEGIN].id                      = CCS_PROT_MOTOR_UNDERLOAD_TIME;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_TIME - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TIME - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TIME - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_TIME - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_TIME - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_TIME - CCS_BEGIN].value.float_t           = 0.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_TIME - CCS_BEGIN].min                     = 0.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_TIME - CCS_BEGIN].max                     = 4294967296.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_TIME - CCS_BEGIN].discret                 = 1;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TIME - CCS_BEGIN].def                     = 0;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_TIME - CCS_BEGIN].def                     = 0.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_TIME - CCS_BEGIN].code                    = 0;
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT - CCS_BEGIN].id             = CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT - CCS_BEGIN].physic         = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_COUNT - CCS_BEGIN].value.float_t  = 0.0;
@@ -1769,7 +1769,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].id        = CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].physic    = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
@@ -1793,7 +1793,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_MOTOR_CURRENT_PREVENT - CCS_BEGIN].id                     = CCS_PROT_MOTOR_CURRENT_PREVENT;
   parameters_[CCS_PROT_MOTOR_CURRENT_PREVENT - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_CURRENT_PREVENT - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_CURRENT_PREVENT - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_CURRENT_PREVENT - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_CURRENT_PREVENT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_PREVENT - CCS_BEGIN].value.float_t          = 0.0;
@@ -1805,7 +1805,7 @@ void Ccs::initParameters()
   // Задержка активации уставка
   parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].id                 = CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY;
   parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].physic             = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_ACTIV_DELAY - CCS_BEGIN].value.float_t      = 20.0;
@@ -1817,7 +1817,7 @@ void Ccs::initParameters()
   // Время уставка
   parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].id                  = CCS_PROT_MOTOR_CURRENT_TRIP_DELAY;
   parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].physic              = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_TRIP_DELAY - CCS_BEGIN].value.float_t       = 30.0;
@@ -1877,7 +1877,7 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_SETPOINT - CCS_BEGIN].id            = CCS_PROT_MOTOR_CURRENT_RESTART_SETPOINT;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_SETPOINT - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_SETPOINT - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_SETPOINT - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_SETPOINT - CCS_BEGIN].physic        = PHYSIC_PERCENT;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_SETPOINT - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0.0;
@@ -1889,7 +1889,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_MOTOR_CURRENT_PARAMETER - CCS_BEGIN].id                   = CCS_PROT_MOTOR_CURRENT_PARAMETER;
   parameters_[CCS_PROT_MOTOR_CURRENT_PARAMETER - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_CURRENT_PARAMETER - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_CURRENT_PARAMETER - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_CURRENT_PARAMETER - CCS_BEGIN].physic               = PHYSIC_PERCENT;
   parameters_[CCS_PROT_MOTOR_CURRENT_PARAMETER - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_PARAMETER - CCS_BEGIN].value.float_t        = 0.0;
@@ -1901,7 +1901,7 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FLAG - CCS_BEGIN].id                = CCS_PROT_MOTOR_CURRENT_RESTART_FLAG;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FLAG - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FLAG - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FLAG - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FLAG - CCS_BEGIN].physic            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FLAG - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FLAG - CCS_BEGIN].value.float_t     = 0.0;
@@ -1913,7 +1913,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_MOTOR_CURRENT_STATE - CCS_BEGIN].id                       = CCS_PROT_MOTOR_CURRENT_STATE;
   parameters_[CCS_PROT_MOTOR_CURRENT_STATE - CCS_BEGIN].access                   = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_CURRENT_STATE - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_CURRENT_STATE - CCS_BEGIN].operation                = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_CURRENT_STATE - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_CURRENT_STATE - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_STATE - CCS_BEGIN].value.float_t            = 3.0;
@@ -1925,7 +1925,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_MOTOR_CURRENT_TIME - CCS_BEGIN].id                        = CCS_PROT_MOTOR_CURRENT_TIME;
   parameters_[CCS_PROT_MOTOR_CURRENT_TIME - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_CURRENT_TIME - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_CURRENT_TIME - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_CURRENT_TIME - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_CURRENT_TIME - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_TIME - CCS_BEGIN].value.float_t             = 0.0;
@@ -1937,7 +1937,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_COUNT - CCS_BEGIN].id               = CCS_PROT_MOTOR_CURRENT_RESTART_COUNT;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_COUNT - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_COUNT - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_COUNT - CCS_BEGIN].operation        = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_COUNT - CCS_BEGIN].physic           = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_COUNT - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_COUNT - CCS_BEGIN].value.float_t    = 0.0;
@@ -1949,7 +1949,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].id          = CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].physic      = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
@@ -1973,7 +1973,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].id           = CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].access       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].operation    = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].operation    = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].physic       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].value.float_t = 0.0;
@@ -2012,7 +2012,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].operation = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].physic = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].value.float_t = 3600.0;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].value.float_t = 1800.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].min    = 60.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].max    = 3599940.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY - CCS_BEGIN].discret = 1;
@@ -2057,7 +2057,7 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].id  = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].physic = PHYSIC_PERCENT;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 20.0;
@@ -2065,11 +2065,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].max = 20.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].discret = 1;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].def = 20.0;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].code = 13;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_SETPOINT - CCS_BEGIN].code = 0;
   // Уставка параметр защиты
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].id         = CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].access     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].operation  = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].operation  = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].physic     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PARAMETER - CCS_BEGIN].value.float_t = 0.0;
@@ -2081,7 +2081,7 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].id      = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FLAG;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].access  = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].physic  = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -2093,7 +2093,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE - CCS_BEGIN].id             = CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE - CCS_BEGIN].physic         = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_STATE - CCS_BEGIN].value.float_t  = 0.0;
@@ -2105,7 +2105,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME - CCS_BEGIN].id              = CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME - CCS_BEGIN].physic          = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_TIME - CCS_BEGIN].value.float_t   = 0.0;
@@ -2117,7 +2117,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].id     = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_COUNT - CCS_BEGIN].value.float_t = 0.0;
@@ -2129,7 +2129,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].id = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].physic = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
@@ -2144,16 +2144,16 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].operation                   = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].validity                    = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].min                         = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].max                         = 3.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].discret                     = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].def                         = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].code                        = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].id                       = CCS_PROT_MOTOR_ASYNC_PREVENT;
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].access                   = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].operation                = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].value.float_t            = 0.0;
@@ -2165,7 +2165,7 @@ void Ccs::initParameters()
   // Задержка активации уставка
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].id                   = CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY;
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].physic               = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_ACTIV_DELAY - CCS_BEGIN].value.float_t        = 60.0;
@@ -2177,7 +2177,7 @@ void Ccs::initParameters()
   // Время уставка
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].id                    = CCS_PROT_MOTOR_ASYNC_TRIP_DELAY;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].physic                = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_TRIP_DELAY - CCS_BEGIN].value.float_t         = 30.0;
@@ -2189,7 +2189,7 @@ void Ccs::initParameters()
   // Задержка АПВ уставка
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].id                 = CCS_PROT_MOTOR_ASYNC_RESTART_DELAY;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].physic             = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_DELAY - CCS_BEGIN].value.float_t      = 3600.0;
@@ -2201,7 +2201,7 @@ void Ccs::initParameters()
   // Количество АПВ уставка
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].id                 = CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_LIMIT - CCS_BEGIN].value.float_t      = 9999.0;
@@ -2213,7 +2213,7 @@ void Ccs::initParameters()
   // Автосброс счетчика АПВ
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].id                 = CCS_PROT_MOTOR_ASYNC_RESTART_RESET;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].physic             = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_RESET - CCS_BEGIN].value.float_t      = 86400.0;
@@ -2237,7 +2237,7 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].id              = CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].physic          = PHYSIC_FREQUENCY;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_SETPOINT - CCS_BEGIN].value.float_t   = 20.0;
@@ -2249,7 +2249,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].id                     = CCS_PROT_MOTOR_ASYNC_PARAMETER;
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_PARAMETER - CCS_BEGIN].value.float_t          = 0.0;
@@ -2261,7 +2261,7 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].id                  = CCS_PROT_MOTOR_ASYNC_RESTART_FLAG;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FLAG - CCS_BEGIN].value.float_t       = 0.0;
@@ -2273,7 +2273,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].id                         = CCS_PROT_MOTOR_ASYNC_STATE;
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_STATE - CCS_BEGIN].value.float_t              = 0.0;
@@ -2285,7 +2285,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].id                          = CCS_PROT_MOTOR_ASYNC_TIME;
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].physic                      = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_TIME - CCS_BEGIN].value.float_t               = 0.0;
@@ -2297,7 +2297,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].id                 = CCS_PROT_MOTOR_ASYNC_RESTART_COUNT;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_COUNT - CCS_BEGIN].value.float_t      = 0.0;
@@ -2309,14 +2309,14 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].id            = CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].physic        = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].validity      = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].min           = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].max           = 4294967296;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].discret       = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].def           = 0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].def           = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_RESTART_FIRST_TIME - CCS_BEGIN].code          = 0;
   // Защита "Рассинхронизация ПВЭД"
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].id                    = CCS_PROT_MOTOR_OUT_OF_SYNC_MODE;
@@ -2324,16 +2324,16 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].operation             = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].validity              = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].value.float_t         = 0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].value.float_t         = 0.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].min                   = 0.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].max                   = 3.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].discret               = 1;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].def                   = 0;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].def                   = 0.0;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_MODE - CCS_BEGIN].code                  = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].id                 = CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PREVENT - CCS_BEGIN].value.float_t      = 0.0;
@@ -2429,7 +2429,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].id               = CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].operation        = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].physic           = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_PARAMETER - CCS_BEGIN].value.float_t    = 0.0;
@@ -2441,7 +2441,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].id            = CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -2453,7 +2453,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].id                   = CCS_PROT_MOTOR_OUT_OF_SYNC_STATE;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_STATE - CCS_BEGIN].value.float_t        = 0.0;
@@ -2465,7 +2465,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].id                    = CCS_PROT_MOTOR_OUT_OF_SYNC_TIME;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].physic                = PHYSIC_TIME;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_TIME - CCS_BEGIN].value.float_t         = 0.0;
@@ -2477,7 +2477,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].id           = CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].access       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].operation    = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].operation    = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].physic       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_COUNT - CCS_BEGIN].value.float_t = 0.0;
@@ -2489,7 +2489,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].id      = CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].access  = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].physic  = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
@@ -2609,7 +2609,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER - CCS_BEGIN].id             = CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER - CCS_BEGIN].physic         = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER - CCS_BEGIN].value.float_t  = 0.0;
@@ -2617,7 +2617,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER - CCS_BEGIN].max            = 1.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER - CCS_BEGIN].discret        = 1;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER - CCS_BEGIN].def            = 0.0;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER - CCS_BEGIN].code           = 13;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_PARAMETER - CCS_BEGIN].code           = 0;
   // Уставка параметр защиты
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FLAG - CCS_BEGIN].id          = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FLAG;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_FLAG - CCS_BEGIN].access      = ACCESS_OPERATOR;
@@ -2789,7 +2789,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER - CCS_BEGIN].id           = CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER - CCS_BEGIN].access       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER - CCS_BEGIN].operation    = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER - CCS_BEGIN].operation    = OPERATION_READ;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER - CCS_BEGIN].physic       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_PARAMETER - CCS_BEGIN].value.float_t = 0.0;
@@ -2873,7 +2873,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].id                    = CCS_PROT_DHS_RESISTANCE_PREVENT;
   parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].value.float_t         = 0.0;
@@ -2885,7 +2885,7 @@ void Ccs::initParameters()
   // Задержка активации уставка
   parameters_[CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY - CCS_BEGIN].id                = CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY;
   parameters_[CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY - CCS_BEGIN].physic            = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY - CCS_BEGIN].value.float_t     = 0.0;
@@ -2897,7 +2897,7 @@ void Ccs::initParameters()
   // Время уставка
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_DELAY - CCS_BEGIN].id                 = CCS_PROT_DHS_RESISTANCE_TRIP_DELAY;
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_DELAY - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_DELAY - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_DELAY - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_DELAY - CCS_BEGIN].physic             = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_DELAY - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_DELAY - CCS_BEGIN].value.float_t      = 0.0;
@@ -2909,7 +2909,7 @@ void Ccs::initParameters()
   // Задержка АПВ уставка
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_DELAY - CCS_BEGIN].id              = CCS_PROT_DHS_RESISTANCE_RESTART_DELAY;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_DELAY - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_DELAY - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_DELAY - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_DELAY - CCS_BEGIN].physic          = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_DELAY - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_DELAY - CCS_BEGIN].value.float_t   = 0.0;
@@ -2921,7 +2921,7 @@ void Ccs::initParameters()
   // Количество АПВ уставка
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT - CCS_BEGIN].id              = CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT - CCS_BEGIN].physic          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT - CCS_BEGIN].value.float_t   = 0.0;
@@ -2933,7 +2933,7 @@ void Ccs::initParameters()
   // Автосброс счетчика АПВ
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_RESET - CCS_BEGIN].id              = CCS_PROT_DHS_RESISTANCE_RESTART_RESET;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_RESET - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_RESET - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_RESET - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_RESET - CCS_BEGIN].physic          = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_RESET - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_RESET - CCS_BEGIN].value.float_t   = 0.0;
@@ -2948,7 +2948,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].operation       = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].physic          = PHYSIC_RESISTANCE;
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].validity        = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].value.float_t   = 30.0;
+  parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].value.float_t   = 30000.0;
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].min             = 30000.0;
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].max             = 500000.0;
   parameters_[CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT - CCS_BEGIN].discret         = 1;
@@ -2957,7 +2957,7 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT - CCS_BEGIN].id           = CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT - CCS_BEGIN].access       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT - CCS_BEGIN].operation    = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT - CCS_BEGIN].operation    = OPERATION_READ;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT - CCS_BEGIN].physic       = PHYSIC_RESISTANCE;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0.0;
@@ -2981,7 +2981,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_FLAG - CCS_BEGIN].id               = CCS_PROT_DHS_RESISTANCE_RESTART_FLAG;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_FLAG - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_FLAG - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_FLAG - CCS_BEGIN].operation        = OPERATION_READ;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_FLAG - CCS_BEGIN].physic           = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_FLAG - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_RESISTANCE_RESTART_FLAG - CCS_BEGIN].value.float_t    = 0.0;
@@ -3053,7 +3053,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].id                     = CCS_PROT_DHS_VIBRATION_PREVENT;
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].value.float_t          = 0.0;
@@ -3137,7 +3137,7 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].id            = CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].physic        = PHYSIC_ACCELERATION;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0.2;
@@ -3149,7 +3149,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].id                   = CCS_PROT_DHS_VIBRATION_PARAMETER;
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_PARAMETER - CCS_BEGIN].value.float_t        = 0.0;
@@ -3161,7 +3161,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].id                = CCS_PROT_DHS_VIBRATION_RESTART_FLAG;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].physic            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FLAG - CCS_BEGIN].value.float_t     = 0.0;
@@ -3173,7 +3173,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].id                       = CCS_PROT_DHS_VIBRATION_STATE;
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].access                   = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].operation                = OPERATION_READ;
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_STATE - CCS_BEGIN].value.float_t            = 3.0;
@@ -3185,7 +3185,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].id                        = CCS_PROT_DHS_VIBRATION_TIME;
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].physic                    = PHYSIC_TIME;
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_TIME - CCS_BEGIN].value.float_t             = 0;
@@ -3197,7 +3197,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].id               = CCS_PROT_DHS_VIBRATION_RESTART_COUNT;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].operation        = OPERATION_READ;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].physic           = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_COUNT - CCS_BEGIN].value.float_t    = 0.0;
@@ -3209,7 +3209,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].id          = CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].physic      = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0;
@@ -3233,7 +3233,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].id                              = CCS_PROT_AI_1_PREVENT;
   parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_PREVENT - CCS_BEGIN].value.float_t                   = 0.0;
@@ -3341,7 +3341,7 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].id                         = CCS_PROT_AI_1_RESTART_FLAG;
   parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0.0;
@@ -3353,7 +3353,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].id                                = CCS_PROT_AI_1_STATE;
   parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_STATE - CCS_BEGIN].value.float_t                     = 3.0;
@@ -3365,7 +3365,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].id                                 = CCS_PROT_AI_1_TIME;
   parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].physic                             = PHYSIC_TIME;
   parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_TIME - CCS_BEGIN].value.float_t                      = 0.0;
@@ -3377,7 +3377,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].id                        = CCS_PROT_AI_1_RESTART_COUNT;
   parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0.0;
@@ -3389,7 +3389,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].id                   = CCS_PROT_AI_1_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].physic               = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
@@ -3413,7 +3413,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].id                              = CCS_PROT_AI_2_PREVENT;
   parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_PREVENT - CCS_BEGIN].value.float_t                   = 0.0;
@@ -3521,7 +3521,7 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].id                         = CCS_PROT_AI_2_RESTART_FLAG;
   parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0.0;
@@ -3533,7 +3533,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].id                                = CCS_PROT_AI_2_STATE;
   parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_STATE - CCS_BEGIN].value.float_t                     = 3.0;
@@ -3545,7 +3545,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].id                                 = CCS_PROT_AI_2_TIME;
   parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].physic                             = PHYSIC_TIME;
   parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_TIME - CCS_BEGIN].value.float_t                      = 0.0;
@@ -3557,7 +3557,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].id                        = CCS_PROT_AI_2_RESTART_COUNT;
   parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0.0;
@@ -3569,7 +3569,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].id                   = CCS_PROT_AI_2_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].physic               = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
@@ -3593,7 +3593,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].id                              = CCS_PROT_AI_3_PREVENT;
   parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_PREVENT - CCS_BEGIN].value.float_t                   = 0.0;
@@ -3701,7 +3701,7 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].id                         = CCS_PROT_AI_3_RESTART_FLAG;
   parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0.0;
@@ -3713,7 +3713,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].id                                = CCS_PROT_AI_3_STATE;
   parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_STATE - CCS_BEGIN].value.float_t                     = 3.0;
@@ -3725,7 +3725,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].id                                 = CCS_PROT_AI_3_TIME;
   parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].physic                             = PHYSIC_TIME;
   parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_TIME - CCS_BEGIN].value.float_t                      = 0.0;
@@ -3737,7 +3737,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].id                        = CCS_PROT_AI_3_RESTART_COUNT;
   parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0.0;
@@ -3749,7 +3749,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].id                   = CCS_PROT_AI_3_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].physic               = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
@@ -3773,7 +3773,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].id                              = CCS_PROT_AI_4_PREVENT;
   parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_PREVENT - CCS_BEGIN].value.float_t                   = 0.0;
@@ -3881,7 +3881,7 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].id                         = CCS_PROT_AI_4_RESTART_FLAG;
   parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0.0;
@@ -3893,7 +3893,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].id                                = CCS_PROT_AI_4_STATE;
   parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_STATE - CCS_BEGIN].value.float_t                     = 3.0;
@@ -3905,7 +3905,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].id                                 = CCS_PROT_AI_4_TIME;
   parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].physic                             = PHYSIC_TIME;
   parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_TIME - CCS_BEGIN].value.float_t                      = 0.0;
@@ -3917,7 +3917,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].id                        = CCS_PROT_AI_4_RESTART_COUNT;
   parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0.0;
@@ -3929,7 +3929,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].id                   = CCS_PROT_AI_4_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].physic               = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
@@ -3953,7 +3953,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].id                              = CCS_PROT_DI_1_PREVENT;
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_PREVENT - CCS_BEGIN].value.float_t                   = 0.0;
@@ -4025,7 +4025,7 @@ void Ccs::initParameters()
   // Уставка срабатывания защиты
   parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].id                        = CCS_PROT_DI_1_TRIP_SETPOINT;
   parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].physic                    = PHYSIC_PERCENT;
   parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_TRIP_SETPOINT - CCS_BEGIN].value.float_t             = 0.0;
@@ -4037,7 +4037,7 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].id                     = CCS_PROT_DI_1_RESTART_SETPOINT;
   parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].physic                 = PHYSIC_PERCENT;
   parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_RESTART_SETPOINT - CCS_BEGIN].value.float_t          = 0.0;
@@ -4049,7 +4049,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].id                            = CCS_PROT_DI_1_PARAMETER;
   parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_PARAMETER - CCS_BEGIN].value.float_t                 = 0.0;
@@ -4061,7 +4061,7 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].id                         = CCS_PROT_DI_1_RESTART_FLAG;
   parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0.0;
@@ -4073,7 +4073,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].id                                = CCS_PROT_DI_1_STATE;
   parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_STATE - CCS_BEGIN].value.float_t                     = 3.0;
@@ -4085,7 +4085,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].id                                 = CCS_PROT_DI_1_TIME;
   parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].physic                             = PHYSIC_TIME;
   parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_TIME - CCS_BEGIN].value.float_t                      = 0.0;
@@ -4097,7 +4097,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].id                        = CCS_PROT_DI_1_RESTART_COUNT;
   parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0.0;
@@ -4109,7 +4109,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].id                   = CCS_PROT_DI_1_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].physic               = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
@@ -4133,7 +4133,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].id                              = CCS_PROT_DI_2_PREVENT;
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_PREVENT - CCS_BEGIN].value.float_t                   = 0.0;
@@ -4205,7 +4205,7 @@ void Ccs::initParameters()
   // Уставка срабатывания защиты
   parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].id                        = CCS_PROT_DI_2_TRIP_SETPOINT;
   parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].physic                    = PHYSIC_PERCENT;
   parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_TRIP_SETPOINT - CCS_BEGIN].value.float_t             = 0.0;
@@ -4217,7 +4217,7 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].id                     = CCS_PROT_DI_2_RESTART_SETPOINT;
   parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].physic                 = PHYSIC_PERCENT;
   parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_RESTART_SETPOINT - CCS_BEGIN].value.float_t          = 0.0;
@@ -4229,7 +4229,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].id                            = CCS_PROT_DI_2_PARAMETER;
   parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_PARAMETER - CCS_BEGIN].value.float_t                 = 0.0;
@@ -4241,7 +4241,7 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].id                         = CCS_PROT_DI_2_RESTART_FLAG;
   parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0.0;
@@ -4253,7 +4253,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].id                                = CCS_PROT_DI_2_STATE;
   parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_STATE - CCS_BEGIN].value.float_t                     = 3.0;
@@ -4265,7 +4265,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].id                                 = CCS_PROT_DI_2_TIME;
   parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].physic                             = PHYSIC_TIME;
   parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_TIME - CCS_BEGIN].value.float_t                      = 0.0;
@@ -4277,7 +4277,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].id                        = CCS_PROT_DI_2_RESTART_COUNT;
   parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0.0;
@@ -4289,7 +4289,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].id                   = CCS_PROT_DI_2_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].physic               = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
@@ -4313,7 +4313,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].id                              = CCS_PROT_DI_3_PREVENT;
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_PREVENT - CCS_BEGIN].value.float_t                   = 0.0;
@@ -4385,7 +4385,7 @@ void Ccs::initParameters()
   // Уставка срабатывания защиты
   parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].id                        = CCS_PROT_DI_3_TRIP_SETPOINT;
   parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].physic                    = PHYSIC_PERCENT;
   parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_TRIP_SETPOINT - CCS_BEGIN].value.float_t             = 0.0;
@@ -4397,7 +4397,7 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].id                     = CCS_PROT_DI_3_RESTART_SETPOINT;
   parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].physic                 = PHYSIC_PERCENT;
   parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_RESTART_SETPOINT - CCS_BEGIN].value.float_t          = 0.0;
@@ -4409,7 +4409,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].id                            = CCS_PROT_DI_3_PARAMETER;
   parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_PARAMETER - CCS_BEGIN].value.float_t                 = 0.0;
@@ -4421,7 +4421,7 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].id                         = CCS_PROT_DI_3_RESTART_FLAG;
   parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0.0;
@@ -4433,7 +4433,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].id                                = CCS_PROT_DI_3_STATE;
   parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_STATE - CCS_BEGIN].value.float_t                     = 3.0;
@@ -4445,7 +4445,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].id                                 = CCS_PROT_DI_3_TIME;
   parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].physic                             = PHYSIC_TIME;
   parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_TIME - CCS_BEGIN].value.float_t                      = 0.0;
@@ -4457,7 +4457,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].id                        = CCS_PROT_DI_3_RESTART_COUNT;
   parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0.0;
@@ -4469,7 +4469,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].id                   = CCS_PROT_DI_3_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].physic               = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
@@ -4493,7 +4493,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].id                              = CCS_PROT_DI_4_PREVENT;
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_PREVENT - CCS_BEGIN].value.float_t                   = 0.0;
@@ -4565,7 +4565,7 @@ void Ccs::initParameters()
   // Уставка срабатывания защиты
   parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].id                        = CCS_PROT_DI_4_TRIP_SETPOINT;
   parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].physic                    = PHYSIC_PERCENT;
   parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_TRIP_SETPOINT - CCS_BEGIN].value.float_t             = 0.0;
@@ -4577,7 +4577,7 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].id                     = CCS_PROT_DI_4_RESTART_SETPOINT;
   parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].physic                 = PHYSIC_PERCENT;
   parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_RESTART_SETPOINT - CCS_BEGIN].value.float_t          = 0.0;
@@ -4589,7 +4589,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].id                            = CCS_PROT_DI_4_PARAMETER;
   parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_PARAMETER - CCS_BEGIN].value.float_t                 = 0.0;
@@ -4601,7 +4601,7 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].id                         = CCS_PROT_DI_4_RESTART_FLAG;
   parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_RESTART_FLAG - CCS_BEGIN].value.float_t              = 0.0;
@@ -4613,7 +4613,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].id                                = CCS_PROT_DI_4_STATE;
   parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_STATE - CCS_BEGIN].value.float_t                     = 3.0;
@@ -4625,7 +4625,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].id                                 = CCS_PROT_DI_4_TIME;
   parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].physic                             = PHYSIC_TIME;
   parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_TIME - CCS_BEGIN].value.float_t                      = 0.0;
@@ -4637,7 +4637,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].id                        = CCS_PROT_DI_4_RESTART_COUNT;
   parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_RESTART_COUNT - CCS_BEGIN].value.float_t             = 0.0;
@@ -4649,7 +4649,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].id                   = CCS_PROT_DI_4_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].physic               = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t        = 0;
@@ -4664,83 +4664,83 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].operation           = OPERATION_WRITE;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].validity            = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].value.float_t       = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].value.float_t       = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].min                 = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].max                 = 999999999.9;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].discret             = 1;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].def                 = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].def                 = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].code                = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].id               = CCS_PROT_OTHER_LIMIT_RESTART_PREVENT;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].operation        = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].physic           = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].validity         = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].value.float_t    = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].value.float_t    = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].min              = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].max              = 999999999.9;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].discret          = 1;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].def              = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].def              = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].code             = 0;
   // Задержка активации уставка
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].id           = CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].access       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].operation    = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].operation    = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].physic       = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].validity     = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].value.float_t = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].min          = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].max          = 999999999.9;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].discret      = 1;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].def          = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].def          = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_ACTIV_DELAY - CCS_BEGIN].code         = 0;
   // Время уставка
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].id            = CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].physic        = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].validity      = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].value.float_t = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].min           = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].max           = 999999999.9;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].discret       = 1;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].def           = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].def           = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_DELAY - CCS_BEGIN].code          = 0;
   // Задержка АПВ уставка
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].id         = CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].access     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].operation  = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].operation  = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].physic     = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].validity   = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].value.float_t = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].min        = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].max        = 999999999.9;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].discret    = 1;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].def        = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].def        = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY - CCS_BEGIN].code       = 0;
   // Количество АПВ уставка
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].id         = CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].access     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].operation  = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].operation  = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].physic     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].validity   = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].value.float_t = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].min        = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].max        = 999999999.9;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].discret    = 1;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].def        = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].def        = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT - CCS_BEGIN].code       = 0;
   // Автосброс счетчика АПВ
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].id         = CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].access     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].operation  = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].operation  = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].physic     = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].validity   = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].value.float_t = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].min        = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].max        = 999999999.9;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].discret    = 1;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].def        = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].def        = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET - CCS_BEGIN].code       = 0;
   // Макс. число пусков
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT - CCS_BEGIN].id         = CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT;
@@ -4757,14 +4757,14 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].id      = CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].access  = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].physic  = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].min     = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].max     = 999999999.9;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].discret = 1;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].def     = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].def     = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT - CCS_BEGIN].code    = 0;
   // Период времени
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER - CCS_BEGIN].id             = CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER;
@@ -4781,50 +4781,50 @@ void Ccs::initParameters()
   // Текущий параметр Флаг что защита в АПВ
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].id          = CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].validity    = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].value.float_t = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].min         = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].max         = 999999999.9;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].discret     = 1;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].def         = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].def         = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG - CCS_BEGIN].code        = 0;
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].id                 = CCS_PROT_OTHER_LIMIT_RESTART_STATE;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].validity           = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].value.float_t      = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].value.float_t      = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].min                = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].max                = 999999999.9;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].discret            = 1;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].def                = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].def                = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_STATE - CCS_BEGIN].code               = 0;
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].id                  = CCS_PROT_OTHER_LIMIT_RESTART_TIME;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].physic              = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].validity            = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].value.float_t       = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].value.float_t       = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].min                 = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].max                 = 999999999.9;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].discret             = 1;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].def                 = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].def                 = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_TIME - CCS_BEGIN].code                = 0;
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].id         = CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].access     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].operation  = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].operation  = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].physic     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].validity   = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].value.float_t = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].min        = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].max        = 999999999.9;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].discret    = 1;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].def        = 0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].def        = 0.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT - CCS_BEGIN].code       = 0;
   // Защита "Блокировка силового отсека"
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_MODE - CCS_BEGIN].id                      = CCS_PROT_OTHER_LOCK_DOOR_MODE;
@@ -4841,7 +4841,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].id                   = CCS_PROT_OTHER_LOCK_DOOR_PREVENT;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PREVENT - CCS_BEGIN].value.float_t        = 0.0;
@@ -4853,7 +4853,7 @@ void Ccs::initParameters()
   // Задержка активации уставка
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].id               = CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].operation        = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].physic           = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_ACTIV_DELAY - CCS_BEGIN].value.float_t    = 0.0;
@@ -4865,7 +4865,7 @@ void Ccs::initParameters()
   // Время уставка
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].id                = CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].physic            = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_DELAY - CCS_BEGIN].value.float_t     = 1.0;
@@ -4877,7 +4877,7 @@ void Ccs::initParameters()
   // Задержка АПВ уставка
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].id             = CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].physic         = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_DELAY - CCS_BEGIN].value.float_t  = 0.0;
@@ -4889,7 +4889,7 @@ void Ccs::initParameters()
   // Количество АПВ уставка
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].id             = CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].physic         = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_LIMIT - CCS_BEGIN].value.float_t  = 0.0;
@@ -4901,7 +4901,7 @@ void Ccs::initParameters()
   // Автосброс счетчика АПВ
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].id             = CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].physic         = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_RESET - CCS_BEGIN].value.float_t  = 0.0;
@@ -4913,7 +4913,7 @@ void Ccs::initParameters()
   // Уставка срабатывания защиты
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].id             = CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].physic         = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TRIP_SETPOINT - CCS_BEGIN].value.float_t  = 0.0;
@@ -4925,7 +4925,7 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].id          = CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0.0;
@@ -4937,7 +4937,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].id                 = CCS_PROT_OTHER_LOCK_DOOR_PARAMETER;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_PARAMETER - CCS_BEGIN].value.float_t      = 0.0;
@@ -4949,7 +4949,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].id              = CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].physic          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FLAG - CCS_BEGIN].value.float_t   = 0.0;
@@ -4961,7 +4961,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].id                     = CCS_PROT_OTHER_LOCK_DOOR_STATE;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_STATE - CCS_BEGIN].value.float_t          = 3.0;
@@ -4973,7 +4973,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].id                      = CCS_PROT_OTHER_LOCK_DOOR_TIME;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].physic                  = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_TIME - CCS_BEGIN].value.float_t           = 0.0;
@@ -4985,7 +4985,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].id             = CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].physic         = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_COUNT - CCS_BEGIN].value.float_t  = 0.0;
@@ -4997,7 +4997,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].id        = CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].physic    = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0.0;
@@ -5021,7 +5021,7 @@ void Ccs::initParameters()
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].id                         = CCS_PROT_OTHER_VSD_PREVENT;
   parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_PREVENT - CCS_BEGIN].value.float_t              = 0.0;
@@ -5033,7 +5033,7 @@ void Ccs::initParameters()
   // Задержка активации уставка
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].id                     = CCS_PROT_OTHER_VSD_ACTIV_DELAY;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].physic                 = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_ACTIV_DELAY - CCS_BEGIN].value.float_t          = 0.0;
@@ -5045,7 +5045,7 @@ void Ccs::initParameters()
   // Время уставка
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].id                      = CCS_PROT_OTHER_VSD_TRIP_DELAY;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].physic                  = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_DELAY - CCS_BEGIN].value.float_t           = 0.0;
@@ -5093,7 +5093,7 @@ void Ccs::initParameters()
   // Уставка срабатывания защиты
   parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].id                   = CCS_PROT_OTHER_VSD_TRIP_SETPOINT;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_TRIP_SETPOINT - CCS_BEGIN].value.float_t        = 0.0;
@@ -5105,7 +5105,7 @@ void Ccs::initParameters()
   // Условие АПВ уставка
   parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].id                = CCS_PROT_OTHER_VSD_RESTART_SETPOINT;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].physic            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_SETPOINT - CCS_BEGIN].value.float_t     = 0.0;
@@ -5117,7 +5117,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].id                       = CCS_PROT_OTHER_VSD_PARAMETER;
   parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].access                   = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].operation                = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_PARAMETER - CCS_BEGIN].value.float_t            = 0.0;
@@ -5129,7 +5129,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].id                    = CCS_PROT_OTHER_VSD_RESTART_FLAG;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FLAG - CCS_BEGIN].value.float_t         = 0.0;
@@ -5141,7 +5141,7 @@ void Ccs::initParameters()
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].id                           = CCS_PROT_OTHER_VSD_STATE;
   parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_STATE - CCS_BEGIN].value.float_t                = 3.0;
@@ -5153,7 +5153,7 @@ void Ccs::initParameters()
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].id                            = CCS_PROT_OTHER_VSD_TIME;
   parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].physic                        = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_TIME - CCS_BEGIN].value.float_t                 = 0;
@@ -5165,7 +5165,7 @@ void Ccs::initParameters()
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].id                   = CCS_PROT_OTHER_VSD_RESTART_COUNT;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_COUNT - CCS_BEGIN].value.float_t        = 0.0;
@@ -5177,7 +5177,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].id              = CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].physic          = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t   = 0;
@@ -5192,179 +5192,179 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].operation                     = OPERATION_WRITE;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].value.float_t                 = 0;
+  parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].value.float_t                 = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].min                           = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].max                           = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].discret                       = 1;
-  parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].def                           = 0;
+  parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].def                           = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_MODE - CCS_BEGIN].code                          = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].id                         = CCS_PROT_OTHER_IMB_PREVENT;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].validity                   = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].value.float_t              = 0;
+  parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].value.float_t              = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].min                        = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].max                        = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].discret                    = 1;
-  parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].def                        = 0;
+  parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].def                        = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_PREVENT - CCS_BEGIN].code                       = 0;
   // Задержка активации уставка
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].id                     = CCS_PROT_OTHER_IMB_ACTIV_DELAY;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].physic                 = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].validity               = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].min                    = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].max                    = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].discret                = 1;
-  parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].def                    = 0;
+  parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].def                    = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_ACTIV_DELAY - CCS_BEGIN].code                   = 0;
   // Время уставка
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].id                      = CCS_PROT_OTHER_IMB_TRIP_DELAY;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].physic                  = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].validity                = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].value.float_t           = 0;
+  parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].value.float_t           = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].min                     = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].max                     = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].discret                 = 1;
-  parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].def                     = 0;
+  parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].def                     = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_DELAY - CCS_BEGIN].code                    = 0;
   // Задержка АПВ уставка
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].id                   = CCS_PROT_OTHER_IMB_RESTART_DELAY;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].physic               = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].min                  = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].max                  = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].discret              = 1;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].def                  = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_DELAY - CCS_BEGIN].code                 = 0;
   // Количество АПВ уставка
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].id                   = CCS_PROT_OTHER_IMB_RESTART_LIMIT;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].min                  = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].max                  = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].discret              = 1;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].def                  = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_LIMIT - CCS_BEGIN].code                 = 0;
   // Автосброс счетчика АПВ
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].id                   = CCS_PROT_OTHER_IMB_RESTART_RESET;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].physic               = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].min                  = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].max                  = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].discret              = 1;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].def                  = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_RESET - CCS_BEGIN].code                 = 0;
   // Уставка срабатывания защиты
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].id                   = CCS_PROT_OTHER_IMB_TRIP_SETPOINT;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].min                  = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].max                  = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].discret              = 1;
-  parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].def                  = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_TRIP_SETPOINT - CCS_BEGIN].code                 = 0;
   // Условие АПВ уставка
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].id                = CCS_PROT_OTHER_IMB_RESTART_SETPOINT;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].physic            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].validity          = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].value.float_t     = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].value.float_t     = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].min               = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].max               = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].discret           = 1;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].def               = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].def               = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_SETPOINT - CCS_BEGIN].code              = 0;
   // Уставка параметр защиты
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].id                       = CCS_PROT_OTHER_IMB_PARAMETER;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].access                   = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].operation                = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].validity                 = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].value.float_t            = 0;
+  parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].value.float_t            = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].min                      = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].max                      = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].discret                  = 1;
-  parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].def                      = 0;
+  parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].def                      = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_PARAMETER - CCS_BEGIN].code                     = 0;
   // Уставка параметр защиты
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].id                    = CCS_PROT_OTHER_IMB_RESTART_FLAG;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].validity              = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].value.float_t         = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].value.float_t         = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].min                   = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].max                   = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].discret               = 1;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].def                   = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].def                   = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FLAG - CCS_BEGIN].code                  = 0;
   // Текущий параметр состояние автомата
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].id                           = CCS_PROT_OTHER_IMB_STATE;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].validity                     = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].value.float_t                = 0;
+  parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].value.float_t                = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].min                          = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].max                          = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].discret                      = 1;
-  parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].def                          = 0;
+  parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_STATE - CCS_BEGIN].code                         = 0;
   // Текущий параметр Фиксированное время
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].id                            = CCS_PROT_OTHER_IMB_TIME;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].physic                        = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].value.float_t                 = 0;
+  parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].value.float_t                 = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].min                           = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].max                           = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].discret                       = 1;
-  parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].def                           = 0;
+  parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].def                           = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_TIME - CCS_BEGIN].code                          = 0;
   // Текущий параметр Количество АПВ
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].id                   = CCS_PROT_OTHER_IMB_RESTART_COUNT;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].min                  = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].max                  = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].discret              = 1;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].def                  = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_COUNT - CCS_BEGIN].code                 = 0;
   // Текущий параметр Время первого АПВ
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].id              = CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].physic          = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].validity        = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t   = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t   = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].min             = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].max             = 999999999.9;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].discret         = 1;
-  parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].def             = 0;
+  parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].def             = 0.0;
   parameters_[CCS_PROT_OTHER_IMB_RESTART_FIRST_TIME - CCS_BEGIN].code            = 0;
   // Режим периодический
   parameters_[CCS_RGM_PERIODIC_MODE - CCS_BEGIN].id                              = CCS_RGM_PERIODIC_MODE;
@@ -5381,7 +5381,7 @@ void Ccs::initParameters()
   // Состояние автомата периодического режима
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].id                             = CCS_RGM_PERIODIC_STATE;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].operation                      = OPERATION_READ;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_STATE - CCS_BEGIN].value.float_t                  = 0.0;
@@ -5417,7 +5417,7 @@ void Ccs::initParameters()
   // Время запуска по программе
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].id                    = CCS_RGM_PERIODIC_RUN_BEGIN_TIME;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].physic                = PHYSIC_DATE_TIME;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_RUN_BEGIN_TIME - CCS_BEGIN].value.float_t         = 0.0;
@@ -5429,7 +5429,7 @@ void Ccs::initParameters()
   // Время до окончания работы по программе
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].id                   = CCS_RGM_PERIODIC_RUN_TIME_TO_END;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].physic               = PHYSIC_TIME;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_RUN_TIME_TO_END - CCS_BEGIN].value.float_t        = 0.0;
@@ -5441,7 +5441,7 @@ void Ccs::initParameters()
   // Время останова по программе
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].id                   = CCS_RGM_PERIODIC_STOP_BEGIN_TIME;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].physic               = PHYSIC_DATE_TIME;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_STOP_BEGIN_TIME - CCS_BEGIN].value.float_t        = 0.0;
@@ -5453,7 +5453,7 @@ void Ccs::initParameters()
   // Время до окончания останова по программе
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].id                  = CCS_RGM_PERIODIC_STOP_TIME_TO_END;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].physic              = PHYSIC_TIME;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_RGM_PERIODIC_STOP_TIME_TO_END - CCS_BEGIN].value.float_t       = 0.0;
@@ -5501,7 +5501,7 @@ void Ccs::initParameters()
   // Время окончания работы на частоте 1
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].id               = CCS_RGM_ALTERNATION_FREQ_TIMER_1_END;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].operation        = OPERATION_READ;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].physic           = PHYSIC_DATE_TIME;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_1_END - CCS_BEGIN].value.float_t    = 0.0;
@@ -5528,11 +5528,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].operation             = OPERATION_WRITE;
   parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].physic                = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].validity              = VALIDITY_OK;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].value.float_t         = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].value.float_t         = 1.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].min                   = 1.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].max                   = 500.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].discret               = 100;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].def                   = 0.0;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].def                   = 1.0;
   parameters_[CCS_RGM_ALTERNATION_FREQ_FREQ_2 - CCS_BEGIN].code                  = 13;
   // Режим чередования частот время работы на частоте 2
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2 - CCS_BEGIN].id                   = CCS_RGM_ALTERNATION_FREQ_TIMER_2;
@@ -5549,7 +5549,7 @@ void Ccs::initParameters()
   // Время окончания работы на частоте 2
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].id               = CCS_RGM_ALTERNATION_FREQ_TIMER_2_END;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].operation        = OPERATION_READ;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].physic           = PHYSIC_DATE_TIME;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_RGM_ALTERNATION_FREQ_TIMER_2_END - CCS_BEGIN].value.float_t    = 0.0;
@@ -5600,11 +5600,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].operation                = OPERATION_LIMITED;
   parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].physic                   = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].validity                 = VALIDITY_OK;
-  parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].value.float_t            = 35.0;
-  parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].min                      = 35.0;
+  parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].value.float_t            = 45.0;
+  parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].min                      = 45.0;
   parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].max                      = 500.0;
   parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].discret                  = 100;
-  parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].def                      = 35.0;
+  parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].def                      = 45.0;
   parameters_[CCS_RGM_CHANGE_FREQ_END_FREQ - CCS_BEGIN].code                     = 13;
   // Время вывода на режим
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD - CCS_BEGIN].id                         = CCS_RGM_CHANGE_FREQ_PERIOD;
@@ -5621,7 +5621,7 @@ void Ccs::initParameters()
   // Зафиксированное время начала отсчета текущего шага частоты
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_TIME - CCS_BEGIN].id                     = CCS_RGM_CHANGE_FREQ_BEGIN_TIME;
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_TIME - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_TIME - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_TIME - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_TIME - CCS_BEGIN].physic                 = PHYSIC_DATE_TIME;
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_TIME - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_TIME - CCS_BEGIN].value.float_t          = 0;
@@ -5633,7 +5633,7 @@ void Ccs::initParameters()
   // Период шага частоты
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].id                = CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP;
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].physic            = PHYSIC_TIME;
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_RGM_CHANGE_FREQ_PERIOD_ONE_STEP - CCS_BEGIN].value.float_t     = 1.0;
@@ -5660,11 +5660,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].operation                        = OPERATION_READ;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].physic                           = PHYSIC_CURRENT;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].value.float_t                    = 0;
+  parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].max                              = 999999999.9;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].discret                          = 10;
-  parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].def                              = 0;
+  parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].def                              = 0.0;
   parameters_[CCS_RGM_MODE_CURRENT - CCS_BEGIN].code                             = 0;
   // 
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].id                               = CCS_RGM_MODE_VOLTAGE;
@@ -5672,11 +5672,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].operation                        = OPERATION_READ;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].physic                           = PHYSIC_VOLTAGE;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].value.float_t                    = 0;
+  parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].max                              = 999999999.9;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].discret                          = 1;
-  parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].def                              = 0;
+  parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].def                              = 0.0;
   parameters_[CCS_RGM_MODE_VOLTAGE - CCS_BEGIN].code                             = 0;
   // 
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].id                                  = CCS_RGM_MODE_LOAD;
@@ -5684,11 +5684,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].operation                           = OPERATION_READ;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].physic                              = PHYSIC_PERCENT;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].validity                            = VALIDITY_OK;
-  parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].value.float_t                       = 0;
+  parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].value.float_t                       = 0.0;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].min                                 = 0.0;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].max                                 = 999999999.9;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].discret                             = 1;
-  parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].def                                 = 0;
+  parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].def                                 = 0.0;
   parameters_[CCS_RGM_MODE_LOAD - CCS_BEGIN].code                                = 0;
   // Режим поддержания параметра. Включение
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MODE - CCS_BEGIN].id                     = CCS_RGM_MAINTENANCE_PARAM_MODE;
@@ -5744,11 +5744,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].operation            = OPERATION_WRITE;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].physic               = PHYSIC_TIME;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].min                  = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].max                  = 86400.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].discret              = 1;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].def                  = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PERIOD - CCS_BEGIN].code                 = 13;
   // Режим поддержания параметра. Пропорциональный коэффициент
   parameters_[CCS_RGM_MAINTENANCE_PARAM_PROP - CCS_BEGIN].id                     = CCS_RGM_MAINTENANCE_PARAM_PROP;
@@ -5780,11 +5780,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].operation          = OPERATION_WRITE;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].physic             = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].validity           = VALIDITY_OK;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].value.float_t      = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].value.float_t      = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].min                = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].max                = 999999999.9;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].discret            = 1;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].def                = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].def                = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ - CCS_BEGIN].code               = 13;
   // Режим поддержания параметра. Макс рабочая частота
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].id                 = CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ;
@@ -5792,11 +5792,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].operation          = OPERATION_WRITE;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].physic             = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].validity           = VALIDITY_OK;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].value.float_t      = 200.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].value.float_t      = 60.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].min                = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].max                = 200.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].discret            = 1;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].def                = 200.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].def                = 60.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ - CCS_BEGIN].code               = 13;
   // Режим встряхивания. Включение
   parameters_[CCS_RGM_JARRING_MODE - CCS_BEGIN].id                               = CCS_RGM_JARRING_MODE;
@@ -5876,11 +5876,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].operation                     = OPERATION_WRITE;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].value.float_t                 = 0;
+  parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].value.float_t                 = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].min                           = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].max                           = 999999999.9;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].discret                       = 1;
-  parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].def                           = 0;
+  parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].def                           = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE - CCS_BEGIN].code                          = 13;
   // Режим Учёт нагрева кабеля сопротивление при 20с
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].id                   = CCS_RGM_HEAT_CABLE_RESISTANCE_20;
@@ -5888,11 +5888,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].operation            = OPERATION_WRITE;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].physic               = PHYSIC_RESIST_CABLE;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].min                  = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].max                  = 999999999.9;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].discret              = 1;
-  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].def                  = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_20 - CCS_BEGIN].code                 = 13;
   // Режим Учёт нагрева кабеля сопротивление при 80с
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].id                   = CCS_RGM_HEAT_CABLE_RESISTANCE_80;
@@ -5900,11 +5900,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].operation            = OPERATION_WRITE;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].physic               = PHYSIC_RESIST_CABLE;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].min                  = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].max                  = 999999999.9;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].discret              = 1;
-  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].def                  = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_RESISTANCE_80 - CCS_BEGIN].code                 = 13;
   // Режим Учёт нагрева кабеля номинальный ток кабеля
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].id                    = CCS_RGM_HEAT_CABLE_MODE_CURRENT;
@@ -5912,11 +5912,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].operation             = OPERATION_WRITE;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].physic                = PHYSIC_CURRENT;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].validity              = VALIDITY_OK;
-  parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].value.float_t         = 0;
+  parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].value.float_t         = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].min                   = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].max                   = 999999999.9;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].discret               = 1;
-  parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].def                   = 0;
+  parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].def                   = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_CURRENT - CCS_BEGIN].code                  = 13;
   // Режим Учёт нагрева кабеля время нагрева
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].id             = CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION;
@@ -5924,11 +5924,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].operation      = OPERATION_WRITE;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].physic         = PHYSIC_TIME;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].validity       = VALIDITY_OK;
-  parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].value.float_t  = 0;
+  parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].value.float_t  = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].min            = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].max            = 999999999.9;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].discret        = 1;
-  parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].def            = 0;
+  parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].def            = 0.0;
   parameters_[CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION - CCS_BEGIN].code           = 13;
   // Режим оптимизации напряжения вкл
   parameters_[CCS_RGM_OPTIM_VOLTAGE_MODE - CCS_BEGIN].id                         = CCS_RGM_OPTIM_VOLTAGE_MODE;
@@ -5996,7 +5996,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].operation                       = OPERATION_WRITE;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].value.float_t                   = 0;
+  parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].max                             = 3.0;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].discret                         = 1;
@@ -6008,11 +6008,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].operation                   = OPERATION_WRITE;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].physic                      = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].validity                    = VALIDITY_OK;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].min                         = 0.0;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].max                         = 999999999.9;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].discret                     = 100;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].def                         = 0;
+  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].code                        = 13;
   // Режим прокачки газа
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].id                    = CCS_RGM_PUMP_GAS_DELAY_REACTION;
@@ -6020,11 +6020,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].operation             = OPERATION_WRITE;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].physic                = PHYSIC_TIME;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].validity              = VALIDITY_OK;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].value.float_t         = 0;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].value.float_t         = 0.0;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].min                   = 0.0;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].max                   = 999999999.9;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].discret               = 1;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].def                   = 0;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].def                   = 0.0;
   parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].code                  = 13;
   // Режим прокачки газа
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].id                     = CCS_RGM_PUMP_GAS_LIMIT_RESTART;
@@ -6032,11 +6032,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].operation              = OPERATION_WRITE;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].validity               = VALIDITY_OK;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].min                    = 0.0;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].max                    = 999999999.9;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].discret                = 1;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].def                    = 0;
+  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].def                    = 0.0;
   parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].code                   = 13;
   // Режим ограничения тока
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].id                         = CCS_RGM_CURRENT_LIMIT_MODE;
@@ -6044,7 +6044,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].operation                  = OPERATION_WRITE;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].validity                   = VALIDITY_OK;
-  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].value.float_t              = 0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].value.float_t              = 0.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].min                        = 0.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].max                        = 3.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].discret                    = 1;
@@ -6065,14 +6065,14 @@ void Ccs::initParameters()
   // Режим ограничения тока шаг снижения частоты
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].id                     = CCS_RGM_CURRENT_LIMIT_STEPDOWN;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].physic                 = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].validity               = VALIDITY_OK;
-  parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].min                    = 0.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].max                    = 999999999.9;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].discret                = 100;
-  parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].def                    = 0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].def                    = 0.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_STEPDOWN - CCS_BEGIN].code                   = 0;
   // Режим ограничения тока задержка отключения
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_REACTION - CCS_BEGIN].id               = CCS_RGM_CURRENT_LIMIT_DELAY_REACTION;
@@ -6089,14 +6089,14 @@ void Ccs::initParameters()
   // Режим ограничения тока задержка АПВ
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].id                = CCS_RGM_CURRENT_LIMIT_DELAY_RESTART;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].physic            = PHYSIC_TIME;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].validity          = VALIDITY_OK;
-  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].value.float_t     = 0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].value.float_t     = 0.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].min               = 0.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].max               = 999999999.9;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].discret           = 1;
-  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].def               = 0;
+  parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].def               = 0.0;
   parameters_[CCS_RGM_CURRENT_LIMIT_DELAY_RESTART - CCS_BEGIN].code              = 0;
   // Коэффициент корректировки входного напряжения A
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].id                              = CCS_COEF_VOLTAGE_IN_A;
@@ -6108,7 +6108,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].min                             = 0.001;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].max                             = 10.0;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].discret                         = 1000;
-  parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].def                             = 1.0;
   parameters_[CCS_COEF_VOLTAGE_IN_A - CCS_BEGIN].code                            = 13;
   // Коэффициент корректировки входного напряжения B
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].id                              = CCS_COEF_VOLTAGE_IN_B;
@@ -6120,7 +6120,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].min                             = 0.001;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].max                             = 10.0;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].discret                         = 1000;
-  parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].def                             = 1.0;
   parameters_[CCS_COEF_VOLTAGE_IN_B - CCS_BEGIN].code                            = 13;
   // Коэффициент корректировки входного напряжения C
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].id                              = CCS_COEF_VOLTAGE_IN_C;
@@ -6132,7 +6132,7 @@ void Ccs::initParameters()
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].min                             = 0.001;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].max                             = 10.0;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].discret                         = 1000;
-  parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].def                             = 1.0;
   parameters_[CCS_COEF_VOLTAGE_IN_C - CCS_BEGIN].code                            = 13;
   // Коэффициент корректировки выходного тока фаза U
   parameters_[CCS_COEF_OUT_CURRENT_1 - CCS_BEGIN].id                             = CCS_COEF_OUT_CURRENT_1;
@@ -6224,11 +6224,11 @@ void Ccs::initParameters()
   parameters_[CCS_COUNT_START - CCS_BEGIN].operation                             = OPERATION_READ;
   parameters_[CCS_COUNT_START - CCS_BEGIN].physic                                = PHYSIC_NUMERIC;
   parameters_[CCS_COUNT_START - CCS_BEGIN].validity                              = VALIDITY_OK;
-  parameters_[CCS_COUNT_START - CCS_BEGIN].value.float_t                         = 0;
+  parameters_[CCS_COUNT_START - CCS_BEGIN].value.float_t                         = 0.0;
   parameters_[CCS_COUNT_START - CCS_BEGIN].min                                   = 0.0;
   parameters_[CCS_COUNT_START - CCS_BEGIN].max                                   = 999999999.9;
   parameters_[CCS_COUNT_START - CCS_BEGIN].discret                               = 1;
-  parameters_[CCS_COUNT_START - CCS_BEGIN].def                                   = 0;
+  parameters_[CCS_COUNT_START - CCS_BEGIN].def                                   = 0.0;
   parameters_[CCS_COUNT_START - CCS_BEGIN].code                                  = 0;
   // Количество отключений по перегрузу
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].id                       = CCS_PROT_OVERLOAD_COUNT_STOP;
@@ -6236,11 +6236,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].operation                = OPERATION_READ;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].validity                 = VALIDITY_OK;
-  parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].value.float_t            = 0;
+  parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].value.float_t            = 0.0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].min                      = 0.0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].max                      = 999999999.9;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].discret                  = 1;
-  parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].def                      = 0;
+  parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].def                      = 0.0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_STOP - CCS_BEGIN].code                     = 0;
   // Количество отключений по недогрузу
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].id                      = CCS_PROT_UNDERLOAD_COUNT_STOP;
@@ -6248,11 +6248,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].validity                = VALIDITY_OK;
-  parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].value.float_t           = 0;
+  parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].value.float_t           = 0.0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].min                     = 0.0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].max                     = 999999999.9;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].discret                 = 1;
-  parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].def                     = 0;
+  parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].def                     = 0.0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_STOP - CCS_BEGIN].code                    = 0;
   // Количество отключений по другим защитам
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].id                          = CCS_PROT_OTHER_COUNT_STOP;
@@ -6260,11 +6260,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].validity                    = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].min                         = 0.0;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].max                         = 999999999.9;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].discret                     = 1;
-  parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].def                         = 0;
+  parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_PROT_OTHER_COUNT_STOP - CCS_BEGIN].code                        = 0;
   // Количество АПВ после остановов по напряжению
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].id                     = CCS_PROT_VOLTAGE_COUNT_RESTART;
@@ -6272,11 +6272,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].validity               = VALIDITY_OK;
-  parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].min                    = 0.0;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].max                    = 999999999.9;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].discret                = 1;
-  parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].def                    = 0;
+  parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].def                    = 0.0;
   parameters_[CCS_PROT_VOLTAGE_COUNT_RESTART - CCS_BEGIN].code                   = 0;
   // Количество АПВ после остановов по перегрузу
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].id                    = CCS_PROT_OVERLOAD_COUNT_RESTART;
@@ -6284,11 +6284,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].validity              = VALIDITY_OK;
-  parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].value.float_t         = 0;
+  parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].value.float_t         = 0.0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].min                   = 0.0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].max                   = 999999999.9;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].discret               = 1;
-  parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].def                   = 0;
+  parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].def                   = 0.0;
   parameters_[CCS_PROT_OVERLOAD_COUNT_RESTART - CCS_BEGIN].code                  = 0;
   // Количество АПВ после остановов по недогрузу
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].id                   = CCS_PROT_UNDERLOAD_COUNT_RESTART;
@@ -6296,11 +6296,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].validity             = VALIDITY_OK;
-  parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].value.float_t        = 0;
+  parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].value.float_t        = 0.0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].min                  = 0.0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].max                  = 999999999.9;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].discret              = 1;
-  parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].def                  = 0;
+  parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].def                  = 0.0;
   parameters_[CCS_PROT_UNDERLOAD_COUNT_RESTART - CCS_BEGIN].code                 = 0;
   // Количество АПВ после остановов по дисбалансу токов
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].id     = CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART;
@@ -6308,11 +6308,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].validity = VALIDITY_OK;
-  parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].value.float_t = 0;
+  parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].value.float_t = 0.0;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].min    = 0.0;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].max    = 999999999.9;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].discret = 1;
-  parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].def    = 0;
+  parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].def    = 0.0;
   parameters_[CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART - CCS_BEGIN].code   = 0;
   // Общее время работы СУ
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].id                          = CCS_GENERAL_RUN_DATE_TIME;
@@ -6320,11 +6320,11 @@ void Ccs::initParameters()
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].physic                      = PHYSIC_TIME;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].validity                    = VALIDITY_OK;
-  parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].min                         = 0.0;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].max                         = 999999999.9;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].discret                     = 1;
-  parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].def                         = 0;
+  parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_GENERAL_RUN_DATE_TIME - CCS_BEGIN].code                        = 0;
   // Общее время простоя СУ
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].id                         = CCS_GENERAL_STOP_DATE_TIME;
@@ -6332,11 +6332,11 @@ void Ccs::initParameters()
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].physic                     = PHYSIC_TIME;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].validity                   = VALIDITY_OK;
-  parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].value.float_t              = 0;
+  parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].value.float_t              = 0.0;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].min                        = 0.0;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].max                        = 999999999.9;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].discret                    = 1;
-  parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].def                        = 0;
+  parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].def                        = 0.0;
   parameters_[CCS_GENERAL_STOP_DATE_TIME - CCS_BEGIN].code                       = 0;
   // Текущая наработка
   parameters_[CCS_RUN_TIME - CCS_BEGIN].id                                       = CCS_RUN_TIME;
@@ -6344,11 +6344,11 @@ void Ccs::initParameters()
   parameters_[CCS_RUN_TIME - CCS_BEGIN].operation                                = OPERATION_READ;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].physic                                   = PHYSIC_TIME;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].validity                                 = VALIDITY_OK;
-  parameters_[CCS_RUN_TIME - CCS_BEGIN].value.float_t                            = 0;
+  parameters_[CCS_RUN_TIME - CCS_BEGIN].value.float_t                            = 0.0;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].min                                      = 0.0;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].max                                      = 999999999.9;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].discret                                  = 1;
-  parameters_[CCS_RUN_TIME - CCS_BEGIN].def                                      = 0;
+  parameters_[CCS_RUN_TIME - CCS_BEGIN].def                                      = 0.0;
   parameters_[CCS_RUN_TIME - CCS_BEGIN].code                                     = 0;
   // Текущий простой
   parameters_[CCS_STOP_TIME - CCS_BEGIN].id                                      = CCS_STOP_TIME;
@@ -6356,11 +6356,11 @@ void Ccs::initParameters()
   parameters_[CCS_STOP_TIME - CCS_BEGIN].operation                               = OPERATION_READ;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].physic                                  = PHYSIC_TIME;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].validity                                = VALIDITY_OK;
-  parameters_[CCS_STOP_TIME - CCS_BEGIN].value.float_t                           = 0;
+  parameters_[CCS_STOP_TIME - CCS_BEGIN].value.float_t                           = 0.0;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].min                                     = 0.0;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].max                                     = 999999999.9;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].discret                                 = 1;
-  parameters_[CCS_STOP_TIME - CCS_BEGIN].def                                     = 0;
+  parameters_[CCS_STOP_TIME - CCS_BEGIN].def                                     = 0.0;
   parameters_[CCS_STOP_TIME - CCS_BEGIN].code                                    = 0;
   // Время до изменения режима
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].id                                      = CCS_RGM_TIMER;
@@ -6368,11 +6368,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].operation                               = OPERATION_READ;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].physic                                  = PHYSIC_TIME;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].validity                                = VALIDITY_OK;
-  parameters_[CCS_RGM_TIMER - CCS_BEGIN].value.float_t                           = 0;
+  parameters_[CCS_RGM_TIMER - CCS_BEGIN].value.float_t                           = 0.0;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].min                                     = 0.0;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].max                                     = 999999999.9;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].discret                                 = 1;
-  parameters_[CCS_RGM_TIMER - CCS_BEGIN].def                                     = 0;
+  parameters_[CCS_RGM_TIMER - CCS_BEGIN].def                                     = 0.0;
   parameters_[CCS_RGM_TIMER - CCS_BEGIN].code                                    = 0;
   // Время до запуска
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].id                                  = CCS_RESTART_TIMER;
@@ -6380,11 +6380,11 @@ void Ccs::initParameters()
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].operation                           = OPERATION_READ;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].physic                              = PHYSIC_TIME;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].validity                            = VALIDITY_OK;
-  parameters_[CCS_RESTART_TIMER - CCS_BEGIN].value.float_t                       = 0;
+  parameters_[CCS_RESTART_TIMER - CCS_BEGIN].value.float_t                       = 0.0;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].min                                 = 0.0;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].max                                 = 999999999.9;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].discret                             = 1;
-  parameters_[CCS_RESTART_TIMER - CCS_BEGIN].def                                 = 0;
+  parameters_[CCS_RESTART_TIMER - CCS_BEGIN].def                                 = 0.0;
   parameters_[CCS_RESTART_TIMER - CCS_BEGIN].code                                = 0;
   // Дата время последнего включения
   parameters_[CCS_LAST_RUN_DATE_TIME - CCS_BEGIN].id                             = CCS_LAST_RUN_DATE_TIME;
@@ -6404,11 +6404,11 @@ void Ccs::initParameters()
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].validity                          = VALIDITY_OK;
-  parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].value.float_t                     = 0;
+  parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].min                               = 0.0;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].max                               = 999999999.9;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].discret                           = 1;
-  parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].def                               = 0;
+  parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].def                               = 0.0;
   parameters_[CCS_LAST_RUN_REASON - CCS_BEGIN].code                              = 0;
   // Дата время последнего отключения
   parameters_[CCS_LAST_STOP_DATE_TIME - CCS_BEGIN].id                            = CCS_LAST_STOP_DATE_TIME;
@@ -6428,11 +6428,11 @@ void Ccs::initParameters()
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].operation                        = OPERATION_READ;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].validity                         = VALIDITY_OK;
-  parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].value.float_t                    = 0;
+  parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].value.float_t                    = 0.0;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].min                              = 0.0;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].max                              = 999999999.9;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].discret                          = 1;
-  parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].def                              = 0;
+  parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].def                              = 0.0;
   parameters_[CCS_LAST_STOP_REASON - CCS_BEGIN].code                             = 0;
   // Дата время изменения частоты
   parameters_[CCS_PREVIEW_FREQUENCY_DATE_TIME - CCS_BEGIN].id                    = CCS_PREVIEW_FREQUENCY_DATE_TIME;
@@ -6452,11 +6452,11 @@ void Ccs::initParameters()
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].physic                          = PHYSIC_FREQUENCY;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].value.float_t                   = 0;
+  parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].max                             = 999999999.9;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].discret                         = 1;
-  parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_PREVIEW_FREQUENCY - CCS_BEGIN].code                            = 0;
   // Тип КСУ
   parameters_[CCS_TYPE_CCS - CCS_BEGIN].id                                       = CCS_TYPE_CCS;
@@ -6488,11 +6488,11 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].operation                      = OPERATION_READ;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].validity                       = VALIDITY_OK;
-  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].value.float_t                  = 0;
+  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].value.float_t                  = 0.0;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].min                            = 0.0;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].max                            = 999999999.9;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].discret                        = 1;
-  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].def                            = 0;
+  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].code                           = 13;
   // Версия ПО КСУ
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].id                                 = CCS_VERSION_SW_CCS;
@@ -6500,11 +6500,11 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].validity                           = VALIDITY_OK;
-  parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].value.float_t                      = 0;
+  parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].value.float_t                      = 0.0;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].min                                = 0.0;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].max                                = 999999999.9;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].discret                            = 100;
-  parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].def                                = 0;
+  parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].def                                = 0.0;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].code                               = 13;
   // Версия ПО МС
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].id                                  = CCS_VERSION_SW_MS;
@@ -6512,11 +6512,11 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].operation                           = OPERATION_READ;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].validity                            = VALIDITY_OK;
-  parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].value.float_t                       = 0;
+  parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].value.float_t                       = 0.0;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].min                                 = 0.0;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].max                                 = 999999999.9;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].discret                             = 100;
-  parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].def                                 = 0;
+  parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].def                                 = 0.0;
   parameters_[CCS_VERSION_SW_MS - CCS_BEGIN].code                                = 13;
   // Версия ПО ПЧ
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].id                                 = CCS_VERSION_SW_VSD;
@@ -6524,11 +6524,11 @@ void Ccs::initParameters()
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].validity                           = VALIDITY_OK;
-  parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].value.float_t                      = 0;
+  parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].value.float_t                      = 0.0;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].min                                = 0.0;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].max                                = 999999999.9;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].discret                            = 100;
-  parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].def                                = 0;
+  parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].def                                = 0.0;
   parameters_[CCS_VERSION_SW_VSD - CCS_BEGIN].code                               = 13;
   // Дата изготовления КСУ
   parameters_[CCS_DATE_PRODUCTION_CCS - CCS_BEGIN].id                            = CCS_DATE_PRODUCTION_CCS;
@@ -6584,11 +6584,11 @@ void Ccs::initParameters()
   parameters_[CCS_TYPE_SU - CCS_BEGIN].operation                                 = OPERATION_WRITE;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].physic                                    = PHYSIC_NUMERIC;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].validity                                  = VALIDITY_OK;
-  parameters_[CCS_TYPE_SU - CCS_BEGIN].value.float_t                             = 0;
+  parameters_[CCS_TYPE_SU - CCS_BEGIN].value.float_t                             = 0.0;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].min                                       = 0.0;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].max                                       = 999999999.9;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].discret                                   = 1;
-  parameters_[CCS_TYPE_SU - CCS_BEGIN].def                                       = 0;
+  parameters_[CCS_TYPE_SU - CCS_BEGIN].def                                       = 0.0;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].code                                      = 13;
   // Код завода изготовителя СУ
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].id                             = CCS_CODE_PRODUCTION_SU;
@@ -6596,11 +6596,11 @@ void Ccs::initParameters()
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].operation                      = OPERATION_WRITE;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].validity                       = VALIDITY_OK;
-  parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].value.float_t                  = 0;
+  parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].value.float_t                  = 0.0;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].min                            = 0.0;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].max                            = 999999999.9;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].discret                        = 1;
-  parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].def                            = 0;
+  parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].code                           = 13;
   // Заводской номер СУ
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].id                              = CCS_NUM_PRODUCTION_SU;
@@ -6608,11 +6608,11 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].operation                       = OPERATION_WRITE;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].value.float_t                   = 0;
+  parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].max                             = 999999999.9;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].discret                         = 1;
-  parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].code                            = 13;
   // Дата изготовления СУ
   parameters_[CCS_DATE_PRODUCTION_SU - CCS_BEGIN].id                             = CCS_DATE_PRODUCTION_SU;
@@ -6632,11 +6632,11 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_1 - CCS_BEGIN].operation                                  = OPERATION_WRITE;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].physic                                     = PHYSIC_NUMERIC;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].validity                                   = VALIDITY_OK;
-  parameters_[CCS_NOTE_1 - CCS_BEGIN].value.float_t                              = 0;
+  parameters_[CCS_NOTE_1 - CCS_BEGIN].value.float_t                              = 0.0;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].min                                        = 0.0;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].max                                        = 999999999.9;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].discret                                    = 1;
-  parameters_[CCS_NOTE_1 - CCS_BEGIN].def                                        = 0;
+  parameters_[CCS_NOTE_1 - CCS_BEGIN].def                                        = 0.0;
   parameters_[CCS_NOTE_1 - CCS_BEGIN].code                                       = 13;
   // Примечание 2
   parameters_[CCS_NOTE_2 - CCS_BEGIN].id                                         = CCS_NOTE_2;
@@ -6644,11 +6644,11 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_2 - CCS_BEGIN].operation                                  = OPERATION_WRITE;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].physic                                     = PHYSIC_NUMERIC;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].validity                                   = VALIDITY_OK;
-  parameters_[CCS_NOTE_2 - CCS_BEGIN].value.float_t                              = 0;
+  parameters_[CCS_NOTE_2 - CCS_BEGIN].value.float_t                              = 0.0;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].min                                        = 0.0;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].max                                        = 999999999.9;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].discret                                    = 1;
-  parameters_[CCS_NOTE_2 - CCS_BEGIN].def                                        = 0;
+  parameters_[CCS_NOTE_2 - CCS_BEGIN].def                                        = 0.0;
   parameters_[CCS_NOTE_2 - CCS_BEGIN].code                                       = 13;
   // Примечание 3
   parameters_[CCS_NOTE_3 - CCS_BEGIN].id                                         = CCS_NOTE_3;
@@ -6656,11 +6656,11 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_3 - CCS_BEGIN].operation                                  = OPERATION_WRITE;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].physic                                     = PHYSIC_NUMERIC;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].validity                                   = VALIDITY_OK;
-  parameters_[CCS_NOTE_3 - CCS_BEGIN].value.float_t                              = 0;
+  parameters_[CCS_NOTE_3 - CCS_BEGIN].value.float_t                              = 0.0;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].min                                        = 0.0;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].max                                        = 999999999.9;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].discret                                    = 1;
-  parameters_[CCS_NOTE_3 - CCS_BEGIN].def                                        = 0;
+  parameters_[CCS_NOTE_3 - CCS_BEGIN].def                                        = 0.0;
   parameters_[CCS_NOTE_3 - CCS_BEGIN].code                                       = 13;
   // Примечание 4
   parameters_[CCS_NOTE_4 - CCS_BEGIN].id                                         = CCS_NOTE_4;
@@ -6668,11 +6668,11 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_4 - CCS_BEGIN].operation                                  = OPERATION_WRITE;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].physic                                     = PHYSIC_NUMERIC;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].validity                                   = VALIDITY_OK;
-  parameters_[CCS_NOTE_4 - CCS_BEGIN].value.float_t                              = 0;
+  parameters_[CCS_NOTE_4 - CCS_BEGIN].value.float_t                              = 0.0;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].min                                        = 0.0;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].max                                        = 999999999.9;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].discret                                    = 1;
-  parameters_[CCS_NOTE_4 - CCS_BEGIN].def                                        = 0;
+  parameters_[CCS_NOTE_4 - CCS_BEGIN].def                                        = 0.0;
   parameters_[CCS_NOTE_4 - CCS_BEGIN].code                                       = 13;
   // Примечание 5
   parameters_[CCS_NOTE_5 - CCS_BEGIN].id                                         = CCS_NOTE_5;
@@ -6680,11 +6680,11 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_5 - CCS_BEGIN].operation                                  = OPERATION_WRITE;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].physic                                     = PHYSIC_NUMERIC;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].validity                                   = VALIDITY_OK;
-  parameters_[CCS_NOTE_5 - CCS_BEGIN].value.float_t                              = 0;
+  parameters_[CCS_NOTE_5 - CCS_BEGIN].value.float_t                              = 0.0;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].min                                        = 0.0;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].max                                        = 999999999.9;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].discret                                    = 1;
-  parameters_[CCS_NOTE_5 - CCS_BEGIN].def                                        = 0;
+  parameters_[CCS_NOTE_5 - CCS_BEGIN].def                                        = 0.0;
   parameters_[CCS_NOTE_5 - CCS_BEGIN].code                                       = 13;
   // Примечание 6
   parameters_[CCS_NOTE_6 - CCS_BEGIN].id                                         = CCS_NOTE_6;
@@ -6692,11 +6692,11 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_6 - CCS_BEGIN].operation                                  = OPERATION_WRITE;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].physic                                     = PHYSIC_NUMERIC;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].validity                                   = VALIDITY_OK;
-  parameters_[CCS_NOTE_6 - CCS_BEGIN].value.float_t                              = 0;
+  parameters_[CCS_NOTE_6 - CCS_BEGIN].value.float_t                              = 0.0;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].min                                        = 0.0;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].max                                        = 999999999.9;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].discret                                    = 1;
-  parameters_[CCS_NOTE_6 - CCS_BEGIN].def                                        = 0;
+  parameters_[CCS_NOTE_6 - CCS_BEGIN].def                                        = 0.0;
   parameters_[CCS_NOTE_6 - CCS_BEGIN].code                                       = 13;
   // Примечание 7
   parameters_[CCS_NOTE_7 - CCS_BEGIN].id                                         = CCS_NOTE_7;
@@ -6704,11 +6704,11 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_7 - CCS_BEGIN].operation                                  = OPERATION_WRITE;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].physic                                     = PHYSIC_NUMERIC;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].validity                                   = VALIDITY_OK;
-  parameters_[CCS_NOTE_7 - CCS_BEGIN].value.float_t                              = 0;
+  parameters_[CCS_NOTE_7 - CCS_BEGIN].value.float_t                              = 0.0;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].min                                        = 0.0;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].max                                        = 999999999.9;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].discret                                    = 1;
-  parameters_[CCS_NOTE_7 - CCS_BEGIN].def                                        = 0;
+  parameters_[CCS_NOTE_7 - CCS_BEGIN].def                                        = 0.0;
   parameters_[CCS_NOTE_7 - CCS_BEGIN].code                                       = 13;
   // Примечание 8
   parameters_[CCS_NOTE_8 - CCS_BEGIN].id                                         = CCS_NOTE_8;
@@ -6716,11 +6716,11 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_8 - CCS_BEGIN].operation                                  = OPERATION_WRITE;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].physic                                     = PHYSIC_NUMERIC;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].validity                                   = VALIDITY_OK;
-  parameters_[CCS_NOTE_8 - CCS_BEGIN].value.float_t                              = 0;
+  parameters_[CCS_NOTE_8 - CCS_BEGIN].value.float_t                              = 0.0;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].min                                        = 0.0;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].max                                        = 999999999.9;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].discret                                    = 1;
-  parameters_[CCS_NOTE_8 - CCS_BEGIN].def                                        = 0;
+  parameters_[CCS_NOTE_8 - CCS_BEGIN].def                                        = 0.0;
   parameters_[CCS_NOTE_8 - CCS_BEGIN].code                                       = 13;
   // Примечание 9
   parameters_[CCS_NOTE_9 - CCS_BEGIN].id                                         = CCS_NOTE_9;
@@ -6728,11 +6728,11 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_9 - CCS_BEGIN].operation                                  = OPERATION_WRITE;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].physic                                     = PHYSIC_NUMERIC;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].validity                                   = VALIDITY_OK;
-  parameters_[CCS_NOTE_9 - CCS_BEGIN].value.float_t                              = 0;
+  parameters_[CCS_NOTE_9 - CCS_BEGIN].value.float_t                              = 0.0;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].min                                        = 0.0;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].max                                        = 999999999.9;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].discret                                    = 1;
-  parameters_[CCS_NOTE_9 - CCS_BEGIN].def                                        = 0;
+  parameters_[CCS_NOTE_9 - CCS_BEGIN].def                                        = 0.0;
   parameters_[CCS_NOTE_9 - CCS_BEGIN].code                                       = 13;
   // Примечание 10
   parameters_[CCS_NOTE_10 - CCS_BEGIN].id                                        = CCS_NOTE_10;
@@ -6740,11 +6740,11 @@ void Ccs::initParameters()
   parameters_[CCS_NOTE_10 - CCS_BEGIN].operation                                 = OPERATION_WRITE;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].physic                                    = PHYSIC_NUMERIC;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].validity                                  = VALIDITY_OK;
-  parameters_[CCS_NOTE_10 - CCS_BEGIN].value.float_t                             = 0;
+  parameters_[CCS_NOTE_10 - CCS_BEGIN].value.float_t                             = 0.0;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].min                                       = 0.0;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].max                                       = 999999999.9;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].discret                                   = 1;
-  parameters_[CCS_NOTE_10 - CCS_BEGIN].def                                       = 0;
+  parameters_[CCS_NOTE_10 - CCS_BEGIN].def                                       = 0.0;
   parameters_[CCS_NOTE_10 - CCS_BEGIN].code                                      = 13;
   // Дата время в формате POSIX
   parameters_[CCS_DATE_TIME - CCS_BEGIN].id                                      = CCS_DATE_TIME;
@@ -6769,7 +6769,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].max                                = 2040.0;
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].discret                            = 1;
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].def                                = 2015.0;
-  parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].code                               = 13;
+  parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].code                               = 0;
   // Дата время месяц
   parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].id                                = CCS_DATE_TIME_MONTH;
   parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].access                            = ACCESS_OPERATOR;
@@ -6781,7 +6781,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].max                               = 12.0;
   parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].discret                           = 1;
   parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].def                               = 1.0;
-  parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].code                              = 13;
+  parameters_[CCS_DATE_TIME_MONTH - CCS_BEGIN].code                              = 0;
   // Дата время дни
   parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].id                                  = CCS_DATE_TIME_DAY;
   parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].access                              = ACCESS_OPERATOR;
@@ -6793,7 +6793,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].max                                 = 31.0;
   parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].def                                 = 1.0;
-  parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].code                                = 13;
+  parameters_[CCS_DATE_TIME_DAY - CCS_BEGIN].code                                = 0;
   // Дата время часы
   parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].id                                 = CCS_DATE_TIME_HOUR;
   parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].access                             = ACCESS_OPERATOR;
@@ -6805,7 +6805,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].max                                = 23.0;
   parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].discret                            = 1;
   parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].def                                = 0.0;
-  parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].code                               = 13;
+  parameters_[CCS_DATE_TIME_HOUR - CCS_BEGIN].code                               = 0;
   // Дата время минуты
   parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].id                                  = CCS_DATE_TIME_MIN;
   parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].access                              = ACCESS_OPERATOR;
@@ -6817,7 +6817,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].max                                 = 59.0;
   parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].def                                 = 0.0;
-  parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].code                                = 13;
+  parameters_[CCS_DATE_TIME_MIN - CCS_BEGIN].code                                = 0;
   // Дата время секунды
   parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].id                                  = CCS_DATE_TIME_SEC;
   parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].access                              = ACCESS_OPERATOR;
@@ -6829,11 +6829,11 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].max                                 = 59.0;
   parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].def                                 = 0.0;
-  parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].code                                = 13;
+  parameters_[CCS_DATE_TIME_SEC - CCS_BEGIN].code                                = 0;
   // Дата время мс
   parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].id                                   = CCS_DATE_TIME_MS;
   parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].access                               = ACCESS_OPERATOR;
-  parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].operation                            = OPERATION_READ;
   parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].physic                               = PHYSIC_NUMERIC;
   parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].validity                             = VALIDITY_OK;
   parameters_[CCS_DATE_TIME_MS - CCS_BEGIN].value.float_t                        = 0.0;
@@ -6848,16 +6848,16 @@ void Ccs::initParameters()
   parameters_[CCS_LANGUAGE - CCS_BEGIN].operation                                = OPERATION_WRITE;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].physic                                   = PHYSIC_NUMERIC;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].validity                                 = VALIDITY_OK;
-  parameters_[CCS_LANGUAGE - CCS_BEGIN].value.float_t                            = 0;
+  parameters_[CCS_LANGUAGE - CCS_BEGIN].value.float_t                            = 0.0;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].min                                      = 0.0;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].max                                      = 999999999.9;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].discret                                  = 1;
-  parameters_[CCS_LANGUAGE - CCS_BEGIN].def                                      = 0;
+  parameters_[CCS_LANGUAGE - CCS_BEGIN].def                                      = 0.0;
   parameters_[CCS_LANGUAGE - CCS_BEGIN].code                                     = 13;
   // Включение системы паролей
   parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].id                                = CCS_PASSWORD_ENEBLE;
   parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].value.float_t                     = 1.0;
@@ -6865,7 +6865,7 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].max                               = 1.0;
   parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].discret                           = 1;
   parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].def                               = 1.0;
-  parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].code                              = 13;
+  parameters_[CCS_PASSWORD_ENEBLE - CCS_BEGIN].code                              = 0;
   // Текущий уровень доступа
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].id                                 = CCS_PASSWORD_LEVEL;
   parameters_[CCS_PASSWORD_LEVEL - CCS_BEGIN].access                             = ACCESS_OPERATOR;
@@ -6905,7 +6905,7 @@ void Ccs::initParameters()
   // Пароль 3 уровня
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].id                               = CCS_PASSWORD_LEVEL_3;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].access                           = ACCESS_SERVICE;
-  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].operation                        = OPERATION_WRITE;
+  parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].operation                        = OPERATION_READ;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_PASSWORD_LEVEL_3 - CCS_BEGIN].value.float_t                    = 3141.0;
@@ -6917,7 +6917,7 @@ void Ccs::initParameters()
   // Пароль 4 уровня
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].id                               = CCS_PASSWORD_LEVEL_4;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].access                           = ACCESS_GOD;
-  parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].operation                        = OPERATION_WRITE;
+  parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].operation                        = OPERATION_READ;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_PASSWORD_LEVEL_4 - CCS_BEGIN].value.float_t                    = 1991.0;
@@ -6929,7 +6929,7 @@ void Ccs::initParameters()
   // Пароль 5 уровня
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].id                               = CCS_PASSWORD_LEVEL_5;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].access                           = ACCESS_OPERATOR;
-  parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].operation                        = OPERATION_WRITE;
+  parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].operation                        = OPERATION_READ;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_PASSWORD_LEVEL_5 - CCS_BEGIN].value.float_t                    = 2304.0;
@@ -6968,11 +6968,11 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].operation                           = OPERATION_WRITE;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].validity                            = VALIDITY_OK;
-  parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].value.float_t                       = 0;
+  parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].value.float_t                       = 0.0;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].min                                 = 0.0;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].max                                 = 999999999.9;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].discret                             = 1;
-  parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].def                                 = 0;
+  parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].def                                 = 0.0;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].code                                = 13;
   // Скорость опроса в телемеханике
   parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].id                                 = CCS_SCADA_BYTERATE;
@@ -6992,7 +6992,7 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_PARITY - CCS_BEGIN].operation                            = OPERATION_WRITE;
   parameters_[CCS_SCADA_PARITY - CCS_BEGIN].physic                               = PHYSIC_NUMERIC;
   parameters_[CCS_SCADA_PARITY - CCS_BEGIN].validity                             = VALIDITY_OK;
-  parameters_[CCS_SCADA_PARITY - CCS_BEGIN].value.float_t                        = 0;
+  parameters_[CCS_SCADA_PARITY - CCS_BEGIN].value.float_t                        = 0.0;
   parameters_[CCS_SCADA_PARITY - CCS_BEGIN].min                                  = 0.0;
   parameters_[CCS_SCADA_PARITY - CCS_BEGIN].max                                  = 2.0;
   parameters_[CCS_SCADA_PARITY - CCS_BEGIN].discret                              = 1;
@@ -7004,7 +7004,7 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].operation                           = OPERATION_WRITE;
   parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].validity                            = VALIDITY_OK;
-  parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].value.float_t                       = 0;
+  parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].value.float_t                       = 1.0;
   parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].min                                 = 1.0;
   parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].max                                 = 2.0;
   parameters_[CCS_SCADA_STOPBIT - CCS_BEGIN].discret                             = 1;
@@ -7016,7 +7016,7 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].operation                             = OPERATION_WRITE;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].physic                                = PHYSIC_TIME;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].validity                              = VALIDITY_OK;
-  parameters_[CCS_SCADA_DELAY - CCS_BEGIN].value.float_t                         = 0;
+  parameters_[CCS_SCADA_DELAY - CCS_BEGIN].value.float_t                         = 0.0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].min                                   = 0.0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].max                                   = 999.0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].discret                               = 1000;
@@ -7097,19 +7097,19 @@ void Ccs::initParameters()
   // Состояние ЧРП
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].id                                  = CCS_VSD_CONDITION;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].access                              = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].operation                           = OPERATION_READ;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].validity                            = VALIDITY_OK;
-  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].value.float_t                       = 0;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].value.float_t                       = 0.0;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].min                                 = 0.0;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].max                                 = 999999999.9;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].discret                             = 1;
-  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].def                                 = 0;
+  parameters_[CCS_VSD_CONDITION - CCS_BEGIN].def                                 = 0.0;
   parameters_[CCS_VSD_CONDITION - CCS_BEGIN].code                                = 0;
   // Команда остановки
   parameters_[CCS_CMD_STOP - CCS_BEGIN].id                                       = CCS_CMD_STOP;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].access                                   = ACCESS_OPERATOR;
-  parameters_[CCS_CMD_STOP - CCS_BEGIN].operation                                = OPERATION_WRITE;
+  parameters_[CCS_CMD_STOP - CCS_BEGIN].operation                                = OPERATION_READ;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].physic                                   = PHYSIC_NUMERIC;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].validity                                 = VALIDITY_OK;
   parameters_[CCS_CMD_STOP - CCS_BEGIN].value.float_t                            = 0.0;
@@ -7121,7 +7121,7 @@ void Ccs::initParameters()
   // Команда запуска
   parameters_[CCS_CMD_START - CCS_BEGIN].id                                      = CCS_CMD_START;
   parameters_[CCS_CMD_START - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
-  parameters_[CCS_CMD_START - CCS_BEGIN].operation                               = OPERATION_WRITE;
+  parameters_[CCS_CMD_START - CCS_BEGIN].operation                               = OPERATION_READ;
   parameters_[CCS_CMD_START - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
   parameters_[CCS_CMD_START - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_CMD_START - CCS_BEGIN].value.float_t                           = 0.0;
@@ -7133,7 +7133,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_CMD_LOG_COPY - CCS_BEGIN].id                                   = CCS_CMD_LOG_COPY;
   parameters_[CCS_CMD_LOG_COPY - CCS_BEGIN].access                               = ACCESS_OPERATOR;
-  parameters_[CCS_CMD_LOG_COPY - CCS_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[CCS_CMD_LOG_COPY - CCS_BEGIN].operation                            = OPERATION_READ;
   parameters_[CCS_CMD_LOG_COPY - CCS_BEGIN].physic                               = PHYSIC_NUMERIC;
   parameters_[CCS_CMD_LOG_COPY - CCS_BEGIN].validity                             = VALIDITY_OK;
   parameters_[CCS_CMD_LOG_COPY - CCS_BEGIN].value.float_t                        = 0.0;
@@ -7157,7 +7157,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].id                         = CCS_CMD_SERVICE_LOG_DELETE;
   parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_CMD_SERVICE_LOG_DELETE - CCS_BEGIN].value.float_t              = 0.0;
@@ -7201,7 +7201,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_ALL_SETPOINT_RESET - CCS_BEGIN].max                   = 1.0;
   parameters_[CCS_CMD_PROT_ALL_SETPOINT_RESET - CCS_BEGIN].discret               = 1;
   parameters_[CCS_CMD_PROT_ALL_SETPOINT_RESET - CCS_BEGIN].def                   = 0.0;
-  parameters_[CCS_CMD_PROT_ALL_SETPOINT_RESET - CCS_BEGIN].code                  = 13;
+  parameters_[CCS_CMD_PROT_ALL_SETPOINT_RESET - CCS_BEGIN].code                  = 106;
   // 
   parameters_[CCS_CMD_PROT_SUPPLY_UNBLOCKING - CCS_BEGIN].id                     = CCS_CMD_PROT_SUPPLY_UNBLOCKING;
   parameters_[CCS_CMD_PROT_SUPPLY_UNBLOCKING - CCS_BEGIN].access                 = ACCESS_OPERATOR;
@@ -7225,7 +7225,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_SUPPLY_SETPOINT_RESET - CCS_BEGIN].max                = 1.0;
   parameters_[CCS_CMD_PROT_SUPPLY_SETPOINT_RESET - CCS_BEGIN].discret            = 1;
   parameters_[CCS_CMD_PROT_SUPPLY_SETPOINT_RESET - CCS_BEGIN].def                = 0.0;
-  parameters_[CCS_CMD_PROT_SUPPLY_SETPOINT_RESET - CCS_BEGIN].code               = 13;
+  parameters_[CCS_CMD_PROT_SUPPLY_SETPOINT_RESET - CCS_BEGIN].code               = 106;
   // 
   parameters_[CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].id     = CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].access = ACCESS_OPERATOR;
@@ -7237,7 +7237,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].max    = 1.0;
   parameters_[CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].def    = 0.0;
-  parameters_[CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].code   = 13;
+  parameters_[CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].code   = 106;
   // 
   parameters_[CCS_CMD_PROT_SUPPLY_UNDERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].id    = CCS_CMD_PROT_SUPPLY_UNDERVOLTAGE_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_SUPPLY_UNDERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].access = ACCESS_OPERATOR;
@@ -7249,7 +7249,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_SUPPLY_UNDERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].max   = 1.0;
   parameters_[CCS_CMD_PROT_SUPPLY_UNDERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_CMD_PROT_SUPPLY_UNDERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].def   = 0.0;
-  parameters_[CCS_CMD_PROT_SUPPLY_UNDERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].code  = 13;
+  parameters_[CCS_CMD_PROT_SUPPLY_UNDERVOLTAGE_SETPOINT_RESET - CCS_BEGIN].code  = 106;
   // 
   parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_VOLTAGE_SETPOINT_RESET - CCS_BEGIN].id = CCS_CMD_PROT_SUPPLY_IMBALANCE_VOLTAGE_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_VOLTAGE_SETPOINT_RESET - CCS_BEGIN].access = ACCESS_OPERATOR;
@@ -7261,7 +7261,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_VOLTAGE_SETPOINT_RESET - CCS_BEGIN].max = 1.0;
   parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_VOLTAGE_SETPOINT_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_VOLTAGE_SETPOINT_RESET - CCS_BEGIN].def = 0.0;
-  parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_VOLTAGE_SETPOINT_RESET - CCS_BEGIN].code = 13;
+  parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_VOLTAGE_SETPOINT_RESET - CCS_BEGIN].code = 106;
   // 
   parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].id = CCS_CMD_PROT_SUPPLY_IMBALANCE_CURRENT_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].access = ACCESS_OPERATOR;
@@ -7273,7 +7273,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].max = 1.0;
   parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].def = 0.0;
-  parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].code = 13;
+  parameters_[CCS_CMD_PROT_SUPPLY_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].code = 106;
   // 
   parameters_[CCS_CMD_PROT_SUPPLY_PHASE_ROTATION_SETPOINT_RESET - CCS_BEGIN].id  = CCS_CMD_PROT_SUPPLY_PHASE_ROTATION_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_SUPPLY_PHASE_ROTATION_SETPOINT_RESET - CCS_BEGIN].access = ACCESS_OPERATOR;
@@ -7285,7 +7285,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_SUPPLY_PHASE_ROTATION_SETPOINT_RESET - CCS_BEGIN].max = 1.0;
   parameters_[CCS_CMD_PROT_SUPPLY_PHASE_ROTATION_SETPOINT_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_CMD_PROT_SUPPLY_PHASE_ROTATION_SETPOINT_RESET - CCS_BEGIN].def = 0.0;
-  parameters_[CCS_CMD_PROT_SUPPLY_PHASE_ROTATION_SETPOINT_RESET - CCS_BEGIN].code = 13;
+  parameters_[CCS_CMD_PROT_SUPPLY_PHASE_ROTATION_SETPOINT_RESET - CCS_BEGIN].code = 106;
   // 
   parameters_[CCS_CMD_PROT_MOTOR_UNBLOCKING - CCS_BEGIN].id                      = CCS_CMD_PROT_MOTOR_UNBLOCKING;
   parameters_[CCS_CMD_PROT_MOTOR_UNBLOCKING - CCS_BEGIN].access                  = ACCESS_OPERATOR;
@@ -7309,7 +7309,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_MOTOR_SETPOINT_RESET - CCS_BEGIN].max                 = 1.0;
   parameters_[CCS_CMD_PROT_MOTOR_SETPOINT_RESET - CCS_BEGIN].discret             = 1;
   parameters_[CCS_CMD_PROT_MOTOR_SETPOINT_RESET - CCS_BEGIN].def                 = 0.0;
-  parameters_[CCS_CMD_PROT_MOTOR_SETPOINT_RESET - CCS_BEGIN].code                = 13;
+  parameters_[CCS_CMD_PROT_MOTOR_SETPOINT_RESET - CCS_BEGIN].code                = 106;
   // 
   parameters_[CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET - CCS_BEGIN].id         = CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET - CCS_BEGIN].access     = ACCESS_OPERATOR;
@@ -7321,7 +7321,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET - CCS_BEGIN].max        = 1.0;
   parameters_[CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET - CCS_BEGIN].discret    = 1;
   parameters_[CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET - CCS_BEGIN].def        = 0.0;
-  parameters_[CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET - CCS_BEGIN].code       = 13;
+  parameters_[CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET - CCS_BEGIN].code       = 106;
   // 
   parameters_[CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET - CCS_BEGIN].id        = CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET - CCS_BEGIN].access    = ACCESS_OPERATOR;
@@ -7333,7 +7333,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET - CCS_BEGIN].max       = 1.0;
   parameters_[CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET - CCS_BEGIN].discret   = 1;
   parameters_[CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET - CCS_BEGIN].def       = 0.0;
-  parameters_[CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET - CCS_BEGIN].code      = 13;
+  parameters_[CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET - CCS_BEGIN].code      = 106;
   // 
   parameters_[CCS_CMD_PROT_MOTOR_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].id = CCS_CMD_PROT_MOTOR_IMBALANCE_CURRENT_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_MOTOR_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].access = ACCESS_OPERATOR;
@@ -7345,7 +7345,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_MOTOR_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].max = 1.0;
   parameters_[CCS_CMD_PROT_MOTOR_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_CMD_PROT_MOTOR_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].def = 0.0;
-  parameters_[CCS_CMD_PROT_MOTOR_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].code = 13;
+  parameters_[CCS_CMD_PROT_MOTOR_IMBALANCE_CURRENT_SETPOINT_RESET - CCS_BEGIN].code = 106;
   // 
   parameters_[CCS_CMD_PROT_MOTOR_ASYNC_SETPOINT_RESET - CCS_BEGIN].id            = CCS_CMD_PROT_MOTOR_ASYNC_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_MOTOR_ASYNC_SETPOINT_RESET - CCS_BEGIN].access        = ACCESS_OPERATOR;
@@ -7357,7 +7357,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_MOTOR_ASYNC_SETPOINT_RESET - CCS_BEGIN].max           = 1.0;
   parameters_[CCS_CMD_PROT_MOTOR_ASYNC_SETPOINT_RESET - CCS_BEGIN].discret       = 1;
   parameters_[CCS_CMD_PROT_MOTOR_ASYNC_SETPOINT_RESET - CCS_BEGIN].def           = 0.0;
-  parameters_[CCS_CMD_PROT_MOTOR_ASYNC_SETPOINT_RESET - CCS_BEGIN].code          = 13;
+  parameters_[CCS_CMD_PROT_MOTOR_ASYNC_SETPOINT_RESET - CCS_BEGIN].code          = 106;
   // 
   parameters_[CCS_CMD_PROT_MOTOR_OUT_OF_SYNC_SETPOINT_RESET - CCS_BEGIN].id      = CCS_CMD_PROT_MOTOR_OUT_OF_SYNC_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_MOTOR_OUT_OF_SYNC_SETPOINT_RESET - CCS_BEGIN].access  = ACCESS_OPERATOR;
@@ -7369,7 +7369,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_MOTOR_OUT_OF_SYNC_SETPOINT_RESET - CCS_BEGIN].max     = 1.0;
   parameters_[CCS_CMD_PROT_MOTOR_OUT_OF_SYNC_SETPOINT_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_CMD_PROT_MOTOR_OUT_OF_SYNC_SETPOINT_RESET - CCS_BEGIN].def     = 0.0;
-  parameters_[CCS_CMD_PROT_MOTOR_OUT_OF_SYNC_SETPOINT_RESET - CCS_BEGIN].code    = 13;
+  parameters_[CCS_CMD_PROT_MOTOR_OUT_OF_SYNC_SETPOINT_RESET - CCS_BEGIN].code    = 106;
   // 
   parameters_[CCS_CMD_PROT_DHS_UNBLOCKING - CCS_BEGIN].id                        = CCS_CMD_PROT_DHS_UNBLOCKING;
   parameters_[CCS_CMD_PROT_DHS_UNBLOCKING - CCS_BEGIN].access                    = ACCESS_OPERATOR;
@@ -7393,7 +7393,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_DHS_SETPOINT_RESET - CCS_BEGIN].max                   = 1.0;
   parameters_[CCS_CMD_PROT_DHS_SETPOINT_RESET - CCS_BEGIN].discret               = 1;
   parameters_[CCS_CMD_PROT_DHS_SETPOINT_RESET - CCS_BEGIN].def                   = 0.0;
-  parameters_[CCS_CMD_PROT_DHS_SETPOINT_RESET - CCS_BEGIN].code                  = 13;
+  parameters_[CCS_CMD_PROT_DHS_SETPOINT_RESET - CCS_BEGIN].code                  = 106;
   // 
   parameters_[CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET - CCS_BEGIN].id    = CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET - CCS_BEGIN].access = ACCESS_OPERATOR;
@@ -7405,7 +7405,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET - CCS_BEGIN].max   = 1.0;
   parameters_[CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET - CCS_BEGIN].def   = 0.0;
-  parameters_[CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET - CCS_BEGIN].code  = 13;
+  parameters_[CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET - CCS_BEGIN].code  = 106;
   // 
   parameters_[CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET - CCS_BEGIN].id  = CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET - CCS_BEGIN].access = ACCESS_OPERATOR;
@@ -7417,7 +7417,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET - CCS_BEGIN].max = 1.0;
   parameters_[CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET - CCS_BEGIN].def = 0.0;
-  parameters_[CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET - CCS_BEGIN].code = 13;
+  parameters_[CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET - CCS_BEGIN].code = 106;
   // 
   parameters_[CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET - CCS_BEGIN].id         = CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET - CCS_BEGIN].access     = ACCESS_OPERATOR;
@@ -7429,7 +7429,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET - CCS_BEGIN].max        = 1.0;
   parameters_[CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET - CCS_BEGIN].discret    = 1;
   parameters_[CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET - CCS_BEGIN].def        = 0.0;
-  parameters_[CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET - CCS_BEGIN].code       = 13;
+  parameters_[CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET - CCS_BEGIN].code       = 106;
   // 
   parameters_[CCS_CMD_PROT_DHS_VIBRATION_SETPOINT_RESET - CCS_BEGIN].id          = CCS_CMD_PROT_DHS_VIBRATION_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_DHS_VIBRATION_SETPOINT_RESET - CCS_BEGIN].access      = ACCESS_OPERATOR;
@@ -7441,7 +7441,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_DHS_VIBRATION_SETPOINT_RESET - CCS_BEGIN].max         = 1.0;
   parameters_[CCS_CMD_PROT_DHS_VIBRATION_SETPOINT_RESET - CCS_BEGIN].discret     = 1;
   parameters_[CCS_CMD_PROT_DHS_VIBRATION_SETPOINT_RESET - CCS_BEGIN].def         = 0.0;
-  parameters_[CCS_CMD_PROT_DHS_VIBRATION_SETPOINT_RESET - CCS_BEGIN].code        = 13;
+  parameters_[CCS_CMD_PROT_DHS_VIBRATION_SETPOINT_RESET - CCS_BEGIN].code        = 106;
   // 
   parameters_[CCS_CMD_PROT_AI_SETPOINT_RESET - CCS_BEGIN].id                     = CCS_CMD_PROT_AI_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_AI_SETPOINT_RESET - CCS_BEGIN].access                 = ACCESS_OPERATOR;
@@ -7453,7 +7453,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_AI_SETPOINT_RESET - CCS_BEGIN].max                    = 1.0;
   parameters_[CCS_CMD_PROT_AI_SETPOINT_RESET - CCS_BEGIN].discret                = 1;
   parameters_[CCS_CMD_PROT_AI_SETPOINT_RESET - CCS_BEGIN].def                    = 0.0;
-  parameters_[CCS_CMD_PROT_AI_SETPOINT_RESET - CCS_BEGIN].code                   = 13;
+  parameters_[CCS_CMD_PROT_AI_SETPOINT_RESET - CCS_BEGIN].code                   = 106;
   // 
   parameters_[CCS_CMD_PROT_AI_1_SETPOINT_RESET - CCS_BEGIN].id                   = CCS_CMD_PROT_AI_1_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_AI_1_SETPOINT_RESET - CCS_BEGIN].access               = ACCESS_OPERATOR;
@@ -7465,7 +7465,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_AI_1_SETPOINT_RESET - CCS_BEGIN].max                  = 1.0;
   parameters_[CCS_CMD_PROT_AI_1_SETPOINT_RESET - CCS_BEGIN].discret              = 1;
   parameters_[CCS_CMD_PROT_AI_1_SETPOINT_RESET - CCS_BEGIN].def                  = 0.0;
-  parameters_[CCS_CMD_PROT_AI_1_SETPOINT_RESET - CCS_BEGIN].code                 = 13;
+  parameters_[CCS_CMD_PROT_AI_1_SETPOINT_RESET - CCS_BEGIN].code                 = 106;
   // 
   parameters_[CCS_CMD_PROT_AI_2_SETPOINT_RESET - CCS_BEGIN].id                   = CCS_CMD_PROT_AI_2_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_AI_2_SETPOINT_RESET - CCS_BEGIN].access               = ACCESS_OPERATOR;
@@ -7477,7 +7477,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_AI_2_SETPOINT_RESET - CCS_BEGIN].max                  = 1.0;
   parameters_[CCS_CMD_PROT_AI_2_SETPOINT_RESET - CCS_BEGIN].discret              = 1;
   parameters_[CCS_CMD_PROT_AI_2_SETPOINT_RESET - CCS_BEGIN].def                  = 0.0;
-  parameters_[CCS_CMD_PROT_AI_2_SETPOINT_RESET - CCS_BEGIN].code                 = 13;
+  parameters_[CCS_CMD_PROT_AI_2_SETPOINT_RESET - CCS_BEGIN].code                 = 106;
   // 
   parameters_[CCS_CMD_PROT_AI_3_SETPOINT_RESET - CCS_BEGIN].id                   = CCS_CMD_PROT_AI_3_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_AI_3_SETPOINT_RESET - CCS_BEGIN].access               = ACCESS_OPERATOR;
@@ -7489,7 +7489,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_AI_3_SETPOINT_RESET - CCS_BEGIN].max                  = 1.0;
   parameters_[CCS_CMD_PROT_AI_3_SETPOINT_RESET - CCS_BEGIN].discret              = 1;
   parameters_[CCS_CMD_PROT_AI_3_SETPOINT_RESET - CCS_BEGIN].def                  = 0.0;
-  parameters_[CCS_CMD_PROT_AI_3_SETPOINT_RESET - CCS_BEGIN].code                 = 13;
+  parameters_[CCS_CMD_PROT_AI_3_SETPOINT_RESET - CCS_BEGIN].code                 = 106;
   // 
   parameters_[CCS_CMD_PROT_AI_4_SETPOINT_RESET - CCS_BEGIN].id                   = CCS_CMD_PROT_AI_4_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_AI_4_SETPOINT_RESET - CCS_BEGIN].access               = ACCESS_OPERATOR;
@@ -7501,7 +7501,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_AI_4_SETPOINT_RESET - CCS_BEGIN].max                  = 1.0;
   parameters_[CCS_CMD_PROT_AI_4_SETPOINT_RESET - CCS_BEGIN].discret              = 1;
   parameters_[CCS_CMD_PROT_AI_4_SETPOINT_RESET - CCS_BEGIN].def                  = 0.0;
-  parameters_[CCS_CMD_PROT_AI_4_SETPOINT_RESET - CCS_BEGIN].code                 = 13;
+  parameters_[CCS_CMD_PROT_AI_4_SETPOINT_RESET - CCS_BEGIN].code                 = 106;
   // 
   parameters_[CCS_CMD_PROT_DI_SETPOINT_RESET - CCS_BEGIN].id                     = CCS_CMD_PROT_DI_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_DI_SETPOINT_RESET - CCS_BEGIN].access                 = ACCESS_OPERATOR;
@@ -7513,7 +7513,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_DI_SETPOINT_RESET - CCS_BEGIN].max                    = 1.0;
   parameters_[CCS_CMD_PROT_DI_SETPOINT_RESET - CCS_BEGIN].discret                = 1;
   parameters_[CCS_CMD_PROT_DI_SETPOINT_RESET - CCS_BEGIN].def                    = 0.0;
-  parameters_[CCS_CMD_PROT_DI_SETPOINT_RESET - CCS_BEGIN].code                   = 13;
+  parameters_[CCS_CMD_PROT_DI_SETPOINT_RESET - CCS_BEGIN].code                   = 106;
   // 
   parameters_[CCS_CMD_PROT_DI_1_SETPOINT_RESET - CCS_BEGIN].id                   = CCS_CMD_PROT_DI_1_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_DI_1_SETPOINT_RESET - CCS_BEGIN].access               = ACCESS_OPERATOR;
@@ -7525,7 +7525,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_DI_1_SETPOINT_RESET - CCS_BEGIN].max                  = 1.0;
   parameters_[CCS_CMD_PROT_DI_1_SETPOINT_RESET - CCS_BEGIN].discret              = 1;
   parameters_[CCS_CMD_PROT_DI_1_SETPOINT_RESET - CCS_BEGIN].def                  = 0.0;
-  parameters_[CCS_CMD_PROT_DI_1_SETPOINT_RESET - CCS_BEGIN].code                 = 13;
+  parameters_[CCS_CMD_PROT_DI_1_SETPOINT_RESET - CCS_BEGIN].code                 = 106;
   // 
   parameters_[CCS_CMD_PROT_DI_2_SETPOINT_RESET - CCS_BEGIN].id                   = CCS_CMD_PROT_DI_2_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_DI_2_SETPOINT_RESET - CCS_BEGIN].access               = ACCESS_OPERATOR;
@@ -7537,7 +7537,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_DI_2_SETPOINT_RESET - CCS_BEGIN].max                  = 1.0;
   parameters_[CCS_CMD_PROT_DI_2_SETPOINT_RESET - CCS_BEGIN].discret              = 1;
   parameters_[CCS_CMD_PROT_DI_2_SETPOINT_RESET - CCS_BEGIN].def                  = 0.0;
-  parameters_[CCS_CMD_PROT_DI_2_SETPOINT_RESET - CCS_BEGIN].code                 = 13;
+  parameters_[CCS_CMD_PROT_DI_2_SETPOINT_RESET - CCS_BEGIN].code                 = 106;
   // 
   parameters_[CCS_CMD_PROT_DI_3_SETPOINT_RESET - CCS_BEGIN].id                   = CCS_CMD_PROT_DI_3_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_DI_3_SETPOINT_RESET - CCS_BEGIN].access               = ACCESS_OPERATOR;
@@ -7549,7 +7549,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_DI_3_SETPOINT_RESET - CCS_BEGIN].max                  = 1.0;
   parameters_[CCS_CMD_PROT_DI_3_SETPOINT_RESET - CCS_BEGIN].discret              = 1;
   parameters_[CCS_CMD_PROT_DI_3_SETPOINT_RESET - CCS_BEGIN].def                  = 0.0;
-  parameters_[CCS_CMD_PROT_DI_3_SETPOINT_RESET - CCS_BEGIN].code                 = 13;
+  parameters_[CCS_CMD_PROT_DI_3_SETPOINT_RESET - CCS_BEGIN].code                 = 106;
   // 
   parameters_[CCS_CMD_PROT_DI_4_SETPOINT_RESET - CCS_BEGIN].id                   = CCS_CMD_PROT_DI_4_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_DI_4_SETPOINT_RESET - CCS_BEGIN].access               = ACCESS_OPERATOR;
@@ -7561,11 +7561,11 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_DI_4_SETPOINT_RESET - CCS_BEGIN].max                  = 1.0;
   parameters_[CCS_CMD_PROT_DI_4_SETPOINT_RESET - CCS_BEGIN].discret              = 1;
   parameters_[CCS_CMD_PROT_DI_4_SETPOINT_RESET - CCS_BEGIN].def                  = 0.0;
-  parameters_[CCS_CMD_PROT_DI_4_SETPOINT_RESET - CCS_BEGIN].code                 = 13;
+  parameters_[CCS_CMD_PROT_DI_4_SETPOINT_RESET - CCS_BEGIN].code                 = 106;
   // 
   parameters_[CCS_CMD_RGM_MODE_SAVE - CCS_BEGIN].id                              = CCS_CMD_RGM_MODE_SAVE;
   parameters_[CCS_CMD_RGM_MODE_SAVE - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_CMD_RGM_MODE_SAVE - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_CMD_RGM_MODE_SAVE - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_CMD_RGM_MODE_SAVE - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_CMD_RGM_MODE_SAVE - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_CMD_RGM_MODE_SAVE - CCS_BEGIN].value.float_t                   = 0.0;
@@ -7592,35 +7592,35 @@ void Ccs::initParameters()
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].physic                          = PHYSIC_VOLTAGE;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].value.float_t                   = 0;
+  parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].max                             = 999999999.9;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].discret                         = 1;
-  parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_VOLTAGE_TRANS_OUT - CCS_BEGIN].code                            = 0;
   // 
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].id                                 = CCS_CONDITION_FLAG;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].validity                           = VALIDITY_OK;
-  parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].value.float_t                      = 0;
+  parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].value.float_t                      = 0.0;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].min                                = 0.0;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].max                                = 999999999.9;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].discret                            = 1;
-  parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].def                                = 0;
+  parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].def                                = 0.0;
   parameters_[CCS_CONDITION_FLAG - CCS_BEGIN].code                               = 0;
   // Причина последнего пуска - регистр временного хранения значения
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].id                            = CCS_LAST_RUN_REASON_TMP;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].value.float_t                 = 0;
+  parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].value.float_t                 = 0.0;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].min                           = 0.0;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].max                           = 999999999.9;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].discret                       = 1;
-  parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].def                           = 0;
+  parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].def                           = 0.0;
   parameters_[CCS_LAST_RUN_REASON_TMP - CCS_BEGIN].code                          = 0;
   // Наличие хотя бы одного запрещающего параметра
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].id                                   = CCS_PROT_PREVENT;
@@ -7628,24 +7628,24 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].operation                            = OPERATION_READ;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].physic                               = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].validity                             = VALIDITY_OK;
-  parameters_[CCS_PROT_PREVENT - CCS_BEGIN].value.float_t                        = 0;
+  parameters_[CCS_PROT_PREVENT - CCS_BEGIN].value.float_t                        = 0.0;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].min                                  = 0.0;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].max                                  = 999999999.9;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].discret                              = 1;
-  parameters_[CCS_PROT_PREVENT - CCS_BEGIN].def                                  = 0;
+  parameters_[CCS_PROT_PREVENT - CCS_BEGIN].def                                  = 0.0;
   parameters_[CCS_PROT_PREVENT - CCS_BEGIN].code                                 = 0;
   // Уставка ВРП (время разновременного пуска)
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].id                          = CCS_TIMER_DIFFERENT_START;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].physic                      = PHYSIC_TIME;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].validity                    = VALIDITY_OK;
-  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].min                         = 0.0;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].max                         = 999999999.9;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].discret                     = 100;
-  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].def                         = 0;
-  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].code                        = 13;
+  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].def                         = 0.0;
+  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].code                        = 0;
   // Защита ЗСП: Прогрессивная задержка АПВ
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].id     = CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].access = ACCESS_OPERATOR;
@@ -7661,7 +7661,7 @@ void Ccs::initParameters()
   // Защита ЗСП: Счётчик АПВ для вычисления прогрессивной задержки
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT - CCS_BEGIN].id     = CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT - CCS_BEGIN].value.float_t = 0.0;
@@ -7673,7 +7673,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].id             = CCS_PROT_SUPPLY_OVERVOLTAGE_BLOCK_FLAG;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].physic         = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].value.float_t  = 0.0;
@@ -7685,7 +7685,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].id            = CCS_PROT_SUPPLY_UNDERVOLTAGE_BLOCK_FLAG;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_BLOCK_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -7697,7 +7697,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_BLOCK_FLAG - CCS_BEGIN].id       = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_BLOCK_FLAG;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_BLOCK_FLAG - CCS_BEGIN].access   = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_BLOCK_FLAG - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_BLOCK_FLAG - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_BLOCK_FLAG - CCS_BEGIN].physic   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_BLOCK_FLAG - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_BLOCK_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -7709,7 +7709,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].id       = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_BLOCK_FLAG;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].access   = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].physic   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -7721,7 +7721,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_BLOCK_FLAG - CCS_BEGIN].id          = CCS_PROT_SUPPLY_PHASE_ROTATION_BLOCK_FLAG;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_BLOCK_FLAG - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_BLOCK_FLAG - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_BLOCK_FLAG - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_BLOCK_FLAG - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_BLOCK_FLAG - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_BLOCK_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -7733,7 +7733,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_MOTOR_OVERLOAD_BLOCK_FLAG - CCS_BEGIN].id                 = CCS_PROT_MOTOR_OVERLOAD_BLOCK_FLAG;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_BLOCK_FLAG - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_BLOCK_FLAG - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_BLOCK_FLAG - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_BLOCK_FLAG - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_BLOCK_FLAG - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_BLOCK_FLAG - CCS_BEGIN].value.float_t      = 0.0;
@@ -7745,7 +7745,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_BLOCK_FLAG - CCS_BEGIN].id                = CCS_PROT_MOTOR_UNDERLOAD_BLOCK_FLAG;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_BLOCK_FLAG - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_BLOCK_FLAG - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_BLOCK_FLAG - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_BLOCK_FLAG - CCS_BEGIN].physic            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_BLOCK_FLAG - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_BLOCK_FLAG - CCS_BEGIN].value.float_t     = 0.0;
@@ -7757,7 +7757,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_MOTOR_CURRENT_BLOCK_FLAG - CCS_BEGIN].id                  = CCS_PROT_MOTOR_CURRENT_BLOCK_FLAG;
   parameters_[CCS_PROT_MOTOR_CURRENT_BLOCK_FLAG - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_CURRENT_BLOCK_FLAG - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_CURRENT_BLOCK_FLAG - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_CURRENT_BLOCK_FLAG - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_CURRENT_BLOCK_FLAG - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_BLOCK_FLAG - CCS_BEGIN].value.float_t       = 0.0;
@@ -7769,7 +7769,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].id        = CCS_PROT_MOTOR_IMBALANCE_CURRENT_BLOCK_FLAG;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].physic    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_BLOCK_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -7781,7 +7781,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_MOTOR_ASYNC_BLOCK_FLAG - CCS_BEGIN].id                    = CCS_PROT_MOTOR_ASYNC_BLOCK_FLAG;
   parameters_[CCS_PROT_MOTOR_ASYNC_BLOCK_FLAG - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_BLOCK_FLAG - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_BLOCK_FLAG - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_BLOCK_FLAG - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_BLOCK_FLAG - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_BLOCK_FLAG - CCS_BEGIN].value.float_t         = 0.0;
@@ -7793,7 +7793,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_BLOCK_FLAG - CCS_BEGIN].id              = CCS_PROT_MOTOR_OUT_OF_SYNC_BLOCK_FLAG;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_BLOCK_FLAG - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_BLOCK_FLAG - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_BLOCK_FLAG - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_BLOCK_FLAG - CCS_BEGIN].physic          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_BLOCK_FLAG - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_BLOCK_FLAG - CCS_BEGIN].value.float_t   = 0.0;
@@ -7805,7 +7805,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_BLOCK_FLAG - CCS_BEGIN].id            = CCS_PROT_DHS_PRESSURE_INTAKE_BLOCK_FLAG;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_BLOCK_FLAG - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_BLOCK_FLAG - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_BLOCK_FLAG - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_BLOCK_FLAG - CCS_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_BLOCK_FLAG - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_BLOCK_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -7817,7 +7817,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_BLOCK_FLAG - CCS_BEGIN].id          = CCS_PROT_DHS_TEMPERATURE_MOTOR_BLOCK_FLAG;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_BLOCK_FLAG - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_BLOCK_FLAG - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_BLOCK_FLAG - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_BLOCK_FLAG - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_BLOCK_FLAG - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_BLOCK_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -7829,7 +7829,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DHS_RESISTANCE_BLOCK_FLAG - CCS_BEGIN].id                 = CCS_PROT_DHS_RESISTANCE_BLOCK_FLAG;
   parameters_[CCS_PROT_DHS_RESISTANCE_BLOCK_FLAG - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_RESISTANCE_BLOCK_FLAG - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_RESISTANCE_BLOCK_FLAG - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_DHS_RESISTANCE_BLOCK_FLAG - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_RESISTANCE_BLOCK_FLAG - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_RESISTANCE_BLOCK_FLAG - CCS_BEGIN].value.float_t      = 0.0;
@@ -7841,7 +7841,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DHS_VIBRATION_BLOCK_FLAG - CCS_BEGIN].id                  = CCS_PROT_DHS_VIBRATION_BLOCK_FLAG;
   parameters_[CCS_PROT_DHS_VIBRATION_BLOCK_FLAG - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_VIBRATION_BLOCK_FLAG - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_VIBRATION_BLOCK_FLAG - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_PROT_DHS_VIBRATION_BLOCK_FLAG - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_VIBRATION_BLOCK_FLAG - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_BLOCK_FLAG - CCS_BEGIN].value.float_t       = 0.0;
@@ -7853,7 +7853,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_AI_1_BLOCK_FLAG - CCS_BEGIN].id                           = CCS_PROT_AI_1_BLOCK_FLAG;
   parameters_[CCS_PROT_AI_1_BLOCK_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_1_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_1_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_AI_1_BLOCK_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_1_BLOCK_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_BLOCK_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -7865,7 +7865,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_AI_2_BLOCK_FLAG - CCS_BEGIN].id                           = CCS_PROT_AI_2_BLOCK_FLAG;
   parameters_[CCS_PROT_AI_2_BLOCK_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_2_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_2_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_AI_2_BLOCK_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_2_BLOCK_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_BLOCK_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -7877,7 +7877,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_AI_3_BLOCK_FLAG - CCS_BEGIN].id                           = CCS_PROT_AI_3_BLOCK_FLAG;
   parameters_[CCS_PROT_AI_3_BLOCK_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_3_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_3_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_AI_3_BLOCK_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_3_BLOCK_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_BLOCK_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -7889,7 +7889,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_AI_4_BLOCK_FLAG - CCS_BEGIN].id                           = CCS_PROT_AI_4_BLOCK_FLAG;
   parameters_[CCS_PROT_AI_4_BLOCK_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_4_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_4_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_AI_4_BLOCK_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_4_BLOCK_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_BLOCK_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -7901,7 +7901,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DI_1_BLOCK_FLAG - CCS_BEGIN].id                           = CCS_PROT_DI_1_BLOCK_FLAG;
   parameters_[CCS_PROT_DI_1_BLOCK_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_1_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_1_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_DI_1_BLOCK_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_1_BLOCK_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_BLOCK_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -7913,7 +7913,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DI_2_BLOCK_FLAG - CCS_BEGIN].id                           = CCS_PROT_DI_2_BLOCK_FLAG;
   parameters_[CCS_PROT_DI_2_BLOCK_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_2_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_2_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_DI_2_BLOCK_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_2_BLOCK_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_BLOCK_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -7925,7 +7925,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DI_3_BLOCK_FLAG - CCS_BEGIN].id                           = CCS_PROT_DI_3_BLOCK_FLAG;
   parameters_[CCS_PROT_DI_3_BLOCK_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_3_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_3_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_DI_3_BLOCK_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_3_BLOCK_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_BLOCK_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -7937,7 +7937,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DI_4_BLOCK_FLAG - CCS_BEGIN].id                           = CCS_PROT_DI_4_BLOCK_FLAG;
   parameters_[CCS_PROT_DI_4_BLOCK_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_4_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_4_BLOCK_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_DI_4_BLOCK_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_4_BLOCK_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_BLOCK_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -7949,7 +7949,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_BLOCK_FLAG - CCS_BEGIN].id            = CCS_PROT_OTHER_LIMIT_RESTART_BLOCK_FLAG;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_BLOCK_FLAG - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_BLOCK_FLAG - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_BLOCK_FLAG - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_BLOCK_FLAG - CCS_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_BLOCK_FLAG - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_BLOCK_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -7961,7 +7961,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_BLOCK_FLAG - CCS_BEGIN].id                = CCS_PROT_OTHER_LOCK_DOOR_BLOCK_FLAG;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_BLOCK_FLAG - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_BLOCK_FLAG - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_BLOCK_FLAG - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_BLOCK_FLAG - CCS_BEGIN].physic            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_BLOCK_FLAG - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_BLOCK_FLAG - CCS_BEGIN].value.float_t     = 0.0;
@@ -7973,7 +7973,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_OTHER_VSD_BLOCK_FLAG - CCS_BEGIN].id                      = CCS_PROT_OTHER_VSD_BLOCK_FLAG;
   parameters_[CCS_PROT_OTHER_VSD_BLOCK_FLAG - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_BLOCK_FLAG - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_BLOCK_FLAG - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_BLOCK_FLAG - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_BLOCK_FLAG - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_BLOCK_FLAG - CCS_BEGIN].value.float_t           = 0.0;
@@ -7985,7 +7985,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_OTHER_IMB_BLOCK_FLAG - CCS_BEGIN].id                      = CCS_PROT_OTHER_IMB_BLOCK_FLAG;
   parameters_[CCS_PROT_OTHER_IMB_BLOCK_FLAG - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_BLOCK_FLAG - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_BLOCK_FLAG - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_BLOCK_FLAG - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_IMB_BLOCK_FLAG - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_BLOCK_FLAG - CCS_BEGIN].value.float_t           = 0.0;
@@ -8000,16 +8000,16 @@ void Ccs::initParameters()
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].value.float_t                   = 0;
+  parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].max                             = 999999999.9;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].discret                         = 1;
-  parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_GENERAL_CONDITION - CCS_BEGIN].code                            = 0;
   // Коэффициент трансформации
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].id                            = CCS_COEF_TRANSFORMATION;
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_COEF_TRANSFORMATION - CCS_BEGIN].value.float_t                 = 1.0;
@@ -8021,14 +8021,14 @@ void Ccs::initParameters()
   // Причина последнего останова - регистр временного хранения значения
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].id                           = CCS_LAST_STOP_REASON_TMP;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].validity                     = VALIDITY_OK;
-  parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].value.float_t                = 0;
+  parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].value.float_t                = 0.0;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].min                          = 0.0;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].max                          = 999999999.9;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].discret                      = 1;
-  parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].def                          = 0;
+  parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_LAST_STOP_REASON_TMP - CCS_BEGIN].code                         = 0;
   // Работа с пониженным сопротивлением изоляции
   parameters_[CCS_WORK_WITH_LOW_RESISTANCE - CCS_BEGIN].id                       = CCS_WORK_WITH_LOW_RESISTANCE;
@@ -8057,7 +8057,7 @@ void Ccs::initParameters()
   // Состояние автомата режима "Программного изменения частоты"
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].id                          = CCS_RGM_CHANGE_FREQ_STATE;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_RGM_CHANGE_FREQ_STATE - CCS_BEGIN].value.float_t               = 0.0;
@@ -8093,7 +8093,7 @@ void Ccs::initParameters()
   // Состояние автомата режима пуска "Толчковый"
   parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].id                             = CCS_RGM_RUN_PUSH_STATE;
   parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].operation                      = OPERATION_READ;
   parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_STATE - CCS_BEGIN].value.float_t                  = 0.0;
@@ -8177,7 +8177,7 @@ void Ccs::initParameters()
   // Состояние автомата режима пуска "Раскачка"
   parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].id                            = CCS_RGM_RUN_SWING_STATE;
   parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SWING_STATE - CCS_BEGIN].value.float_t                 = 0.0;
@@ -8216,11 +8216,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].operation                  = OPERATION_LIMITED;
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].validity                   = VALIDITY_OK;
-  parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].value.float_t              = 0.0;
+  parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].value.float_t              = 1.0;
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].min                        = 1.0;
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].max                        = 20.0;
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].discret                    = 1;
-  parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].def                        = 0.0;
+  parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].def                        = 1.0;
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].code                       = 13;
   // Тип подключенного ЧРП
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].id                                       = CCS_TYPE_VSD;
@@ -8237,19 +8237,19 @@ void Ccs::initParameters()
   // Режим поддержания параметра. Состояние автомата
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].id                    = CCS_RGM_MAINTENANCE_PARAM_STATE;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].validity              = VALIDITY_OK;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].value.float_t         = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].value.float_t         = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].min                   = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].max                   = 999999999.9;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].discret               = 1;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].def                   = 0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].def                   = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_STATE - CCS_BEGIN].code                  = 0;
   // 
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].id                     = CCS_RGM_ALTERNATION_FREQ_STATE;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_ALTERNATION_FREQ_STATE - CCS_BEGIN].value.float_t          = 0.0;
@@ -8300,47 +8300,47 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].operation                     = OPERATION_WRITE;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].value.float_t                 = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].value.float_t                 = 0.0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].min                           = 0.0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].max                           = 2.0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].discret                       = 1;
-  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].def                           = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].def                           = 0.0;
   parameters_[CCS_RGM_RUN_PICKUP_MODE - CCS_BEGIN].code                          = 13;
   // 
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].id                           = CCS_RGM_RUN_PICKUP_STATE;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].validity                     = VALIDITY_OK;
-  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].value.float_t                = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].value.float_t                = 0.0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].min                          = 0.0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].max                          = 999999999.9;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].discret                      = 1;
-  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].def                          = 0;
+  parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_RGM_RUN_PICKUP_STATE - CCS_BEGIN].code                         = 0;
   // 
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].id                              = CCS_RGM_RUN_VSD_STATE;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].validity                        = VALIDITY_OK;
-  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].value.float_t                   = 0;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].max                             = 999999999.9;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].discret                         = 1;
-  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].def                             = 0;
+  parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_RGM_RUN_VSD_STATE - CCS_BEGIN].code                            = 0;
   // Команда отключения модуля AM335x
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].id                            = CCS_CMD_AM335_POWER_OFF;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].value.float_t                 = 0;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].value.float_t                 = 0.0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].min                           = 0.0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].max                           = 999999999.9;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].discret                       = 1;
-  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].def                           = 0;
+  parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].def                           = 0.0;
   parameters_[CCS_CMD_AM335_POWER_OFF - CCS_BEGIN].code                          = 0;
   // 
   parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].id                              = CCS_FILTER_INDUCTANCE;
@@ -8405,7 +8405,7 @@ void Ccs::initParameters()
   // Индуктивность системы
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].id                              = CCS_SYSTEM_INDUCTANCE;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].physic                          = PHYSIC_INDUNCTANCE;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_SYSTEM_INDUCTANCE - CCS_BEGIN].value.float_t                   = 0.0;
@@ -8417,7 +8417,7 @@ void Ccs::initParameters()
   // Связь с верхним контроллером
   parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].id                                 = CCS_SPI_CONNECTION;
   parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_SPI_CONNECTION - CCS_BEGIN].value.float_t                      = 0.0;
@@ -8429,7 +8429,7 @@ void Ccs::initParameters()
   // Связь с ЧРП
   parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].id                                 = CCS_VSD_CONNECTION;
   parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_VSD_CONNECTION - CCS_BEGIN].value.float_t                      = 0.0;
@@ -8441,7 +8441,7 @@ void Ccs::initParameters()
   // Связь с ТМС
   parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].id                                 = CCS_DHS_CONNECTION;
   parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_DHS_CONNECTION - CCS_BEGIN].value.float_t                      = 0.0;
@@ -8453,7 +8453,7 @@ void Ccs::initParameters()
   // Связь со счётчиком электроэнергии
   parameters_[CCS_EM_CONNECTION - CCS_BEGIN].id                                  = CCS_EM_CONNECTION;
   parameters_[CCS_EM_CONNECTION - CCS_BEGIN].access                              = ACCESS_OPERATOR;
-  parameters_[CCS_EM_CONNECTION - CCS_BEGIN].operation                           = OPERATION_WRITE;
+  parameters_[CCS_EM_CONNECTION - CCS_BEGIN].operation                           = OPERATION_READ;
   parameters_[CCS_EM_CONNECTION - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[CCS_EM_CONNECTION - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_EM_CONNECTION - CCS_BEGIN].value.float_t                       = 0.0;
@@ -8672,11 +8672,11 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].validity                  = VALIDITY_OK;
-  parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].value.float_t             = 0;
+  parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].value.float_t             = 0.0;
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].min                       = 0.0;
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].max                       = 999999.0;
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].discret                   = 1;
-  parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].def                       = 0;
+  parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].def                       = 0.0;
   parameters_[CCS_PASSWORD_COUNT_ATTEMPTS - CCS_BEGIN].code                      = 0;
   // Время последней попытки ввода пароля
   parameters_[CCS_PASSWORD_LAST_ATTEMPT_TIME - CCS_BEGIN].id                     = CCS_PASSWORD_LAST_ATTEMPT_TIME;
@@ -8725,7 +8725,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].max             = 1.0;
   parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].discret         = 1;
   parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].def             = 0.0;
-  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].code            = 13;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET - CCS_BEGIN].code            = 106;
   // Количество встряхиваний
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].id                              = CCS_RGM_JARRING_COUNT;
   parameters_[CCS_RGM_JARRING_COUNT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
@@ -8765,7 +8765,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_DELAY_FLAG - CCS_BEGIN].id             = CCS_PROT_SUPPLY_OVERVOLTAGE_DELAY_FLAG;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_DELAY_FLAG - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_DELAY_FLAG - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_DELAY_FLAG - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_DELAY_FLAG - CCS_BEGIN].physic         = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_DELAY_FLAG - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_DELAY_FLAG - CCS_BEGIN].value.float_t  = 0.0;
@@ -8777,7 +8777,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_DELAY_FLAG - CCS_BEGIN].id            = CCS_PROT_SUPPLY_UNDERVOLTAGE_DELAY_FLAG;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_DELAY_FLAG - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_DELAY_FLAG - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_DELAY_FLAG - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_DELAY_FLAG - CCS_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_DELAY_FLAG - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_UNDERVOLTAGE_DELAY_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -8789,7 +8789,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_DELAY_FLAG - CCS_BEGIN].id       = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_DELAY_FLAG;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_DELAY_FLAG - CCS_BEGIN].access   = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_DELAY_FLAG - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_DELAY_FLAG - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_DELAY_FLAG - CCS_BEGIN].physic   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_DELAY_FLAG - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_DELAY_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -8801,7 +8801,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].id       = CCS_PROT_SUPPLY_IMBALANCE_CURRENT_DELAY_FLAG;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].access   = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].physic   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -8813,7 +8813,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_DELAY_FLAG - CCS_BEGIN].id          = CCS_PROT_SUPPLY_PHASE_ROTATION_DELAY_FLAG;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_DELAY_FLAG - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_DELAY_FLAG - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_DELAY_FLAG - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_DELAY_FLAG - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_DELAY_FLAG - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_SUPPLY_PHASE_ROTATION_DELAY_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -8825,7 +8825,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_MOTOR_OVERLOAD_DELAY_FLAG - CCS_BEGIN].id                 = CCS_PROT_MOTOR_OVERLOAD_DELAY_FLAG;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_DELAY_FLAG - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_DELAY_FLAG - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_DELAY_FLAG - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_DELAY_FLAG - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_DELAY_FLAG - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_DELAY_FLAG - CCS_BEGIN].value.float_t      = 0.0;
@@ -8837,7 +8837,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_DELAY_FLAG - CCS_BEGIN].id                = CCS_PROT_MOTOR_UNDERLOAD_DELAY_FLAG;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_DELAY_FLAG - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_DELAY_FLAG - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_DELAY_FLAG - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_DELAY_FLAG - CCS_BEGIN].physic            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_DELAY_FLAG - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_DELAY_FLAG - CCS_BEGIN].value.float_t     = 0.0;
@@ -8849,7 +8849,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_MOTOR_CURRENT_DELAY_FLAG - CCS_BEGIN].id                  = CCS_PROT_MOTOR_CURRENT_DELAY_FLAG;
   parameters_[CCS_PROT_MOTOR_CURRENT_DELAY_FLAG - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_CURRENT_DELAY_FLAG - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_CURRENT_DELAY_FLAG - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_CURRENT_DELAY_FLAG - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_CURRENT_DELAY_FLAG - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_CURRENT_DELAY_FLAG - CCS_BEGIN].value.float_t       = 0.0;
@@ -8861,7 +8861,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].id        = CCS_PROT_MOTOR_IMBALANCE_CURRENT_DELAY_FLAG;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].physic    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_DELAY_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -8873,7 +8873,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_MOTOR_ASYNC_DELAY_FLAG - CCS_BEGIN].id                    = CCS_PROT_MOTOR_ASYNC_DELAY_FLAG;
   parameters_[CCS_PROT_MOTOR_ASYNC_DELAY_FLAG - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_ASYNC_DELAY_FLAG - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_ASYNC_DELAY_FLAG - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_ASYNC_DELAY_FLAG - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_DELAY_FLAG - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_ASYNC_DELAY_FLAG - CCS_BEGIN].value.float_t         = 0.0;
@@ -8885,7 +8885,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_DELAY_FLAG - CCS_BEGIN].id              = CCS_PROT_MOTOR_OUT_OF_SYNC_DELAY_FLAG;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_DELAY_FLAG - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_DELAY_FLAG - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_DELAY_FLAG - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_DELAY_FLAG - CCS_BEGIN].physic          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_DELAY_FLAG - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_MOTOR_OUT_OF_SYNC_DELAY_FLAG - CCS_BEGIN].value.float_t   = 0.0;
@@ -8897,7 +8897,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_DELAY_FLAG - CCS_BEGIN].id            = CCS_PROT_DHS_PRESSURE_INTAKE_DELAY_FLAG;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_DELAY_FLAG - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_DELAY_FLAG - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_DELAY_FLAG - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_DELAY_FLAG - CCS_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_DELAY_FLAG - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_DELAY_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -8909,7 +8909,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_DELAY_FLAG - CCS_BEGIN].id          = CCS_PROT_DHS_TEMPERATURE_MOTOR_DELAY_FLAG;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_DELAY_FLAG - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_DELAY_FLAG - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_DELAY_FLAG - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_DELAY_FLAG - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_DELAY_FLAG - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_DELAY_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -8921,7 +8921,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DHS_RESISTANCE_DELAY_FLAG - CCS_BEGIN].id                 = CCS_PROT_DHS_RESISTANCE_DELAY_FLAG;
   parameters_[CCS_PROT_DHS_RESISTANCE_DELAY_FLAG - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_RESISTANCE_DELAY_FLAG - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_RESISTANCE_DELAY_FLAG - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_PROT_DHS_RESISTANCE_DELAY_FLAG - CCS_BEGIN].physic             = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_RESISTANCE_DELAY_FLAG - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_RESISTANCE_DELAY_FLAG - CCS_BEGIN].value.float_t      = 0.0;
@@ -8933,7 +8933,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DHS_VIBRATION_DELAY_FLAG - CCS_BEGIN].id                  = CCS_PROT_DHS_VIBRATION_DELAY_FLAG;
   parameters_[CCS_PROT_DHS_VIBRATION_DELAY_FLAG - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_VIBRATION_DELAY_FLAG - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_VIBRATION_DELAY_FLAG - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_PROT_DHS_VIBRATION_DELAY_FLAG - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_VIBRATION_DELAY_FLAG - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_VIBRATION_DELAY_FLAG - CCS_BEGIN].value.float_t       = 0.0;
@@ -8945,7 +8945,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_AI_1_DELAY_FLAG - CCS_BEGIN].id                           = CCS_PROT_AI_1_DELAY_FLAG;
   parameters_[CCS_PROT_AI_1_DELAY_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_1_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_1_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_AI_1_DELAY_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_1_DELAY_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_DELAY_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -8957,7 +8957,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_AI_2_DELAY_FLAG - CCS_BEGIN].id                           = CCS_PROT_AI_2_DELAY_FLAG;
   parameters_[CCS_PROT_AI_2_DELAY_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_2_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_2_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_AI_2_DELAY_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_2_DELAY_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_DELAY_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -8969,7 +8969,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_AI_3_DELAY_FLAG - CCS_BEGIN].id                           = CCS_PROT_AI_3_DELAY_FLAG;
   parameters_[CCS_PROT_AI_3_DELAY_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_3_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_3_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_AI_3_DELAY_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_3_DELAY_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_DELAY_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -8981,7 +8981,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_AI_4_DELAY_FLAG - CCS_BEGIN].id                           = CCS_PROT_AI_4_DELAY_FLAG;
   parameters_[CCS_PROT_AI_4_DELAY_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_4_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_4_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_AI_4_DELAY_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_4_DELAY_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_DELAY_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -8993,7 +8993,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DI_1_DELAY_FLAG - CCS_BEGIN].id                           = CCS_PROT_DI_1_DELAY_FLAG;
   parameters_[CCS_PROT_DI_1_DELAY_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_1_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_1_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_DI_1_DELAY_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_1_DELAY_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_1_DELAY_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -9005,7 +9005,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DI_2_DELAY_FLAG - CCS_BEGIN].id                           = CCS_PROT_DI_2_DELAY_FLAG;
   parameters_[CCS_PROT_DI_2_DELAY_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_2_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_2_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_DI_2_DELAY_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_2_DELAY_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_2_DELAY_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -9017,7 +9017,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DI_3_DELAY_FLAG - CCS_BEGIN].id                           = CCS_PROT_DI_3_DELAY_FLAG;
   parameters_[CCS_PROT_DI_3_DELAY_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_3_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_3_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_DI_3_DELAY_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_3_DELAY_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_3_DELAY_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -9029,7 +9029,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_DI_4_DELAY_FLAG - CCS_BEGIN].id                           = CCS_PROT_DI_4_DELAY_FLAG;
   parameters_[CCS_PROT_DI_4_DELAY_FLAG - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DI_4_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_DI_4_DELAY_FLAG - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_DI_4_DELAY_FLAG - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DI_4_DELAY_FLAG - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_DI_4_DELAY_FLAG - CCS_BEGIN].value.float_t                = 0.0;
@@ -9041,7 +9041,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_DELAY_FLAG - CCS_BEGIN].id            = CCS_PROT_OTHER_LIMIT_RESTART_DELAY_FLAG;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_DELAY_FLAG - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_DELAY_FLAG - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_DELAY_FLAG - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_DELAY_FLAG - CCS_BEGIN].physic        = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_DELAY_FLAG - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_DELAY_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -9053,7 +9053,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_DELAY_FLAG - CCS_BEGIN].id                = CCS_PROT_OTHER_LOCK_DOOR_DELAY_FLAG;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_DELAY_FLAG - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_LOCK_DOOR_DELAY_FLAG - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_LOCK_DOOR_DELAY_FLAG - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_DELAY_FLAG - CCS_BEGIN].physic            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_DELAY_FLAG - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_LOCK_DOOR_DELAY_FLAG - CCS_BEGIN].value.float_t     = 0.0;
@@ -9065,7 +9065,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_OTHER_VSD_DELAY_FLAG - CCS_BEGIN].id                      = CCS_PROT_OTHER_VSD_DELAY_FLAG;
   parameters_[CCS_PROT_OTHER_VSD_DELAY_FLAG - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_DELAY_FLAG - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_DELAY_FLAG - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_DELAY_FLAG - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_DELAY_FLAG - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_DELAY_FLAG - CCS_BEGIN].value.float_t           = 0.0;
@@ -9077,7 +9077,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_PROT_OTHER_IMB_DELAY_FLAG - CCS_BEGIN].id                      = CCS_PROT_OTHER_IMB_DELAY_FLAG;
   parameters_[CCS_PROT_OTHER_IMB_DELAY_FLAG - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_IMB_DELAY_FLAG - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_IMB_DELAY_FLAG - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_IMB_DELAY_FLAG - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_IMB_DELAY_FLAG - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_IMB_DELAY_FLAG - CCS_BEGIN].value.float_t           = 0.0;
@@ -9097,7 +9097,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].max                           = 2.0;
   parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].def                           = 0.0;
-  parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].code                          = 13;
+  parameters_[CCS_CMD_UPDATE_SOFTWARE - CCS_BEGIN].code                          = 0;
   // Команда перезагрузки ПО
   parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].id                            = CCS_CMD_REBOOT_SOFTWARE;
   parameters_[CCS_CMD_REBOOT_SOFTWARE - CCS_BEGIN].access                        = ACCESS_OPERATOR;
@@ -9125,7 +9125,7 @@ void Ccs::initParameters()
   // Команда синхронизации параметров
   parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].id                            = CCS_CMD_SYNC_ALL_PARAMS;
   parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].validity                      = VALIDITY_OK;
   parameters_[CCS_CMD_SYNC_ALL_PARAMS - CCS_BEGIN].value.float_t                 = 0.0;
@@ -9137,7 +9137,7 @@ void Ccs::initParameters()
   // Команда запуска перезапуска Slave (STM32)
   parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].id                         = CCS_CMD_START_REBOOT_SLAVE;
   parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_CMD_START_REBOOT_SLAVE - CCS_BEGIN].value.float_t              = 0.0;
@@ -9197,7 +9197,7 @@ void Ccs::initParameters()
   // Слово состояние ЧРП
   parameters_[CCS_VSD_STATUS_WORD_1 - CCS_BEGIN].id                              = CCS_VSD_STATUS_WORD_1;
   parameters_[CCS_VSD_STATUS_WORD_1 - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_STATUS_WORD_1 - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_VSD_STATUS_WORD_1 - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_VSD_STATUS_WORD_1 - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_STATUS_WORD_1 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VSD_STATUS_WORD_1 - CCS_BEGIN].value.float_t                   = 0.0;
@@ -9209,7 +9209,7 @@ void Ccs::initParameters()
   // Слово состояние ЧРП
   parameters_[CCS_VSD_STATUS_WORD_2 - CCS_BEGIN].id                              = CCS_VSD_STATUS_WORD_2;
   parameters_[CCS_VSD_STATUS_WORD_2 - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_STATUS_WORD_2 - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_VSD_STATUS_WORD_2 - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_VSD_STATUS_WORD_2 - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_STATUS_WORD_2 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VSD_STATUS_WORD_2 - CCS_BEGIN].value.float_t                   = 0.0;
@@ -9221,7 +9221,7 @@ void Ccs::initParameters()
   // Слово состояние ЧРП
   parameters_[CCS_VSD_STATUS_WORD_3 - CCS_BEGIN].id                              = CCS_VSD_STATUS_WORD_3;
   parameters_[CCS_VSD_STATUS_WORD_3 - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_STATUS_WORD_3 - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_VSD_STATUS_WORD_3 - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_VSD_STATUS_WORD_3 - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_STATUS_WORD_3 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VSD_STATUS_WORD_3 - CCS_BEGIN].value.float_t                   = 0.0;
@@ -9233,7 +9233,7 @@ void Ccs::initParameters()
   // Слово состояние ЧРП
   parameters_[CCS_VSD_STATUS_WORD_4 - CCS_BEGIN].id                              = CCS_VSD_STATUS_WORD_4;
   parameters_[CCS_VSD_STATUS_WORD_4 - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_STATUS_WORD_4 - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_VSD_STATUS_WORD_4 - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_VSD_STATUS_WORD_4 - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_STATUS_WORD_4 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VSD_STATUS_WORD_4 - CCS_BEGIN].value.float_t                   = 0.0;
@@ -9245,7 +9245,7 @@ void Ccs::initParameters()
   // Слово состояние ЧРП
   parameters_[CCS_VSD_STATUS_WORD_7 - CCS_BEGIN].id                              = CCS_VSD_STATUS_WORD_7;
   parameters_[CCS_VSD_STATUS_WORD_7 - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_STATUS_WORD_7 - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_VSD_STATUS_WORD_7 - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_VSD_STATUS_WORD_7 - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_STATUS_WORD_7 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VSD_STATUS_WORD_7 - CCS_BEGIN].value.float_t                   = 0.0;
@@ -9257,7 +9257,7 @@ void Ccs::initParameters()
   // Слово состояние ЧРП
   parameters_[CCS_VSD_STATUS_WORD_5 - CCS_BEGIN].id                              = CCS_VSD_STATUS_WORD_5;
   parameters_[CCS_VSD_STATUS_WORD_5 - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_STATUS_WORD_5 - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_VSD_STATUS_WORD_5 - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_VSD_STATUS_WORD_5 - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_STATUS_WORD_5 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VSD_STATUS_WORD_5 - CCS_BEGIN].value.float_t                   = 0.0;
@@ -9277,7 +9277,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].max                       = 1.0;
   parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].def                       = 0.0;
-  parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].code                      = 13;
+  parameters_[CCS_CMD_VSD_RESET_SETPOINTS - CCS_BEGIN].code                      = 106;
   // Максимальная рабочая частота (базовая)
   parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].id                                 = CCS_BASE_FREQUENCY;
   parameters_[CCS_BASE_FREQUENCY - CCS_BEGIN].access                             = ACCESS_OPERATOR;
@@ -9305,7 +9305,7 @@ void Ccs::initParameters()
   // Код аппаратной аварии ЧРП
   parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].id                           = CCS_PROT_OTHER_VSD_ALARM;
   parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_VSD_ALARM - CCS_BEGIN].value.float_t                = 0.0;
@@ -9329,7 +9329,7 @@ void Ccs::initParameters()
   // Шаг изменения сопротивления изоляции
   parameters_[CCS_RESERVED_777 - CCS_BEGIN].id                                   = CCS_RESERVED_777;
   parameters_[CCS_RESERVED_777 - CCS_BEGIN].access                               = ACCESS_OPERATOR;
-  parameters_[CCS_RESERVED_777 - CCS_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[CCS_RESERVED_777 - CCS_BEGIN].operation                            = OPERATION_READ;
   parameters_[CCS_RESERVED_777 - CCS_BEGIN].physic                               = PHYSIC_RESISTANCE;
   parameters_[CCS_RESERVED_777 - CCS_BEGIN].validity                             = VALIDITY_OK;
   parameters_[CCS_RESERVED_777 - CCS_BEGIN].value.float_t                        = 0.0;
@@ -9373,11 +9373,11 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].max  = 1.0;
   parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].def  = 0.0;
-  parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].code = 13;
+  parameters_[CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET - CCS_BEGIN].code = 106;
   // Связь с ЧРП - быстрые архивы
   parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].id                             = CCS_VSD_LOG_CONNECTION;
   parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].operation                      = OPERATION_READ;
   parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_VSD_LOG_CONNECTION - CCS_BEGIN].value.float_t                  = 0.0;
@@ -9413,7 +9413,7 @@ void Ccs::initParameters()
   // Состояние автомата режима пуска "Автоадаптация"
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].id                  = CCS_RGM_RUN_AUTO_ADAPTATION_STATE;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].validity            = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATE - CCS_BEGIN].value.float_t       = 0.0;
@@ -9833,7 +9833,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_TEMPERATURE_STM32 - CCS_BEGIN].id                              = CCS_TEMPERATURE_STM32;
   parameters_[CCS_TEMPERATURE_STM32 - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_TEMPERATURE_STM32 - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_TEMPERATURE_STM32 - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_TEMPERATURE_STM32 - CCS_BEGIN].physic                          = PHYSIC_TEMPERATURE;
   parameters_[CCS_TEMPERATURE_STM32 - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_TEMPERATURE_STM32 - CCS_BEGIN].value.float_t                   = 0.0;
@@ -9845,7 +9845,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_TEMPERATURE_CCS - CCS_BEGIN].id                                = CCS_TEMPERATURE_CCS;
   parameters_[CCS_TEMPERATURE_CCS - CCS_BEGIN].access                            = ACCESS_OPERATOR;
-  parameters_[CCS_TEMPERATURE_CCS - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_TEMPERATURE_CCS - CCS_BEGIN].operation                         = OPERATION_READ;
   parameters_[CCS_TEMPERATURE_CCS - CCS_BEGIN].physic                            = PHYSIC_TEMPERATURE;
   parameters_[CCS_TEMPERATURE_CCS - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_TEMPERATURE_CCS - CCS_BEGIN].value.float_t                     = 0.0;
@@ -10121,7 +10121,7 @@ void Ccs::initParameters()
   // Код аварии ЧРП
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].id                                 = CCS_VSD_ALARM_CODE;
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].operation                          = OPERATION_WRITE;
+  parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].operation                          = OPERATION_READ;
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_VSD_ALARM_CODE - CCS_BEGIN].value.float_t                      = 0.0;
@@ -10133,7 +10133,7 @@ void Ccs::initParameters()
   // Код предупреждения ЧРП
   parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].id                               = CCS_VSD_WARNING_CODE;
   parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].access                           = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].operation                        = OPERATION_WRITE;
+  parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].operation                        = OPERATION_READ;
   parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].validity                         = VALIDITY_OK;
   parameters_[CCS_VSD_WARNING_CODE - CCS_BEGIN].value.float_t                    = 0.0;
@@ -10145,7 +10145,7 @@ void Ccs::initParameters()
   // Защита по аналоговому входу 1. Тип аварии - мин/макс
   parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].id                           = CCS_PROT_AI_1_ALARM_TYPE;
   parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_1_ALARM_TYPE - CCS_BEGIN].value.float_t                = 0.0;
@@ -10157,7 +10157,7 @@ void Ccs::initParameters()
   // Защита по аналоговому входу 1. Тип аварии - мин/макс
   parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].id                           = CCS_PROT_AI_2_ALARM_TYPE;
   parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_2_ALARM_TYPE - CCS_BEGIN].value.float_t                = 0.0;
@@ -10169,7 +10169,7 @@ void Ccs::initParameters()
   // Защита по аналоговому входу 1. Тип аварии - мин/макс
   parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].id                           = CCS_PROT_AI_3_ALARM_TYPE;
   parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_3_ALARM_TYPE - CCS_BEGIN].value.float_t                = 0.0;
@@ -10181,7 +10181,7 @@ void Ccs::initParameters()
   // Защита по аналоговому входу 1. Тип аварии - мин/макс
   parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].id                           = CCS_PROT_AI_4_ALARM_TYPE;
   parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_PROT_AI_4_ALARM_TYPE - CCS_BEGIN].value.float_t                = 0.0;
@@ -10481,7 +10481,7 @@ void Ccs::initParameters()
   // Текущее состояние режима встряхивания
   parameters_[CCS_RGM_JARRING_STATE - CCS_BEGIN].id                              = CCS_RGM_JARRING_STATE;
   parameters_[CCS_RGM_JARRING_STATE - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_JARRING_STATE - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_RGM_JARRING_STATE - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_RGM_JARRING_STATE - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_JARRING_STATE - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_STATE - CCS_BEGIN].value.float_t                   = 0.0;
@@ -10493,7 +10493,7 @@ void Ccs::initParameters()
   // Время начала периода встряхивания
   parameters_[CCS_RGM_JARRING_TIMER - CCS_BEGIN].id                              = CCS_RGM_JARRING_TIMER;
   parameters_[CCS_RGM_JARRING_TIMER - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_JARRING_TIMER - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_RGM_JARRING_TIMER - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_RGM_JARRING_TIMER - CCS_BEGIN].physic                          = PHYSIC_DATE_TIME;
   parameters_[CCS_RGM_JARRING_TIMER - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_RGM_JARRING_TIMER - CCS_BEGIN].value.float_t                   = 0.0;
@@ -10541,10 +10541,10 @@ void Ccs::initParameters()
   // Сохраняемое значение уставки частоты
   parameters_[CCS_RESERVED_878 - CCS_BEGIN].id                                   = CCS_RESERVED_878;
   parameters_[CCS_RESERVED_878 - CCS_BEGIN].access                               = ACCESS_OPERATOR;
-  parameters_[CCS_RESERVED_878 - CCS_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[CCS_RESERVED_878 - CCS_BEGIN].operation                            = OPERATION_READ;
   parameters_[CCS_RESERVED_878 - CCS_BEGIN].physic                               = PHYSIC_FREQUENCY;
   parameters_[CCS_RESERVED_878 - CCS_BEGIN].validity                             = VALIDITY_ERROR;
-  parameters_[CCS_RESERVED_878 - CCS_BEGIN].value.float_t                        = 0;
+  parameters_[CCS_RESERVED_878 - CCS_BEGIN].value.float_t                        = 50.0;
   parameters_[CCS_RESERVED_878 - CCS_BEGIN].min                                  = 0.0;
   parameters_[CCS_RESERVED_878 - CCS_BEGIN].max                                  = 500.0;
   parameters_[CCS_RESERVED_878 - CCS_BEGIN].discret                              = 100;
@@ -10553,7 +10553,7 @@ void Ccs::initParameters()
   // Сохраняемое значение Время разгона до номинал. Частоты
   parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].id                       = CCS_SAVE_VSD_TIMER_DISPERSAL;
   parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].access                   = ACCESS_OPERATOR;
-  parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].operation                = OPERATION_READ;
   parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].physic                   = PHYSIC_TIME;
   parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].validity                 = VALIDITY_ERROR;
   parameters_[CCS_SAVE_VSD_TIMER_DISPERSAL - CCS_BEGIN].value.float_t            = 30.0;
@@ -10565,7 +10565,7 @@ void Ccs::initParameters()
   // Сохраняемое значение Время торм. с номинал. Частоты
   parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].id                           = CCS_SAVE_VSD_TIMER_DELAY;
   parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].physic                       = PHYSIC_TIME;
   parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].validity                     = VALIDITY_ERROR;
   parameters_[CCS_SAVE_VSD_TIMER_DELAY - CCS_BEGIN].value.float_t                = 30.0;
@@ -10577,7 +10577,7 @@ void Ccs::initParameters()
   // Сохраняемое значение уставка минимального значения частоты
   parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].id                   = CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR;
   parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].physic               = PHYSIC_FREQUENCY;
   parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].validity             = VALIDITY_ERROR;
   parameters_[CCS_SAVE_VSD_LOW_LIM_SPEED_MOTOR - CCS_BEGIN].value.float_t        = 40.0;
@@ -10589,7 +10589,7 @@ void Ccs::initParameters()
   // Сохраняемое значение уставка максимального значения частоты
   parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].id                  = CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR;
   parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].access              = ACCESS_OPERATOR;
-  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].operation           = OPERATION_WRITE;
+  parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].operation           = OPERATION_READ;
   parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].physic              = PHYSIC_FREQUENCY;
   parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].validity            = VALIDITY_ERROR;
   parameters_[CCS_SAVE_VSD_HIGH_LIM_SPEED_MOTOR - CCS_BEGIN].value.float_t       = 60.0;
@@ -10628,11 +10628,11 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].validity                     = VALIDITY_OK;
-  parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].value.float_t                = 0;
+  parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].value.float_t                = 0.0;
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].min                          = 0.0;
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].max                          = 999999999.9;
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].discret                      = 1;
-  parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].def                          = 0;
+  parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].code                         = 0;
   // Заводской номер СУ (2 часть)
   parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].id                            = CCS_NUM_PRODUCTION_SU_2;
@@ -10640,11 +10640,11 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].validity                      = VALIDITY_OK;
-  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].value.float_t                 = 0;
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].value.float_t                 = 0.0;
   parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].min                           = 0.0;
   parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].max                           = 999999999.9;
   parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].discret                       = 1;
-  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].def                           = 0;
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].def                           = 0.0;
   parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].code                          = 0;
   // Регистр состояния инвертора
   parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].id                          = CCS_VSD_STATUS_WORD_1_LOG;
@@ -10652,11 +10652,11 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].validity                    = VALIDITY_ERROR;
-  parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].min                         = 0.0;
   parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].max                         = 65535.0;
   parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].discret                     = 1;
-  parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].def                         = 0;
+  parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].code                        = 0;
   // Регистр состояния инвертора
   parameters_[CCS_VSD_STATUS_WORD_2_LOG - CCS_BEGIN].id                          = CCS_VSD_STATUS_WORD_2_LOG;
@@ -10664,11 +10664,11 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_STATUS_WORD_2_LOG - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_VSD_STATUS_WORD_2_LOG - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_STATUS_WORD_2_LOG - CCS_BEGIN].validity                    = VALIDITY_ERROR;
-  parameters_[CCS_VSD_STATUS_WORD_2_LOG - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_VSD_STATUS_WORD_2_LOG - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_VSD_STATUS_WORD_2_LOG - CCS_BEGIN].min                         = 0.0;
   parameters_[CCS_VSD_STATUS_WORD_2_LOG - CCS_BEGIN].max                         = 65535.0;
   parameters_[CCS_VSD_STATUS_WORD_2_LOG - CCS_BEGIN].discret                     = 1;
-  parameters_[CCS_VSD_STATUS_WORD_2_LOG - CCS_BEGIN].def                         = 0;
+  parameters_[CCS_VSD_STATUS_WORD_2_LOG - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_VSD_STATUS_WORD_2_LOG - CCS_BEGIN].code                        = 0;
   // Регистр состояния инвертора
   parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].id                          = CCS_VSD_STATUS_WORD_7_LOG;
@@ -10676,11 +10676,11 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].validity                    = VALIDITY_ERROR;
-  parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].min                         = 0.0;
   parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].max                         = 65535.0;
   parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].discret                     = 1;
-  parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].def                         = 0;
+  parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_VSD_STATUS_WORD_7_LOG - CCS_BEGIN].code                        = 0;
   // 
   parameters_[CCS_VSD_CONNECTION_PERCENT - CCS_BEGIN].id                         = CCS_VSD_CONNECTION_PERCENT;
@@ -10736,7 +10736,7 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_CONNECTION_PACKAGE_CRC - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_CRC - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_CRC - CCS_BEGIN].validity               = VALIDITY_ERROR;
-  parameters_[CCS_VSD_CONNECTION_PACKAGE_CRC - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_VSD_CONNECTION_PACKAGE_CRC - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_CRC - CCS_BEGIN].min                    = 0.0;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_CRC - CCS_BEGIN].max                    = 999999999.9;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_CRC - CCS_BEGIN].discret                = 1;
@@ -10748,7 +10748,7 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_CONNECTION_PACKAGE_ERR - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_ERR - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_ERR - CCS_BEGIN].validity               = VALIDITY_ERROR;
-  parameters_[CCS_VSD_CONNECTION_PACKAGE_ERR - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_VSD_CONNECTION_PACKAGE_ERR - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_ERR - CCS_BEGIN].min                    = 0.0;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_ERR - CCS_BEGIN].max                    = 999999999.9;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_ERR - CCS_BEGIN].discret                = 1;
@@ -10760,7 +10760,7 @@ void Ccs::initParameters()
   parameters_[CCS_VSD_CONNECTION_PACKAGE_LOST - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_LOST - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_LOST - CCS_BEGIN].validity              = VALIDITY_ERROR;
-  parameters_[CCS_VSD_CONNECTION_PACKAGE_LOST - CCS_BEGIN].value.float_t         = 0;
+  parameters_[CCS_VSD_CONNECTION_PACKAGE_LOST - CCS_BEGIN].value.float_t         = 0.0;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_LOST - CCS_BEGIN].min                   = 0.0;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_LOST - CCS_BEGIN].max                   = 999999999.9;
   parameters_[CCS_VSD_CONNECTION_PACKAGE_LOST - CCS_BEGIN].discret               = 1;
@@ -10769,10 +10769,10 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_VSD_CONNECTION_SPEED - CCS_BEGIN].id                           = CCS_VSD_CONNECTION_SPEED;
   parameters_[CCS_VSD_CONNECTION_SPEED - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_CONNECTION_SPEED - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_VSD_CONNECTION_SPEED - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_VSD_CONNECTION_SPEED - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_CONNECTION_SPEED - CCS_BEGIN].validity                     = VALIDITY_ERROR;
-  parameters_[CCS_VSD_CONNECTION_SPEED - CCS_BEGIN].value.float_t                = 0;
+  parameters_[CCS_VSD_CONNECTION_SPEED - CCS_BEGIN].value.float_t                = 115200.0;
   parameters_[CCS_VSD_CONNECTION_SPEED - CCS_BEGIN].min                          = 9600.0;
   parameters_[CCS_VSD_CONNECTION_SPEED - CCS_BEGIN].max                          = 115200.0;
   parameters_[CCS_VSD_CONNECTION_SPEED - CCS_BEGIN].discret                      = 1;
@@ -10781,10 +10781,10 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_VSD_CONNECTION_ADDRESS - CCS_BEGIN].id                         = CCS_VSD_CONNECTION_ADDRESS;
   parameters_[CCS_VSD_CONNECTION_ADDRESS - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_CONNECTION_ADDRESS - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_VSD_CONNECTION_ADDRESS - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_VSD_CONNECTION_ADDRESS - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_CONNECTION_ADDRESS - CCS_BEGIN].validity                   = VALIDITY_ERROR;
-  parameters_[CCS_VSD_CONNECTION_ADDRESS - CCS_BEGIN].value.float_t              = 0;
+  parameters_[CCS_VSD_CONNECTION_ADDRESS - CCS_BEGIN].value.float_t              = 1.0;
   parameters_[CCS_VSD_CONNECTION_ADDRESS - CCS_BEGIN].min                        = 1.0;
   parameters_[CCS_VSD_CONNECTION_ADDRESS - CCS_BEGIN].max                        = 253.0;
   parameters_[CCS_VSD_CONNECTION_ADDRESS - CCS_BEGIN].discret                    = 1;
@@ -10793,10 +10793,10 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_VSD_CONNECTION_PARITY - CCS_BEGIN].id                          = CCS_VSD_CONNECTION_PARITY;
   parameters_[CCS_VSD_CONNECTION_PARITY - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_CONNECTION_PARITY - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_VSD_CONNECTION_PARITY - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_VSD_CONNECTION_PARITY - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_CONNECTION_PARITY - CCS_BEGIN].validity                    = VALIDITY_ERROR;
-  parameters_[CCS_VSD_CONNECTION_PARITY - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_VSD_CONNECTION_PARITY - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_VSD_CONNECTION_PARITY - CCS_BEGIN].min                         = 0.0;
   parameters_[CCS_VSD_CONNECTION_PARITY - CCS_BEGIN].max                         = 5.0;
   parameters_[CCS_VSD_CONNECTION_PARITY - CCS_BEGIN].discret                     = 1;
@@ -10805,10 +10805,10 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].id                        = CCS_VSD_CONNECTION_STOP_BIT;
   parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].validity                  = VALIDITY_ERROR;
-  parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].value.float_t             = 0;
+  parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].value.float_t             = 1.0;
   parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].min                       = 0.0;
   parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].max                       = 2.0;
   parameters_[CCS_VSD_CONNECTION_STOP_BIT - CCS_BEGIN].discret                   = 1;
@@ -10868,7 +10868,7 @@ void Ccs::initParameters()
   parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].validity               = VALIDITY_ERROR;
-  parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].min                    = 0.0;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].max                    = 999999999.9;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_CRC - CCS_BEGIN].discret                = 1;
@@ -10880,7 +10880,7 @@ void Ccs::initParameters()
   parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].validity               = VALIDITY_ERROR;
-  parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].min                    = 0.0;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].max                    = 999999999.9;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_ERR - CCS_BEGIN].discret                = 1;
@@ -10892,7 +10892,7 @@ void Ccs::initParameters()
   parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].validity              = VALIDITY_ERROR;
-  parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].value.float_t         = 0;
+  parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].value.float_t         = 0.0;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].min                   = 0.0;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].max                   = 999999999.9;
   parameters_[CCS_DHS_CONNECTION_PACKAGE_LOST - CCS_BEGIN].discret               = 1;
@@ -10901,10 +10901,10 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].id                           = CCS_DHS_CONNECTION_SPEED;
   parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].validity                     = VALIDITY_ERROR;
-  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].value.float_t                = 0;
+  parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].value.float_t                = 115200.0;
   parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].min                          = 9600.0;
   parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].max                          = 115200.0;
   parameters_[CCS_DHS_CONNECTION_SPEED - CCS_BEGIN].discret                      = 1;
@@ -10913,10 +10913,10 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].id                         = CCS_DHS_CONNECTION_ADDRESS;
   parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].validity                   = VALIDITY_ERROR;
-  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].value.float_t              = 0;
+  parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].value.float_t              = 1.0;
   parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].min                        = 1.0;
   parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].max                        = 253.0;
   parameters_[CCS_DHS_CONNECTION_ADDRESS - CCS_BEGIN].discret                    = 1;
@@ -10925,10 +10925,10 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].id                          = CCS_DHS_CONNECTION_PARITY;
   parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
   parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].validity                    = VALIDITY_ERROR;
-  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].min                         = 0.0;
   parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].max                         = 5.0;
   parameters_[CCS_DHS_CONNECTION_PARITY - CCS_BEGIN].discret                     = 1;
@@ -10937,10 +10937,10 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].id                        = CCS_DHS_CONNECTION_STOP_BIT;
   parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].validity                  = VALIDITY_ERROR;
-  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].value.float_t             = 0;
+  parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].value.float_t             = 1.0;
   parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].min                       = 0.0;
   parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].max                       = 2.0;
   parameters_[CCS_DHS_CONNECTION_STOP_BIT - CCS_BEGIN].discret                   = 1;
@@ -10973,7 +10973,7 @@ void Ccs::initParameters()
   // Автооптимизация по току
   parameters_[CCS_RESERVED_914 - CCS_BEGIN].id                                   = CCS_RESERVED_914;
   parameters_[CCS_RESERVED_914 - CCS_BEGIN].access                               = ACCESS_OPERATOR;
-  parameters_[CCS_RESERVED_914 - CCS_BEGIN].operation                            = OPERATION_WRITE;
+  parameters_[CCS_RESERVED_914 - CCS_BEGIN].operation                            = OPERATION_READ;
   parameters_[CCS_RESERVED_914 - CCS_BEGIN].physic                               = PHYSIC_NUMERIC;
   parameters_[CCS_RESERVED_914 - CCS_BEGIN].validity                             = VALIDITY_ERROR;
   parameters_[CCS_RESERVED_914 - CCS_BEGIN].value.float_t                        = 0.0;
@@ -10997,7 +10997,7 @@ void Ccs::initParameters()
   // Текущий параметр Время первого АПВ
   parameters_[CCS_RESTART_COUNT_FIRST_TIME - CCS_BEGIN].id                       = CCS_RESTART_COUNT_FIRST_TIME;
   parameters_[CCS_RESTART_COUNT_FIRST_TIME - CCS_BEGIN].access                   = ACCESS_OPERATOR;
-  parameters_[CCS_RESTART_COUNT_FIRST_TIME - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_RESTART_COUNT_FIRST_TIME - CCS_BEGIN].operation                = OPERATION_READ;
   parameters_[CCS_RESTART_COUNT_FIRST_TIME - CCS_BEGIN].physic                   = PHYSIC_DATE_TIME;
   parameters_[CCS_RESTART_COUNT_FIRST_TIME - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_RESTART_COUNT_FIRST_TIME - CCS_BEGIN].value.float_t            = 0;
@@ -11017,7 +11017,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_SETPOINT_RESET - CCS_BEGIN].max       = 1.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_SETPOINT_RESET - CCS_BEGIN].discret   = 1;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_SETPOINT_RESET - CCS_BEGIN].def       = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_SETPOINT_RESET - CCS_BEGIN].code      = 13;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_SETPOINT_RESET - CCS_BEGIN].code      = 106;
   // Защита "Минимальный расход"
   parameters_[CCS_PROT_DHS_FLOW_DISCHARGE_MODE - CCS_BEGIN].id                   = CCS_PROT_DHS_FLOW_DISCHARGE_MODE;
   parameters_[CCS_PROT_DHS_FLOW_DISCHARGE_MODE - CCS_BEGIN].access               = ACCESS_OPERATOR;
@@ -11129,7 +11129,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_DHS_FLOW_DISCHARGE_PARAMETER - CCS_BEGIN].id              = CCS_PROT_DHS_FLOW_DISCHARGE_PARAMETER;
   parameters_[CCS_PROT_DHS_FLOW_DISCHARGE_PARAMETER - CCS_BEGIN].access          = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_FLOW_DISCHARGE_PARAMETER - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_FLOW_DISCHARGE_PARAMETER - CCS_BEGIN].operation       = OPERATION_READ;
   parameters_[CCS_PROT_DHS_FLOW_DISCHARGE_PARAMETER - CCS_BEGIN].physic          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_FLOW_DISCHARGE_PARAMETER - CCS_BEGIN].validity        = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_FLOW_DISCHARGE_PARAMETER - CCS_BEGIN].value.float_t   = 0.0;
@@ -11233,7 +11233,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_DHS_FLOW_DISCHARGE_SETPOINT_RESET - CCS_BEGIN].max    = 1.0;
   parameters_[CCS_CMD_PROT_DHS_FLOW_DISCHARGE_SETPOINT_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_CMD_PROT_DHS_FLOW_DISCHARGE_SETPOINT_RESET - CCS_BEGIN].def    = 0.0;
-  parameters_[CCS_CMD_PROT_DHS_FLOW_DISCHARGE_SETPOINT_RESET - CCS_BEGIN].code   = 13;
+  parameters_[CCS_CMD_PROT_DHS_FLOW_DISCHARGE_SETPOINT_RESET - CCS_BEGIN].code   = 106;
   // Защита "Давление на выкиде насоса"
   parameters_[CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE - CCS_BEGIN].id               = CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE;
   parameters_[CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE - CCS_BEGIN].access           = ACCESS_OPERATOR;
@@ -11345,7 +11345,7 @@ void Ccs::initParameters()
   // Уставка параметр защиты
   parameters_[CCS_PROT_DHS_PRESSURE_DISCHARGE_PARAMETER - CCS_BEGIN].id          = CCS_PROT_DHS_PRESSURE_DISCHARGE_PARAMETER;
   parameters_[CCS_PROT_DHS_PRESSURE_DISCHARGE_PARAMETER - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_DHS_PRESSURE_DISCHARGE_PARAMETER - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_DHS_PRESSURE_DISCHARGE_PARAMETER - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_DHS_PRESSURE_DISCHARGE_PARAMETER - CCS_BEGIN].physic      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_PRESSURE_DISCHARGE_PARAMETER - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_DHS_PRESSURE_DISCHARGE_PARAMETER - CCS_BEGIN].value.float_t = 0.0;
@@ -11449,7 +11449,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_DHS_PRESSURE_DISCHARGE_SETPOINT_RESET - CCS_BEGIN].max = 1.0;
   parameters_[CCS_CMD_PROT_DHS_PRESSURE_DISCHARGE_SETPOINT_RESET - CCS_BEGIN].discret = 1;
   parameters_[CCS_CMD_PROT_DHS_PRESSURE_DISCHARGE_SETPOINT_RESET - CCS_BEGIN].def = 0.0;
-  parameters_[CCS_CMD_PROT_DHS_PRESSURE_DISCHARGE_SETPOINT_RESET - CCS_BEGIN].code = 13;
+  parameters_[CCS_CMD_PROT_DHS_PRESSURE_DISCHARGE_SETPOINT_RESET - CCS_BEGIN].code = 106;
   // Проверка параметров на корректность при инициализации
   parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].id                             = CCS_PARAMETERS_CONTROL;
   parameters_[CCS_PARAMETERS_CONTROL - CCS_BEGIN].access                         = ACCESS_SERVICE;
@@ -11465,7 +11465,7 @@ void Ccs::initParameters()
   // Уставка предел тока
   parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].id                              = CCS_VSD_CURRENT_LIMIT;
   parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].operation                       = OPERATION_READ;
   parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].physic                          = PHYSIC_PERCENT;
   parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_VSD_CURRENT_LIMIT - CCS_BEGIN].value.float_t                   = 100.0;
@@ -11477,7 +11477,7 @@ void Ccs::initParameters()
   // Уставка частоты сохраняемая в режиме пуска толчками
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].id                     = CCS_RGM_RUN_PUSH_SETPOINT_FREQ;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].operation              = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].physic                 = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_FREQ - CCS_BEGIN].value.float_t          = 0.0;
@@ -11489,7 +11489,7 @@ void Ccs::initParameters()
   // Уставка минимальной частоты сохраняемая в режиме пуска толчками
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].id             = CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].physic         = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].value.float_t  = 0.0;
@@ -11501,7 +11501,7 @@ void Ccs::initParameters()
   // Уставка точки 1 напряжения для задания толчка
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].id                       = CCS_RGM_RUN_PUSH_SETPOINT_U1;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].access                   = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].operation                = OPERATION_READ;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].physic                   = PHYSIC_VOLTAGE;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U1 - CCS_BEGIN].value.float_t            = 0.0;
@@ -11513,7 +11513,7 @@ void Ccs::initParameters()
   // Уставка точки 2 напряжения для задания толчка
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].id                       = CCS_RGM_RUN_PUSH_SETPOINT_U2;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].access                   = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].operation                = OPERATION_READ;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].physic                   = PHYSIC_VOLTAGE;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].validity                 = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_SETPOINT_U2 - CCS_BEGIN].value.float_t            = 0.0;
@@ -11525,7 +11525,7 @@ void Ccs::initParameters()
   // Уставка частоты для не пусковых режимов работы
   parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].id                             = CCS_SETPOINT_FREQUENCY;
   parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].operation                      = OPERATION_READ;
   parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].physic                         = PHYSIC_FREQUENCY;
   parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_SETPOINT_FREQUENCY - CCS_BEGIN].value.float_t                  = 0.0;
@@ -11537,7 +11537,7 @@ void Ccs::initParameters()
   // Состояние режима оптимизация напряжения
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STATE - CCS_BEGIN].id                        = CCS_RGM_OPTIM_VOLTAGE_STATE;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STATE - CCS_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_STATE - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_STATE - CCS_BEGIN].operation                 = OPERATION_READ;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STATE - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STATE - CCS_BEGIN].validity                  = VALIDITY_OK;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_STATE - CCS_BEGIN].value.float_t             = 0.0;
@@ -11605,7 +11605,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_MOTOR_CURRENT_SETPOINT_RESET - CCS_BEGIN].max         = 1.0;
   parameters_[CCS_CMD_PROT_MOTOR_CURRENT_SETPOINT_RESET - CCS_BEGIN].discret     = 1;
   parameters_[CCS_CMD_PROT_MOTOR_CURRENT_SETPOINT_RESET - CCS_BEGIN].def         = 0.0;
-  parameters_[CCS_CMD_PROT_MOTOR_CURRENT_SETPOINT_RESET - CCS_BEGIN].code        = 13;
+  parameters_[CCS_CMD_PROT_MOTOR_CURRENT_SETPOINT_RESET - CCS_BEGIN].code        = 106;
   // Перегрев вх.фильтра
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_MODE - CCS_BEGIN].id          = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_MODE;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_MODE - CCS_BEGIN].access      = ACCESS_OPERATOR;
@@ -11621,7 +11621,7 @@ void Ccs::initParameters()
   // Перегрев вх.фильтра.Запрещ.парам.
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PREVENT - CCS_BEGIN].id       = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PREVENT;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PREVENT - CCS_BEGIN].access   = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PREVENT - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PREVENT - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PREVENT - CCS_BEGIN].physic   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PREVENT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PREVENT - CCS_BEGIN].value.float_t = 0.0;
@@ -11633,7 +11633,7 @@ void Ccs::initParameters()
   // Перегрев вх.фильтра. Пуск.время
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY - CCS_BEGIN].id   = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY - CCS_BEGIN].physic = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_ACTIV_DELAY - CCS_BEGIN].value.float_t = 0.0;
@@ -11645,7 +11645,7 @@ void Ccs::initParameters()
   // Перегрев вх.фильтра. Время
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].id    = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].physic = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_DELAY - CCS_BEGIN].value.float_t = 0.0;
@@ -11693,7 +11693,7 @@ void Ccs::initParameters()
   // Перегрев вх.фильтра. Уст.остан.
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_SETPOINT - CCS_BEGIN].id = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_SETPOINT;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_SETPOINT - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_SETPOINT - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_SETPOINT - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_SETPOINT - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TRIP_SETPOINT - CCS_BEGIN].value.float_t = 0.0;
@@ -11705,7 +11705,7 @@ void Ccs::initParameters()
   // Перегрев вх.фильтра. Уст.пуска
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_SETPOINT - CCS_BEGIN].id = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_SETPOINT;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_SETPOINT - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_SETPOINT - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_SETPOINT - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_SETPOINT - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_SETPOINT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_SETPOINT - CCS_BEGIN].value.float_t = 0.0;
@@ -11717,7 +11717,7 @@ void Ccs::initParameters()
   // Перегрев вх.фильтра. Параметр
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PARAMETER - CCS_BEGIN].id     = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PARAMETER;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PARAMETER - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PARAMETER - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PARAMETER - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PARAMETER - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PARAMETER - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_PARAMETER - CCS_BEGIN].value.float_t = 0.0;
@@ -11729,7 +11729,7 @@ void Ccs::initParameters()
   // Перегрев вх.фильтра. Флаг АПВ
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FLAG - CCS_BEGIN].id  = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FLAG;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FLAG - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FLAG - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FLAG - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FLAG - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FLAG - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -11741,7 +11741,7 @@ void Ccs::initParameters()
   // Перегрев вх.фильтра Состояние
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_STATE - CCS_BEGIN].id         = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_STATE;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_STATE - CCS_BEGIN].access     = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_STATE - CCS_BEGIN].operation  = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_STATE - CCS_BEGIN].operation  = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_STATE - CCS_BEGIN].physic     = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_STATE - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_STATE - CCS_BEGIN].value.float_t = 0.0;
@@ -11753,7 +11753,7 @@ void Ccs::initParameters()
   // Перегрев вх.фильтра Таймер
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TIME - CCS_BEGIN].id          = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TIME;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TIME - CCS_BEGIN].access      = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TIME - CCS_BEGIN].operation   = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TIME - CCS_BEGIN].operation   = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TIME - CCS_BEGIN].physic      = PHYSIC_TIME;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TIME - CCS_BEGIN].validity    = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_TIME - CCS_BEGIN].value.float_t = 0.0;
@@ -11765,7 +11765,7 @@ void Ccs::initParameters()
   // Перегрев вх.фильтра Время АПВ
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_COUNT - CCS_BEGIN].id = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_COUNT;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_COUNT - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_COUNT - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_COUNT - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_COUNT - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_COUNT - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_COUNT - CCS_BEGIN].value.float_t = 0.0;
@@ -11777,7 +11777,7 @@ void Ccs::initParameters()
   // Перегрев вх.фильтра Счёт. АПВ
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FIRST_TIME - CCS_BEGIN].id = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FIRST_TIME;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FIRST_TIME - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FIRST_TIME - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FIRST_TIME - CCS_BEGIN].physic = PHYSIC_DATE_TIME;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FIRST_TIME - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_FIRST_TIME - CCS_BEGIN].value.float_t = 0.0;
@@ -11789,7 +11789,7 @@ void Ccs::initParameters()
   // Перегрев вх.фильтра. Флаг срабатывания
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_DELAY_FLAG - CCS_BEGIN].id    = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_DELAY_FLAG;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_DELAY_FLAG - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_DELAY_FLAG - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_DELAY_FLAG - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_DELAY_FLAG - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_DELAY_FLAG - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_DELAY_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -11801,7 +11801,7 @@ void Ccs::initParameters()
   // Перегрев вх.фильтра. Флаг блок.
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_BLOCK_FLAG - CCS_BEGIN].id    = CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_BLOCK_FLAG;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_BLOCK_FLAG - CCS_BEGIN].access = ACCESS_OPERATOR;
-  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_BLOCK_FLAG - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_BLOCK_FLAG - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_BLOCK_FLAG - CCS_BEGIN].physic = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_BLOCK_FLAG - CCS_BEGIN].validity = VALIDITY_OK;
   parameters_[CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_BLOCK_FLAG - CCS_BEGIN].value.float_t = 0.0;
@@ -11825,7 +11825,7 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_TYPE - CCS_BEGIN].id                   = CCS_RGM_RUN_AUTO_ADAPTATION_TYPE;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_TYPE - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_TYPE - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_TYPE - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_TYPE - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_TYPE - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_TYPE - CCS_BEGIN].value.float_t        = 0.0;
@@ -11844,7 +11844,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].min = 0.0001;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].max = 0.3;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].discret = 10000;
-  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].def = 0.0;
+  parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].def = 0.0001;
   parameters_[CCS_RGM_RUN_AUTO_ADAPTATION_STATOR_RESISTANCE_DELTA - CCS_BEGIN].code = 0;
   // СЭ. Качество связи
   parameters_[CCS_EM_CONNECTION_PERCENT - CCS_BEGIN].id                          = CCS_EM_CONNECTION_PERCENT;
@@ -11900,7 +11900,7 @@ void Ccs::initParameters()
   parameters_[CCS_EM_CONNECTION_PACKAGE_CRC - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_EM_CONNECTION_PACKAGE_CRC - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_EM_CONNECTION_PACKAGE_CRC - CCS_BEGIN].validity                = VALIDITY_ERROR;
-  parameters_[CCS_EM_CONNECTION_PACKAGE_CRC - CCS_BEGIN].value.float_t           = 0;
+  parameters_[CCS_EM_CONNECTION_PACKAGE_CRC - CCS_BEGIN].value.float_t           = 0.0;
   parameters_[CCS_EM_CONNECTION_PACKAGE_CRC - CCS_BEGIN].min                     = 0.0;
   parameters_[CCS_EM_CONNECTION_PACKAGE_CRC - CCS_BEGIN].max                     = 999999999.9;
   parameters_[CCS_EM_CONNECTION_PACKAGE_CRC - CCS_BEGIN].discret                 = 1;
@@ -11912,7 +11912,7 @@ void Ccs::initParameters()
   parameters_[CCS_EM_CONNECTION_PACKAGE_ERR - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_EM_CONNECTION_PACKAGE_ERR - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_EM_CONNECTION_PACKAGE_ERR - CCS_BEGIN].validity                = VALIDITY_ERROR;
-  parameters_[CCS_EM_CONNECTION_PACKAGE_ERR - CCS_BEGIN].value.float_t           = 0;
+  parameters_[CCS_EM_CONNECTION_PACKAGE_ERR - CCS_BEGIN].value.float_t           = 0.0;
   parameters_[CCS_EM_CONNECTION_PACKAGE_ERR - CCS_BEGIN].min                     = 0.0;
   parameters_[CCS_EM_CONNECTION_PACKAGE_ERR - CCS_BEGIN].max                     = 999999999.9;
   parameters_[CCS_EM_CONNECTION_PACKAGE_ERR - CCS_BEGIN].discret                 = 1;
@@ -11924,7 +11924,7 @@ void Ccs::initParameters()
   parameters_[CCS_EM_CONNECTION_PACKAGE_LOST - CCS_BEGIN].operation              = OPERATION_READ;
   parameters_[CCS_EM_CONNECTION_PACKAGE_LOST - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
   parameters_[CCS_EM_CONNECTION_PACKAGE_LOST - CCS_BEGIN].validity               = VALIDITY_ERROR;
-  parameters_[CCS_EM_CONNECTION_PACKAGE_LOST - CCS_BEGIN].value.float_t          = 0;
+  parameters_[CCS_EM_CONNECTION_PACKAGE_LOST - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_EM_CONNECTION_PACKAGE_LOST - CCS_BEGIN].min                    = 0.0;
   parameters_[CCS_EM_CONNECTION_PACKAGE_LOST - CCS_BEGIN].max                    = 999999999.9;
   parameters_[CCS_EM_CONNECTION_PACKAGE_LOST - CCS_BEGIN].discret                = 1;
@@ -11933,10 +11933,10 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_EM_CONNECTION_SPEED - CCS_BEGIN].id                            = CCS_EM_CONNECTION_SPEED;
   parameters_[CCS_EM_CONNECTION_SPEED - CCS_BEGIN].access                        = ACCESS_OPERATOR;
-  parameters_[CCS_EM_CONNECTION_SPEED - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_EM_CONNECTION_SPEED - CCS_BEGIN].operation                     = OPERATION_READ;
   parameters_[CCS_EM_CONNECTION_SPEED - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
   parameters_[CCS_EM_CONNECTION_SPEED - CCS_BEGIN].validity                      = VALIDITY_ERROR;
-  parameters_[CCS_EM_CONNECTION_SPEED - CCS_BEGIN].value.float_t                 = 0;
+  parameters_[CCS_EM_CONNECTION_SPEED - CCS_BEGIN].value.float_t                 = 115200.0;
   parameters_[CCS_EM_CONNECTION_SPEED - CCS_BEGIN].min                           = 9600.0;
   parameters_[CCS_EM_CONNECTION_SPEED - CCS_BEGIN].max                           = 115200.0;
   parameters_[CCS_EM_CONNECTION_SPEED - CCS_BEGIN].discret                       = 1;
@@ -11945,10 +11945,10 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_EM_CONNECTION_ADDRESS - CCS_BEGIN].id                          = CCS_EM_CONNECTION_ADDRESS;
   parameters_[CCS_EM_CONNECTION_ADDRESS - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_EM_CONNECTION_ADDRESS - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_EM_CONNECTION_ADDRESS - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_EM_CONNECTION_ADDRESS - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
   parameters_[CCS_EM_CONNECTION_ADDRESS - CCS_BEGIN].validity                    = VALIDITY_ERROR;
-  parameters_[CCS_EM_CONNECTION_ADDRESS - CCS_BEGIN].value.float_t               = 0;
+  parameters_[CCS_EM_CONNECTION_ADDRESS - CCS_BEGIN].value.float_t               = 1.0;
   parameters_[CCS_EM_CONNECTION_ADDRESS - CCS_BEGIN].min                         = 1.0;
   parameters_[CCS_EM_CONNECTION_ADDRESS - CCS_BEGIN].max                         = 253.0;
   parameters_[CCS_EM_CONNECTION_ADDRESS - CCS_BEGIN].discret                     = 1;
@@ -11957,10 +11957,10 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_EM_CONNECTION_PARITY - CCS_BEGIN].id                           = CCS_EM_CONNECTION_PARITY;
   parameters_[CCS_EM_CONNECTION_PARITY - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_EM_CONNECTION_PARITY - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_EM_CONNECTION_PARITY - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_EM_CONNECTION_PARITY - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_EM_CONNECTION_PARITY - CCS_BEGIN].validity                     = VALIDITY_ERROR;
-  parameters_[CCS_EM_CONNECTION_PARITY - CCS_BEGIN].value.float_t                = 0;
+  parameters_[CCS_EM_CONNECTION_PARITY - CCS_BEGIN].value.float_t                = 0.0;
   parameters_[CCS_EM_CONNECTION_PARITY - CCS_BEGIN].min                          = 0.0;
   parameters_[CCS_EM_CONNECTION_PARITY - CCS_BEGIN].max                          = 5.0;
   parameters_[CCS_EM_CONNECTION_PARITY - CCS_BEGIN].discret                      = 1;
@@ -11969,10 +11969,10 @@ void Ccs::initParameters()
   // 
   parameters_[CCS_EM_CONNECTION_STOP_BIT - CCS_BEGIN].id                         = CCS_EM_CONNECTION_STOP_BIT;
   parameters_[CCS_EM_CONNECTION_STOP_BIT - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_EM_CONNECTION_STOP_BIT - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_EM_CONNECTION_STOP_BIT - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_EM_CONNECTION_STOP_BIT - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_EM_CONNECTION_STOP_BIT - CCS_BEGIN].validity                   = VALIDITY_ERROR;
-  parameters_[CCS_EM_CONNECTION_STOP_BIT - CCS_BEGIN].value.float_t              = 0;
+  parameters_[CCS_EM_CONNECTION_STOP_BIT - CCS_BEGIN].value.float_t              = 1.0;
   parameters_[CCS_EM_CONNECTION_STOP_BIT - CCS_BEGIN].min                        = 0.0;
   parameters_[CCS_EM_CONNECTION_STOP_BIT - CCS_BEGIN].max                        = 2.0;
   parameters_[CCS_EM_CONNECTION_STOP_BIT - CCS_BEGIN].discret                    = 1;
@@ -11993,7 +11993,7 @@ void Ccs::initParameters()
   // Раскачка. Сохраненная уставка частоты до раскачки
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_FREQ - CCS_BEGIN].id                    = CCS_RGM_RUN_SWING_SETPOINT_FREQ;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_FREQ - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_FREQ - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_SETPOINT_FREQ - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_FREQ - CCS_BEGIN].physic                = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_FREQ - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_FREQ - CCS_BEGIN].value.float_t         = 0.0;
@@ -12005,7 +12005,7 @@ void Ccs::initParameters()
   // Раскачка. Сохранённая уставка минимальной частоты
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].id            = CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].physic        = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].value.float_t = 0.0;
@@ -12017,7 +12017,7 @@ void Ccs::initParameters()
   // Раскачка. Сохранённая уставка времени разгона
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_UP - CCS_BEGIN].id                 = CCS_RGM_RUN_SWING_SETPOINT_TIME_UP;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_UP - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_UP - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_UP - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_UP - CCS_BEGIN].physic             = PHYSIC_TIME;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_UP - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_TIME_UP - CCS_BEGIN].value.float_t      = 0.0;
@@ -12029,7 +12029,7 @@ void Ccs::initParameters()
   // Раскачка. Сохранённое направления вращения
   parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].id                    = CCS_RGM_RUN_SWING_ROTATION_SAVE;
   parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SWING_ROTATION_SAVE - CCS_BEGIN].value.float_t         = 0.0;
@@ -12041,7 +12041,7 @@ void Ccs::initParameters()
   // Раскачка. Сохранённая уставка направления вращения
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_ROTATION - CCS_BEGIN].id                = CCS_RGM_RUN_SWING_SETPOINT_ROTATION;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_ROTATION - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_ROTATION - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_SETPOINT_ROTATION - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_ROTATION - CCS_BEGIN].physic            = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_ROTATION - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_ROTATION - CCS_BEGIN].value.float_t     = 0.0;
@@ -12053,7 +12053,7 @@ void Ccs::initParameters()
   // Раскачка. Сохранённая уставка характеристики U/F 1
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_U1 - CCS_BEGIN].id                      = CCS_RGM_RUN_SWING_SETPOINT_U1;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_U1 - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_U1 - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_SETPOINT_U1 - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_U1 - CCS_BEGIN].physic                  = PHYSIC_VOLTAGE;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_U1 - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_U1 - CCS_BEGIN].value.float_t           = 0.0;
@@ -12065,7 +12065,7 @@ void Ccs::initParameters()
   // Раскачка. Сохранённая уставка характеристики U/F 1
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_U2 - CCS_BEGIN].id                      = CCS_RGM_RUN_SWING_SETPOINT_U2;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_U2 - CCS_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SWING_SETPOINT_U2 - CCS_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_SETPOINT_U2 - CCS_BEGIN].operation               = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_U2 - CCS_BEGIN].physic                  = PHYSIC_VOLTAGE;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_U2 - CCS_BEGIN].validity                = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_U2 - CCS_BEGIN].value.float_t           = 0.0;
@@ -12077,7 +12077,7 @@ void Ccs::initParameters()
   // Подхват. Сохраненная уставка частоты до подхвата
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].id                   = CCS_RGM_RUN_PICKUP_SETPOINT_FREQ;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].access               = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].operation            = OPERATION_READ;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].physic               = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].validity             = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_FREQ - CCS_BEGIN].value.float_t        = 0.0;
@@ -12089,7 +12089,7 @@ void Ccs::initParameters()
   // Подхват. Сохранённая уставка минимальной частоты
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].id           = CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].access       = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].operation    = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].operation    = OPERATION_READ;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].physic       = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].validity     = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_LOW_LIM_FREQ - CCS_BEGIN].value.float_t = 0.0;
@@ -12101,7 +12101,7 @@ void Ccs::initParameters()
   // Подхват. Сохранённая уставка времени разгона
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].id                = CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].operation         = OPERATION_READ;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].physic            = PHYSIC_TIME;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_TIME_UP - CCS_BEGIN].value.float_t     = 0.0;
@@ -12113,7 +12113,7 @@ void Ccs::initParameters()
   // Подхват. Сохранённая уставка времени торможения
   parameters_[CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN - CCS_BEGIN].id                 = CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN;
   parameters_[CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN - CCS_BEGIN].physic             = PHYSIC_TIME;
   parameters_[CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PICKUP_TIME_WAIT_BEGIN - CCS_BEGIN].value.float_t      = 0.0;
@@ -12125,7 +12125,7 @@ void Ccs::initParameters()
   // Подхват. Сохранённая уставка направления вращения
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].id               = CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].access           = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].operation        = OPERATION_READ;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].physic           = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].validity         = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PICKUP_SETPOINT_ROTATION - CCS_BEGIN].value.float_t    = 0.0;
@@ -12161,7 +12161,7 @@ void Ccs::initParameters()
   // Состояние автомата режима пуска "Пропуск резонансных частот"
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].id                    = CCS_RGM_RUN_SKIP_RESONANT_STATE;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].operation             = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_STATE - CCS_BEGIN].value.float_t         = 0.0;
@@ -12205,11 +12205,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].max                    = 15.0;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].discret                = 10;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].def                    = 10.0;
-  parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].code                   = 0;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_TEMP - CCS_BEGIN].code                   = 13;
   // Сохраненная уставка частоты до "Пропуск резонансных частот"
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].id            = CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].access        = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].operation     = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].physic        = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].validity      = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_FREQ - CCS_BEGIN].value.float_t = 0.0;
@@ -12221,7 +12221,7 @@ void Ccs::initParameters()
   // Сохранённая уставка времени разгона до "Пропуск резонансных частот"
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].id         = CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].access     = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].operation  = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].operation  = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].physic     = PHYSIC_TIME;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].validity   = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_TIME_UP - CCS_BEGIN].value.float_t = 0.0;
@@ -12233,7 +12233,7 @@ void Ccs::initParameters()
   // Сохраненная уставка частоты до "Пропуск резонансных частот"
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].id        = CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].access    = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].operation = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].operation = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].physic    = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].validity  = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SKIP_RESONANT_SETPOINT_MIN_FREQ - CCS_BEGIN].value.float_t = 0.0;
@@ -12257,7 +12257,7 @@ void Ccs::initParameters()
   // Состояние автомата режима пуска "Пуск с синхронизацией"
   parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].id                         = CCS_RGM_RUN_SYNCHRON_STATE;
   parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].operation                  = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].validity                   = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SYNCHRON_STATE - CCS_BEGIN].value.float_t              = 0.0;
@@ -12293,7 +12293,7 @@ void Ccs::initParameters()
   // Сохраненная уставка частоты "Пуска с синхронизацией"
   parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].id                 = CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ;
   parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].access             = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].operation          = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].physic             = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].validity           = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_FREQ - CCS_BEGIN].value.float_t      = 0.0;
@@ -12305,7 +12305,7 @@ void Ccs::initParameters()
   // Сохраненная уставка минимальной частоты "Пуска с синхронизацией"
   parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].id             = CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ;
   parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].access         = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].operation      = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].operation      = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].physic         = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].validity       = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SYNCHRON_SETPOINT_MIN_FREQ - CCS_BEGIN].value.float_t  = 0.0;
@@ -12329,7 +12329,7 @@ void Ccs::initParameters()
   // Текущее количество толчков
   parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].id                           = CCS_RGM_RUN_PUSH_COUNTER;
   parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_COUNTER - CCS_BEGIN].value.float_t                = 0.0;
@@ -12341,7 +12341,7 @@ void Ccs::initParameters()
   // Текущее значение таймера-счётчика
   parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].id                             = CCS_RGM_RUN_PUSH_TIMER;
   parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].access                         = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].operation                      = OPERATION_READ;
   parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_PUSH_TIMER - CCS_BEGIN].value.float_t                  = 20.0;
@@ -12353,7 +12353,7 @@ void Ccs::initParameters()
   // Количество текущих толчков в режиме пуска "Раскачка"
   parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].id                          = CCS_RGM_RUN_SWING_COUNTER;
   parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].operation                   = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].operation                   = OPERATION_READ;
   parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
   parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_RGM_RUN_SWING_COUNTER - CCS_BEGIN].value.float_t               = 0.0;
@@ -12377,7 +12377,7 @@ void Ccs::initParameters()
   // Команда применения профиля ЧРП
   parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].id                           = CCS_CMD_TYPE_PROFILE_VSD;
   parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].access                       = ACCESS_OPERATOR;
-  parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].operation                    = OPERATION_READ;
   parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].physic                       = PHYSIC_NUMERIC;
   parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].validity                     = VALIDITY_OK;
   parameters_[CCS_CMD_TYPE_PROFILE_VSD - CCS_BEGIN].value.float_t                = 0.0;
@@ -12620,11 +12620,11 @@ void Ccs::initParameters()
   parameters_[CCS_EMF_MOTOR - CCS_BEGIN].operation                               = OPERATION_WRITE;
   parameters_[CCS_EMF_MOTOR - CCS_BEGIN].physic                                  = PHYSIC_EMF_SPECIFIC;
   parameters_[CCS_EMF_MOTOR - CCS_BEGIN].validity                                = VALIDITY_OK;
-  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].value.float_t                           = 0.0;
+  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].value.float_t                           = 0.001;
   parameters_[CCS_EMF_MOTOR - CCS_BEGIN].min                                     = 0.001;
   parameters_[CCS_EMF_MOTOR - CCS_BEGIN].max                                     = 10.0;
   parameters_[CCS_EMF_MOTOR - CCS_BEGIN].discret                                 = 1000;
-  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].def                                     = 0.0;
+  parameters_[CCS_EMF_MOTOR - CCS_BEGIN].def                                     = 0.001;
   parameters_[CCS_EMF_MOTOR - CCS_BEGIN].code                                    = 13;
   // Байпасные контакторы
   parameters_[CCS_BYPASS_CONTACTORS - CCS_BEGIN].id                              = CCS_BYPASS_CONTACTORS;
@@ -12902,5 +12902,65 @@ void Ccs::initParameters()
   parameters_[CCS_SU_MAX_CURRENT - CCS_BEGIN].discret                            = 1;
   parameters_[CCS_SU_MAX_CURRENT - CCS_BEGIN].def                                = 160.0;
   parameters_[CCS_SU_MAX_CURRENT - CCS_BEGIN].code                               = 13;
+  // Конфигурации. Сохранение конфигурации в профиль
+  parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].id                              = CCS_CMD_SAVE_SETPOINT;
+  parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].value.float_t                   = 0.0;
+  parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].min                             = 0.0;
+  parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].max                             = 5.0;
+  parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].discret                         = 1;
+  parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].def                             = 0.0;
+  parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].code                            = 0;
+  // Конфигурации. Загрузка конфигурации из профиля
+  parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].id                              = CCS_CMD_LOAD_SETPOINT;
+  parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].value.float_t                   = 0.0;
+  parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].min                             = 0.0;
+  parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].max                             = 5.0;
+  parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].discret                         = 1;
+  parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].def                             = 0.0;
+  parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].code                            = 0;
+  // Конфигурации. Профиль уставок по умолчанию
+  parameters_[CCS_PROFILE_DEFAULT_SETPOINT - CCS_BEGIN].id                       = CCS_PROFILE_DEFAULT_SETPOINT;
+  parameters_[CCS_PROFILE_DEFAULT_SETPOINT - CCS_BEGIN].access                   = ACCESS_OPERATOR;
+  parameters_[CCS_PROFILE_DEFAULT_SETPOINT - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_PROFILE_DEFAULT_SETPOINT - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
+  parameters_[CCS_PROFILE_DEFAULT_SETPOINT - CCS_BEGIN].validity                 = VALIDITY_OK;
+  parameters_[CCS_PROFILE_DEFAULT_SETPOINT - CCS_BEGIN].value.float_t            = 0.0;
+  parameters_[CCS_PROFILE_DEFAULT_SETPOINT - CCS_BEGIN].min                      = 0.0;
+  parameters_[CCS_PROFILE_DEFAULT_SETPOINT - CCS_BEGIN].max                      = 6.0;
+  parameters_[CCS_PROFILE_DEFAULT_SETPOINT - CCS_BEGIN].discret                  = 1;
+  parameters_[CCS_PROFILE_DEFAULT_SETPOINT - CCS_BEGIN].def                      = 0.0;
+  parameters_[CCS_PROFILE_DEFAULT_SETPOINT - CCS_BEGIN].code                     = 0;
+  // Конфигурации. Сброс всех уставок
+  parameters_[CCS_CMD_ALL_SETPOINT_RESET - CCS_BEGIN].id                         = CCS_CMD_ALL_SETPOINT_RESET;
+  parameters_[CCS_CMD_ALL_SETPOINT_RESET - CCS_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_ALL_SETPOINT_RESET - CCS_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[CCS_CMD_ALL_SETPOINT_RESET - CCS_BEGIN].physic                     = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_ALL_SETPOINT_RESET - CCS_BEGIN].validity                   = VALIDITY_OK;
+  parameters_[CCS_CMD_ALL_SETPOINT_RESET - CCS_BEGIN].value.float_t              = 0.0;
+  parameters_[CCS_CMD_ALL_SETPOINT_RESET - CCS_BEGIN].min                        = 0.0;
+  parameters_[CCS_CMD_ALL_SETPOINT_RESET - CCS_BEGIN].max                        = 1.0;
+  parameters_[CCS_CMD_ALL_SETPOINT_RESET - CCS_BEGIN].discret                    = 1;
+  parameters_[CCS_CMD_ALL_SETPOINT_RESET - CCS_BEGIN].def                        = 0.0;
+  parameters_[CCS_CMD_ALL_SETPOINT_RESET - CCS_BEGIN].code                       = 106;
+  // Биты сохранённых профилей
+  parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].id                                  = CCS_SAVE_SETPOINT;
+  parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].access                              = ACCESS_OPERATOR;
+  parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].operation                           = OPERATION_READ;
+  parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].physic                              = PHYSIC_NUMERIC;
+  parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].validity                            = VALIDITY_OK;
+  parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].value.float_t                       = 0.0;
+  parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].min                                 = 0.0;
+  parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].max                                 = 31.0;
+  parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].discret                             = 1;
+  parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].def                                 = 0.0;
+  parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].code                                = 0;
 }
 
