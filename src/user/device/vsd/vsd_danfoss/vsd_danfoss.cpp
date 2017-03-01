@@ -134,6 +134,7 @@ void VsdDanfoss::setLimitsCcsParameters()
 {
   parameters.setMin(CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT , getMax(VSD_CURRENT_LIMIT));
   parameters.setMax(CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT , getMax(VSD_CURRENT_LIMIT));
+  parameters.setMax(CCS_BASE_FREQUENCY, getMaxBaseFrequency());
 }
 
 // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
@@ -146,10 +147,9 @@ int VsdDanfoss::setMotorType(float value)
   return err_r;
 }
 
-int VsdDanfoss::setMotorTypeProfile()
+int VsdDanfoss::getMotorTypeProfile()
 {
   int16_t profile = -1;                               // Профиль неизвестен
-
   if (parameters.get(CCS_MOTOR_TYPE)) {               // Если вентильный двигатель
     for (uint16_t i = 1; i < QUNTITY_PROFILES_MOTOR; i++) {
       if ((parameters.get(VSD_MOTOR_CONTROL) == profileMotor[i][1]) &&
@@ -162,12 +162,17 @@ int VsdDanfoss::setMotorTypeProfile()
   else {
     profile = 0;
   }
+  return profile;
+}
 
+int VsdDanfoss::setMotorTypeProfile()
+{
+  int16_t profile = getMotorTypeProfile();
   if (profile >= 0) {
     writeToDevice(VSD_MOTOR_CONTROL,            profileMotor[profile][3]);   // 1-01
     writeToDevice(VSD_MOTOR_TYPE,               profileMotor[profile][4]);   // 1-10
     writeToDevice(VSD_MAX_OUTPUT_FREQUENCY,     profileMotor[profile][32]);  // 4-19
-    ksu.setMaxBaseFrequency(profileMotor[profile][34]);
+    ksu.setMaxBaseFrequency();
     if (profileMotor[profile][33] > parameters.get(VSD_HIGH_LIM_SPEED_MOTOR))
       writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR,   profileMotor[profile][34]);  // 4-14
     writeToDevice(VSD_LOW_LIM_SPEED_MOTOR,      profileMotor[profile][33]);  // 4-12
@@ -1344,6 +1349,17 @@ void VsdDanfoss::getSwitchFreqCode(float value)
   }
   setValue(VSD_SWITCHING_FREQUENCY_CODE, value);
   parameters.set(VSD_SWITCHING_FREQUENCY, freq);
+}
+
+float VsdDanfoss::getMaxBaseFrequency()
+{
+  int profile = getMotorTypeProfile();
+  if (profile > 0) {
+    return profileMotor[profile][34];
+  }
+  else {
+    return Vsd::getMaxBaseFrequency();
+  }
 }
 
 uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)

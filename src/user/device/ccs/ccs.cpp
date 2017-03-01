@@ -132,6 +132,7 @@ void Ccs::initTask()
   if (getValueUint32(CCS_LAST_STOP_DATE_TIME) == 0)
     setValue(CCS_LAST_STOP_DATE_TIME, getTime());
 
+
   intRestartCount();
 }
 
@@ -2295,9 +2296,9 @@ void Ccs::resetCmd(uint16_t id)
   setValue(id, 0.0);
 }
 
-void Ccs::setMaxBaseFrequency(float freq)
+void Ccs::setMaxBaseFrequency()
 {
-  setMax(CCS_BASE_FREQUENCY, freq);
+  setMax(CCS_BASE_FREQUENCY, vsd->getMaxBaseFrequency());
 }
 
 void Ccs::setError(int error)

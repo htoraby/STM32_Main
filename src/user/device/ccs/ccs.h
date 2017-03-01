@@ -439,7 +439,7 @@ public:
    * \brief Метод задания максимального значения параметра "Максимальная рабочая частота"
    * Задаётся в зависимости от типа двигателя и профиля
    */
-  void setMaxBaseFrequency(float freq);
+  void setMaxBaseFrequency();
 
   /*!
    * \brief calcTest
