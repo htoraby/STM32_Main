@@ -1,12 +1,26 @@
 #include "parameters.h"
 #include "user_main.h"
 #include "gpio.h"
+#include "usb_host.h"
+#include "update.h"
 
 #include <string.h>
 
 #define MAX_QUEUE_SIZE_PARAMS 100
+#define BUFFER_SIZE 512*8
+#define CRC_PARAMS_SIZE 8*4
+
+#define CONFIG_DIR USB_DISK ":ksu_data"
+#define FILE_MASK "%02d%02d%02d_%02d%02d%02d.cfg"
+
+#if USE_EXT_MEM
+static uint8_t buffer[BUFFER_SIZE] __attribute__((section(".extmem")));
+#else
+static uint8_t buffer[BUFFER_SIZE];
+#endif
 
 Parameters::Parameters()
+  : isBanSaveConfig_(false)
 {
 
 }
@@ -50,6 +64,9 @@ void Parameters::task()
   static int time = 0;
   while (1) {
     osDelay(1);
+
+    if (isBanSaveConfig_)
+      continue;
 
     if ((osSemaphoreWait(semaphoreId_, 0) != osEventTimeout) || ksu.isPowerOff()) {
       time = 0;
@@ -380,18 +397,27 @@ void Parameters::setDelay(uint16_t id, uint32_t value, EventType eventType)
 
 void Parameters::saveConfig()
 {
-  int profile = parameters.get(CCS_CMD_SAVE_SETPOINT);
-  if ((profile < 1) || (profile > 5))
-    return;
-
   int time = HAL_GetTick();
+  int profile = parameters.get(CCS_CMD_SAVE_SETPOINT);
   logEvent.add(OtherCode, AutoType, SaveConfigId, 0, profile);
 
-  uint32_t address;
+  if ((profile >= 1) && (profile <= 5))
+    saveConfigProfile(profile);
+  else if (profile == 6)
+    saveConfigUsb();
 
+  logDebug.add(WarningMsg, "Parameters::saveConfig() Save config (%d) - completed %d ms",
+               profile, HAL_GetTick() - time);
+  parameters.set(CCS_CMD_SAVE_SETPOINT, 0.0);
+}
+
+void Parameters::saveConfigProfile(int profile)
+{
   uint32_t save = parameters.getU32(CCS_SAVE_SETPOINT);
   save |= (1 << (profile-1));
   parameters.set(CCS_SAVE_SETPOINT, save);
+
+  uint32_t address;
   switch (profile) {
   case 1: address = AddrSaveConfig1; break;
   case 2: address = AddrSaveConfig2; break;
@@ -403,22 +429,162 @@ void Parameters::saveConfig()
   vsd->saveConfig(address);
   tms->saveConfig(address);
   em->saveConfig(address);
+}
 
-  parameters.set(CCS_CMD_SAVE_SETPOINT, 0.0);
-  logDebug.add(WarningMsg, "Parameters::saveConfig() Save config completed %d ms", HAL_GetTick() - time);
+void Parameters::getFilePath(char *path)
+{
+  char buf[_MAX_LFN + 1];
+  char *fileName = buf;
+
+  time_t time = parameters.getU32(CCS_DATE_TIME);
+  tm dateTime = *localtime(&time);
+  if (dateTime.tm_year > 100)
+    dateTime.tm_year = dateTime.tm_year - 100;
+  else
+    dateTime.tm_year = 0;
+
+  sprintf(fileName, FILE_MASK, dateTime.tm_year, dateTime.tm_mon + 1, dateTime.tm_mday, dateTime.tm_hour, dateTime.tm_min, dateTime.tm_sec);
+  convert_utf8_to_windows1251(fileName, fileName, _MAX_LFN + 1);
+
+  strcat(path, "\\");
+  strcat(path, fileName);
+}
+
+bool Parameters::saveConfigUsb()
+{
+  startSave();
+  osDelay(100);
+
+  uint32_t timeReady = 0;
+  while(!usbIsReady()) {
+    osDelay(10);
+    timeReady += 10;
+    if (timeReady > 5000) {
+      ksu.setError(NoConnectionUsbErr);
+      return false;
+    }
+  }
+
+  FRESULT result;
+  FIL file;
+  UINT bytesWritten;
+  char buf[_MAX_LFN + 1];
+  char *fileName = buf;
+
+  result = f_mkdir(CONFIG_DIR);
+  if ((result == FR_OK) || (result == FR_EXIST)) {
+    strcpy(fileName, CONFIG_DIR);
+    getFilePath(fileName);
+
+    if (f_open(&file, fileName, FA_CREATE_ALWAYS | FA_WRITE) == FR_OK) {
+      uint16_t calcCrc = 0xFFFF;
+      uint32_t addr = 0;
+      uint32_t size = BUFFER_SIZE;
+
+      CFG_FILE_HEADER header;
+      header.codeProduction = CODE_PRODUCTION;
+      header.codeEquip = CODE_EQUIP;
+      header.subCodeEquip = parameters.get(CCS_TYPE_VSD);
+      header.version = FIRMWARE_VERSION;
+      time_t time = parameters.getU32(CCS_DATE_TIME);
+      tm dateTime = *localtime(&time);
+      if (dateTime.tm_year > 100)
+        dateTime.tm_year = dateTime.tm_year - 100;
+      else
+        dateTime.tm_year = 0;
+      header.date = (toBcd(dateTime.tm_year) << 24) |
+          (toBcd(dateTime.tm_mon + 1) << 16) |
+          (toBcd(dateTime.tm_mday) << 8) |
+          (toBcd(dateTime.tm_hour) & 0xFF);
+      // Размер заголовка + размер всех параметров + размер CRC параметров и их количества + общая CRC
+      header.size = sizeof(header) + PARAMETERS_SIZE + CRC_PARAMS_SIZE + 2;
+
+      result = f_write(&file, (uint8_t*)&header, sizeof(header), &bytesWritten);
+      if ((result != FR_OK) || (sizeof(header) != bytesWritten)) {
+        f_close(&file);
+        ksu.setError(WriteFileUsbErr);
+        return false;
+      }
+      calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
+
+      isBanSaveConfig_ = true;
+      while (usbIsReady()) {
+        StatusType status = framReadData(addr, buffer, size);
+        if (status == StatusError)
+          asm("nop");
+        addr = addr + size;
+        calcCrc = crc16_ibm(buffer, size, calcCrc);
+
+        result = f_write(&file, buffer, size, &bytesWritten);
+        if ((result != FR_OK) || (bytesWritten != size)) {
+          f_close(&file);
+          ksu.setError(WriteFileUsbErr);
+          return false;
+        }
+
+        if (addr >= PARAMETERS_SIZE)
+          break;
+      }
+
+      addr = CcsParamsCountAddrFram;
+      size = CRC_PARAMS_SIZE;
+      StatusType status = framReadData(addr, buffer, size);
+      if (status == StatusError)
+        asm("nop");
+      calcCrc = crc16_ibm(buffer, size, calcCrc);
+
+      result = f_write(&file, buffer, size, &bytesWritten);
+      if ((result != FR_OK) || (bytesWritten != size)) {
+        f_close(&file);
+        ksu.setError(WriteFileUsbErr);
+        return false;
+      }
+
+      isBanSaveConfig_ = false;
+
+      result = f_write(&file, (uint8_t*)&calcCrc, sizeof(calcCrc), &bytesWritten);
+      if ((result != FR_OK) || (sizeof(calcCrc) != bytesWritten)) {
+        f_close(&file);
+        ksu.setError(WriteFileUsbErr);
+        return false;
+      }
+
+      result = f_close(&file);
+      if (result != FR_OK) {
+        ksu.setError(CloseFileUsbErr);
+        return false;
+      }
+    } else {
+      ksu.setError(OpenFileUsbErr);
+      return false;
+    }
+  } else {
+    ksu.setError(MkDirUsbErr);
+    return false;
+  }
+
+  return true;
 }
 
 void Parameters::loadConfig()
 {
-  int profile = parameters.get(CCS_CMD_LOAD_SETPOINT);
-  if ((profile < 1) || (profile > 5))
-    return;
-
   int time = HAL_GetTick();
+  int profile = parameters.get(CCS_CMD_LOAD_SETPOINT);
   logEvent.add(OtherCode, AutoType, LoadConfigId, 0, profile);
 
-  uint32_t address;
+  if ((profile >= 1) && (profile <= 5))
+    loadConfigProfile(profile);
+  else if (profile == 6)
+    loadConfigUsb();
 
+  parameters.set(CCS_CMD_LOAD_SETPOINT, 0.0);
+  logDebug.add(WarningMsg, "Parameters::loadConfig() Load config (%d) - completed %d ms",
+               profile, HAL_GetTick() - time);
+}
+
+void Parameters::loadConfigProfile(int profile)
+{
+  uint32_t address;
   switch (profile) {
   case 1: address = AddrSaveConfig1; break;
   case 2: address = AddrSaveConfig2; break;
@@ -428,9 +594,156 @@ void Parameters::loadConfig()
   }
   ksu.loadConfig(address);
   vsd->loadConfig(address);
+}
 
-  parameters.set(CCS_CMD_LOAD_SETPOINT, 0.0);
-  logDebug.add(WarningMsg, "Parameters::loadConfig() Load config completed %d ms", HAL_GetTick() - time);
+void Parameters::getConfigFile(char *fileName)
+{
+  FRESULT result;
+  DIR dir;
+  FILINFO fileInfo;
+  char *fn;
+#if _USE_LFN
+  static char lfn[_MAX_LFN + 1];
+  fileInfo.lfname = lfn;
+  fileInfo.lfsize = sizeof(lfn);
+#endif
+
+  result = f_opendir(&dir, CONFIG_DIR);
+  if (result == FR_OK) {
+    while (1) {
+      result = f_readdir(&dir, &fileInfo);
+      if ((result != FR_OK) || (fileInfo.fname[0] == 0))
+        break;
+#if _USE_LFN
+      fn = *fileInfo.lfname ? fileInfo.lfname : fileInfo.fname;
+#else
+      fn = fileInfo.fname;
+#endif
+      if (strstr(fn, ".cfg")) {
+        if (strlen(fileName)) {
+          logDebug.add(WarningMsg, "Parameters::getFile() Multiple configuration files");
+          ksu.setError(MultipleConfigFilesErr);
+          fileName[0] = 0;
+          f_closedir(&dir);
+          return;
+        }
+        strcpy(fileName, CONFIG_DIR);
+        strcat(fileName, "\\");
+        strcat(fileName, fn);
+      }
+    }
+    if (strlen(fileName)) {
+      f_closedir(&dir);
+      return; // файл конфигурации найден
+    }
+    logDebug.add(WarningMsg, "Parameters::getFile() Configuration file not found");
+    ksu.setError(NotFoundConfigFileErr);
+  }
+  else {
+    logDebug.add(WarningMsg, "Parameters::getFile() Failed to open directory");
+    ksu.setError(OpenDirUsbErr);
+  }
+  f_closedir(&dir);
+}
+
+bool Parameters::loadConfigUsb()
+{
+  uint32_t timeReady = 0;
+  while(!usbIsReady()) {
+    osDelay(10);
+    timeReady += 10;
+    if (timeReady > 5000) {
+      ksu.setError(NoConnectionUsbErr);
+      return false;
+    }
+  }
+
+  FRESULT result;
+  FIL file;
+  static char buf[_MAX_LFN + 1];
+  buf[0] = 0;
+  char *fileName = buf;
+  UINT readSize = 0x00;
+  uint16_t calcCrc = 0xFFFF;
+  uint32_t allSize = 0;
+  uint32_t addr = 0;
+
+  getConfigFile(fileName);
+  if (!strlen(fileName)) {
+    return false;
+  }
+
+  // Открытие файла конфигурации
+  result = f_open(&file, fileName, FA_READ);
+  if (result == FR_OK) {
+    // Проверка контрольной суммы
+    while (usbIsReady()) {
+      osDelay(1);
+      result = f_read(&file, buffer, BUFFER_SIZE, &readSize);
+      calcCrc = crc16_ibm(buffer, readSize, calcCrc);
+      if (readSize < BUFFER_SIZE)
+        break;
+    }
+
+    if (!calcCrc) {
+      f_lseek(&file, 0);
+      CFG_FILE_HEADER header;
+      f_read(&file, &header, sizeof(header), &readSize);
+      allSize += readSize;
+      // Проверка заголовка
+      if ((readSize == sizeof(header)) &&
+          (header.size == file.fsize) &&
+          (header.codeProduction == CODE_PRODUCTION) &&
+          (header.codeEquip == CODE_EQUIP) &&
+          (header.subCodeEquip == parameters.get(CCS_TYPE_VSD))) {
+
+        // Чтение и сохранение конфигурации
+        isBanSaveConfig_ = true;
+        while (usbIsReady()) {
+          osDelay(1);
+
+          f_read(&file, buffer, BUFFER_SIZE, &readSize);
+          StatusType status = framWriteData(addr, buffer, readSize);
+          if (status == StatusError)
+            logDebug.add(CriticalMsg, "Parameters::loadConfigUsb() Error save configuration (addr = %d)", addr);
+          addr = addr + readSize;
+
+          allSize += readSize;
+          if (allSize >= (file.fsize - CRC_PARAMS_SIZE - 2))
+            break;
+        }
+
+        f_read(&file, buffer, CRC_PARAMS_SIZE, &readSize);
+        addr = CcsParamsCountAddrFram;
+        StatusType status = framWriteData(addr, buffer, readSize);
+        if (status == StatusError)
+          logDebug.add(CriticalMsg, "Parameters::loadConfigUsb() Error save CRC (addr = %d)", addr);
+
+        f_close(&file);
+        ksu.startReboot(false);
+        return true;
+      }
+      else {
+        logDebug.add(WarningMsg,
+                     "Parameters::loadConfigUsb() Error in anything of configuration file (readSize = %d; size = %d; Production = %d; Equip = %d; %d)",
+                     readSize, header.size, header.codeProduction,
+                     header.codeEquip, header.subCodeEquip);
+        ksu.setError(HeaderConfigFileErr);
+      }
+    }
+    else {
+      logDebug.add(WarningMsg,
+                   "Parameters::loadConfigUsb() CRC error in configuration file");
+      ksu.setError(CrcConfigFileErr);
+    }
+  }
+  else {
+    logDebug.add(WarningMsg, "Parameters::loadConfigUsb() Error opening configuration file");
+    ksu.setError(OpenFileUsbErr);
+  }
+
+  f_close(&file);
+  return false;
 }
 
 void Parameters::setProfileDefaultSetpoint()

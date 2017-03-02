@@ -45,6 +45,10 @@ enum ErrorSlave {
   MiniLzoUsbErr,               //!< Ошибка архиватора MiniLZO
   SetProfileVsdErr,            //!< Ошибка конфигурирования ЧРП
   SetVoltageTapOfErr,          //!< Неправильно выбрано напряжение отпайки ТМПН
+  NotFoundConfigFileErr,       //!< Файл конфигурации не найден
+  MultipleConfigFilesErr,      //!< Найдено несколько файлов конфигурации!\n Должен быть только один файл
+  HeaderConfigFileErr,         //!< Ошибка в заголовке файла конфигурации
+  CrcConfigFileErr,            //!< Ошибка CRC файла конфигурации
 };
 
 /*!

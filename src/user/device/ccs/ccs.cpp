@@ -1837,7 +1837,7 @@ void Ccs::checkConnectDevice()
     else
       setNewValue(CCS_VSD_LOG_CONNECTION, 0);
 
-    if (usbState == USB_READY)
+    if (usbIsReady())
       setNewValue(CCS_USB_CONNECTION, 1);
     else
       setNewValue(CCS_USB_CONNECTION, 0);
@@ -2211,12 +2211,14 @@ void Ccs::cmdCountersAllReset()
   setValue(CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART, 0.0);
 }
 
-void Ccs::startReboot()
+void Ccs::startReboot(bool isSaveParameters)
 {
   setCmd(CCS_CMD_START_REBOOT_SLAVE);
   logEvent.add(PowerCode, AutoType, RebootSoftwareId);
-  parameters.startSave();
-  osDelay(200);
+  if (isSaveParameters) {
+    parameters.startSave();
+    osDelay(200);
+  }
   osSemaphoreRelease(rebootSemaphoreId_);
 }
 

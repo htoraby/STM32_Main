@@ -252,8 +252,10 @@ typedef enum {
   AddDeviceBypassContactorsInputId,   //!< "Выбрано наличие байпасных контакторов"
   RemoveDeviceBypassContactorsInputId,//!< "Выбрано отсутствие байпасных контакторов"
   
-  SaveConfigId,                       //!< Сохранение конфигурации
-  LoadConfigId,                       //!< Загрузка конфигурации
+  SaveConfigId,                       //!< Сохранение уставок в профиль
+  LoadConfigId,                       //!< Загрузка уставок из профиля
+  SaveConfigUsbId,                    //!< Сохранение конфигурации на USB
+  LoadConfigUsbId,                    //!< Загрузка конфигурации с USB
 
 } EventId;
 
