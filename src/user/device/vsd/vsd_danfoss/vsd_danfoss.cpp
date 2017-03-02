@@ -37,7 +37,7 @@ VsdDanfoss::VsdDanfoss()
   regimeRunPickup_ = new RegimeRunPickup();
   regimeRunSkipResonantFreq_ = new RegimeRunSkipResonantFreq();
   regimeRunSynchron_ = new RegimeRunSynchron();
-  regimeRunDirect_ = new RegimeRunDirect();\
+  regimeRunDirect_ = new RegimeRunDirect();
   log_ = new VsdDanfossLog();
 }
 
