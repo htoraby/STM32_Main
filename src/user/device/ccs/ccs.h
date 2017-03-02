@@ -423,8 +423,9 @@ public:
 
   /*!
    * \brief Функция начала перезагрузки
+   * \param isSaveParameters - флаг сохранения параметров перед перезагрузкой
    */
-  void startReboot();
+  void startReboot(bool isSaveParameters = true);
 
   /*!
    * \brief setFreq

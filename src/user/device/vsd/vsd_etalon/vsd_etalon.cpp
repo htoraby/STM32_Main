@@ -103,7 +103,7 @@ bool VsdEtalon::isConnect()
 // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
 int VsdEtalon::setMotorType(float value)
 {
-  float freq = 200;
+  float freq = 70;
   if (!Vsd::setMotorType(value)) {          // Записываем в массив
     if (value == VSD_MOTOR_TYPE_VENT) {
       freq = 200;
