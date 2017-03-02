@@ -7,6 +7,7 @@
 #include "regime_run_skip_resonant_freq.h"
 #include "regime_run_synchron.h"
 #include "regime_run_direct.h"
+#include "vsd_danfoss_log.h"
 
 const float profileMotor[QUNTITY_PROFILES_MOTOR][QUANTITY_PARAMETER_MOTOR] = {
 // 0,    1,    2,    3,    4,    5,      6,      7,      8,      9,      10,     11,     12,     13,     14,     15,     16,     17,   18,   19,   20,   21,   22,   23,   24,   25,   26,   27,   28,   29,   30,   31,   32,   33,   34,   35,    36,    37,    38,    39,    40,    41
@@ -36,7 +37,8 @@ VsdDanfoss::VsdDanfoss()
   regimeRunPickup_ = new RegimeRunPickup();
   regimeRunSkipResonantFreq_ = new RegimeRunSkipResonantFreq();
   regimeRunSynchron_ = new RegimeRunSynchron();
-  regimeRunDirect_ = new RegimeRunDirect();
+  regimeRunDirect_ = new RegimeRunDirect();\
+  log_ = new VsdDanfossLog();
 }
 
 VsdDanfoss::~VsdDanfoss()
@@ -48,6 +50,7 @@ VsdDanfoss::~VsdDanfoss()
   delete regimeRunSkipResonantFreq_;
   delete regimeRunSynchron_;
   delete regimeRunDirect_;
+  delete log_;
 }
 
 void VsdDanfoss::initParameters()

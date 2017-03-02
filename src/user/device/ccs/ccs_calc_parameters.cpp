@@ -22,6 +22,7 @@ void Ccs::calcParametersTask()
   setModeAnalogInExt(AI2, getValue(CCS_AI_2_TYPE));
   setModeAnalogInExt(AI3, getValue(CCS_AI_3_TYPE));
   setModeAnalogInExt(AI4, getValue(CCS_AI_4_TYPE));
+  setModeAnalogInExt(AI6, getValue(CCS_AI_6_TYPE));
 
   while (1) {
     osDelay(1);
@@ -35,8 +36,6 @@ void Ccs::calcParametersTask()
 
     if ((HAL_GetTick() - time10ms) >= 10) {
       time10ms = HAL_GetTick();
-
-
     }
 
     if ((HAL_GetTick() - time100ms) >= 100) {
@@ -881,6 +880,9 @@ void Ccs::calcAnalogInputs()
   setValue(CCS_AI_3_VALUE, getValueAnalogInExt(AI3)/**getValue(CCS_COEF_AI_3)*/);
   setValue(CCS_AI_4_VALUE, getValueAnalogInExt(AI4)/**getValue(CCS_COEF_AI_4)*/);
   setValue(CCS_AI_5_VALUE, getValueAnalogInExt(AI5));
+  setValue(CCS_AI_6_VALUE, getValueAnalogInExt(AI6));
+  setValue(CCS_AI_7_VALUE, getValueAnalogInExt(AI7));
+  setValue(CCS_AI_8_VALUE, getValueAnalogInExt(AI8));
 
   float value;
   float range;

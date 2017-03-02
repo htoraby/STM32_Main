@@ -21523,6 +21523,279 @@
 	</param>
 	<param>
 		<id>1062</id>
+		<name>CCS_AI_6_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>10.000</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ан.вх.6</text>
+		<short_text>Ан.вх.6</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XX_XXX</format>
+		<code>0</code>
+		<comment>Сигнал с аналогового входа 6</comment>
+	</param>
+	<param>
+		<id>1063</id>
+		<name>CCS_AI_6_ZERO_SHIFT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-10.000</min>
+		<max>10.000</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ан.вх.6 Смещение</text>
+		<short_text>Ан.вх.6 Смещ.</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Смещение нуля аналогового входа 6</comment>
+	</param>
+	<param>
+		<id>1064</id>
+		<name>CCS_AI_6_COEF</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.001</min>
+		<max>10.000</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Ан.вх.6 Коэффициент</text>
+		<short_text>Ан.вх.6 Коэф</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Калибровочный коэффициент аналогового входа 6</comment>
+	</param>
+	<param>
+		<id>1065</id>
+		<name>CCS_AI_7_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>10.000</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ан.вх.7</text>
+		<short_text>Ан.вх.7</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XX_XXX</format>
+		<code>0</code>
+		<comment>Сигнал с аналогового входа 7</comment>
+	</param>
+	<param>
+		<id>1066</id>
+		<name>CCS_AI_7_ZERO_SHIFT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-10.000</min>
+		<max>10.000</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ан.вх.7 Смещение</text>
+		<short_text>Ан.вх.7 Смещ.</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Смещение нуля аналогового входа 7</comment>
+	</param>
+	<param>
+		<id>1067</id>
+		<name>CCS_AI_7_COEF</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.001</min>
+		<max>10.000</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Ан.вх.7 Коэффициент</text>
+		<short_text>Ан.вх.7 Коэф</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Калибровочный коэффициент аналогового входа 7</comment>
+	</param>
+	<param>
+		<id>1068</id>
+		<name>CCS_AI_8_VALUE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>10.000</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ан.вх.8</text>
+		<short_text>Ан.вх.8</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XX_XXX</format>
+		<code>0</code>
+		<comment>Сигнал с аналогового входа 8</comment>
+	</param>
+	<param>
+		<id>1069</id>
+		<name>CCS_AI_8_ZERO_SHIFT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-10.000</min>
+		<max>10.000</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ан.вх.8 Смещение</text>
+		<short_text>Ан.вх.8 Смещ.</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Смещение нуля аналогового входа 8</comment>
+	</param>
+	<param>
+		<id>1070</id>
+		<name>CCS_AI_8_COEF</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.001</min>
+		<max>10.000</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Ан.вх.8 Коэффициент</text>
+		<short_text>Ан.вх.8 Коэф</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Калибровочный коэффициент аналогового входа 8</comment>
+	</param>
+	<param>
+		<id>1071</id>
+		<name>CCS_AI_6_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Тип входа</text>
+		<short_text>Ан.вх.6. Тип</short_text>
+		<form>3.8.1 Аналоговые входы</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 6. Тип входа</comment>
+	</param>
+	<param>
+		<id>1072</id>
+		<name>CCS_AI_7_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Тип входа</text>
+		<short_text>Ан.вх.7. Тип</short_text>
+		<form>3.8.1 Аналоговые входы</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 7. Тип входа</comment>
+	</param>
+	<param>
+		<id>1073</id>
+		<name>CCS_AI_8_TYPE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Тип входа</text>
+		<short_text>Ан.вх.8. Тип</short_text>
+		<form>3.8.1 Аналоговые входы</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 8. Тип входа</comment>
+	</param>
+	<param>
+		<id>1074</id>
+		<name>CCS_SU_MAX_CURRENT</name>
+		<access>ACCESS_SERVICE</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>1.0</min>
+		<max>10000.0</max>
+		<def>160.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>160.0</value>
+		<text>Максимальный ток СУ</text>
+		<short_text>Макс. ток СУ</short_text>
+		<form>6.4 Станция управления</form>
+		<unit>PHYSIC_CURRENT</unit>
+		<unit_lcd>PHYSIC_CURRENT</unit_lcd>
+		<format>XXXXXX</format>
+		<code>13</code>
+		<comment>Максимальный ток СУ</comment>
+	</param>
+	<param>
+		<id>1075</id>
 		<name>CCS_CMD_SAVE_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -21544,7 +21817,7 @@
 		<comment>Конфигурации. Сохранение конфигурации в профиль</comment>
 	</param>
 	<param>
-		<id>1063</id>
+		<id>1076</id>
 		<name>CCS_CMD_LOAD_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -21566,7 +21839,7 @@
 		<comment>Конфигурации. Загрузка конфигурации из профиля</comment>
 	</param>
 	<param>
-		<id>1064</id>
+		<id>1077</id>
 		<name>CCS_PROFILE_DEFAULT_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -21588,7 +21861,7 @@
 		<comment>Конфигурации. Профиль уставок по умолчанию</comment>
 	</param>
 	<param>
-		<id>1065</id>
+		<id>1078</id>
 		<name>CCS_CMD_ALL_SETPOINT_RESET</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -21610,7 +21883,7 @@
 		<comment>Конфигурации. Сброс всех уставок</comment>
 	</param>
 	<param>
-		<id>1066</id>
+		<id>1079</id>
 		<name>CCS_SAVE_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
@@ -21631,7 +21904,7 @@
 		<comment>Биты сохранённых профилей</comment>
 	</param>
 	<param>
-		<id>1067</id>
+		<id>1080</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

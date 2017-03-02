@@ -3,6 +3,8 @@
 
 #include "board.h"
 
+#define ADC_EXT_INPUTS_6_POINTS 25  // Данные с AI6 раз в 80 мс, что составляет 160 точек в архивах = 4000 / 160
+
 /*!
  * \brief Список аналоговых входов
 */
@@ -47,5 +49,12 @@ void setModeAnalogInExt(uint8_t num, uint8_t mode);
  \return - возвращаемое значение (В или мА)
 */
 float getValueAnalogInExt(uint8_t num);
+
+/*!
+ \brief Копирование всех значений из буффера значений аналогового входа 6
+ в буфер задачи логирования
+ \param data - основной буффер
+*/
+void copyAdcDataAI6(uint16_t *data);
 
 #endif // ADC_EXT_H

@@ -1,5 +1,6 @@
 #include "adc_ext.h"
 #include "gpio.h"
+#include <string.h>
 
 //! Выводов микросхемы 74HC595
 #define HC595MR_PIN  GPIOH, GPIO_PIN_13
@@ -11,6 +12,8 @@
 
 #define ADC_EXT_DIV 4
 #define ADC_EXT_MEASURE_NUM 10
+#define ADC_EXT_INPUTS 8
+
 
 SPI_HandleTypeDef hspi2;
 DMA_HandleTypeDef hdma_spi2_tx;
@@ -18,7 +21,10 @@ DMA_HandleTypeDef hdma_spi2_rx;
 
 int channel = 0;
 int measureCount = 0;
+int measureCountAI6 = 0;
+
 AnalogInputDef analogInExt[AnalogInputMax];
+uint16_t adcDataAI6[ADC_EXT_INPUTS_6_POINTS];
 
 static uint8_t bufferTx[3];
 static uint8_t bufferRx[3];
@@ -150,6 +156,14 @@ void adcExtThread(void *argument)
           analogInExt[i].value = analogInExt[i].valueTmp/ADC_EXT_MEASURE_NUM;
           analogInExt[i].valueTmp = 0;
         }
+
+        if (measureCountAI6 < ADC_EXT_INPUTS_6_POINTS) {
+          measureCountAI6++;
+        }
+        else {
+          measureCountAI6 = 0;
+        }
+        adcDataAI6[measureCountAI6] = analogInExt[AI6].value;
       }
     }
 
@@ -179,4 +193,11 @@ float getValueAnalogInExt(uint8_t num)
   }
 
   return value;
+}
+
+
+void copyAdcDataAI6(uint16_t *data)
+{
+  memcpy(&data[measureCountAI6], &adcDataAI6[0], (ADC_EXT_INPUTS_6_POINTS - measureCountAI6)*2);
+  memcpy(&data[0], &adcDataAI6[ADC_EXT_INPUTS_6_POINTS - measureCountAI6], (measureCountAI6)*2);
 }
