@@ -23,6 +23,8 @@ typedef enum {
   AddrSaveConfig3  = 0x01032000,
   AddrSaveConfig4  = 0x0104B000,
   AddrSaveConfig5  = 0x01064000,
+  AddrCompressLog  = 0x0107D000,                      //! Адрес начала сжатого архива станции (10 Мб)
+  AddrAddNew       = 0x01A7D000,
 } AddrFlashSpi;
 
 /*!

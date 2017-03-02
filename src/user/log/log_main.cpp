@@ -36,6 +36,7 @@ LogDebug logDebug;
 static osThreadId logSaveThreadId;
 static osSemaphoreId saveSemaphoreId_;
 static osSemaphoreId deleteSemaphoreId_;
+static osSemaphoreId compressSemaphoreId_;
 static EventType eventType;
 
 static void logSaveTask(void *argument);
@@ -57,6 +58,8 @@ void logInit()
   osSemaphoreWait(saveSemaphoreId_, 0);
   deleteSemaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(deleteSemaphoreId_, 0);
+  compressSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(compressSemaphoreId_, 0);
 
   osThreadDef(LogSaveUsb, logSaveTask, osPriorityNormal, 0, 8 * configMINIMAL_STACK_SIZE);
   logSaveThreadId = osThreadCreate(osThread(LogSaveUsb), NULL);
@@ -83,6 +86,17 @@ void logStartDelete(EventType type)
   else
     parameters.set(CCS_PROGRESS_MAX, (float)EndAddrDebugLog/1024);
   osSemaphoreRelease(deleteSemaphoreId_);
+}
+
+void logStartCompress(EventType type)
+{
+  parameters.startSave();
+
+  eventType = type;
+//  parameters.set(CCS_PROGRESS_VALUE, 0);
+//  parameters.set(CCS_PROGRESS_MAX, 0);
+//  parameters.set(CCS_PROGRESS_MAX, (float)(EndAddrDebugLog + flashExts[FlashSpi5].size + PARAMETERS_SIZE)/1024);
+  osSemaphoreRelease(compressSemaphoreId_);
 }
 
 void logHeader(LOG_FILE_HEADER *header)
@@ -401,6 +415,92 @@ void logDeleted()
   parameters.set(CCS_CMD_LOG_DELETE, 0);
 }
 
+static bool logCompress()
+{
+  UINT bytesWritten;
+  LOG_FILE_HEADER header;
+
+  uint16_t calcCrc = 0xFFFF;
+  uint32_t addr = 0;
+  uint32_t inLen = IN_BUF_SIZE;
+  lzo_uint outLen = 0;
+  uint32_t size = 0;
+  uint32_t count = 0;
+  int resCompress = 0;
+
+  if (lzo_init() != LZO_E_OK) {
+    printf("lzo_init() failed!\n");
+    ksu.setError(MiniLzoInitUsbErr);
+    return false;
+  }
+
+  logHeader(&header);
+  calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
+  flashExtWriteEx(FlashSpi1, lastAddress, (uint8_t*)&header, bytesWritten);
+
+  while(1) {
+    StatusType status = logRead(addr, inBufData, inLen);
+    if (status == StatusError)
+      asm("nop");
+    addr = addr + inLen;
+    calcCrc = crc16_ibm(inBufData, inLen, calcCrc);
+
+    resCompress = lzo1x_1_compress(inBufData, inLen, &outBufData[8], &outLen, wrkmem);
+    if (resCompress != LZO_E_OK) {
+      ksu.setError(MiniLzoUsbErr);
+      return false;
+    }
+
+    flashExtWriteEx(FlashSpi1, lastAddress, outBufData, outLen);
+    if (addr >= flashExts[FlashSpi5].size)
+      break;
+  }
+
+  addr = 0;
+  inLen = IN_BUF_SIZE;
+  while (1) {
+    StatusType status = logDebugRead(addr, inBufData, inLen);
+    if (status == StatusError)
+      asm("nop");
+    addr = addr + inLen;
+    calcCrc = crc16_ibm(inBufData, inLen, calcCrc);
+
+    resCompress = lzo1x_1_compress(inBufData, inLen, &outBufData[8], &outLen, wrkmem);
+    if (resCompress != LZO_E_OK) {
+      ksu.setError(MiniLzoUsbErr);
+      return false;
+    }
+
+    // Запись на flash
+
+    if (addr >= EndAddrDebugLog)
+      break;
+  }
+
+  addr = 0;
+  inLen = IN_BUF_SIZE;
+  count = 0;
+  while(1) {
+    StatusType status = logParamsRead(addr, inBufData, inLen);
+    if (status == StatusError)
+      asm("nop");
+    addr = addr + inLen;
+    calcCrc = crc16_ibm(inBufData, inLen, calcCrc);
+
+    resCompress = lzo1x_1_compress(inBufData, inLen, &outBufData[8], &outLen, wrkmem);
+    if (resCompress != LZO_E_OK) {
+      ksu.setError(MiniLzoUsbErr);
+      return false;
+    }
+
+    // Запись на flash
+
+    if (addr >= PARAMETERS_SIZE)
+      break;
+  }
+  return true;
+}
+
 void logDebugDeleted()
 {
   Log::idDebug_ = 0;
@@ -447,6 +547,13 @@ void logSaveTask(void *argument)
         logDeleted();
       else
         logDebugDeleted();
+    }
+
+    if (osSemaphoreWait(compressSemaphoreId_, 10) == osOK) {
+      osDelay(100);
+      if (logCompress()) {
+
+      }
     }
   }
 }
