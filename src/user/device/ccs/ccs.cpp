@@ -1687,6 +1687,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if ((value != oldValue) && !err) {
       if (value) {
         logEvent.add(AddDeviceCode, eventType, AddDeviceBypassContactorsInputId, oldValue, value);
+        parameters.set(CCS_BYPASS_CONTACTOR_KM2_CONTROL, value);
       }
       else {
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceBypassContactorsInputId, oldValue, value);
@@ -1700,12 +1701,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     else {                                                                      // Включить контактор ПП и выключен контактор ЧРП или выключить ПП
       err = setValue(id, value, eventType);                                     // Записываем в регистр
-      if (!err) {
-        if (value) {
-          setRelayOutput(RO6, (PinState)!value);
-        }
-        setRelayOutput(RO5, (PinState)value);                                 // Переключаем реле
-      }
     }
     return err;
   case CCS_BYPASS_CONTACTOR_KM2_CONTROL:                                        // Контактор ЧРП
@@ -1714,12 +1709,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     else {
       err = setValue(id, value, eventType);
-      if (!err) {
-        if (value) {
-          setRelayOutput(RO5, (PinState)!value);
-        }
-        setRelayOutput(RO6, (PinState)value);
-      }
     }
     return err;
   case CCS_SU_NOMINAL_CURRENT:
@@ -2386,5 +2375,8 @@ void Ccs::setRelayOutputs()
       setRelayOutput(DO1 + i, value);
     valueOld[i] = value;
   }
+
+  setRelayOutput(RO5, (PinState)parameters.get(CCS_BYPASS_CONTACTOR_KM2_CONTROL));
+  setRelayOutput(RO6, (PinState)parameters.get(CCS_BYPASS_CONTACTOR_KM1_CONTROL));
 }
 
