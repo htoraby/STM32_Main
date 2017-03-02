@@ -25,6 +25,11 @@ void usbInit()
   USBH_Start(&hUsbHostFS);
 }
 
+uint8_t usbIsReady()
+{
+  return (usbState == USB_READY);
+}
+
 static void userProcess(USBH_HandleTypeDef *phost, uint8_t id)
 {
   switch(id)

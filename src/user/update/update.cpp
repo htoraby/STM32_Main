@@ -113,7 +113,7 @@ static bool saveSwInFlashExt(char *fileName)
         allSize += readSize;
 
         int count = 0;
-        while ((readflag == 1) && (usbState == USB_READY)) {
+        while (readflag && usbIsReady()) {
           osDelay(1);
 
           size = file.fsize - allSize - BUFFER_SIZE;
@@ -193,9 +193,10 @@ static bool saveSwInFlashExt(char *fileName)
 
 bool updateFromUsb()
 {
-  static char fileName[_MAX_LFN] = {0};
+  static char fileName[_MAX_LFN];
+  fileName[0] = 0;
 
-  if (usbState != USB_READY) {
+  if (!usbIsReady()) {
     logDebug.add(WarningMsg, "update.updateFromUsb() Not connected USB drive");
     ksu.setError(NoConnectionUsbErr);
     return false;
