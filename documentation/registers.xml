@@ -21947,6 +21947,384 @@
 	</param>
 	<param>
 		<id>1082</id>
+		<name>CCS_AI_5_ZERO_SHIFT</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-10.000</min>
+		<max>10.000</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ан.вх.5 Смещение</text>
+		<short_text>Ан.вх.5 Смещ.</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Смещение нуля аналогового входа 5</comment>
+	</param>
+	<param>
+		<id>1083</id>
+		<name>CCS_AI_5_AXIS_ZERO_SHIFT</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-1.0</min>
+		<max>1.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Ан.вх.5 Ось смещения</text>
+		<short_text>Ан.вх.5 Ось смещ.</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>-1-Отрицательная;1-Положительная</values>
+		<comment>Ось смещения аналогового входа 5</comment>
+	</param>
+	<param>
+		<id>1084</id>
+		<name>CCS_AI_5_COEF</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.001</min>
+		<max>10.000</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Ан.вх.5 Коэффициент</text>
+		<short_text>Ан.вх.5 Коэф</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Калибровочный коэффициент аналогового входа 5</comment>
+	</param>
+	<param>
+		<id>1085</id>
+		<name>CCS_AI_6_AXIS_ZERO_SHIFT</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-1.0</min>
+		<max>1.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Ан.вх.6 Ось смещения</text>
+		<short_text>Ан.вх.6 Ось смещ.</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>-1-Отрицательная;1-Положительная</values>
+		<comment>Ось смещения аналогового входа 6</comment>
+	</param>
+	<param>
+		<id>1086</id>
+		<name>CCS_AI_7_AXIS_ZERO_SHIFT</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-1.0</min>
+		<max>1.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Ан.вх.7 Ось смещения</text>
+		<short_text>Ан.вх.7 Ось смещ.</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>-1-Отрицательная;1-Положительная</values>
+		<comment>Ось смещения аналогового входа 7</comment>
+	</param>
+	<param>
+		<id>1087</id>
+		<name>CCS_AI_8_AXIS_ZERO_SHIFT</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-1.0</min>
+		<max>1.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Ан.вх.8 Ось смещения</text>
+		<short_text>Ан.вх.8 Ось смещ.</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>-1-Отрицательная;1-Положительная</values>
+		<comment>Ось смещения аналогового входа 8</comment>
+	</param>
+	<param>
+		<id>1088</id>
+		<name>CCS_AI_1_ZERO_SHIFT</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-10.000</min>
+		<max>10.000</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ан.вх.1 Смещение</text>
+		<short_text>Ан.вх.1 Смещ.</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Смещение нуля аналогового входа 1</comment>
+	</param>
+	<param>
+		<id>1089</id>
+		<name>CCS_AI_1_AXIS_ZERO_SHIFT</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-1.0</min>
+		<max>1.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Ан.вх.1 Ось смещения</text>
+		<short_text>Ан.вх.1 Ось смещ.</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>-1-Отрицательная;1-Положительная</values>
+		<comment>Ось смещения аналогового входа 1</comment>
+	</param>
+	<param>
+		<id>1090</id>
+		<name>CCS_AI_1_COEF</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.001</min>
+		<max>10.000</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Ан.вх.1 Коэффициент</text>
+		<short_text>Ан.вх.1 Коэф</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Калибровочный коэффициент аналогового входа 1</comment>
+	</param>
+	<param>
+		<id>1091</id>
+		<name>CCS_AI_2_ZERO_SHIFT</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-10.000</min>
+		<max>10.000</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ан.вх.2 Смещение</text>
+		<short_text>Ан.вх.2 Смещ.</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Смещение нуля аналогового входа 2</comment>
+	</param>
+	<param>
+		<id>1092</id>
+		<name>CCS_AI_2_AXIS_ZERO_SHIFT</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-1.0</min>
+		<max>1.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Ан.вх.2 Ось смещения</text>
+		<short_text>Ан.вх.2 Ось смещ.</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>-1-Отрицательная;1-Положительная</values>
+		<comment>Ось смещения аналогового входа 2</comment>
+	</param>
+	<param>
+		<id>1093</id>
+		<name>CCS_AI_2_COEF</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.001</min>
+		<max>10.000</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Ан.вх.2 Коэффициент</text>
+		<short_text>Ан.вх.2 Коэф</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Калибровочный коэффициент аналогового входа 2</comment>
+	</param>
+	<param>
+		<id>1094</id>
+		<name>CCS_AI_3_ZERO_SHIFT</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-10.000</min>
+		<max>10.000</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ан.вх.3 Смещение</text>
+		<short_text>Ан.вх.3 Смещ.</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Смещение нуля аналогового входа 3</comment>
+	</param>
+	<param>
+		<id>1095</id>
+		<name>CCS_AI_3_AXIS_ZERO_SHIFT</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-1.0</min>
+		<max>1.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Ан.вх.3 Ось смещения</text>
+		<short_text>Ан.вх.3 Ось смещ.</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>-1-Отрицательная;1-Положительная</values>
+		<comment>Ось смещения аналогового входа 3</comment>
+	</param>
+	<param>
+		<id>1096</id>
+		<name>CCS_AI_3_COEF</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.001</min>
+		<max>10.000</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Ан.вх.3 Коэффициент</text>
+		<short_text>Ан.вх.3 Коэф</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Калибровочный коэффициент аналогового входа 3</comment>
+	</param>
+	<param>
+		<id>1097</id>
+		<name>CCS_AI_4_ZERO_SHIFT</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-10.000</min>
+		<max>10.000</max>
+		<def>0.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Ан.вх.4 Смещение</text>
+		<short_text>Ан.вх.4 Смещ.</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Смещение нуля аналогового входа 4</comment>
+	</param>
+	<param>
+		<id>1098</id>
+		<name>CCS_AI_4_AXIS_ZERO_SHIFT</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-1.0</min>
+		<max>1.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Ан.вх.4 Ось смещения</text>
+		<short_text>Ан.вх.4 Ось смещ.</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>-1-Отрицательная;1-Положительная</values>
+		<comment>Ось смещения аналогового входа 4</comment>
+	</param>
+	<param>
+		<id>1099</id>
+		<name>CCS_AI_4_COEF</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.001</min>
+		<max>10.000</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Ан.вх.4 Коэффициент</text>
+		<short_text>Ан.вх.4 Коэф</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XX_XXX</format>
+		<code>13</code>
+		<comment>Калибровочный коэффициент аналогового входа 4</comment>
+	</param>
+	<param>
+		<id>1100</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

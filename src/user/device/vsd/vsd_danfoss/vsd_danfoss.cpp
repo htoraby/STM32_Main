@@ -1413,9 +1413,9 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
 void VsdDanfoss::writeToDevice(int id, float value)
 {
   enOperation command = OPERATION_WRITE;
-  if ((id == VSD_MOTOR_CONTROL)
-      ||(id == VSD_MOTOR_TYPE)
-      ||(id == VSD_MAX_OUTPUT_FREQUENCY)) {
+  if ((id == VSD_MOTOR_CONTROL)||
+      (id == VSD_MOTOR_TYPE)||
+      (id == VSD_MAX_OUTPUT_FREQUENCY)) {
     command = OPERATION_WRITE_DELAY;
   }
   dm_->writeModbusParameter(id, value, command);
