@@ -21806,15 +21806,15 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Сохранить конфигурацию в профиль</text>
-		<short_text>Конфигурации. Сохранение конфигурации в профиль</short_text>
+		<text>Сохранить уставки в профиль</text>
+		<short_text>Конфигурации. Сохранение уставок в профиль</short_text>
 		<form>7.6 Конфигурации</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
 		<values>0-Нет;1-Профиль 1;2-Профиль 2;3-Профиль 3;4-Профиль 4;5-Профиль 5</values>
-		<comment>Конфигурации. Сохранение конфигурации в профиль</comment>
+		<comment>Конфигурации. Сохранение уставок в профиль</comment>
 	</param>
 	<param>
 		<id>1076</id>
@@ -21828,15 +21828,15 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Загрузить конфигурацию из профиля</text>
-		<short_text>Конфигурации. Загрузка конфигурации из профиля</short_text>
+		<text>Загрузить уставки из профиля</text>
+		<short_text>Конфигурации. Загрузка уставок из профиля</short_text>
 		<form>7.6 Конфигурации</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
 		<values>0-Нет;1-Профиль 1;2-Профиль 2;3-Профиль 3;4-Профиль 4;5-Профиль 5</values>
-		<comment>Конфигурации. Загрузка конфигурации из профиля</comment>
+		<comment>Конфигурации. Загрузка уставок из профиля</comment>
 	</param>
 	<param>
 		<id>1077</id>
@@ -21905,6 +21905,48 @@
 	</param>
 	<param>
 		<id>1080</id>
+		<name>CCS_CMD_SAVE_CONFIG_USB</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Сохранить конфигурацию на USB носитель</text>
+		<short_text>Конфигурации. Сохранение конфигурации на USB носитель</short_text>
+		<form>7.6 Конфигурации</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Конфигурации. Сохранение конфигурации на USB носитель</comment>
+	</param>
+	<param>
+		<id>1081</id>
+		<name>CCS_CMD_LOAD_CONFIG_USB</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Загрузить конфигурацию с USB носителя</text>
+		<short_text>Конфигурации. Загрузка конфигурации с USB носителя</short_text>
+		<form>7.6 Конфигурации</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Конфигурации. Загрузка конфигурации с USB носителя</comment>
+	</param>
+	<param>
+		<id>1082</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

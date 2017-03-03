@@ -397,22 +397,24 @@ void Parameters::setDelay(uint16_t id, uint32_t value, EventType eventType)
 
 void Parameters::saveConfig()
 {
-  int time = HAL_GetTick();
   int profile = parameters.get(CCS_CMD_SAVE_SETPOINT);
-  logEvent.add(OtherCode, AutoType, SaveConfigId, 0, profile);
+  int saveUsb = parameters.get(CCS_CMD_SAVE_CONFIG_USB);
 
-  if ((profile >= 1) && (profile <= 5))
+  if ((profile >= 1) && (profile <= 5)) {
     saveConfigProfile(profile);
-  else if (profile == 6)
+    parameters.set(CCS_CMD_SAVE_SETPOINT, 0.0);
+  }
+  else if (saveUsb) {
     saveConfigUsb();
-
-  logDebug.add(WarningMsg, "Parameters::saveConfig() Save config (%d) - completed %d ms",
-               profile, HAL_GetTick() - time);
-  parameters.set(CCS_CMD_SAVE_SETPOINT, 0.0);
+    parameters.set(CCS_CMD_SAVE_CONFIG_USB, 0.0);
+  }
 }
 
 void Parameters::saveConfigProfile(int profile)
 {
+  int time = HAL_GetTick();
+  logEvent.add(OtherCode, AutoType, SaveConfigId, 0, profile);
+
   uint32_t save = parameters.getU32(CCS_SAVE_SETPOINT);
   save |= (1 << (profile-1));
   parameters.set(CCS_SAVE_SETPOINT, save);
@@ -429,6 +431,9 @@ void Parameters::saveConfigProfile(int profile)
   vsd->saveConfig(address);
   tms->saveConfig(address);
   em->saveConfig(address);
+
+  logDebug.add(WarningMsg, "Parameters::saveConfigProfile() Save setpoints (%d) - completed %d ms",
+               profile, HAL_GetTick() - time);
 }
 
 void Parameters::getFilePath(char *path)
@@ -452,6 +457,9 @@ void Parameters::getFilePath(char *path)
 
 bool Parameters::saveConfigUsb()
 {
+  int time = HAL_GetTick();
+  logEvent.add(OtherCode, AutoType, SaveConfigUsbId);
+
   startSave();
   osDelay(100);
 
@@ -563,27 +571,31 @@ bool Parameters::saveConfigUsb()
     return false;
   }
 
+  logDebug.add(WarningMsg, "Parameters::saveConfigUsb() Save config USB - completed %d ms",
+               HAL_GetTick() - time);
   return true;
 }
 
 void Parameters::loadConfig()
 {
-  int time = HAL_GetTick();
   int profile = parameters.get(CCS_CMD_LOAD_SETPOINT);
-  logEvent.add(OtherCode, AutoType, LoadConfigId, 0, profile);
+  int loadUsb = parameters.get(CCS_CMD_LOAD_CONFIG_USB);
 
-  if ((profile >= 1) && (profile <= 5))
+  if ((profile >= 1) && (profile <= 5)) {
     loadConfigProfile(profile);
-  else if (profile == 6)
+    parameters.set(CCS_CMD_LOAD_SETPOINT, 0.0);
+  }
+  else if (loadUsb) {
     loadConfigUsb();
-
-  parameters.set(CCS_CMD_LOAD_SETPOINT, 0.0);
-  logDebug.add(WarningMsg, "Parameters::loadConfig() Load config (%d) - completed %d ms",
-               profile, HAL_GetTick() - time);
+    parameters.set(CCS_CMD_LOAD_CONFIG_USB, 0.0);
+  }
 }
 
 void Parameters::loadConfigProfile(int profile)
 {
+  int time = HAL_GetTick();
+  logEvent.add(OtherCode, AutoType, LoadConfigId, 0, profile);
+
   uint32_t address;
   switch (profile) {
   case 1: address = AddrSaveConfig1; break;
@@ -594,6 +606,9 @@ void Parameters::loadConfigProfile(int profile)
   }
   ksu.loadConfig(address);
   vsd->loadConfig(address);
+
+  logDebug.add(WarningMsg, "Parameters::loadConfig() Load setpoints (%d) - completed %d ms",
+               profile, HAL_GetTick() - time);
 }
 
 void Parameters::getConfigFile(char *fileName)
@@ -648,6 +663,9 @@ void Parameters::getConfigFile(char *fileName)
 
 bool Parameters::loadConfigUsb()
 {
+  int time = HAL_GetTick();
+  logEvent.add(OtherCode, AutoType, LoadConfigUsbId);
+
   uint32_t timeReady = 0;
   while(!usbIsReady()) {
     osDelay(10);
@@ -720,6 +738,8 @@ bool Parameters::loadConfigUsb()
           logDebug.add(CriticalMsg, "Parameters::loadConfigUsb() Error save CRC (addr = %d)", addr);
 
         f_close(&file);
+        logDebug.add(WarningMsg, "Parameters::loadConfigUsb() Load config USB (%d) - completed %d ms",
+                     HAL_GetTick() - time);
         ksu.startReboot(false);
         return true;
       }

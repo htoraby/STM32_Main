@@ -12902,7 +12902,7 @@ void Ccs::initParameters()
   parameters_[CCS_SU_MAX_CURRENT - CCS_BEGIN].discret                            = 1;
   parameters_[CCS_SU_MAX_CURRENT - CCS_BEGIN].def                                = 160.0;
   parameters_[CCS_SU_MAX_CURRENT - CCS_BEGIN].code                               = 13;
-  // Конфигурации. Сохранение конфигурации в профиль
+  // Конфигурации. Сохранение уставок в профиль
   parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].id                              = CCS_CMD_SAVE_SETPOINT;
   parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
   parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].operation                       = OPERATION_WRITE;
@@ -12914,7 +12914,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_CMD_SAVE_SETPOINT - CCS_BEGIN].code                            = 0;
-  // Конфигурации. Загрузка конфигурации из профиля
+  // Конфигурации. Загрузка уставок из профиля
   parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].id                              = CCS_CMD_LOAD_SETPOINT;
   parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].access                          = ACCESS_OPERATOR;
   parameters_[CCS_CMD_LOAD_SETPOINT - CCS_BEGIN].operation                       = OPERATION_WRITE;
@@ -12962,5 +12962,29 @@ void Ccs::initParameters()
   parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].def                                 = 0.0;
   parameters_[CCS_SAVE_SETPOINT - CCS_BEGIN].code                                = 0;
+  // Конфигурации. Сохранение конфигурации на USB носитель
+  parameters_[CCS_CMD_SAVE_CONFIG_USB - CCS_BEGIN].id                            = CCS_CMD_SAVE_CONFIG_USB;
+  parameters_[CCS_CMD_SAVE_CONFIG_USB - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_SAVE_CONFIG_USB - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_CMD_SAVE_CONFIG_USB - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_SAVE_CONFIG_USB - CCS_BEGIN].validity                      = VALIDITY_OK;
+  parameters_[CCS_CMD_SAVE_CONFIG_USB - CCS_BEGIN].value.float_t                 = 0.0;
+  parameters_[CCS_CMD_SAVE_CONFIG_USB - CCS_BEGIN].min                           = 0.0;
+  parameters_[CCS_CMD_SAVE_CONFIG_USB - CCS_BEGIN].max                           = 1.0;
+  parameters_[CCS_CMD_SAVE_CONFIG_USB - CCS_BEGIN].discret                       = 1;
+  parameters_[CCS_CMD_SAVE_CONFIG_USB - CCS_BEGIN].def                           = 0.0;
+  parameters_[CCS_CMD_SAVE_CONFIG_USB - CCS_BEGIN].code                          = 0;
+  // Конфигурации. Загрузка конфигурации с USB носителя
+  parameters_[CCS_CMD_LOAD_CONFIG_USB - CCS_BEGIN].id                            = CCS_CMD_LOAD_CONFIG_USB;
+  parameters_[CCS_CMD_LOAD_CONFIG_USB - CCS_BEGIN].access                        = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_LOAD_CONFIG_USB - CCS_BEGIN].operation                     = OPERATION_WRITE;
+  parameters_[CCS_CMD_LOAD_CONFIG_USB - CCS_BEGIN].physic                        = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_LOAD_CONFIG_USB - CCS_BEGIN].validity                      = VALIDITY_OK;
+  parameters_[CCS_CMD_LOAD_CONFIG_USB - CCS_BEGIN].value.float_t                 = 0.0;
+  parameters_[CCS_CMD_LOAD_CONFIG_USB - CCS_BEGIN].min                           = 0.0;
+  parameters_[CCS_CMD_LOAD_CONFIG_USB - CCS_BEGIN].max                           = 1.0;
+  parameters_[CCS_CMD_LOAD_CONFIG_USB - CCS_BEGIN].discret                       = 1;
+  parameters_[CCS_CMD_LOAD_CONFIG_USB - CCS_BEGIN].def                           = 0.0;
+  parameters_[CCS_CMD_LOAD_CONFIG_USB - CCS_BEGIN].code                          = 0;
 }
 

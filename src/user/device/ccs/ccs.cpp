@@ -122,6 +122,8 @@ void Ccs::initTask()
   resetCmd(CCS_ERROR_SLAVE);
   resetCmd(CCS_CMD_SAVE_SETPOINT);
   resetCmd(CCS_CMD_LOAD_SETPOINT);
+  resetCmd(CCS_CMD_SAVE_CONFIG_USB);
+  resetCmd(CCS_CMD_LOAD_CONFIG_USB);
   setValue(CCS_PROT_SUPPLY_POWEROFF_PREVENT, 0);
 
   uint32_t installSw = getValueUint32(CCS_DATE_INSTALL_SW_CCS);
@@ -1744,13 +1746,13 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       osSemaphoreRelease(setProfileDefaultSemaphoreId_);
     }
     return err;
-  case CCS_CMD_SAVE_SETPOINT:
+  case CCS_CMD_SAVE_SETPOINT: case CCS_CMD_SAVE_CONFIG_USB:
     err = setValue(id, value, eventType);
     if (!err && value) {
       osSemaphoreRelease(saveConfigSemaphoreId_);
     }
     return err;
-  case CCS_CMD_LOAD_SETPOINT:
+  case CCS_CMD_LOAD_SETPOINT: case CCS_CMD_LOAD_CONFIG_USB:
     err = setValue(id, value, eventType);
     if (!err && value) {
       osSemaphoreRelease(loadConfigSemaphoreId_);
