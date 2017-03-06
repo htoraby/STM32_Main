@@ -52,7 +52,10 @@ void RegimeRunDirect::processingStateRunning()
 
 void RegimeRunDirect::processingStateWork()
 {
-  // После пуска здесь
+  if (!parameters.get(CCS_BYPASS_CONTACTOR_KM1_STATE)) {
+    ksu.stop(LastReasonStopOperator);
+    state_ = IdleState;
+  }
 }
 
 void RegimeRunDirect::processingStateStop()

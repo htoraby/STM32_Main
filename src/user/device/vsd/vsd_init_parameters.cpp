@@ -1018,7 +1018,7 @@ void Vsd::initParameters()
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].value.float_t                       = 700.0;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].min                                 = 400.0;
-  parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].max                                 = 800.9;
+  parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].max                                 = 800.0;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].def                                 = 700.0;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].code                                = 13;
@@ -1030,7 +1030,7 @@ void Vsd::initParameters()
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].value.float_t                      = 30.0;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].min                                = 10.0;
-  parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].max                                = 90.9;
+  parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].max                                = 90.0;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].def                                = 30.0;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].discret                            = 1;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].code                               = 13;
@@ -1042,7 +1042,7 @@ void Vsd::initParameters()
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].value.float_t                      = 5.0;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].min                                = 1.0;
-  parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].max                                = 90.9;
+  parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].max                                = 90.0;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].def                                = 5.0;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].discret                            = 1;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].code                               = 13;

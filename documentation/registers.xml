@@ -239,7 +239,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>999999999.0</max>
 		<def>9999000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -387,10 +387,10 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000.0</max>
+		<min>0.000</min>
+		<max>20.000</max>
 		<def>0.0</def>
-		<discret>1</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Доп.ан.вх.1</text>
@@ -398,7 +398,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX_XXX</format>
 		<code>0</code>
 		<comment>Сигнал с дополнительного аналогового входа 1</comment>
 	</param>
@@ -408,10 +408,10 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000.0</max>
+		<min>0.000</min>
+		<max>20.000</max>
 		<def>0.0</def>
-		<discret>1</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Доп.ан.вх.2</text>
@@ -419,7 +419,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX_XXX</format>
 		<code>0</code>
 		<comment>Сигнал с дополнительного аналогового входа 2</comment>
 	</param>
@@ -429,10 +429,10 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000.0</max>
+		<min>0.000</min>
+		<max>20.000</max>
 		<def>0.0</def>
-		<discret>1</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Доп.ан.вх.3</text>
@@ -440,7 +440,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX_XXX</format>
 		<code>0</code>
 		<comment>Сигнал с дополнительного аналогового входа 3</comment>
 	</param>
@@ -450,10 +450,10 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10000.0</max>
+		<min>0.000</min>
+		<max>20.000</max>
 		<def>0.0</def>
-		<discret>1</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Доп.ан.вх.4</text>
@@ -461,7 +461,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX_XXX</format>
 		<code>0</code>
 		<comment>Сигнал с дополнительного аналогового входа 4</comment>
 	</param>
@@ -744,7 +744,7 @@
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_LENGHT</physic>
 		<min>1.0</min>
-		<max>9999.9</max>
+		<max>9999.0</max>
 		<def>2000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -765,7 +765,7 @@
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_SPACE</physic>
 		<min>1.0</min>
-		<max>99.9</max>
+		<max>99.0</max>
 		<def>16.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -786,7 +786,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>300.0</min>
-		<max>9999.9</max>
+		<max>9999.0</max>
 		<def>380.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -807,7 +807,7 @@
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>300.0</min>
-		<max>9999.9</max>
+		<max>9999.0</max>
 		<def>380.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -850,7 +850,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FLOW</physic>
 		<min>1.0</min>
-		<max>9999.9</max>
+		<max>9999.0</max>
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -871,7 +871,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_LENGHT</physic>
 		<min>1.0</min>
-		<max>9999.9</max>
+		<max>9999.0</max>
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -892,7 +892,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_LENGHT</physic>
 		<min>1.0</min>
-		<max>9999.9</max>
+		<max>9999.0</max>
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -4302,7 +4302,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>59999.9</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -4323,7 +4323,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>59999.9</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -4365,7 +4365,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>1.0</min>
-		<max>999.9</max>
+		<max>999.0</max>
 		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -4620,7 +4620,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>59999.9</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -4641,7 +4641,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>59999.9</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -4830,7 +4830,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>999999999.0</max>
 		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -5245,7 +5245,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>59999.9</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -5266,7 +5266,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>59999.9</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -8576,7 +8576,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999.9</max>
+		<max>999.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -10486,7 +10486,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>1.0</min>
-		<max>99999.9</max>
+		<max>99999.0</max>
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -10507,7 +10507,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>1.0</min>
-		<max>99999.9</max>
+		<max>99999.0</max>
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -10528,7 +10528,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>1.0</min>
-		<max>99999.9</max>
+		<max>99999.0</max>
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -14554,7 +14554,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>300.0</min>
-		<max>999.9</max>
+		<max>999.0</max>
 		<def>380.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -16631,9 +16631,9 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>10000.0</max>
+		<max>20.000</max>
 		<def>0.0</def>
-		<discret>1</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Доп.ан.вх.5</text>
@@ -18604,7 +18604,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>59999.9</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -18625,7 +18625,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>59999.9</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -18957,7 +18957,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>59999.9</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -18978,7 +18978,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>59999.9</max>
+		<max>59999.0</max>
 		<def>10.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -21309,7 +21309,7 @@
 		<id>1052</id>
 		<name>CCS_BYPASS_CONTACTORS</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_LIMITED</operation>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
@@ -21419,7 +21419,7 @@
 		<id>1057</id>
 		<name>CCS_RGM_RUN_DIRECT_MODE</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_LIMITED</operation>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
@@ -21527,8 +21527,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10.000</max>
+		<min>0.000</min>
+		<max>20.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
@@ -21536,8 +21536,8 @@
 		<text>Ан.вх.6</text>
 		<short_text>Ан.вх.6</short_text>
 		<form>NULL</form>
-		<unit>VOLTAGE_V</unit>
-		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX_XXX</format>
 		<code>0</code>
 		<comment>Сигнал с аналогового входа 6</comment>
@@ -21548,8 +21548,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-10.000</min>
-		<max>10.000</max>
+		<min>-1.000</min>
+		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
@@ -21557,8 +21557,8 @@
 		<text>Ан.вх.6 Смещение</text>
 		<short_text>Ан.вх.6 Смещ.</short_text>
 		<form>NULL</form>
-		<unit>VOLTAGE_V</unit>
-		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Смещение нуля аналогового входа 6</comment>
@@ -21590,8 +21590,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10.000</max>
+		<min>0.000</min>
+		<max>20.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
@@ -21599,8 +21599,8 @@
 		<text>Ан.вх.7</text>
 		<short_text>Ан.вх.7</short_text>
 		<form>NULL</form>
-		<unit>VOLTAGE_V</unit>
-		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX_XXX</format>
 		<code>0</code>
 		<comment>Сигнал с аналогового входа 7</comment>
@@ -21611,8 +21611,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-10.000</min>
-		<max>10.000</max>
+		<min>-1.000</min>
+		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
@@ -21620,8 +21620,8 @@
 		<text>Ан.вх.7 Смещение</text>
 		<short_text>Ан.вх.7 Смещ.</short_text>
 		<form>NULL</form>
-		<unit>VOLTAGE_V</unit>
-		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Смещение нуля аналогового входа 7</comment>
@@ -21653,8 +21653,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>10.000</max>
+		<min>0.000</min>
+		<max>20.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
@@ -21662,8 +21662,8 @@
 		<text>Ан.вх.8</text>
 		<short_text>Ан.вх.8</short_text>
 		<form>NULL</form>
-		<unit>VOLTAGE_V</unit>
-		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX_XXX</format>
 		<code>0</code>
 		<comment>Сигнал с аналогового входа 8</comment>
@@ -21674,8 +21674,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-10.000</min>
-		<max>10.000</max>
+		<min>-1.000</min>
+		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
@@ -21683,8 +21683,8 @@
 		<text>Ан.вх.8 Смещение</text>
 		<short_text>Ан.вх.8 Смещ.</short_text>
 		<form>NULL</form>
-		<unit>VOLTAGE_V</unit>
-		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Смещение нуля аналогового входа 8</comment>
@@ -21791,7 +21791,7 @@
 		<unit>PHYSIC_CURRENT</unit>
 		<unit_lcd>PHYSIC_CURRENT</unit_lcd>
 		<format>XXXXXX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Максимальный ток СУ</comment>
 	</param>
 	<param>
@@ -21951,8 +21951,8 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-10.000</min>
-		<max>10.000</max>
+		<min>-1.000</min>
+		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
@@ -21960,8 +21960,8 @@
 		<text>Ан.вх.5 Смещение</text>
 		<short_text>Ан.вх.5 Смещ.</short_text>
 		<form>NULL</form>
-		<unit>VOLTAGE_V</unit>
-		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Смещение нуля аналогового входа 5</comment>
@@ -22077,8 +22077,8 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-10.000</min>
-		<max>10.000</max>
+		<min>-1.000</min>
+		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
@@ -22086,8 +22086,8 @@
 		<text>Ан.вх.1 Смещение</text>
 		<short_text>Ан.вх.1 Смещ.</short_text>
 		<form>NULL</form>
-		<unit>VOLTAGE_V</unit>
-		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Смещение нуля аналогового входа 1</comment>
@@ -22140,8 +22140,8 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-10.000</min>
-		<max>10.000</max>
+		<min>-1.000</min>
+		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
@@ -22149,8 +22149,8 @@
 		<text>Ан.вх.2 Смещение</text>
 		<short_text>Ан.вх.2 Смещ.</short_text>
 		<form>NULL</form>
-		<unit>VOLTAGE_V</unit>
-		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Смещение нуля аналогового входа 2</comment>
@@ -22203,8 +22203,8 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-10.000</min>
-		<max>10.000</max>
+		<min>-1.000</min>
+		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
@@ -22212,8 +22212,8 @@
 		<text>Ан.вх.3 Смещение</text>
 		<short_text>Ан.вх.3 Смещ.</short_text>
 		<form>NULL</form>
-		<unit>VOLTAGE_V</unit>
-		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Смещение нуля аналогового входа 3</comment>
@@ -22266,8 +22266,8 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-10.000</min>
-		<max>10.000</max>
+		<min>-1.000</min>
+		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
@@ -22275,8 +22275,8 @@
 		<text>Ан.вх.4 Смещение</text>
 		<short_text>Ан.вх.4 Смещ.</short_text>
 		<form>NULL</form>
-		<unit>VOLTAGE_V</unit>
-		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Смещение нуля аналогового входа 4</comment>
@@ -22289,7 +22289,7 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>-1.0</min>
 		<max>1.0</max>
-		<def>1.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
@@ -22325,6 +22325,27 @@
 	</param>
 	<param>
 		<id>1100</id>
+		<name>CCS_AI_5_TYPE</name>
+		<access>ACCESS_TECHNOLOG</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Тип входа</text>
+		<short_text>Ан.вх.5. Тип</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 6. Тип входа</comment>
+	</param>
+	<param>
+		<id>1101</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>
@@ -23953,7 +23974,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
 		<min>400.0</min>
-		<max>800.9</max>
+		<max>800.0</max>
 		<def>700.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -23974,7 +23995,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>10.0</min>
-		<max>90.9</max>
+		<max>90.0</max>
 		<def>30.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
@@ -23995,7 +24016,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>1.0</min>
-		<max>90.9</max>
+		<max>90.0</max>
 		<def>5.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>

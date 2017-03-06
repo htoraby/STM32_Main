@@ -178,8 +178,8 @@ int VsdDanfoss::setMotorTypeProfile()
     writeToDevice(VSD_UF_CHARACTERISTIC_U_1,    profileMotor[profile][8]);   // 1-55.0
     writeToDevice(VSD_UF_CHARACTERISTIC_U_2,    profileMotor[profile][9]);   // 1-55.1
     writeToDevice(VSD_UF_CHARACTERISTIC_U_3,    profileMotor[profile][10]);  // 1-55.2
-    writeToDevice(VSD_UF_CHARACTERISTIC_U_4,    profileMotor[profile][11]);   // 1-55.3
-    writeToDevice(VSD_UF_CHARACTERISTIC_U_5,    profileMotor[profile][12]);   // 1-55.4
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_4,    profileMotor[profile][11]);  // 1-55.3
+    writeToDevice(VSD_UF_CHARACTERISTIC_U_5,    profileMotor[profile][12]);  // 1-55.4
     writeToDevice(VSD_UF_CHARACTERISTIC_U_6,    profileMotor[profile][13]);  // 1-55.5
     writeToDevice(VSD_UF_CHARACTERISTIC_F_1,    profileMotor[profile][14]);  // 1-56.0
     writeToDevice(VSD_UF_CHARACTERISTIC_F_2,    profileMotor[profile][15]);  // 1-56.1
@@ -209,6 +209,7 @@ int VsdDanfoss::setMotorTypeProfile()
     writeToDevice(VSD_HIGH_START_TORQUE_TIME,   profileMotor[profile][42]);  // 30-20
     writeToDevice(VSD_HIGH_START_TORQUE_CURRENT,profileMotor[profile][43]);  // 30-21
     writeToDevice(VSD_SWITCHING_FREQUENCY_CODE, profileMotor[profile][44]);
+    parameters.set(CCS_BASE_VOLTAGE, profileMotor[profile][13]);
     parameters.set(CCS_CMD_TYPE_PROFILE_VSD, 1);
     return ok_r;
   }

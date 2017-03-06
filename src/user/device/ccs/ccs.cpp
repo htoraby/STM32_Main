@@ -134,6 +134,8 @@ void Ccs::initTask()
   if (getValueUint32(CCS_LAST_STOP_DATE_TIME) == 0)
     setValue(CCS_LAST_STOP_DATE_TIME, getTime());
 
+  setValue(CCS_BYPASS_CONTACTOR_KM1_CONTROL, 0);                                // Выключить контактор KM1
+
   intRestartCount();
 }
 
@@ -952,23 +954,37 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     calcRegimeChangeFreqPeriodOneStep();
     return err;
   case CCS_RGM_RUN_PUSH_MODE:
-    err = setValue(id, value, eventType);
-    if (value != Regime::OffAction) {
-      offRunModeExcept(CCS_RGM_RUN_PUSH_MODE);
-      vsd->onRegimePush();
+    if (value != Regime::OffAction) {                 // Включаем режим
+      err = offRunModeExcept(CCS_RGM_RUN_PUSH_MODE);  // Выключаем все режимы кроме этого
+      if (!err) {                                     // Если выключили
+        err = setValue(id, value, eventType);         // Пишем в регистр
+        if (!err) {                                   // Записали в регистр
+          vsd->onRegimePush();                        // Функция ЧРП если она есть
+        }
+      }
     }
-    else {
-      vsd->offRegimePush();
+    else {                                            // Выключаем режим
+      err = setValue(id, value, eventType);           //
+      if (!err) {
+        vsd->offRegimePush();
+      }
     }
     return err;
   case CCS_RGM_RUN_SWING_MODE:
-    err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      offRunModeExcept(CCS_RGM_RUN_SWING_MODE);
-      vsd->onRegimeSwing();
+      err = offRunModeExcept(CCS_RGM_RUN_SWING_MODE);
+      if (!err) {
+        err = setValue(id, value, eventType);
+        if (!err) {
+          vsd->onRegimeSwing();
+        }
+      }
     }
     else {
-      vsd->offRegimeSwing();
+      err = setValue(id, value, eventType);
+      if (!err) {
+        vsd->offRegimeSwing();
+      }
     }
     return err;
   case CCS_RGM_RUN_PUSH_FREQ: case CCS_RGM_RUN_PUSH_TIME:
@@ -986,36 +1002,60 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     vsd->onRegimeSwing();
     return err;
   case CCS_RGM_RUN_PICKUP_MODE:
-    err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      offRunModeExcept(CCS_RGM_RUN_PICKUP_MODE);
-      parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ProtModeOff); // Отключаем защиту турбин. вращен.
-      vsd->onRegimePickup();
+      err = offRunModeExcept(CCS_RGM_RUN_PICKUP_MODE);
+      if (!err) {
+        err = setValue(id, value, eventType);
+        if (!err) {
+          parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ProtModeOff); // Отключаем защиту турбин. вращен.
+          vsd->onRegimePickup();
+        }
+      }
     }
     else {
-      vsd->offRegimePickup();
+      err = setValue(id, value, eventType);
+      if (!err) {
+        vsd->offRegimePickup();
+      }
     }
     return err;
   case CCS_RGM_RUN_SKIP_RESONANT_MODE:
-    err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      offRunModeExcept(CCS_RGM_RUN_SKIP_RESONANT_MODE);
-      vsd->onRegimeSkipFreq();
+      err = offRunModeExcept(CCS_RGM_RUN_SKIP_RESONANT_MODE);
+      if (!err) {
+        err = setValue(id, value, eventType);
+        if (!err) {
+          vsd->onRegimeSkipFreq();
+        }
+      }
     }
     else {
-      vsd->offRegimeSkipFreq();
+      err = setValue(id, value, eventType);
+      if (!err) {
+        vsd->offRegimeSkipFreq();
+      }
     }
     return err;
   case CCS_RGM_RUN_AUTO_ADAPTATION_MODE:
-    err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      offRunModeExcept(CCS_RGM_RUN_AUTO_ADAPTATION_MODE);
+      err = offRunModeExcept(CCS_RGM_RUN_AUTO_ADAPTATION_MODE);
+      if (!err) {
+        err = setValue(id, value, eventType);
+      }
+    }
+    else {
+      err = setValue(id, value, eventType);
     }
     return err;
   case CCS_RGM_RUN_SYNCHRON_MODE:
-    err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      offRunModeExcept(CCS_RGM_RUN_SYNCHRON_MODE);
+      err = offRunModeExcept(CCS_RGM_RUN_SYNCHRON_MODE);
+      if (!err) {
+        err = setValue(id, value, eventType);
+      }
+    }
+    else {
+      err = setValue(id, value, eventType);
     }
     return err;
   case CCS_RGM_OPTIM_VOLTAGE_MODE:
@@ -1483,6 +1523,16 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (!err)
       setModeAnalogInExt(AI6, value);
     return err;
+  case CCS_AI_7_TYPE:
+    err = setValue(id, value, eventType);
+    if (!err)
+      setModeAnalogInExt(AI7, value);
+    return err;
+  case CCS_AI_8_TYPE:
+    err = setValue(id, value, eventType);
+    if (!err)
+      setModeAnalogInExt(AI8, value);
+    return err;
   case CCS_PROT_SUPPLY_RESTART_DELAY:
   case CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY:
   case CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY:
@@ -1678,9 +1728,14 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_RUN_DIRECT_MODE:                                                 // Прямой пуск
     err = parameters.set(CCS_BYPASS_CONTACTOR_KM2_CONTROL, !value);             // Посылаем команду на контактор ЧРП
     if (!err) {                                                                 // Прошла команда на контактор ЧРП
-      err = setValue(id, value, eventType);                                     // Меняем состояние регистра
-      if (value != Regime::OffAction) {
-        offRunModeExcept(CCS_RGM_RUN_DIRECT_MODE);
+      if (value != Regime::OffAction) {                                         // Включаем режим
+        err = offRunModeExcept(CCS_RGM_RUN_DIRECT_MODE);                        // Выключаем все режимы кроме этого
+        if (!err) {                                                             // Если выключили
+          err = setValue(id, value, eventType);                                 // Пишем в регистр
+        }
+      }
+      else {                                                                    // Выключаем режим
+        err = setValue(id, value, eventType);                                   //
       }
     }
     return err;
@@ -1723,7 +1778,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         case 400: value = 435; break;
         case 630: value = 724; break;
         case 800: value = 880; break;
-        default:  value = 195; break;
+        default:  break;
         }
         parameters.set(CCS_SU_MAX_CURRENT, value);
       }
@@ -2379,6 +2434,6 @@ void Ccs::setRelayOutputs()
   }
 
   setRelayOutput(RO5, (PinState)parameters.get(CCS_BYPASS_CONTACTOR_KM1_CONTROL));
-  setRelayOutput(RO6, (PinState)!parameters.get(CCS_BYPASS_CONTACTOR_KM2_CONTROL));
+  setRelayOutput(RO6, (PinState)/*!*/parameters.get(CCS_BYPASS_CONTACTOR_KM2_CONTROL));
 }
 
