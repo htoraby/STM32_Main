@@ -14,6 +14,8 @@ class RegimeRunDirect;
 
 #define QUNTITY_PROFILES_MOTOR    15
 #define QUANTITY_PARAMETER_MOTOR  45
+#define QUANTITY_PARAMETER_SETPOINT 10
+
 
 enum enVsdDanfosStatus1
 {
@@ -148,11 +150,14 @@ public:
   bool isConnect();
   void setLimitsCcsParameters();
 
+  void resetSetpointsTask();
+
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
   int getMotorTypeProfile();
   int setMotorTypeProfile();
   int setMotorCurrent(float value, EventType eventType = NoneType);
+
 
   /*!
    * \brief setLimitsMotor функция задания пределов параметров двигателя
@@ -260,6 +265,9 @@ public:
 private:
   ModbusParameter modbusParameters_[230];
   DeviceModbus *dm_;
+
+  osSemaphoreId resetSetpointSemaphoreId_;
+  osSemaphoreId resetProfileSemaphoreId_;
 
   RegimeRunPush *regimeRunPush_;
   RegimeRunSwing *regimeRunSwing_;

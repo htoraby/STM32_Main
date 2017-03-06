@@ -9,6 +9,10 @@
 #include "regime_run_direct.h"
 #include "vsd_danfoss_log.h"
 
+float resetSetpoint[2][QUANTITY_PARAMETER_SETPOINT] = {
+
+};
+
 const float profileMotor[QUNTITY_PROFILES_MOTOR][QUANTITY_PARAMETER_MOTOR] = {
 // 0,    1,    2,    3,    4,    5,      6,      7,      8,      9,      10,     11,     12,     13,     14,     15,     16,     17,   18,   19,   20,   21,   22,   23,   24,   25,   26,   27,   28,   29,   30,   31,   32,   33,   34,   35,    36,    37,    38,    39,    40,    41
 //                   1-01, 1-10, 1-23, 1-25, 1-39, 1-55.0, 1-55.1, 1-55.2, 1-55.3, 1-55.4, 1-55.5, 1-56.0, 1-56.1, 1-56.2, 1-56.3, 1-56.4, 1-56.5, 1-64, 1-65, 1-66, 1-70, 1-80, 3-02, 3-03, 3-11, 3-41, 3-42, 3-80, 3-81, 4-19, 4-12, 4-14, 4-16, 4-18, 4-52, 14-24, 14-25, 14-32, 14-51, 30-20, 30-21, 14-01
@@ -28,6 +32,11 @@ const float profileMotor[QUNTITY_PROFILES_MOTOR][QUANTITY_PARAMETER_MOTOR] = {
   {1,    0,    2,    0,    0,    75,   1000, 8,    13,     74,     136,    197,    259,    320,    0,      20,     40,     60,     80,     100,    500,  0.003,50,   0,    0,    1,    100,  100,  30,   30,   30,   30,   105,  1,    100,  160,  160,  110,  0,     0,     0.005, 1,     10,    50,    4},  // SM_VVD
   {1,    1,    2,    1,    1,    75,   1000, 8,    13,     74,     136,    197,    259,    320,    0,      20,     40,     60,     80,     100,    500,  0.003,50,   1,    5,    1,    100,  100,  120,  30,   120,  30,   105,  1,    100,  160,  160,  110,  0,     0,     0.005, 1,     10,    50,    4}   // SM_VVD
 };
+
+static void vsdResetSetpointTask(void *p)
+{
+  (static_cast<VsdDanfoss*>(p))->resetSetpointsTask();
+}
 
 VsdDanfoss::VsdDanfoss()
 {
@@ -108,6 +117,15 @@ void VsdDanfoss::init()
   setLimitsCcsParameters();
   setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
   setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
+
+  osThreadDef(VsdResetSetpoint, vsdResetSetpointTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
+  osThreadCreate(osThread(VsdResetSetpoint), this);
+
+  resetSetpointSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(resetSetpointSemaphoreId_, 0);
+
+  resetProfileSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(resetProfileSemaphoreId_, 0);
 }
 
 bool VsdDanfoss::isConnect()
@@ -135,6 +153,14 @@ void VsdDanfoss::setLimitsCcsParameters()
   parameters.setMin(CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT , getMax(VSD_CURRENT_LIMIT));
   parameters.setMax(CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT , getMax(VSD_CURRENT_LIMIT));
   parameters.setMax(CCS_BASE_FREQUENCY, getMaxBaseFrequency());
+}
+
+void VsdDanfoss::resetSetpointsTask()
+{
+  if (osSemaphoreWait(resetSetpointSemaphoreId_, 0) != osEventTimeout)
+    resetSetpoints();
+  if (osSemaphoreWait(resetProfileSemaphoreId_, 0) != osEventTimeout)
+    setMotorTypeProfile();
 }
 
 // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
@@ -216,12 +242,14 @@ int VsdDanfoss::setMotorTypeProfile()
     writeToDevice(VSD_SWITCHING_FREQUENCY_CODE, profileMotor[profile][44]);
     parameters.set(CCS_BASE_VOLTAGE, profileMotor[profile][13]);
     parameters.set(CCS_CMD_TYPE_PROFILE_VSD, 1);
+
     return ok_r;
   }
   else {
     parameters.set(CCS_ERROR_SLAVE, SetProfileVsdErr);
     return err_r;
-  }  
+  }
+
 }
 
 int VsdDanfoss::setMotorCurrent(float value, EventType eventType)
@@ -944,6 +972,24 @@ bool VsdDanfoss::isControl()
 
 int VsdDanfoss::resetSetpoints()
 {
+  /*
+  int attempts[QUANTITY_PARAMETER_SETPOINT] = {0};
+  for (int i = 0; i < QUANTITY_PARAMETER_SETPOINT; i++) {  // Цикл по параметрам по умолчанию
+
+    if (attempts[i] < 3) {
+
+    }
+    else {}
+    if ((parameters.get(resetSetpoint[0][i]) != resetSetpoint[1][i]) &&
+        (attempts[i] < 3)) {
+      writeToDevice(resetSetpoint[0][i], resetSetpoint[1][i]);           // 0-10
+      attempts[i]++;
+    }
+  }
+  for (int i = 0; i < QUANTITY_PARAMETER_SETPOINT; i++) {
+    if
+  }
+  */
   writeToDevice(VSD_ACTIVE_SETUP, 1);               // 0-10
   writeToDevice(VSD_CHANGE_SETUP, 1);               // 0-11
   writeToDevice(VSD_WORK_STATE_WHEN_ON, 1);         // 0-02
@@ -1076,6 +1122,8 @@ int VsdDanfoss::resetSetpoints()
   writeToDevice(VSD_FAIL_RESET_14, 3);              // 14-90.14
   writeToDevice(VSD_LOCK_ROTOR_PROTECTION, 0);      // 30-22
   writeToDevice(VSD_LOCK_ROTOR_TIME, 1);            // 30-23
+
+  osSemaphoreRelease(resetSetpointSemaphoreId_);
   return ok_r;
 }
 
