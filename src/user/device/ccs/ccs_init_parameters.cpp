@@ -12750,8 +12750,8 @@ void Ccs::initParameters()
   parameters_[CCS_AI_6_VALUE - CCS_BEGIN].id                                     = CCS_AI_6_VALUE;
   parameters_[CCS_AI_6_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_AI_6_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
-  parameters_[CCS_AI_6_VALUE - CCS_BEGIN].physic                                 = PHYSIC_VOLTAGE;
-  parameters_[CCS_AI_6_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[CCS_AI_6_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
+  parameters_[CCS_AI_6_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
   parameters_[CCS_AI_6_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_AI_6_VALUE - CCS_BEGIN].min                                    = 0.0;
   parameters_[CCS_AI_6_VALUE - CCS_BEGIN].max                                    = 10.000;
@@ -12762,8 +12762,8 @@ void Ccs::initParameters()
   parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].id                                = CCS_AI_6_ZERO_SHIFT;
   parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].access                            = ACCESS_OPERATOR;
   parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].operation                         = OPERATION_READ;
-  parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
-  parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
+  parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].min                               = -10.000;
   parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].max                               = 10.000;
@@ -12775,7 +12775,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_6_COEF - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
   parameters_[CCS_AI_6_COEF - CCS_BEGIN].operation                               = OPERATION_READ;
   parameters_[CCS_AI_6_COEF - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
-  parameters_[CCS_AI_6_COEF - CCS_BEGIN].validity                                = VALIDITY_ERROR;
+  parameters_[CCS_AI_6_COEF - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_AI_6_COEF - CCS_BEGIN].value.float_t                           = 1.0;
   parameters_[CCS_AI_6_COEF - CCS_BEGIN].min                                     = 0.001;
   parameters_[CCS_AI_6_COEF - CCS_BEGIN].max                                     = 10.000;
@@ -12786,8 +12786,8 @@ void Ccs::initParameters()
   parameters_[CCS_AI_7_VALUE - CCS_BEGIN].id                                     = CCS_AI_7_VALUE;
   parameters_[CCS_AI_7_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_AI_7_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
-  parameters_[CCS_AI_7_VALUE - CCS_BEGIN].physic                                 = PHYSIC_VOLTAGE;
-  parameters_[CCS_AI_7_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[CCS_AI_7_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
+  parameters_[CCS_AI_7_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
   parameters_[CCS_AI_7_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_AI_7_VALUE - CCS_BEGIN].min                                    = 0.0;
   parameters_[CCS_AI_7_VALUE - CCS_BEGIN].max                                    = 10.000;
@@ -12798,8 +12798,8 @@ void Ccs::initParameters()
   parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].id                                = CCS_AI_7_ZERO_SHIFT;
   parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].access                            = ACCESS_OPERATOR;
   parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].operation                         = OPERATION_READ;
-  parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
-  parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
+  parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].min                               = -10.000;
   parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].max                               = 10.000;
@@ -12811,7 +12811,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_7_COEF - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
   parameters_[CCS_AI_7_COEF - CCS_BEGIN].operation                               = OPERATION_READ;
   parameters_[CCS_AI_7_COEF - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
-  parameters_[CCS_AI_7_COEF - CCS_BEGIN].validity                                = VALIDITY_ERROR;
+  parameters_[CCS_AI_7_COEF - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_AI_7_COEF - CCS_BEGIN].value.float_t                           = 1.0;
   parameters_[CCS_AI_7_COEF - CCS_BEGIN].min                                     = 0.001;
   parameters_[CCS_AI_7_COEF - CCS_BEGIN].max                                     = 10.000;
@@ -12822,8 +12822,8 @@ void Ccs::initParameters()
   parameters_[CCS_AI_8_VALUE - CCS_BEGIN].id                                     = CCS_AI_8_VALUE;
   parameters_[CCS_AI_8_VALUE - CCS_BEGIN].access                                 = ACCESS_OPERATOR;
   parameters_[CCS_AI_8_VALUE - CCS_BEGIN].operation                              = OPERATION_READ;
-  parameters_[CCS_AI_8_VALUE - CCS_BEGIN].physic                                 = PHYSIC_VOLTAGE;
-  parameters_[CCS_AI_8_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
+  parameters_[CCS_AI_8_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
+  parameters_[CCS_AI_8_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
   parameters_[CCS_AI_8_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
   parameters_[CCS_AI_8_VALUE - CCS_BEGIN].min                                    = 0.0;
   parameters_[CCS_AI_8_VALUE - CCS_BEGIN].max                                    = 10.000;
@@ -12834,8 +12834,8 @@ void Ccs::initParameters()
   parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].id                                = CCS_AI_8_ZERO_SHIFT;
   parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].access                            = ACCESS_OPERATOR;
   parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].operation                         = OPERATION_READ;
-  parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
-  parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
+  parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].min                               = -10.000;
   parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].max                               = 10.000;
@@ -12847,7 +12847,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_8_COEF - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
   parameters_[CCS_AI_8_COEF - CCS_BEGIN].operation                               = OPERATION_READ;
   parameters_[CCS_AI_8_COEF - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
-  parameters_[CCS_AI_8_COEF - CCS_BEGIN].validity                                = VALIDITY_ERROR;
+  parameters_[CCS_AI_8_COEF - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_AI_8_COEF - CCS_BEGIN].value.float_t                           = 1.0;
   parameters_[CCS_AI_8_COEF - CCS_BEGIN].min                                     = 0.001;
   parameters_[CCS_AI_8_COEF - CCS_BEGIN].max                                     = 10.000;
@@ -12966,8 +12966,8 @@ void Ccs::initParameters()
   parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].id                                = CCS_AI_5_ZERO_SHIFT;
   parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].access                            = ACCESS_TECHNOLOG;
   parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].operation                         = OPERATION_READ;
-  parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
-  parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
+  parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].min                               = -10.000;
   parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].max                               = 10.000;
@@ -12991,7 +12991,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_5_COEF - CCS_BEGIN].access                                  = ACCESS_TECHNOLOG;
   parameters_[CCS_AI_5_COEF - CCS_BEGIN].operation                               = OPERATION_READ;
   parameters_[CCS_AI_5_COEF - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
-  parameters_[CCS_AI_5_COEF - CCS_BEGIN].validity                                = VALIDITY_ERROR;
+  parameters_[CCS_AI_5_COEF - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_AI_5_COEF - CCS_BEGIN].value.float_t                           = 1.0;
   parameters_[CCS_AI_5_COEF - CCS_BEGIN].min                                     = 0.001;
   parameters_[CCS_AI_5_COEF - CCS_BEGIN].max                                     = 10.000;
@@ -13038,8 +13038,8 @@ void Ccs::initParameters()
   parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].id                                = CCS_AI_1_ZERO_SHIFT;
   parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].access                            = ACCESS_TECHNOLOG;
   parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].operation                         = OPERATION_READ;
-  parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
-  parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
+  parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].min                               = -10.000;
   parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].max                               = 10.000;
@@ -13063,7 +13063,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_1_COEF - CCS_BEGIN].access                                  = ACCESS_TECHNOLOG;
   parameters_[CCS_AI_1_COEF - CCS_BEGIN].operation                               = OPERATION_READ;
   parameters_[CCS_AI_1_COEF - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
-  parameters_[CCS_AI_1_COEF - CCS_BEGIN].validity                                = VALIDITY_ERROR;
+  parameters_[CCS_AI_1_COEF - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_AI_1_COEF - CCS_BEGIN].value.float_t                           = 1.0;
   parameters_[CCS_AI_1_COEF - CCS_BEGIN].min                                     = 0.001;
   parameters_[CCS_AI_1_COEF - CCS_BEGIN].max                                     = 10.000;
@@ -13074,8 +13074,8 @@ void Ccs::initParameters()
   parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].id                                = CCS_AI_2_ZERO_SHIFT;
   parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].access                            = ACCESS_TECHNOLOG;
   parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].operation                         = OPERATION_READ;
-  parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
-  parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
+  parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].min                               = -10.000;
   parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].max                               = 10.000;
@@ -13099,7 +13099,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_2_COEF - CCS_BEGIN].access                                  = ACCESS_TECHNOLOG;
   parameters_[CCS_AI_2_COEF - CCS_BEGIN].operation                               = OPERATION_READ;
   parameters_[CCS_AI_2_COEF - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
-  parameters_[CCS_AI_2_COEF - CCS_BEGIN].validity                                = VALIDITY_ERROR;
+  parameters_[CCS_AI_2_COEF - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_AI_2_COEF - CCS_BEGIN].value.float_t                           = 1.0;
   parameters_[CCS_AI_2_COEF - CCS_BEGIN].min                                     = 0.001;
   parameters_[CCS_AI_2_COEF - CCS_BEGIN].max                                     = 10.000;
@@ -13110,8 +13110,8 @@ void Ccs::initParameters()
   parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].id                                = CCS_AI_3_ZERO_SHIFT;
   parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].access                            = ACCESS_TECHNOLOG;
   parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].operation                         = OPERATION_READ;
-  parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
-  parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
+  parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].min                               = -10.000;
   parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].max                               = 10.000;
@@ -13135,7 +13135,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_3_COEF - CCS_BEGIN].access                                  = ACCESS_TECHNOLOG;
   parameters_[CCS_AI_3_COEF - CCS_BEGIN].operation                               = OPERATION_READ;
   parameters_[CCS_AI_3_COEF - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
-  parameters_[CCS_AI_3_COEF - CCS_BEGIN].validity                                = VALIDITY_ERROR;
+  parameters_[CCS_AI_3_COEF - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_AI_3_COEF - CCS_BEGIN].value.float_t                           = 1.0;
   parameters_[CCS_AI_3_COEF - CCS_BEGIN].min                                     = 0.001;
   parameters_[CCS_AI_3_COEF - CCS_BEGIN].max                                     = 10.000;
@@ -13146,8 +13146,8 @@ void Ccs::initParameters()
   parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].id                                = CCS_AI_4_ZERO_SHIFT;
   parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].access                            = ACCESS_TECHNOLOG;
   parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].operation                         = OPERATION_READ;
-  parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_VOLTAGE;
-  parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_ERROR;
+  parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
+  parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
   parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].min                               = -10.000;
   parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].max                               = 10.000;
@@ -13171,7 +13171,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_4_COEF - CCS_BEGIN].access                                  = ACCESS_TECHNOLOG;
   parameters_[CCS_AI_4_COEF - CCS_BEGIN].operation                               = OPERATION_READ;
   parameters_[CCS_AI_4_COEF - CCS_BEGIN].physic                                  = PHYSIC_NUMERIC;
-  parameters_[CCS_AI_4_COEF - CCS_BEGIN].validity                                = VALIDITY_ERROR;
+  parameters_[CCS_AI_4_COEF - CCS_BEGIN].validity                                = VALIDITY_OK;
   parameters_[CCS_AI_4_COEF - CCS_BEGIN].value.float_t                           = 1.0;
   parameters_[CCS_AI_4_COEF - CCS_BEGIN].min                                     = 0.001;
   parameters_[CCS_AI_4_COEF - CCS_BEGIN].max                                     = 10.000;

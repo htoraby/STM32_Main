@@ -21368,7 +21368,7 @@
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<code>0</code>
-		<values>0-Откл;1-Вкл</values>
+		<values>0-Вкл;1-Откл</values>
 		<comment>Управляющий сигнал на KM2</comment>
 	</param>
 	<param>
@@ -21526,12 +21526,12 @@
 		<name>CCS_AI_6_VALUE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_VOLTAGE</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>10.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ан.вх.6</text>
 		<short_text>Ан.вх.6</short_text>
@@ -21547,12 +21547,12 @@
 		<name>CCS_AI_6_ZERO_SHIFT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_VOLTAGE</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>-10.000</min>
 		<max>10.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ан.вх.6 Смещение</text>
 		<short_text>Ан.вх.6 Смещ.</short_text>
@@ -21573,7 +21573,7 @@
 		<max>10.000</max>
 		<def>1.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Ан.вх.6 Коэффициент</text>
 		<short_text>Ан.вх.6 Коэф</short_text>
@@ -21589,12 +21589,12 @@
 		<name>CCS_AI_7_VALUE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_VOLTAGE</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>10.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ан.вх.7</text>
 		<short_text>Ан.вх.7</short_text>
@@ -21610,12 +21610,12 @@
 		<name>CCS_AI_7_ZERO_SHIFT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_VOLTAGE</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>-10.000</min>
 		<max>10.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ан.вх.7 Смещение</text>
 		<short_text>Ан.вх.7 Смещ.</short_text>
@@ -21636,7 +21636,7 @@
 		<max>10.000</max>
 		<def>1.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Ан.вх.7 Коэффициент</text>
 		<short_text>Ан.вх.7 Коэф</short_text>
@@ -21652,12 +21652,12 @@
 		<name>CCS_AI_8_VALUE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_VOLTAGE</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>10.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ан.вх.8</text>
 		<short_text>Ан.вх.8</short_text>
@@ -21673,12 +21673,12 @@
 		<name>CCS_AI_8_ZERO_SHIFT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_VOLTAGE</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>-10.000</min>
 		<max>10.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ан.вх.8 Смещение</text>
 		<short_text>Ан.вх.8 Смещ.</short_text>
@@ -21699,7 +21699,7 @@
 		<max>10.000</max>
 		<def>1.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Ан.вх.8 Коэффициент</text>
 		<short_text>Ан.вх.8 Коэф</short_text>
@@ -21908,12 +21908,12 @@
 		<name>CCS_AI_5_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_VOLTAGE</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>-10.000</min>
 		<max>10.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ан.вх.5 Смещение</text>
 		<short_text>Ан.вх.5 Смещ.</short_text>
@@ -21955,7 +21955,7 @@
 		<max>10.000</max>
 		<def>1.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Ан.вх.5 Коэффициент</text>
 		<short_text>Ан.вх.5 Коэф</short_text>
@@ -22034,12 +22034,12 @@
 		<name>CCS_AI_1_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_VOLTAGE</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>-10.000</min>
 		<max>10.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ан.вх.1 Смещение</text>
 		<short_text>Ан.вх.1 Смещ.</short_text>
@@ -22081,7 +22081,7 @@
 		<max>10.000</max>
 		<def>1.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Ан.вх.1 Коэффициент</text>
 		<short_text>Ан.вх.1 Коэф</short_text>
@@ -22097,12 +22097,12 @@
 		<name>CCS_AI_2_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_VOLTAGE</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>-10.000</min>
 		<max>10.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ан.вх.2 Смещение</text>
 		<short_text>Ан.вх.2 Смещ.</short_text>
@@ -22144,7 +22144,7 @@
 		<max>10.000</max>
 		<def>1.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Ан.вх.2 Коэффициент</text>
 		<short_text>Ан.вх.2 Коэф</short_text>
@@ -22160,12 +22160,12 @@
 		<name>CCS_AI_3_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_VOLTAGE</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>-10.000</min>
 		<max>10.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ан.вх.3 Смещение</text>
 		<short_text>Ан.вх.3 Смещ.</short_text>
@@ -22207,7 +22207,7 @@
 		<max>10.000</max>
 		<def>1.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Ан.вх.3 Коэффициент</text>
 		<short_text>Ан.вх.3 Коэф</short_text>
@@ -22223,12 +22223,12 @@
 		<name>CCS_AI_4_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_VOLTAGE</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>-10.000</min>
 		<max>10.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ан.вх.4 Смещение</text>
 		<short_text>Ан.вх.4 Смещ.</short_text>
@@ -22270,7 +22270,7 @@
 		<max>10.000</max>
 		<def>1.0</def>
 		<discret>1000</discret>
-		<valid>VALIDITY_ERROR</valid>
+		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Ан.вх.4 Коэффициент</text>
 		<short_text>Ан.вх.4 Коэф</short_text>

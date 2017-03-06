@@ -875,14 +875,14 @@ void Ccs::changedDigitalInput(int num)
 
 void Ccs::calcAnalogInputs()
 {
-  setValue(CCS_AI_1_VALUE, getValueAnalogInExt(AI1)/**getValue(CCS_COEF_AI_1)*/);
-  setValue(CCS_AI_2_VALUE, getValueAnalogInExt(AI2)/**getValue(CCS_COEF_AI_2)*/);
-  setValue(CCS_AI_3_VALUE, getValueAnalogInExt(AI3)/**getValue(CCS_COEF_AI_3)*/);
-  setValue(CCS_AI_4_VALUE, getValueAnalogInExt(AI4)/**getValue(CCS_COEF_AI_4)*/);
-  setValue(CCS_AI_5_VALUE, getValueAnalogInExt(AI5));
-  setValue(CCS_AI_6_VALUE, getValueAnalogInExt(AI6));
-  setValue(CCS_AI_7_VALUE, getValueAnalogInExt(AI7));
-  setValue(CCS_AI_8_VALUE, getValueAnalogInExt(AI8));
+  setValue(CCS_AI_1_VALUE, (getValueAnalogInExt(AI1) + parameters.get(CCS_AI_1_AXIS_ZERO_SHIFT) * parameters.get(CCS_AI_1_ZERO_SHIFT)) * parameters.get(CCS_AI_1_COEF));
+  setValue(CCS_AI_2_VALUE, (getValueAnalogInExt(AI2) + parameters.get(CCS_AI_2_AXIS_ZERO_SHIFT) * parameters.get(CCS_AI_2_ZERO_SHIFT)) * parameters.get(CCS_AI_2_COEF));
+  setValue(CCS_AI_3_VALUE, (getValueAnalogInExt(AI3) + parameters.get(CCS_AI_3_AXIS_ZERO_SHIFT) * parameters.get(CCS_AI_3_ZERO_SHIFT)) * parameters.get(CCS_AI_3_COEF));
+  setValue(CCS_AI_4_VALUE, (getValueAnalogInExt(AI4) + parameters.get(CCS_AI_4_AXIS_ZERO_SHIFT) * parameters.get(CCS_AI_4_ZERO_SHIFT)) * parameters.get(CCS_AI_4_COEF));
+  setValue(CCS_AI_5_VALUE, (getValueAnalogInExt(AI5) + parameters.get(CCS_AI_5_AXIS_ZERO_SHIFT) * parameters.get(CCS_AI_5_ZERO_SHIFT)) * parameters.get(CCS_AI_5_COEF));
+  setValue(CCS_AI_6_VALUE, (getValueAnalogInExt(AI6) + parameters.get(CCS_AI_6_AXIS_ZERO_SHIFT) * parameters.get(CCS_AI_6_ZERO_SHIFT)) * parameters.get(CCS_AI_6_COEF));
+  setValue(CCS_AI_7_VALUE, (getValueAnalogInExt(AI7) + parameters.get(CCS_AI_7_AXIS_ZERO_SHIFT) * parameters.get(CCS_AI_7_ZERO_SHIFT)) * parameters.get(CCS_AI_7_COEF));
+  setValue(CCS_AI_8_VALUE, (getValueAnalogInExt(AI8) + parameters.get(CCS_AI_8_AXIS_ZERO_SHIFT) * parameters.get(CCS_AI_8_ZERO_SHIFT)) * parameters.get(CCS_AI_8_COEF));
 
   float value;
   float range;

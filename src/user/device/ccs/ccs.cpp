@@ -2377,6 +2377,6 @@ void Ccs::setRelayOutputs()
   }
 
   setRelayOutput(RO5, (PinState)parameters.get(CCS_BYPASS_CONTACTOR_KM1_CONTROL));
-  setRelayOutput(RO6, (PinState)parameters.get(CCS_BYPASS_CONTACTOR_KM2_CONTROL));
+  setRelayOutput(RO6, (PinState)!parameters.get(CCS_BYPASS_CONTACTOR_KM2_CONTROL));
 }
 
