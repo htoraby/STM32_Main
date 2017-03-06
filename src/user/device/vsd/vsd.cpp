@@ -556,6 +556,14 @@ void Vsd::readInDevice(int id)
   return;
 }
 
+float Vsd::getMaxBaseFrequency()
+{
+  if (parameters.get(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
+    return 70;
+  }
+  return 200;
+}
+
 // Читаемые параметры ЧРП
 float Vsd::getCurrentFreq()
 {

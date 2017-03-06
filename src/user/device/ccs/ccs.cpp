@@ -2343,9 +2343,9 @@ void Ccs::resetCmd(uint16_t id)
   setValue(id, 0.0);
 }
 
-void Ccs::setMaxBaseFrequency(float freq)
+void Ccs::setMaxBaseFrequency()
 {
-  setMax(CCS_BASE_FREQUENCY, freq);
+  setMax(CCS_BASE_FREQUENCY, vsd->getMaxBaseFrequency());
 }
 
 void Ccs::setError(int error)

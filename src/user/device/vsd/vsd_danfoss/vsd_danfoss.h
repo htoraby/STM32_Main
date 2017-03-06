@@ -150,6 +150,7 @@ public:
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
+  int getMotorTypeProfile();
   int setMotorTypeProfile();
   int setMotorCurrent(float value, EventType eventType = NoneType);
 
@@ -253,6 +254,9 @@ public:
   bool isControl();
 
   void getSwitchFreqCode(float value);
+
+  float getMaxBaseFrequency();
+
 private:
   ModbusParameter modbusParameters_[230];
   DeviceModbus *dm_;
