@@ -21806,15 +21806,15 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Сохранить конфигурацию в профиль</text>
-		<short_text>Конфигурации. Сохранение конфигурации в профиль</short_text>
+		<text>Сохранить уставки в профиль</text>
+		<short_text>Конфигурации. Сохранение уставок в профиль</short_text>
 		<form>7.6 Конфигурации</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
 		<values>0-Нет;1-Профиль 1;2-Профиль 2;3-Профиль 3;4-Профиль 4;5-Профиль 5</values>
-		<comment>Конфигурации. Сохранение конфигурации в профиль</comment>
+		<comment>Конфигурации. Сохранение уставок в профиль</comment>
 	</param>
 	<param>
 		<id>1076</id>
@@ -21828,15 +21828,15 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Загрузить конфигурацию из профиля</text>
-		<short_text>Конфигурации. Загрузка конфигурации из профиля</short_text>
+		<text>Загрузить уставки из профиля</text>
+		<short_text>Конфигурации. Загрузка уставок из профиля</short_text>
 		<form>7.6 Конфигурации</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
 		<values>0-Нет;1-Профиль 1;2-Профиль 2;3-Профиль 3;4-Профиль 4;5-Профиль 5</values>
-		<comment>Конфигурации. Загрузка конфигурации из профиля</comment>
+		<comment>Конфигурации. Загрузка уставок из профиля</comment>
 	</param>
 	<param>
 		<id>1077</id>
@@ -21905,6 +21905,48 @@
 	</param>
 	<param>
 		<id>1080</id>
+		<name>CCS_CMD_SAVE_CONFIG_USB</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Сохранить конфигурацию на USB носитель</text>
+		<short_text>Конфигурации. Сохранение конфигурации на USB носитель</short_text>
+		<form>7.6 Конфигурации</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Конфигурации. Сохранение конфигурации на USB носитель</comment>
+	</param>
+	<param>
+		<id>1081</id>
+		<name>CCS_CMD_LOAD_CONFIG_USB</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Загрузить конфигурацию с USB носителя</text>
+		<short_text>Конфигурации. Загрузка конфигурации с USB носителя</short_text>
+		<form>7.6 Конфигурации</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Конфигурации. Загрузка конфигурации с USB носителя</comment>
+	</param>
+	<param>
+		<id>1082</id>
 		<name>CCS_AI_5_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -21925,7 +21967,7 @@
 		<comment>Смещение нуля аналогового входа 5</comment>
 	</param>
 	<param>
-		<id>1081</id>
+		<id>1083</id>
 		<name>CCS_AI_5_AXIS_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -21946,7 +21988,7 @@
 		<comment>Ось смещения аналогового входа 5</comment>
 	</param>
 	<param>
-		<id>1082</id>
+		<id>1084</id>
 		<name>CCS_AI_5_COEF</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -21967,7 +22009,7 @@
 		<comment>Калибровочный коэффициент аналогового входа 5</comment>
 	</param>
 	<param>
-		<id>1083</id>
+		<id>1085</id>
 		<name>CCS_AI_6_AXIS_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -21988,7 +22030,7 @@
 		<comment>Ось смещения аналогового входа 6</comment>
 	</param>
 	<param>
-		<id>1084</id>
+		<id>1086</id>
 		<name>CCS_AI_7_AXIS_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22009,7 +22051,7 @@
 		<comment>Ось смещения аналогового входа 7</comment>
 	</param>
 	<param>
-		<id>1085</id>
+		<id>1087</id>
 		<name>CCS_AI_8_AXIS_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22030,7 +22072,7 @@
 		<comment>Ось смещения аналогового входа 8</comment>
 	</param>
 	<param>
-		<id>1086</id>
+		<id>1088</id>
 		<name>CCS_AI_1_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22051,7 +22093,7 @@
 		<comment>Смещение нуля аналогового входа 1</comment>
 	</param>
 	<param>
-		<id>1087</id>
+		<id>1089</id>
 		<name>CCS_AI_1_AXIS_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22072,7 +22114,7 @@
 		<comment>Ось смещения аналогового входа 1</comment>
 	</param>
 	<param>
-		<id>1088</id>
+		<id>1090</id>
 		<name>CCS_AI_1_COEF</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22093,7 +22135,7 @@
 		<comment>Калибровочный коэффициент аналогового входа 1</comment>
 	</param>
 	<param>
-		<id>1089</id>
+		<id>1091</id>
 		<name>CCS_AI_2_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22114,7 +22156,7 @@
 		<comment>Смещение нуля аналогового входа 2</comment>
 	</param>
 	<param>
-		<id>1090</id>
+		<id>1092</id>
 		<name>CCS_AI_2_AXIS_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22135,7 +22177,7 @@
 		<comment>Ось смещения аналогового входа 2</comment>
 	</param>
 	<param>
-		<id>1091</id>
+		<id>1093</id>
 		<name>CCS_AI_2_COEF</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22156,7 +22198,7 @@
 		<comment>Калибровочный коэффициент аналогового входа 2</comment>
 	</param>
 	<param>
-		<id>1092</id>
+		<id>1094</id>
 		<name>CCS_AI_3_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22177,7 +22219,7 @@
 		<comment>Смещение нуля аналогового входа 3</comment>
 	</param>
 	<param>
-		<id>1093</id>
+		<id>1095</id>
 		<name>CCS_AI_3_AXIS_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22198,7 +22240,7 @@
 		<comment>Ось смещения аналогового входа 3</comment>
 	</param>
 	<param>
-		<id>1094</id>
+		<id>1096</id>
 		<name>CCS_AI_3_COEF</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22219,7 +22261,7 @@
 		<comment>Калибровочный коэффициент аналогового входа 3</comment>
 	</param>
 	<param>
-		<id>1095</id>
+		<id>1097</id>
 		<name>CCS_AI_4_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22240,7 +22282,7 @@
 		<comment>Смещение нуля аналогового входа 4</comment>
 	</param>
 	<param>
-		<id>1096</id>
+		<id>1098</id>
 		<name>CCS_AI_4_AXIS_ZERO_SHIFT</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22261,7 +22303,7 @@
 		<comment>Ось смещения аналогового входа 4</comment>
 	</param>
 	<param>
-		<id>1097</id>
+		<id>1099</id>
 		<name>CCS_AI_4_COEF</name>
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
@@ -22282,7 +22324,7 @@
 		<comment>Калибровочный коэффициент аналогового входа 4</comment>
 	</param>
 	<param>
-		<id>1098</id>
+		<id>1100</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>
