@@ -11020,7 +11020,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXXXXXXX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Заводской номер КСУ</comment>
 	</param>
 	<param>
@@ -11230,7 +11230,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXXXXXXX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Заводской номер СУ</comment>
 	</param>
 	<param>
@@ -17549,7 +17549,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>IP-адрес (1)</comment>
 	</param>
 	<param>
@@ -17612,7 +17612,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXX</format>
-		<code>0</code>
+		<code>107</code>
 		<comment>IP-адрес (4)</comment>
 	</param>
 	<param>
@@ -17633,7 +17633,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXX</format>
-		<code>13</code>
+		<code>0</code>
 		<comment>Маска подсети (1)</comment>
 	</param>
 	<param>
@@ -17696,7 +17696,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXX</format>
-		<code>0</code>
+		<code>107</code>
 		<comment>Маска подсети (4)</comment>
 	</param>
 	<param>
@@ -17992,7 +17992,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXXXXX</format>
-		<code>0</code>
+		<code>107</code>
 		<comment>Заводской номер КСУ (2 часть)</comment>
 	</param>
 	<param>
@@ -18013,7 +18013,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXXXXX</format>
-		<code>0</code>
+		<code>107</code>
 		<comment>Заводской номер СУ (2 часть)</comment>
 	</param>
 	<param>

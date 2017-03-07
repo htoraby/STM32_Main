@@ -58,6 +58,7 @@ typedef enum {
   ProtectVsdCode,                     //!< Аппаратная защита ЧРП
   WarningVsdCode,                     //!< Предупреждение ЧРП
   SetpiontResetCode    = 106,         //!< Сброс уставок
+  MultiSetpiontCode    = 107,         //!< Изм нескольких уставок
 
   LastCode,
 } EventCode;

@@ -6493,7 +6493,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].max                            = 999999999.9;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].def                            = 0.0;
-  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].code                           = 13;
+  parameters_[CCS_NUM_PRODUCTION_CCS - CCS_BEGIN].code                           = 0;
   // Версия ПО КСУ
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].id                                 = CCS_VERSION_SW_CCS;
   parameters_[CCS_VERSION_SW_CCS - CCS_BEGIN].access                             = ACCESS_SERVICE;
@@ -6613,7 +6613,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].max                             = 999999999.9;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].def                             = 0.0;
-  parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].code                            = 13;
+  parameters_[CCS_NUM_PRODUCTION_SU - CCS_BEGIN].code                            = 0;
   // Дата изготовления СУ
   parameters_[CCS_DATE_PRODUCTION_SU - CCS_BEGIN].id                             = CCS_DATE_PRODUCTION_SU;
   parameters_[CCS_DATE_PRODUCTION_SU - CCS_BEGIN].access                         = ACCESS_SERVICE;
@@ -10381,7 +10381,7 @@ void Ccs::initParameters()
   parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].max                                  = 255.0;
   parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].discret                              = 1;
   parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].def                                  = 192.0;
-  parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].code                                 = 13;
+  parameters_[CCS_IP_ADDRESS_1 - CCS_BEGIN].code                                 = 0;
   // IP-адрес (2)
   parameters_[CCS_IP_ADDRESS_2 - CCS_BEGIN].id                                   = CCS_IP_ADDRESS_2;
   parameters_[CCS_IP_ADDRESS_2 - CCS_BEGIN].access                               = ACCESS_OPERATOR;
@@ -10417,7 +10417,7 @@ void Ccs::initParameters()
   parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].max                                  = 255.0;
   parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].discret                              = 1;
   parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].def                                  = 2.0;
-  parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].code                                 = 0;
+  parameters_[CCS_IP_ADDRESS_4 - CCS_BEGIN].code                                 = 107;
   // Маска подсети (1)
   parameters_[CCS_NETMASK_1 - CCS_BEGIN].id                                      = CCS_NETMASK_1;
   parameters_[CCS_NETMASK_1 - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
@@ -10429,7 +10429,7 @@ void Ccs::initParameters()
   parameters_[CCS_NETMASK_1 - CCS_BEGIN].max                                     = 255.0;
   parameters_[CCS_NETMASK_1 - CCS_BEGIN].discret                                 = 1;
   parameters_[CCS_NETMASK_1 - CCS_BEGIN].def                                     = 255.0;
-  parameters_[CCS_NETMASK_1 - CCS_BEGIN].code                                    = 13;
+  parameters_[CCS_NETMASK_1 - CCS_BEGIN].code                                    = 0;
   // Маска подсети (2)
   parameters_[CCS_NETMASK_2 - CCS_BEGIN].id                                      = CCS_NETMASK_2;
   parameters_[CCS_NETMASK_2 - CCS_BEGIN].access                                  = ACCESS_OPERATOR;
@@ -10465,7 +10465,7 @@ void Ccs::initParameters()
   parameters_[CCS_NETMASK_4 - CCS_BEGIN].max                                     = 255.0;
   parameters_[CCS_NETMASK_4 - CCS_BEGIN].discret                                 = 1;
   parameters_[CCS_NETMASK_4 - CCS_BEGIN].def                                     = 0.0;
-  parameters_[CCS_NETMASK_4 - CCS_BEGIN].code                                    = 0;
+  parameters_[CCS_NETMASK_4 - CCS_BEGIN].code                                    = 107;
   // Подключение flashdisk к USB
   parameters_[CCS_USB_CONNECTION - CCS_BEGIN].id                                 = CCS_USB_CONNECTION;
   parameters_[CCS_USB_CONNECTION - CCS_BEGIN].access                             = ACCESS_OPERATOR;
@@ -10633,7 +10633,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].max                          = 999999999.9;
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].def                          = 0.0;
-  parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].code                         = 0;
+  parameters_[CCS_NUM_PRODUCTION_CCS_2 - CCS_BEGIN].code                         = 107;
   // Заводской номер СУ (2 часть)
   parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].id                            = CCS_NUM_PRODUCTION_SU_2;
   parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].access                        = ACCESS_SERVICE;
@@ -10645,7 +10645,7 @@ void Ccs::initParameters()
   parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].max                           = 999999999.9;
   parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].discret                       = 1;
   parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].def                           = 0.0;
-  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].code                          = 0;
+  parameters_[CCS_NUM_PRODUCTION_SU_2 - CCS_BEGIN].code                          = 107;
   // Регистр состояния инвертора
   parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].id                          = CCS_VSD_STATUS_WORD_1_LOG;
   parameters_[CCS_VSD_STATUS_WORD_1_LOG - CCS_BEGIN].access                      = ACCESS_OPERATOR;
