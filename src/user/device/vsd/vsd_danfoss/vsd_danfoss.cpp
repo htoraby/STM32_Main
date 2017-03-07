@@ -33,10 +33,12 @@ const float profileMotor[QUNTITY_PROFILES_MOTOR][QUANTITY_PARAMETER_MOTOR] = {
   {1,    1,    2,    1,    1,    75,   1000, 8,    13,     74,     136,    197,    259,    320,    0,      20,     40,     60,     80,     100,    500,  0.003,50,   1,    5,    1,    100,  100,  120,  30,   120,  30,   105,  1,    100,  160,  160,  110,  0,     0,     0.005, 1,     10,    50,    4}   // SM_VVD
 };
 
+/*
 static void vsdResetSetpointTask(void *p)
 {
   (static_cast<VsdDanfoss*>(p))->resetSetpointsTask();
 }
+*/
 
 VsdDanfoss::VsdDanfoss()
 {
@@ -118,6 +120,7 @@ void VsdDanfoss::init()
   setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
   setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 
+  /*
   osThreadDef(VsdResetSetpoint, vsdResetSetpointTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(VsdResetSetpoint), this);
 
@@ -126,6 +129,7 @@ void VsdDanfoss::init()
 
   resetProfileSemaphoreId_ = osSemaphoreCreate(NULL, 1);
   osSemaphoreWait(resetProfileSemaphoreId_, 0);
+  */
 }
 
 bool VsdDanfoss::isConnect()
@@ -157,10 +161,13 @@ void VsdDanfoss::setLimitsCcsParameters()
 
 void VsdDanfoss::resetSetpointsTask()
 {
-  if (osSemaphoreWait(resetSetpointSemaphoreId_, 0) != osEventTimeout)
-    resetSetpoints();
-  if (osSemaphoreWait(resetProfileSemaphoreId_, 0) != osEventTimeout)
-    setMotorTypeProfile();
+  while(1) {
+    osDelay(1);
+    if (osSemaphoreWait(resetSetpointSemaphoreId_, 0) != osEventTimeout)
+      resetSetpoints();
+    //if (osSemaphoreWait(resetProfileSemaphoreId_, 0) != osEventTimeout)
+    //  setMotorTypeProfile();
+  }
 }
 
 // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
@@ -972,157 +979,270 @@ bool VsdDanfoss::isControl()
 
 int VsdDanfoss::resetSetpoints()
 {
-  /*
-  int attempts[QUANTITY_PARAMETER_SETPOINT] = {0};
-  for (int i = 0; i < QUANTITY_PARAMETER_SETPOINT; i++) {  // Цикл по параметрам по умолчанию
-
-    if (attempts[i] < 3) {
-
-    }
-    else {}
-    if ((parameters.get(resetSetpoint[0][i]) != resetSetpoint[1][i]) &&
-        (attempts[i] < 3)) {
-      writeToDevice(resetSetpoint[0][i], resetSetpoint[1][i]);           // 0-10
-      attempts[i]++;
-    }
-  }
-  for (int i = 0; i < QUANTITY_PARAMETER_SETPOINT; i++) {
-    if
-  }
-  */
   writeToDevice(VSD_ACTIVE_SETUP, 1);               // 0-10
+  osDelay(50);
   writeToDevice(VSD_CHANGE_SETUP, 1);               // 0-11
+  osDelay(50);
   writeToDevice(VSD_WORK_STATE_WHEN_ON, 1);         // 0-02
+  osDelay(50);
   writeToDevice(VSD_CONFIG_MODE, 0);                // 1-00
+  osDelay(50);
   writeToDevice(VSD_TORQUE_CHARACTERISTIC, 0);      // 1-03
+  osDelay(50);
   writeToDevice(VSD_OVERLOAD_MODE, 1);              // 1-04
+  osDelay(50);
   writeToDevice(VSD_MOTOR_VOLTAGE, 320);            // 1-22
+  osDelay(50);
   writeToDevice(VSD_MIN_CURRENT_LOW_SPEED, 100);    // 1-66
+  osDelay(50);
   writeToDevice(VSD_START_DELAY, 0);                // 1-71
+  osDelay(50);
   writeToDevice(VSD_START_FUNCTION, 2);             // 1-72
+  osDelay(50);
   writeToDevice(VSD_STOP_SPEED, 10);                // 1-82
+  osDelay(50);
   writeToDevice(VSD_CONTROL_TERMISTOR_MTR, 2);      // 1-90
+  osDelay(50);
   writeToDevice(VSD_THERMISTOR_RESOURCE, 5);        // 1-93
+  osDelay(50);
   writeToDevice(VSD_PARKING_CURRENT, 50);           // 2-06
+  osDelay(50);
   writeToDevice(VSD_PARKING_TIME, 1);               // 2-07
+  osDelay(50);
   writeToDevice(VSD_OVERVOLTAGE_CONTROL, 2);        // 2-17
+  osDelay(50);
   writeToDevice(VSD_RESOURCE_TASK_1, 0);            // 3-15
+  osDelay(50);
   writeToDevice(VSD_RESOURCE_TASK_2, 0);            // 3-16
+  osDelay(50);
   writeToDevice(VSD_RESOURCE_TASK_3, 0);            // 3-17
+  osDelay(50);
   writeToDevice(VSD_TYPE_SPEED_CHANGE, 0);          // 3-40
+  osDelay(50);
   writeToDevice(VSD_ROTATION_FLAG, 2);              // 4-10
+  osDelay(50);
   writeToDevice(VSD_MTR_FEEDBACK_LOSS_FUNC, 0);     // 4-30
+  osDelay(50);
   writeToDevice(VSD_TRACK_ERROR_FUNCTION, 2);       // 4-34
+  osDelay(50);
   writeToDevice(VSD_TRACK_ERROR, 600);              // 4-35
+  osDelay(50);
   writeToDevice(VSD_TRACK_ERROR_TIMEOUT, 10);       // 4-36
+  osDelay(50);
   writeToDevice(VSD_TRACK_ERROR_RAMPING, 600);      // 4-37
+  osDelay(50);
   writeToDevice(VSD_TRACK_ERROR_RAMP_TIME, 5);      // 4-38
+  osDelay(50);
   writeToDevice(VSD_TRACK_ERROR_AFTER_RAMP, 10);    // 4-39
+  osDelay(50);
   writeToDevice(VSD_TERMINAL_27_MODE, 1);           // 5-01
+  osDelay(50);
   writeToDevice(VSD_TERMINAL_29_MODE, 1);           // 5-02
+  osDelay(50);
   writeToDevice(VSD_DI_18, 0);                      // 5-10
+  osDelay(50);
   writeToDevice(VSD_DI_19, 0);                      // 5-11
+  osDelay(50);
   writeToDevice(VSD_DI_27, 0);                      // 5-12
+  osDelay(50);
   writeToDevice(VSD_DI_32, 0);                      // 5-14
+  osDelay(50);
   writeToDevice(VSD_TERMINAL_27_DI, 75);            // 5-30
+  osDelay(50);
   writeToDevice(VSD_TERMINAL_29_DI, 80);            // 5-31
+  osDelay(50);
   writeToDevice(VSD_FUNCTION_RELE, 5);              // 5-40.0
+  osDelay(50);
   writeToDevice(VSD_FUNCTION_RELE_1, 70);           // 5-40.1
+  osDelay(50);
   writeToDevice(VSD_FUNCTION_RELE_7, 2);            // 5-40.7
+  osDelay(50);
   writeToDevice(VSD_42_AO, 133);                    // 5-41
+  osDelay(50);
   writeToDevice(VSD_PROT_NO_CONNECT_TRIP_DELAY, 600);// 8-03
+  osDelay(50);
   writeToDevice(VSD_SL_CONTROLLER_MODE, 1);         // 13-00
+  osDelay(50);
   writeToDevice(VSD_SL_START_EVENT, 1);             // 13-01
+  osDelay(50);
   writeToDevice(VSD_SL_STOP_EVENT, 0);              // 13-02
+  osDelay(50);
   writeToDevice(VSD_SL_RESET, 0);                   // 13-03
+  osDelay(50);
   writeToDevice(VSD_SL_10, 4);                      // 13-10.0
+  osDelay(50);
   writeToDevice(VSD_SL_10_1, 4);                    // 13-10.1
+  osDelay(50);
   writeToDevice(VSD_SL_10_2, 4);                    // 13-10.2
+  osDelay(50);
   writeToDevice(VSD_SL_10_3, 8);                    // 13-10.3
+  osDelay(50);
   writeToDevice(VSD_SL_10_4, 0);                    // 13-10.4
+  osDelay(50);
   writeToDevice(VSD_SL_10_5, 0);                    // 13-10.5
+  osDelay(50);
   writeToDevice(VSD_SL_11, 0);                      // 13-11.0
+  osDelay(50);
   writeToDevice(VSD_SL_11_1, 0);                    // 13-11.1
+  osDelay(50);
   writeToDevice(VSD_SL_11_2, 2);                    // 13-11.2
+  osDelay(50);
   writeToDevice(VSD_SL_11_3, 0);                    // 13-11.3
+  osDelay(50);
   writeToDevice(VSD_SL_11_4, 1);                    // 13-11.4
+  osDelay(50);
   writeToDevice(VSD_SL_11_5, 1);                    // 13-11.5
+  osDelay(50);
   writeToDevice(VSD_SL_12, 32);                     // 13-12.0
+  osDelay(50);
   writeToDevice(VSD_SL_12_1, 5);                    // 13-12.1
+  osDelay(50);
   writeToDevice(VSD_SL_12_2, 100);                  // 13-12.2
+  osDelay(50);
   writeToDevice(VSD_SL_12_3, 440);                  // 13-12.3
+  osDelay(50);
   writeToDevice(VSD_SL_12_4, 0);                    // 13-12.4
+  osDelay(50);
   writeToDevice(VSD_SL_12_5, 0);                    // 13-12.5
+  osDelay(50);
   writeToDevice(VSD_SL_15, 9);                      // 13-15
+  osDelay(50);
   writeToDevice(VSD_SL_16, 22);                     // 13-16
+  osDelay(50);
   writeToDevice(VSD_SL_20, 0);                      // 13-20.0
+  osDelay(50);
   writeToDevice(VSD_SL_20_1, 0);                    // 13-20.1
+  osDelay(50);
   writeToDevice(VSD_SL_20_2, 0);                    // 13-20.2
+  osDelay(50);
   writeToDevice(VSD_SL_20_3, 0);                    // 13-20.3
+  osDelay(50);
   writeToDevice(VSD_SL_20_4, 0);                    // 13-20.4
+  osDelay(50);
   writeToDevice(VSD_SL_20_5, 0);                    // 13-20.5
+  osDelay(50);
   writeToDevice(VSD_SL_20_6, 0.001);                // 13-20.6
+  osDelay(50);
   writeToDevice(VSD_SL_20_7, 0.001);                // 13-20.7
+  osDelay(50);
   writeToDevice(VSD_SL_40, 11);                     // 13-40.0
+  osDelay(50);
   writeToDevice(VSD_SL_40_1, 25);                   // 13-40.1
+  osDelay(50);
   writeToDevice(VSD_SL_40_2, 25);                   // 13-40.2
+  osDelay(50);
   writeToDevice(VSD_SL_40_3, 27);                   // 13-40.3
+  osDelay(50);
   writeToDevice(VSD_SL_40_4, 29);                   // 13-40.4
+  osDelay(50);
   writeToDevice(VSD_SL_40_5, 20);                   // 13-40.5
+  osDelay(50);
   writeToDevice(VSD_SL_41, 7);                      // 13-41.0
+  osDelay(50);
   writeToDevice(VSD_SL_41_1, 1);                    // 13-41.1
+  osDelay(50);
   writeToDevice(VSD_SL_41_2, 1);                    // 13-41.2
+  osDelay(50);
   writeToDevice(VSD_SL_41_3, 2);                    // 13-41.3
+  osDelay(50);
   writeToDevice(VSD_SL_41_4, 6);                    // 13-41.4
+  osDelay(50);
   writeToDevice(VSD_SL_41_5, 2);                    // 13-41.5
+  osDelay(50);
   writeToDevice(VSD_SL_42, 20);                     // 13-42.0
+  osDelay(50);
   writeToDevice(VSD_SL_42_1, 23);                   // 13-42.1
+  osDelay(50);
   writeToDevice(VSD_SL_42_2, 24);                   // 13-42.2
+  osDelay(50);
   writeToDevice(VSD_SL_42_3, 28);                   // 13-42.3
+  osDelay(50);
   writeToDevice(VSD_SL_42_4, 0);                    // 13-42.4
+  osDelay(50);
   writeToDevice(VSD_SL_42_5, 29);                   // 13-42.5
+  osDelay(50);
   writeToDevice(VSD_SL_43, 1);                      // 13-43
+  osDelay(50);
   writeToDevice(VSD_SL_44, 94);                     // 13-44
+  osDelay(50);
   writeToDevice(VSD_SL_51, 1);                      // 13-51.0
+  osDelay(50);
   writeToDevice(VSD_SL_51_1, 29);                   // 13-51.1
+  osDelay(50);
   writeToDevice(VSD_SL_51_2, 73);                   // 13-51.2
+  osDelay(50);
   writeToDevice(VSD_SL_51_3, 60);                   // 13-51.3
+  osDelay(50);
   writeToDevice(VSD_SL_51_4, 74);                   // 13-51.4
+  osDelay(50);
   writeToDevice(VSD_SL_51_5, 61);                   // 13-51.5
+  osDelay(50);
   writeToDevice(VSD_SL_52, 38);                     // 13-52.0
+  osDelay(50);
   writeToDevice(VSD_SL_52_1, 73);                   // 13-52.1
+  osDelay(50);
   writeToDevice(VSD_SL_52_2, 32);                   // 13-52.2
+  osDelay(50);
   writeToDevice(VSD_SL_52_3, 74);                   // 13-52.3
+  osDelay(50);
   writeToDevice(VSD_SL_52_4, 38);                   // 13-52.4
+  osDelay(50);
   writeToDevice(VSD_SL_52_5, 1);                    // 13-52.5
+  osDelay(50);
   writeToDevice(VSD_OVERMODULATION, 0);             // 14-03
+  osDelay(50);
   writeToDevice(VSD_DEAD_TIME_COMPENSATION, 0);     // 14-06
+  osDelay(50);
   writeToDevice(VSD_MAINS_FAILURE, 6);              // 14-10
+  osDelay(50);
   writeToDevice(VSD_MAINS_VOLTAGE_FAILURE, 270);    // 14-11
+  osDelay(50);
   writeToDevice(VSD_RESET_MODE, 5);                 // 14-20
+  osDelay(50);
   writeToDevice(VSD_AUTOSTART_TIME, 5);             // 14-21
+  osDelay(50);
   writeToDevice(VSD_TRIP_DELAY_AT_INVERTER_FAULT, 1);// 14-26
+  osDelay(50);
   writeToDevice(VSD_DC_COMPENSATION, 1);            // 14-51
+  osDelay(50);
   writeToDevice(VSD_FAN_CONTROL, 4);                // 14-52
+  osDelay(50);
   writeToDevice(VSD_OUT_FILTER, 2);                 // 14-55
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET, 1);                 // 14-90.0
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_1, 3);               // 14-90.1
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_2, 3);               // 14-90.2
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_3, 1);               // 14-90.3
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_4, 2);               // 14-90.4
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_5, 2);               // 14-90.5
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_6, 1);               // 14-90.6
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_7, 2);               // 14-90.7
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_8, 3);               // 14-90.8
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_9, 2);               // 14-90.9
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_10, 3);              // 14-90.10
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_11, 2);              // 14-90.11
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_12, 2);              // 14-90.12
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_13, 3);              // 14-90.13
+  osDelay(50);
   writeToDevice(VSD_FAIL_RESET_14, 3);              // 14-90.14
+  osDelay(50);
   writeToDevice(VSD_LOCK_ROTOR_PROTECTION, 0);      // 30-22
+  osDelay(50);
   writeToDevice(VSD_LOCK_ROTOR_TIME, 1);            // 30-23
-
+  osDelay(50);
   osSemaphoreRelease(resetSetpointSemaphoreId_);
   return ok_r;
 }
