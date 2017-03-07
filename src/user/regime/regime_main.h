@@ -35,7 +35,7 @@ void setGeneralStateRunMode();
  * \brief Функция выключает (переводит MODE в Off) все пусковые режимы кроме
  * id указанного в параметре
  */
-void offRunModeExcept(uint16_t id);
+bool offRunModeExcept(uint16_t id);
 
 
 

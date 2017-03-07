@@ -104,6 +104,8 @@ void VsdNovomet::setLimitsCcsParameters()
 
   parameters.setMin(CCS_SW_STARTUP_OSC_COUNT_SWING, getMin(VSD_SW_STARTUP_OSC_COUNT));
   parameters.setMax(CCS_SW_STARTUP_OSC_COUNT_SWING, getMax(VSD_SW_STARTUP_OSC_COUNT));
+
+  parameters.setMax(CCS_BASE_FREQUENCY, getMaxBaseFrequency());
 }
 
 bool VsdNovomet::isConnect()
@@ -138,7 +140,7 @@ int VsdNovomet::setMotorType(float value)
       freq = 200;
     }
     writeToDevice(VSD_CONTROL_WORD_1, value);
-    ksu.setMaxBaseFrequency(freq);
+    ksu.setMaxBaseFrequency();
     setMotorFrequency(freq);
     return ok_r;
   }

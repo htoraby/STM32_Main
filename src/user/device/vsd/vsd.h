@@ -667,6 +667,8 @@ public:
    */
   virtual void readInDevice(int id);
 
+  virtual float getMaxBaseFrequency();
+
   VsdLog *log() const { return log_; }
 
 

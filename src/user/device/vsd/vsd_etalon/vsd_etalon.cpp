@@ -103,13 +103,11 @@ bool VsdEtalon::isConnect()
 // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
 int VsdEtalon::setMotorType(float value)
 {
-  float freq = 70;
   if (!Vsd::setMotorType(value)) {          // Записываем в массив
     if (value == VSD_MOTOR_TYPE_VENT) {
-      freq = 200;
     }
     writeToDevice(VSD_MOTOR_TYPE, value);   // Записываем в ЧРП
-    ksu.setMaxBaseFrequency(freq);
+    ksu.setMaxBaseFrequency();
     return ok_r;
   }
   return err_r;
@@ -952,4 +950,5 @@ void VsdEtalon::setLimitsCcsParameters()
   parameters.setMax(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ, getMax(VSD_FREQ_SKIP_STOP_FREQ));
   parameters.setMin(CCS_RGM_RUN_SKIP_RESONANT_TEMP, getMin(VSD_FREQ_SKIP_ACCEL));
   parameters.setMax(CCS_RGM_RUN_SKIP_RESONANT_TEMP, getMax(VSD_FREQ_SKIP_ACCEL));
+  parameters.setMax(CCS_BASE_FREQUENCY, getMaxBaseFrequency());
 }
