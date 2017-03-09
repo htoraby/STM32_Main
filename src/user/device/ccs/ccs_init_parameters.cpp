@@ -5831,7 +5831,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].value.float_t                  = 45.0;
   parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].min                            = 0.01;
   parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].max                            = 200.0;
-  parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].discret                        = 2;
+  parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].discret                        = 100;
   parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].def                            = 45.0;
   parameters_[CCS_RGM_JARRING_FREQ_1 - CCS_BEGIN].code                           = 13;
   // Время прибавки частоты вращения выше уставки в режиме встряхивания
@@ -5843,7 +5843,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].value.float_t                  = 10.0;
   parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].min                            = 0.01;
   parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].max                            = 20.0;
-  parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].discret                        = 2;
+  parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].discret                        = 100;
   parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].def                            = 10.0;
   parameters_[CCS_RGM_JARRING_UPTEMP - CCS_BEGIN].code                           = 13;
   // Частота F2
@@ -5855,7 +5855,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].value.float_t                  = 55.0;
   parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].min                            = 0.01;
   parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].max                            = 200.0;
-  parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].discret                        = 2;
+  parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].discret                        = 100;
   parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].def                            = 55.0;
   parameters_[CCS_RGM_JARRING_FREQ_2 - CCS_BEGIN].code                           = 13;
   // Время уменьшения частоты вращения ниже уставки в режиме встряхивания
@@ -5867,7 +5867,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].value.float_t                = 10.0;
   parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].min                          = 0.01;
   parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].max                          = 20.0;
-  parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].discret                      = 2;
+  parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].discret                      = 100;
   parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].def                          = 10.0;
   parameters_[CCS_RGM_JARRING_DOWNTEMP - CCS_BEGIN].code                         = 13;
   // Режим Учёт нагрева кабеля
@@ -7019,7 +7019,7 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].value.float_t                         = 0.0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].min                                   = 0.0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].max                                   = 999.0;
-  parameters_[CCS_SCADA_DELAY - CCS_BEGIN].discret                               = 1000;
+  parameters_[CCS_SCADA_DELAY - CCS_BEGIN].discret                               = 1;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].def                                   = 0.0;
   parameters_[CCS_SCADA_DELAY - CCS_BEGIN].code                                  = 13;
   // Единицы измерения давления

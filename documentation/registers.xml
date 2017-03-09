@@ -5377,6 +5377,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.2</value>
 		<form>NULL</form>
+		<format>XX_XXX</format>
 		<code>0</code>
 		<comment>Условие АПВ уставка</comment>
 	</param>
@@ -9858,7 +9859,7 @@
 		<min>0.01</min>
 		<max>200.0</max>
 		<def>45.0</def>
-		<discret>2</discret>
+		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>45.0</value>
 		<text>Частота встряхивания F1</text>
@@ -9879,7 +9880,7 @@
 		<min>0.01</min>
 		<max>20.0</max>
 		<def>10.0</def>
-		<discret>2</discret>
+		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Темп увеличения частоты</text>
@@ -9900,7 +9901,7 @@
 		<min>0.01</min>
 		<max>200.0</max>
 		<def>55.0</def>
-		<discret>2</discret>
+		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>55.0</value>
 		<text>Частота встряхивания F2</text>
@@ -9921,7 +9922,7 @@
 		<min>0.01</min>
 		<max>20.0</max>
 		<def>10.0</def>
-		<discret>2</discret>
+		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Темп уменьшения частоты</text>
@@ -11935,7 +11936,7 @@
 		<min>0.0</min>
 		<max>999.0</max>
 		<def>0.0</def>
-		<discret>1000</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Задержка ответа</text>
@@ -16641,7 +16642,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX_XXX</format>
 		<code>0</code>
 	</param>
 	<param>
@@ -24057,7 +24058,7 @@
 		<min>0.0</min>
 		<max>0.5</max>
 		<def>0.03</def>
-		<discret>1000</discret>
+		<discret>10000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.03</value>
 		<text>Пропорциональный коэф. ОС фазового контура регулирования</text>
@@ -25322,7 +25323,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>RESISTANCE_OM</unit>
 		<unit_lcd>RESISTANCE_OM</unit_lcd>
-		<format>XXX_XXX</format>
+		<format>XXX_XXXX</format>
 		<code>13</code>
 		<comment>Сопротивление статора Danfoss 1-30 Используется в режиме автоадаптации</comment>
 	</param>
@@ -25383,12 +25384,12 @@
 		<id>10165</id>
 		<name>VSD_RESONANCE_TIME</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.001</min>
 		<max>0.050</max>
 		<def>0.005</def>
-		<discret>3</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.005</value>
 		<text>Постоянная времени системы подавления резонанса</text>
@@ -25640,7 +25641,7 @@
 		<min>-2147483648.0</min>
 		<max>2147483647.0</max>
 		<def>0.0</def>
-		<discret>3</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>NULL</text>
@@ -25648,7 +25649,7 @@
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXX_XX</format>
+		<format>XXX_XXX</format>
 		<code>0</code>
 		<comment>Минимальное задание Danfoss 3-02 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -25661,7 +25662,7 @@
 		<min>-2147483648.0</min>
 		<max>2147483647.0</max>
 		<def>0.0</def>
-		<discret>3</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>NULL</text>
@@ -25669,7 +25670,7 @@
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXX_XX</format>
+		<format>XXX_XXX</format>
 		<code>0</code>
 		<comment>Максимальное задани Danfoss 3-03 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -25874,7 +25875,7 @@
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXX_XX</format>
+		<format>XXX_X</format>
 		<code>0</code>
 		<comment>Максимальная выходная частота Danfoss 4-19 Используется в проекте</comment>
 	</param>
@@ -26463,7 +26464,6 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -26862,14 +26862,14 @@
 		<id>10237</id>
 		<name>VSD_FIL_TIME_CURRENT_LIMIT</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
+		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0001</min>
+		<min>0.001</min>
 		<max>0.1</max>
 		<def>0.1</def>
-		<discret>4</discret>
+		<discret>10000</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>0.01</value>
+		<value>0.1</value>
 		<text>Время фильтра регулятора предела по току</text>
 		<short_text>Время фильтра регулятора предела по току</short_text>
 		<form>NULL</form>
@@ -27235,7 +27235,7 @@
 		<min>0.05</min>
 		<max>1.0</max>
 		<def>0.10</def>
-		<discret>2</discret>
+		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.10</value>
 		<text>Время определения блокировки ротора</text>
@@ -30131,7 +30131,6 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -30152,7 +30151,6 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -30173,7 +30171,6 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -30194,7 +30191,6 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -30215,7 +30211,6 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
 		<code>0</code>
 		<comment>Значение компаратора Danfoss 13-12 Не используется в проекте, только при конфигурировании</comment>
 	</param>
@@ -32057,7 +32052,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>INDUNCTANCE_MKH</unit>
 		<unit_lcd>INDUNCTANCE_MKH</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Индуктивности по оси D Danfoss 1-37 Используется в проекте</comment>
 	</param>
@@ -32258,7 +32253,7 @@
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>P на приёме</text>
@@ -32279,7 +32274,7 @@
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
-		<discret>10</discret>
+		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>Т двигателя</text>
@@ -32300,7 +32295,7 @@
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
-		<discret>10</discret>
+		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>Т на приёме</text>
@@ -32321,7 +32316,7 @@
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>Gx двигателя</text>
@@ -32341,7 +32336,7 @@
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>Gy двигателя</text>
@@ -32361,7 +32356,7 @@
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>Gz двигателя</text>
@@ -32382,7 +32377,7 @@
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>Р на выкиде</text>
@@ -32445,7 +32440,7 @@
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>Gху двигателя</text>
@@ -33787,7 +33782,7 @@
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>P на приёме точное</text>
@@ -34095,7 +34090,7 @@
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
-		<discret>100</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>P масла двигателя</text>

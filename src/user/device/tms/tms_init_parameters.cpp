@@ -36,7 +36,7 @@ void Tms::initParameters()
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].min                               = 0.0;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].max                               = 999999999.9;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].def                               = 0.0;
-  parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].discret                           = 100;
+  parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].discret                           = 1000;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].code                              = 0;
   // Температура обмоток двигателя
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].id                            = TMS_TEMPERATURE_WINDING;
@@ -48,7 +48,7 @@ void Tms::initParameters()
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].min                           = 0.0;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].max                           = 999999999.9;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].def                           = 0.0;
-  parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].discret                       = 10;
+  parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].discret                       = 100;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].code                          = 0;
   // Температура на приёме
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].id                             = TMS_TEMPERATURE_INTAKE;
@@ -60,7 +60,7 @@ void Tms::initParameters()
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].min                            = 0.0;
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].max                            = 999999999.9;
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].def                            = 0.0;
-  parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].discret                        = 10;
+  parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].discret                        = 100;
   parameters_[TMS_TEMPERATURE_INTAKE - TMS_BEGIN].code                           = 0;
   // Ускорение по оси X на приёме
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].id                          = TMS_ACCELERATION_X_INTAKE;
@@ -72,7 +72,7 @@ void Tms::initParameters()
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].min                         = 0.0;
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].max                         = 999999999.9;
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].def                         = 0.0;
-  parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].discret                     = 100;
+  parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].discret                     = 1000;
   parameters_[TMS_ACCELERATION_X_INTAKE - TMS_BEGIN].code                        = 0;
   // Ускорение по оси Y на приёме
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].id                          = TMS_ACCELERATION_Y_INTAKE;
@@ -84,7 +84,7 @@ void Tms::initParameters()
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].min                         = 0.0;
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].max                         = 999999999.9;
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].def                         = 0.0;
-  parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].discret                     = 100;
+  parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].discret                     = 1000;
   parameters_[TMS_ACCELERATION_Y_INTAKE - TMS_BEGIN].code                        = 0;
   // Ускорение по оси Z на приёме
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].id                          = TMS_ACCELERATION_Z_INTAKE;
@@ -96,7 +96,7 @@ void Tms::initParameters()
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].min                         = 0.0;
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].max                         = 999999999.9;
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].def                         = 0.0;
-  parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].discret                     = 100;
+  parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].discret                     = 1000;
   parameters_[TMS_ACCELERATION_Z_INTAKE - TMS_BEGIN].code                        = 0;
   // Давление на выкиде
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].id                             = TMS_PRESSURE_DISCHARGE;
@@ -108,7 +108,7 @@ void Tms::initParameters()
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].min                            = 0.0;
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].max                            = 999999999.9;
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].def                            = 0.0;
-  parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].discret                        = 100;
+  parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].discret                        = 1000;
   parameters_[TMS_PRESSURE_DISCHARGE - TMS_BEGIN].code                           = 0;
   // Температура на выкиде
   parameters_[TMS_TEMPERATURE_DISCHARGE - TMS_BEGIN].id                          = TMS_TEMPERATURE_DISCHARGE;
@@ -144,7 +144,7 @@ void Tms::initParameters()
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].min                        = 0.0;
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].max                        = 999999999.9;
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].def                        = 0.0;
-  parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].discret                    = 100;
+  parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].discret                    = 1000;
   parameters_[TMS_ACCELERATION_XY_INTAKE - TMS_BEGIN].code                       = 0;
   // Ускорение по оси по трём осям
   parameters_[TMS_ACCELERATIN_XYZ_INTAKE - TMS_BEGIN].id                         = TMS_ACCELERATIN_XYZ_INTAKE;
@@ -1080,7 +1080,7 @@ void Tms::initParameters()
   parameters_[TMS_PRESSURE_INTAKE_HD - TMS_BEGIN].min                            = 0.0;
   parameters_[TMS_PRESSURE_INTAKE_HD - TMS_BEGIN].max                            = 999999999.9;
   parameters_[TMS_PRESSURE_INTAKE_HD - TMS_BEGIN].def                            = 0.0;
-  parameters_[TMS_PRESSURE_INTAKE_HD - TMS_BEGIN].discret                        = 100;
+  parameters_[TMS_PRESSURE_INTAKE_HD - TMS_BEGIN].discret                        = 1000;
   parameters_[TMS_PRESSURE_INTAKE_HD - TMS_BEGIN].code                           = 0;
   // Статус загрузки
   parameters_[TMS_BOOT_STATUS - TMS_BEGIN].id                                    = TMS_BOOT_STATUS;
@@ -1272,7 +1272,7 @@ void Tms::initParameters()
   parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].min                                = 0.0;
   parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].max                                = 999999999.9;
   parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].def                                = 0.0;
-  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].discret                            = 100;
+  parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].discret                            = 1000;
   parameters_[TMS_PRESSURE_MOTOR - TMS_BEGIN].code                               = 0;
   // Служебная информация
   parameters_[TMS_SERVICE_INFO - TMS_BEGIN].id                                   = TMS_SERVICE_INFO;
