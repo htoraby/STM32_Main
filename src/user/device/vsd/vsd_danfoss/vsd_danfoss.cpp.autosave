@@ -9,9 +9,7 @@
 #include "regime_run_direct.h"
 #include "vsd_danfoss_log.h"
 
-float resetSetpoint[2][QUANTITY_PARAMETER_SETPOINT] = {
 
-};
 
 const float profileMotor[QUNTITY_PROFILES_MOTOR][QUANTITY_PARAMETER_MOTOR] = {
 // 0,    1,    2,    3,    4,    5,      6,      7,      8,      9,      10,     11,     12,     13,     14,     15,     16,     17,   18,   19,   20,   21,   22,   23,   24,   25,   26,   27,   28,   29,   30,   31,   32,   33,   34,   35,    36,    37,    38,    39,    40,    41
@@ -972,8 +970,13 @@ bool VsdDanfoss::isControl()
   return false;
 }
 
+const float resetSetpoint[2][QUANTITY_PARAMETER_SETPOINT] = {
+// 0,    1,    2,    3,    
+};
+
 int VsdDanfoss::resetSetpointsDanfoss()
 {
+  
   printf("Test\n");
   writeToDevice(VSD_ACTIVE_SETUP, 1);               // 0-10 Set-up 1
   osDelay(50);
@@ -1238,8 +1241,6 @@ int VsdDanfoss::resetSetpointsDanfoss()
   writeToDevice(VSD_LOCK_ROTOR_PROTECTION, 0);      // 30-22 0
   osDelay(50);
   writeToDevice(VSD_LOCK_ROTOR_TIME, 1);            // 30-23 1.00
-  osDelay(50);
-  writeToDevice(VSD_RESOURCE_TASK_1, 0);            // 3-15 No function !!! (1)
   osDelay(50);
   return ok_r;
 }
