@@ -221,14 +221,9 @@ bool offRunModeExcept(uint16_t id)
   else {                                                                        // Установка в останове
     for (int i = 0; i < COUNT_RUN_REGIMES; i++) {                               // Массив пусковых режимов
       if (id != runRgmMode[i]) {                                                // Не включаемый режим
-        if (parameters.get(runRgmState[i]) == Regime::IdleState) {              // Режим не активен
-          err = parameters.set(runRgmMode[i], Regime::OffAction);               // Выключаем режим
-          if (err) {                                                            // Не смогли выключить режим
-            return err;                                                         // Возвращаем ошибку
-          }
-        }
-        else {                                                                  // Режим активен
-          return err;                                                           // Возвращаем ошибку
+        err = parameters.set(runRgmMode[i], Regime::OffAction);               // Выключаем режим
+        if (err) {                                                           // Не смогли выключить режим
+          return err;                                                         // Возвращаем ошибку
         }
       }
     }
