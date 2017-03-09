@@ -1352,7 +1352,11 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(AddDeviceCode, eventType, AddDeviceVsdId, oldValue, value);
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceVsdId, oldValue, value);
+
+      initParameters();
       vsd->initParameters();
+      setValue(id, value, NoneType);
+
       startReboot();
     }
     return err;
