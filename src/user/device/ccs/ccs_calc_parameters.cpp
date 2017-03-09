@@ -569,7 +569,7 @@ void Ccs::calcResistanceIsolation()
 
   if (parameters.isValidity(CCS_AI_5_VALUE)) {
     float volt = getValue(CCS_AI_5_VALUE);
-    if (volt > 0.02) {
+    if (volt > 0.0142) {// Граница "разумности" 9990 кОм, если это подставить в формулу то получим U 0.0142
       resIso = 142 / volt  - 35.42;
       resIso = resIso * 1000;
       resIso = resIso + parameters.get(CCS_SHIFT_RESISTANCE_ISOLATION) * parameters.get(CCS_AXIS_SHIFT_RESISTANCE_ISOLATION);
