@@ -16641,7 +16641,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX_XXX</format>
 		<code>0</code>
 	</param>
 	<param>

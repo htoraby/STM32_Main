@@ -1426,7 +1426,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     cmdStop(value);
     return ok_r;
   case CCS_CMD_VSD_RESET_SETPOINTS:
-    //return vsd->runResetSetpointTask;
     return vsd->resetSetpoints();
   case CCS_PROT_OTHER_VSD_NO_CONNECT_MODE:
     err = setValue(id, value, eventType);
