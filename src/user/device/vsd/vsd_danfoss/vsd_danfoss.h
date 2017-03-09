@@ -243,6 +243,7 @@ public:
   bool checkStop();
   bool isSetPointFreq();
 
+  int resetSetpointsDanfoss();
   int resetSetpoints();
   void processingRegimeRun();
 
@@ -263,7 +264,7 @@ public:
   float getMaxBaseFrequency();
 
 private:
-  ModbusParameter modbusParameters_[230];
+  ModbusParameter modbusParameters_[231];
   DeviceModbus *dm_;
 
   osSemaphoreId resetSetpointSemaphoreId_;
