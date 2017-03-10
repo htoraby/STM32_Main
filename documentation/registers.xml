@@ -22719,8 +22719,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_RPM</physic>
-		<min>0.0</min>
-		<max>10000.0</max>
+		<min>10.0</min>
+		<max>30000.0</max>
 		<def>2895.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
