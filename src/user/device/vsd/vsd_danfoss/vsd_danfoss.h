@@ -4,6 +4,7 @@
 #include "vsd.h"
 #include "device_modbus.h"
 
+
 class RegimeRunPush;
 class RegimeRunSwing;
 class RegimeRunAdaptationVector;
@@ -12,8 +13,8 @@ class RegimeRunSkipResonantFreq;
 class RegimeRunSynchron;
 class RegimeRunDirect;
 
-#define QUNTITY_PROFILES_MOTOR    15
-#define QUANTITY_PARAMETER_MOTOR  45
+#define QUNTITY_PROFILES_MOTOR    16
+#define QUANTITY_PARAMETER_MOTOR  43
 #define QUANTITY_PARAMETER_SSP_FILE 130
 
 

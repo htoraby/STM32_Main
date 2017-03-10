@@ -142,27 +142,51 @@ const float sspFile[QUANTITY_PARAMETER_SSP_FILE][2] = {
   {VSD_LOCK_ROTOR_TIME,             1}      // 30-23 1.00
 };
 
-const float profileMotor[QUNTITY_PROFILES_MOTOR][QUANTITY_PARAMETER_MOTOR] = {
-// 0,    1,    2,    3,    4,    5,      6,      7,      8,      9,      10,     11,     12,     13,     14,     15,     16,     17,   18,   19,   20,   21,   22,   23,   24,   25,   26,   27,   28,   29,   30,   31,   32,   33,   34,   35,    36,    37,    38,    39,    40,    41
-//                   1-01, 1-10, 1-23, 1-25, 1-39, 1-55.0, 1-55.1, 1-55.2, 1-55.3, 1-55.4, 1-55.5, 1-56.0, 1-56.1, 1-56.2, 1-56.3, 1-56.4, 1-56.5, 1-64, 1-65, 1-66, 1-70, 1-80, 3-02, 3-03, 3-11, 3-41, 3-42, 3-80, 3-81, 4-19, 4-12, 4-14, 4-16, 4-18, 4-52, 14-24, 14-25, 14-32, 14-51, 30-20, 30-21, 14-01
-
-  {0,    0,    0,    0,    0,    50,   3000, 2,    5,      68,     131,    194,    257,    320,    0,      10,     20,     30,     40,     50,     0,    0.002,100,  0,    0,    30,   70,   50,   30,   30,   30,   30,   71,   30,   50,   160,  230,  650,  5,     0,     0.1,   1,     10,    50,    4},  // SM_A
-  {1,    0,    500,  0,    0,    59,   504,  14,   13,     74,     136,    197,    259,    320,    0,      12,     23,     35,     47,     59,     1000, 0.001,50,   0,    0,    20,   59,   30,   30,   30,   30,   30,   71,   20,   59,   160,  160,  110,  0,     0,     0.005, 1,     10,    50,    4},  // SM_V500
-  {1,    1,    500,  1,    1,    59,   504,  14,   13,     74,     136,    197,    259,    320,    0,      12,     23,     35,     47,     59,     1000, 0.001,50,   1,    5,    20,   59,   30,   120,  30,   120,  30,   71,   20,   59,   160,  160,  110,  0,     0,     0.005, 1,     10,    50,    4},  // SM_V500V
-  {1,    0,    1000, 0,    0,    117,  1000, 14,   13,     74,     136,    197,    259,    320,    0,      23,     46,     70,     93,     117,    1000, 0.001,50,   0,    0,    80,   117,  100,  30,   30,   30,   30,   125,  80,   117,  160,  160,  110,  0,     0,     0.005, 1,     10,    50,    4},  // SM_V1000
-  {1,    1,    1000, 1,    1,    117,  1000, 14,   13,     74,     136,    197,    259,    320,    0,      23,     46,     70,     93,     117,    1000, 0.001,50,   1,    5,    80,   117,  100,  120,  30,   120,  30,   125,  80,   117,  160,  160,  110,  0,     0,     0.005, 1,     10,    50,    4},  // SM_V1000V
-  {1,    0,    3000, 0,    0,    100,  3000, 4,    13,     74,     136,    197,    259,    320,    0,      20,     40,     60,     80,     100,    500,  0.003,50,   0,    0,    70,   100,  100,  30,   30,   30,   30,   150,  70,   100,  160,  160,  325,  0,     0,     0.005, 1,     10,    50,    4},  // SM_V3000
-  {1,    1,    3000, 1,    1,    100,  3000, 4,    13,     74,     136,    197,    259,    320,    0,      20,     40,     60,     80,     100,    500,  0.003,50,   1,    5,    70,   100,  100,  120,  30,   120,  30,   150,  70,   100,  160,  160,  325,  0,     0,     0.005, 1,     10,    50,    4},  // SM_V3000V
-  {1,    0,    6000, 0,    0,    200,  6000, 4,    13,     74,     136,    197,    259,    320,    0,      40,     80,     120,    160,    200,    500,  0.003,50,   0,    0,    70,   200,  100,  60,   60,   60,   60,   205,  70,   200,  160,  160,  325,  0,     0,     0.005, 1,     10,    50,    4},  // SM_V6000
-  {1,    1,    6000, 1,    1,    200,  6000, 4,    13,     74,     136,    197,    259,    320,    0,      40,     80,     120,    160,    200,    500,  0.003,50,   1,    5,    70,   200,  100,  120,  60,   120,  60,   205,  70,   200,  160,  160,  325,  0,     0,     0.005, 1,     10,    50,    4},  // SM_V6000V
-  {1,    0,    8500, 0,    0,    283,  8500, 4,    13,     74,     136,    197,    259,    320,    0,      57,     113,    170,    226,    283,    500,  0.003,50,   0,    0,    70,   283,  100,  60,   60,   60,   60,   305,  70,   283,  160,  150,  325,  0,     0,     0.005, 1,     10,    50,    7},  // SM_V8500
-  {1,    1,    8500, 1,    1,    283,  8500, 4,    13,     74,     136,    197,    259,    320,    0,      57,     113,    170,    226,    283,    500,  0.003,50,   1,    5,    70,   283,  100,  120,  60,   120,  60,   305,  70,   283,  160,  150,  325,  0,     0,     0.005, 1,     10,    50,    7},  // SM_V8500V
-  {1,    0,    1,    0,    0,    200,  3000, 8,    13,     74,     136,    197,    259,    320,    0,      48,     96,     144,    192,    240,    500,  0.003,50,   0,    0,    80,   240,  100,  60,   60,   60,   60,   245,  80,   240,  160,  160,  110,  0,     0,     0.005, 1,     10,    50,    4},  // SM_VDM
-  {1,    1,    1,    1,    1,    200,  3000, 8,    13,     74,     136,    197,    259,    320,    0,      48,     96,     144,    192,    240,    500,  0.003,50,   1,    5,    80,   240,  100,  60,   60,   60,   60,   245,  80,   240,  160,  160,  110,  0,     0,     0.005, 1,     10,    50,    4},  // SM_VDMV
-  {1,    0,    2,    0,    0,    75,   1000, 8,    13,     74,     136,    197,    259,    320,    0,      20,     40,     60,     80,     100,    500,  0.003,50,   0,    0,    1,    100,  100,  30,   30,   30,   30,   105,  1,    100,  160,  160,  110,  0,     0,     0.005, 1,     10,    50,    4},  // SM_VVD
-  {1,    1,    2,    1,    1,    75,   1000, 8,    13,     74,     136,    197,    259,    320,    0,      20,     40,     60,     80,     100,    500,  0.003,50,   1,    5,    1,    100,  100,  120,  30,   120,  30,   105,  1,    100,  160,  160,  110,  0,     0,     0.005, 1,     10,    50,    4}   // SM_VVD
+const float profileMotor[QUANTITY_PARAMETER_MOTOR][QUNTITY_PROFILES_MOTOR] = {
+  {CCS_MOTOR_TYPE_PROFILE_VSD,    0,    500,  500,  1000, 1000, 3000, 3000, 6000, 6000, 8500, 8500, 1,    1,    2,    2},
+  {VSD_MOTOR_CONTROL,             0,    0,    1,    0,    1,    0,    1,    0,    1,    0,    1,    0,    1,    0,    1},
+  {VSD_MOTOR_TYPE,                0,    0,    1,    0,    1,    0,    1,    0,    1,    0,    1,    0,    1,    0,    1},
+  {VSD_MAX_OUTPUT_FREQUENCY,      71,   71,   71,   125,  125,  150,  150,  205,  205,  305,  305,  245,  245,  105,  105},
+  {VSD_LOW_LIM_SPEED_MOTOR,       30,   20,   20,   80,   80,   70,   70,   70,   70,   70,   70,   80,   80,   1,    1},
+  {VSD_HIGH_LIM_SPEED_MOTOR,      50,   59,   59,   117,  117,  100,  100,  200,  200,  283,  283,  240,  240,  100,  100},
+  {VSD_MOTOR_FREQUENCY,           50,   59,   59,   117,  117,  100,  100,  200,  200,  283,  283,  200,  200,  75,   75},
+  {VSD_MOTOR_SPEED,               3000, 504,  504,  1000, 1000, 3000, 3000, 6000, 6000, 8500, 8500, 3000, 3000, 1000, 1000},
+  {VSD_MOTOR_POLES,               2,    14,   14,   14,   14,   4,    4,    4,    4,    4,    4,    8,    8,    8,    8},
+  {VSD_UF_CHARACTERISTIC_U_1,     5,    13,   13,   13,   13,   13,   13,   13,   13,   13,   13,   13,   13,   13,   13},
+  {VSD_UF_CHARACTERISTIC_U_2,     68,   74,   74,   74,   74,   74,   74,   74,   74,   74,   74,   74,   74,   74,   74},
+  {VSD_UF_CHARACTERISTIC_U_3,     131,  136,  136,  136,  136,  136,  136,  136,  136,  136,  136,  136,  136,  136,  136},
+  {VSD_UF_CHARACTERISTIC_U_4,     194,  197,  197,  197,  197,  197,  197,  197,  197,  197,  197,  197,  197,  197,  197},
+  {VSD_UF_CHARACTERISTIC_U_5,     257,  259,  259,  259,  259,  259,  259,  259,  259,  259,  259,  259,  259,  259,  259},
+  {VSD_UF_CHARACTERISTIC_U_6,     320,  320,  320,  320,  320,  320,  320,  320,  320,  320,  320,  320,  320,  320,  320},
+  {VSD_UF_CHARACTERISTIC_F_1,     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0},
+  {VSD_UF_CHARACTERISTIC_F_2,     10,   12,   12,   23,   23,   20,   20,   40,   40,   57,   57,   48,   48,   20,   20},
+  {VSD_UF_CHARACTERISTIC_F_3,     20,   23,   23,   46,   46,   40,   40,   80,   80,   113,  113,  96,   96,   40,   40},
+  {VSD_UF_CHARACTERISTIC_F_4,     30,   35,   35,   70,   70,   60,   60,   120,  120,  170,  170,  144,  144,  60,   60},
+  {VSD_UF_CHARACTERISTIC_F_5,     40,   47,   47,   93,   93,   80,   80,   160,  160,  226,  226,  192,  192,  80,   80},
+  {VSD_UF_CHARACTERISTIC_F_6,     50,   59,   59,   117,  117,  100,  100,  200,  200,  283,  283,  240,  240,  100,  100},
+  {VSD_RESONANCE_REMOVE,          0,    1000, 1000, 1000, 1000, 500,  500,  500,  500,  500,  500,  500,  500,  500,  500},
+  {VSD_RESONANCE_TIME,            0.002,0.001,0.001,0.001,0.001,0.003,0.003,0.003,0.003,0.003,0.003,0.003,0.003,0.003,0.003},
+  {VSD_MIN_CURRENT_LOW_SPEED,     100,  50,   50,   50,   50,   50,   50,   50,   50,   50,   50,   50,   50,   50,   50},
+  {VSD_PM_START_MODE,             0,    0,    1,    0,    1,    0,    1,    0,    1,    0,    1,    0,    1,    0,    1},
+  {VSD_STOP_FUNCTION,             0,    0,    5,    0,    5,    0,    5,    0,    5,    0,    5,    0,    5,    0,    5},
+  {VSD_MIN_REFERENCE,             30,   20,   20,   80,   80,   70,   70,   70,   70,   70,   70,   80,   80,   1,    1},
+  {VSD_MAX_REFERENCE,             70,   59,   59,   117,  117,  100,  100,  200,  200,  283,  283,  240,  240,  100,  100},
+  {VSD_FREQUENCY,                 50,   30,   30,   100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100,  100},
+  {VSD_TIMER_DISPERSAL,           30,   30,   120,  30,   120,  30,   120,  60,   120,  60,   120,  60,   60,   30,   120},
+  {VSD_TIMER_DELAY,               30,   30,   30,   30,   30,   30,   30,   60,   60,   60,   60,   60,   60,   30,   30},
+  {VSD_TIMER_DISP_FIX_SPEED,      30,   30,   120,  30,   120,  30,   120,  60,   120,  60,   120,  60,   60,   30,   120},
+  {VSD_TIMER_DELAY_FIX_SPEED,     30,   30,   30,   30,   30,   30,   30,   60,   60,   60,   60,   60,   60,   30,   30},
+  {VSD_TORQUE_LIMIT,              160,  160,  160,  160,  160,  160,  160,  160,  160,  160,  160,  160,  160,  160,  160},
+  {VSD_CURRENT_LIMIT,             230,  160,  160,  160,  160,  160,  160,  160,  160,  160,  160,  160,  160,  160,  160},
+  {VSD_WARNING_SPEED_LOW,         650,  110,  110,  110,  110,  325,  325,  325,  325,  325,  325,  110,  110,  110,  110},
+  {VSD_DELAY_CURRENT_LIMIT,       5,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0},
+  {VSD_DELAY_TORQUE_LIMIT,        0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0},
+  {VSD_FIL_TIME_CURRENT_LIMIT,    0.1,  0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005},
+  {VSD_DC_COMPENSATION,           1,    1,    1,    1,    1,    1,    1,    1,    1,    1,    1,    1,    1,    1,    1},
+  {VSD_HIGH_START_TORQUE_TIME,    10,   10,   10,   10,   10,   10,   10,   10,   10,   10,   10,   10,   10,   10,   10},
+  {VSD_HIGH_START_TORQUE_CURRENT, 50,   50,   50,   50,   50,   50,   50,   50,   50,   50,   50,   50,   50,   50,   50},
+  {VSD_SWITCHING_FREQUENCY_CODE,  4,    4,    4,    4,    4,    4,    4,    4,    4,    7,    7,    4,    4,    4,    4}
 };
-
 
 static void vsdSetSspTask(void *p)
 {
@@ -307,18 +331,26 @@ int VsdDanfoss::setMotorType(float value)
 
 int VsdDanfoss::getMotorTypeProfile()
 {
-  int16_t profile = -1;                               // Профиль неизвестен
-  if (parameters.get(CCS_MOTOR_TYPE)) {               // Если вентильный двигатель
-    for (uint16_t i = 1; i < QUNTITY_PROFILES_MOTOR; i++) {
-      if ((parameters.get(VSD_MOTOR_CONTROL) == profileMotor[i][1]) &&
-          (parameters.get(CCS_MOTOR_TYPE_PROFILE_VSD) == profileMotor[i][2])) {
-        profile = i;
-        break;
+  int16_t profile = 0;                                                          // Профиль неизвестен
+  if (parameters.get(CCS_MOTOR_TYPE)) {                                         // Если вентильный двигатель
+    for (uint16_t i = 0; i < QUANTITY_PARAMETER_MOTOR; i++) {                   // Бежим по параметрам
+      if (profileMotor[i][0] == CCS_MOTOR_TYPE_PROFILE_VSD) {                   // Нашли строку с нужным параметром
+        for (uint16_t j = 1; j < QUNTITY_PROFILES_MOTOR; j++) {                 // Бежим по профилям
+          if (profileMotor[i][j] == parameters.get(CCS_MOTOR_TYPE_PROFILE_VSD)) { // Совпал профиль
+            for (uint16_t k = 0; k < QUANTITY_PARAMETER_MOTOR; k++) {           // Снова бежим по параметрам
+              if (profileMotor[k][0] == VSD_MOTOR_CONTROL) {                    // Нашли строку с нужным параметром
+                if (profileMotor[k][j] == parameters.get(VSD_MOTOR_CONTROL)) {  // Совпал тип управления
+                  return j;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
-  else {
-    profile = 0;
+  else {                                                                        // Иначе, асинхронный двигатель
+    profile = 1;
   }
   return profile;
 }
@@ -329,108 +361,47 @@ int VsdDanfoss::setMotorTypeProfile()
   return ok_r;
 }
 
-
 int VsdDanfoss::setSspMotorTypeProfile()
 { 
   int16_t profile = getMotorTypeProfile();
-  if (profile >= 0) {
+  if (profile) {
+//    int time = HAL_GetTick();
     parameters.set(CCS_CMD_TYPE_PROFILE_VSD, 1);  // Команда для вывода на экран окна ожидания применения
-    for (int j = 0; j < 2; j++) {
-      int time = HAL_GetTick();
-      writeToDevice(VSD_MOTOR_CONTROL,            profileMotor[profile][3]);   // 1-01
-      osDelay(100);
-      writeToDevice(VSD_MOTOR_TYPE,               profileMotor[profile][4]);   // 1-10
-      osDelay(100);
-      writeToDevice(VSD_MAX_OUTPUT_FREQUENCY,     profileMotor[profile][32]);  // 4-19
-      osDelay(100);
-      ksu.setMaxBaseFrequency();
-      osDelay(100);
-      if (profileMotor[profile][33] > parameters.get(VSD_HIGH_LIM_SPEED_MOTOR)) {
-        writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR,   profileMotor[profile][34]);  // 4-14
-        osDelay(100);
+
+    for (int i = 1; i < QUANTITY_PARAMETER_MOTOR; i++) {
+      if (profileMotor[i][0] == VSD_LOW_LIM_SPEED_MOTOR) {
+        ksu.setMaxBaseFrequency();
+        if (profileMotor[i][profile] > parameters.get(VSD_HIGH_LIM_SPEED_MOTOR)) {
+          for (int j = 1; j < QUANTITY_PARAMETER_MOTOR; j++) {
+            if (profileMotor[j][0] == VSD_HIGH_LIM_SPEED_MOTOR) {
+              writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR, profileMotor[j][profile]);
+              osDelay(100);
+            }
+          }
+        }
       }
-      writeToDevice(VSD_LOW_LIM_SPEED_MOTOR,      profileMotor[profile][33]);  // 4-12
+      if (profileMotor[i][0] == VSD_UF_CHARACTERISTIC_U_6) {
+        parameters.set(CCS_BASE_VOLTAGE, profileMotor[i][profile]);
+      }
+      writeToDevice(profileMotor[i][0], profileMotor[i][profile]);
       osDelay(100);
-      writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR,     profileMotor[profile][34]);  // 4-14
-      osDelay(100);
-      writeToDevice(VSD_MOTOR_FREQUENCY,          profileMotor[profile][5]);   // 1-23
-      osDelay(100);
-      writeToDevice(VSD_MOTOR_SPEED,              profileMotor[profile][6]);   // 1-25
-      osDelay(100);
-      writeToDevice(VSD_MOTOR_POLES,              profileMotor[profile][7]);   // 1-39
-      osDelay(100);
-      writeToDevice(VSD_UF_CHARACTERISTIC_U_1,    profileMotor[profile][8]);   // 1-55.0
-      osDelay(100);
-      writeToDevice(VSD_UF_CHARACTERISTIC_U_2,    profileMotor[profile][9]);   // 1-55.1
-      osDelay(100);
-      writeToDevice(VSD_UF_CHARACTERISTIC_U_3,    profileMotor[profile][10]);  // 1-55.2
-      osDelay(100);
-      writeToDevice(VSD_UF_CHARACTERISTIC_U_4,    profileMotor[profile][11]);  // 1-55.3
-      osDelay(100);
-      writeToDevice(VSD_UF_CHARACTERISTIC_U_5,    profileMotor[profile][12]);  // 1-55.4
-      osDelay(100);
-      writeToDevice(VSD_UF_CHARACTERISTIC_U_6,    profileMotor[profile][13]);  // 1-55.5
-      osDelay(100);
-      writeToDevice(VSD_UF_CHARACTERISTIC_F_1,    profileMotor[profile][14]);  // 1-56.0
-      osDelay(100);
-      writeToDevice(VSD_UF_CHARACTERISTIC_F_2,    profileMotor[profile][15]);  // 1-56.1
-      osDelay(100);
-      writeToDevice(VSD_UF_CHARACTERISTIC_F_3,    profileMotor[profile][16]);  // 1-56.2
-      osDelay(100);
-      writeToDevice(VSD_UF_CHARACTERISTIC_F_4,    profileMotor[profile][17]);  // 1-56.3
-      osDelay(100);
-      writeToDevice(VSD_UF_CHARACTERISTIC_F_5,    profileMotor[profile][18]);  // 1-56.4
-      osDelay(100);
-      writeToDevice(VSD_UF_CHARACTERISTIC_F_6,    profileMotor[profile][19]);  // 1-56.5
-      osDelay(100);
-      writeToDevice(VSD_RESONANCE_REMOVE,         profileMotor[profile][20]);  // 1-64
-      osDelay(100);
-      writeToDevice(VSD_RESONANCE_TIME,           profileMotor[profile][21]);  // 1-65
-      osDelay(100);
-      writeToDevice(VSD_MIN_CURRENT_LOW_SPEED,    profileMotor[profile][22]);  // 1-66
-      osDelay(100);
-      writeToDevice(VSD_PM_START_MODE,            profileMotor[profile][23]);  // 1-70
-      osDelay(100);
-      writeToDevice(VSD_STOP_FUNCTION,            profileMotor[profile][24]);  // 1-80
-      osDelay(100);
-      writeToDevice(VSD_MIN_REFERENCE,            profileMotor[profile][25]);  // 3-02
-      osDelay(100);
-      writeToDevice(VSD_MAX_REFERENCE,            profileMotor[profile][26]);  // 3-03
-      osDelay(100);
-      writeToDevice(VSD_FREQUENCY,                profileMotor[profile][27]);  // 3-11
-      osDelay(100);
-      writeToDevice(VSD_TIMER_DISPERSAL,          profileMotor[profile][28]);  // 3-41
-      osDelay(100);
-      writeToDevice(VSD_TIMER_DELAY,              profileMotor[profile][29]);  // 3-42
-      osDelay(100);
-      writeToDevice(VSD_TIMER_DISP_FIX_SPEED,     profileMotor[profile][30]);  // 3-80
-      osDelay(100);
-      writeToDevice(VSD_TIMER_DELAY_FIX_SPEED,    profileMotor[profile][31]);  // 3-81
-      osDelay(100);
-      writeToDevice(VSD_TORQUE_LIMIT,             profileMotor[profile][35]);  // 4-16
-      osDelay(100);
-      writeToDevice(VSD_CURRENT_LIMIT,            profileMotor[profile][36]);  // 4-18
-      osDelay(100);
-      writeToDevice(VSD_WARNING_SPEED_LOW,        profileMotor[profile][37]);  // 4-52
-      osDelay(100);
-      writeToDevice(VSD_DELAY_CURRENT_LIMIT,      profileMotor[profile][38]);  // 14-24
-      osDelay(100);
-      writeToDevice(VSD_DELAY_TORQUE_LIMIT,       profileMotor[profile][39]);  // 14-25
-      osDelay(100);
-      writeToDevice(VSD_FIL_TIME_CURRENT_LIMIT,   profileMotor[profile][40]);  // 14-32
-      osDelay(100);
-      writeToDevice(VSD_DC_COMPENSATION,          profileMotor[profile][41]);  // 14-51
-      osDelay(100);
-      writeToDevice(VSD_HIGH_START_TORQUE_TIME,   profileMotor[profile][42]);  // 30-20
-      osDelay(100);
-      writeToDevice(VSD_HIGH_START_TORQUE_CURRENT,profileMotor[profile][43]);  // 30-21
-      osDelay(100);
-      writeToDevice(VSD_SWITCHING_FREQUENCY_CODE, profileMotor[profile][44]);
-      osDelay(100);
-      parameters.set(CCS_BASE_VOLTAGE, profileMotor[profile][13]);
-      osDelay(100);
-      printf("End write ssp profile file cicle=%d, time=%d\n", j, (int)(HAL_GetTick() - time));
     }
+//    printf("Write profile=%d, time=%d\n", profile, (int)(HAL_GetTick() - time));
+
+    for (int j = 0; j < 2; j++) {
+      osDelay(5000);
+      for (int i = 1; i < QUANTITY_PARAMETER_MOTOR; i++) {
+        int32_t intValue = parameters.get(profileMotor[i][0]) * parameters.getDiscret(profileMotor[i][0]);
+        int32_t profileValue = profileMotor[i][profile] * parameters.getDiscret(profileMotor[i][0]);
+        if (intValue != profileValue) {
+          writeToDevice(profileMotor[i][0], profileMotor[i][profile]);
+          osDelay(100);
+//          printf("Write profile cicle=%d, id=%d, intValue=%d, profileValue=%d\n", j, (int)profileMotor[i][0], intValue, profileValue);
+        }
+      }
+//      printf("Write profile cicle=%d, time=%d\n",j, (int)(HAL_GetTick() - time));
+    }
+
     parameters.set(CCS_CMD_TYPE_PROFILE_VSD, 0);
     return ok_r;
   }
@@ -1158,26 +1129,26 @@ bool VsdDanfoss::isControl()
 
 int VsdDanfoss::setSspFile()
 {
-  int time = HAL_GetTick();                                                     // Время начала записи
+//  int time = HAL_GetTick();                                                     // Время начала записи
 
-  for (int i = 0; i < 132; i++) {                                               // Первый цикл записи ssp файла
+  for (int i = 0; i < QUANTITY_PARAMETER_SSP_FILE; i++) {                                               // Первый цикл записи ssp файла
     writeToDevice(sspFile[i][0], sspFile[i][1]);
     osDelay(100);
   }
-  printf("Write ssp file time=%d\n", (int)(HAL_GetTick() - time));
+//  printf("Write ssp file time=%d\n", (int)(HAL_GetTick() - time));
 
   for (int j = 0; j < 2; j++) {                                                 // Цикл для повтора незаписанных параметров
     osDelay(5000);
-    for (int i = 0; i < 132; i++) {  
+    for (int i = 0; i < QUANTITY_PARAMETER_SSP_FILE; i++) {
       int32_t intValue = parameters.get(sspFile[i][0]) * parameters.getDiscret(sspFile[i][0]);
       int32_t sspValue = sspFile[i][1] * parameters.getDiscret(sspFile[i][0]);
       if (intValue != sspValue) {
         writeToDevice(sspFile[i][0], sspFile[i][1]);
-        printf("Write ssp file cicle=%d, id=%d, intValue=%d, intSsp=%d\n",j, (int)sspFile[i][0], intValue, sspValue);
+//        printf("Write ssp file cicle=%d, id=%d, intValue=%d, intSsp=%d\n",j, (int)sspFile[i][0], intValue, sspValue);
         osDelay(100);
       }
     }
-    printf("Write ssp file cicle=%d, time=%d\n",j, (int)(HAL_GetTick() - time));
+//    printf("Write ssp file cicle=%d, time=%d\n",j, (int)(HAL_GetTick() - time));
   }
   return ok_r;
 }
@@ -1459,13 +1430,19 @@ void VsdDanfoss::getSwitchFreqCode(float value)
 
 float VsdDanfoss::getMaxBaseFrequency()
 {
+  float freq = 70;
   int profile = getMotorTypeProfile();
-  if (profile > 0) {
-    return profileMotor[profile][34];
+  if (profile) {
+    for (int i = 1; i < QUANTITY_PARAMETER_MOTOR; i++) {
+      if (profileMotor[i][0] == VSD_HIGH_LIM_SPEED_MOTOR) {
+        freq = profileMotor[i][profile];
+      }
+    }
   }
   else {
-    return Vsd::getMaxBaseFrequency();
+    freq = Vsd::getMaxBaseFrequency();
   }
+  return freq;
 }
 
 uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
