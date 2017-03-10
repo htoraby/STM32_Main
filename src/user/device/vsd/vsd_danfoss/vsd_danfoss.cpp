@@ -447,10 +447,12 @@ void VsdDanfoss::setLimitsMotor()
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
       tempVal = tempVal / coefTrans;
       setMin(VSD_MOTOR_CURRENT, tempVal);
-
+      /*
       tempVal = dm_->getFieldMaximum(i);
       tempVal = applyCoef(tempVal, dm_->getFieldCoefficient(i));
       tempVal = applyUnit(tempVal, dm_->getFieldPhysic(i), dm_->getFieldUnit(i));
+      */
+      tempVal = parameters.get(CCS_SU_NOMINAL_CURRENT);
       tempVal = tempVal / coefTrans;
       setMax(VSD_MOTOR_CURRENT, tempVal);
     }
