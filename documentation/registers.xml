@@ -13834,7 +13834,7 @@
 	<param>
 		<id>685</id>
 		<name>CCS_TYPE_VSD</name>
-		<access>ACCESS_OPERATOR</access>
+		<access>ACCESS_SERVICE</access>
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>

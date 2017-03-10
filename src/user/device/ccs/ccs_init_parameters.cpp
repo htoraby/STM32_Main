@@ -8224,7 +8224,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_RUN_SWING_QUANTITY - CCS_BEGIN].code                       = 13;
   // Тип подключенного ЧРП
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].id                                       = CCS_TYPE_VSD;
-  parameters_[CCS_TYPE_VSD - CCS_BEGIN].access                                   = ACCESS_OPERATOR;
+  parameters_[CCS_TYPE_VSD - CCS_BEGIN].access                                   = ACCESS_SERVICE;
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].operation                                = OPERATION_LIMITED;
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].physic                                   = PHYSIC_NUMERIC;
   parameters_[CCS_TYPE_VSD - CCS_BEGIN].validity                                 = VALIDITY_OK;
