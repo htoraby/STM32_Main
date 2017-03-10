@@ -1982,7 +1982,7 @@ void Vsd::initParameters()
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].def                              = 100.0;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].discret                          = 1;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].code                             = 0;
-  // Постаянная времени подавления Danfoss 1-65 Не используется в проекте, только при конфигурировании Novomet 0х0067
+  // Постоянная времени подавления Danfoss 1-65 Не используется в проекте, только при конфигурировании Novomet 0х0067
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].id                                 = VSD_RESONANCE_TIME;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].access                             = ACCESS_OPERATOR;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].operation                          = OPERATION_WRITE;

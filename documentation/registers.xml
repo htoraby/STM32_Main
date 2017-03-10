@@ -25399,7 +25399,7 @@
 		<unit_lcd>TIME_MS</unit_lcd>
 		<format>XXXXXX</format>
 		<code>0</code>
-		<comment>Постаянная времени подавления Danfoss 1-65 Не используется в проекте, только при конфигурировании Novomet 0х0067</comment>
+		<comment>Постоянная времени подавления Danfoss 1-65 Не используется в проекте, только при конфигурировании Novomet 0х0067</comment>
 	</param>
 	<param>
 		<id>10166</id>
