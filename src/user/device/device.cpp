@@ -408,6 +408,11 @@ uint8_t Device::getPhysic(unsigned short id)
   return getFieldPhysic(getIndexAtId(id));
 }
 
+uint32_t Device::getDiscret(unsigned short id)
+{
+  return getFieldDiscret(getIndexAtId(id));
+}
+
 uint8_t Device::getValidity(unsigned short id)
 {
   return getFieldValidity(getIndexAtId(id));

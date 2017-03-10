@@ -14,7 +14,7 @@ class RegimeRunDirect;
 
 #define QUNTITY_PROFILES_MOTOR    15
 #define QUANTITY_PARAMETER_MOTOR  45
-#define QUANTITY_PARAMETER_SETPOINT 10
+#define QUANTITY_PARAMETER_SSP_FILE 130
 
 
 enum enVsdDanfosStatus1
@@ -150,12 +150,13 @@ public:
   bool isConnect();
   void setLimitsCcsParameters();
 
-  void resetSetpointsTask();
+  void setSspTask();
 
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
   int getMotorTypeProfile();
   int setMotorTypeProfile();
+  int setSspMotorTypeProfile();
   int setMotorCurrent(float value, EventType eventType = NoneType);
 
 
@@ -243,7 +244,7 @@ public:
   bool checkStop();
   bool isSetPointFreq();
 
-  int resetSetpointsDanfoss();
+  int setSspFile();
   int resetSetpoints();
   void processingRegimeRun();
 
@@ -267,8 +268,8 @@ private:
   ModbusParameter modbusParameters_[231];
   DeviceModbus *dm_;
 
-  osSemaphoreId resetSetpointSemaphoreId_;
-  osSemaphoreId resetProfileSemaphoreId_;
+  osSemaphoreId setSspFileSemaphoreId_;
+  osSemaphoreId setSspProfileSemaphoreId_;
 
   RegimeRunPush *regimeRunPush_;
   RegimeRunSwing *regimeRunSwing_;

@@ -9,11 +9,143 @@
 #include "regime_run_direct.h"
 #include "vsd_danfoss_log.h"
 
-
+const float sspFile[QUANTITY_PARAMETER_SSP_FILE][2] = {
+  {VSD_WORK_STATE_WHEN_ON,          1},     // 0-02 Hz
+  {VSD_CONFIG_MODE,                 0},     // 1-00 Speed open loop
+  {VSD_TORQUE_CHARACTERISTIC,       0},     // 1-03 Constant torque
+  {VSD_OVERLOAD_MODE,               1},     // 1-04 Normal torque
+  {VSD_MOTOR_VOLTAGE,               320},   // 1-22 320
+  {VSD_MIN_CURRENT_LOW_SPEED,       100},   // 1-66 100.0
+  {VSD_START_DELAY,                 0},     // 1-71 0.0
+  {VSD_START_FUNCTION,              2},     // 1-72 Coast/Delay time
+  {VSD_STOP_SPEED,                  10},    // 1-82 10
+  {VSD_CONTROL_TERMISTOR_MTR,       2},     // 1-90 Thermistor trip
+  {VSD_THERMISTOR_RESOURCE,         5},     // 1-93 Digital input 32
+  {VSD_PARKING_CURRENT,             50},    // 2-06 50
+  {VSD_PARKING_TIME,                1},     // 2-07 1.0
+  {VSD_OVERVOLTAGE_CONTROL,         2},     // 2-17 Enable
+  {VSD_RESOURCE_TASK_1,             0},     // 3-15 No function
+  {VSD_RESOURCE_TASK_2,             0},     // 3-16 No function
+  {VSD_RESOURCE_TASK_3,             0},     // 3-17 No function
+  {VSD_TYPE_SPEED_CHANGE,           0},     // 3-40 Linear
+  {VSD_ROTATION_FLAG,               2},     // 4-10 Both directios
+  {VSD_MTR_FEEDBACK_LOSS_FUNC,      0},     // 4-30 Disable
+  {VSD_TRACK_ERROR_FUNCTION,        2},     // 4-34 Trip
+  {VSD_TRACK_ERROR,                 600},   // 4-35 600
+  {VSD_TRACK_ERROR_TIMEOUT,         10},    // 4-36 10.00
+  {VSD_TRACK_ERROR_RAMPING,         600},   // 4-37 600
+  {VSD_TRACK_ERROR_RAMP_TIME,       5},     // 4-38 5.00
+  {VSD_TRACK_ERROR_AFTER_RAMP,      10},    // 4-39 10.00
+  {VSD_TERMINAL_27_MODE,            1},     // 5-01 Output
+  {VSD_TERMINAL_29_MODE,            1},     // 5-02 Output
+  {VSD_DI_18,                       0},     // 5-10 No operation
+  {VSD_DI_19,                       0},     // 5-11 No operation
+  {VSD_DI_27,                       0},     // 5-12 No operation
+  {VSD_DI_32,                       0},     // 5-14 No operation
+  {VSD_TERMINAL_27_DI,              75},    // 5-30 Logic rule 5
+  {VSD_TERMINAL_29_DI,              80},    // 5-31 SL digital output A
+  {VSD_FUNCTION_RELE,               5},     // 5-40.0 Running
+  {VSD_FUNCTION_RELE_1,             70},    // 5-40.1 Logic rule 0
+  {VSD_FUNCTION_RELE_7,             2},     // 5-40.7 Drive ready
+  {VSD_42_AO,                       133},   // 6-50 Motor cur. 4-20mA
+  {VSD_PROT_NO_CONNECT_TRIP_DELAY,  600},   // 8-03 600
+  {VSD_SL_CONTROLLER_MODE,          1},     // 13-00 On
+  {VSD_SL_START_EVENT,              1},     // 13-01 True
+  {VSD_SL_STOP_EVENT,               0},     // 13-02 False
+  {VSD_SL_RESET,                    0},     // 13-03 Do not reset SLC
+  {VSD_SL_10,                       4},     // 13-10.0 Motor current
+  {VSD_SL_10_1,                     4},     // 13-10.1 Motor current
+  {VSD_SL_10_2,                     4},     // 13-10.2 Motor current
+  {VSD_SL_10_3,                     8},     // 13-10.3 DC-Link voltage
+  {VSD_SL_10_4,                     0},     // 13-10.4 DISABLE
+  {VSD_SL_10_5,                     0},     // 13-10.5 DISABLE
+  {VSD_SL_11,                       0},     // 13-11.0 <
+  {VSD_SL_11_1,                     0},     // 13-11.1 <
+  {VSD_SL_11_2,                     2},     // 13-11.2 >
+  {VSD_SL_11_3,                     0},     // 13-11.3 <
+  {VSD_SL_11_4,                     1},     // 13-11.4 ?equal
+  {VSD_SL_11_5,                     1},     // 13-11.5 ?equal
+  {VSD_SL_12,                       32},    // 13-12.0 32.000
+  {VSD_SL_12_1,                     5},     // 13-12.1 5.000
+  {VSD_SL_12_2,                     100},   // 13-12.2 100.000
+  {VSD_SL_12_3,                     440},   // 13-12.3 440.000
+  {VSD_SL_12_4,                     0},     // 13-12.4 0.0
+  {VSD_SL_12_5,                     0},     // 13-12.5 0.0
+  {VSD_SL_15,                       9},     // 13-15 Alove I high
+  {VSD_SL_16,                       22},    // 13-16 Comparator 0
+  {VSD_SL_20,                       0},     // 13-20.0 0
+  {VSD_SL_20_1,                     0},     // 13-20.1 0
+  {VSD_SL_20_2,                     0},     // 13-20.2 0
+  {VSD_SL_20_3,                     0},     // 13-20.3 0
+  {VSD_SL_20_4,                     0},     // 13-20.4 0
+  {VSD_SL_20_5,                     0},     // 13-20.5 0
+  {VSD_SL_20_6,                     0.001}, // 13-20.6
+  {VSD_SL_20_7,                     0.001}, // 13-20.7
+  {VSD_SL_40,                       11},    // 13-40.0 Below speed low
+  {VSD_SL_40_1,                     25},    // 13-40.1 Comparator 3
+  {VSD_SL_40_2,                     25},    // 13-40.2 Comparator 3
+  {VSD_SL_40_3,                     27},    // 13-40.3 Logic rule 1
+  {VSD_SL_40_4,                     29},    // 13-40.4 Logic rule 3
+  {VSD_SL_40_5,                     20},    // 13-40.5 Alarm (trip)
+  {VSD_SL_41,                       7},     // 13-41.0 NOT AND NOT
+  {VSD_SL_41_1,                     1},     // 13-41.1 AND
+  {VSD_SL_41_2,                     1},     // 13-41.2 AND
+  {VSD_SL_41_3,                     2},     // 13-41.3 OR
+  {VSD_SL_41_4,                     6},     // 13-41.4 NOT OR
+  {VSD_SL_41_5,                     2},     // 13-41.5 OR
+  {VSD_SL_42,                       20},    // 13-42.0 Alarm (trip)
+  {VSD_SL_42_1,                     23},    // 13-42.1 Comparator 1
+  {VSD_SL_42_2,                     24},    // 13-42.2 Comparator 2
+  {VSD_SL_42_3,                     28},    // 13-42.3 Logic rule 2
+  {VSD_SL_42_4,                     0},     // 13-42.4 False
+  {VSD_SL_42_5,                     29},    // 13-42.5 Logic rule 3
+  {VSD_SL_43,                       1},     // 13-43 AND
+  {VSD_SL_44,                       94},    // 13-44 RS Fliptop 0
+  {VSD_SL_51,                       1},     // 13-51.0 True
+  {VSD_SL_51_1,                     29},    // 13-51.1 Logic rule 3
+  {VSD_SL_51_2,                     73},    // 13-51.2 SL Time-out 6
+  {VSD_SL_51_3,                     60},    // 13-51.3 Logic rule 4
+  {VSD_SL_51_4,                     74},    // 13-51.4 SL Time-out 7
+  {VSD_SL_51_5,                     61},    // 13-51.5 Logic rule 5
+  {VSD_SL_52,                       38},    // 13-52.0 Set digital out A high
+  {VSD_SL_52_1,                     73},    // 13-52.1 Start timer 6
+  {VSD_SL_52_2,                     32},    // 13-52.2 Set digital out A low
+  {VSD_SL_52_3,                     74},    // 13-52.3 Start timer 7
+  {VSD_SL_52_4,                     38},    // 13-52.4 Set digital out A high
+  {VSD_SL_52_5,                     1},     // 13-52.5 No action
+  {VSD_OVERMODULATION,              0},     // 14-03 Off
+  {VSD_DEAD_TIME_COMPENSATION,      0},     // 14-06 Off
+  {VSD_MAINS_FAILURE,               6},     // 14-10 Alarm
+  {VSD_MAINS_VOLTAGE_FAILURE,       270},   // 14-11 270
+  {VSD_RESET_MODE,                  5},     // 14-20 Automatic reset x5
+  {VSD_AUTOSTART_TIME,              5},     // 14-21 5
+  {VSD_TRIP_DELAY_AT_INVERTER_FAULT,1},     // 14-26 1
+  {VSD_DC_COMPENSATION,             1},     // 14-51 On
+  {VSD_FAN_CONTROL,                 4},     // 14-52 Auto (Low temp env.))
+  {VSD_OUT_FILTER,                  2},     // 14-55 Sine-Wave Filter Fixed
+  {VSD_FAIL_RESET,                  1},     // 14-90.0 Warning
+  {VSD_FAIL_RESET_1,                3},     // 14-90.1 Trip Lock
+  {VSD_FAIL_RESET_2,                3},     // 14-90.2 Trip Lock
+  {VSD_FAIL_RESET_3,                1},     // 14-90.3 Warning
+  {VSD_FAIL_RESET_4,                2},     // 14-90.4 Trip
+  {VSD_FAIL_RESET_5,                2},     // 14-90.5 Trip
+  {VSD_FAIL_RESET_6,                1},     // 14-90.6 Warning
+  {VSD_FAIL_RESET_7,                2},     // 14-90.7 Trip
+  {VSD_FAIL_RESET_8,                3},     // 14-90.8 Trip Lock
+  {VSD_FAIL_RESET_9,                2},     // 14-90.9 Trip
+  {VSD_FAIL_RESET_10,               3},     // 14-90.10 Trip Lock
+  {VSD_FAIL_RESET_11,               2},     // 14-90.11 Trip
+  {VSD_FAIL_RESET_12,               2},     // 14-90.12 Trip
+  {VSD_FAIL_RESET_13,               3},     // 14-90.13 Trip Lock
+  {VSD_FAIL_RESET_14,               3},     // 14-90.14 Trip Lock
+  {VSD_LOCK_ROTOR_PROTECTION,       0},     // 30-22 0
+  {VSD_LOCK_ROTOR_TIME,             1}      // 30-23 1.00
+};
 
 const float profileMotor[QUNTITY_PROFILES_MOTOR][QUANTITY_PARAMETER_MOTOR] = {
 // 0,    1,    2,    3,    4,    5,      6,      7,      8,      9,      10,     11,     12,     13,     14,     15,     16,     17,   18,   19,   20,   21,   22,   23,   24,   25,   26,   27,   28,   29,   30,   31,   32,   33,   34,   35,    36,    37,    38,    39,    40,    41
 //                   1-01, 1-10, 1-23, 1-25, 1-39, 1-55.0, 1-55.1, 1-55.2, 1-55.3, 1-55.4, 1-55.5, 1-56.0, 1-56.1, 1-56.2, 1-56.3, 1-56.4, 1-56.5, 1-64, 1-65, 1-66, 1-70, 1-80, 3-02, 3-03, 3-11, 3-41, 3-42, 3-80, 3-81, 4-19, 4-12, 4-14, 4-16, 4-18, 4-52, 14-24, 14-25, 14-32, 14-51, 30-20, 30-21, 14-01
+
   {0,    0,    0,    0,    0,    50,   3000, 2,    5,      68,     131,    194,    257,    320,    0,      10,     20,     30,     40,     50,     0,    0.002,100,  0,    0,    30,   70,   50,   30,   30,   30,   30,   71,   30,   50,   160,  230,  650,  5,     0,     0.1,   1,     10,    50,    4},  // SM_A
   {1,    0,    500,  0,    0,    59,   504,  14,   13,     74,     136,    197,    259,    320,    0,      12,     23,     35,     47,     59,     1000, 0.001,50,   0,    0,    20,   59,   30,   30,   30,   30,   30,   71,   20,   59,   160,  160,  110,  0,     0,     0.005, 1,     10,    50,    4},  // SM_V500
   {1,    1,    500,  1,    1,    59,   504,  14,   13,     74,     136,    197,    259,    320,    0,      12,     23,     35,     47,     59,     1000, 0.001,50,   1,    5,    20,   59,   30,   120,  30,   120,  30,   71,   20,   59,   160,  160,  110,  0,     0,     0.005, 1,     10,    50,    4},  // SM_V500V
@@ -32,9 +164,9 @@ const float profileMotor[QUNTITY_PROFILES_MOTOR][QUANTITY_PARAMETER_MOTOR] = {
 };
 
 
-static void vsdResetSetpointTask(void *p)
+static void vsdSetSspTask(void *p)
 {
-  (static_cast<VsdDanfoss*>(p))->resetSetpointsTask();
+  (static_cast<VsdDanfoss*>(p))->setSspTask();
 }
 
 VsdDanfoss::VsdDanfoss()
@@ -117,11 +249,11 @@ void VsdDanfoss::init()
   setLimitsMinFrequence(getValue(VSD_LOW_LIM_SPEED_MOTOR));
   setLimitsMaxFrequence(getValue(VSD_HIGH_LIM_SPEED_MOTOR));
 
-  resetSetpointSemaphoreId_ = osSemaphoreCreate(NULL, 1);
-  osSemaphoreWait(resetSetpointSemaphoreId_, 0);
-//  resetProfileSemaphoreId_ = osSemaphoreCreate(NULL, 1);
-//  osSemaphoreWait(resetProfileSemaphoreId_, 0);
-  osThreadDef(VsdResetSetpoint, vsdResetSetpointTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
+  setSspFileSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(setSspFileSemaphoreId_, 0);
+  setSspProfileSemaphoreId_ = osSemaphoreCreate(NULL, 1);
+  osSemaphoreWait(setSspProfileSemaphoreId_, 0);
+  osThreadDef(VsdResetSetpoint, vsdSetSspTask, osPriorityNormal, 0, 2*configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(VsdResetSetpoint), this);
 }
 
@@ -152,14 +284,14 @@ void VsdDanfoss::setLimitsCcsParameters()
   parameters.setMax(CCS_BASE_FREQUENCY, getMaxBaseFrequency());
 }
 
-void VsdDanfoss::resetSetpointsTask()
+void VsdDanfoss::setSspTask()
 {
   while(1) {
     osDelay(1);
-    if (osSemaphoreWait(resetSetpointSemaphoreId_, 0) != osEventTimeout)
-      resetSetpointsDanfoss();
-    //if (osSemaphoreWait(resetProfileSemaphoreId_, 0) != osEventTimeout)
-    //  setMotorTypeProfile();
+    if (osSemaphoreWait(setSspFileSemaphoreId_, 0) != osEventTimeout)
+      setSspFile();
+    if (osSemaphoreWait(setSspProfileSemaphoreId_, 0) != osEventTimeout)
+      setSspMotorTypeProfile();
   }
 }
 
@@ -193,63 +325,119 @@ int VsdDanfoss::getMotorTypeProfile()
 
 int VsdDanfoss::setMotorTypeProfile()
 {
+  osSemaphoreRelease(setSspProfileSemaphoreId_);
+  return ok_r;
+}
+
+
+int VsdDanfoss::setSspMotorTypeProfile()
+{ 
   int16_t profile = getMotorTypeProfile();
   if (profile >= 0) {
-    writeToDevice(VSD_MOTOR_CONTROL,            profileMotor[profile][3]);   // 1-01
-    writeToDevice(VSD_MOTOR_TYPE,               profileMotor[profile][4]);   // 1-10
-    writeToDevice(VSD_MAX_OUTPUT_FREQUENCY,     profileMotor[profile][32]);  // 4-19
-    ksu.setMaxBaseFrequency();
-    if (profileMotor[profile][33] > parameters.get(VSD_HIGH_LIM_SPEED_MOTOR))
-      writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR,   profileMotor[profile][34]);  // 4-14
-    writeToDevice(VSD_LOW_LIM_SPEED_MOTOR,      profileMotor[profile][33]);  // 4-12
-    writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR,     profileMotor[profile][34]);  // 4-14
-    writeToDevice(VSD_MOTOR_FREQUENCY,          profileMotor[profile][5]);   // 1-23
-    writeToDevice(VSD_MOTOR_SPEED,              profileMotor[profile][6]);   // 1-25
-    writeToDevice(VSD_MOTOR_POLES,              profileMotor[profile][7]);   // 1-39
-    writeToDevice(VSD_UF_CHARACTERISTIC_U_1,    profileMotor[profile][8]);   // 1-55.0
-    writeToDevice(VSD_UF_CHARACTERISTIC_U_2,    profileMotor[profile][9]);   // 1-55.1
-    writeToDevice(VSD_UF_CHARACTERISTIC_U_3,    profileMotor[profile][10]);  // 1-55.2
-    writeToDevice(VSD_UF_CHARACTERISTIC_U_4,    profileMotor[profile][11]);  // 1-55.3
-    writeToDevice(VSD_UF_CHARACTERISTIC_U_5,    profileMotor[profile][12]);  // 1-55.4
-    writeToDevice(VSD_UF_CHARACTERISTIC_U_6,    profileMotor[profile][13]);  // 1-55.5
-    writeToDevice(VSD_UF_CHARACTERISTIC_F_1,    profileMotor[profile][14]);  // 1-56.0
-    writeToDevice(VSD_UF_CHARACTERISTIC_F_2,    profileMotor[profile][15]);  // 1-56.1
-    writeToDevice(VSD_UF_CHARACTERISTIC_F_3,    profileMotor[profile][16]);  // 1-56.2
-    writeToDevice(VSD_UF_CHARACTERISTIC_F_4,    profileMotor[profile][17]);  // 1-56.3
-    writeToDevice(VSD_UF_CHARACTERISTIC_F_5,    profileMotor[profile][18]);  // 1-56.4
-    writeToDevice(VSD_UF_CHARACTERISTIC_F_6,    profileMotor[profile][19]);  // 1-56.5
-    writeToDevice(VSD_RESONANCE_REMOVE,         profileMotor[profile][20]);  // 1-64
-    writeToDevice(VSD_RESONANCE_TIME,           profileMotor[profile][21]);  // 1-65
-    writeToDevice(VSD_MIN_CURRENT_LOW_SPEED,    profileMotor[profile][22]);  // 1-66
-    writeToDevice(VSD_PM_START_MODE,            profileMotor[profile][23]);  // 1-70
-    writeToDevice(VSD_STOP_FUNCTION,            profileMotor[profile][24]);  // 1-80
-    writeToDevice(VSD_MIN_REFERENCE,            profileMotor[profile][25]);  // 3-02
-    writeToDevice(VSD_MAX_REFERENCE,            profileMotor[profile][26]);  // 3-03
-    writeToDevice(VSD_FREQUENCY,                profileMotor[profile][27]);  // 3-11
-    writeToDevice(VSD_TIMER_DISPERSAL,          profileMotor[profile][28]);  // 3-41
-    writeToDevice(VSD_TIMER_DELAY,              profileMotor[profile][29]);  // 3-42
-    writeToDevice(VSD_TIMER_DISP_FIX_SPEED,     profileMotor[profile][30]);  // 3-80
-    writeToDevice(VSD_TIMER_DELAY_FIX_SPEED,    profileMotor[profile][31]);  // 3-81
-    writeToDevice(VSD_TORQUE_LIMIT,             profileMotor[profile][35]);  // 4-16
-    writeToDevice(VSD_CURRENT_LIMIT,            profileMotor[profile][36]);  // 4-18
-    writeToDevice(VSD_WARNING_SPEED_LOW,        profileMotor[profile][37]);  // 4-52
-    writeToDevice(VSD_DELAY_CURRENT_LIMIT,      profileMotor[profile][38]);  // 14-24
-    writeToDevice(VSD_DELAY_TORQUE_LIMIT,       profileMotor[profile][39]);  // 14-25
-    writeToDevice(VSD_FIL_TIME_CURRENT_LIMIT,   profileMotor[profile][40]);  // 14-32
-    writeToDevice(VSD_DC_COMPENSATION,          profileMotor[profile][41]);  // 14-51
-    writeToDevice(VSD_HIGH_START_TORQUE_TIME,   profileMotor[profile][42]);  // 30-20
-    writeToDevice(VSD_HIGH_START_TORQUE_CURRENT,profileMotor[profile][43]);  // 30-21
-    writeToDevice(VSD_SWITCHING_FREQUENCY_CODE, profileMotor[profile][44]);
-    parameters.set(CCS_BASE_VOLTAGE, profileMotor[profile][13]);
-    parameters.set(CCS_CMD_TYPE_PROFILE_VSD, 1);
-
+    parameters.set(CCS_CMD_TYPE_PROFILE_VSD, 1);  // Команда для вывода на экран окна ожидания применения
+    for (int j = 0; j < 2; j++) {
+      int time = HAL_GetTick();
+      writeToDevice(VSD_MOTOR_CONTROL,            profileMotor[profile][3]);   // 1-01
+      osDelay(100);
+      writeToDevice(VSD_MOTOR_TYPE,               profileMotor[profile][4]);   // 1-10
+      osDelay(100);
+      writeToDevice(VSD_MAX_OUTPUT_FREQUENCY,     profileMotor[profile][32]);  // 4-19
+      osDelay(100);
+      ksu.setMaxBaseFrequency();
+      osDelay(100);
+      if (profileMotor[profile][33] > parameters.get(VSD_HIGH_LIM_SPEED_MOTOR)) {
+        writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR,   profileMotor[profile][34]);  // 4-14
+        osDelay(100);
+      }
+      writeToDevice(VSD_LOW_LIM_SPEED_MOTOR,      profileMotor[profile][33]);  // 4-12
+      osDelay(100);
+      writeToDevice(VSD_HIGH_LIM_SPEED_MOTOR,     profileMotor[profile][34]);  // 4-14
+      osDelay(100);
+      writeToDevice(VSD_MOTOR_FREQUENCY,          profileMotor[profile][5]);   // 1-23
+      osDelay(100);
+      writeToDevice(VSD_MOTOR_SPEED,              profileMotor[profile][6]);   // 1-25
+      osDelay(100);
+      writeToDevice(VSD_MOTOR_POLES,              profileMotor[profile][7]);   // 1-39
+      osDelay(100);
+      writeToDevice(VSD_UF_CHARACTERISTIC_U_1,    profileMotor[profile][8]);   // 1-55.0
+      osDelay(100);
+      writeToDevice(VSD_UF_CHARACTERISTIC_U_2,    profileMotor[profile][9]);   // 1-55.1
+      osDelay(100);
+      writeToDevice(VSD_UF_CHARACTERISTIC_U_3,    profileMotor[profile][10]);  // 1-55.2
+      osDelay(100);
+      writeToDevice(VSD_UF_CHARACTERISTIC_U_4,    profileMotor[profile][11]);  // 1-55.3
+      osDelay(100);
+      writeToDevice(VSD_UF_CHARACTERISTIC_U_5,    profileMotor[profile][12]);  // 1-55.4
+      osDelay(100);
+      writeToDevice(VSD_UF_CHARACTERISTIC_U_6,    profileMotor[profile][13]);  // 1-55.5
+      osDelay(100);
+      writeToDevice(VSD_UF_CHARACTERISTIC_F_1,    profileMotor[profile][14]);  // 1-56.0
+      osDelay(100);
+      writeToDevice(VSD_UF_CHARACTERISTIC_F_2,    profileMotor[profile][15]);  // 1-56.1
+      osDelay(100);
+      writeToDevice(VSD_UF_CHARACTERISTIC_F_3,    profileMotor[profile][16]);  // 1-56.2
+      osDelay(100);
+      writeToDevice(VSD_UF_CHARACTERISTIC_F_4,    profileMotor[profile][17]);  // 1-56.3
+      osDelay(100);
+      writeToDevice(VSD_UF_CHARACTERISTIC_F_5,    profileMotor[profile][18]);  // 1-56.4
+      osDelay(100);
+      writeToDevice(VSD_UF_CHARACTERISTIC_F_6,    profileMotor[profile][19]);  // 1-56.5
+      osDelay(100);
+      writeToDevice(VSD_RESONANCE_REMOVE,         profileMotor[profile][20]);  // 1-64
+      osDelay(100);
+      writeToDevice(VSD_RESONANCE_TIME,           profileMotor[profile][21]);  // 1-65
+      osDelay(100);
+      writeToDevice(VSD_MIN_CURRENT_LOW_SPEED,    profileMotor[profile][22]);  // 1-66
+      osDelay(100);
+      writeToDevice(VSD_PM_START_MODE,            profileMotor[profile][23]);  // 1-70
+      osDelay(100);
+      writeToDevice(VSD_STOP_FUNCTION,            profileMotor[profile][24]);  // 1-80
+      osDelay(100);
+      writeToDevice(VSD_MIN_REFERENCE,            profileMotor[profile][25]);  // 3-02
+      osDelay(100);
+      writeToDevice(VSD_MAX_REFERENCE,            profileMotor[profile][26]);  // 3-03
+      osDelay(100);
+      writeToDevice(VSD_FREQUENCY,                profileMotor[profile][27]);  // 3-11
+      osDelay(100);
+      writeToDevice(VSD_TIMER_DISPERSAL,          profileMotor[profile][28]);  // 3-41
+      osDelay(100);
+      writeToDevice(VSD_TIMER_DELAY,              profileMotor[profile][29]);  // 3-42
+      osDelay(100);
+      writeToDevice(VSD_TIMER_DISP_FIX_SPEED,     profileMotor[profile][30]);  // 3-80
+      osDelay(100);
+      writeToDevice(VSD_TIMER_DELAY_FIX_SPEED,    profileMotor[profile][31]);  // 3-81
+      osDelay(100);
+      writeToDevice(VSD_TORQUE_LIMIT,             profileMotor[profile][35]);  // 4-16
+      osDelay(100);
+      writeToDevice(VSD_CURRENT_LIMIT,            profileMotor[profile][36]);  // 4-18
+      osDelay(100);
+      writeToDevice(VSD_WARNING_SPEED_LOW,        profileMotor[profile][37]);  // 4-52
+      osDelay(100);
+      writeToDevice(VSD_DELAY_CURRENT_LIMIT,      profileMotor[profile][38]);  // 14-24
+      osDelay(100);
+      writeToDevice(VSD_DELAY_TORQUE_LIMIT,       profileMotor[profile][39]);  // 14-25
+      osDelay(100);
+      writeToDevice(VSD_FIL_TIME_CURRENT_LIMIT,   profileMotor[profile][40]);  // 14-32
+      osDelay(100);
+      writeToDevice(VSD_DC_COMPENSATION,          profileMotor[profile][41]);  // 14-51
+      osDelay(100);
+      writeToDevice(VSD_HIGH_START_TORQUE_TIME,   profileMotor[profile][42]);  // 30-20
+      osDelay(100);
+      writeToDevice(VSD_HIGH_START_TORQUE_CURRENT,profileMotor[profile][43]);  // 30-21
+      osDelay(100);
+      writeToDevice(VSD_SWITCHING_FREQUENCY_CODE, profileMotor[profile][44]);
+      osDelay(100);
+      parameters.set(CCS_BASE_VOLTAGE, profileMotor[profile][13]);
+      osDelay(100);
+      printf("End write ssp profile file cicle=%d, time=%d\n", j, (int)(HAL_GetTick() - time));
+    }
+    parameters.set(CCS_CMD_TYPE_PROFILE_VSD, 0);
     return ok_r;
   }
   else {
     parameters.set(CCS_ERROR_SLAVE, SetProfileVsdErr);
     return err_r;
   }
-
 }
 
 int VsdDanfoss::setMotorCurrent(float value, EventType eventType)
@@ -908,10 +1096,6 @@ int VsdDanfoss::start(bool init)
 
 int VsdDanfoss::stop(bool /*isAlarm*/)
 {
-  // Если нет бита "В работе"
-//  if (!checkBit(getValue(VSD_STATUS_WORD_1), VSD_DANFOSS_STATUS_OPERATION))
-//    return ok_r;
-
   int timeMs = VSD_CMD_TIMEOUT;
   int countRepeats = 0;
 
@@ -969,286 +1153,38 @@ bool VsdDanfoss::isControl()
     return true;
   return false;
 }
-/*
-const float resetSetpoint[2][QUANTITY_PARAMETER_SETPOINT] = {
-// 0,    1,    2,    3,
-};
-*/
 
-int VsdDanfoss::resetSetpointsDanfoss()
+
+
+int VsdDanfoss::setSspFile()
 {
+  int time = HAL_GetTick();                                                     // Время начала записи
 
-  printf("Test\n");
-  writeToDevice(VSD_ACTIVE_SETUP, 1);               // 0-10 Set-up 1
-  osDelay(50);
-  writeToDevice(VSD_CHANGE_SETUP, 1);               // 0-11 Set-up 1
-  osDelay(50);
-  writeToDevice(VSD_WORK_STATE_WHEN_ON, 1);         // 0-02 Hz
-  osDelay(50);
-  writeToDevice(VSD_CONFIG_MODE, 0);                // 1-00 Speed open loop
-  osDelay(50);
-  writeToDevice(VSD_TORQUE_CHARACTERISTIC, 0);      // 1-03 Constant torque
-  osDelay(50);
-  writeToDevice(VSD_OVERLOAD_MODE, 1);              // 1-04 Normal torque
-  osDelay(50);
-  writeToDevice(VSD_MOTOR_VOLTAGE, 320);            // 1-22 320
-  osDelay(50);
-  writeToDevice(VSD_MIN_CURRENT_LOW_SPEED, 100);    // 1-66 100.0
-  osDelay(50);
-  writeToDevice(VSD_START_DELAY, 0);                // 1-71 0.0
-  osDelay(50);
-  writeToDevice(VSD_START_FUNCTION, 2);             // 1-72 Coast/Delay time
-  osDelay(50);
-  writeToDevice(VSD_STOP_SPEED, 10);                // 1-82 10
-  osDelay(50);
-  writeToDevice(VSD_CONTROL_TERMISTOR_MTR, 2);      // 1-90 Thermistor trip
-  osDelay(50);
-  writeToDevice(VSD_THERMISTOR_RESOURCE, 5);        // 1-93 Digital input 32
-  osDelay(50);
-  writeToDevice(VSD_PARKING_CURRENT, 50);           // 2-06 50
-  osDelay(50);
-  writeToDevice(VSD_PARKING_TIME, 1);               // 2-07 1.0
-  osDelay(50);
-  writeToDevice(VSD_OVERVOLTAGE_CONTROL, 2);        // 2-17 Enable
-  osDelay(50);
-  writeToDevice(VSD_RESOURCE_TASK_1, 0);            // 3-15 No function
-  osDelay(50);
-  writeToDevice(VSD_RESOURCE_TASK_2, 0);            // 3-16 No function
-  osDelay(50);
-  writeToDevice(VSD_RESOURCE_TASK_3, 0);            // 3-17 No function
-  osDelay(50);
-  writeToDevice(VSD_TYPE_SPEED_CHANGE, 0);          // 3-40 Linear
-  osDelay(50);
-  writeToDevice(VSD_ROTATION_FLAG, 2);              // 4-10 Both directios
-  osDelay(50);
-  writeToDevice(VSD_MTR_FEEDBACK_LOSS_FUNC, 0);     // 4-30 Disable
-  osDelay(50);
-  writeToDevice(VSD_TRACK_ERROR_FUNCTION, 2);       // 4-34 Trip
-  osDelay(50);
-  writeToDevice(VSD_TRACK_ERROR, 600);              // 4-35 600
-  osDelay(50);
-  writeToDevice(VSD_TRACK_ERROR_TIMEOUT, 10);       // 4-36 10.00
-  osDelay(50);
-  writeToDevice(VSD_TRACK_ERROR_RAMPING, 600);      // 4-37 600
-  osDelay(50);
-  writeToDevice(VSD_TRACK_ERROR_RAMP_TIME, 5);      // 4-38 5.00
-  osDelay(50);
-  writeToDevice(VSD_TRACK_ERROR_AFTER_RAMP, 10);    // 4-39 10.00
-  osDelay(50);
-  writeToDevice(VSD_TERMINAL_27_MODE, 1);           // 5-01 Output
-  osDelay(50);
-  writeToDevice(VSD_TERMINAL_29_MODE, 1);           // 5-02 Output
-  osDelay(50);
-  writeToDevice(VSD_DI_18, 0);                      // 5-10 No operation
-  osDelay(50);
-  writeToDevice(VSD_DI_19, 0);                      // 5-11 No operation
-  osDelay(50);
-  writeToDevice(VSD_DI_27, 0);                      // 5-12 No operation
-  osDelay(50);
-  writeToDevice(VSD_DI_32, 0);                      // 5-14 No operation
-  osDelay(50);
-  writeToDevice(VSD_TERMINAL_27_DI, 75);            // 5-30 Logic rule 5
-  osDelay(50);
-  writeToDevice(VSD_TERMINAL_29_DI, 80);            // 5-31 SL digital output A
-  osDelay(50);
-  writeToDevice(VSD_FUNCTION_RELE, 5);              // 5-40.0 Running
-  osDelay(50);
-  writeToDevice(VSD_FUNCTION_RELE_1, 70);           // 5-40.1 Logic rule 0
-  osDelay(50);
-  writeToDevice(VSD_FUNCTION_RELE_7, 2);            // 5-40.7 Drive ready
-  osDelay(50);
-  writeToDevice(VSD_42_AO, 133);                    // 6-50 Motor cur. 4-20mA
-  osDelay(50);
-  writeToDevice(VSD_PROT_NO_CONNECT_TRIP_DELAY, 600);// 8-03 600
-  osDelay(50);
-  writeToDevice(VSD_SL_CONTROLLER_MODE, 1);         // 13-00 On
-  osDelay(50);
-  writeToDevice(VSD_SL_START_EVENT, 1);             // 13-01 True
-  osDelay(50);
-  writeToDevice(VSD_SL_STOP_EVENT, 0);              // 13-02 False
-  osDelay(50);
-  writeToDevice(VSD_SL_RESET, 0);                   // 13-03 Do not reset SLC
-  osDelay(50);
-  writeToDevice(VSD_SL_10, 4);                      // 13-10.0 Motor current
-  osDelay(50);
-  writeToDevice(VSD_SL_10_1, 4);                    // 13-10.1 Motor current
-  osDelay(50);
-  writeToDevice(VSD_SL_10_2, 4);                    // 13-10.2 Motor current
-  osDelay(50);
-  writeToDevice(VSD_SL_10_3, 8);                    // 13-10.3 DC-Link voltage
-  osDelay(50);
-  writeToDevice(VSD_SL_10_4, 0);                    // 13-10.4 DISABLE
-  osDelay(50);
-  writeToDevice(VSD_SL_10_5, 0);                    // 13-10.5 DISABLE
-  osDelay(50);
-  writeToDevice(VSD_SL_11, 0);                      // 13-11.0 <
-  osDelay(50);
-  writeToDevice(VSD_SL_11_1, 0);                    // 13-11.1 <
-  osDelay(50);
-  writeToDevice(VSD_SL_11_2, 2);                    // 13-11.2 >
-  osDelay(50);
-  writeToDevice(VSD_SL_11_3, 0);                    // 13-11.3 <
-  osDelay(50);
-  writeToDevice(VSD_SL_11_4, 1);                    // 13-11.4 ?equal
-  osDelay(50);
-  writeToDevice(VSD_SL_11_5, 1);                    // 13-11.5 ?equal
-  osDelay(50);
-  writeToDevice(VSD_SL_12, 32);                     // 13-12.0 32.000
-  osDelay(50);
-  writeToDevice(VSD_SL_12_1, 5);                    // 13-12.1 5.000
-  osDelay(50);
-  writeToDevice(VSD_SL_12_2, 100);                  // 13-12.2 100.000
-  osDelay(50);
-  writeToDevice(VSD_SL_12_3, 440);                  // 13-12.3 440.000
-  osDelay(50);
-  writeToDevice(VSD_SL_12_4, 0);                    // 13-12.4 0.0
-  osDelay(50);
-  writeToDevice(VSD_SL_12_5, 0);                    // 13-12.5 0.0
-  osDelay(50);
-  writeToDevice(VSD_SL_15, 9);                      // 13-15 Alove I high
-  osDelay(50);
-  writeToDevice(VSD_SL_16, 22);                     // 13-16 Comparator 0
-  osDelay(50);
-  writeToDevice(VSD_SL_20, 0);                      // 13-20.0
-  osDelay(50);
-  writeToDevice(VSD_SL_20_1, 0);                    // 13-20.1
-  osDelay(50);
-  writeToDevice(VSD_SL_20_2, 0);                    // 13-20.2
-  osDelay(50);
-  writeToDevice(VSD_SL_20_3, 0);                    // 13-20.3
-  osDelay(50);
-  writeToDevice(VSD_SL_20_4, 0);                    // 13-20.4
-  osDelay(50);
-  writeToDevice(VSD_SL_20_5, 0);                    // 13-20.5
-  osDelay(50);
-  writeToDevice(VSD_SL_20_6, 0.001);                // 13-20.6
-  osDelay(50);
-  writeToDevice(VSD_SL_20_7, 0.001);                // 13-20.7
-  osDelay(50);
-  writeToDevice(VSD_SL_40, 11);                     // 13-40.0 Below speed low
-  osDelay(50);
-  writeToDevice(VSD_SL_40_1, 25);                   // 13-40.1 Comparator 3
-  osDelay(50);
-  writeToDevice(VSD_SL_40_2, 25);                   // 13-40.2 Comparator 3
-  osDelay(50);
-  writeToDevice(VSD_SL_40_3, 27);                   // 13-40.3 Logic rule 1
-  osDelay(50);
-  writeToDevice(VSD_SL_40_4, 29);                   // 13-40.4 Logic rule 3
-  osDelay(50);
-  writeToDevice(VSD_SL_40_5, 20);                   // 13-40.5 Alarm (trip)
-  osDelay(50);
-  writeToDevice(VSD_SL_41, 7);                      // 13-41.0 NOT AND NOT
-  osDelay(50);
-  writeToDevice(VSD_SL_41_1, 1);                    // 13-41.1 AND
-  osDelay(50);
-  writeToDevice(VSD_SL_41_2, 1);                    // 13-41.2 AND
-  osDelay(50);
-  writeToDevice(VSD_SL_41_3, 2);                    // 13-41.3 OR
-  osDelay(50);
-  writeToDevice(VSD_SL_41_4, 6);                    // 13-41.4 NOT OR
-  osDelay(50);
-  writeToDevice(VSD_SL_41_5, 2);                    // 13-41.5 OR
-  osDelay(50);
-  writeToDevice(VSD_SL_42, 20);                     // 13-42.0 Alarm (trip)
-  osDelay(50);
-  writeToDevice(VSD_SL_42_1, 23);                   // 13-42.1 Comparator 1
-  osDelay(50);
-  writeToDevice(VSD_SL_42_2, 24);                   // 13-42.2 Comparator 2
-  osDelay(50);
-  writeToDevice(VSD_SL_42_3, 28);                   // 13-42.3 Logic rule 2
-  osDelay(50);
-  writeToDevice(VSD_SL_42_4, 0);                    // 13-42.4 False
-  osDelay(50);
-  writeToDevice(VSD_SL_42_5, 29);                   // 13-42.5 Logic rule 3
-  osDelay(50);
-  writeToDevice(VSD_SL_43, 1);                      // 13-43 AND
-  osDelay(50);
-  writeToDevice(VSD_SL_44, 94);                     // 13-44 RS Fliptop 0
-  osDelay(50);
-  writeToDevice(VSD_SL_51, 1);                      // 13-51.0 True
-  osDelay(50);
-  writeToDevice(VSD_SL_51_1, 29);                   // 13-51.1 Logic rule 3
-  osDelay(50);
-  writeToDevice(VSD_SL_51_2, 73);                   // 13-51.2 SL Time-out 6
-  osDelay(50);
-  writeToDevice(VSD_SL_51_3, 60);                   // 13-51.3 Logic rule 4
-  osDelay(50);
-  writeToDevice(VSD_SL_51_4, 74);                   // 13-51.4 SL Time-out 7
-  osDelay(50);
-  writeToDevice(VSD_SL_51_5, 61);                   // 13-51.5 Logic rule 5
-  osDelay(50);
-  writeToDevice(VSD_SL_52, 38);                     // 13-52.0 Set digital out A high
-  osDelay(50);
-  writeToDevice(VSD_SL_52_1, 73);                   // 13-52.1 Start timer 6
-  osDelay(50);
-  writeToDevice(VSD_SL_52_2, 32);                   // 13-52.2 Set digital out A low
-  osDelay(50);
-  writeToDevice(VSD_SL_52_3, 74);                   // 13-52.3 Start timer 7
-  osDelay(50);
-  writeToDevice(VSD_SL_52_4, 38);                   // 13-52.4 Set digital out A high
-  osDelay(50);
-  writeToDevice(VSD_SL_52_5, 1);                    // 13-52.5 No action
-  osDelay(50);
-  writeToDevice(VSD_OVERMODULATION, 0);             // 14-03 Off
-  osDelay(50);
-  writeToDevice(VSD_DEAD_TIME_COMPENSATION, 0);     // 14-06 Off
-  osDelay(50);
-  writeToDevice(VSD_MAINS_FAILURE, 6);              // 14-10 Alarm
-  osDelay(50);
-  writeToDevice(VSD_MAINS_VOLTAGE_FAILURE, 270);    // 14-11 270
-  osDelay(50);
-  writeToDevice(VSD_RESET_MODE, 5);                 // 14-20 Automatic reset x5
-  osDelay(50);
-  writeToDevice(VSD_AUTOSTART_TIME, 5);             // 14-21 5
-  osDelay(50);
-  writeToDevice(VSD_TRIP_DELAY_AT_INVERTER_FAULT, 1);// 14-26 1
-  osDelay(50);
-  writeToDevice(VSD_DC_COMPENSATION, 1);            // 14-51 On
-  osDelay(50);
-  writeToDevice(VSD_FAN_CONTROL, 4);                // 14-52 Auto (Low temp env.))
-  osDelay(50);
-  writeToDevice(VSD_OUT_FILTER, 2);                 // 14-55 Sine-Wave Filter Fixed !!!
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET, 1);                 // 14-90.0 Warning
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_1, 3);               // 14-90.1 Trip Lock
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_2, 3);               // 14-90.2 Trip Lock
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_3, 1);               // 14-90.3 Warning
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_4, 2);               // 14-90.4 Trip
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_5, 2);               // 14-90.5 Trip
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_6, 1);               // 14-90.6 Warning
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_7, 2);               // 14-90.7 Trip
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_8, 3);               // 14-90.8 Trip Lock
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_9, 2);               // 14-90.9 Trip
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_10, 3);              // 14-90.10 Trip Lock
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_11, 2);              // 14-90.11 Trip
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_12, 2);              // 14-90.12 Trip
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_13, 3);              // 14-90.13 Trip Lock
-  osDelay(50);
-  writeToDevice(VSD_FAIL_RESET_14, 3);              // 14-90.14 Trip Lock
-  osDelay(50);
-  writeToDevice(VSD_LOCK_ROTOR_PROTECTION, 0);      // 30-22 0
-  osDelay(50);
-  writeToDevice(VSD_LOCK_ROTOR_TIME, 1);            // 30-23 1.00
-  osDelay(50);
+  for (int i = 0; i < 132; i++) {                                               // Первый цикл записи ssp файла
+    writeToDevice(sspFile[i][0], sspFile[i][1]);
+    osDelay(100);
+  }
+  printf("Write ssp file time=%d\n", (int)(HAL_GetTick() - time));
+
+  for (int j = 0; j < 2; j++) {                                                 // Цикл для повтора незаписанных параметров
+    osDelay(5000);
+    for (int i = 0; i < 132; i++) {  
+      int32_t intValue = parameters.get(sspFile[i][0]) * parameters.getDiscret(sspFile[i][0]);
+      int32_t sspValue = sspFile[i][1] * parameters.getDiscret(sspFile[i][0]);
+      if (intValue != sspValue) {
+        writeToDevice(sspFile[i][0], sspFile[i][1]);
+        printf("Write ssp file cicle=%d, id=%d, intValue=%d, intSsp=%d\n",j, (int)sspFile[i][0], intValue, sspValue);
+        osDelay(100);
+      }
+    }
+    printf("Write ssp file cicle=%d, time=%d\n",j, (int)(HAL_GetTick() - time));
+  }
   return ok_r;
 }
 
 int VsdDanfoss::resetSetpoints()
 {
-  osSemaphoreRelease(resetSetpointSemaphoreId_);
+  osSemaphoreRelease(setSspFileSemaphoreId_);
   return ok_r;
 }
 
@@ -1370,10 +1306,6 @@ void VsdDanfoss::getNewValue(uint16_t id)
 
   // Применяем единицы измерения
   value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
-
-  if ((id == VSD_HIGH_START_TORQUE_CURRENT)
-      && (parameters.get(CCS_CMD_TYPE_PROFILE_VSD) == 1))
-    parameters.set(CCS_CMD_TYPE_PROFILE_VSD, 0);
 
   // Если получено новое значение параметра
   if (getValue(id) != value) {
