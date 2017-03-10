@@ -223,7 +223,7 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
   uint16_t discret = getFieldDiscret(index);
   uint8_t operation = getFieldOperation(index);
 
-  if ((operation == OPERATION_LIMITED) && ksu.isWorkMotor()) {
+  if ((operation == OPERATION_LIMITED) && (ksu.getValue(CCS_CONDITION) != CCS_CONDITION_STOP)) {
     novobusSlave.putMessageParams(id);
     return RETURN_ERROR_OPERATION;
   }
@@ -282,7 +282,7 @@ uint8_t Device::setValueForce(uint16_t id, float value, EventType eventType)
   uint16_t discret = getFieldDiscret(index);
   uint8_t operation = getFieldOperation(index);
 
-  if ((operation == OPERATION_LIMITED) && ksu.isWorkMotor()) {
+  if ((operation == OPERATION_LIMITED) && (ksu.getValue(CCS_CONDITION) != CCS_CONDITION_STOP)) {
     novobusSlave.putMessageParams(id);
     return RETURN_ERROR_OPERATION;
   }
@@ -342,7 +342,7 @@ uint8_t Device::setValue(uint16_t id, uint32_t value, EventType eventType)
   uint8_t units = getFieldPhysic(index);
   uint8_t operation = getFieldOperation(index);
 
-  if ((operation == OPERATION_LIMITED) && ksu.isWorkMotor()) {
+  if ((operation == OPERATION_LIMITED) && (ksu.getValue(CCS_CONDITION) != CCS_CONDITION_STOP)) {
     novobusSlave.putMessageParams(id);
     return RETURN_ERROR_OPERATION;
   }
