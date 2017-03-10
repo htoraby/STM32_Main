@@ -886,47 +886,64 @@ void Ccs::calcAnalogInputs()
 
   float value;
   float range;
+  float offset;
   float minRange;
   float maxRange;
 
-  if (getValue(CCS_AI_1_TYPE) == AnalogInModeCurrent)
+  if (getValue(CCS_AI_1_TYPE) == AnalogInModeCurrent) {
     range = 16;
-  else
+    offset = 4;
+  }
+  else {
     range = 10;
+    offset = 0;
+  }
   minRange = getValue(CCS_AI_1_MINIMUM);
   maxRange = getValue(CCS_AI_1_MAXIMUM);
   value = getValue(CCS_AI_1_VALUE);
-  value = (minRange + (maxRange - minRange) * (value / range));
+  value = (minRange + (maxRange - minRange) * ((value - offset) / range));
   setValue(CCS_AI_1_VALUE_CALC, value);
 
-  if (getValue(CCS_AI_2_TYPE) == AnalogInModeCurrent)
+  if (getValue(CCS_AI_2_TYPE) == AnalogInModeCurrent) {
     range = 16;
-  else
+    offset = 4;
+  }
+  else {
     range = 10;
+    offset = 0;
+  }
   minRange = getValue(CCS_AI_2_MINIMUM);
   maxRange = getValue(CCS_AI_2_MAXIMUM);
   value = getValue(CCS_AI_2_VALUE);
-  value = (minRange + (maxRange - minRange) * (value / range));
+  value = (minRange + (maxRange - minRange) * ((value - offset) / range));
   setValue(CCS_AI_2_VALUE_CALC, value);
 
-  if (getValue(CCS_AI_3_TYPE) == AnalogInModeCurrent)
+  if (getValue(CCS_AI_3_TYPE) == AnalogInModeCurrent) {
     range = 16;
-  else
+    offset = 4;
+  }
+  else {
     range = 10;
+    offset = 0;
+  }
   minRange = getValue(CCS_AI_3_MINIMUM);
   maxRange = getValue(CCS_AI_3_MAXIMUM);
   value = getValue(CCS_AI_3_VALUE);
-  value = (minRange + (maxRange - minRange) * (value / range));
+  value = (minRange + (maxRange - minRange) * ((value - offset) / range));
   setValue(CCS_AI_3_VALUE_CALC, value);
 
-  if (getValue(CCS_AI_4_TYPE) == AnalogInModeCurrent)
+  if (getValue(CCS_AI_4_TYPE) == AnalogInModeCurrent) {
     range = 16;
-  else
+    offset = 4;
+  }
+  else {
     range = 10;
+    offset = 0;
+  }
   minRange = getValue(CCS_AI_4_MINIMUM);
   maxRange = getValue(CCS_AI_4_MAXIMUM);
   value = getValue(CCS_AI_4_VALUE);
-  value = (minRange + (maxRange - minRange) * (value / range));
+  value = (minRange + (maxRange - minRange) * ((value - offset) / range));
   setValue(CCS_AI_4_VALUE_CALC, value);
 }
 
