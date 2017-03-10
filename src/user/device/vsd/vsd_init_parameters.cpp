@@ -225,8 +225,8 @@ void Vsd::initParameters()
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].physic                                = PHYSIC_RPM;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].value.float_t                         = 2895.0;
-  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].max                                   = 10000.0;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].min                                   = 10.0;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].max                                   = 30000.0;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].def                                   = 2895.0;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].discret                               = 1;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].code                                  = 13;
