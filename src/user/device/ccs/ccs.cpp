@@ -518,16 +518,16 @@ void Ccs::cmdStart(int value)
 void Ccs::cmdStop(int value)
 {
   resetCmd(CCS_CMD_STOP);
+  switch (value) {
+  case CmdStopRemote:
+    setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopRemote);
+    break;
+  default:
+    setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopOperator);
+    break;
+  }
   if (checkCanStop()) {
     logData.add();
-    switch (value) {
-    case CmdStopRemote:
-      setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopRemote);
-      break;
-    default:
-      setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopOperator);
-      break;
-    }
     setBlock();
     setNewValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
@@ -615,6 +615,7 @@ bool Ccs::checkCanStop()
 
   if ((int)getValue(CCS_VSD_CONDITION) == VSD_CONDITION_STOP) {
     setBlock();
+    setNewValue(CCS_LAST_STOP_REASON, getValue(CCS_LAST_STOP_REASON_TMP));
     return false;
   }
 
@@ -1351,7 +1352,11 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(AddDeviceCode, eventType, AddDeviceVsdId, oldValue, value);
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceVsdId, oldValue, value);
+
+      initParameters();
       vsd->initParameters();
+      setValue(id, value, NoneType);
+
       startReboot();
     }
     return err;
@@ -1866,18 +1871,27 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 
 uint8_t Ccs::setNewValue(uint16_t id, uint32_t value, EventType eventType)
 {
+  uint8_t err = ok_r;
   switch (id) {
   case CCS_DATE_TIME:
     {
       time_t time = value;
-      rtcSetTime(&time);
       tm dateTime = *localtime(&time);
-      setNewValue(CCS_DATE_TIME_SEC, dateTime.tm_sec, NoneType);
-      setNewValue(CCS_DATE_TIME_MIN, dateTime.tm_min, NoneType);
-      setNewValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour, NoneType);
-      setNewValue(CCS_DATE_TIME_DAY, dateTime.tm_mday, NoneType);
-      setNewValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon + 1, NoneType);
-      setNewValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year, NoneType);
+      err = setNewValue(CCS_DATE_TIME_SEC, dateTime.tm_sec, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_MIN, dateTime.tm_min, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_DAY, dateTime.tm_mday, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon + 1, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year, NoneType);
+      if (err == ok_r)
+        rtcSetTime(&time);
+      if (err != ok_r)
+        return err;
     }
     break;
   }

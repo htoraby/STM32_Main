@@ -13,7 +13,7 @@
 #define USE_EXT_MEM  1
 #define USE_TEST     0
 #define USE_DEBUG    0
-#define USE_LOG_DEBUG 0           // Предлагаю формат сообщения "Группа - 10 масимум символов: Сообщение - 50 символов (Значения переменных и другая информация - максимум 100 символов)
+#define USE_LOG_DEBUG 0           // Предлагаю формат сообщения "Группа - 10 максимум символов: Сообщение - 50 символов (Значения переменных и другая информация - максимум 100 символов)
 #define USE_LOG_WARNING 1
 #define USE_LOG_CRITICAL 1
 #define USE_POWER_OFF 0

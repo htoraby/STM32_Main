@@ -1068,7 +1068,7 @@ void Vsd::initParameters()
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].min                                    = 0.0;
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].max                                    = 0.5;
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].def                                    = 0.03;
-  parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].discret                                = 1000;
+  parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].discret                                = 10000;
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].code                                   = 0;
   // Фазовый коэффициент усиления системы подавления резонанса
   parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].id                                  = VSD_RES_PROP_GAIN;
@@ -1982,17 +1982,17 @@ void Vsd::initParameters()
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].def                              = 100.0;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].discret                          = 1;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].code                             = 0;
-  // Постаянная времени подавления Danfoss 1-65 Не используется в проекте, только при конфигурировании Novomet 0х0067
+  // Постоянная времени подавления Danfoss 1-65 Не используется в проекте, только при конфигурировании Novomet 0х0067
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].id                                 = VSD_RESONANCE_TIME;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].operation                          = OPERATION_READ;
+  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].operation                          = OPERATION_WRITE;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].physic                             = PHYSIC_TIME;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].value.float_t                      = 0.005;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].min                                = 0.001;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].max                                = 0.050;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].def                                = 0.005;
-  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].discret                            = 3;
+  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].discret                            = 1000;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].code                               = 0;
   // Минимальный ток при низкой скорости Danfoss 1-66 Не используется в проекте, только при конфигурировании
   parameters_[VSD_MIN_CURRENT_LOW_SPEED - VSD_BEGIN].id                          = VSD_MIN_CURRENT_LOW_SPEED;
@@ -2136,7 +2136,7 @@ void Vsd::initParameters()
   parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].min                                 = -2147483648.0;
   parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].max                                 = 2147483647.0;
   parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].def                                 = 0.0;
-  parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].discret                             = 3;
+  parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].discret                             = 1000;
   parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].code                                = 0;
   // Максимальное задани Danfoss 3-03 Не используется в проекте, только при конфигурировании
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].id                                  = VSD_MAX_REFERENCE;
@@ -2148,7 +2148,7 @@ void Vsd::initParameters()
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].min                                 = -2147483648.0;
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].max                                 = 2147483647.0;
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].def                                 = 0.0;
-  parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].discret                             = 3;
+  parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].discret                             = 1000;
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].code                                = 0;
   // Ресурс задания 1 Danfoss 3-15 Не используется в проекте, только при конфигурировании
   parameters_[VSD_RESOURCE_TASK_1 - VSD_BEGIN].id                                = VSD_RESOURCE_TASK_1;
@@ -2849,14 +2849,14 @@ void Vsd::initParameters()
   // Время фильтра регулятора тока Danfoss 14-32 Используется в проекте, CalcParam()
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].id                         = VSD_FIL_TIME_CURRENT_LIMIT;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].operation                  = OPERATION_READ;
+  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].operation                  = OPERATION_WRITE;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].physic                     = PHYSIC_TIME;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].validity                   = VALIDITY_ERROR;
-  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].value.float_t              = 0.01;
-  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].min                        = 0.0001;
+  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].value.float_t              = 0.1;
+  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].min                        = 0.001;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].max                        = 0.1;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].def                        = 0.1;
-  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].discret                    = 4;
+  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].discret                    = 10000;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].code                       = 0;
   // Компенсация напряжения постоянного тока Danfoss 14-51 Не используется в проекте, только при конфигурировании
   parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].id                                = VSD_DC_COMPENSATION;
@@ -3096,7 +3096,7 @@ void Vsd::initParameters()
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].min                               = 0.05;
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].max                               = 1.0;
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].def                               = 0.10;
-  parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].discret                           = 2;
+  parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].discret                           = 100;
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].code                              = 0;
   // Темп набора частоты
   parameters_[VSD_TEMP_SPEEDUP - VSD_BEGIN].id                                   = VSD_TEMP_SPEEDUP;
