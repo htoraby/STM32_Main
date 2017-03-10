@@ -1871,18 +1871,27 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 
 uint8_t Ccs::setNewValue(uint16_t id, uint32_t value, EventType eventType)
 {
+  uint8_t err = ok_r;
   switch (id) {
   case CCS_DATE_TIME:
     {
       time_t time = value;
-      rtcSetTime(&time);
       tm dateTime = *localtime(&time);
-      setNewValue(CCS_DATE_TIME_SEC, dateTime.tm_sec, NoneType);
-      setNewValue(CCS_DATE_TIME_MIN, dateTime.tm_min, NoneType);
-      setNewValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour, NoneType);
-      setNewValue(CCS_DATE_TIME_DAY, dateTime.tm_mday, NoneType);
-      setNewValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon + 1, NoneType);
-      setNewValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year, NoneType);
+      err = setNewValue(CCS_DATE_TIME_SEC, dateTime.tm_sec, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_MIN, dateTime.tm_min, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_DAY, dateTime.tm_mday, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon + 1, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year, NoneType);
+      if (err == ok_r)
+        rtcSetTime(&time);
+      if (err != ok_r)
+        return err;
     }
     break;
   }

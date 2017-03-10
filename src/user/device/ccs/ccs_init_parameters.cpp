@@ -6765,7 +6765,7 @@ void Ccs::initParameters()
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].value.float_t                      = 2015.0;
-  parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].min                                = 1970.0;
+  parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].min                                = 2000.0;
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].max                                = 2040.0;
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].discret                            = 1;
   parameters_[CCS_DATE_TIME_YEAR - CCS_BEGIN].def                                = 2015.0;

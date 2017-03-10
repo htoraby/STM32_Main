@@ -11492,7 +11492,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>1970.0</min>
+		<min>2000.0</min>
 		<max>2040.0</max>
 		<def>2015.0</def>
 		<discret>1</discret>
