@@ -190,7 +190,6 @@ void RegimeRunPush::processingStateWork()
       logEvent.add(OtherCode, AutoType, RegimeRunPushFinishId);
       if (parameters.get(CCS_RGM_RUN_PUSH_MODE) == SingleAction) {
         parameters.set(CCS_RGM_RUN_PUSH_MODE, OffAction);         // Выключаем режим
-        logEvent.add(SetpointCode, AutoType, RegimeRunPushOffId); // Записываем данные в лог
       }
       state_ = IdleState;
     }
