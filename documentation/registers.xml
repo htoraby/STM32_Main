@@ -328,7 +328,7 @@
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>1.0</value>
 		<text>Режим работы</text>
 		<short_text>Реж.раб.</short_text>
 		<form>1.1 Текущие параметры - Состояние</form>
@@ -371,7 +371,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>100.0</value>
+		<value>0.0</value>
 		<text>Дисбал. токов</text>
 		<short_text>Дисбал.вх.токов</short_text>
 		<form>1.3 Текущие параметры сети</form>
@@ -1318,7 +1318,7 @@
 		<def>300.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>60.0</value>
+		<value>300.0</value>
 		<text>Задержка АПВ</text>
 		<short_text>Понижен.напряж.Зад.АПВ</short_text>
 		<form>4.1.2 Пониженное напряжение сети</form>
@@ -1633,7 +1633,7 @@
 		<def>300.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>60.0</value>
+		<value>300.0</value>
 		<text>Задержка АПВ</text>
 		<short_text>Дисбал.напряж.Зад.АПВ</short_text>
 		<form>4.1.3 Дисбаланс напряжения сети</form>
@@ -1949,7 +1949,7 @@
 		<def>300.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>60.0</value>
+		<value>300.0</value>
 		<text>Задержка АПВ</text>
 		<short_text>Дисбал.вх.ток.Зад.АПВ</short_text>
 		<form>4.1.3 Дисбаланс входных токов</form>
@@ -2991,7 +2991,7 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>4294967296.0</max>
-		<def>3.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
@@ -3307,10 +3307,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
-		<def>3.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -3797,7 +3797,7 @@
 		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>9999.0</value>
+		<value>3.0</value>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Количество АПВ уставка</comment>
@@ -4264,7 +4264,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Действие защиты</text>
 		<short_text>Рвх. насоса</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
@@ -4580,7 +4580,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Действие защиты</text>
 		<short_text>Т обмотки ПЭД РРЗ</short_text>
 		<form>4.3.3 Температура двигателя</form>
@@ -5210,7 +5210,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Действие защиты</text>
 		<short_text>Вибрация двиг.РР3</short_text>
 		<form>4.3.5 Вибрация двигателя</form>
@@ -5423,10 +5423,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
-		<def>3.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -5498,7 +5498,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Действие защиты</text>
 		<short_text>Аналог.вх.1 РРЗ</short_text>
 		<form>4.4.1 Защита по аналоговому входу 1</form>
@@ -5726,10 +5726,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
-		<def>3.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -5813,7 +5813,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Действие защиты</text>
 		<short_text>Ан.вх.2 РРЗ</short_text>
 		<form>4.4.2 Защита по аналоговому входу 2</form>
@@ -6041,10 +6041,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
-		<def>3.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -6128,7 +6128,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Действие защиты</text>
 		<short_text>Аналог.вх.3 РРЗ</short_text>
 		<form>4.4.3 Защита по аналоговому входу 3</form>
@@ -6356,10 +6356,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
-		<def>3.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -6443,7 +6443,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Действие защиты</text>
 		<short_text>Аналог.вх.4 РРЗ</short_text>
 		<form>4.4.4 Защита по аналоговому входу 4</form>
@@ -6671,10 +6671,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
-		<def>3.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -6758,7 +6758,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Действие защиты</text>
 		<short_text>Цифр.вх.1 РРЗ</short_text>
 		<form>4.5.1 Защита по цифровому входу 1</form>
@@ -6986,10 +6986,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
-		<def>3.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -7073,7 +7073,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Действие защиты</text>
 		<short_text>Цифр.вх.2 РРЗ</short_text>
 		<form>4.5.2 Защита по цифровому входу 2</form>
@@ -7301,10 +7301,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
-		<def>3.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -7388,7 +7388,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Действие защиты</text>
 		<short_text>Цифр.вх.3 РРЗ</short_text>
 		<form>4.5.3 Защита по цифровому входу 3</form>
@@ -7616,10 +7616,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
-		<def>3.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -7703,7 +7703,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Действие защиты</text>
 		<short_text>Цифр.вх.4 РРЗ</short_text>
 		<form>4.5.4 Защита по цифровому входу 4</form>
@@ -7931,10 +7931,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
-		<def>3.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -8187,7 +8187,7 @@
 		<def>36000</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>10</value>
+		<value>36000</value>
 		<text>Период времени</text>
 		<short_text>Превыш.пусков период врем.</short_text>
 		<form>4.6.1 Защита от превышения числа пусков</form>
@@ -8465,11 +8465,11 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
-		<def>3.0</def>
+		<max>3.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -8740,10 +8740,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
-		<def>3.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -9320,7 +9320,7 @@
 		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -9404,7 +9404,7 @@
 		<def>0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -10344,7 +10344,7 @@
 		<def>1.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1</value>
+		<value>1.0</value>
 		<text>Коэф. входного напряжения A(AB)</text>
 		<short_text>Коэфф.коррек.напряж.Ua(ab)</short_text>
 		<form>5.2 Корректировки</form>
@@ -10365,7 +10365,7 @@
 		<def>1.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1</value>
+		<value>1.0</value>
 		<text>Коэф. входного напряжения B(BC)</text>
 		<short_text>Коэфф.коррек.напряж.Ub(bc)</short_text>
 		<form>5.2 Корректировки</form>
@@ -10386,7 +10386,7 @@
 		<def>1.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1</value>
+		<value>1.0</value>
 		<text>Коэф. входного напряжения C(CA)</text>
 		<short_text>Коэфф.коррек.напряж.Uc(ca)</short_text>
 		<form>5.2 Корректировки</form>
@@ -11707,7 +11707,7 @@
 		<def>0000.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>0000.0</value>
 		<text>Пароль первого уровня</text>
 		<short_text>Пароль</short_text>
 		<form>7.2 Пароли</form>
@@ -14725,7 +14725,7 @@
 		<def>3600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>3600.0</value>
 		<text>Время АПВ защит по напряжению</text>
 		<short_text>Время АПВ защит по напряжению</short_text>
 		<form>NULL</form>
@@ -17310,7 +17310,7 @@
 		<def>50.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>50.0</value>
 		<text>Уставка частоты</text>
 		<short_text>Уставка частоты</short_text>
 		<form>NULL</form>
@@ -18082,7 +18082,7 @@
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>100.0</value>
+		<value>0.0</value>
 		<text>Качество связи</text>
 		<short_text>Качество связи</short_text>
 		<form>NULL</form>
@@ -18264,7 +18264,7 @@
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>100.0</value>
+		<value>0.0</value>
 		<text>Качество связи</text>
 		<short_text>Качество связи</short_text>
 		<form>NULL</form>
@@ -18570,7 +18570,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Действие защиты</text>
 		<short_text>Мин.расход РР3</short_text>
 		<form>4.3.6 Минимальный расход</form>
@@ -18920,7 +18920,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Действие защиты</text>
 		<short_text>Рвых.нас.РРЗ</short_text>
 		<form>4.3.2 Давление на выкиде насоса</form>
@@ -19985,7 +19985,7 @@
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>100.0</value>
+		<value>0.0</value>
 		<text>Качество связи</text>
 		<short_text>Качество связи</short_text>
 		<form>NULL</form>
@@ -20531,7 +20531,7 @@
 		<def>25.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>20.0</value>
+		<value>25.0</value>
 		<text>Конечная частота</text>
 		<short_text>Пропуск F. Конечная F</short_text>
 		<form>NULL</form>
@@ -22293,7 +22293,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>Ан.вх.4 Ось смещения</text>
 		<short_text>Ан.вх.4 Ось смещ.</short_text>
 		<form>NULL</form>
@@ -24198,7 +24198,7 @@
 		<def>0.25</def>
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>100.0</value>
+		<value>0.25</value>
 		<text>Время торможения</text>
 		<short_text>Подхват. Время торможения</short_text>
 		<form>Режим подхвата</form>
@@ -24808,7 +24808,7 @@
 		<def>110.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>200.0</value>
+		<value>110.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -25179,7 +25179,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>5.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>Индекс массива</short_text>
 		<form>NULL</form>
@@ -25236,7 +25236,7 @@
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>0.0</value>
+		<value>1.0</value>
 		<text>NULL</text>
 		<short_text>Режим перегрузки</short_text>
 		<form>NULL</form>
@@ -28891,7 +28891,7 @@
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>0.0</value>
+		<value>1.0</value>
 		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
@@ -29881,7 +29881,7 @@
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>0.0</value>
+		<value>1.0</value>
 		<text>NULL</text>
 		<short_text>Задержка отключения при неисправности инвертера</short_text>
 		<form>NULL</form>
@@ -31211,7 +31211,7 @@
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>1.0</value>
+		<value>0.0</value>
 		<text>NULL</text>
 		<short_text>Связанный набор параметров</short_text>
 		<form>NULL</form>

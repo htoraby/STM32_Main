@@ -1160,7 +1160,7 @@ void Vsd::initParameters()
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].operation                         = OPERATION_WRITE;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].physic                            = PHYSIC_TIME;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].value.float_t                     = 100.0;
+  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].value.float_t                     = 0.25;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].min                               = 0.0;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].max                               = 999999999.9;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].def                               = 0.25;
@@ -1604,7 +1604,7 @@ void Vsd::initParameters()
   parameters_[VSD_M_IRMS - VSD_BEGIN].operation                                  = OPERATION_READ;
   parameters_[VSD_M_IRMS - VSD_BEGIN].physic                                     = PHYSIC_PERCENT;
   parameters_[VSD_M_IRMS - VSD_BEGIN].validity                                   = VALIDITY_ERROR;
-  parameters_[VSD_M_IRMS - VSD_BEGIN].value.float_t                              = 200.0;
+  parameters_[VSD_M_IRMS - VSD_BEGIN].value.float_t                              = 110.0;
   parameters_[VSD_M_IRMS - VSD_BEGIN].min                                        = 0.0;
   parameters_[VSD_M_IRMS - VSD_BEGIN].max                                        = 200.0;
   parameters_[VSD_M_IRMS - VSD_BEGIN].def                                        = 110.0;
@@ -1844,7 +1844,7 @@ void Vsd::initParameters()
   parameters_[VSD_INDEX - VSD_BEGIN].operation                                   = OPERATION_READ;
   parameters_[VSD_INDEX - VSD_BEGIN].physic                                      = PHYSIC_NUMERIC;
   parameters_[VSD_INDEX - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
-  parameters_[VSD_INDEX - VSD_BEGIN].value.float_t                               = 5.0;
+  parameters_[VSD_INDEX - VSD_BEGIN].value.float_t                               = 0.0;
   parameters_[VSD_INDEX - VSD_BEGIN].min                                         = 0.0;
   parameters_[VSD_INDEX - VSD_BEGIN].max                                         = 5.0;
   parameters_[VSD_INDEX - VSD_BEGIN].def                                         = 0.0;
@@ -1880,7 +1880,7 @@ void Vsd::initParameters()
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].operation                           = OPERATION_READ;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].validity                            = VALIDITY_ERROR;
-  parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].value.float_t                       = 0.0;
+  parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].value.float_t                       = 1.0;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].min                                 = 0.0;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].max                                 = 1.0;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].def                                 = 1.0;
@@ -4040,7 +4040,7 @@ void Vsd::initParameters()
   parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].operation                      = OPERATION_READ;
   parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].validity                       = VALIDITY_ERROR;
-  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].value.float_t                  = 0.0;
+  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].value.float_t                  = 1.0;
   parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].min                            = 0.0;
   parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].max                            = 1.0;
   parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].def                            = 1.0;
@@ -4604,7 +4604,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].operation            = OPERATION_READ;
   parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].physic               = PHYSIC_TIME;
   parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].validity             = VALIDITY_ERROR;
-  parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].value.float_t        = 0.0;
+  parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].value.float_t        = 1.0;
   parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].min                  = 0.0;
   parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].max                  = 35.0;
   parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].def                  = 1.0;
@@ -5396,7 +5396,7 @@ void Vsd::initParameters()
   parameters_[VSD_LINK_SETUP - VSD_BEGIN].operation                              = OPERATION_READ;
   parameters_[VSD_LINK_SETUP - VSD_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[VSD_LINK_SETUP - VSD_BEGIN].validity                               = VALIDITY_ERROR;
-  parameters_[VSD_LINK_SETUP - VSD_BEGIN].value.float_t                          = 1.0;
+  parameters_[VSD_LINK_SETUP - VSD_BEGIN].value.float_t                          = 0.0;
   parameters_[VSD_LINK_SETUP - VSD_BEGIN].min                                    = 0.0;
   parameters_[VSD_LINK_SETUP - VSD_BEGIN].max                                    = 4.0;
   parameters_[VSD_LINK_SETUP - VSD_BEGIN].def                                    = 0.0;
