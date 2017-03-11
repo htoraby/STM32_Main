@@ -1424,11 +1424,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_OVERLOAD_MODE - CCS_BEGIN].operation                = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_MODE - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_MODE - CCS_BEGIN].validity                 = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_MODE - CCS_BEGIN].value.float_t            = 1.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_MODE - CCS_BEGIN].value.float_t            = 2.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_MODE - CCS_BEGIN].min                      = 0.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_MODE - CCS_BEGIN].max                      = 2.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_MODE - CCS_BEGIN].discret                  = 1;
-  parameters_[CCS_PROT_MOTOR_OVERLOAD_MODE - CCS_BEGIN].def                      = 1.0;
+  parameters_[CCS_PROT_MOTOR_OVERLOAD_MODE - CCS_BEGIN].def                      = 2.0;
   parameters_[CCS_PROT_MOTOR_OVERLOAD_MODE - CCS_BEGIN].code                     = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_MOTOR_OVERLOAD_PREVENT - CCS_BEGIN].id                    = CCS_PROT_MOTOR_OVERLOAD_PREVENT;
@@ -1604,11 +1604,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_MODE - CCS_BEGIN].operation               = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_MODE - CCS_BEGIN].physic                  = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_MODE - CCS_BEGIN].validity                = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_MODE - CCS_BEGIN].value.float_t           = 1.0;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_MODE - CCS_BEGIN].value.float_t           = 2.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_MODE - CCS_BEGIN].min                     = 0.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_MODE - CCS_BEGIN].max                     = 2.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_MODE - CCS_BEGIN].discret                 = 1;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_MODE - CCS_BEGIN].def                     = 1.0;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_MODE - CCS_BEGIN].def                     = 2.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_MODE - CCS_BEGIN].code                    = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PREVENT - CCS_BEGIN].id                   = CCS_PROT_MOTOR_UNDERLOAD_PREVENT;
@@ -1784,11 +1784,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_CURRENT_MODE - CCS_BEGIN].operation                 = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_CURRENT_MODE - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_CURRENT_MODE - CCS_BEGIN].validity                  = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_CURRENT_MODE - CCS_BEGIN].value.float_t             = 1.0;
+  parameters_[CCS_PROT_MOTOR_CURRENT_MODE - CCS_BEGIN].value.float_t             = 2.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_MODE - CCS_BEGIN].min                       = 1.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_MODE - CCS_BEGIN].max                       = 2.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_MODE - CCS_BEGIN].discret                   = 1;
-  parameters_[CCS_PROT_MOTOR_CURRENT_MODE - CCS_BEGIN].def                       = 1.0;
+  parameters_[CCS_PROT_MOTOR_CURRENT_MODE - CCS_BEGIN].def                       = 2.0;
   parameters_[CCS_PROT_MOTOR_CURRENT_MODE - CCS_BEGIN].code                      = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_MOTOR_CURRENT_PREVENT - CCS_BEGIN].id                     = CCS_PROT_MOTOR_CURRENT_PREVENT;
@@ -1964,11 +1964,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE - CCS_BEGIN].operation       = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE - CCS_BEGIN].physic          = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE - CCS_BEGIN].validity        = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE - CCS_BEGIN].value.float_t   = 0.0;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE - CCS_BEGIN].value.float_t   = 2.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE - CCS_BEGIN].min             = 0.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE - CCS_BEGIN].max             = 2.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE - CCS_BEGIN].discret         = 1;
-  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE - CCS_BEGIN].def             = 0.0;
+  parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE - CCS_BEGIN].def             = 2.0;
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE - CCS_BEGIN].code            = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT - CCS_BEGIN].id           = CCS_PROT_MOTOR_IMBALANCE_CURRENT_PREVENT;
@@ -2144,11 +2144,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].operation                   = OPERATION_WRITE;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].physic                      = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].validity                    = VALIDITY_OK;
-  parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].value.float_t               = 0.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].value.float_t               = 3.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].min                         = 0.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].max                         = 3.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].discret                     = 1;
-  parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].def                         = 0.0;
+  parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].def                         = 3.0;
   parameters_[CCS_PROT_MOTOR_ASYNC_MODE - CCS_BEGIN].code                        = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_MOTOR_ASYNC_PREVENT - CCS_BEGIN].id                       = CCS_PROT_MOTOR_ASYNC_PREVENT;
@@ -2504,11 +2504,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_MODE - CCS_BEGIN].operation           = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_MODE - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_MODE - CCS_BEGIN].validity            = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_MODE - CCS_BEGIN].value.float_t       = 0.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_MODE - CCS_BEGIN].value.float_t       = 2.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_MODE - CCS_BEGIN].min                 = 0.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_MODE - CCS_BEGIN].max                 = 2.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_MODE - CCS_BEGIN].discret             = 1;
-  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_MODE - CCS_BEGIN].def                 = 0.0;
+  parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_MODE - CCS_BEGIN].def                 = 2.0;
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_MODE - CCS_BEGIN].code                = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT - CCS_BEGIN].id               = CCS_PROT_DHS_PRESSURE_INTAKE_PREVENT;
@@ -2684,11 +2684,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE - CCS_BEGIN].operation         = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE - CCS_BEGIN].physic            = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE - CCS_BEGIN].validity          = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE - CCS_BEGIN].value.float_t     = 0.0;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE - CCS_BEGIN].value.float_t     = 1.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE - CCS_BEGIN].min               = 0.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE - CCS_BEGIN].max               = 2.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE - CCS_BEGIN].discret           = 1;
-  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE - CCS_BEGIN].def               = 0.0;
+  parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE - CCS_BEGIN].def               = 1.0;
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE - CCS_BEGIN].code              = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT - CCS_BEGIN].id             = CCS_PROT_DHS_TEMPERATURE_MOTOR_PREVENT;
@@ -2864,11 +2864,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_RESISTANCE_MODE - CCS_BEGIN].operation                = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_RESISTANCE_MODE - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_RESISTANCE_MODE - CCS_BEGIN].validity                 = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_RESISTANCE_MODE - CCS_BEGIN].value.float_t            = 0.0;
+  parameters_[CCS_PROT_DHS_RESISTANCE_MODE - CCS_BEGIN].value.float_t            = 1.0;
   parameters_[CCS_PROT_DHS_RESISTANCE_MODE - CCS_BEGIN].min                      = 0.0;
   parameters_[CCS_PROT_DHS_RESISTANCE_MODE - CCS_BEGIN].max                      = 1.0;
   parameters_[CCS_PROT_DHS_RESISTANCE_MODE - CCS_BEGIN].discret                  = 1;
-  parameters_[CCS_PROT_DHS_RESISTANCE_MODE - CCS_BEGIN].def                      = 0.0;
+  parameters_[CCS_PROT_DHS_RESISTANCE_MODE - CCS_BEGIN].def                      = 1.0;
   parameters_[CCS_PROT_DHS_RESISTANCE_MODE - CCS_BEGIN].code                     = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_DHS_RESISTANCE_PREVENT - CCS_BEGIN].id                    = CCS_PROT_DHS_RESISTANCE_PREVENT;
@@ -3044,11 +3044,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].operation                 = OPERATION_WRITE;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].physic                    = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].validity                  = VALIDITY_OK;
-  parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].value.float_t             = 0.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].value.float_t             = 1.0;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].min                       = 0.0;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].max                       = 2.0;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].discret                   = 1;
-  parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].def                       = 0.0;
+  parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].def                       = 1.0;
   parameters_[CCS_PROT_DHS_VIBRATION_MODE - CCS_BEGIN].code                      = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_DHS_VIBRATION_PREVENT - CCS_BEGIN].id                     = CCS_PROT_DHS_VIBRATION_PREVENT;
@@ -4664,11 +4664,11 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].operation           = OPERATION_WRITE;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].physic              = PHYSIC_NUMERIC;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].validity            = VALIDITY_OK;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].value.float_t       = 0.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].value.float_t       = 1.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].min                 = 0.0;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].max                 = 999999999.9;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].max                 = 2.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].discret             = 1;
-  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].def                 = 0.0;
+  parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].def                 = 1.0;
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_MODE - CCS_BEGIN].code                = 13;
   // Параметр запрещающий запуск
   parameters_[CCS_PROT_OTHER_LIMIT_RESTART_PREVENT - CCS_BEGIN].id               = CCS_PROT_OTHER_LIMIT_RESTART_PREVENT;
