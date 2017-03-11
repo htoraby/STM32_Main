@@ -1387,11 +1387,29 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_FILTER_INPUT:
     err = setValue(id, value, NoneType);
     if ((value != oldValue) && !err) {
-      if (value)
+      if (value) {
         logEvent.add(AddDeviceCode, eventType, AddDeviceFiltInputId, oldValue, value);
-      else
+        parameters.set(VSD_DI_33, value * 2 );
+      }
+      else {
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltInputId, oldValue, value);
-      parameters.set(VSD_DI_33, value * 2);
+        if (!parameters.get(CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_SENSOR)) {     // Выключен датчик в выходном фильтре
+          parameters.set(VSD_DI_33, value * 2 );
+        }
+      }
+    }
+    return err;
+  case CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_SENSOR:
+    err = setValue(id, value, NoneType);
+    if ((value != oldValue) && !err) {
+      if (value) {
+        parameters.set(VSD_DI_33, value * 2 );
+      }
+      else {
+        if (!parameters.get(CCS_FILTER_INPUT)) {
+           parameters.set(VSD_DI_33, value * 2 );
+        }
+      }
     }
     return err;
   case CCS_SCADA_TYPE:

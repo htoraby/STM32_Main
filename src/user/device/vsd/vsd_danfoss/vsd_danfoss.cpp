@@ -1248,6 +1248,10 @@ void VsdDanfoss::getNewValue(uint16_t id)
     return;
   }
 
+  if (id == VSD_DINPUTS) {
+    asm("nop");
+  }
+
   switch (param->typeData) {
   case TYPE_DATA_COIL:
     value = (float)param->value.int16_t[0];

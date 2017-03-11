@@ -394,7 +394,7 @@ enum LastReasonStop {
   LastReasonStopOvernumberOfStart,              //!< "Превышение числа пусков"
   LastReasonStopFlowDischarge,                  //!< "Минимальный расход"
   LastReasonStopPressureDischarge,              //!< "Pmax на выкиде насоса"
-  LastReasonStopOverheatInputFilter,            //!< "Пререгрев вх.фильтра"
+  LastReasonStopOverheatInputFilter,            //!< "Перегрев фильтра"
   LastReasonStopAdaptationVector,               //!< "Режим автоадаптации"
   LastReasonStopLast                    = 65535,
 };
