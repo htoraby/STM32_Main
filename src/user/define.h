@@ -332,7 +332,7 @@ enum LastReasonRun {
   LastReasonRunApvImbalanceCurIn        = 116,  //!< "АПВ по защите: Дисбаланс входных токов"
   LastReasonRunApvFlowDischarge         = 117,  //!< "АПВ по защите: Минимальный расход"
   LastReasonRunApvPressureDischarge     = 118,  //!< "АПВ по защите: Pmax на выкиде насоса"
-  LastReasonRunApvOverheatInputFilter   = 119,  //!< "АПВ по защите: Перегрев вх.фильтра"
+  LastReasonRunApvOverheatInputFilter   = 119,  //!< "АПВ по защите: Перегрев фильтра"
   LastReasonRunAdaptationVector         = 120,  //!<
 
   LastReasonRunLast
