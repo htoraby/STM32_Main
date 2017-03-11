@@ -1388,6 +1388,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(AddDeviceCode, eventType, AddDeviceFiltInputId, oldValue, value);
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltInputId, oldValue, value);
+      parameters.set(VSD_DI_33, value * 2);
     }
     return err;
   case CCS_SCADA_TYPE:
