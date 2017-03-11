@@ -68,6 +68,8 @@ public:
    */
   uint32_t getU32(unsigned short id);
 
+  uint32_t getDiscret(unsigned short id);
+
   /*!
    * \brief Метод записи параметра по ID с определением необходимого массива
    * \param id - уникальный идентификатор параметра

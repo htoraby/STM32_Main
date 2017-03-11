@@ -190,6 +190,8 @@ public:
    */
   uint8_t getPhysic(unsigned short id);
 
+  uint32_t getDiscret(unsigned short id);
+
   uint8_t getValidity(unsigned short id);
 
   void setValidity(uint16_t id, uint8_t validity);

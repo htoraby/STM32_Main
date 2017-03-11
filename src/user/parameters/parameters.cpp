@@ -119,6 +119,8 @@ float Parameters::get(unsigned short id)
   return 0;
 }
 
+
+
 uint32_t Parameters::getU32(unsigned short id)
 {
   if ((id > CCS_BEGIN) && (id < CCS_END))
@@ -129,6 +131,20 @@ uint32_t Parameters::getU32(unsigned short id)
     return tms->getValueUint32(id);
   if ((id > EM_BEGIN) && (id < EM_END))
     return em->getValueUint32(id);
+
+  return 0;
+}
+
+uint32_t Parameters::getDiscret(unsigned short id)
+{
+  if ((id > CCS_BEGIN) && (id < CCS_END))
+    return ksu.getDiscret(id);
+  if ((id > VSD_BEGIN) && (id < VSD_END))
+    return vsd->getDiscret(id);
+  if ((id > TMS_BEGIN) && (id < TMS_END))
+    return tms->getDiscret(id);
+  if ((id > EM_BEGIN) && (id < EM_END))
+    return em->getDiscret(id);
 
   return 0;
 }

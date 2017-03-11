@@ -709,7 +709,7 @@ int Vsd::offRegimeAutoOptimCurrent()
 
 int Vsd::resetSetpoints()
 {
-  return 0;
+  return ok_r;
 }
 
 void Vsd::getConnect() {}

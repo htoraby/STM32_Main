@@ -1780,6 +1780,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     if (!err) {
       if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_DANFOSS) {
+        vsd->setLimitsMotor();
         switch ((uint16_t)value) {
         case 160: value = 195; break;
         case 250: value = 286; break;
