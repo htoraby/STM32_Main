@@ -2443,10 +2443,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>2.0</max>
-		<def>1.0</def>
+		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>2.0</value>
 		<text>Действие защиты</text>
 		<short_text>Перегруз двиг.</short_text>
 		<form>4.2.1 Перегруз (ЗП)</form>
@@ -2758,10 +2758,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>2.0</max>
-		<def>1.0</def>
+		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>2.0</value>
 		<text>Действие защиты</text>
 		<short_text>Недогруз</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
@@ -3075,10 +3075,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>1.0</min>
 		<max>2.0</max>
-		<def>1.0</def>
+		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
+		<value>2.0</value>
 		<text>Действие защиты</text>
 		<short_text>Предел тока двиг.РРЗ</short_text>
 		<form>4.2.6 Предел тока</form>
@@ -3391,10 +3391,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>2.0</max>
-		<def>0.0</def>
+		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>2.0</value>
 		<text>Действие защиты</text>
 		<short_text>Дисб.тока.двиг.РР3</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
@@ -3707,10 +3707,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>3.0</max>
-		<def>0.0</def>
+		<def>3.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>3.0</value>
 		<text>Турбинное вращение</text>
 		<short_text>Турб. вращение</short_text>
 		<form>4.2.4 Турбинное вращение</form>
@@ -4261,10 +4261,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>2.0</max>
-		<def>0.0</def>
+		<def>2.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>2.0</value>
 		<text>Действие защиты</text>
 		<short_text>Рвх. насоса</short_text>
 		<form>4.3.1 Давление на приёме насоса</form>
@@ -4577,10 +4577,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>2.0</max>
-		<def>0.0</def>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>1.0</value>
 		<text>Действие защиты</text>
 		<short_text>Т обмотки ПЭД РРЗ</short_text>
 		<form>4.3.3 Температура двигателя</form>
@@ -4892,10 +4892,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
-		<def>0.0</def>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>1.0</value>
 		<text>Действие защиты</text>
 		<short_text>Сопр.изоляции РРЗ</short_text>
 		<form>4.3.4 Сопротивление изоляции</form>
@@ -5207,10 +5207,10 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>2.0</max>
-		<def>0.0</def>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>1.0</value>
 		<text>Действие защиты</text>
 		<short_text>Вибрация двиг.РР3</short_text>
 		<form>4.3.5 Вибрация двигателя</form>
@@ -8014,11 +8014,11 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
-		<def>0.0</def>
+		<max>2.0</max>
+		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>1.0</value>
 		<text>Действие защиты</text>
 		<short_text>Превыш.пусков.РР3</short_text>
 		<form>4.6.1 Защита от превышения числа пусков</form>
