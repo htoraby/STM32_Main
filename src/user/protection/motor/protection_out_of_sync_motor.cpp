@@ -47,6 +47,13 @@ bool ProtectionOutOfSyncMotor::checkAlarm()
     return false;
 }
 
+bool ProtectionOutOfSyncMotor::isProtect()
+{
+  if (parameters.get(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT)
+    return true;
+  return false;
+}
+
 void ProtectionOutOfSyncMotor::addEventReactionProt()
 {
   float nominal = parameters.get(VSD_MOTOR_CURRENT);

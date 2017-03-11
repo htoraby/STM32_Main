@@ -13,8 +13,8 @@ public:
   ~ProtectionOutOfSyncMotor();
 
 private:
-
   bool checkAlarm();
+  bool isProtect();
   void addEventReactionProt();
 
   float valueParameter2_;
