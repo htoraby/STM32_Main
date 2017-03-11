@@ -177,8 +177,8 @@ typedef enum {
   RgmJarringF1Id,                 //!< Режим встряхивания частота F1
   RgmJarringF2Id,                 //!< Режим встряхивания частота F2
 
-  OverheatInputFilterProtReactId, //!< "Сработала защита: Перегрев вх.фильтра"
-  OverheatInputFilterProtBlockedId,//!< "Блокировка по защите: Перегрев вх.фильтра"
+  OverheatInputFilterProtReactId, //!< "Сработала защита: Перегрев фильтра"
+  OverheatInputFilterProtBlockedId,//!< "Блокировка по защите: Перегрев фильтра"
 
   RegimeRunAutoAdaptationStartId,     //!< Запущена автоадаптация векторного режима
   RegimeRunAutoAdaptationCompleteId,  //!< Автоадаптация к ТМПН векторного управления успешно завершена. Подобранное сопротивление - %1 Ом
