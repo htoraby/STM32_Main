@@ -34,7 +34,7 @@ static void adcExtThread(void *argument);
 
 static void hc595delay()
 {
-  for (int i = 0; i < 1000; i++)
+  for (int i = 0; i < 10000; i++)
     asm("nop");
 }
 void testAnalogInExt();
