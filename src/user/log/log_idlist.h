@@ -257,6 +257,8 @@ typedef enum {
   SaveConfigUsbId,                    //!< Сохранение конфигурации на USB
   LoadConfigUsbId,                    //!< Загрузка конфигурации с USB
 
+  CounterAllResetId,                  //!< Сброс счётчиков
+
 } EventId;
 
 #endif // LOG_IDLIST
