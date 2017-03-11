@@ -3396,7 +3396,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Дисб.тока.двиг.РР3</short_text>
+		<short_text>Дисб.тока двиг.</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -3439,7 +3439,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Дисб.тока.двиг.пуск.время</short_text>
+		<short_text>Дисб.тока двиг.пуск.время</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -3460,7 +3460,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
 		<text>Время</text>
-		<short_text>Дисб.тока.двиг.время</short_text>
+		<short_text>Дисб.тока двиг.время</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -3481,7 +3481,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1800.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Дисб.тока.двиг.зад.АПВ</short_text>
+		<short_text>Дисб.тока двиг.зад.АПВ</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -3502,7 +3502,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>NULL</short_text>
+		<short_text>Дисб.тока двиг.раз.АПВ</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -3523,7 +3523,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ</text>
-		<short_text>Дисб.тока.двиг.сброс счет</short_text>
+		<short_text>Дисб.тока двиг.сброс счет</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -3544,7 +3544,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Уставка останова</text>
-		<short_text>Дисб.тока.двиг.уст.</short_text>
+		<short_text>Дисб.тока двиг.уст.</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -3565,7 +3565,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Уставка пуска</text>
-		<short_text>Дисб.тока.двиг.АПВ</short_text>
+		<short_text>Дисб.тока двиг.АПВ</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -3776,7 +3776,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>86400.0</max>
 		<def>3600.0</def>
 		<discret>1</discret>
@@ -4046,7 +4046,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>86400.0</max>
 		<def>3600.0</def>
 		<discret>1</discret>
@@ -4343,7 +4343,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
@@ -4661,7 +4661,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
@@ -5286,7 +5286,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
@@ -5577,7 +5577,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
@@ -5892,7 +5892,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
@@ -6207,7 +6207,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
@@ -6522,7 +6522,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
@@ -6837,7 +6837,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
@@ -7152,7 +7152,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
@@ -7467,7 +7467,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
@@ -7782,7 +7782,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
@@ -8612,7 +8612,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>180000.0</max>
 		<def>3600.0</def>
 		<discret>1</discret>
