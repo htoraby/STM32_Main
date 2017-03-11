@@ -1332,7 +1332,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_CMD_COUNTER_ALL_RESET:
     err = setValue(id, value, eventType);
-    cmdCountersAllReset();
+    if (!err) {
+      cmdCountersAllReset();
+       logEvent.add(ResetCountsCode, eventType, CounterAllResetId);
+    }
     return err;
   case CCS_DHS_TYPE:
     err = setValue(id, value, NoneType);
@@ -1388,6 +1391,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(AddDeviceCode, eventType, AddDeviceFiltInputId, oldValue, value);
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltInputId, oldValue, value);
+      parameters.set(VSD_DI_33, value * 2);
     }
     return err;
   case CCS_SCADA_TYPE:
