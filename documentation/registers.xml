@@ -32238,6 +32238,27 @@
 	</param>
 	<param>
 		<id>10501</id>
+		<name>VSD_DANFOSS_COASTING</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>255.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Катушка:Coasting Danfoss</comment>
+	</param>
+	<param>
+		<id>10502</id>
 		<name>VSD_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

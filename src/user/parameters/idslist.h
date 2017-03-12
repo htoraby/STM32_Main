@@ -1607,7 +1607,8 @@ enum enID
   VSD_FC_OVERLOAD = 10498,                                   //!< Величина перегрузки по току ПЧ (112)
   VSD_TEMPERATURE_AIR = 10499,                               //!< 
   VSD_FUNCTION_RELE_7 = 10500,                               //!< Реле функций Danfoss 5-40 Не используется в проекте, только при конфигурировании
-  VSD_END = 10501,                                           //!< 
+  VSD_DANFOSS_COASTING = 10501,                              //!< Катушка:Coasting Danfoss
+  VSD_END = 10502,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

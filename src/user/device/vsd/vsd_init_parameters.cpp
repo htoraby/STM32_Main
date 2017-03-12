@@ -6014,5 +6014,17 @@ void Vsd::initParameters()
   parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].def                               = 2.0;
   parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].discret                           = 1;
   parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].code                              = 0;
+  // Катушка:Coasting Danfoss
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].id                               = VSD_DANFOSS_COASTING;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].access                           = ACCESS_OPERATOR;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].operation                        = OPERATION_READ;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].physic                           = PHYSIC_NUMERIC;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].validity                         = VALIDITY_ERROR;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].value.float_t                    = NAN;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].min                              = 0.0;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].max                              = 255.0;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].def                              = 0.0;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].discret                          = 1;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].code                             = 0;
 }
 
