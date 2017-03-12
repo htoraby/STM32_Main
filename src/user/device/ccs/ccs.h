@@ -617,6 +617,11 @@ private:
 
   void setRelayOutputs();
 
+  /*!
+   * \brief Метод переключения RS-485/RS-232 ТМС/Скады
+   */
+  void setDhsScadaInterface();
+
   //! Очередь событий включения/мигания LED
   osMessageQId ledMessage_;
   //! Предыдущие состояние станции

@@ -22369,12 +22369,12 @@
 	</param>
 	<param>
 		<id>1102</id>
-		<name>CCS_RS485_RS232_TMS</name>
+		<name>CCS_DHS_INTERFACE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>2.0</max>
+		<max>1.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
