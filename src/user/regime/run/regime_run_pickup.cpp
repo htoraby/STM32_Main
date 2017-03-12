@@ -233,7 +233,7 @@ void RegimeRunPickup::processingStateStop()
 
 void RegimeRunPickup::automatRegime()
 {
-  if ((action_ == OffAction) && (state_ != IdleState)) {
+  if ((action_ == OffAction) && (state_ != IdleState) && (ksu.isWorkMotor())) {
     state_ = StopState;
   }
 

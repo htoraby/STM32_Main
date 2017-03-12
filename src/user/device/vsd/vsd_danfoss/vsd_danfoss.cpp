@@ -381,7 +381,7 @@ int VsdDanfoss::setSspMotorTypeProfile()
         }
       }
       if (profileMotor[i][0] == VSD_UF_CHARACTERISTIC_U_6) {
-        parameters.set(CCS_BASE_VOLTAGE, profileMotor[i][profile]);
+        parameters.set(CCS_BASE_VOLTAGE, profileMotor[i][profile], NoneType);
       }
       writeToDevice(profileMotor[i][0], profileMotor[i][profile]);
       osDelay(100);
@@ -1084,7 +1084,7 @@ int VsdDanfoss::stop(bool isAlarm)
 
       if (setNewValue(VSD_JOG, 0))  // VSD_DANFOSS_CONTROL_JOG 8
         return err_r;
-      if (isAlarm) {
+      if (isAlarm || parameters.get(VSD_TYPE_STOP)) {
         if (setNewValue(VSD_DANFOSS_COASTING, 0))    // VSD_DANFOSS_CONTROL_COASTING 3
           return err_r;
       }
@@ -1141,7 +1141,6 @@ bool VsdDanfoss::isControl()
 int VsdDanfoss::setSspFile()
 {
 //  int time = HAL_GetTick();                                                     // Время начала записи
-
   for (int i = 0; i < QUANTITY_PARAMETER_SSP_FILE; i++) {                                               // Первый цикл записи ssp файла
     writeToDevice(sspFile[i][0], sspFile[i][1]);
     osDelay(100);
@@ -1515,6 +1514,12 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
 
   case VSD_TIMER_DELAY:
     return setTimeSpeedDown(value);
+
+  case VSD_ROTATION:
+    result = setValue(id, value, eventType);
+    if (!result)
+      writeToDevice(id, value);
+    return result;
 
   default:
     result = setValue(id, value, eventType);
