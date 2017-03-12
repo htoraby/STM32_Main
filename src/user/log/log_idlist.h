@@ -262,6 +262,8 @@ typedef enum {
   OverheatInputFilterApvId,          //!< "АПВ по защите: Перегрев фильтра"
   OverheatInputFilterApvDisabledId,  //!< "АПВ запрещено: Перегрев фильтра"
 
+  VsdResetSetpointId,                 //!< Сброс уставок ЧРП
+
 } EventId;
 
 #endif // LOG_IDLIST

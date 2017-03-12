@@ -8069,7 +8069,7 @@ void Ccs::initParameters()
   // Начальная уставка ЗСП режима "Программного изменения частоты"
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD - CCS_BEGIN].id                = CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD;
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD - CCS_BEGIN].access            = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD - CCS_BEGIN].operation         = OPERATION_LIMITED;
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD - CCS_BEGIN].physic            = PHYSIC_PERCENT;
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD - CCS_BEGIN].validity          = VALIDITY_OK;
   parameters_[CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD - CCS_BEGIN].value.float_t     = 60.0;

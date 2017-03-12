@@ -381,7 +381,7 @@ int VsdDanfoss::setSspMotorTypeProfile()
         }
       }
       if (profileMotor[i][0] == VSD_UF_CHARACTERISTIC_U_6) {
-        parameters.set(CCS_BASE_VOLTAGE, profileMotor[i][profile]);
+        parameters.set(CCS_BASE_VOLTAGE, profileMotor[i][profile], NoneType);
       }
       writeToDevice(profileMotor[i][0], profileMotor[i][profile]);
       osDelay(100);
@@ -1141,7 +1141,6 @@ bool VsdDanfoss::isControl()
 int VsdDanfoss::setSspFile()
 {
 //  int time = HAL_GetTick();                                                     // Время начала записи
-
   for (int i = 0; i < QUANTITY_PARAMETER_SSP_FILE; i++) {                                               // Первый цикл записи ssp файла
     writeToDevice(sspFile[i][0], sspFile[i][1]);
     osDelay(100);

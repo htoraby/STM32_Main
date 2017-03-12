@@ -65,11 +65,21 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
 
   // Если включен режим "Чередования частот"
   if (parameters.get(CCS_RGM_ALTERNATION_FREQ_MODE) != Regime::OffAction) {
-    if (vsd->getCurrentFreq() == parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1)) {
-      tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1);
+    if (parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1) <= parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2)) {
+      if (vsd->getCurrentFreq() <= parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1)) {
+        tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1);
+      }
+      else {
+        tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2);
+      }
     }
-    if (vsd->getCurrentFreq() == parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_2)) {
-      tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2);
+    else {
+      if (vsd->getCurrentFreq() <= parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_2)) {
+        tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2);
+      }
+      else {
+        tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1);
+      }
     }
   }
 

@@ -13562,7 +13562,7 @@
 		<id>672</id>
 		<name>CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
+		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
 		<max>100.0</max>
