@@ -70,6 +70,9 @@ enum RoNum {
 #define LCD_ON_PIN  GPIOD, GPIO_PIN_3
 //! Вывод переключения USB между контроллерами
 #define USB_ON_PIN  GPIOG, GPIO_PIN_9
+//! Выводы переключения RS-485/RS-232
+#define DHS_SCADA_RS_1_PIN  GPIOE, GPIO_PIN_3
+#define DHS_SCADA_RS_2_PIN  GPIOI, GPIO_PIN_7
 
 /*!
  \brief Инициализация выводов, кнопок, LED, DI, DO

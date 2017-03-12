@@ -62,6 +62,9 @@ void gpioInit()
   initPinOut(LCD_ON_PIN, PinSet);
   initPinOut(USB_ON_PIN, PinSet);
 
+  initPinOut(DHS_SCADA_RS_1_PIN, PinReset);
+  initPinOut(DHS_SCADA_RS_2_PIN, PinReset);
+
   for (int i = 0; i < DigitalInputMax; ++i) {
     initPinInput(portDI[i], pinDI[i]);
   }

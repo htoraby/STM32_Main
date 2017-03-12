@@ -134,7 +134,10 @@ void Ccs::initTask()
   if (getValueUint32(CCS_LAST_STOP_DATE_TIME) == 0)
     setValue(CCS_LAST_STOP_DATE_TIME, getTime());
 
-  setValue(CCS_BYPASS_CONTACTOR_KM1_CONTROL, 0);                                // Выключить контактор KM1
+  // Выключить контактор KM1
+  setValue(CCS_BYPASS_CONTACTOR_KM1_CONTROL, 0);
+  // Переключение RS-485/RS-232 ТМС/Скады
+  setDhsScadaInterface();
 
   intRestartCount();
 }
@@ -1885,6 +1888,13 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
                    getValue(CCS_NETMASK_4));
     }
     return err;
+  case CCS_DHS_INTERFACE:
+    err = setValue(id, value, eventType);
+    if (!err) {
+      setDhsScadaInterface();
+      tms->resetConnect();
+    }
+    return err;
   default:
     return setValue(id, value, eventType);
   }
@@ -2523,3 +2533,14 @@ void Ccs::setRelayOutputs()
   setRelayOutput(RO6, (PinState)!parameters.get(CCS_BYPASS_CONTACTOR_KM2_CONTROL));
 }
 
+void Ccs::setDhsScadaInterface()
+{
+  int dhsInterface = getValue(CCS_DHS_INTERFACE);
+  if (dhsInterface) {
+    clrPinOut(DHS_SCADA_RS_1_PIN);
+    setPinOut(DHS_SCADA_RS_2_PIN);
+  } else {
+    clrPinOut(DHS_SCADA_RS_1_PIN);
+    clrPinOut(DHS_SCADA_RS_2_PIN);
+  }
+}
