@@ -145,7 +145,7 @@ void RegimeTechnologPeriodic::processing()
     }
     break;
   case PauseState:
-    if (ksu.isStopMotor()) {       // Двигатель - останов;
+    if (ksu.isStopMotor() && ksu.isRestart()) {       // Двигатель - останов;
       uint32_t time = ksu.getSecFromCurTime(stopBeginTime_); // Прошедшее время с начала останова
       stopTimeToEnd_ = getTimeToEnd(stopPeriod_ + addTime_, time);
       workTimeToEnd_ = 0;
