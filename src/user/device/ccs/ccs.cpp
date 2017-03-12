@@ -1845,7 +1845,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_NUM_PRODUCTION_CCS_2:
     err = setValue(id, value, NoneType);
     if (!err) {
-      logEvent.add(MultiSetpiontCode, eventType, (EventId)id,
+      logEvent.add(MultiSetpointCode, eventType, (EventId)id,
                    getValue(CCS_NUM_PRODUCTION_CCS_2), getValue(CCS_NUM_PRODUCTION_CCS));
       logDebug.add(WarningMsg, "Ccs::setNewValue() CCS_NUM_PRODUCTION_CCS (%d, %d)",
                    getValueUint32(CCS_NUM_PRODUCTION_CCS_2),
@@ -1855,7 +1855,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_NUM_PRODUCTION_SU_2:
     err = setValue(id, value, NoneType);
     if (!err) {
-      logEvent.add(MultiSetpiontCode, eventType, (EventId)id,
+      logEvent.add(MultiSetpointCode, eventType, (EventId)id,
                    getValue(CCS_NUM_PRODUCTION_SU_2), getValue(CCS_NUM_PRODUCTION_SU));
       logDebug.add(WarningMsg, "Ccs::setNewValue() CCS_NUM_PRODUCTION_SU (%d, %d)",
                    getValueUint32(CCS_NUM_PRODUCTION_SU_2),
@@ -1865,7 +1865,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_IP_ADDRESS_4:
     err = setValue(id, value, NoneType);
     if (!err) {
-      logEvent.add(MultiSetpiontCode, eventType, (EventId)id,
+      logEvent.add(MultiSetpointCode, eventType, (EventId)id,
                    getValue(CCS_IP_ADDRESS_1)*1000+getValue(CCS_IP_ADDRESS_2),
                    getValue(CCS_IP_ADDRESS_3)*1000+getValue(CCS_IP_ADDRESS_4));
       logDebug.add(WarningMsg, "Ccs::setNewValue() CCS_IP_ADDRESS (%f, %f, %f, %f)",
@@ -1878,7 +1878,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_NETMASK_4:
     err = setValue(id, value, NoneType);
     if (!err) {
-      logEvent.add(MultiSetpiontCode, eventType, (EventId)id,
+      logEvent.add(MultiSetpointCode, eventType, (EventId)id,
                    getValue(CCS_NETMASK_1)*1000+getValue(CCS_NETMASK_2),
                    getValue(CCS_NETMASK_3)*1000+getValue(CCS_NETMASK_4));
       logDebug.add(WarningMsg, "Ccs::setNewValue() CCS_NETMASK (%f, %f, %f, %f)",
