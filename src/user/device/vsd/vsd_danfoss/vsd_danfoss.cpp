@@ -1056,6 +1056,8 @@ int VsdDanfoss::start(bool init)
 
     if (setNewValue(VSD_ON, 1))         // VSD_DANFOSS_CONTROL_RAMP 6
       return err_r;
+    if (setNewValue(VSD_DANFOSS_COASTING, 1))    // VSD_DANFOSS_CONTROL_COASTING 3
+      return err_r;
     if (setNewValue(VSD_JOG, 1))       // VSD_DANFOSS_CONTROL_JOG 8
       return err_r;
   } else {
@@ -1067,7 +1069,7 @@ int VsdDanfoss::start(bool init)
   return -1;
 }
 
-int VsdDanfoss::stop(bool /*isAlarm*/)
+int VsdDanfoss::stop(bool isAlarm)
 {
   int timeMs = VSD_CMD_TIMEOUT;
   int countRepeats = 0;
@@ -1082,8 +1084,15 @@ int VsdDanfoss::stop(bool /*isAlarm*/)
 
       if (setNewValue(VSD_JOG, 0))  // VSD_DANFOSS_CONTROL_JOG 8
         return err_r;
-      if (setNewValue(VSD_ON, 0))    // VSD_DANFOSS_CONTROL_RAMP 6
-        return err_r;
+      if (isAlarm) {
+        if (setNewValue(VSD_DANFOSS_COASTING, 0))    // VSD_DANFOSS_CONTROL_COASTING 3
+          return err_r;
+      }
+      else {
+        if (setNewValue(VSD_ON, 0))    // VSD_DANFOSS_CONTROL_RAMP 6
+          return err_r;
+      }
+
     }
     else {
       timeMs = timeMs + 100;

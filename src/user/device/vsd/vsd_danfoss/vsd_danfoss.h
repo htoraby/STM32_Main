@@ -266,7 +266,7 @@ public:
   float getMaxBaseFrequency();
 
 private:
-  ModbusParameter modbusParameters_[231];
+  ModbusParameter modbusParameters_[232];
   DeviceModbus *dm_;
 
   osSemaphoreId setSspFileSemaphoreId_;
