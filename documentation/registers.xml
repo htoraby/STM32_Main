@@ -22356,7 +22356,7 @@
 		<def>1.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>1.0</value>
 		<text>Датчик температура фильтра</text>
 		<short_text>Датчик темп. Фильтра</short_text>
 		<form>NULL</form>
@@ -22369,6 +22369,28 @@
 	</param>
 	<param>
 		<id>1102</id>
+		<name>CCS_RS485_RS232_TMS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Интерфейс</text>
+		<short_text>ТМС. Интерфейс</short_text>
+		<form>3.4 ТМС</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-RS-485;1-RS-232</values>
+		<comment>ТМС. Интерфейс</comment>
+	</param>
+	<param>
+		<id>1103</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>
