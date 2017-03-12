@@ -188,6 +188,7 @@ void EmSet::sendRequest()
 
   sendUart(txBuffer_, sizePktTx);
   counters_.transmite++;
+  calcConnect();
 }
 
 void EmSet::receiveAnswer()
