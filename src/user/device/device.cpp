@@ -656,6 +656,13 @@ StatusType Device::loadConfigInProfileDefault(uint32_t address, float *data)
   return status;
 }
 
+void Device::resetAllDefault()
+{
+  for (int i = 0; i < countParameters_; ++i) {
+    parameters_[i].value.float_t = parameters_[i].def;
+  }
+}
+
 bool Device::isConnect()
 {
   return false;

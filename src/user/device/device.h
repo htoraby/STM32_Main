@@ -243,6 +243,11 @@ public:
   StatusType loadConfigInProfileDefault(uint32_t address, float *data);
 
   /*!
+   * \brief Сброс значений всех параметров по умолчанию
+   */
+  void resetAllDefault();
+
+  /*!
    * \brief Функция проверки есть ли связь с утройством
    * \return
    */

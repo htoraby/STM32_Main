@@ -1360,7 +1360,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(AddDeviceCode, eventType, AddDeviceDhsId, oldValue, value);
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceDhsId, oldValue, value);
-      tms->initParameters();
+      tms->resetAllDefault();
       startReboot();
     }
     return err;
@@ -1372,8 +1372,8 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceVsdId, oldValue, value);
 
-      initParameters();
-      vsd->initParameters();
+      resetAllDefault();
+      vsd->resetAllDefault();
       setValue(id, value, NoneType);
 
       startReboot();
@@ -1386,7 +1386,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(AddDeviceCode, eventType, AddDeviceEmId, oldValue, value);
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceEmId, oldValue, value);
-      em->initParameters();
+      em->resetAllDefault();
       startReboot();
     }
     return err;
