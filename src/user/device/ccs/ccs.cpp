@@ -1591,19 +1591,22 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     return err;
   case CCS_CMD_DHS_CONNECTION_RESET:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
     checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
     tms->resetConnect();
+    logEvent.add(OtherCode, eventType, DhsConnectionCountersResetId);
     return err;
   case CCS_CMD_VSD_CONNECTION_RESET:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
     checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
     vsd->resetConnect();
+    logEvent.add(OtherCode, eventType, VsdConnectionCountersResetId);
     return err;
   case CCS_CMD_EM_CONNECTION_RESET:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
     checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
     em->resetConnect();
+    logEvent.add(OtherCode, eventType, EmConnectionCountersResetId);
     return err;
   case CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ:
     err = setValue(id, value, eventType);

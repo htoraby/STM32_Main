@@ -18453,7 +18453,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
-		<code>0</code>
+		<code>103</code>
 		<comment>Команда сброса статистики связи с ТМС</comment>
 	</param>
 	<param>
@@ -18474,7 +18474,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
-		<code>0</code>
+		<code>103</code>
 		<comment>Команда сброса статистики связи с ЧРП</comment>
 	</param>
 	<param>
@@ -20181,7 +20181,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
-		<code>0</code>
+		<code>103</code>
 		<comment>СЭ. Сброс счётчиков качества связи</comment>
 	</param>
 	<param>
