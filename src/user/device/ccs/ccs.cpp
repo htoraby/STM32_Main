@@ -921,7 +921,20 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(ModeCode, eventType, ModeCodeAutoId, oldValue, value);
       }
       if (value == CCS_WORKING_MODE_PROGRAM) {
+        setValue(CCS_RGM_PERIODIC_MODE, Regime::OnAction);
         logEvent.add(ModeCode, eventType, ModeCodeProgramId, oldValue, value);
+      } else {
+        setValue(CCS_RGM_PERIODIC_MODE, Regime::OffAction);
+      }
+    }
+    return err;
+  case CCS_RGM_PERIODIC_MODE:
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      if (value == Regime::OffAction) {
+        setNewValue(CCS_WORKING_MODE, CCS_WORKING_MODE_AUTO);
+      } else {
+        setNewValue(CCS_WORKING_MODE, CCS_WORKING_MODE_PROGRAM);
       }
     }
     return err;
