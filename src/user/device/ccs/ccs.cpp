@@ -19,7 +19,7 @@
 #define TIMEOUT_LCD_OFF 1000 //!< Время на отключение подсветки (мс)
 #define TIMEOUT_MASTER_OFF 3000 //!< Время на отключение верхнего контроллера (мс)
 #define TIMEOUT_SLAVE_OFF 10000 //!< Время на отключение нижнего контроллера (мс)
-#define DELAY_CHECK_CONNECT_DEVICE 1000 //!< Задержка проверки подключения устройств - 20 сек
+#define DELAY_CHECK_CONNECT_DEVICE 1000 //!< Задержка проверки подключения устройств - x*10мс
 
 //! Массив параметров устройства
 static parameter parametersArray[CCS_END - CCS_BEGIN] __attribute__((section(".extmem")));
@@ -1456,7 +1456,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     cmdStop(value);
     return ok_r;
   case CCS_CMD_VSD_RESET_SETPOINTS:
-    logEvent.add(SetpiontResetCode, AutoType, VsdResetSetpointId);
+    logEvent.add(SetpointResetCode, AutoType, VsdResetSetpointId);
     return vsd->resetSetpoints();
   case CCS_PROT_OTHER_VSD_NO_CONNECT_MODE:
     err = setValue(id, value, eventType);
@@ -1579,14 +1579,17 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_CMD_DHS_CONNECTION_RESET:
     err = setValue(id, value, eventType);
+    checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
     tms->resetConnect();
     return err;
   case CCS_CMD_VSD_CONNECTION_RESET:
     err = setValue(id, value, eventType);
+    checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
     vsd->resetConnect();
     return err;
   case CCS_CMD_EM_CONNECTION_RESET:
     err = setValue(id, value, eventType);
+    checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
     em->resetConnect();
     return err;
   case CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ:
@@ -1893,6 +1896,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     if (!err) {
       setDhsScadaInterface();
+      checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
       tms->resetConnect();
     }
     return err;
