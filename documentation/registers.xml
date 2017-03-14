@@ -687,7 +687,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2000000.0</value>
 		<text>Номинальная мощность</text>
-		<short_text>Мощность ТМПН</short_text>
+		<short_text>Ном. мощность ТМПН</short_text>
 		<form>3.2 ТМПН</form>
 		<unit>FULL_POWER_VA</unit>
 		<unit_lcd>FULL_POWER_KVA</unit_lcd>
@@ -708,7 +708,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Номинальный ток</text>
-		<short_text>Номин.ток ТМПН</short_text>
+		<short_text>Ном. ток ТМПН</short_text>
 		<form>3.2 ТМПН</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
@@ -722,19 +722,20 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
-		<min>0.0</min>
-		<max>10000.0</max>
+		<min>380.0</min>
+		<max>500.0</max>
 		<def>380.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>380.0</value>
 		<text>Номинальное напряжение</text>
-		<short_text>Номин.напряжение</short_text>
+		<short_text>Ном. напряж. ТМПН</short_text>
 		<form>3.2 ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>TEXT</format>
 		<code>13</code>
+		<values>380-380;480-480;500-500</values>
 		<comment>Номинальное напряжение ТМПН</comment>
 	</param>
 	<param>
@@ -14554,19 +14555,20 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
-		<min>300.0</min>
-		<max>999.0</max>
+		<min>380.0</min>
+		<max>500.0</max>
 		<def>380.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>380.0</value>
 		<text>Напряжение питающей сети</text>
-		<short_text>U питающей сети</short_text>
+		<short_text>Напряж. Сети</short_text>
 		<form>3.2 ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>TEXT</format>
 		<code>13</code>
+		<values>380-380;480-480;500-500</values>
 		<comment>Напряжение питающей сети</comment>
 	</param>
 	<param>
@@ -14725,15 +14727,15 @@
 		<def>3600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3600.0</value>
-		<text>Время АПВ защит по напряжению</text>
-		<short_text>Время АПВ защит по напряжению</short_text>
+		<value>300.0</value>
+		<text>Задержка АПВ</text>
+		<short_text>Защиты сети зад. АПВ</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
-		<unit_lcd>NULL</unit_lcd>
-		<format>NULL</format>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
-		<comment>Задержка АПВ защит по напряжению уставка</comment>
+		<comment>Защиты сети задержка АПВ</comment>
 	</param>
 	<param>
 		<id>730</id>
