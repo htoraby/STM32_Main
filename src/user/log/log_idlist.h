@@ -10,15 +10,15 @@ typedef enum {
   RebootSoftwareId,               //!< "Перезагрузка ПО"
   UpdateSoftwareId,               //!< "Обновление ПО"
 
-  OverVoltInProtReactId,          //!< "Сработала защита: Превышение питания сети"
-  OverVoltInApvId,                //!< "АПВ по защите: Превышение питания сети"
-  OverVoltInApvDisabledId,        //!< "АПВ запрещено: Превышение питания сети"
-  OverVoltInProtBlockedId,        //!< "Блокировка по защите: Превышение питания сети"
+  OverVoltInProtReactId,          //!< "Сработала защита: Повышенное напряжение"
+  OverVoltInApvId,                //!< "АПВ по защите: Повышенное напряжение"
+  OverVoltInApvDisabledId,        //!< "АПВ запрещено: Повышенное напряжение"
+  OverVoltInProtBlockedId,        //!< "Блокировка по защите: Повышенное напряжение"
 
-  UnderVoltInProtReactId,         //!< "Сработала защита: Снижение питания сети"
-  UnderVoltInApvId,               //!< "АПВ по защите: Снижение питания сети"
-  UnderVoltInApvDisabledId,       //!< "АПВ запрещено: Снижение питания сети"
-  UnderVoltInProtBlockedId,       //!< "Блокировка по защите: Снижение питания сети"
+  UnderVoltInProtReactId,         //!< "Сработала защита: Пониженное напряжение"
+  UnderVoltInApvId,               //!< "АПВ по защите: Пониженное напряжение"
+  UnderVoltInApvDisabledId,       //!< "АПВ запрещено: Пониженное напряжение"
+  UnderVoltInProtBlockedId,       //!< "Блокировка по защите: Пониженное напряжение"
 
   ImbalanceVoltInProtReactId,     //!< "Сработала защита: Дисбаланс напряжения"
   ImbalanceVoltInApvId,           //!< "АПВ по защите: Дисбаланс напряжения"
@@ -143,10 +143,10 @@ typedef enum {
   AnalogInput4ApvDisabledId,      //!< "АПВ запрещено: Аналоговый вход 4"
   AnalogInput4ProtBlockedId,      //!< "Блокировка по защите: Аналоговый вход 4"
 
-  ImbalanceCurInProtReactId,      //!< "Сработала защита: Дисбаланс входных токов"
-  ImbalanceCurInApvId,            //!< "АПВ по защите: Дисбаланс входных токов"
-  ImbalanceCurInApvDisabledId,    //!< "АПВ запрещено: Дисбаланс входных токов"
-  ImbalanceCurInProtBlockedId,    //!< "Блокировка по защите: Дисбаланс входных токов"
+  ImbalanceCurInProtReactId,      //!< "Сработала защита: Дисбаланс токов"
+  ImbalanceCurInApvId,            //!< "АПВ по защите: Дисбаланс токов"
+  ImbalanceCurInApvDisabledId,    //!< "АПВ запрещено: Дисбаланс токов"
+  ImbalanceCurInProtBlockedId,    //!< "Блокировка по защите: Дисбаланс токов"
 
   PowerOffProtReactId,            //!< "Сработала защита: Нет питания сети"
   PowerOffApvId,                  //!< "АПВ по защите: Нет питания сети"

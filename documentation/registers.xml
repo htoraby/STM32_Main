@@ -919,8 +919,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Повышенное U</short_text>
-		<form>4.1.1 Повышенное напряжение сети</form>
+		<short_text>Повышен.напряж.</short_text>
+		<form>4.1.1 Повышенное напряжение</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -962,8 +962,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Повышен.напряж.Пуск.время</short_text>
-		<form>4.1.1 Повышенное напряжение сети</form>
+		<short_text>Повышен. напряж. пуск. время</short_text>
+		<form>4.1.1 Повышенное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -983,8 +983,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Время</text>
-		<short_text>Повышен.напряж.Время</short_text>
-		<form>4.1.1 Повышенное напряжение сети</form>
+		<short_text>Повышен. напряж. время</short_text>
+		<form>4.1.1 Повышенное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -1004,8 +1004,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>300.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Повышен.напряж.Зад.АПВ</short_text>
-		<form>4.1.1 Повышенное напряжение сети</form>
+		<short_text>Повышен. напряж. зад. АПВ</short_text>
+		<form>4.1.1 Повышенное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1025,8 +1025,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Повышен.напряж.Раз.АПВ</short_text>
-		<form>4.1.1 Повышенное напряжение сети</form>
+		<short_text>Повышен. напряж. раз. АПВ</short_text>
+		<form>4.1.1 Повышенное напряжение</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -1046,8 +1046,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков</text>
-		<short_text>Повышен.напряж.Сброс счёт.</short_text>
-		<form>4.1.1 Повышенное напряжение сети</form>
+		<short_text>Повышен. напряж. сброс счёт.</short_text>
+		<form>4.1.1 Повышенное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -1067,8 +1067,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>120.0</value>
 		<text>Уставка останова</text>
-		<short_text>Повышен.напряж.Уст.остан.</short_text>
-		<form>4.1.1 Повышенное напряжение сети</form>
+		<short_text>Повышен. напряж. уст. остан.</short_text>
+		<form>4.1.1 Повышенное напряжение</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
@@ -1088,7 +1088,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>120.0</value>
 		<text>Уставка пуска</text>
-		<short_text>Повышен.напряж.Уст.пуска.</short_text>
+		<short_text>Повышен. напряж. уст. пуска.</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -1236,7 +1236,7 @@
 		<value>2.0</value>
 		<text>Действие защиты</text>
 		<short_text>Понижен.напряж.</short_text>
-		<form>4.1.2 Пониженное напряжение сети</form>
+		<form>4.1.2 Пониженное напряжение</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -1278,8 +1278,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Понижен.напряж.Пуск.время</short_text>
-		<form>4.1.2 Пониженное напряжение сети</form>
+		<short_text>Понижен. напряж. пуск. время</short_text>
+		<form>4.1.2 Пониженное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1299,8 +1299,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Время</text>
-		<short_text>Понижен.напряж.Время</short_text>
-		<form>4.1.2 Пониженное напряжение сети</form>
+		<short_text>Понижен. напряж. время</short_text>
+		<form>4.1.2 Пониженное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -1320,8 +1320,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>300.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Понижен.напряж.Зад.АПВ</short_text>
-		<form>4.1.2 Пониженное напряжение сети</form>
+		<short_text>Понижен. напряж. зад. АПВ</short_text>
+		<form>4.1.2 Пониженное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1341,8 +1341,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Понижен.напряж.Раз.АПВ</short_text>
-		<form>4.1.2 Пониженное напряжение сети</form>
+		<short_text>Понижен. напряж. раз. АПВ</short_text>
+		<form>4.1.2 Пониженное напряжение</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<code>13</code>
@@ -1361,8 +1361,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков</text>
-		<short_text>Понижен.напряж.Сброс счёт.</short_text>
-		<form>4.1.2 Пониженное напряжение сети</form>
+		<short_text>Понижен. напряж. сброс счёт.</short_text>
+		<form>4.1.2 Пониженное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -1382,7 +1382,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>80.0</value>
 		<text>Уставка останова</text>
-		<short_text>Понижен.напряж.Уст.остан.</short_text>
+		<short_text>Понижен. напряж. уст. остан.</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -1403,7 +1403,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>80.0</value>
 		<text>Уставка пуска</text>
-		<short_text>Понижен.напряж.Уст.пуска.</short_text>
+		<short_text>Понижен. напряж. уст. пуска.</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -1550,8 +1550,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Дисбал.напряж.</short_text>
-		<form>4.1.3 Дисбаланс напряжения сети</form>
+		<short_text>Дисбал. напряж.</short_text>
+		<form>4.1.3 Дисбаланс напряжения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -1593,8 +1593,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Дисбал.напряж.Пуск.время</short_text>
-		<form>4.1.3 Дисбаланс напряжения сети</form>
+		<short_text>Дисбал. напряж. пуск. время</short_text>
+		<form>4.1.3 Дисбаланс напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1614,8 +1614,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Дисбал.напряж.Время</short_text>
-		<form>4.1.3 Дисбаланс напряжения сети</form>
+		<short_text>Дисбал. напряж. время</short_text>
+		<form>4.1.3 Дисбаланс напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -1635,8 +1635,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>300.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Дисбал.напряж.Зад.АПВ</short_text>
-		<form>4.1.3 Дисбаланс напряжения сети</form>
+		<short_text>Дисбал. напряж. зад. АПВ</short_text>
+		<form>4.1.3 Дисбаланс напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1656,8 +1656,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Дисбал.напряж.Раз.АПВ</short_text>
-		<form>4.1.3 Дисбаланс напряжения сети</form>
+		<short_text>Дисбал. напряж. раз. АПВ</short_text>
+		<form>4.1.3 Дисбаланс напряжения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -1677,8 +1677,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков</text>
-		<short_text>Дисбал.напряж.Сброс счёт.</short_text>
-		<form>4.1.3 Дисбаланс напряжения сети</form>
+		<short_text>Дисбал. напряж. сброс счёт.</short_text>
+		<form>4.1.3 Дисбаланс напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -1698,8 +1698,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Уставка останова</text>
-		<short_text>Дисбал.напряж.Уст.остан.</short_text>
-		<form>4.1.3 Дисбаланс напряжения сети</form>
+		<short_text>Дисбал. напряж. уст. остан.</short_text>
+		<form>4.1.3 Дисбаланс напряжения</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
@@ -1719,8 +1719,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Уставка пуска</text>
-		<short_text>Дисбал.напряж.Уст.пуска.</short_text>
-		<form>NULL</form>
+		<short_text>Дисбал. напряж. уст. пуска.</short_text>
+		<form>4.1.3 Дисбаланс напряжения</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -1866,8 +1866,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Дисбал.вх.ток.</short_text>
-		<form>4.1.3 Дисбаланс входных токов</form>
+		<short_text>Дисбал. токов</short_text>
+		<form>4.1.3 Дисбаланс токов</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -1909,8 +1909,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Дисбал.вх.ток.Пуск.время</short_text>
-		<form>4.1.3 Дисбаланс входных токов</form>
+		<short_text>Дисбал. токов пуск. время</short_text>
+		<form>4.1.3 Дисбаланс  токов</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1930,8 +1930,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Дисбал.вх.ток.Время</short_text>
-		<form>4.1.3 Дисбаланс входных токов</form>
+		<short_text>Дисбал. токов время</short_text>
+		<form>4.1.3 Дисбаланс токов</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -1951,8 +1951,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>300.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Дисбал.вх.ток.Зад.АПВ</short_text>
-		<form>4.1.3 Дисбаланс входных токов</form>
+		<short_text>Дисбал. токов зад. АПВ</short_text>
+		<form>4.1.3 Дисбаланс  токов</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1972,8 +1972,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Дисбал.вх.ток.Раз.АПВ</short_text>
-		<form>4.1.3 Дисбаланс входных токов</form>
+		<short_text>Дисбал. токов раз. АПВ</short_text>
+		<form>4.1.3 Дисбаланс  токов</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -1993,8 +1993,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков</text>
-		<short_text>Дисбал.вх.ток.Сброс счёт.</short_text>
-		<form>4.1.3 Дисбаланс входных токов</form>
+		<short_text>Дисбал. токов сброс счёт.</short_text>
+		<form>4.1.3 Дисбаланс  токов</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -2014,8 +2014,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Уставка останова</text>
-		<short_text>Дисбал.вх.ток.Уст.остан.</short_text>
-		<form>4.1.3 Дисбаланс входных токов</form>
+		<short_text>Дисбал. токов уст. остан.</short_text>
+		<form>4.1.3 Дисбаланс  токов</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
@@ -2035,7 +2035,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Уставка пуска</text>
-		<short_text>Дисбал.вх.ток.Уст.пуска.</short_text>
+		<short_text>Дисбал. токов уст. пуска.</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>NULL</unit_lcd>

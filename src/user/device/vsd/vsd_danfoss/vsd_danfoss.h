@@ -186,6 +186,14 @@ public:
    */
   int setMotorVoltage(float value, float coef, EventType eventType);
 
+  /*!
+   * \brief setMotorFrequency
+   * \param value
+   * \param eventType
+   * \return
+   */
+  enReturns setMotorFrequency(float value, EventType eventType = NoneType);
+
   int setMotorResistanceStator(float value);
   int setCurrentLim(float curLimit, float nomCurMtr, float coefTrans);
   void setMotorConfig();

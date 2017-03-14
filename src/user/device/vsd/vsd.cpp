@@ -40,7 +40,6 @@ int Vsd::setMotorTypeProfile()
 enReturns Vsd::setMotorFrequency(float value, EventType eventType)
 {
   return (enReturns)setValue(VSD_MOTOR_FREQUENCY, value, eventType);
-  // TODO: тут была функция задания максимума частоты в зависимости от типа двигателя, считаю её туда и надо перенести
 }
 
 int Vsd::setMotorCurrent(float value, EventType eventType)

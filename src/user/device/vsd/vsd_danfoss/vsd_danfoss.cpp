@@ -433,6 +433,15 @@ int VsdDanfoss::setMotorVoltage(float value, float coef, EventType eventType)
   }
 }
 
+enReturns VsdDanfoss::setMotorFrequency(float value, EventType eventType)
+{
+  int err = setValue(VSD_MOTOR_FREQUENCY, value, eventType);
+  if (!err) {
+    setMotorConfig();
+  }
+  return (enReturns)err;
+}
+
 void VsdDanfoss::setLimitsMotor()
 {
   float coefTrans = parameters.get(CCS_COEF_TRANSFORMATION);
@@ -1481,6 +1490,9 @@ uint8_t VsdDanfoss::setNewValue(uint16_t id, float value, EventType eventType)
 
   case VSD_MOTOR_CURRENT:
     return setMotorCurrent(value, eventType);
+
+  case VSD_MOTOR_FREQUENCY:
+    return setMotorFrequency(value, eventType);
 
   case VSD_FREQUENCY:
     return ksu.setFreq(value, eventType, false);
