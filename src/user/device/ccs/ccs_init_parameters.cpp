@@ -417,8 +417,8 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].physic                      = PHYSIC_VOLTAGE;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].value.float_t               = 380.0;
-  parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].max                         = 10000.0;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].min                         = 380.0;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].max                         = 500.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].def                         = 380.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE - CCS_BEGIN].code                        = 13;
@@ -8649,8 +8649,8 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].physic                = PHYSIC_VOLTAGE;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].validity              = VALIDITY_OK;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].value.float_t         = 380.0;
-  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].min                   = 300.0;
-  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].max                   = 999.0;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].min                   = 380.0;
+  parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].max                   = 500.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].discret               = 1;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].def                   = 380.0;
   parameters_[CCS_TRANS_NOMINAL_VOLTAGE_INPUT - CCS_BEGIN].code                  = 13;
@@ -8750,13 +8750,13 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].discret                  = 1;
   parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].def                      = 9999.0;
   parameters_[CCS_PROT_OTHER_RESTART_LIMIT - CCS_BEGIN].code                     = 13;
-  // Задержка АПВ защит по напряжению уставка
+  // Защиты сети задержка АПВ
   parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].id                      = CCS_PROT_SUPPLY_RESTART_DELAY;
   parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].access                  = ACCESS_OPERATOR;
   parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].operation               = OPERATION_WRITE;
   parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].physic                  = PHYSIC_TIME;
   parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].validity                = VALIDITY_OK;
-  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].value.float_t           = 3600.0;
+  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].value.float_t           = 300.0;
   parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].min                     = 0.0;
   parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].max                     = 86400.0;
   parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].discret                 = 1;

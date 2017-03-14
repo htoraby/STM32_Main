@@ -732,7 +732,7 @@ enum enID
   CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET = 726,               //!< Команда сброса уставок защиты ЧРП по умолчанию
   CCS_RGM_JARRING_COUNT = 727,                               //!< Количество встряхиваний
   CCS_PROT_OTHER_RESTART_LIMIT = 728,                        //!< Кол-во разрешенных АПВ после других защит
-  CCS_PROT_SUPPLY_RESTART_DELAY = 729,                       //!< Задержка АПВ защит по напряжению уставка
+  CCS_PROT_SUPPLY_RESTART_DELAY = 729,                       //!< Защиты сети задержка АПВ
   CCS_PROT_SUPPLY_OVERVOLTAGE_DELAY_FLAG = 730,              //!< 
   CCS_PROT_SUPPLY_UNDERVOLTAGE_DELAY_FLAG = 731,             //!< 
   CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_DELAY_FLAG = 732,        //!< 
