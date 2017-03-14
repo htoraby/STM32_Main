@@ -14025,7 +14025,7 @@
 		<min>0.0</min>
 		<max>1.0</max>
 		<def>0.0</def>
-		<discret>1</discret>
+		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Индуктивность выходного фильтра</text>
@@ -18453,7 +18453,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
-		<code>0</code>
+		<code>103</code>
 		<comment>Команда сброса статистики связи с ТМС</comment>
 	</param>
 	<param>
@@ -18474,7 +18474,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
-		<code>0</code>
+		<code>103</code>
 		<comment>Команда сброса статистики связи с ЧРП</comment>
 	</param>
 	<param>
@@ -20181,7 +20181,7 @@
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
-		<code>0</code>
+		<code>103</code>
 		<comment>СЭ. Сброс счётчиков качества связи</comment>
 	</param>
 	<param>
@@ -32086,17 +32086,17 @@
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_INDUNCTANCE</physic>
 		<min>0.0</min>
-		<max>2500.0</max>
-		<def>200.0</def>
-		<discret>10</discret>
+		<max>2.5</max>
+		<def>0.0</def>
+		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>Индуктивность выходного фильтра (114)</text>
 		<short_text>Индуктивность выходного фильтра (114)</short_text>
 		<form>3.3.4 Сервисное меню ЧРП</form>
-		<unit>INDUNCTANCE_MKH</unit>
+		<unit>INDUNCTANCE_MH</unit>
 		<unit_lcd>INDUNCTANCE_MKH</unit_lcd>
-		<format>XXXX_X</format>
+		<format>XXXX</format>
 		<code>0</code>
 		<comment>Индуктивности по оси D Danfoss 1-37 Используется в проекте</comment>
 	</param>

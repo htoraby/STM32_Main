@@ -264,6 +264,10 @@ typedef enum {
 
   VsdResetSetpointId,                 //!< Сброс уставок ЧРП
 
+  DhsConnectionCountersResetId,       //!< ТМС. Сброс счётчиков качества связи
+  VsdConnectionCountersResetId,       //!< ЧРП. Сброс счётчиков качества связи
+  EmConnectionCountersResetId,        //!< СЭ. Сброс счётчиков качества связи
+
 } EventId;
 
 #endif // LOG_IDLIST

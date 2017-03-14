@@ -19,7 +19,7 @@
 #define TIMEOUT_LCD_OFF 1000 //!< Время на отключение подсветки (мс)
 #define TIMEOUT_MASTER_OFF 3000 //!< Время на отключение верхнего контроллера (мс)
 #define TIMEOUT_SLAVE_OFF 10000 //!< Время на отключение нижнего контроллера (мс)
-#define DELAY_CHECK_CONNECT_DEVICE 1000 //!< Задержка проверки подключения устройств - 20 сек
+#define DELAY_CHECK_CONNECT_DEVICE 1000 //!< Задержка проверки подключения устройств - x*10мс
 
 //! Массив параметров устройства
 static parameter parametersArray[CCS_END - CCS_BEGIN] __attribute__((section(".extmem")));
@@ -921,7 +921,20 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(ModeCode, eventType, ModeCodeAutoId, oldValue, value);
       }
       if (value == CCS_WORKING_MODE_PROGRAM) {
+        setValue(CCS_RGM_PERIODIC_MODE, Regime::OnAction);
         logEvent.add(ModeCode, eventType, ModeCodeProgramId, oldValue, value);
+      } else {
+        setValue(CCS_RGM_PERIODIC_MODE, Regime::OffAction);
+      }
+    }
+    return err;
+  case CCS_RGM_PERIODIC_MODE:
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      if (value == Regime::OffAction) {
+        setNewValue(CCS_WORKING_MODE, CCS_WORKING_MODE_AUTO);
+      } else {
+        setNewValue(CCS_WORKING_MODE, CCS_WORKING_MODE_PROGRAM);
       }
     }
     return err;
@@ -1347,7 +1360,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(AddDeviceCode, eventType, AddDeviceDhsId, oldValue, value);
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceDhsId, oldValue, value);
-      tms->initParameters();
+      tms->resetAllDefault();
       startReboot();
     }
     return err;
@@ -1359,8 +1372,8 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceVsdId, oldValue, value);
 
-      initParameters();
-      vsd->initParameters();
+      resetAllDefault();
+      vsd->resetAllDefault();
       setValue(id, value, NoneType);
 
       startReboot();
@@ -1373,7 +1386,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(AddDeviceCode, eventType, AddDeviceEmId, oldValue, value);
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceEmId, oldValue, value);
-      em->initParameters();
+      em->resetAllDefault();
       startReboot();
     }
     return err;
@@ -1578,16 +1591,22 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     return err;
   case CCS_CMD_DHS_CONNECTION_RESET:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
+    checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
     tms->resetConnect();
+    logEvent.add(OtherCode, eventType, DhsConnectionCountersResetId);
     return err;
   case CCS_CMD_VSD_CONNECTION_RESET:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
+    checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
     vsd->resetConnect();
+    logEvent.add(OtherCode, eventType, VsdConnectionCountersResetId);
     return err;
   case CCS_CMD_EM_CONNECTION_RESET:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
+    checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
     em->resetConnect();
+    logEvent.add(OtherCode, eventType, EmConnectionCountersResetId);
     return err;
   case CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ:
     err = setValue(id, value, eventType);
@@ -1893,6 +1912,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     if (!err) {
       setDhsScadaInterface();
+      checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
       tms->resetConnect();
     }
     return err;

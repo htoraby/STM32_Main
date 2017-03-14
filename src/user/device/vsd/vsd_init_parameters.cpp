@@ -5914,9 +5914,9 @@ void Vsd::initParameters()
   parameters_[VSD_LF - VSD_BEGIN].validity                                       = VALIDITY_ERROR;
   parameters_[VSD_LF - VSD_BEGIN].value.float_t                                  = NAN;
   parameters_[VSD_LF - VSD_BEGIN].min                                            = 0.0;
-  parameters_[VSD_LF - VSD_BEGIN].max                                            = 2500.0;
-  parameters_[VSD_LF - VSD_BEGIN].def                                            = 200.0;
-  parameters_[VSD_LF - VSD_BEGIN].discret                                        = 10;
+  parameters_[VSD_LF - VSD_BEGIN].max                                            = 2.5;
+  parameters_[VSD_LF - VSD_BEGIN].def                                            = 0.0;
+  parameters_[VSD_LF - VSD_BEGIN].discret                                        = 1000;
   parameters_[VSD_LF - VSD_BEGIN].code                                           = 0;
   // Ёмкость выходного фильтра
   parameters_[VSD_CF - VSD_BEGIN].id                                             = VSD_CF;

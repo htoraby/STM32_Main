@@ -8351,7 +8351,7 @@ void Ccs::initParameters()
   parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].value.float_t                   = 0.0;
   parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].min                             = 0.0;
   parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].max                             = 1.0;
-  parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].discret                         = 1;
+  parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].discret                         = 1000;
   parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_FILTER_INDUCTANCE - CCS_BEGIN].code                            = 13;
   // Индуктивность
@@ -10957,7 +10957,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].max                      = 1.0;
   parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].discret                  = 1;
   parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].def                      = 0.0;
-  parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].code                     = 0;
+  parameters_[CCS_CMD_DHS_CONNECTION_RESET - CCS_BEGIN].code                     = 103;
   // Команда сброса статистики связи с ЧРП
   parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].id                       = CCS_CMD_VSD_CONNECTION_RESET;
   parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].access                   = ACCESS_OPERATOR;
@@ -10969,7 +10969,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].max                      = 1.0;
   parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].discret                  = 1;
   parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].def                      = 0.0;
-  parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].code                     = 0;
+  parameters_[CCS_CMD_VSD_CONNECTION_RESET - CCS_BEGIN].code                     = 103;
   // Автооптимизация по току
   parameters_[CCS_RESERVED_914 - CCS_BEGIN].id                                   = CCS_RESERVED_914;
   parameters_[CCS_RESERVED_914 - CCS_BEGIN].access                               = ACCESS_OPERATOR;
@@ -11989,7 +11989,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_EM_CONNECTION_RESET - CCS_BEGIN].max                       = 1.0;
   parameters_[CCS_CMD_EM_CONNECTION_RESET - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_CMD_EM_CONNECTION_RESET - CCS_BEGIN].def                       = 0.0;
-  parameters_[CCS_CMD_EM_CONNECTION_RESET - CCS_BEGIN].code                      = 0;
+  parameters_[CCS_CMD_EM_CONNECTION_RESET - CCS_BEGIN].code                      = 103;
   // Раскачка. Сохраненная уставка частоты до раскачки
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_FREQ - CCS_BEGIN].id                    = CCS_RGM_RUN_SWING_SETPOINT_FREQ;
   parameters_[CCS_RGM_RUN_SWING_SETPOINT_FREQ - CCS_BEGIN].access                = ACCESS_OPERATOR;

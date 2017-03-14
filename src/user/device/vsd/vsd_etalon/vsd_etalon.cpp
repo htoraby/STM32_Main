@@ -9,6 +9,7 @@
 #include "user_main.h"
 #include "regime_run_etalon.h"
 #include "vsd_etalon_log.h"
+#include "protection.h"
 
 #define BASE_VOLTAGE 380
 
@@ -369,12 +370,18 @@ void VsdEtalon::getNewValue(uint16_t id)
         parameters.set(CCS_RGM_RUN_SKIP_RESONANT_TEMP, value);
       break;
     case VSD_ETALON_AUTO_OPTIM_MODE:
-      setValue(id, value);
-      parameters.set(CCS_RGM_OPTIM_VOLTAGE_MODE, value);
+      setValue(id, value);    
+      if (parameters.get(CCS_RGM_OPTIM_VOLTAGE_MODE) && !value)
+        parameters.set(CCS_RGM_OPTIM_VOLTAGE_MODE, Regime::OffAction);
+      else if (!parameters.get(CCS_RGM_OPTIM_VOLTAGE_MODE) && value)
+        parameters.set(CCS_RGM_OPTIM_VOLTAGE_MODE, Regime::OnAction);
       break;
     case VSD_I_LIMIT_MODE:
       setValue(id, value);
-      parameters.set(CCS_RGM_CURRENT_LIMIT_MODE, value);
+      if (parameters.get(CCS_RGM_CURRENT_LIMIT_MODE) && !value)
+        parameters.set(CCS_RGM_CURRENT_LIMIT_MODE, Regime::OffAction);
+      else if (!parameters.get(CCS_RGM_CURRENT_LIMIT_MODE) && value)
+        parameters.set(CCS_RGM_CURRENT_LIMIT_MODE, Regime::OnAction);
       break;
     case VSD_ILIMIT:
       setValue(id, value);
@@ -478,9 +485,9 @@ void VsdEtalon::getNewValue(uint16_t id)
     case VSD_PROT_NO_CONNECT_MODE:
       setValue(id, value);
       if (parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE) && !value)
-        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, 0.0);
+        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, Protection::ProtModeOff);
       else if (!parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE) && value)
-        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, 3.0);
+        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, Protection::ProtModeOn);
       break;
     case VSD_PROT_NO_CONNECT_TRIP_DELAY:
       setValue(id, value);
