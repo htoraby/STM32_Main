@@ -37,6 +37,13 @@ void setGeneralStateRunMode();
  */
 bool offRunModeExcept(uint16_t id);
 
+/*!
+ * \brief offWorkRgmExcept
+ * \param id
+ * \return
+ */
+bool offWorkRgmExcept(uint16_t id);
+
 
 
 

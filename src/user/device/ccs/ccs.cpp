@@ -910,6 +910,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 {
   uint8_t err = ok_r;
   float oldValue = getValue(id);
+  //printf("setNewValue %d\n", id);
   switch (id) {
   case CCS_WORKING_MODE:
     err = setValue(id, value, NoneType);
@@ -929,12 +930,37 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     return err;
   case CCS_RGM_PERIODIC_MODE:
-    err = setValue(id, value, eventType);
-    if ((value != oldValue) && !err) {
-      if (value == Regime::OffAction) {
-        setNewValue(CCS_WORKING_MODE, CCS_WORKING_MODE_AUTO);
-      } else {
-        setNewValue(CCS_WORKING_MODE, CCS_WORKING_MODE_PROGRAM);
+    if (value != oldValue) {                          // Если новое значение
+      if (value != Regime::OffAction) {               // Если включили режим
+        err = offWorkRgmExcept(CCS_RGM_PERIODIC_MODE);
+        if (!err) {
+          err = setValue(id, value, eventType);         // Запись в регистр
+          if (!err) {
+            setNewValue(CCS_WORKING_MODE, CCS_WORKING_MODE_PROGRAM);
+          }
+        }
+      }
+      else {                                          // Выключили режим
+        err = setValue(id, value, eventType);         // Запись в регистр
+        if (!err) {                                   // Нет ошибок записи в регистр
+          setNewValue(CCS_WORKING_MODE, CCS_WORKING_MODE_AUTO);
+        }
+      }
+    }
+    return err;
+  case CCS_RGM_ALTERNATION_FREQ_MODE:
+  case CCS_RGM_CHANGE_FREQ_MODE:
+  case CCS_RGM_MAINTENANCE_PARAM_MODE:
+  case CCS_RGM_JARRING_MODE:
+    if (value != oldValue) {                          // Если новое значение
+      if (value != Regime::OffAction) {               // Если включили режим
+        err = offWorkRgmExcept(id);
+        if (!err) {
+          err = setValue(id, value, eventType);       // Запись в регистр
+        }
+      }
+      else {
+        err = setValue(id, value, eventType);         // Запись в регистр
       }
     }
     return err;
@@ -1076,21 +1102,41 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     return err;
   case CCS_RGM_OPTIM_VOLTAGE_MODE:
-    err = setValue(id, value, eventType);
-    if (value != Regime::OffAction) {
-      vsd->onRegimeAutoOptimCurrent();
-    }
-    else {
-      vsd->offRegimeAutoOptimCurrent();
+    if (value != oldValue) {
+      if (value != Regime::OffAction) {
+        err = offWorkRgmExcept(CCS_RGM_OPTIM_VOLTAGE_MODE);
+        if (!err) {
+          err = setValue(id, value, eventType);
+          if (!err) {
+            vsd->onRegimeAutoOptimCurrent();
+          }
+        }
+      }
+      else {
+        err = setValue(id, value, eventType);
+        if (!err) {
+          vsd->offRegimeAutoOptimCurrent();
+        }
+      }
     }
     return err;
   case CCS_RGM_CURRENT_LIMIT_MODE:
-    err = setValue(id, value, eventType);
-    if (value != Regime::OffAction) {
-      vsd->onRegimeCurrentLimitation();
-    }
-    else {
-      vsd->offRegimeCurrentLimitation();
+    if (value != oldValue) {
+      if (value != Regime::OffAction) {
+        //err = offWorkRgmExcept(CCS_RGM_CURRENT_LIMIT_MODE);
+        //if (!err) {
+          err = setValue(id, value, eventType);
+          if (!err) {
+            vsd->onRegimeCurrentLimitation();
+          }
+        //}
+      }
+      else {
+        err = setValue(id, value, eventType);
+        if (!err) {
+          vsd->offRegimeCurrentLimitation();
+        }
+      }
     }
     return err;
   case CCS_RGM_CURRENT_LIMIT_SETPOINT:
