@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include "common.h"
+#include "version_rev.h"
 #include "stm32f4xx_hal.h"
 #include "cmsis_os.h"
 
