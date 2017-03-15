@@ -441,8 +441,8 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].physic                          = PHYSIC_SPACE;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].validity                        = VALIDITY_OK;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].value.float_t                   = 16.0;
-  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].min                             = 1.0;
-  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].max                             = 99.0;
+  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].min                             = 13.0;
+  parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].max                             = 42.0;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].def                             = 16.0;
   parameters_[CCS_TRANS_CABLE_CROSS - CCS_BEGIN].code                            = 13;

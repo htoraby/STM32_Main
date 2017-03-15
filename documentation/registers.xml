@@ -765,8 +765,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_LIMITED</operation>
 		<physic>PHYSIC_SPACE</physic>
-		<min>1.0</min>
-		<max>99.0</max>
+		<min>13.0</min>
+		<max>42.0</max>
 		<def>16.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -776,8 +776,9 @@
 		<form>3.2 ТМПН</form>
 		<unit>SPACE_MM2</unit>
 		<unit_lcd>SPACE_MM2</unit_lcd>
-		<format>XX</format>
+		<format>TEXT</format>
 		<code>13</code>
+		<values>13-13;16-16;21-21;25-25;33-33;42-42</values>
 		<comment>Сечение кабеля</comment>
 	</param>
 	<param>
