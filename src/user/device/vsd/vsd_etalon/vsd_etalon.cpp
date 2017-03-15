@@ -105,8 +105,6 @@ bool VsdEtalon::isConnect()
 int VsdEtalon::setMotorType(float value)
 {
   if (!Vsd::setMotorType(value)) {          // Записываем в массив
-    if (value == VSD_MOTOR_TYPE_VENT) {
-    }
     writeToDevice(VSD_MOTOR_TYPE, value);   // Записываем в ЧРП
     ksu.setMaxBaseFrequency();
     return ok_r;
@@ -301,8 +299,10 @@ void VsdEtalon::getNewValue(uint16_t id)
     switch (id) {
     case VSD_MOTOR_TYPE:
       setValue(id, value);
-      if (parameters.get(CCS_MOTOR_TYPE) != value)
+      if (parameters.get(CCS_MOTOR_TYPE) != value) {
         parameters.set(CCS_MOTOR_TYPE, value);
+        ksu.setMaxBaseFrequency();
+      }
       break;
     case VSD_ETALON_ON_STATE:                 // Получили подтверждение запуска
       setValue(id, value);
