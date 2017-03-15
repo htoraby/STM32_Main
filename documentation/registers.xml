@@ -22393,6 +22393,44 @@
 	</param>
 	<param>
 		<id>1103</id>
+		<name>CCS_REVISION_SW_GUI</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Ревизия ПО GUI</text>
+		<form>7.1 Система</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<code>0</code>
+		<comment>Ревизия ПО GUI</comment>
+	</param>
+	<param>
+		<id>1104</id>
+		<name>CCS_REVISION_SW_CORE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Ревизия ПО Core</text>
+		<form>7.1 Система</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<code>0</code>
+		<comment>Ревизия ПО Core</comment>
+	</param>
+	<param>
+		<id>1105</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

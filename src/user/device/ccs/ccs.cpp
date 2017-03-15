@@ -131,6 +131,7 @@ void Ccs::initTask()
     installSw = getTime();
     setValue(CCS_DATE_INSTALL_SW_CCS, installSw, NoneType);
   }
+  setValue(CCS_REVISION_SW_CORE, VCS_REVISION, NoneType);
   if (getValueUint32(CCS_LAST_STOP_DATE_TIME) == 0)
     setValue(CCS_LAST_STOP_DATE_TIME, getTime());
 

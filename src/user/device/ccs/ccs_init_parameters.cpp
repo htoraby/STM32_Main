@@ -13238,5 +13238,29 @@ void Ccs::initParameters()
   parameters_[CCS_DHS_INTERFACE - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_DHS_INTERFACE - CCS_BEGIN].def                                 = 0.0;
   parameters_[CCS_DHS_INTERFACE - CCS_BEGIN].code                                = 13;
+  // Ревизия ПО GUI
+  parameters_[CCS_REVISION_SW_GUI - CCS_BEGIN].id                                = CCS_REVISION_SW_GUI;
+  parameters_[CCS_REVISION_SW_GUI - CCS_BEGIN].access                            = ACCESS_OPERATOR;
+  parameters_[CCS_REVISION_SW_GUI - CCS_BEGIN].operation                         = OPERATION_READ;
+  parameters_[CCS_REVISION_SW_GUI - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
+  parameters_[CCS_REVISION_SW_GUI - CCS_BEGIN].validity                          = VALIDITY_OK;
+  parameters_[CCS_REVISION_SW_GUI - CCS_BEGIN].value.float_t                     = 0.0;
+  parameters_[CCS_REVISION_SW_GUI - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_REVISION_SW_GUI - CCS_BEGIN].max                               = 999999999.9;
+  parameters_[CCS_REVISION_SW_GUI - CCS_BEGIN].discret                           = 1;
+  parameters_[CCS_REVISION_SW_GUI - CCS_BEGIN].def                               = 0.0;
+  parameters_[CCS_REVISION_SW_GUI - CCS_BEGIN].code                              = 0;
+  // Ревизия ПО Core
+  parameters_[CCS_REVISION_SW_CORE - CCS_BEGIN].id                               = CCS_REVISION_SW_CORE;
+  parameters_[CCS_REVISION_SW_CORE - CCS_BEGIN].access                           = ACCESS_OPERATOR;
+  parameters_[CCS_REVISION_SW_CORE - CCS_BEGIN].operation                        = OPERATION_READ;
+  parameters_[CCS_REVISION_SW_CORE - CCS_BEGIN].physic                           = PHYSIC_NUMERIC;
+  parameters_[CCS_REVISION_SW_CORE - CCS_BEGIN].validity                         = VALIDITY_OK;
+  parameters_[CCS_REVISION_SW_CORE - CCS_BEGIN].value.float_t                    = 0.0;
+  parameters_[CCS_REVISION_SW_CORE - CCS_BEGIN].min                              = 0.0;
+  parameters_[CCS_REVISION_SW_CORE - CCS_BEGIN].max                              = 999999999.9;
+  parameters_[CCS_REVISION_SW_CORE - CCS_BEGIN].discret                          = 1;
+  parameters_[CCS_REVISION_SW_CORE - CCS_BEGIN].def                              = 0.0;
+  parameters_[CCS_REVISION_SW_CORE - CCS_BEGIN].code                             = 0;
 }
 

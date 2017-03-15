@@ -1106,7 +1106,9 @@ enum enID
   CCS_AI_5_TYPE = 1100,                                      //!< Аналоговой вход 6. Тип входа
   CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_SENSOR = 1101,        //!< Датчик температуры фильтра
   CCS_DHS_INTERFACE = 1102,                                  //!< ТМС. Интерфейс
-  CCS_END = 1103,                                            //!< 
+  CCS_REVISION_SW_GUI = 1103,                                //!< Ревизия ПО GUI
+  CCS_REVISION_SW_CORE = 1104,                               //!< Ревизия ПО Core
+  CCS_END = 1105,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
