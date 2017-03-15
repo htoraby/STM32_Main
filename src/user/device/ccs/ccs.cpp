@@ -2017,9 +2017,9 @@ void Ccs::checkConnectDevice()
       setNewValue(CCS_EM_CONNECTION, 0);
 
     if (vsd->log() && vsd->log()->isConnect())
-      setNewValue(CCS_VSD_LOG_CONNECTION, 1);
+      setNewValue(CCS_VSD_LOG_CONNECTION, 1, NoneType);
     else
-      setNewValue(CCS_VSD_LOG_CONNECTION, 0);
+      setNewValue(CCS_VSD_LOG_CONNECTION, 0, NoneType);
 
     if (usbIsReady())
       setNewValue(CCS_USB_CONNECTION, 1);
