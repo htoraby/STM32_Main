@@ -23,9 +23,9 @@
 
 #define HARDWARE_VERSION 0x0200 // 1.0 - Ext Flash - 32мб, 2.0 - Ext Flash - 64мб
 #if (HARDWARE_VERSION >= 0x0200)
-  #define FIRMWARE_VERSION 0x0200 //
+  #define FIRMWARE_VERSION 0x0201 //
 #else
-  #define FIRMWARE_VERSION 0x0102 //
+  #define FIRMWARE_VERSION 0x0103 //
 #endif
 #define FIRMWARE_DATE __DATE__
 #define FIRMWARE_TIME __TIME__

@@ -685,8 +685,10 @@ float VsdNovomet::checkWarningVsd()
 void VsdNovomet::getNewVsdMtrType(float value)
 {
   setValue(VSD_MOTOR_TYPE, value);
-  if (parameters.get(CCS_MOTOR_TYPE) != value)
+  if (parameters.get(CCS_MOTOR_TYPE) != value) {
     parameters.set(CCS_MOTOR_TYPE, value);
+    ksu.setMaxBaseFrequency();
+  }
 }
 
 void VsdNovomet::getNewCurOutPhase1(float value)
