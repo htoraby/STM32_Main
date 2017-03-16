@@ -1,7 +1,8 @@
 #include "regime_main.h"
 
 #define COUNT_RUN_REGIMES  7                  //!< Количество пусковых режимов, увеличивать при добавлении нового
-#define COUNT_REGIMES 6
+#define COUNT_REGIMES 6                       //!< Количество технологических режимов, увеличивать при добавлении нового
+
 
 const uint16_t runRgmMode[COUNT_RUN_REGIMES] = {     //!<
   CCS_RGM_RUN_PUSH_MODE,
@@ -21,6 +22,15 @@ const uint16_t runRgmState[COUNT_RUN_REGIMES] = {     //!<
   CCS_RGM_RUN_SKIP_RESONANT_STATE,
   CCS_RGM_RUN_SYNCHRON_STATE,
   CCS_RGM_RUN_DIRECT_STATE
+};
+
+const uint16_t workRgmMode[COUNT_REGIMES][COUNT_REGIMES+1] = {
+  {CCS_RGM_PERIODIC_MODE,           1,  0,  1,  0,  0,  0},
+  {CCS_RGM_CHANGE_FREQ_MODE,        0,  1,  0,  0,  0,  0},
+  {CCS_RGM_MAINTENANCE_PARAM_MODE,  1,  0,  1,  0,  0,  0},
+  {CCS_RGM_ALTERNATION_FREQ_MODE,   0,  0,  0,  1,  0,  0},
+  {CCS_RGM_OPTIM_VOLTAGE_MODE,      0,  0,  0,  0,  1,  0},
+  {CCS_RGM_JARRING_MODE,            0,  0,  0,  0,  0,  1}
 };
 
 Regime *regimes[COUNT_REGIMES];               //!< Количество режимов, увеличивать при добавлении нового
@@ -221,13 +231,32 @@ bool offRunModeExcept(uint16_t id)
   else {                                                                        // Установка в останове
     for (int i = 0; i < COUNT_RUN_REGIMES; i++) {                               // Массив пусковых режимов
       if (id != runRgmMode[i]) {                                                // Не включаемый режим
-        err = parameters.set(runRgmMode[i], Regime::OffAction);               // Выключаем режим
-        if (err) {                                                           // Не смогли выключить режим
-          return err;                                                         // Возвращаем ошибку
+        err = parameters.set(runRgmMode[i], Regime::OffAction);                 // Выключаем режим
+        if (err) {                                                              // Не смогли выключить режим
+          return err;                                                           // Возвращаем ошибку
         }
       }
     }
     err = false;
     return err;
   }
+}
+
+bool offWorkRgmExcept(uint16_t id)
+{
+  bool err = true;
+  for (int i = 0; i < COUNT_REGIMES; i++) {                                     // Массив пусковых режимов
+    if (id == workRgmMode[i][0]) {                                              // Нашли строку с включаемым режимом
+      for (int j = 0; j < COUNT_REGIMES; j++) {                                 // Цикл по столбцам
+        if (!workRgmMode[i][j+1]) {                                             //
+          err = parameters.set(workRgmMode[j][0], Regime::OffAction);           // Выключаем режим
+          if (err) {
+            return err;                                                         // Возвращаем ошибку
+          }
+        }
+      }
+    }
+  }
+  err = false;
+  return err;
 }
