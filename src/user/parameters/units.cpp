@@ -24,10 +24,10 @@ float units[PHYSIC_LAST][MAX_CONV_ELEMS][2] =
    {1000000.0, 0.0},   //PHYSIC_TIME -> TIME_US
    {1000.0, 0.0},      //PHYSIC_TIME -> TIME_MS
    {1000.0, 0.0},      //PHYSIC_TIME -> TIME_SS_MS
-   {0.016667, 0.0},    //PHYSIC_TIME -> TIME_MM
+   {1.0/60, 0.0},      //PHYSIC_TIME -> TIME_MM
    {1.0, 0.0},         //PHYSIC_TIME -> TIME_MM_SS
-   {0.000277, 0.0},    //PHYSIC_TIME -> TIME_HH
-   {0.016667, 0.0},    //PHYSIC_TIME -> TIME_HH_MM
+   {1.0/3600, 0.0},    //PHYSIC_TIME -> TIME_HH
+   {1.0/60, 0.0},      //PHYSIC_TIME -> TIME_HH_MM
    {1.0, 0.0},         //PHYSIC_TIME -> TIME_HH_MM_SS
 },
   {{1.0, 0.0},         //PHYSIC_PERCENT -> PERCENT_PERCENT
