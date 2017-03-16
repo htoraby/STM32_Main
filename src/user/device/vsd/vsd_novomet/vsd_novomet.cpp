@@ -1026,7 +1026,7 @@ void VsdNovomet::getNewValue(uint16_t id)
   value = value * param->coefficient;
 
   // Преобразование из единиц измерения устройства в единицы КСУ
-  value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
+  value = convertTo(value, param->physic, param->unit);
 
   // Особенная обработка некоторых параметров
   switch (id) {

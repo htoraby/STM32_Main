@@ -287,7 +287,7 @@ void VsdEtalon::getNewValue(uint16_t id)
     value = value * param->coefficient;
 
     // Применяем единицы измерения
-    value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
+    value = convertTo(value, param->physic, param->unit);
   }
   else {
     value = NAN;

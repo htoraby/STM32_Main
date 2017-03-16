@@ -390,7 +390,7 @@ static void getParam(uint16_t address, uint8_t * pucFrame, uint16_t * usLen)
 
   if (param != NULL) {
     float value = param->value.float_t;
-    value = parameters.convertFrom(value, param->physic, param->unit);
+    value = convertFrom(value, param->physic, param->unit);
     value = value / param->coefficient;
     data.uint16_t[0] = decToBCD(lround(value));
   }
@@ -489,7 +489,7 @@ eMbSngException eMbSngFuncWriteRegister(uint8_t * pucFrame, uint16_t * usLen)
 
     float value = (float)data.uint32_t;
     value = value * param->coefficient;
-    value = parameters.convertTo(value, param->physic, param->unit);
+    value = convertTo(value, param->physic, param->unit);
     param->value.float_t = value;
     if (scada->setNewValue(param) != ok_r)
       return MB_SNG_EX_ILLEGAL_DATA;

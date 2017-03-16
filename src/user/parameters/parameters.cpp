@@ -366,21 +366,6 @@ float Parameters::checkZero(unsigned short id, bool reset, float value)
   return parameters.get(id);
 }
 
-
-float Parameters::convertFrom(float value, int physic, int unit)
-{
-  if (unit >= MAX_CONV_ELEMS)
-    unit = 0;
-  return (value * units[physic][unit][0] + units[physic][unit][1]);
-}
-
-float Parameters::convertTo(float value, int physic, int unit)
-{
-  if (unit >= MAX_CONV_ELEMS)
-    unit = 0;
-  return (value - (units[physic][unit][1]))/(units[physic][unit][0]);
-}
-
 void Parameters::setDelayTask()
 {
   osEvent event;

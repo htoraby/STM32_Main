@@ -125,7 +125,7 @@ eMBErrorCode Scada::readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs)
       return MB_EINVAL;
 
     float value = param->value.float_t;
-    value = parameters.convertFrom(value, param->physic, param->unit);
+    value = convertFrom(value, param->physic, param->unit);
     value = value / param->coefficient;
     unTypeData data;
     if ((param->typeData == TYPE_DATA_FLOAT) || (param->typeData == TYPE_DATA_UINT16_B) ||
@@ -202,7 +202,7 @@ eMBErrorCode Scada::writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs
     else
       value = (float)data.uint32_t;
     value = value * param->coefficient;
-    value = parameters.convertTo(value, param->physic, param->unit);
+    value = convertTo(value, param->physic, param->unit);
     param->value.float_t = value;
 
     if (setNewValue(param) != ok_r)
