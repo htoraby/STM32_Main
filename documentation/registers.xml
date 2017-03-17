@@ -387,7 +387,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.000</min>
+		<min>-20.000</min>
 		<max>20.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -408,7 +408,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.000</min>
+		<min>-20.000</min>
 		<max>20.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -429,7 +429,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.000</min>
+		<min>-20.000</min>
 		<max>20.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -450,7 +450,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.000</min>
+		<min>-20.000</min>
 		<max>20.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -12852,7 +12852,7 @@
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
-		<discret>100</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<form>NULL</form>
@@ -12871,7 +12871,7 @@
 		<min>60.0</min>
 		<max>3599940.0</max>
 		<def>7200.0</def>
-		<discret>100</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>7200.0</value>
 		<text>Прогрессивная задержка АПВ</text>
@@ -16634,7 +16634,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>-20.000</min>
 		<max>20.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -16990,7 +16990,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>-10000.0</min>
 		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -17011,7 +17011,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>-10000.0</min>
 		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -17032,7 +17032,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>-10000.0</min>
 		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -17053,7 +17053,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
+		<min>-10000.0</min>
 		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
@@ -21531,7 +21531,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.000</min>
+		<min>-20.000</min>
 		<max>20.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -21552,7 +21552,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -21594,7 +21594,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.000</min>
+		<min>-20.000</min>
 		<max>20.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -21615,7 +21615,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -21657,7 +21657,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.000</min>
+		<min>-20.000</min>
 		<max>20.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -21678,7 +21678,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -21955,7 +21955,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22081,7 +22081,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22144,7 +22144,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22207,7 +22207,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22270,7 +22270,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -31800,7 +31800,7 @@
 		<min>3600.0</min>
 		<max>26784000.0</max>
 		<def>3600.0</def>
-		<discret>10</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>3600.0</value>
 		<text>Периодичность оптимизации</text>
@@ -31808,7 +31808,7 @@
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH</unit_lcd>
-		<format>XXXX_X</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Период оптимизации</comment>
 	</param>

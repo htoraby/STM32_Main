@@ -240,6 +240,24 @@ float calcAverage3Values(float value1, float value2, float value3);
 uint32_t getTimeToEnd(uint32_t period, uint32_t time);
 
 /*!
+ * \brief Конвертация значения из формата STM
+ * \param value
+ * \param physic
+ * \param unit
+ * \return
+ */
+float convertFrom(float value, int physic, int unit);
+
+/*!
+ * \brief Конвертация значения в формат STM
+ * \param value
+ * \param physic
+ * \param unit
+ * \return
+ */
+float convertTo(float value, int physic, int unit);
+
+/*!
  * \brief Функция возвращает число value со знаком числа sign
  * \param value
  * \param sign
