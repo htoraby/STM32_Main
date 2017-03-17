@@ -395,8 +395,8 @@ void Protection::proccessingStateStop()
     if (ksu.isAutoMode()) {                 // Двигатель - работа; Режим - авто;
       if (isModeOff()) {
         restart_ = false;
-        restartCount_ = 0;
-        progressiveRestartCount_ = 0;
+//        restartCount_ = 0;
+//        progressiveRestartCount_ = 0;
       }
       else {
         if (restart_) {                     // Двигатель - работа; Режим - авто; Защита - Апв
@@ -408,8 +408,8 @@ void Protection::proccessingStateStop()
     else if (ksu.isManualMode()) {          // Двигатель - работа; Режим - ручной;
       if (isModeOff()) {
         restart_ = false;
-        restartCount_ = 0;
-        progressiveRestartCount_ = 0;
+//       restartCount_  = 0;
+//        progressiveRestartCount_ = 0;
       }
       else {
         if (restart_) {                       // Двигатель - работа; Режим - авто; Защита - Апв
@@ -480,8 +480,8 @@ void Protection::proccessingStateStop()
     }
     else {
       if (isModeOff()) {
-        restartCount_ = 0;
-        progressiveRestartCount_ = 0;
+//        restartCount_ = 0;
+//        progressiveRestartCount_ = 0;
       }
       restart_ = false;
     }
