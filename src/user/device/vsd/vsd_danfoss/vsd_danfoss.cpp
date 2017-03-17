@@ -303,7 +303,7 @@ bool VsdDanfoss::isConnect()
 
 void VsdDanfoss::setLimitsCcsParameters()
 {
-  parameters.setMin(CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT , getMax(VSD_CURRENT_LIMIT));
+  parameters.setMin(CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT , getMin(VSD_CURRENT_LIMIT));
   parameters.setMax(CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT , getMax(VSD_CURRENT_LIMIT));
   parameters.setMax(CCS_BASE_FREQUENCY, getMaxBaseFrequency());
 }
