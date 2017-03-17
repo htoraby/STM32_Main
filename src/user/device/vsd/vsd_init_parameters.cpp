@@ -5688,7 +5688,7 @@ void Vsd::initParameters()
   parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].min                      = 3600.0;
   parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].max                      = 26784000.0;
   parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].def                      = 3600.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].discret                  = 1;
+  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].discret                  = 10;
   parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].code                     = 13;
   // Задержка запуска оптимизации
   parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].id                        = VSD_ETALON_AUTO_OPTIM_DELAY;
