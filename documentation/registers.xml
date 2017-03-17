@@ -2492,7 +2492,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Пусковое время</text>
-		<short_text>Перегруз двиг.пуск.время</short_text>
+		<short_text>Перегруз двиг. пуск. время</short_text>
 		<form>4.2.1 Перегруз (ЗП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -2513,7 +2513,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
 		<text>Время</text>
-		<short_text>Перегруз двиг.время</short_text>
+		<short_text>Перегруз двиг. время</short_text>
 		<form>4.2.1 Перегруз (ЗП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -2534,7 +2534,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1800.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Перегруз двиг.зад.АПВ</short_text>
+		<short_text>Перегруз двиг. зад. АПВ</short_text>
 		<form>4.2.1 Перегруз (ЗП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -2555,7 +2555,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Перегруз двиг.раз.АПВ</short_text>
+		<short_text>Перегруз двиг. раз. АПВ</short_text>
 		<form>4.2.1 Перегруз (ЗП)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -2576,7 +2576,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ</text>
-		<short_text>Перегруз двиг.сброс счет</short_text>
+		<short_text>Перегруз двиг. сброс счет.</short_text>
 		<form>4.2.1 Перегруз (ЗП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -2597,7 +2597,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>110.0</value>
 		<text>Уставка останова</text>
-		<short_text>Перегруз двиг.уст.</short_text>
+		<short_text>Перегруз двиг. уст. остан.</short_text>
 		<form>4.2.1 Перегруз (ЗП)</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -2765,7 +2765,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Недогруз</short_text>
+		<short_text>Недогруз двиг.</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -2808,7 +2808,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Недогруз Пуск.время</short_text>
+		<short_text>Недогруз двиг. пуск. время</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -2829,7 +2829,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
 		<text>Время</text>
-		<short_text>Недогруз Время</short_text>
+		<short_text>Недогруз двиг. время</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -2850,7 +2850,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>7200.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Недогруз Зад.АПВ</short_text>
+		<short_text>Недогруз двиг. зад. АПВ</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -2871,7 +2871,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Недогруз Раз.АПВ</short_text>
+		<short_text>Недогруз двиг. раз.АПВ</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -2892,7 +2892,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ</text>
-		<short_text>Недогруз Сброс счет.</short_text>
+		<short_text>Недогруз двиг. сброс счет.</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -2913,7 +2913,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
 		<text>Уставка останова</text>
-		<short_text>Недогруз Уст.остан.</short_text>
+		<short_text>Недогруз двиг. уст. остан.</short_text>
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -2955,7 +2955,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Недогруз двиг.авто.уст.</text>
-		<short_text>Недогруз двиг.авто.уст.</short_text>
+		<short_text>Недогруз двиг. авто. уст.</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -3082,7 +3082,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Предел тока двиг.РРЗ</short_text>
+		<short_text>Предел тока двиг.</short_text>
 		<form>4.2.6 Предел тока</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -3167,7 +3167,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Предел тока двиг.зад.АПВ</short_text>
+		<short_text>Предел тока двиг. зад. АПВ</short_text>
 		<form>4.2.6 Предел тока</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -3188,7 +3188,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Предел тока двиг.раз.АПВ</short_text>
+		<short_text>Предел тока двиг. раз. АПВ</short_text>
 		<form>4.2.6 Предел тока</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -3209,7 +3209,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ</text>
-		<short_text>Предел тока двиг.сброс счет</short_text>
+		<short_text>Предел тока двиг. сброс счет.</short_text>
 		<form>4.2.6 Предел тока</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -3230,7 +3230,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>160.0</value>
 		<text>Уставка останова</text>
-		<short_text>Предел тока двиг.уст.</short_text>
+		<short_text>Предел тока двиг. уст. остан.</short_text>
 		<form>4.2.6 Предел тока</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -3398,7 +3398,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Дисб.тока двиг.</short_text>
+		<short_text>Дисб. тока двиг.</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -3441,7 +3441,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Дисб.тока двиг.пуск.время</short_text>
+		<short_text>Дисб. тока двиг. пуск. время</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -3462,7 +3462,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
 		<text>Время</text>
-		<short_text>Дисб.тока двиг.время</short_text>
+		<short_text>Дисб. тока двиг. время</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -3483,7 +3483,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1800.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Дисб.тока двиг.зад.АПВ</short_text>
+		<short_text>Дисб. тока двиг. зад. АПВ</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -3504,7 +3504,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Дисб.тока двиг.раз.АПВ</short_text>
+		<short_text>Дисб. тока двиг. раз. АПВ</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -3525,7 +3525,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
 		<text>Сброс счетчиков АПВ</text>
-		<short_text>Дисб.тока двиг.сброс счет</short_text>
+		<short_text>Дисб. тока двиг. сброс счет.</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -3546,7 +3546,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Уставка останова</text>
-		<short_text>Дисб.тока двиг.уст.</short_text>
+		<short_text>Дисб. тока двиг. уст. остан.</short_text>
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -3567,7 +3567,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Уставка пуска</text>
-		<short_text>Дисб.тока двиг.АПВ</short_text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -3833,7 +3833,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Уставка останова</text>
-		<short_text>Турб.вращение Уст.останова</short_text>
+		<short_text>Турб.вращение уст.остан.</short_text>
 		<form>4.2.4 Турбинное вращение</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
