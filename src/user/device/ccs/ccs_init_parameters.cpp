@@ -225,7 +225,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
-  parameters_[CCS_AI_1_VALUE - CCS_BEGIN].min                                    = -20.000;
+  parameters_[CCS_AI_1_VALUE - CCS_BEGIN].min                                    = 0.000;
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].max                                    = 20.000;
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].discret                                = 1000;
   parameters_[CCS_AI_1_VALUE - CCS_BEGIN].def                                    = 0.0;
@@ -237,7 +237,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
-  parameters_[CCS_AI_2_VALUE - CCS_BEGIN].min                                    = -20.000;
+  parameters_[CCS_AI_2_VALUE - CCS_BEGIN].min                                    = 0.000;
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].max                                    = 20.000;
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].discret                                = 1000;
   parameters_[CCS_AI_2_VALUE - CCS_BEGIN].def                                    = 0.0;
@@ -249,7 +249,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
-  parameters_[CCS_AI_3_VALUE - CCS_BEGIN].min                                    = -20.000;
+  parameters_[CCS_AI_3_VALUE - CCS_BEGIN].min                                    = 0.000;
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].max                                    = 20.000;
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].discret                                = 1000;
   parameters_[CCS_AI_3_VALUE - CCS_BEGIN].def                                    = 0.0;
@@ -261,7 +261,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
-  parameters_[CCS_AI_4_VALUE - CCS_BEGIN].min                                    = -20.000;
+  parameters_[CCS_AI_4_VALUE - CCS_BEGIN].min                                    = 0.000;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].max                                    = 20.000;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].discret                                = 1000;
   parameters_[CCS_AI_4_VALUE - CCS_BEGIN].def                                    = 0.0;
@@ -7643,7 +7643,7 @@ void Ccs::initParameters()
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].value.float_t               = 0.0;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].min                         = 0.0;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].max                         = 999999999.9;
-  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].discret                     = 1;
+  parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].discret                     = 100;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].def                         = 0.0;
   parameters_[CCS_TIMER_DIFFERENT_START - CCS_BEGIN].code                        = 0;
   // Защита ЗСП: Прогрессивная задержка АПВ
@@ -7655,7 +7655,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].value.float_t = 7200.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].min    = 60.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].max    = 3599940.0;
-  parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].discret = 1;
+  parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].discret = 100;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].def    = 7200.0;
   parameters_[CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_DELAY - CCS_BEGIN].code   = 13;
   // Защита ЗСП: Счётчик АПВ для вычисления прогрессивной задержки
@@ -8760,7 +8760,7 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].min                     = 0.0;
   parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].max                     = 86400.0;
   parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].discret                 = 1;
-  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].def                     = 3600.0;
+  parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].def                     = 300.0;
   parameters_[CCS_PROT_SUPPLY_RESTART_DELAY - CCS_BEGIN].code                    = 13;
   // 
   parameters_[CCS_PROT_SUPPLY_OVERVOLTAGE_DELAY_FLAG - CCS_BEGIN].id             = CCS_PROT_SUPPLY_OVERVOLTAGE_DELAY_FLAG;
@@ -9861,7 +9861,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_5_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[CCS_AI_5_VALUE - CCS_BEGIN].validity                               = VALIDITY_ERROR;
   parameters_[CCS_AI_5_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
-  parameters_[CCS_AI_5_VALUE - CCS_BEGIN].min                                    = -20.000;
+  parameters_[CCS_AI_5_VALUE - CCS_BEGIN].min                                    = 0.0;
   parameters_[CCS_AI_5_VALUE - CCS_BEGIN].max                                    = 20.000;
   parameters_[CCS_AI_5_VALUE - CCS_BEGIN].discret                                = 1000;
   parameters_[CCS_AI_5_VALUE - CCS_BEGIN].def                                    = 0.0;
@@ -10065,7 +10065,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_1_VALUE_CALC - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_AI_1_VALUE_CALC - CCS_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[CCS_AI_1_VALUE_CALC - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_AI_1_VALUE_CALC - CCS_BEGIN].min                               = -10000.0;
+  parameters_[CCS_AI_1_VALUE_CALC - CCS_BEGIN].min                               = 0.0;
   parameters_[CCS_AI_1_VALUE_CALC - CCS_BEGIN].max                               = 10000.0;
   parameters_[CCS_AI_1_VALUE_CALC - CCS_BEGIN].discret                           = 1;
   parameters_[CCS_AI_1_VALUE_CALC - CCS_BEGIN].def                               = 0.0;
@@ -10077,7 +10077,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_2_VALUE_CALC - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_AI_2_VALUE_CALC - CCS_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[CCS_AI_2_VALUE_CALC - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_AI_2_VALUE_CALC - CCS_BEGIN].min                               = -10000.0;
+  parameters_[CCS_AI_2_VALUE_CALC - CCS_BEGIN].min                               = 0.0;
   parameters_[CCS_AI_2_VALUE_CALC - CCS_BEGIN].max                               = 10000.0;
   parameters_[CCS_AI_2_VALUE_CALC - CCS_BEGIN].discret                           = 1;
   parameters_[CCS_AI_2_VALUE_CALC - CCS_BEGIN].def                               = 0.0;
@@ -10089,7 +10089,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_3_VALUE_CALC - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_AI_3_VALUE_CALC - CCS_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[CCS_AI_3_VALUE_CALC - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_AI_3_VALUE_CALC - CCS_BEGIN].min                               = -10000.0;
+  parameters_[CCS_AI_3_VALUE_CALC - CCS_BEGIN].min                               = 0.0;
   parameters_[CCS_AI_3_VALUE_CALC - CCS_BEGIN].max                               = 10000.0;
   parameters_[CCS_AI_3_VALUE_CALC - CCS_BEGIN].discret                           = 1;
   parameters_[CCS_AI_3_VALUE_CALC - CCS_BEGIN].def                               = 0.0;
@@ -10101,7 +10101,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_4_VALUE_CALC - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_AI_4_VALUE_CALC - CCS_BEGIN].validity                          = VALIDITY_ERROR;
   parameters_[CCS_AI_4_VALUE_CALC - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_AI_4_VALUE_CALC - CCS_BEGIN].min                               = -10000.0;
+  parameters_[CCS_AI_4_VALUE_CALC - CCS_BEGIN].min                               = 0.0;
   parameters_[CCS_AI_4_VALUE_CALC - CCS_BEGIN].max                               = 10000.0;
   parameters_[CCS_AI_4_VALUE_CALC - CCS_BEGIN].discret                           = 1;
   parameters_[CCS_AI_4_VALUE_CALC - CCS_BEGIN].def                               = 0.0;
@@ -12753,7 +12753,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_6_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[CCS_AI_6_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
   parameters_[CCS_AI_6_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
-  parameters_[CCS_AI_6_VALUE - CCS_BEGIN].min                                    = -20.000;
+  parameters_[CCS_AI_6_VALUE - CCS_BEGIN].min                                    = 0.000;
   parameters_[CCS_AI_6_VALUE - CCS_BEGIN].max                                    = 20.000;
   parameters_[CCS_AI_6_VALUE - CCS_BEGIN].discret                                = 1000;
   parameters_[CCS_AI_6_VALUE - CCS_BEGIN].def                                    = 0.0;
@@ -12765,7 +12765,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].min                               = -1.000;
   parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].max                               = 1.000;
   parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].discret                           = 1000;
   parameters_[CCS_AI_6_ZERO_SHIFT - CCS_BEGIN].def                               = 0.0;
@@ -12789,7 +12789,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_7_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[CCS_AI_7_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
   parameters_[CCS_AI_7_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
-  parameters_[CCS_AI_7_VALUE - CCS_BEGIN].min                                    = -20.000;
+  parameters_[CCS_AI_7_VALUE - CCS_BEGIN].min                                    = 0.000;
   parameters_[CCS_AI_7_VALUE - CCS_BEGIN].max                                    = 20.000;
   parameters_[CCS_AI_7_VALUE - CCS_BEGIN].discret                                = 1000;
   parameters_[CCS_AI_7_VALUE - CCS_BEGIN].def                                    = 0.0;
@@ -12801,7 +12801,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].min                               = -1.000;
   parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].max                               = 1.000;
   parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].discret                           = 1000;
   parameters_[CCS_AI_7_ZERO_SHIFT - CCS_BEGIN].def                               = 0.0;
@@ -12825,7 +12825,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_8_VALUE - CCS_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[CCS_AI_8_VALUE - CCS_BEGIN].validity                               = VALIDITY_OK;
   parameters_[CCS_AI_8_VALUE - CCS_BEGIN].value.float_t                          = 0.0;
-  parameters_[CCS_AI_8_VALUE - CCS_BEGIN].min                                    = -20.000;
+  parameters_[CCS_AI_8_VALUE - CCS_BEGIN].min                                    = 0.000;
   parameters_[CCS_AI_8_VALUE - CCS_BEGIN].max                                    = 20.000;
   parameters_[CCS_AI_8_VALUE - CCS_BEGIN].discret                                = 1000;
   parameters_[CCS_AI_8_VALUE - CCS_BEGIN].def                                    = 0.0;
@@ -12837,7 +12837,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].min                               = -1.000;
   parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].max                               = 1.000;
   parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].discret                           = 1000;
   parameters_[CCS_AI_8_ZERO_SHIFT - CCS_BEGIN].def                               = 0.0;
@@ -12993,7 +12993,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].min                               = -1.000;
   parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].max                               = 1.000;
   parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].discret                           = 1000;
   parameters_[CCS_AI_5_ZERO_SHIFT - CCS_BEGIN].def                               = 0.0;
@@ -13065,7 +13065,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].min                               = -1.000;
   parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].max                               = 1.000;
   parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].discret                           = 1000;
   parameters_[CCS_AI_1_ZERO_SHIFT - CCS_BEGIN].def                               = 0.0;
@@ -13101,7 +13101,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].min                               = -1.000;
   parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].max                               = 1.000;
   parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].discret                           = 1000;
   parameters_[CCS_AI_2_ZERO_SHIFT - CCS_BEGIN].def                               = 0.0;
@@ -13137,7 +13137,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].min                               = -1.000;
   parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].max                               = 1.000;
   parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].discret                           = 1000;
   parameters_[CCS_AI_3_ZERO_SHIFT - CCS_BEGIN].def                               = 0.0;
@@ -13173,7 +13173,7 @@ void Ccs::initParameters()
   parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].physic                            = PHYSIC_NUMERIC;
   parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].validity                          = VALIDITY_OK;
   parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].min                               = 0.0;
+  parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].min                               = -1.000;
   parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].max                               = 1.000;
   parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].discret                           = 1000;
   parameters_[CCS_AI_4_ZERO_SHIFT - CCS_BEGIN].def                               = 0.0;
