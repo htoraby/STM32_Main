@@ -17,6 +17,7 @@ ProtectionOverloadMotor::ProtectionOverloadMotor()
   idDelayFlag_ = CCS_PROT_MOTOR_OVERLOAD_DELAY_FLAG;
   idState_ = CCS_PROT_MOTOR_OVERLOAD_STATE;
   idTimer_ = CCS_PROT_MOTOR_OVERLOAD_TIME;
+
   idRestartCount_ = CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT;
   idRestartFirstTime_ = CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME;
 
