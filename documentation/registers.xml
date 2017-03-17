@@ -819,7 +819,7 @@
 		<form>3.2 ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Напряжение отпайки</comment>
 	</param>
@@ -1073,7 +1073,7 @@
 		<form>4.1.1 Повышенное напряжение</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -1347,6 +1347,7 @@
 		<form>4.1.2 Пониженное напряжение</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -2559,7 +2560,7 @@
 		<form>4.2.1 Перегруз (ЗП)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -2601,7 +2602,7 @@
 		<form>4.2.1 Перегруз (ЗП)</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -2875,7 +2876,7 @@
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -2917,7 +2918,7 @@
 		<form>4.2.2 Недогруз (ЗСП)</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -3192,7 +3193,7 @@
 		<form>4.2.6 Предел тока</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -3234,7 +3235,7 @@
 		<form>4.2.6 Предел тока</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -3550,7 +3551,7 @@
 		<form>4.2.3 Дисбаланс токов двигателя</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>13</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -3837,7 +3838,7 @@
 		<form>4.2.4 Турбинное вращение</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -4377,7 +4378,7 @@
 		<form>4.3.1 Давление на приёме насоса</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -4695,7 +4696,7 @@
 		<form>4.3.3 Температура двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -4737,7 +4738,7 @@
 		<form>4.3.3 Температура двигателя</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Уставка срабатывания защиты</comment>
 	</param>
@@ -4758,7 +4759,7 @@
 		<form>4.3.3 Температура двигателя</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Условие АПВ уставка</comment>
 	</param>
@@ -5611,7 +5612,7 @@
 		<form>4.4.1 Защита по аналоговому входу 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -5926,7 +5927,7 @@
 		<form>4.4.2 Защита по аналоговому входу 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -6241,7 +6242,7 @@
 		<form>4.4.3 Защита по аналоговому входу 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -6556,7 +6557,7 @@
 		<form>4.4.4 Защита по аналоговому входу 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -6871,7 +6872,7 @@
 		<form>4.5.1 Защита по цифровому входу 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -7186,7 +7187,7 @@
 		<form>4.5.2 Защита по цифровому входу 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -7501,7 +7502,7 @@
 		<form>4.5.3 Защита по цифровому входу 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -7816,7 +7817,7 @@
 		<form>4.5.4 Защита по цифровому входу 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -8641,6 +8642,7 @@
 		<text>Разрешено АПВ</text>
 		<short_text>Аппарат.защиты ЧРП раз.АПВ</short_text>
 		<form>4.6.3 Аппаратные защиты ЧРП</form>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -9659,6 +9661,7 @@
 		<text>Состояние</text>
 		<short_text>Поддержание</short_text>
 		<form>5.1.4 Поддержание параметра</form>
+		<format>TEXT</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Включение</comment>
 	</param>
@@ -9677,6 +9680,7 @@
 		<text>Параметр</text>
 		<short_text>Поддержание. Параметр</short_text>
 		<form>5.1.4 Поддержание параметра</form>
+		<format>TEXT</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Тип параметра</comment>
 	</param>
@@ -9695,6 +9699,7 @@
 		<text>Зависимость</text>
 		<short_text>Поддержание. Зависимость</short_text>
 		<form>5.1.4 Поддержание параметра</form>
+		<format>TEXT</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Зависимость</comment>
 	</param>
@@ -9780,7 +9785,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>200.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -9788,6 +9793,7 @@
 		<text>Минимальная частота</text>
 		<short_text>Поддержание. Мин. F</short_text>
 		<form>5.1.4 Поддержание параметра</form>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Мин рабочая частота</comment>
 	</param>
@@ -9806,6 +9812,7 @@
 		<text>Максимальная частота</text>
 		<short_text>Поддержание. Макс. F</short_text>
 		<form>5.1.4 Поддержание параметра</form>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Макс рабочая частота</comment>
 	</param>
@@ -9974,7 +9981,7 @@
 		<form>5.1.10 Режим учёт нагрева кабеля</form>
 		<unit>RESIST_CABLE_KOM_M</unit>
 		<unit_lcd>RESIST_CABLE_KOM_M</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Режим Учёт нагрева кабеля сопротивление при 20с</comment>
 	</param>
@@ -9995,7 +10002,7 @@
 		<form>5.1.10 Режим учёт нагрева кабеля</form>
 		<unit>RESIST_CABLE_KOM_M</unit>
 		<unit_lcd>RESIST_CABLE_KOM_M</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Режим Учёт нагрева кабеля сопротивление при 80с</comment>
 	</param>
@@ -10016,7 +10023,7 @@
 		<form>5.1.10 Режим учёт нагрева кабеля</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Режим Учёт нагрева кабеля номинальный ток кабеля</comment>
 	</param>
@@ -10079,7 +10086,7 @@
 		<form>5.1.5 Режим оптимизации напряжения</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>13</code>
 		<comment>Режим оптимизации напряжения Максимальное отклонение от U/f</comment>
 	</param>
@@ -10100,7 +10107,7 @@
 		<form>5.1.5 Режим оптимизации напряжения</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>13</code>
 		<comment>Режим оптимизации напряжения шаг</comment>
 	</param>
@@ -11190,7 +11197,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Тип СУ</comment>
 	</param>
@@ -11211,7 +11218,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Код завода изготовителя СУ</comment>
 	</param>
@@ -11274,7 +11281,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Примечание 1</comment>
 	</param>
@@ -11295,7 +11302,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Примечание 2</comment>
 	</param>
@@ -11316,7 +11323,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Примечание 3</comment>
 	</param>
@@ -11337,7 +11344,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Примечание 4</comment>
 	</param>
@@ -11358,7 +11365,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Примечание 5</comment>
 	</param>
@@ -11379,7 +11386,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Примечание 6</comment>
 	</param>
@@ -11400,7 +11407,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Примечание 7</comment>
 	</param>
@@ -11421,7 +11428,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Примечание 8</comment>
 	</param>
@@ -11442,7 +11449,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Примечание 9</comment>
 	</param>
@@ -11463,7 +11470,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Примечание 10</comment>
 	</param>
@@ -11862,7 +11869,7 @@
 		<form>7.3 Телемеханика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXXXXXX</format>
 		<code>13</code>
 		<comment>Адресу СУ в телемеханике</comment>
 	</param>
@@ -12216,6 +12223,7 @@
 		<text>Сброс всех СчтчАПВ</text>
 		<short_text>Сброс всех СчтчАПВ</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>6</code>
 	</param>
 	<param>
@@ -12231,6 +12239,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12248,6 +12257,7 @@
 		<text>СбросСчтчАПВ защит по сети</text>
 		<short_text>СбросСчтчАПВ защит по сети</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>6</code>
 	</param>
 	<param>
@@ -12285,6 +12295,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Повышен.напряж. Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12302,6 +12313,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Понижен.напряж. Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12319,6 +12331,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Дисбал.напряж. Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12336,6 +12349,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Дисбал.токов. Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12351,6 +12365,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12368,6 +12383,7 @@
 		<text>СбросСчтчАПВ защит двигателя</text>
 		<short_text>СбросСчтчАПВ защит двигателя</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>6</code>
 	</param>
 	<param>
@@ -12405,6 +12421,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Перегруз двиг. Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12422,6 +12439,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Недогруз двиг. Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12439,6 +12457,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Дисб.тока.двиг. Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12456,6 +12475,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Турбин.вращение. Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12472,6 +12492,7 @@
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12489,6 +12510,7 @@
 		<text>СбросСчтчАПВ защит ТМС</text>
 		<short_text>СбросСчтчАПВ защит ТМС</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>6</code>
 	</param>
 	<param>
@@ -12504,6 +12526,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12521,6 +12544,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Рвх.нас. Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12538,6 +12562,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Т обмотки ПЭД. Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12555,6 +12580,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Сопр.изоляции. Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12572,6 +12598,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Вибрация двиг. Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12587,6 +12614,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12604,6 +12632,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Аналог.вх.1 Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12621,6 +12650,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Аналог.вх.2 Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12638,6 +12668,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Аналог.вх.3 Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12655,6 +12686,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Аналог.вх.4 Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12670,6 +12702,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12687,6 +12720,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Цифр.вх.1 Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12704,6 +12738,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Цифр.вх.2 Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12721,6 +12756,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Цифр.вх.3 Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -12738,6 +12774,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Цифр.вх.4 Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 	</param>
 	<param>
@@ -13577,7 +13614,7 @@
 		<form>5.1.3 Программного изменения частоты</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Начальная уставка ЗСП режима "Программного изменения частоты"</comment>
 	</param>
@@ -13640,7 +13677,7 @@
 		<form>3.2.1.2 Толчковый</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXX_XX</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Частота толчка в режиме пуска "Толчковый"</comment>
 	</param>
@@ -13703,7 +13740,7 @@
 		<form>3.2.1.2 Толчковый</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXX_X</format>
+		<format>XXX_X</format>
 		<code>13</code>
 		<comment>Напряжение толчка в режиме пуска "Толчковый"</comment>
 	</param>
@@ -13724,7 +13761,7 @@
 		<form>3.2.1.2 Толчковый</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>13</code>
 		<comment>Количество толчков в режиме пуска "Толчковый"</comment>
 	</param>
@@ -13787,7 +13824,7 @@
 		<form>3.2.1.3 Раскачка</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXX_XX</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Частота толчка в режиме пуска "Раскачка"</comment>
 	</param>
@@ -13808,7 +13845,7 @@
 		<form>3.2.1.3 Раскачка</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXX_X</format>
+		<format>XXX_X</format>
 		<code>13</code>
 		<comment>Напряжение толчка в режиме пуска "Раскачка"</comment>
 	</param>
@@ -13829,7 +13866,7 @@
 		<form>3.2.1.3 Раскачка</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>13</code>
 		<comment>Количество толчков в режиме пуска "Раскачка"</comment>
 	</param>
@@ -13969,6 +14006,7 @@
 		<text>Состояние</text>
 		<short_text>Подхват. Состояние</short_text>
 		<form>NULL</form>
+		<format>TEXT</format>
 		<code>13</code>
 		<comment>Подхват. Состояние</comment>
 	</param>
@@ -14097,7 +14135,7 @@
 		<form>3.2 ТМПН</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Напряжение короткого замыкания ТМПН</comment>
 	</param>
@@ -14589,7 +14627,7 @@
 		<form>3.2 ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Максимальная рабочее напряжение (базовое)</comment>
 	</param>
@@ -14672,6 +14710,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Аппарат.защиты ЧРП. Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 		<comment>Команда сброса уставок защиты ЧРП по умолчанию</comment>
 	</param>
@@ -15631,7 +15670,7 @@
 		<form>3.2 ТМПН</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Максимальная рабочая частота (базовая)</comment>
 	</param>
@@ -15925,7 +15964,7 @@
 		<form>3.2.1.2 Толчковый</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXX_XX</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Частота толчка в режиме пуска "Толчковый"</comment>
 	</param>
@@ -15946,7 +15985,7 @@
 		<form>3.2.1.2 Толчковый</form>
 		<unit>ANGLE_DEGREES</unit>
 		<unit_lcd>ANGLE_DEGREES</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Угол качания в режиме пуска "Толчковый"</comment>
 	</param>
@@ -15967,7 +16006,7 @@
 		<form>3.2.1.2 Толчковый</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Количество оборотов двигателя в режиме пуска "Толчковый"</comment>
 	</param>
@@ -15988,7 +16027,7 @@
 		<form>3.2.1.2 Толчковый</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>13</code>
 		<comment>Кратность напряжения импульса расклинки в режиме пуска "Толчковый"</comment>
 	</param>
@@ -16009,7 +16048,7 @@
 		<form>3.2.1.2 Толчковый</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Токоограничение в режиме в режиме пуска "Толчковый"</comment>
 	</param>
@@ -16030,7 +16069,7 @@
 		<form>3.2.1.2 Толчковый</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Порог токоограничения импульса в режиме пуска "Толчковый"</comment>
 	</param>
@@ -16051,7 +16090,7 @@
 		<form>3.2.1.3 С раскачкой</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXX_XX</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Частота толчка в режиме пуска "С раскачкой"</comment>
 	</param>
@@ -16072,7 +16111,7 @@
 		<form>3.2.1.3 С раскачкой</form>
 		<unit>ANGLE_DEGREES</unit>
 		<unit_lcd>ANGLE_DEGREES</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Угол качания в режиме пуска "С раскачкой"</comment>
 	</param>
@@ -16093,7 +16132,7 @@
 		<form>3.2.1.3 С раскачкой</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Количество качаний на угол в режиме пуска "С раскачкой"</comment>
 	</param>
@@ -16114,7 +16153,7 @@
 		<form>3.2.1.3 С раскачкой</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Количество оборотов двигателя в режиме пуска "С раскачкой"</comment>
 	</param>
@@ -16135,7 +16174,7 @@
 		<form>3.2.1.3 С раскачкой</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>13</code>
 		<comment>Кратность напряжения импульса расклинки в режиме пуска "С раскачкой"</comment>
 	</param>
@@ -16156,7 +16195,7 @@
 		<form>3.2.1.3 С раскачкой</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Токоограничение в режиме в режиме пуска "С раскачкой"</comment>
 	</param>
@@ -16177,7 +16216,7 @@
 		<form>3.2.1.3 С раскачкой</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Порог токоограничения импульса в режиме пуска "С раскачкой"</comment>
 	</param>
@@ -18559,6 +18598,7 @@
 		<text>Сбросить значения уставок по умолчанию?</text>
 		<short_text>Превыш.пусков Сброс уставок</short_text>
 		<form>NULL</form>
+		<format>NULL</format>
 		<code>106</code>
 		<comment>Команда сброса уставок защиты Превышение числа пусков по умолчанию</comment>
 	</param>
@@ -19034,7 +19074,7 @@
 		<form>4.3.2 Давление на выкиде насоса</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -20561,7 +20601,7 @@
 		<form>NULL</form>
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
-		<format>XXXX_X</format>
+		<format>XX_X</format>
 		<code>13</code>
 		<comment>Скорость изменения частоты режима пуска "Пропуск резонансных частот"</comment>
 	</param>
@@ -20855,7 +20895,7 @@
 		<form>3.1 Двигатель</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<values>1;2;500;1000;3000;6000;8500</values>
 		<comment>Профиль настроек двигателя в ЧРП</comment>
@@ -22815,7 +22855,7 @@
 		<form>3.1 Двигатель</form>
 		<unit>RPM_RPM</unit>
 		<unit_lcd>RPM_RPM</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXXX</format>
 		<code>13</code>
 		<comment>Скорость двигателя Danfoss 1-25 Используется в проекте, интерфейс</comment>
 	</param>
@@ -22836,7 +22876,7 @@
 		<form>3.1 Двигатель</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Частота двигателя Danfoss 1-23 Используется в проекте, интерфейс Novomet 0х0043 IREG_MOTOR_F_MAх</comment>
 	</param>
@@ -22857,7 +22897,7 @@
 		<form>3.1 Двигатель</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXX_XX</format>
+		<format>X_XX</format>
 		<code>13</code>
 		<comment>Номинальный косинус Фи Danfoss 14-43 Используется в проекте</comment>
 	</param>
@@ -23062,7 +23102,7 @@
 		<form>3.3.3 Настройка U/f</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Первая точка напряжения U/f характеристика</comment>
 	</param>
@@ -23104,7 +23144,7 @@
 		<form>3.3.3 Настройка U/f</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Вторая точка напряжения U/f характеристика</comment>
 	</param>
@@ -23146,7 +23186,7 @@
 		<form>3.3.3 Настройка U/f</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Третья точка напряжения U/f характеристика</comment>
 	</param>
@@ -23188,7 +23228,7 @@
 		<form>3.3.3 Настройка U/f</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Четвертая точка напряжения U/f характеристика</comment>
 	</param>
@@ -23230,7 +23270,7 @@
 		<form>3.3.3 Настройка U/f</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Пятая точка напряжения U/f характеристика</comment>
 	</param>
@@ -23272,7 +23312,7 @@
 		<form>3.3.3 Настройка U/f</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Шестая точка напряжения U/f характеристика</comment>
 	</param>
@@ -23371,7 +23411,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Напряжение защиты от КЗ инвертора.</comment>
 	</param>
@@ -23494,7 +23534,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Температура включения главного вентилятора.</comment>
 	</param>
@@ -23515,7 +23555,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Температура выключения главного вентилятора.</comment>
 	</param>
@@ -23557,7 +23597,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Температура срабатывания тепловой защиты радиаторов</comment>
 	</param>
@@ -23612,7 +23652,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Уставка частоты "тревожного" режима</comment>
 	</param>
@@ -23691,6 +23731,7 @@
 		<text>Напряжение форсировки</text>
 		<short_text>Подхват. Напряжение форсировки</short_text>
 		<form>NULL</form>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Подхват. Напряжение форсировки</comment>
 	</param>
@@ -23709,6 +23750,7 @@
 		<text>Частота форсировки</text>
 		<short_text>Подхват. Частота форсировки</short_text>
 		<form>NULL</form>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Подхват. Частота форсировки</comment>
 	</param>
@@ -24070,7 +24112,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Порог защиты ПЧ по превыщению напряжения на инверторе</comment>
 	</param>
@@ -24091,7 +24133,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>13</code>
 		<comment>Порог защиты ПЧ по несимметрии входного напряжения на инверторе</comment>
 	</param>
@@ -24189,7 +24231,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Постоянная времени системы подавления резонанса</comment>
 	</param>
@@ -24310,7 +24352,7 @@
 		<form>Режим подхвата</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Напряжение остаточного напряжения на шине (окончания разряда) в режиме остановки турбинного вращения (для ВД)</comment>
 	</param>
@@ -24331,6 +24373,7 @@
 		<form>Режим подхвата</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Начальная частота режима остановки турбинного вращения (для АД)</comment>
 	</param>
@@ -24441,7 +24484,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Величина измерительного тока автонастройки</comment>
 	</param>
@@ -24462,7 +24505,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Величина измерительного напряжения автонастройки</comment>
 	</param>
@@ -24970,7 +25013,7 @@
 		<form>Режим подхвата</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Стартовое напряжение торможения авторотации</comment>
 	</param>
@@ -24991,7 +25034,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Ток тепловой защиты ПЧ длительный</comment>
 	</param>
@@ -25069,7 +25112,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Масштаб измеряемого напряжения ПЧ отн. базового 250А</comment>
 	</param>
@@ -25090,7 +25133,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Масштаб измеряемого тока ПЧ отн. базового 250А</comment>
 	</param>
@@ -28961,7 +29004,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Температура пласта</comment>
 	</param>
@@ -29044,7 +29087,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXX_X</format>
+		<format>X_X</format>
 		<code>13</code>
 		<comment>Коэф.МТЗ мотор</comment>
 	</param>
@@ -29087,7 +29130,7 @@
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>13</code>
 		<comment>Максимально допустимое отклонение частоты векторного режима</comment>
 	</param>
@@ -29234,7 +29277,7 @@
 		<form>NULL</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Ток при частоте 0Гц</comment>
 	</param>
@@ -29255,7 +29298,7 @@
 		<form>NULL</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Ток в точке VSD_UF_CHARACTERISTIC_F_1</comment>
 	</param>
@@ -29276,7 +29319,7 @@
 		<form>NULL</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Ток в точке VSD_UF_CHARACTERISTIC_F_2</comment>
 	</param>
@@ -29297,7 +29340,7 @@
 		<form>NULL</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Ток в точке VSD_UF_CHARACTERISTIC_F_3</comment>
 	</param>
@@ -29318,7 +29361,7 @@
 		<form>NULL</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Ток в точке VSD_UF_CHARACTERISTIC_F_4</comment>
 	</param>
@@ -29339,7 +29382,7 @@
 		<form>NULL</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Ток в точке VSD_UF_CHARACTERISTIC_F_5</comment>
 	</param>
@@ -29360,7 +29403,7 @@
 		<form>NULL</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Ток в точке VSD_UF_CHARACTERISTIC_F_6</comment>
 	</param>
@@ -31344,7 +31387,7 @@
 		<form>NULL</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Порог срабатывания тепловой защиты для радиатора IGBT</comment>
 	</param>
@@ -31365,7 +31408,7 @@
 		<form>NULL</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Порог срабатывания тепловой защиты для радиатора тиристоров</comment>
 	</param>
@@ -31386,7 +31429,7 @@
 		<form>NULL</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Порог срабатывания тепловой защиты для воздуха верхнего отсека СУ</comment>
 	</param>
@@ -31472,7 +31515,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>13</code>
 		<comment>Кратность стартового напряжения</comment>
 	</param>
@@ -31493,7 +31536,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>13</code>
 	</param>
 	<param>
@@ -34039,6 +34082,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>NULL</format>
 		<code>103</code>
 		<comment>Сброс PIC V2</comment>
 	</param>
@@ -34059,6 +34103,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>X</format>
 		<code>103</code>
 		<comment>Сброс пассивных утечек тока</comment>
 	</param>
@@ -34100,6 +34145,7 @@
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>X</format>
 		<code>103</code>
 		<comment>Включение режима RSR</comment>
 	</param>
