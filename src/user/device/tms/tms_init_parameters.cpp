@@ -38,7 +38,7 @@ void Tms::initParameters()
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].def                               = 0.0;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].discret                           = 1000;
   parameters_[TMS_PRESSURE_INTAKE - TMS_BEGIN].code                              = 0;
-  // Температура обмоток двигателя
+  // Температура обмотки двигателя
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].id                            = TMS_TEMPERATURE_WINDING;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].access                        = ACCESS_OPERATOR;
   parameters_[TMS_TEMPERATURE_WINDING - TMS_BEGIN].operation                     = OPERATION_READ;
@@ -170,7 +170,7 @@ void Tms::initParameters()
   parameters_[TMS_MAX_PRESSURE_INTAKE - TMS_BEGIN].def                           = 0.0;
   parameters_[TMS_MAX_PRESSURE_INTAKE - TMS_BEGIN].discret                       = 1;
   parameters_[TMS_MAX_PRESSURE_INTAKE - TMS_BEGIN].code                          = 0;
-  // Максимальная температура обмоток
+  // Максимальная температура обмотки
   parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].id                        = TMS_MAX_TEMPERATURE_WINDING;
   parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].access                    = ACCESS_OPERATOR;
   parameters_[TMS_MAX_TEMPERATURE_WINDING - TMS_BEGIN].operation                 = OPERATION_READ;
@@ -1394,7 +1394,7 @@ void Tms::initParameters()
   parameters_[TMS_TEMPERATURE_INTAKE_2 - TMS_BEGIN].def                          = 0.0;
   parameters_[TMS_TEMPERATURE_INTAKE_2 - TMS_BEGIN].discret                      = 10;
   parameters_[TMS_TEMPERATURE_INTAKE_2 - TMS_BEGIN].code                         = 0;
-  // Температура обмоток двигателя 2
+  // Температура обмотоки двигателя 2
   parameters_[TMS_TEMPERATURE_WINDING_2 - TMS_BEGIN].id                          = TMS_TEMPERATURE_WINDING_2;
   parameters_[TMS_TEMPERATURE_WINDING_2 - TMS_BEGIN].access                      = ACCESS_OPERATOR;
   parameters_[TMS_TEMPERATURE_WINDING_2 - TMS_BEGIN].operation                   = OPERATION_READ;

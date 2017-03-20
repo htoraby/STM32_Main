@@ -1615,7 +1615,7 @@ enum enID
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме
-  TMS_TEMPERATURE_WINDING = 15003,                           //!< Температура обмоток двигателя
+  TMS_TEMPERATURE_WINDING = 15003,                           //!< Температура обмотки двигателя
   TMS_TEMPERATURE_INTAKE = 15004,                            //!< Температура на приёме
   TMS_ACCELERATION_X_INTAKE = 15005,                         //!< Ускорение по оси X на приёме
   TMS_ACCELERATION_Y_INTAKE = 15006,                         //!< Ускорение по оси Y на приёме
@@ -1626,7 +1626,7 @@ enum enID
   TMS_ACCELERATION_XY_INTAKE = 15011,                        //!< Ускорение по оси Y на приёме
   TMS_ACCELERATIN_XYZ_INTAKE = 15012,                        //!< Ускорение по оси по трём осям
   TMS_MAX_PRESSURE_INTAKE = 15013,                           //!< Максимальное давление на приёме
-  TMS_MAX_TEMPERATURE_WINDING = 15014,                       //!< Максимальная температура обмоток
+  TMS_MAX_TEMPERATURE_WINDING = 15014,                       //!< Максимальная температура обмотки
   TMS_MAX_TEMPERATURE_INTAKE = 15015,                        //!< Максимальная температура на приёме
   TMS_MAX_ACCELERATION_INTAKE = 15016,                       //!< Максимальное ускорение
   TMS_FAIL_LINK_TMSP = 15017,                                //!< Обрыв связи с ТМСП
@@ -1728,7 +1728,7 @@ enum enID
   TMS_PRESSURE_INTAKE_2 = 15113,                             //!< Давление на приёме 2
   TMS_PRESSURE_DISCHARGE_2 = 15114,                          //!< Давление на выкиде 2
   TMS_TEMPERATURE_INTAKE_2 = 15115,                          //!< Температура на приёме 2
-  TMS_TEMPERATURE_WINDING_2 = 15116,                         //!< Температура обмоток двигателя 2
+  TMS_TEMPERATURE_WINDING_2 = 15116,                         //!< Температура обмотоки двигателя 2
   TMS_END = 15117,                                           //!< 
   EM_BEGIN = 20000,                                          //!< Первый параметр группы счётчиков электроэнергии
   EM_VOLTAGE_PHASE_1 = 20001,                                //!< Напряжение первой фазы

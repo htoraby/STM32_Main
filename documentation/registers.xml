@@ -11859,7 +11859,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>255.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -11869,7 +11869,7 @@
 		<form>7.3 Телемеханика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Адресу СУ в телемеханике</comment>
 	</param>
@@ -32433,7 +32433,7 @@
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
 		<format>XXX_XX</format>
 		<code>0</code>
-		<comment>Температура обмоток двигателя</comment>
+		<comment>Температура обмотки двигателя</comment>
 	</param>
 	<param>
 		<id>15004</id>
@@ -32655,7 +32655,7 @@
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
 		<format>XXXXXX</format>
 		<code>0</code>
-		<comment>Максимальная температура обмоток</comment>
+		<comment>Максимальная температура обмотки</comment>
 	</param>
 	<param>
 		<id>15015</id>
@@ -34479,7 +34479,7 @@
 		<unit_lcd>TEMPERATURE_F</unit_lcd>
 		<format>XXX_X</format>
 		<code>0</code>
-		<comment>Температура обмоток двигателя 2</comment>
+		<comment>Температура обмотоки двигателя 2</comment>
 	</param>
 	<param>
 		<id>15117</id>
