@@ -12013,14 +12013,14 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Вибрация</text>
-		<short_text>Вибрация</short_text>
+		<text>Виброускорение</text>
+		<short_text>Виброускорение</short_text>
 		<form>7.4 Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<code>13</code>
-		<values>0-G;1-м/с2</values>
+		<values>0-G;1-м/с2;2-мм/с2</values>
 		<comment>Единицы измерения вибрации</comment>
 	</param>
 	<param>
