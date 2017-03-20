@@ -6970,7 +6970,7 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].validity                            = VALIDITY_OK;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].value.float_t                       = 0.0;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].min                                 = 0.0;
-  parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].max                                 = 999999999.9;
+  parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].max                                 = 255.0;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].discret                             = 1;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].def                                 = 0.0;
   parameters_[CCS_SCADA_ADDRESS - CCS_BEGIN].code                                = 13;

@@ -11859,7 +11859,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>255.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -11869,7 +11869,7 @@
 		<form>7.3 Телемеханика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Адресу СУ в телемеханике</comment>
 	</param>
