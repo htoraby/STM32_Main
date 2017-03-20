@@ -2,8 +2,7 @@
 #include "protection_main.h"
 
 Protection::Protection()
-  : workWithAlarmFlag_(false)
-  , resetRestartDelayFlag_(false)
+  : resetRestartDelayFlag_(false)
   , alarm_(false)
   , attempt_(false)
   , delay_(false)
@@ -216,7 +215,7 @@ void Protection::processingStateRun()       // Состояние работа
         setStateStop();
       }
       else if (isModeBlock()) {             // Двигатель - работа; Режим - авто; Защита - блок;
-        if (alarm_ && !workWithAlarmFlag_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
+        if (alarm_ ) {                      // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
           if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();         // Зафиксировали время начала задержки срабатывания
 #if (USE_LOG_DEBUG == 1)
@@ -289,7 +288,7 @@ void Protection::processingStateRun()       // Состояние работа
         }
       }
       else if (isModeOn()) {                 // Двигатель - работа; Режим - авто; Защита - Вкл;
-        if (alarm_ && !workWithAlarmFlag_) { // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме
+        if (alarm_ ) {                       // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме
           if ((timer_ == 0) && tripDelay_) { // Двигатель - работа; Режим - авто; Защита - Вкл; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();          // Зафиксировали время начала задержки срабатывания
 #if (USE_LOG_DEBUG == 1)
@@ -320,7 +319,7 @@ void Protection::processingStateRun()       // Состояние работа
         setStateStop();
       }
       else {                                // Двигатель - работа; Режим - авто; Защита - вкл;
-        if (alarm_ && !workWithAlarmFlag_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
+        if (alarm_) {                       // Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме
           if ((timer_ == 0) && tripDelay_) {// Двигатель - работа; Режим - авто; Защита - блок; Параметр - не в норме; Срабатывание - начало;
             timer_ = ksu.getTime();         // Зафиксировали время начала задержки срабатывания
 #if (USE_LOG_DEBUG == 1)

@@ -35,6 +35,11 @@ ProtectionOverloadMotor::~ProtectionOverloadMotor()
 
 }
 
+bool ProtectionOverloadMotor::externalCheckAlarm()
+{
+  return checkAlarm();
+}
+
 void ProtectionOverloadMotor::getOtherSetpointProt()
 {
   // Пересчёт задержки срабатывания в зависимости от загрузки двигателя
@@ -54,13 +59,13 @@ void ProtectionOverloadMotor::getOtherSetpointProt()
     checkTripDelay = tripDelay_;
   }
 
-  // Если включен режим работы с пониженным сопротивлением изоляции
-  // и изоляция ниже уставки, сбрасываем в 0 задержки активации и срабатывания
-  if (ksu.getValue(CCS_PROT_DHS_RESISTANCE_PREVENT) ||
-      ksu.getValue(CCS_PROT_DHS_RESISTANCE_PARAMETER)) {
-    activDelay_ = 0.0;
-    tripDelay_ = 0.0;
-  }
+//  // Если включен режим работы с пониженным сопротивлением изоляции
+//  // и изоляция ниже уставки, сбрасываем в 0 задержки активации и срабатывания
+//  if (ksu.getValue(CCS_PROT_DHS_RESISTANCE_PREVENT) ||
+//      ksu.getValue(CCS_PROT_DHS_RESISTANCE_PARAMETER)) {
+//    activDelay_ = 0.0;
+//    tripDelay_ = 0.0;
+//  }
 
   // Вывод текущего перегруза и текущей задержки срабатывания на экран
   if (delayCalc < 5) {
