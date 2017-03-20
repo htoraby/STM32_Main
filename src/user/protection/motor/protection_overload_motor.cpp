@@ -17,6 +17,7 @@ ProtectionOverloadMotor::ProtectionOverloadMotor()
   idDelayFlag_ = CCS_PROT_MOTOR_OVERLOAD_DELAY_FLAG;
   idState_ = CCS_PROT_MOTOR_OVERLOAD_STATE;
   idTimer_ = CCS_PROT_MOTOR_OVERLOAD_TIME;
+
   idRestartCount_ = CCS_PROT_MOTOR_OVERLOAD_RESTART_COUNT;
   idRestartFirstTime_ = CCS_PROT_MOTOR_OVERLOAD_RESTART_FIRST_TIME;
 
@@ -32,6 +33,11 @@ ProtectionOverloadMotor::ProtectionOverloadMotor()
 ProtectionOverloadMotor::~ProtectionOverloadMotor()
 {
 
+}
+
+bool ProtectionOverloadMotor::externalCheckAlarm()
+{
+  return checkAlarm();
 }
 
 void ProtectionOverloadMotor::getOtherSetpointProt()
@@ -53,13 +59,13 @@ void ProtectionOverloadMotor::getOtherSetpointProt()
     checkTripDelay = tripDelay_;
   }
 
-  // Если включен режим работы с пониженным сопротивлением изоляции
-  // и изоляция ниже уставки, сбрасываем в 0 задержки активации и срабатывания
-  if (ksu.getValue(CCS_PROT_DHS_RESISTANCE_PREVENT) ||
-      ksu.getValue(CCS_PROT_DHS_RESISTANCE_PARAMETER)) {
-    activDelay_ = 0.0;
-    tripDelay_ = 0.0;
-  }
+//  // Если включен режим работы с пониженным сопротивлением изоляции
+//  // и изоляция ниже уставки, сбрасываем в 0 задержки активации и срабатывания
+//  if (ksu.getValue(CCS_PROT_DHS_RESISTANCE_PREVENT) ||
+//      ksu.getValue(CCS_PROT_DHS_RESISTANCE_PARAMETER)) {
+//    activDelay_ = 0.0;
+//    tripDelay_ = 0.0;
+//  }
 
   // Вывод текущего перегруза и текущей задержки срабатывания на экран
   if (delayCalc < 5) {

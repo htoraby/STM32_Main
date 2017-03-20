@@ -557,6 +557,8 @@ bool Ccs::checkCanStart(bool isForce)
         addEventProtectionPrevent();
         return false;
       }
+      if (parameters.get(CCS_LAST_RUN_REASON_TMP) != LastReasonRunOperator)
+         return false;
     }
     else {
       setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);

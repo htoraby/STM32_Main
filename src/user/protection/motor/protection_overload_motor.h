@@ -12,6 +12,7 @@ public:
   ProtectionOverloadMotor();
   ~ProtectionOverloadMotor();
 
+  bool externalCheckAlarm();
 private:
   void getOtherSetpointProt();
 
