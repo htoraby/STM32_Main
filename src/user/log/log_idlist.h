@@ -123,25 +123,25 @@ typedef enum {
   DigitalInput4ApvDisabledId,      //!< "АПВ запрещено: Цифровой вход 4"
   DigitalInput4ProtBlockedId,      //!< "Блокировка по защите: Цифровой вход 4"
 
-  AnalogInput1ProtReactId,        //!< "Сработала защита: Аналоговый вход 1"
-  AnalogInput1ApvId,              //!< "АПВ по защите: Аналоговый вход 1"
-  AnalogInput1ApvDisabledId,      //!< "АПВ запрещено: Аналоговый вход 1"
-  AnalogInput1ProtBlockedId,      //!< "Блокировка по защите: Аналоговый вход 1"
+  AnalogInput1MinProtReactId, //!< "Сработала защита: По мин.сигналу аналогового входа 1"
+  AnalogInput1ApvId,          //!< "АПВ по защите: Аналоговый вход 1"
+  AnalogInput1ApvDisabledId,  //!< "АПВ запрещено: Аналоговый вход 1"
+  AnalogInput1ProtBlockedId,  //!< "Блокировка по защите: Аналоговый вход 1"
 
-  AnalogInput2ProtReactId,        //!< "Сработала защита: Аналоговый вход 2"
-  AnalogInput2ApvId,              //!< "АПВ по защите: Аналоговый вход 2"
-  AnalogInput2ApvDisabledId,      //!< "АПВ запрещено: Аналоговый вход 2"
-  AnalogInput2ProtBlockedId,      //!< "Блокировка по защите: Аналоговый вход 2"
+  AnalogInput2MinProtReactId, //!< "Сработала защита: По мин.сигналу аналогового входа 2"
+  AnalogInput2ApvId,          //!< "АПВ по защите: Аналоговый вход 2"
+  AnalogInput2ApvDisabledId,  //!< "АПВ запрещено: Аналоговый вход 2"
+  AnalogInput2ProtBlockedId,  //!< "Блокировка по защите: Аналоговый вход 2"
 
-  AnalogInput3ProtReactId,        //!< "Сработала защита: Аналоговый вход 3"
-  AnalogInput3ApvId,              //!< "АПВ по защите: Аналоговый вход 3"
-  AnalogInput3ApvDisabledId,      //!< "АПВ запрещено: Аналоговый вход 3"
-  AnalogInput3ProtBlockedId,      //!< "Блокировка по защите: Аналоговый вход 3"
+  AnalogInput3MinProtReactId, //!< "Сработала защита: По мин.сигналу аналогового входа 3"
+  AnalogInput3ApvId,          //!< "АПВ по защите: Аналоговый вход 3"
+  AnalogInput3ApvDisabledId,  //!< "АПВ запрещено: Аналоговый вход 3"
+  AnalogInput3ProtBlockedId,  //!< "Блокировка по защите: Аналоговый вход 3"
 
-  AnalogInput4ProtReactId,        //!< "Сработала защита: Аналоговый вход 4"
-  AnalogInput4ApvId,              //!< "АПВ по защите: Аналоговый вход 4"
-  AnalogInput4ApvDisabledId,      //!< "АПВ запрещено: Аналоговый вход 4"
-  AnalogInput4ProtBlockedId,      //!< "Блокировка по защите: Аналоговый вход 4"
+  AnalogInput4MinProtReactId, //!< "Сработала защита: По мин.сигналу аналогового входа 4"
+  AnalogInput4ApvId,          //!< "АПВ по защите: Аналоговый вход 4"
+  AnalogInput4ApvDisabledId,  //!< "АПВ запрещено: Аналоговый вход 4"
+  AnalogInput4ProtBlockedId,  //!< "Блокировка по защите: Аналоговый вход 4"
 
   ImbalanceCurInProtReactId,      //!< "Сработала защита: Дисбаланс токов"
   ImbalanceCurInApvId,            //!< "АПВ по защите: Дисбаланс токов"
@@ -267,6 +267,11 @@ typedef enum {
   DhsConnectionCountersResetId,       //!< ТМС. Сброс счётчиков качества связи
   VsdConnectionCountersResetId,       //!< ЧРП. Сброс счётчиков качества связи
   EmConnectionCountersResetId,        //!< СЭ. Сброс счётчиков качества связи
+
+  AnalogInput1MaxProtReactId, //!< "Сработала защита: По макc.сигналу аналогового входа 1"
+  AnalogInput2MaxProtReactId, //!< "Сработала защита: По макc.сигналу аналогового входа 2"
+  AnalogInput3MaxProtReactId, //!< "Сработала защита: По макc.сигналу аналогового входа 3"
+  AnalogInput4MaxProtReactId, //!< "Сработала защита: По макc.сигналу аналогового входа 4"
 
 } EventId;
 
