@@ -5642,9 +5642,9 @@
 		<name>CCS_PROT_AI_1_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_PERCENT</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
@@ -5652,32 +5652,32 @@
 		<text>Минимальное значение</text>
 		<short_text>Аналог.вх.1 Уставка Мин.</short_text>
 		<form>4.4.1 Защита по аналоговому входу 1</form>
-		<unit>PERCENT_PERCENT</unit>
-		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXX_X</format>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Минимальное значение</comment>
+		<comment>Аналог.вх.1 Уставка Мин.</comment>
 	</param>
 	<param>
 		<id>276</id>
 		<name>CCS_PROT_AI_1_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_PERCENT</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Максимальное значение</text>
-		<short_text>Аналог.вх.1 Уставка Макс.</short_text>
+		<text>Минимальное значение АПВ</text>
+		<short_text>Аналог.вх.1 Уставка Мин. АПВ</short_text>
 		<form>4.4.1 Защита по аналоговому входу 1</form>
-		<unit>PERCENT_PERCENT</unit>
-		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXX_X</format>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Максимальное значение</comment>
+		<comment>Аналог.вх.1 Уставка Мин. АПВ</comment>
 	</param>
 	<param>
 		<id>277</id>
@@ -5691,14 +5691,14 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Номинальное значение</text>
-		<short_text>Аналог.вх.1 Уставка Ном.</short_text>
+		<text>Максимальное значение</text>
+		<short_text>Аналог.вх.1 Уставка Макс.</short_text>
 		<form>4.4.1 Защита по аналоговому входу 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Номинальное значение</comment>
+		<comment>Аналог.вх.1 Уставка Макс.</comment>
 	</param>
 	<param>
 		<id>278</id>
@@ -5957,9 +5957,9 @@
 		<name>CCS_PROT_AI_2_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_PERCENT</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
@@ -5967,32 +5967,32 @@
 		<text>Минимальное значение</text>
 		<short_text>Аналог.вх.2 Уставка Мин.</short_text>
 		<form>4.4.2 Защита по аналоговому входу 2</form>
-		<unit>PERCENT_PERCENT</unit>
-		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXX_X</format>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Минимальное значение</comment>
+		<comment>Аналог.вх.2 Уставка Мин.</comment>
 	</param>
 	<param>
 		<id>291</id>
 		<name>CCS_PROT_AI_2_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_PERCENT</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Максимальное значение</text>
-		<short_text>Аналог.вх.2 Уставка Макс.</short_text>
+		<text>Минимальное значение АПВ</text>
+		<short_text>Аналог.вх.2 Уставка Мин. АПВ</short_text>
 		<form>4.4.2 Защита по аналоговому входу 2</form>
-		<unit>PERCENT_PERCENT</unit>
-		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXX_X</format>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Максимальное значение</comment>
+		<comment>Аналог.вх.2 Уставка Мин. АПВ</comment>
 	</param>
 	<param>
 		<id>292</id>
@@ -6006,14 +6006,14 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Номинальное значение</text>
-		<short_text>Аналог.вх.2 Уставка Ном.</short_text>
+		<text>Максимальное значение</text>
+		<short_text>Аналог.вх.2 Уставка Макс.</short_text>
 		<form>4.4.2 Защита по аналоговому входу 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Номинальное значение</comment>
+		<comment>Аналог.вх.2 Уставка Макс.</comment>
 	</param>
 	<param>
 		<id>293</id>
@@ -6272,9 +6272,9 @@
 		<name>CCS_PROT_AI_3_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_PERCENT</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6282,32 +6282,32 @@
 		<text>Минимальное значение</text>
 		<short_text>Аналог.вх.3 Уставка Мин.</short_text>
 		<form>4.4.3 Защита по аналоговому входу 3</form>
-		<unit>PERCENT_PERCENT</unit>
-		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXX_X</format>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Минимальное значение</comment>
+		<comment>Аналог.вх.3 Уставка Мин.</comment>
 	</param>
 	<param>
 		<id>306</id>
 		<name>CCS_PROT_AI_3_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_PERCENT</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Максимальное значение</text>
-		<short_text>Аналог.вх.3 Уставка Макс.</short_text>
+		<text>Минимальное значение АПВ</text>
+		<short_text>Аналог.вх.3 Уставка Мин. АПВ</short_text>
 		<form>4.4.3 Защита по аналоговому входу 3</form>
-		<unit>PERCENT_PERCENT</unit>
-		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXX_X</format>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Максимальное значение</comment>
+		<comment>Аналог.вх.3 Уставка Мин. АПВ</comment>
 	</param>
 	<param>
 		<id>307</id>
@@ -6321,14 +6321,14 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Номинальное значение</text>
-		<short_text>Аналог.вх.3 Уставка Ном.</short_text>
+		<text>Максимальное значение</text>
+		<short_text>Аналог.вх.3 Уставка Макс.</short_text>
 		<form>4.4.3 Защита по аналоговому входу 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Номинальное значение</comment>
+		<comment>Аналог.вх.3 Уставка Макс.</comment>
 	</param>
 	<param>
 		<id>308</id>
@@ -6587,9 +6587,9 @@
 		<name>CCS_PROT_AI_4_TRIP_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_PERCENT</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
@@ -6597,32 +6597,32 @@
 		<text>Минимальное значение</text>
 		<short_text>Аналог.вх.4 Уставка Мин.</short_text>
 		<form>4.4.4 Защита по аналоговому входу 4</form>
-		<unit>PERCENT_PERCENT</unit>
-		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXX_X</format>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Минимальное значение</comment>
+		<comment>Аналог.вх.4 Уставка Мин.</comment>
 	</param>
 	<param>
 		<id>321</id>
 		<name>CCS_PROT_AI_4_RESTART_SETPOINT</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_PERCENT</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>1000.0</max>
+		<max>10000.0</max>
 		<def>0.0</def>
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Максимальное значение</text>
-		<short_text>Аналог.вх.4 Уставка Макс.</short_text>
+		<text>Минимальное значение АПВ</text>
+		<short_text>Аналог.вх.4 Уставка Мин. АПВ</short_text>
 		<form>4.4.4 Защита по аналоговому входу 4</form>
-		<unit>PERCENT_PERCENT</unit>
-		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXX_X</format>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Максимальное значение</comment>
+		<comment>Аналог.вх.4 Уставка Мин. АПВ</comment>
 	</param>
 	<param>
 		<id>322</id>
@@ -6636,14 +6636,14 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Номинальное значение</text>
-		<short_text>Аналог.вх.4 Уставка Ном.</short_text>
+		<text>Максимальное значение</text>
+		<short_text>Аналог.вх.4 Уставка Макс.</short_text>
 		<form>4.4.4 Защита по аналоговому входу 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Номинальное значение</comment>
+		<comment>Аналог.вх.4 Уставка Макс.</comment>
 	</param>
 	<param>
 		<id>323</id>
@@ -16694,7 +16694,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>12.0</max>
+		<max>6.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -16778,7 +16778,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>12.0</max>
+		<max>6.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -16862,7 +16862,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>12.0</max>
+		<max>6.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -16946,7 +16946,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>12.0</max>
+		<max>6.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -22472,6 +22472,174 @@
 	</param>
 	<param>
 		<id>1105</id>
+		<name>CCS_AI_1_PARAM_UNITS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>5.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Единицы измерения</text>
+		<short_text>Ан.вх.1. Ед. измерения</short_text>
+		<form>4.4.1 Защита по аналоговому входу 1</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 1. Единицы измерения</comment>
+	</param>
+	<param>
+		<id>1106</id>
+		<name>CCS_AI_2_PARAM_UNITS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>5.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Единицы измерения</text>
+		<short_text>Ан.вх.2. Ед. измерения</short_text>
+		<form>4.4.2 Защита по аналоговому входу 2</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 2. Единицы измерения</comment>
+	</param>
+	<param>
+		<id>1107</id>
+		<name>CCS_AI_3_PARAM_UNITS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>5.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Единицы измерения</text>
+		<short_text>Ан.вх.3. Ед. измерения</short_text>
+		<form>4.4.3 Защита по аналоговому входу 3</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 3. Единицы измерения</comment>
+	</param>
+	<param>
+		<id>1108</id>
+		<name>CCS_AI_4_PARAM_UNITS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>5.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Единицы измерения</text>
+		<short_text>Ан.вх.4. Ед. измерения</short_text>
+		<form>4.4.4 Защита по аналоговому входу 4</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<comment>Аналоговой вход 4. Единицы измерения</comment>
+	</param>
+	<param>
+		<id>1109</id>
+		<name>CCS_PROT_AI_1_RESTART_SETPOINT_MAX</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Максимальное значение АПВ</text>
+		<short_text>Аналог.вх.1 Уставка Макс. АПВ</short_text>
+		<form>4.4.1 Защита по аналоговому входу 1</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Максимальное значение</comment>
+	</param>
+	<param>
+		<id>1110</id>
+		<name>CCS_PROT_AI_2_RESTART_SETPOINT_MAX</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Максимальное значение АПВ</text>
+		<short_text>Аналог.вх.1 Уставка Макс. АПВ</short_text>
+		<form>4.4.1 Защита по аналоговому входу 2</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Максимальное значение</comment>
+	</param>
+	<param>
+		<id>1111</id>
+		<name>CCS_PROT_AI_3_RESTART_SETPOINT_MAX</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Максимальное значение АПВ</text>
+		<short_text>Аналог.вх.1 Уставка Макс. АПВ</short_text>
+		<form>4.4.1 Защита по аналоговому входу 3</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Максимальное значение</comment>
+	</param>
+	<param>
+		<id>1112</id>
+		<name>CCS_PROT_AI_4_RESTART_SETPOINT_MAX</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>10000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Максимальное значение АПВ</text>
+		<short_text>Аналог.вх.1 Уставка Макс. АПВ</short_text>
+		<form>4.4.1 Защита по аналоговому входу 4</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Максимальное значение</comment>
+	</param>
+	<param>
+		<id>1113</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>
@@ -22954,7 +23122,7 @@
 		<form>NULL</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>0</code>
 		<comment>Напряжение холостого хода</comment>
 	</param>
@@ -27930,7 +28098,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>0</code>
 		<comment>Нижний предел регулирования для ВД</comment>
 	</param>
@@ -27951,7 +28119,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XX</format>
 		<code>0</code>
 		<comment>Верхний предел регулирования для ВД</comment>
 	</param>
@@ -27993,7 +28161,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>ANGLE_DEGREES</unit>
 		<unit_lcd>ANGLE_DEGREES</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>0</code>
 		<comment>Максимальный угол дельта тета положения ротора для ВД</comment>
 	</param>
@@ -28228,7 +28396,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>0</code>
 		<comment>Сдвиг между фазным током и АЦП для ВД</comment>
 	</param>
@@ -28249,7 +28417,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>0</code>
 		<comment>Сдвиг фазы ТМПН и ДЛ</comment>
 	</param>
@@ -28292,7 +28460,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>0</code>
 		<comment>Номинальный ток СУ</comment>
 	</param>
@@ -28941,7 +29109,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>0</code>
 		<comment>Максимальная рабочая частота (базовая)</comment>
 	</param>
@@ -28962,7 +29130,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>0</code>
 		<comment>Максимальное рабочие напряжение</comment>
 	</param>
@@ -32180,7 +32348,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>INDUNCTANCE_MH</unit>
 		<unit_lcd>INDUNCTANCE_MKH</unit_lcd>
-		<format>XXXX</format>
+		<format>X_X</format>
 		<code>0</code>
 		<comment>Индуктивности по оси D Danfoss 1-37 Используется в проекте</comment>
 	</param>
@@ -32201,7 +32369,7 @@
 		<form>3.3.4 Сервисное меню ЧРП</form>
 		<unit>CAPACITY_MKF</unit>
 		<unit_lcd>CAPACITY_MKF</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>0</code>
 		<comment>Ёмкость выходного фильтра</comment>
 	</param>
@@ -32219,7 +32387,7 @@
 		<value>NAN</value>
 		<text>Добавка уровня токоограничения двигателя (212)</text>
 		<form>3.3.4 Сервисное меню ЧРП</form>
-		<format>XXXXXX</format>
+		<format>XXXX</format>
 		<code>0</code>
 	</param>
 	<param>
@@ -32239,7 +32407,7 @@
 		<form>Режим подхвата</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>0</code>
 		<comment>Токоограничение при подхвате</comment>
 	</param>
@@ -35448,7 +35616,7 @@
 		<form>3.5 Счётчик</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>0</code>
 		<comment>Коэффицинт трансформации тока</comment>
 	</param>

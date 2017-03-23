@@ -1965,6 +1965,31 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       tms->resetConnect();
     }
     return err;
+  case CCS_AI_1_PARAMETER:
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      setValue(CCS_AI_1_PARAM_UNITS, 0.0, NoneType);
+    }
+    return err;
+  case CCS_AI_2_PARAMETER:
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      setValue(CCS_AI_2_PARAM_UNITS, 0.0, NoneType);
+    }
+    return err;
+  case CCS_AI_3_PARAMETER:
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      setValue(CCS_AI_3_PARAM_UNITS, 0.0, NoneType);
+    }
+    return err;
+  case CCS_AI_4_PARAMETER:
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      setValue(CCS_AI_4_PARAM_UNITS, 0.0, NoneType);
+    }
+    return err;
+
   default:
     return setValue(id, value, eventType);
   }

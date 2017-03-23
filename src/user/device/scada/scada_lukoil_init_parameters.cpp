@@ -3099,7 +3099,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[257].command          = OPERATION_ERROR;
   scadaParameters_[257].value.float_t    = 0;
   // Максимально допустимое значение сигнала на аналог. входе 1
-  scadaParameters_[258].id               = 0;
+  scadaParameters_[258].id               = CCS_PROT_AI_1_PARAMETER;
   scadaParameters_[258].address          = 895;
   scadaParameters_[258].operation        = OPERATION_WRITE;
   scadaParameters_[258].physic           = PHYSIC_NUMERIC;
@@ -3111,7 +3111,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[258].command          = OPERATION_ERROR;
   scadaParameters_[258].value.float_t    = 0;
   // Минимально допустимое значение сигнала на аналог. входе 1
-  scadaParameters_[259].id               = 0;
+  scadaParameters_[259].id               = CCS_PROT_AI_1_TRIP_SETPOINT;
   scadaParameters_[259].address          = 896;
   scadaParameters_[259].operation        = OPERATION_WRITE;
   scadaParameters_[259].physic           = PHYSIC_NUMERIC;
@@ -3267,7 +3267,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[271].command          = OPERATION_ERROR;
   scadaParameters_[271].value.float_t    = 0;
   // Максимально допустимое значение сигнала на аналог. входе 2
-  scadaParameters_[272].id               = 0;
+  scadaParameters_[272].id               = CCS_PROT_AI_2_PARAMETER;
   scadaParameters_[272].address          = 909;
   scadaParameters_[272].operation        = OPERATION_WRITE;
   scadaParameters_[272].physic           = PHYSIC_NUMERIC;
@@ -3279,7 +3279,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[272].command          = OPERATION_ERROR;
   scadaParameters_[272].value.float_t    = 0;
   // Минимально допустимое значение сигнала на аналог. входе 2
-  scadaParameters_[273].id               = 0;
+  scadaParameters_[273].id               = CCS_PROT_AI_2_TRIP_SETPOINT;
   scadaParameters_[273].address          = 910;
   scadaParameters_[273].operation        = OPERATION_WRITE;
   scadaParameters_[273].physic           = PHYSIC_NUMERIC;
