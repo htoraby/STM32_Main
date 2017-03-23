@@ -3133,7 +3133,7 @@
 		<name>Контроль сигнала на аналог. входе 1</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_AI_1_PARAMETER</id>
 		<address>895</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -3145,7 +3145,7 @@
 		<name>Максимально допустимое значение сигнала на аналог. входе 1</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_AI_1_TRIP_SETPOINT</id>
 		<address>896</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -3305,7 +3305,7 @@
 		<name>Контроль сигнала на аналог. входе 2</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_AI_2_PARAMETER</id>
 		<address>909</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -3317,7 +3317,7 @@
 		<name>Максимально допустимое значение сигнала на аналог. входе 2</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_PROT_AI_2_TRIP_SETPOINT</id>
 		<address>910</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>

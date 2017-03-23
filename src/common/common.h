@@ -74,6 +74,72 @@ enum ProfileDefaultSetpoint {
 };
 
 /*!
+ * \brief Список параметров для аналоговых входов
+ */
+enum AnalogInParamType {
+  AnalogInParamUnit,
+  AnalogInParamPressure,
+  AnalogInParamTemp,
+  AnalogInParamVibrAcceler,
+  AnalogInParamVibrSpeed,
+  AnalogInParamResistIsol,
+  AnalogInParamConsumption,
+};
+
+/*!
+ * \brief Список единиц измерения давления для аналоговых входов
+ */
+enum AiUnitsPressure {
+  AiUnitsPressureMpa,
+  AiUnitsPressureAtm,
+  AiUnitsPressurePsi,
+  AiUnitsPressureKgSm2,
+  AiUnitsPressureBar,
+};
+
+/*!
+ * \brief Список единиц измерения температуры для аналоговых входов
+ */
+enum AiUnitsTemp {
+  AiUnitsTempC,
+  AiUnitsTempF,
+};
+
+/*!
+ * \brief Список единиц измерения виброускорения для аналоговых входов
+ */
+enum AiUnitsVibrationAcceler {
+  AiUnitsVibrationG,
+  AiUnitsVibrationMS2,
+  AiUnitsVibrationMmS2,
+};
+
+/*!
+ * \brief Список единиц измерения виброскорости для аналоговых входов
+ */
+enum AiUnitsVibrationSpeed {
+  AiUnitsVibrationMS,
+  AiUnitsVibrationMmS,
+};
+
+/*!
+ * \brief Список единиц измерения сопротивления изоляции для аналоговых входов
+ */
+enum AiUnitsResistIsol {
+  AiUnitsResistIsolKom,
+};
+
+/*!
+ * \brief Список единиц измерения расхода для аналоговых входов
+ */
+enum AiUnitsConsumption {
+  AiUnitsConsumptionM3Day,
+  AiUnitsConsumptionM3Hour,
+  AiUnitsConsumptionBblDay,
+  AiUnitsConsumptionBblHour,
+};
+
+/*!
  * \brief The stConnectQuality struct
  */
 struct stConnectQuality {
