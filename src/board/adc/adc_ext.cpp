@@ -156,15 +156,18 @@ void adcExtThread(void *argument)
           analogInExt[i].value = analogInExt[i].valueTmp/ADC_EXT_MEASURE_NUM;
           analogInExt[i].valueTmp = 0;
         }
-
-        if (measureCountAI6 < ADC_EXT_INPUTS_6_POINTS) {
-          measureCountAI6++;
-        }
-        else {
-          measureCountAI6 = 0;
-        }
-        adcDataAI6[measureCountAI6] = analogInExt[AI6].value;
       }
+    }
+
+    if (channel == 6) {
+      if (measureCountAI6 < ADC_EXT_INPUTS_6_POINTS) {
+        measureCountAI6++;
+      }
+      else {
+        measureCountAI6 = 0;
+      }
+      adcDataAI6[measureCountAI6] = analogInExt[channel-1].valueTmp;
+      analogInExt[channel-1].valueTmp = 0;
     }
 
     clrPinOut(SPI2_NSS_PIN);
@@ -198,6 +201,10 @@ float getValueAnalogInExt(uint8_t num)
 
 void copyAdcDataAI6(uint16_t *data)
 {
-  memcpy(&data[measureCountAI6], &adcDataAI6[0], (ADC_EXT_INPUTS_6_POINTS - measureCountAI6)*2);
-  memcpy(&data[0], &adcDataAI6[ADC_EXT_INPUTS_6_POINTS - measureCountAI6], (measureCountAI6)*2);
+  uint16_t i = measureCountAI6 + 1;
+  memcpy(&data[ADC_EXT_INPUTS_6_POINTS - i], &adcDataAI6[0], i*2);
+  memcpy(&data[0], &adcDataAI6[i], (ADC_EXT_INPUTS_6_POINTS - i)*2);
+
+//  memcpy(&data[measureCountAI6], &adcDataAI6[0], (ADC_EXT_INPUTS_6_POINTS - measureCountAI6)*2);
+//  memcpy(&data[0], &adcDataAI6[ADC_EXT_INPUTS_6_POINTS - measureCountAI6], (measureCountAI6)*2);
 }

@@ -118,12 +118,12 @@ void LogAlarm::add()
 
       case VSD_TYPE_DANFOSS:
         if (shiftIa == 0) {                                           // Если новая точка тока
-          current = iaValue[idxI] * 10000 / 0xFFF / 493;              // Вычисляем милиА на входе
-          if (current < 4100) {                                       // Граница "разумности" параметра 4100 милиапмер
+          current = (float)iaValue[idxI] * 10000.0 / 0xFFF / 493;              // Вычисляем милиА на входе
+          if (current < 4.1) {                                       // Граница "разумности" параметра 4100 милиапмер
             current = 0;                                              // Ток ЧРП 0
           }
           else {
-            current = (maxCurrent * (current - 4000)) / 16000;        // Вычисляем ток ЧРП
+            current = (maxCurrent * (current - 4.0)) / 16.0;        // Вычисляем ток ЧРП
           }
         }
 

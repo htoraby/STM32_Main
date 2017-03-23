@@ -15,19 +15,20 @@ VsdDanfossLog::~VsdDanfossLog()
 
 bool VsdDanfossLog::checkAlarm()
 {
-  static bool signal = false;
+  static bool noAlarm = true;
   bool isAlarm = false;
-  if ((parameters.get(CCS_DI_11_VALUE)) &&
+  if ((!parameters.get(CCS_DI_11_VALUE)) &&
       (parameters.isValidity(CCS_DI_11_VALUE)) &&
-      (signal == false)) {
+      (noAlarm == true)) {
     isAlarm = true;
   }
-  signal = parameters.get(CCS_DI_11_VALUE);
+  noAlarm = parameters.get(CCS_DI_11_VALUE);
   return isAlarm;
 }
 
 bool VsdDanfossLog::checkReady()
 {
+  //osDelay(10);
   return true;
 }
 

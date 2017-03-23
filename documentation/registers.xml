@@ -9095,7 +9095,7 @@
 		<value>0.0</value>
 		<text>Состояние</text>
 		<short_text>Периодика</short_text>
-		<form>5.1.1 Периодический режим</form>
+		<form>5.1.1 Периодика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -9138,7 +9138,7 @@
 		<value>3600.0</value>
 		<text>Время работы</text>
 		<short_text>Периодика. Время работы</short_text>
-		<form>5.1.1 Периодический режим</form>
+		<form>5.1.1 Периодика</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
@@ -9159,7 +9159,7 @@
 		<value>3600.0</value>
 		<text>Время паузы</text>
 		<short_text>Периодика. Время паузы</short_text>
-		<form>5.1.1 Периодический режим</form>
+		<form>5.1.1 Периодика</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
@@ -9828,7 +9828,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Встряхивание</text>
+		<text>Состояние</text>
 		<short_text>Встряхивание</short_text>
 		<form>5.1.7 Встряхивание</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -17776,7 +17776,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние встряхивания</text>
+		<text>Текущее состояние режима</text>
 		<short_text>Состояние встряхивания</short_text>
 		<form>NULL</form>
 		<unit>NULL</unit>
@@ -20512,7 +20512,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Пропуск резонансных частот</text>
+		<text>Состояние</text>
 		<short_text>Пропуск F</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
