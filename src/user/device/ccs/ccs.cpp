@@ -913,7 +913,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 {
   uint8_t err = ok_r;
   float oldValue = getValue(id);
-  //printf("setNewValue %d\n", id);
   switch (id) {
   case CCS_WORKING_MODE:
     err = setValue(id, value, NoneType);

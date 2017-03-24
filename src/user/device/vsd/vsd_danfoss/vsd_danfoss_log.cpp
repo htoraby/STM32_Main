@@ -15,14 +15,15 @@ VsdDanfossLog::~VsdDanfossLog()
 
 bool VsdDanfossLog::checkAlarm()
 {
-  static bool noAlarm = true;
+  static bool oldStateNoAlarm = true;
+  static bool oldStateNoStop = false;
   bool isAlarm = false;
-  if ((!parameters.get(CCS_DI_11_VALUE)) &&
-      (parameters.isValidity(CCS_DI_11_VALUE)) &&
-      (noAlarm == true)) {
+  if ((!parameters.get(CCS_DI_11_VALUE) && parameters.isValidity(CCS_DI_11_VALUE) && oldStateNoAlarm ) ||
+      (ksu.isStopMotor() && ksu.isAlarmStop() && oldStateNoStop )) {
     isAlarm = true;
   }
-  noAlarm = parameters.get(CCS_DI_11_VALUE);
+  oldStateNoAlarm = parameters.get(CCS_DI_11_VALUE);
+  oldStateNoStop = !ksu.isStopMotor();
   return isAlarm;
 }
 

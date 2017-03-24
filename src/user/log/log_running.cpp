@@ -74,6 +74,7 @@ void LogRunning::task()
 
 void LogRunning::add()
 {
+  int time = HAL_GetTick();
   uint16_t typeVsd = parameters.get(CCS_TYPE_VSD);
 
   // Получение значений Ua, Ub, Uc
@@ -90,6 +91,8 @@ void LogRunning::add()
   int idxU = 0;
   int idxVsd = 0;
   int shiftVsd = 0;
+  int pauseCount = 0;
+
   for (int i = 0; i < ADC_POINTS_NUM; ) {
     memset(buffer, 0xFF, sizeof(buffer));
     for (int j = 0; j < 4; ++j) {
@@ -126,7 +129,18 @@ void LogRunning::add()
       write(buffer, SIZE_BUF_LOG, true, true);
     else
       write(buffer, SIZE_BUF_LOG, false);
+
+    if (pauseCount < 20) {
+      pauseCount++;
+    }
+    else {
+      pauseCount = 0;
+      osDelay(1);
+    }
   }
+
+  time = HAL_GetTick() - time;
+  logDebug.add(WarningMsg, "LogRunning::add() Recording time %d", time);
 
   vsd->log()->resetAlarm();
   osDelay(50);
