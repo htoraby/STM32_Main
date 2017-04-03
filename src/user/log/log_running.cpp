@@ -1,5 +1,7 @@
 #include "log_running.h"
 #include "user_main.h"
+#include "adc_ext.h"
+
 #include <string.h>
 
 #if USE_EXT_MEM
@@ -74,6 +76,7 @@ void LogRunning::task()
 
 void LogRunning::add()
 {
+  int time = HAL_GetTick();
   uint16_t typeVsd = parameters.get(CCS_TYPE_VSD);
 
   // Получение значений Ua, Ub, Uc
@@ -88,8 +91,14 @@ void LogRunning::add()
   write(buffer, SIZE_BUF_LOG, false);
 
   int idxU = 0;
+  int idxI = 0;
   int idxVsd = 0;
   int shiftVsd = 0;
+  int shiftIa = 0;
+  float current = 0;
+  float maxCurrent = parameters.get(CCS_SU_MAX_CURRENT);
+  int pauseCount = 0;
+
   for (int i = 0; i < ADC_POINTS_NUM; ) {
     memset(buffer, 0xFF, sizeof(buffer));
     for (int j = 0; j < 4; ++j) {
@@ -114,6 +123,27 @@ void LogRunning::add()
         *(float*)(buffer + 16 + j*64) = cosValue[idxVsd];
         idxVsd++;
         break;
+      case VSD_TYPE_DANFOSS:
+        if (shiftIa == 0) {                                           // Если новая точка тока
+          current = (float)iaValue[idxI] * 10000.0 / 0xFFF / 493;              // Вычисляем милиА на входе
+          if (current < 4.1) {                                       // Граница "разумности" параметра 4100 милиапмер
+            current = 0;                                              // Ток ЧРП 0
+          }
+          else {
+            current = (maxCurrent * (current - 4.0)) / 16.0;        // Вычисляем ток ЧРП
+          }
+        }
+
+        *(float*)(buffer + j*64) = current;                           // Переписываем токи
+        *(float*)(buffer + 4 + j*64) = current;
+        *(float*)(buffer + 8 + j*64) = current;
+
+        shiftIa++;
+        if (shiftIa >= (ADC_POINTS_NUM / ADC_EXT_INPUTS_6_POINTS)) {
+          shiftIa = 0;
+          idxI++;
+        }
+        break;
       }
 
       *(float*)(buffer + 20 + j*64) = ((uValue[0 + idxU] - 2048) * 627.747 * 2.5) / 0xFFF;
@@ -126,7 +156,18 @@ void LogRunning::add()
       write(buffer, SIZE_BUF_LOG, true, true);
     else
       write(buffer, SIZE_BUF_LOG, false);
+
+    if (pauseCount < 20) {
+      pauseCount++;
+    }
+    else {
+      pauseCount = 0;
+      osDelay(1);
+    }
   }
+
+  time = HAL_GetTick() - time;
+  logDebug.add(WarningMsg, "LogRunning::add() Recording time %d", time);
 
   vsd->log()->resetAlarm();
   osDelay(50);

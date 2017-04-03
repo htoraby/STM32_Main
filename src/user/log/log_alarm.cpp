@@ -90,6 +90,8 @@ void LogAlarm::add()
   int shiftIa = 0;
   float current = 0;
   float maxCurrent = parameters.get(CCS_SU_MAX_CURRENT);
+  int pauseCount = 0;
+
   for (int i = 0; i < ADC_POINTS_NUM; ) {
     memset(buffer, 0xFF, sizeof(buffer));
     for (int j = 0; j < 4; ++j) {
@@ -150,6 +152,14 @@ void LogAlarm::add()
       write(buffer, SIZE_BUF_LOG, true, true);
     else
       write(buffer, SIZE_BUF_LOG, false);
+
+    if (pauseCount < 20) {
+      pauseCount++;
+    }
+    else {
+      pauseCount = 0;
+      osDelay(1);
+    }
   }
 
   time = HAL_GetTick() - time;

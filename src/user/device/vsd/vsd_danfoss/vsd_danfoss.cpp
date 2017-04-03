@@ -365,9 +365,7 @@ int VsdDanfoss::setSspMotorTypeProfile()
 { 
   int16_t profile = getMotorTypeProfile();
   if (profile) {
-//    int time = HAL_GetTick();
     parameters.set(CCS_CMD_TYPE_PROFILE_VSD, 1);  // Команда для вывода на экран окна ожидания применения
-
     for (int i = 1; i < QUANTITY_PARAMETER_MOTOR; i++) {
       if (profileMotor[i][0] == VSD_LOW_LIM_SPEED_MOTOR) {
         ksu.setMaxBaseFrequency();
@@ -386,7 +384,6 @@ int VsdDanfoss::setSspMotorTypeProfile()
       writeToDevice(profileMotor[i][0], profileMotor[i][profile]);
       osDelay(100);
     }
-//    printf("Write profile=%d, time=%d\n", profile, (int)(HAL_GetTick() - time));
 
     for (int j = 0; j < 2; j++) {
       osDelay(5000);
@@ -396,12 +393,10 @@ int VsdDanfoss::setSspMotorTypeProfile()
         if (intValue != profileValue) {
           writeToDevice(profileMotor[i][0], profileMotor[i][profile]);
           osDelay(100);
-//          printf("Write profile cicle=%d, id=%d, intValue=%d, profileValue=%d\n", j, (int)profileMotor[i][0], intValue, profileValue);
+          logDebug.add(WarningMsg, "VsdDanfoss::setSspMotorTypeProfile() cicle=%d, id=%d, intValue=%d, profileValue=%d", j, (int)profileMotor[i][0], intValue, profileValue);
         }
       }
-//      printf("Write profile cicle=%d, time=%d\n",j, (int)(HAL_GetTick() - time));
     }
-
     parameters.set(CCS_CMD_TYPE_PROFILE_VSD, 0);
     return ok_r;
   }
@@ -1149,12 +1144,10 @@ bool VsdDanfoss::isControl()
 
 int VsdDanfoss::setSspFile()
 {
-//  int time = HAL_GetTick();                                                     // Время начала записи
   for (int i = 0; i < QUANTITY_PARAMETER_SSP_FILE; i++) {                                               // Первый цикл записи ssp файла
     writeToDevice(sspFile[i][0], sspFile[i][1]);
     osDelay(100);
   }
-//  printf("Write ssp file time=%d\n", (int)(HAL_GetTick() - time));
 
   for (int j = 0; j < 2; j++) {                                                 // Цикл для повтора незаписанных параметров
     osDelay(5000);
@@ -1163,11 +1156,10 @@ int VsdDanfoss::setSspFile()
       int32_t sspValue = sspFile[i][1] * parameters.getDiscret(sspFile[i][0]);
       if (intValue != sspValue) {
         writeToDevice(sspFile[i][0], sspFile[i][1]);
-//        printf("Write ssp file cicle=%d, id=%d, intValue=%d, intSsp=%d\n",j, (int)sspFile[i][0], intValue, sspValue);
+        logDebug.add(WarningMsg, "VsdDanfoss::setSspFile() cicle=%d, id=%d, intValue=%d, intSsp=%d", j, (int)sspFile[i][0], intValue, sspValue);
         osDelay(100);
       }
     }
-//    printf("Write ssp file cicle=%d, time=%d\n",j, (int)(HAL_GetTick() - time));
   }
   return ok_r;
 }

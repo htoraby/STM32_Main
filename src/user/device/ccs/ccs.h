@@ -122,6 +122,8 @@ public:
    */
   bool isStopMotor();
 
+  float isAlarmStop();
+
   /*!
    * \brief Проверка находится ли станция в работе состояние работа, это
    * все состояния кроме состояний "Стоп" и "Ожидания АПВ"
@@ -561,8 +563,6 @@ private:
    * \return
    */
   bool checkCanStop();
-
-  float isAlarmStop();
 
   /*!
    * \brief Метод подсчёта времени работы и останова

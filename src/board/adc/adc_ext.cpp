@@ -204,7 +204,4 @@ void copyAdcDataAI6(uint16_t *data)
   uint16_t i = measureCountAI6 + 1;
   memcpy(&data[ADC_EXT_INPUTS_6_POINTS - i], &adcDataAI6[0], i*2);
   memcpy(&data[0], &adcDataAI6[i], (ADC_EXT_INPUTS_6_POINTS - i)*2);
-
-//  memcpy(&data[measureCountAI6], &adcDataAI6[0], (ADC_EXT_INPUTS_6_POINTS - measureCountAI6)*2);
-//  memcpy(&data[0], &adcDataAI6[ADC_EXT_INPUTS_6_POINTS - measureCountAI6], (measureCountAI6)*2);
 }
