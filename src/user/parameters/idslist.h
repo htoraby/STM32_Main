@@ -1112,10 +1112,10 @@ enum enID
   CCS_AI_2_PARAM_UNITS = 1106,                               //!< Аналоговой вход 2. Единицы измерения
   CCS_AI_3_PARAM_UNITS = 1107,                               //!< Аналоговой вход 3. Единицы измерения
   CCS_AI_4_PARAM_UNITS = 1108,                               //!< Аналоговой вход 4. Единицы измерения
-  CCS_PROT_AI_1_RESTART_SETPOINT_MAX = 1109,                 //!< Максимальное значение
-  CCS_PROT_AI_2_RESTART_SETPOINT_MAX = 1110,                 //!< Максимальное значение
-  CCS_PROT_AI_3_RESTART_SETPOINT_MAX = 1111,                 //!< Максимальное значение
-  CCS_PROT_AI_4_RESTART_SETPOINT_MAX = 1112,                 //!< Максимальное значение
+  CCS_PROT_AI_1_RESTART_SETPOINT_MAX = 1109,                 //!< Аналоговой вход 1. Максимальное значение
+  CCS_PROT_AI_2_RESTART_SETPOINT_MAX = 1110,                 //!< Аналоговой вход 2. Максимальное значение
+  CCS_PROT_AI_3_RESTART_SETPOINT_MAX = 1111,                 //!< Аналоговой вход 3. Максимальное значение
+  CCS_PROT_AI_4_RESTART_SETPOINT_MAX = 1112,                 //!< Аналоговой вход 4. Максимальное значение
   CCS_END = 1113,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ

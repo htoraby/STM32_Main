@@ -21592,7 +21592,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -21655,7 +21655,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -21718,7 +21718,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -21995,7 +21995,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22121,7 +22121,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22184,7 +22184,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22247,7 +22247,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22310,7 +22310,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22573,7 +22573,7 @@
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Максимальное значение</comment>
+		<comment>Аналоговой вход 1. Максимальное значение</comment>
 	</param>
 	<param>
 		<id>1110</id>
@@ -22588,13 +22588,13 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Максимальное значение АПВ</text>
-		<short_text>Аналог.вх.1 Уставка Макс. АПВ</short_text>
+		<short_text>Аналог.вх.2 Уставка Макс. АПВ</short_text>
 		<form>4.4.1 Защита по аналоговому входу 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Максимальное значение</comment>
+		<comment>Аналоговой вход 2. Максимальное значение</comment>
 	</param>
 	<param>
 		<id>1111</id>
@@ -22609,13 +22609,13 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Максимальное значение АПВ</text>
-		<short_text>Аналог.вх.1 Уставка Макс. АПВ</short_text>
+		<short_text>Аналог.вх.3 Уставка Макс. АПВ</short_text>
 		<form>4.4.1 Защита по аналоговому входу 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Максимальное значение</comment>
+		<comment>Аналоговой вход 3. Максимальное значение</comment>
 	</param>
 	<param>
 		<id>1112</id>
@@ -22630,13 +22630,13 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Максимальное значение АПВ</text>
-		<short_text>Аналог.вх.1 Уставка Макс. АПВ</short_text>
+		<short_text>Аналог.вх.4 Уставка Макс. АПВ</short_text>
 		<form>4.4.1 Защита по аналоговому входу 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Максимальное значение</comment>
+		<comment>Аналоговой вход 4. Максимальное значение</comment>
 	</param>
 	<param>
 		<id>1113</id>
