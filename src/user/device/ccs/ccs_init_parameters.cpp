@@ -6586,7 +6586,7 @@ void Ccs::initParameters()
   parameters_[CCS_TYPE_SU - CCS_BEGIN].validity                                  = VALIDITY_OK;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].value.float_t                             = 0.0;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].min                                       = 0.0;
-  parameters_[CCS_TYPE_SU - CCS_BEGIN].max                                       = 999999999.9;
+  parameters_[CCS_TYPE_SU - CCS_BEGIN].max                                       = 9999.0;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].discret                                   = 1;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].def                                       = 0.0;
   parameters_[CCS_TYPE_SU - CCS_BEGIN].code                                      = 13;
@@ -6598,7 +6598,7 @@ void Ccs::initParameters()
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].validity                       = VALIDITY_OK;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].value.float_t                  = 0.0;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].min                            = 0.0;
-  parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].max                            = 999999999.9;
+  parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].max                            = 9999.0;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].discret                        = 1;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].def                            = 0.0;
   parameters_[CCS_CODE_PRODUCTION_SU - CCS_BEGIN].code                           = 13;
@@ -8690,7 +8690,7 @@ void Ccs::initParameters()
   parameters_[CCS_PASSWORD_LAST_ATTEMPT_TIME - CCS_BEGIN].discret                = 1;
   parameters_[CCS_PASSWORD_LAST_ATTEMPT_TIME - CCS_BEGIN].def                    = 0;
   parameters_[CCS_PASSWORD_LAST_ATTEMPT_TIME - CCS_BEGIN].code                   = 0;
-  // Текущие значение операции (например, копирование архивов)
+  // Текущее значение операции (например, копирование архивов)
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].id                                 = CCS_PROGRESS_VALUE;
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].access                             = ACCESS_OPERATOR;
   parameters_[CCS_PROGRESS_VALUE - CCS_BEGIN].operation                          = OPERATION_READ;
