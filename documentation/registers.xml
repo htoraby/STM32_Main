@@ -265,9 +265,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Чередование фаз</text>
+		<text>Черед. фаз</text>
 		<short_text>Чередование фаз</short_text>
-		<form>NULL</form>
+		<form>1.3 Текущие параметры сети</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
