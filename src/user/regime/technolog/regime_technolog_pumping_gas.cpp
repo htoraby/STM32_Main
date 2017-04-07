@@ -13,23 +13,23 @@ RegimeTechnologPumpingGas::~RegimeTechnologPumpingGas()
 void RegimeTechnologPumpingGas::processing()
 {
   // Получение уставок режима
-  action_ = parameters.get(CCS_RGM_PUMP_GAS_MODE);
-  firstFreq_ = parameters.get(CCS_RGM_PUMP_GAS_F1);
-  secondFreq_ = parameters.get(CCS_RGM_PUMP_GAS_F2);
-  time_ = parameters.get(CCS_RGM_PUMP_GAS_TIME);
-  cicle_ = parameters.get(CCS_RGM_PUMP_GAS_CICLE);
-  // Получение скртытых уставок режима
-  activDelay_ = parameters.get(CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY);
-  protTripSetpoint_ = parameters.get(CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC);
-  incTripSetpoint_ = parameters.get(CCS_RGM_PUMP_GAS_UNDERLOAD);
-  tripDelay_ = parameters.get(CCS_RGM_PUMP_GAS_DELAY);
+  action_ = parameters.get(CCS_RGM_PUMP_GAS_MODE);          // Действие режима
+  firstFreq_ = parameters.get(CCS_RGM_PUMP_GAS_F1);         // F1 пркч выходная верхняя частота СУ ЧР в режиме прокачки газа
+  secondFreq_ = parameters.get(CCS_RGM_PUMP_GAS_F2);        // F2 пркч выходная нижняя частота СУ ЧР в режиме прокачки газа
+  time_ = parameters.get(CCS_RGM_PUMP_GAS_TIME);            // T пркч время работы на частоте прокачки в режиме прокачки газа
+  cicle_ = parameters.get(CCS_RGM_PUMP_GAS_CICLE);          // Количество циклов прокачки газа
 
+  // Получение скртытых уставок режима
+  activDelay_ = parameters.get(CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY);           // Время активации режима = времени активации защиты по недогрузу
+  protTripSetpoint_ = parameters.get(CCS_PROT_MOTOR_UNDERLOAD_TRIP_CALC);       // Уставка срабатывания защиты по недогрузу
+  incTripSetpoint_ = parameters.get(CCS_RGM_PUMP_GAS_UNDERLOAD);                // Прибавка к уставке срабатывания защиты по недогрузу
+  tripDelay_ = parameters.get(CCS_RGM_PUMP_GAS_DELAY);                          // Задержка на включение режима (защита от ложных срабатываний)
 
   // Получение текущих параметров режима
-  state_ = parameters.get(CCS_RGM_PUMP_GAS_STATE);
-  beginTime_ = parameters.getU32(CCS_RGM_PUMP_GAS_POINT_TIME);
-  tripTime_ = parameters.getU32(CCS_RGM_PUMP_GAS_POINT_DELAY);
-  countCicle_ = parameters.get(CCS_RGM_PUMP_GAS_COUNT_CICLE);
+  state_ = parameters.get(CCS_RGM_PUMP_GAS_STATE);                              // Состояние автомата
+  tripTime_ = parameters.getU32(CCS_RGM_PUMP_GAS_POINT_DELAY);                  // Время начала недогруза
+  beginTime_ = parameters.getU32(CCS_RGM_PUMP_GAS_POINT_TIME);                  // Время начала T пркч
+  countCicle_ = parameters.get(CCS_RGM_PUMP_GAS_COUNT_CICLE);                   // Текущее количество циклов прокачки газа
 
   int16_t err = 0;
 
@@ -52,12 +52,11 @@ void RegimeTechnologPumpingGas::processing()
   case RunningState:                        // Состояние ожидания недогруза
     if (isNeedPumping()) {                  // Если недогруз
       if (tripTime_ == 0) {                 // Первый раз определили недогруз
-        saveBeforePumping();
+        parameters.set(CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ, parameters.get(VSD_FREQUENCY));
         tripTime_ = ksu.getTime();          // Запоминаем время недогруза  
       }
       else if (ksu.getSecFromCurTime(tripTime_) >= tripDelay_) {
         if (countCicle_ >= cicle_) {        // Сделали необходимое количество циклов
-          countCicle_ = 0;                  // Сбрасываем счётчик прокачек
           state_ = PauseState;              // Переходим на состояние ожидания останова
         }
         else {
@@ -66,13 +65,14 @@ void RegimeTechnologPumpingGas::processing()
       }
     }
     else {
+      countCicle_ = 0;
       tripTime_ = 0;    
     }
     break;
   case WorkState:                           // Состояние задания F1 пркч
     err = setF1();                          // Пытаемся задать частоту F1 пркч
     if (!err) {                             // Задали частоту F1 пркч 
-      if (vsd->isSetPointFreq()) {          // Если вышли на частоту F1 пркч
+      if (vsd->isSetPointFreq() && (parameters.get(VSD_FREQUENCY_NOW) == firstFreq_)) {          // Если вышли на частоту F1 пркч
         if (beginTime_ == 0) {              // Если первый раз определили что вышли на частоту F1 пркч
           beginTime_ = ksu.getTime();       // Запоминаем время выхода на F1 пркч  
         }
@@ -94,7 +94,7 @@ void RegimeTechnologPumpingGas::processing()
   case WorkState + 1:                       // Состояние задания F2 пркч
     err = setF2();                          // Пытаемся задать частоту F2 пркч
     if (!err) {                             // Задали частоту F2 пркч
-      if (vsd->isSetPointFreq()) {          // Если вышли на частоту F2 пркч
+      if (vsd->isSetPointFreq() && (parameters.get(VSD_FREQUENCY_NOW) == secondFreq_)) {          // Если вышли на частоту F2 пркч
         if (beginTime_ == 0) {              // Если первый раз определили что вышли на частоту F1 пркч
           beginTime_ = ksu.getTime();       // Запоминаем время выхода на F2 пркч
         }
@@ -115,7 +115,7 @@ void RegimeTechnologPumpingGas::processing()
   case WorkState + 2:                       // Состояние возврата частоты уставки
     err = returnFreq();                     // Пытаемся вернуть частоту уставки
     if (!err) {                             // Задали частоту уставки
-      if (vsd->isSetPointFreq()) {          // Если вышли на частоту уставки
+      if (vsd->isSetPointFreq() && (parameters.get(VSD_FREQUENCY_NOW) == parameters.get(CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ))) {          // Если вышли на частоту уставки
         tripTime_ = 0;
         countCicle_ ++;
         state_ = RunningState;
@@ -129,7 +129,7 @@ void RegimeTechnologPumpingGas::processing()
     break;
   case PauseState:
     if (ksu.isBreakOrStopMotor()) {
-      state_ = IdleState;
+      state_ = StopState;
     }
     break;
   case StopState:
@@ -143,18 +143,9 @@ void RegimeTechnologPumpingGas::processing()
     break;
   }
   parameters.set(CCS_RGM_PUMP_GAS_STATE, state_);
+  parameters.set(CCS_RGM_PUMP_GAS_POINT_DELAY, tripTime_);
   parameters.set(CCS_RGM_PUMP_GAS_POINT_TIME, beginTime_);
   parameters.set(CCS_RGM_PUMP_GAS_COUNT_CICLE, countCicle_);
-}
-
-void RegimeTechnologPumpingGas::saveBeforePumping()
-{
-  parameters.set(CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ, parameters.get(VSD_FREQUENCY));
-}
-
-void RegimeTechnologPumpingGas::loadAfterPumping()
-{
-  ksu.setFreq(parameters.get(CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ), NoneType, false);
 }
 
 int16_t RegimeTechnologPumpingGas::setF1()

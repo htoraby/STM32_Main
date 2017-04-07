@@ -14,6 +14,7 @@ public:
 
 private:
   void getOtherSetpointProt();
+  bool isNotWorkPumpingGas();
   void setOtherParamProt();
 
   bool checkAlarm();

@@ -6008,11 +6008,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].operation                         = OPERATION_WRITE;
   parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].physic                            = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].validity                          = VALIDITY_OK;
-  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].max                               = 2147483647.0;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].value.float_t                     = 50.0;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].min                               = 1.0;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].max                               = 500.0;
   parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].discret                           = 100;
-  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].def                               = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].def                               = 50.0;
   parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].code                              = 13;
   // Режим прокачки газа. Нижняя частота
   parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].id                                = CCS_RGM_PUMP_GAS_F2;
@@ -6020,11 +6020,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].operation                         = OPERATION_WRITE;
   parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].physic                            = PHYSIC_FREQUENCY;
   parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].validity                          = VALIDITY_OK;
-  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].value.float_t                     = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].min                               = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].max                               = 2147483647.0;
-  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].discret                           = 1;
-  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].def                               = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].value.float_t                     = 40.0;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].min                               = 1.0;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].max                               = 500.0;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].discret                           = 100;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].def                               = 40.0;
   parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].code                              = 13;
   // Режим прокачки газа. Время
   parameters_[CCS_RGM_PUMP_GAS_TIME - CCS_BEGIN].id                              = CCS_RGM_PUMP_GAS_TIME;

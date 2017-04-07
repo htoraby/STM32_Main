@@ -10166,7 +10166,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Состояние</text>
-		<short_text>Реакция режима</short_text>
+		<short_text>Пркч</short_text>
 		<form>5.1.8 Режим прокачки газа</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
@@ -10180,12 +10180,12 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
-		<min>0.0</min>
-		<max>2147483647.0</max>
-		<def>0.0</def>
+		<min>1.0</min>
+		<max>500.0</max>
+		<def>50.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>50.0</value>
 		<text>Верхняя частота</text>
 		<short_text>F1 пркч</short_text>
 		<form>5.1.8 Режим прокачки газа</form>
@@ -10201,12 +10201,12 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
-		<min>0.0</min>
-		<max>2147483647.0</max>
-		<def>0.0</def>
-		<discret>1</discret>
+		<min>1.0</min>
+		<max>500.0</max>
+		<def>40.0</def>
+		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
+		<value>40.0</value>
 		<text>Нижняя частота</text>
 		<short_text>F2 пркч</short_text>
 		<form>5.1.8 Режим прокачки газа</form>
@@ -22776,7 +22776,7 @@
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Сохранённая уставка частоты </text>
+		<text>Сохранённая уставка частоты</text>
 		<short_text>Пркч. сохр. уст. F</short_text>
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
@@ -22797,7 +22797,7 @@
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Сохранённая уставка минимальной частоты </text>
+		<text>Сохранённая уставка минимальной частоты</text>
 		<short_text>Пркч. сохр. уст. мин. F</short_text>
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
