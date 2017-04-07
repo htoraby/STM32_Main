@@ -4062,7 +4062,7 @@
 		<name>Режим прокачки газа</name>
 	</param>
 	<param>
-		<id>CCS_RGM_PUMP_GAS_SETPOINT</id>
+		<id>CCS_RGM_PUMP_GAS_F1</id>
 		<address>970</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
@@ -4101,7 +4101,7 @@
 		<name>Ток для отключения прокачки газа</name>
 	</param>
 	<param>
-		<id>CCS_RGM_PUMP_GAS_DELAY_REACTION</id>
+		<id>CCS_RGM_PUMP_GAS_TIME</id>
 		<address>973</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
