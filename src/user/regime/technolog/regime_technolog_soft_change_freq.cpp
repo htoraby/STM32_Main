@@ -27,9 +27,9 @@ void RegimeTechnologSoftChangeFreq::processing()
   switch (state_) {
   case IdleState:
     if (action_ != OffAction) { // Режим - включен
-      if ((((parameters.get(CCS_CONDITION) == CCS_CONDITION_RUNNING) &&
+      if ((((parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN) &&
             (parameters.get(VSD_FREQUENCY_NOW) >= beginFreq_)) ||
-           (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN)) && ksu.isAutoMode()) {
+           (parameters.get(CCS_CONDITION) == CCS_CONDITION_WORK)) && ksu.isAutoMode()) {
         ksu.setFreq(beginFreq_);
         timeout_ = period_one_step_*10;
         state_ = WorkState;
@@ -37,7 +37,7 @@ void RegimeTechnologSoftChangeFreq::processing()
     }
     break;
   case WorkState:
-    if (ksu.isWorkMotor() && ksu.isAutoMode()) { // Двигатель - работа; Режим - авто;
+    if (ksu.isRunOrWorkMotor() && ksu.isAutoMode()) { // Двигатель - работа; Режим - авто;
       if (timeout_ != 0)
         timeout_--;
       if ((timeout_ <= 0) && period_one_step_ && vsd->isConnect()) {

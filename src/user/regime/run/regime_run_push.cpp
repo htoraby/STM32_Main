@@ -236,7 +236,7 @@ void RegimeRunPush::processingStateStop()             // Состояние ос
 void RegimeRunPush::automatRegime()
 {
   // Выключили режим во время работы, переход на состояние остановки режима
-  if ((action_ == OffAction) && (state_ != IdleState) && (ksu.isWorkMotor())) {
+  if ((action_ == OffAction) && (state_ != IdleState) && (ksu.isRunOrWorkMotor())) {
     state_ = StopState;
   }
 
@@ -258,7 +258,7 @@ void RegimeRunPush::automatRegime()
   case WorkState + 6:
   case WorkState + 7:
   case WorkState + 8:
-    if (ksu.isStopMotor()) {
+    if (ksu.isBreakOrStopMotor()) {
       state_ = StopState;
       break;
     }

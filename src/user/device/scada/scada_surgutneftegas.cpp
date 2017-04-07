@@ -218,7 +218,7 @@ void ScadaSurgutneftegas::calcParamsTask()
       value |= (1 << 13);
     if (parameters.get(CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_PREVENT))
       value |= (1 << 14);
-    if (ksu.isWorkMotor())
+    if (ksu.isRunOrWorkMotor())
       value |= (1 << 15);
     scadaParameters_[254].value.uint32_t = value;
   }
@@ -477,7 +477,7 @@ eMbSngException eMbSngFuncWriteRegister(uint8_t * pucFrame, uint16_t * usLen)
       continue;
     if (param->operation == OPERATION_READ)
       return MB_SNG_EX_ERROR_WRITE;
-    if ((param->operation == OPERATION_LIMITED) && ksu.isWorkMotor())
+    if ((param->operation == OPERATION_LIMITED) && ksu.isRunOrWorkMotor())
       return MB_SNG_EX_CMD_BLOCK;
 
     data.uint32_t = 0;

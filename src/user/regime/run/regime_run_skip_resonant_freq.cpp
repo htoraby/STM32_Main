@@ -35,7 +35,7 @@ void RegimeRunSkipResonantFreq::processingStateIdle()
         state_ = RunningState;
       }
     }
-    if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_RUN) {  // Станция в останове
+    if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_WORK) {  // Станция в останове
       state_ = WorkState;
     }
   }
@@ -460,7 +460,7 @@ void RegimeRunSkipResonantFreq::automatRegime()
   case WorkState + 41:                      // Состояния ошибок, прерываний и нештатных ситуаций
   case WorkState + 42:
     // Во время работы торможение
-    if (parameters.get(CCS_CONDITION) == CCS_CONDITION_STOPPING) {
+    if (parameters.get(CCS_CONDITION) == CCS_CONDITION_BREAK) {
       state_ = StopState;                   // Переходим на состояние отслеживания падения частоты
       break;
     }

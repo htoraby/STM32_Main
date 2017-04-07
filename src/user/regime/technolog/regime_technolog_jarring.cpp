@@ -29,7 +29,7 @@ void RegimeTechnologJarring::processing()
 
 
   // Режим выключен
-  if ((action_ == OffAction) || ksu.isStopMotor()) {              // Выключен режим
+  if ((action_ == OffAction) || ksu.isBreakOrStopMotor()) {              // Выключен режим
     if ((state_ != IdleState) && (state_ != RunningState) && (state_ != PauseState)) {             // Режим выключили во время работы
       state_ = WorkState + 6;               // Возвращаем настройки работы установки
 #if (USE_LOG_DEBUG == 1)
@@ -40,7 +40,7 @@ void RegimeTechnologJarring::processing()
 
   switch (state_) {
   case IdleState:                                     // Режим не активен
-    if ((action_ != OffAction) && ksu.isWorkMotor() ) {
+    if ((action_ != OffAction) && ksu.isRunOrWorkMotor() ) {
       state_ = RunningState;
 #if (USE_LOG_DEBUG == 1)
       logDebug.add(DebugMsg, "RegimeTechnologJarring::processing() On Idle -> Running (state_=%5.0f, action_=%5.0f)", state_, action_);

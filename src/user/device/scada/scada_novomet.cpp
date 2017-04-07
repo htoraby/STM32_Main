@@ -29,11 +29,11 @@ void ScadaNovomet::calcParamsTask()
     unTypeData data;
 
     // 3
-    if (ksu.isWorkMotor())
+    if (ksu.isRunOrWorkMotor())
       value = 1;
     if (ksu.isDelay())
       value = 2;
-    if (!ksu.isWorkMotor())
+    if (!ksu.isRunOrWorkMotor())
       value = 4;
     if (ksu.isRestart())
       value = 8;
