@@ -523,6 +523,8 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value, EventType eventType)
   case VSD_MOTOR_TYPE:
     if (!setMotorType(value)) {
       readTransNeedVoltageTapOff();
+      readInDevice(VSD_BASE_FREQUENCY);
+      readInDevice(VSD_FREQUENCY);
       if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
         return setVsdControl(VSD_MOTOR_CONTROL_UF);
       }
