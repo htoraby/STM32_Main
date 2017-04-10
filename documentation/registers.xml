@@ -265,9 +265,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Чередование фаз</text>
+		<text>Черед. фаз</text>
 		<short_text>Чередование фаз</short_text>
-		<form>NULL</form>
+		<form>1.3 Текущие параметры сети</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -393,7 +393,7 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Доп.ан.вх.1</text>
+		<text>Ан.вх.1 Текущее значение</text>
 		<short_text>Ан.вх.1</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -414,7 +414,7 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Доп.ан.вх.2</text>
+		<text>Ан.вх.2 Текущее значение</text>
 		<short_text>Ан.вх.2</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -435,7 +435,7 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Доп.ан.вх.3</text>
+		<text>Ан.вх.3 Текущее значение</text>
 		<short_text>Ан.вх.3</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -456,7 +456,7 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Доп.ан.вх.4</text>
+		<text>Ан.вх.4 Текущее значение</text>
 		<short_text>Ан.вх.4</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -3721,7 +3721,7 @@
 		<unit_lcd>NULL</unit_lcd>
 		<format>TEXT</format>
 		<code>13</code>
-		<values>0-Откл;1-Вкл;</values>
+		<values>0-Откл;3-Вкл;</values>
 		<comment>Защита "Турбинное вращение"</comment>
 	</param>
 	<param>
@@ -11187,7 +11187,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>9999.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -11197,7 +11197,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Тип СУ</comment>
 	</param>
@@ -11208,7 +11208,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>999999999.9</max>
+		<max>9999.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -11218,7 +11218,7 @@
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXXXXX</format>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Код завода изготовителя СУ</comment>
 	</param>
@@ -14677,7 +14677,7 @@
 		<value>0.0</value>
 		<form>NULL</form>
 		<code>0</code>
-		<comment>Текущие значение операции (например, копирование архивов)</comment>
+		<comment>Текущее значение операции (например, копирование архивов)</comment>
 	</param>
 	<param>
 		<id>725</id>
@@ -16679,7 +16679,7 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Доп.ан.вх.5</text>
+		<text>Ан.вх.5 Текущее значение</text>
 		<short_text>Доп.ан.вх.5</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -16720,7 +16720,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Тип входа</text>
+		<text>Ан.вх.1 Тип входа</text>
 		<short_text>Ан.вх.1. Тип</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -16804,7 +16804,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Тип входа</text>
+		<text>Ан.вх.2 Тип входа</text>
 		<short_text>Ан.вх.2. Тип</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -16888,7 +16888,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Тип входа</text>
+		<text>Ан.вх.3 Тип входа</text>
 		<short_text>Ан.вх.3. Тип</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -16972,7 +16972,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Тип входа</text>
+		<text>Ан.вх.4 Тип входа</text>
 		<short_text>Ан.вх.4. Тип</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -21577,7 +21577,7 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Ан.вх.6</text>
+		<text>Ан.вх.6 Текущее значение</text>
 		<short_text>Ан.вх.6</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -21592,7 +21592,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -21640,7 +21640,7 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Ан.вх.7</text>
+		<text>Ан.вх.7 Текущее значение</text>
 		<short_text>Ан.вх.7</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -21655,7 +21655,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -21703,7 +21703,7 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Ан.вх.8</text>
+		<text>Ан.вх.8 Текущее значение</text>
 		<short_text>Ан.вх.8</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -21718,7 +21718,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -21766,7 +21766,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
-		<text>Тип входа</text>
+		<text>Ан.вх.6 Тип входа</text>
 		<short_text>Ан.вх.6. Тип</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -21787,7 +21787,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Тип входа</text>
+		<text>Ан.вх.7 Тип входа</text>
 		<short_text>Ан.вх.7. Тип</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -21808,7 +21808,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Тип входа</text>
+		<text>Ан.вх.8 Тип входа</text>
 		<short_text>Ан.вх.8. Тип</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -21995,7 +21995,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22121,7 +22121,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22184,7 +22184,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22247,7 +22247,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22310,7 +22310,7 @@
 		<access>ACCESS_TECHNOLOG</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>-1.000</min>
+		<min>0.0</min>
 		<max>1.000</max>
 		<def>0.0</def>
 		<discret>1000</discret>
@@ -22379,7 +22379,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
-		<text>Тип входа</text>
+		<text>Ан.вх.5 Тип входа</text>
 		<short_text>Ан.вх.5. Тип</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -22573,7 +22573,7 @@
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Максимальное значение</comment>
+		<comment>Аналоговой вход 1. Максимальное значение</comment>
 	</param>
 	<param>
 		<id>1110</id>
@@ -22594,7 +22594,7 @@
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Максимальное значение</comment>
+		<comment>Аналоговой вход 2. Максимальное значение</comment>
 	</param>
 	<param>
 		<id>1111</id>
@@ -22615,7 +22615,7 @@
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Максимальное значение</comment>
+		<comment>Аналоговой вход 3. Максимальное значение</comment>
 	</param>
 	<param>
 		<id>1112</id>
@@ -22636,7 +22636,7 @@
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXX_X</format>
 		<code>13</code>
-		<comment>Максимальное значение</comment>
+		<comment>Аналоговой вход 4. Максимальное значение</comment>
 	</param>
 	<param>
 		<id>1113</id>

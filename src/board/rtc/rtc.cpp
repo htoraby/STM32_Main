@@ -15,6 +15,9 @@ void rtcInit()
   hrtc.Init.OutPutType = RTC_OUTPUT_TYPE_OPENDRAIN;
   HAL_RTC_Init(&hrtc);
 
+//  HAL_RTCEx_SetCoarseCalib(&hrtc, RTC_CALIBSIGN_NEGATIVE, 15);
+//  HAL_RTCEx_DeactivateCoarseCalib(&hrtc);
+
   if(HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR0) != 0x32F2) {
     tm dateTime;
     //! Установка времени по умолчанию
@@ -30,6 +33,9 @@ void rtcInit()
 
     HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR0, 0x32F2);
   }
+
+//  HAL_RTCEx_SetCalibrationOutPut(&hrtc, RTC_CALIBOUTPUT_512HZ);
+//  HAL_RTCEx_DeactivateCalibrationOutPut(&hrtc);
 }
 
 void HAL_RTC_MspInit(RTC_HandleTypeDef *hrtc)
