@@ -28,7 +28,7 @@ void RegimeTechnologOptimizationVoltage::processing()
     state_ = IdleState;
   }
 
-  if (ksu.isStopMotor()) {
+  if (ksu.isBreakOrStopMotor()) {
     state_ = IdleState;
   }
 
@@ -36,7 +36,7 @@ void RegimeTechnologOptimizationVoltage::processing()
   //! Состояние в котором ничего не происходит
   case IdleState:
     //! Если двигатель в работе, переходим в состояние ожидания задержки после запуска
-    if (ksu.isWorkMotor()) {
+    if (ksu.isRunOrWorkMotor()) {
       state_ = RunningState;
     }
     break;

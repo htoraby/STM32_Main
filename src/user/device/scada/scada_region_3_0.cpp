@@ -25,7 +25,7 @@ void ScadaRegion30::calcParamsTask()
 
     // 256
     uint16_t value = 0;
-    value |= (ksu.isWorkMotor() << 0);
+    value |= (ksu.isRunOrWorkMotor() << 0);
     value |= (ksu.isBlock() << 1);
     value |= ((parameters.get(CCS_PROT_OTHER_LIMIT_RESTART_RESTART_COUNT) > 3) << 2);
     value |= (ksu.isAutoMode() << 4);

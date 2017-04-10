@@ -18,7 +18,7 @@ void RegimeTechnologMaintenanceParam::processing()
   state_ = parameters.get(CCS_RGM_MAINTENANCE_PARAM_STATE);
 
   if ((action_ == OffAction) ||                                // Режим - выключен
-      (parameters.get(CCS_CONDITION) != CCS_CONDITION_RUN)) {  // Двигатель не в работе
+      (parameters.get(CCS_CONDITION) != CCS_CONDITION_WORK)) {  // Двигатель не в работе
     state_ = IdleState;
   }
 
@@ -27,7 +27,7 @@ void RegimeTechnologMaintenanceParam::processing()
     timer_ = 0;
     delta_ = 0;
     if (action_ != OffAction) { // Режим - включен
-      if (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN) {  // Двигатель - работа;
+      if (parameters.get(CCS_CONDITION) == CCS_CONDITION_WORK) {  // Двигатель - работа;
         state_ = WorkState;
       }
     }

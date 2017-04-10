@@ -103,7 +103,7 @@ void ProtectionHardwareVsd::addEventReactionProt()
 
 void ProtectionHardwareVsd::processingStateRun()
 {
-  if (ksu.isWorkMotor()) {                  // Двигатель - работа;
+  if (ksu.isRunOrWorkMotor()) {                  // Двигатель - работа;
     if (ksu.isAutoMode()) {                 // Двигатель - работа; Режим - авто;
       if (isModeOff()) {                    // Двигатель - работа; Режим - авто; Защита - выкл;
         setStateStop();

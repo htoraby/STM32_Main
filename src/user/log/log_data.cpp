@@ -49,8 +49,8 @@ void LogData::task()
     if ((HAL_GetTick() - time1s) >= 1000) {
       time1s = HAL_GetTick();
 
-      if ((ksu.isDelay()) || (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUNNING) ||
-          (parameters.get(CCS_CONDITION) == CCS_CONDITION_STOPPING)) {
+      if ((ksu.isDelay()) || (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN) ||
+          (parameters.get(CCS_CONDITION) == CCS_CONDITION_BREAK)) {
         normTimeCnt = 0;
 
         if (!startFastMode) {
