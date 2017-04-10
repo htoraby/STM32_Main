@@ -47,6 +47,10 @@ void RegimeTechnologPumpingGas::processing()
         (parameters.get(CCS_RUN_TIME) >= activDelay_)) {  // Время активации режима истекло
       tripTime_ = 0;                        // Сброс переменной времени срабатывания
       state_ = RunningState;                // Переход на состояние ожидания недогруза
+      #if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "PumpingGas::processing() Idle -> Running (state_=%d, action_=%d, CCS_RUN_TIME=%d, activDelay_=%d)",
+                   (int)state_, (int)action_, (int)parameters.get(CCS_RUN_TIME), (int)activDelay_);
+      #endif
     }
     break;
   case RunningState:                        // Состояние ожидания недогруза
@@ -58,8 +62,16 @@ void RegimeTechnologPumpingGas::processing()
       else if (ksu.getSecFromCurTime(tripTime_) >= tripDelay_) {
         if (countCicle_ >= cicle_) {        // Сделали необходимое количество циклов
           state_ = PauseState;              // Переходим на состояние ожидания останова
+          #if (USE_LOG_DEBUG == 1)
+          logDebug.add(DebugMsg, "PumpingGas::processing() Running -> Pause (state_=%d, action_=%d, tripTime=%d, tripDelay_=d, countCicle_=%d, cicle_=%d)",
+                       (int)state_, (int)action_, ksu.getSecFromCurTime(tripTime_), (int)tripDelay_, (int)countCicle_, (int)cicle_);
+          #endif
         }
         else {
+          #if (USE_LOG_DEBUG == 1)
+          logDebug.add(DebugMsg, "PumpingGas::processing() Running -> Work (state_=%d, action_=%d, tripTime=%d, tripDelay_=%d, countCicle_=%d, cicle_=%d)",
+                       (int)state_, (int)action_, ksu.getSecFromCurTime(tripTime_), (int)tripDelay_, (int)countCicle_, (int)cicle_);
+          #endif
           state_ = WorkState;             // Переходим на состояние прокачки
         }
       }
@@ -74,11 +86,16 @@ void RegimeTechnologPumpingGas::processing()
     if (!err) {                             // Задали частоту F1 пркч 
       if (vsd->isSetPointFreq() && (parameters.get(VSD_FREQUENCY_NOW) == firstFreq_)) {          // Если вышли на частоту F1 пркч
         if (beginTime_ == 0) {              // Если первый раз определили что вышли на частоту F1 пркч
-          beginTime_ = ksu.getTime();       // Запоминаем время выхода на F1 пркч  
+          beginTime_ = ksu.getTime();       // Запоминаем время выхода на F1 пркч
+          logEvent.add(OtherCode, AutoType, RgmPumpingGasF1Id);
         }
         else {                              // Работаем на частоте прокачки
           if (ksu.getSecFromCurTime(beginTime_) >= time_) { 
             state_ = WorkState + 1;         // Переходим на сосотояние задания F2 пркч
+            #if (USE_LOG_DEBUG == 1)
+            logDebug.add(DebugMsg, "PumpingGas::processing() Work -> Work + 1 (state_=%d, action_=%d, beginTime_=%d, time_=%d)",
+                         (int)state_, (int)action_, ksu.getSecFromCurTime(beginTime_), (int)time_);
+            #endif
           }
         }
       }
@@ -88,7 +105,10 @@ void RegimeTechnologPumpingGas::processing()
     }
     else if (err > 0) {                     // Не смогли задать F1 пркч
       state_ = WorkState + 1;               // Переходим на состояние задания частоты F1
-
+      #if (USE_LOG_WARNING == 1)
+      logDebug.add(WarningMsg, "PumpingGas::processing() Work -> Work + 1 (state_=%d, action_=%d, err=%d)",
+                   (int)state_, (int)action_, (int)err);
+      #endif
     }
     break;
   case WorkState + 1:                       // Состояние задания F2 пркч
@@ -97,10 +117,15 @@ void RegimeTechnologPumpingGas::processing()
       if (vsd->isSetPointFreq() && (parameters.get(VSD_FREQUENCY_NOW) == secondFreq_)) {          // Если вышли на частоту F2 пркч
         if (beginTime_ == 0) {              // Если первый раз определили что вышли на частоту F1 пркч
           beginTime_ = ksu.getTime();       // Запоминаем время выхода на F2 пркч
+          logEvent.add(OtherCode, AutoType, RgmPumpingGasF2Id);
         }
         else {                              // Работаем на частоте прокачки
           if (ksu.getSecFromCurTime(beginTime_) >= time_) {
             state_ = WorkState + 2;         // Переходим на сосотояние возврата частоты
+            #if (USE_LOG_DEBUG == 1)
+            logDebug.add(DebugMsg, "PumpingGas::processing() Work + 1 -> Work + 2 (state_=%d, action_=%d, beginTime_=%d, time_=%d)",
+                         (int)state_, (int)action_, ksu.getSecFromCurTime(beginTime_), (int)time_);
+            #endif
           }
         }
       }
@@ -110,6 +135,10 @@ void RegimeTechnologPumpingGas::processing()
     }
     else if (err > 0) {                     // Не смогли задать F2 пркч
       state_ = WorkState + 2;               // Переходим на состояние возврата частоты уставки
+      #if (USE_LOG_WARNING == 1)
+      logDebug.add(WarningMsg, "PumpingGas::processing() Work + 1 -> Work + 2 (state_=%d, action_=%d, err=%d)",
+                   (int)state_, (int)action_, (int)err);
+      #endif
     }
     break;
   case WorkState + 2:                       // Состояние возврата частоты уставки
@@ -119,17 +148,29 @@ void RegimeTechnologPumpingGas::processing()
         tripTime_ = 0;
         countCicle_ ++;
         state_ = RunningState;
+        #if (USE_LOG_DEBUG == 1)
+        logDebug.add(DebugMsg, "PumpingGas::processing() Work + 2 -> Running (state_=%d, action_=%d, countCicle_=%d)",
+                     (int)state_, (int)action_, (int)countCicle_);
+        #endif
       }
     }
     else if (err > 0) {                     // Не смогли вернуть частоту уставки
       tripTime_ = 0;
       countCicle_ ++;
       state_ = RunningState;
+      #if (USE_LOG_WARNING == 1)
+      logDebug.add(WarningMsg, "PumpingGas::processing() Work + 2 -> Running (state_=%d, action_=%d, countCicle_=%d, err=%d)",
+                   (int)state_, (int)action_, (int)countCicle_, (int)err);
+      #endif
     }
     break;
   case PauseState:
     if (ksu.isBreakOrStopMotor()) {
       state_ = StopState;
+      #if (USE_LOG_DEBUG == 1)
+      logDebug.add(DebugMsg, "PumpingGas::processing() Pause -> Stop (state_=%d, action_=%d)",
+                   (int)state_, (int)action_);
+      #endif
     }
     break;
   case StopState:
@@ -137,9 +178,17 @@ void RegimeTechnologPumpingGas::processing()
     tripTime_ = 0;
     beginTime_ = 0;
     state_ = IdleState;
+    #if (USE_LOG_DEBUG == 1)
+    logDebug.add(DebugMsg, "PumpingGas::processing() Stop -> Idle (state_=%d, action_=%d)",
+                 (int)state_, (int)action_);
+    #endif
     break;
   default:
     state_ = IdleState;
+    #if (USE_LOG_WARNING == 1)
+    logDebug.add(WarningMsg, "PumpingGas::processing() default -> Idle (state_=%d, action_=%d)",
+                 (int)state_, (int)action_);
+    #endif
     break;
   }
   parameters.set(CCS_RGM_PUMP_GAS_STATE, state_);

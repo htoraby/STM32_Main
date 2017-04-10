@@ -10187,7 +10187,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>50.0</value>
 		<text>Верхняя частота</text>
-		<short_text>F1 пркч</short_text>
+		<short_text>Пркч. F1</short_text>
 		<form>5.1.8 Режим прокачки газа</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -10208,7 +10208,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>40.0</value>
 		<text>Нижняя частота</text>
-		<short_text>F2 пркч</short_text>
+		<short_text>Пркч. F2</short_text>
 		<form>5.1.8 Режим прокачки газа</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -10229,7 +10229,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Время</text>
-		<short_text>T пркч</short_text>
+		<short_text>Пркч. T</short_text>
 		<form>5.1.8 Режим прокачки газа</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
