@@ -120,6 +120,12 @@ public:
    * \brief Проверка находится ли станция в стопе
    * \return
    */
+  bool isBreakOrStopMotor();
+
+  /*!
+   * \brief isStopMotor
+   * \return
+   */
   bool isStopMotor();
 
   float isAlarmStop();
@@ -129,7 +135,10 @@ public:
    * все состояния кроме состояний "Стоп" и "Ожидания АПВ"
    * \return
    */
+  bool isRunOrWorkMotor();
+
   bool isWorkMotor();
+
 
   /*!
    * \brief Проверка находится ли станция в ожидании

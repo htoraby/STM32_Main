@@ -268,10 +268,15 @@ typedef enum {
   VsdConnectionCountersResetId,       //!< ЧРП. Сброс счётчиков качества связи
   EmConnectionCountersResetId,        //!< СЭ. Сброс счётчиков качества связи
 
-  AnalogInput1MaxProtReactId, //!< "Сработала защита: По макc.сигналу аналогового входа 1"
-  AnalogInput2MaxProtReactId, //!< "Сработала защита: По макc.сигналу аналогового входа 2"
-  AnalogInput3MaxProtReactId, //!< "Сработала защита: По макc.сигналу аналогового входа 3"
-  AnalogInput4MaxProtReactId, //!< "Сработала защита: По макc.сигналу аналогового входа 4"
+  AnalogInput1MaxProtReactId,         //!< "Сработала защита: По макc.сигналу аналогового входа 1"
+  AnalogInput2MaxProtReactId,         //!< "Сработала защита: По макc.сигналу аналогового входа 2"
+  AnalogInput3MaxProtReactId,         //!< "Сработала защита: По макc.сигналу аналогового входа 3"
+  AnalogInput4MaxProtReactId,         //!< "Сработала защита: По макc.сигналу аналогового входа 4"
+
+  RgmPumpingGasF1Id,                  //!< Пркч. F1
+  RgmPumpingGasF2Id,                  //!< Пркч. F2
+  RgmPumpingGasStartId,               //!< Пркч. Начало
+  RgmPumpingGasFinishId,              //!< Пркч. Завершен
 
 } EventId;
 

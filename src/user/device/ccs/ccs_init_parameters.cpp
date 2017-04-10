@@ -6002,42 +6002,42 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].discret                         = 1;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].def                             = 0.0;
   parameters_[CCS_RGM_PUMP_GAS_MODE - CCS_BEGIN].code                            = 13;
-  // Режим прокачки газа
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].id                          = CCS_RGM_PUMP_GAS_SETPOINT;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].access                      = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].operation                   = OPERATION_WRITE;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].physic                      = PHYSIC_FREQUENCY;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].validity                    = VALIDITY_OK;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].value.float_t               = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].min                         = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].max                         = 999999999.9;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].discret                     = 100;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].def                         = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_SETPOINT - CCS_BEGIN].code                        = 13;
-  // Режим прокачки газа
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].id                    = CCS_RGM_PUMP_GAS_DELAY_REACTION;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].access                = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].operation             = OPERATION_WRITE;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].physic                = PHYSIC_TIME;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].validity              = VALIDITY_OK;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].value.float_t         = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].min                   = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].max                   = 999999999.9;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].discret               = 1;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].def                   = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_DELAY_REACTION - CCS_BEGIN].code                  = 13;
-  // Режим прокачки газа
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].id                     = CCS_RGM_PUMP_GAS_LIMIT_RESTART;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].access                 = ACCESS_OPERATOR;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].operation              = OPERATION_WRITE;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].validity               = VALIDITY_OK;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].value.float_t          = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].max                    = 999999999.9;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].discret                = 1;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].def                    = 0.0;
-  parameters_[CCS_RGM_PUMP_GAS_LIMIT_RESTART - CCS_BEGIN].code                   = 13;
+  // Режим прокачки газа. Верхняя частота
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].id                                = CCS_RGM_PUMP_GAS_F1;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].access                            = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].physic                            = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].validity                          = VALIDITY_OK;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].value.float_t                     = 50.0;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].min                               = 1.0;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].max                               = 500.0;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].discret                           = 100;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].def                               = 50.0;
+  parameters_[CCS_RGM_PUMP_GAS_F1 - CCS_BEGIN].code                              = 13;
+  // Режим прокачки газа. Нижняя частота
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].id                                = CCS_RGM_PUMP_GAS_F2;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].access                            = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].operation                         = OPERATION_WRITE;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].physic                            = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].validity                          = VALIDITY_OK;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].value.float_t                     = 40.0;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].min                               = 1.0;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].max                               = 500.0;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].discret                           = 100;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].def                               = 40.0;
+  parameters_[CCS_RGM_PUMP_GAS_F2 - CCS_BEGIN].code                              = 13;
+  // Режим прокачки газа. Время
+  parameters_[CCS_RGM_PUMP_GAS_TIME - CCS_BEGIN].id                              = CCS_RGM_PUMP_GAS_TIME;
+  parameters_[CCS_RGM_PUMP_GAS_TIME - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_PUMP_GAS_TIME - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_RGM_PUMP_GAS_TIME - CCS_BEGIN].physic                          = PHYSIC_TIME;
+  parameters_[CCS_RGM_PUMP_GAS_TIME - CCS_BEGIN].validity                        = VALIDITY_OK;
+  parameters_[CCS_RGM_PUMP_GAS_TIME - CCS_BEGIN].value.float_t                   = 20.0;
+  parameters_[CCS_RGM_PUMP_GAS_TIME - CCS_BEGIN].min                             = 1.0;
+  parameters_[CCS_RGM_PUMP_GAS_TIME - CCS_BEGIN].max                             = 59.0;
+  parameters_[CCS_RGM_PUMP_GAS_TIME - CCS_BEGIN].discret                         = 1;
+  parameters_[CCS_RGM_PUMP_GAS_TIME - CCS_BEGIN].def                             = 20.0;
+  parameters_[CCS_RGM_PUMP_GAS_TIME - CCS_BEGIN].code                            = 13;
   // Режим ограничения тока
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].id                         = CCS_RGM_CURRENT_LIMIT_MODE;
   parameters_[CCS_RGM_CURRENT_LIMIT_MODE - CCS_BEGIN].access                     = ACCESS_OPERATOR;
@@ -13358,5 +13358,113 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_RESTART_SETPOINT_MAX - CCS_BEGIN].discret            = 10;
   parameters_[CCS_PROT_AI_4_RESTART_SETPOINT_MAX - CCS_BEGIN].def                = 0.0;
   parameters_[CCS_PROT_AI_4_RESTART_SETPOINT_MAX - CCS_BEGIN].code               = 13;
+  // Режим прокачки газа. Количество циклов прокачки
+  parameters_[CCS_RGM_PUMP_GAS_CICLE - CCS_BEGIN].id                             = CCS_RGM_PUMP_GAS_CICLE;
+  parameters_[CCS_RGM_PUMP_GAS_CICLE - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_PUMP_GAS_CICLE - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_RGM_PUMP_GAS_CICLE - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_PUMP_GAS_CICLE - CCS_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[CCS_RGM_PUMP_GAS_CICLE - CCS_BEGIN].value.float_t                  = 1.0;
+  parameters_[CCS_RGM_PUMP_GAS_CICLE - CCS_BEGIN].min                            = 1.0;
+  parameters_[CCS_RGM_PUMP_GAS_CICLE - CCS_BEGIN].max                            = 3.0;
+  parameters_[CCS_RGM_PUMP_GAS_CICLE - CCS_BEGIN].discret                        = 1;
+  parameters_[CCS_RGM_PUMP_GAS_CICLE - CCS_BEGIN].def                            = 1.0;
+  parameters_[CCS_RGM_PUMP_GAS_CICLE - CCS_BEGIN].code                           = 13;
+  // Режим прокачки газа. Проценты добавляемые к уставке недогруза при снижении ниже которых активируется режим
+  parameters_[CCS_RGM_PUMP_GAS_UNDERLOAD - CCS_BEGIN].id                         = CCS_RGM_PUMP_GAS_UNDERLOAD;
+  parameters_[CCS_RGM_PUMP_GAS_UNDERLOAD - CCS_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_PUMP_GAS_UNDERLOAD - CCS_BEGIN].operation                  = OPERATION_READ;
+  parameters_[CCS_RGM_PUMP_GAS_UNDERLOAD - CCS_BEGIN].physic                     = PHYSIC_PERCENT;
+  parameters_[CCS_RGM_PUMP_GAS_UNDERLOAD - CCS_BEGIN].validity                   = VALIDITY_OK;
+  parameters_[CCS_RGM_PUMP_GAS_UNDERLOAD - CCS_BEGIN].value.float_t              = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_UNDERLOAD - CCS_BEGIN].min                        = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_UNDERLOAD - CCS_BEGIN].max                        = 99.0;
+  parameters_[CCS_RGM_PUMP_GAS_UNDERLOAD - CCS_BEGIN].discret                    = 1;
+  parameters_[CCS_RGM_PUMP_GAS_UNDERLOAD - CCS_BEGIN].def                        = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_UNDERLOAD - CCS_BEGIN].code                       = 0;
+  // Режим прокачки газа. Задержка на активацию и деактивацию режима
+  parameters_[CCS_RGM_PUMP_GAS_DELAY - CCS_BEGIN].id                             = CCS_RGM_PUMP_GAS_DELAY;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY - CCS_BEGIN].operation                      = OPERATION_READ;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY - CCS_BEGIN].physic                         = PHYSIC_TIME;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY - CCS_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY - CCS_BEGIN].value.float_t                  = 3.0;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY - CCS_BEGIN].min                            = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY - CCS_BEGIN].max                            = 59.0;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY - CCS_BEGIN].discret                        = 1;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY - CCS_BEGIN].def                            = 3.0;
+  parameters_[CCS_RGM_PUMP_GAS_DELAY - CCS_BEGIN].code                           = 0;
+  // Режим прокачки газа. Текущее состояние автомата режима
+  parameters_[CCS_RGM_PUMP_GAS_STATE - CCS_BEGIN].id                             = CCS_RGM_PUMP_GAS_STATE;
+  parameters_[CCS_RGM_PUMP_GAS_STATE - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_PUMP_GAS_STATE - CCS_BEGIN].operation                      = OPERATION_READ;
+  parameters_[CCS_RGM_PUMP_GAS_STATE - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_PUMP_GAS_STATE - CCS_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[CCS_RGM_PUMP_GAS_STATE - CCS_BEGIN].value.float_t                  = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_STATE - CCS_BEGIN].min                            = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_STATE - CCS_BEGIN].max                            = 2147483647.0;
+  parameters_[CCS_RGM_PUMP_GAS_STATE - CCS_BEGIN].discret                        = 1;
+  parameters_[CCS_RGM_PUMP_GAS_STATE - CCS_BEGIN].def                            = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_STATE - CCS_BEGIN].code                           = 0;
+  // Режим прокачки газа. Время начала работы на частоте прокачки
+  parameters_[CCS_RGM_PUMP_GAS_POINT_TIME - CCS_BEGIN].id                        = CCS_RGM_PUMP_GAS_POINT_TIME;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_TIME - CCS_BEGIN].access                    = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_TIME - CCS_BEGIN].operation                 = OPERATION_READ;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_TIME - CCS_BEGIN].physic                    = PHYSIC_DATE_TIME;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_TIME - CCS_BEGIN].validity                  = VALIDITY_OK;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_TIME - CCS_BEGIN].value.float_t             = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_TIME - CCS_BEGIN].min                       = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_TIME - CCS_BEGIN].max                       = 2147483647.0;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_TIME - CCS_BEGIN].discret                   = 1;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_TIME - CCS_BEGIN].def                       = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_TIME - CCS_BEGIN].code                      = 0;
+  // Режим прокачки газа. Текущее количество циклов прокачки
+  parameters_[CCS_RGM_PUMP_GAS_COUNT_CICLE - CCS_BEGIN].id                       = CCS_RGM_PUMP_GAS_COUNT_CICLE;
+  parameters_[CCS_RGM_PUMP_GAS_COUNT_CICLE - CCS_BEGIN].access                   = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_PUMP_GAS_COUNT_CICLE - CCS_BEGIN].operation                = OPERATION_READ;
+  parameters_[CCS_RGM_PUMP_GAS_COUNT_CICLE - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_PUMP_GAS_COUNT_CICLE - CCS_BEGIN].validity                 = VALIDITY_OK;
+  parameters_[CCS_RGM_PUMP_GAS_COUNT_CICLE - CCS_BEGIN].value.float_t            = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_COUNT_CICLE - CCS_BEGIN].min                      = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_COUNT_CICLE - CCS_BEGIN].max                      = 3.0;
+  parameters_[CCS_RGM_PUMP_GAS_COUNT_CICLE - CCS_BEGIN].discret                  = 1;
+  parameters_[CCS_RGM_PUMP_GAS_COUNT_CICLE - CCS_BEGIN].def                      = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_COUNT_CICLE - CCS_BEGIN].code                     = 0;
+  // Режим прокачки газа. Сохранённая уставка частоты
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ - CCS_BEGIN].id                = CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ - CCS_BEGIN].access            = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ - CCS_BEGIN].operation         = OPERATION_WRITE;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ - CCS_BEGIN].physic            = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ - CCS_BEGIN].validity          = VALIDITY_OK;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ - CCS_BEGIN].value.float_t     = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ - CCS_BEGIN].min               = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ - CCS_BEGIN].max               = 2147483647.0;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ - CCS_BEGIN].discret           = 100;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ - CCS_BEGIN].def               = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ - CCS_BEGIN].code              = 0;
+  // Режим прокачки газа. Сохранённая уставка минимальной частоты
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ - CCS_BEGIN].id            = CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ - CCS_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ - CCS_BEGIN].physic        = PHYSIC_FREQUENCY;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ - CCS_BEGIN].validity      = VALIDITY_OK;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ - CCS_BEGIN].value.float_t = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ - CCS_BEGIN].min           = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ - CCS_BEGIN].max           = 2147483647.0;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ - CCS_BEGIN].discret       = 100;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ - CCS_BEGIN].def           = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ - CCS_BEGIN].code          = 0;
+  // Режим прокачки газа. Время начала выполнения условия режима прокачки
+  parameters_[CCS_RGM_PUMP_GAS_POINT_DELAY - CCS_BEGIN].id                       = CCS_RGM_PUMP_GAS_POINT_DELAY;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_DELAY - CCS_BEGIN].access                   = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_DELAY - CCS_BEGIN].operation                = OPERATION_READ;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_DELAY - CCS_BEGIN].physic                   = PHYSIC_DATE_TIME;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_DELAY - CCS_BEGIN].validity                 = VALIDITY_OK;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_DELAY - CCS_BEGIN].value.float_t            = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_DELAY - CCS_BEGIN].min                      = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_DELAY - CCS_BEGIN].max                      = 2147483647.0;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_DELAY - CCS_BEGIN].discret                  = 1;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_DELAY - CCS_BEGIN].def                      = 0.0;
+  parameters_[CCS_RGM_PUMP_GAS_POINT_DELAY - CCS_BEGIN].code                     = 0;
 }
 

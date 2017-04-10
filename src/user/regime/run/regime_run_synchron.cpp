@@ -87,7 +87,7 @@ void RegimeRunSynchron::processingStateStop()
 
 void RegimeRunSynchron::automatRegime()
 {
-  if ((action_ == OffAction) && (state_ != IdleState) && (ksu.isWorkMotor())) {
+  if ((action_ == OffAction) && (state_ != IdleState) && (ksu.isRunOrWorkMotor())) {
     logEvent.add(OtherCode, AutoType, RegimeRunSynchronFailId);
     state_ = StopState;
   }

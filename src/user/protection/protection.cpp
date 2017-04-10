@@ -185,7 +185,7 @@ void Protection::setStateRun()
 
 void Protection::processingStateRunning()
 {  
-  if (ksu.isWorkMotor()) {
+  if (ksu.isRunOrWorkMotor()) {
     if (ksu.isAutoMode() || ksu.isManualMode()) {
       if (isModeOff()) {
         setStateStop();
@@ -209,7 +209,7 @@ void Protection::processingStateRunning()
 
 void Protection::processingStateRun()       // Состояние работа
 {
-  if (ksu.isWorkMotor()) {                  // Двигатель - работа;
+  if (ksu.isRunOrWorkMotor()) {                  // Двигатель - работа;
     if (ksu.isAutoMode()) {                 // Двигатель - работа; Режим - авто;
       if (isModeOff()) {                    // Двигатель - работа; Режим - авто; Защита - выкл;
         setStateStop();
@@ -358,7 +358,7 @@ void Protection::processingStateRun()       // Состояние работа
 
 void Protection::proccessingStateStopping()
 {
-  if (ksu.isWorkMotor()) {                  // Двигатель - работа;
+  if (ksu.isRunOrWorkMotor()) {                  // Двигатель - работа;
     if (ksu.isAutoMode()) {                 // Двигатель - работа; Режим - авто;
       if (restart_) {                       // Двигатель - работа; Режим - авто; Защита - Апв
         incRestartCount();
@@ -374,14 +374,14 @@ void Protection::proccessingStateStopping()
       state_ = StateRunning;                // TODO: А точно?
     }
   }
-  else if (ksu.isStopMotor()) {             // Двигатель - стоп;
+  else if (ksu.isBreakOrStopMotor()) {             // Двигатель - стоп;
     if (ksu.getValue(CCS_CONDITION) == CCS_CONDITION_STOP) {
       setStateStop();
     }
   }
   else {
     uint32_t state = parameters.get(CCS_CONDITION);
-    if (state > CCS_CONDITION_RUN) {
+    if (state > CCS_CONDITION_WORK) {
       logDebug.add(CriticalMsg, "Protection::proccessingStateStopping(): unknown state motor %d, idMode = %d",
                    state, idMode_);
     }
@@ -390,7 +390,7 @@ void Protection::proccessingStateStopping()
 
 void Protection::proccessingStateStop()
 {
-  if (ksu.isWorkMotor()) {                  // Двигатель - работа;
+  if (ksu.isRunOrWorkMotor()) {                  // Двигатель - работа;
     if (ksu.isAutoMode()) {                 // Двигатель - работа; Режим - авто;
       if (isModeOff()) {
         restart_ = false;
@@ -425,7 +425,7 @@ void Protection::proccessingStateStop()
       }
     }
   }
-  else if (ksu.isStopMotor()) {               // Двигатель - стоп;
+  else if (ksu.isBreakOrStopMotor()) {               // Двигатель - стоп;
     if (ksu.isAutoMode() && !ksu.isBlock()) { // Двигатель - стоп; Режим - авто; Нет блокировки;
       if (restart_) {                         // Двигатель - стоп; Режим - авто; Флаг - АПВ;
         float restartTimer = 0;
@@ -487,7 +487,7 @@ void Protection::proccessingStateStop()
   }
   else {
     uint32_t state = parameters.get(CCS_CONDITION);
-    if (state > CCS_CONDITION_RUN) {
+    if (state > CCS_CONDITION_WORK) {
       logDebug.add(CriticalMsg, "Protection::proccessingStateStop() unknown state motor %d, idMode = %d, line = %d",
                    state, idMode_, __LINE__);
     }

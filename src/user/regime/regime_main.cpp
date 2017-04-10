@@ -1,7 +1,7 @@
 #include "regime_main.h"
 
 #define COUNT_RUN_REGIMES  7                  //!< Количество пусковых режимов, увеличивать при добавлении нового
-#define COUNT_REGIMES 6                       //!< Количество технологических режимов, увеличивать при добавлении нового
+#define COUNT_REGIMES 7                       //!< Количество технологических режимов, увеличивать при добавлении нового
 
 
 const uint16_t runRgmMode[COUNT_RUN_REGIMES] = {     //!<
@@ -25,12 +25,13 @@ const uint16_t runRgmState[COUNT_RUN_REGIMES] = {     //!<
 };
 
 const uint16_t workRgmMode[COUNT_REGIMES][COUNT_REGIMES+1] = {
-  {CCS_RGM_PERIODIC_MODE,           1,  0,  1,  0,  0,  0},
-  {CCS_RGM_CHANGE_FREQ_MODE,        0,  1,  0,  0,  0,  0},
-  {CCS_RGM_MAINTENANCE_PARAM_MODE,  1,  0,  1,  0,  0,  0},
-  {CCS_RGM_ALTERNATION_FREQ_MODE,   0,  0,  0,  1,  0,  0},
-  {CCS_RGM_OPTIM_VOLTAGE_MODE,      0,  0,  0,  0,  1,  0},
-  {CCS_RGM_JARRING_MODE,            0,  0,  0,  0,  0,  1}
+  {CCS_RGM_PERIODIC_MODE,           1,  0,  1,  0,  0,  0, 0},
+  {CCS_RGM_CHANGE_FREQ_MODE,        0,  1,  0,  0,  0,  0, 0},
+  {CCS_RGM_MAINTENANCE_PARAM_MODE,  1,  0,  1,  0,  0,  0, 0},
+  {CCS_RGM_ALTERNATION_FREQ_MODE,   0,  0,  0,  1,  0,  0, 0},
+  {CCS_RGM_OPTIM_VOLTAGE_MODE,      0,  0,  0,  0,  1,  0, 0},
+  {CCS_RGM_JARRING_MODE,            0,  0,  0,  0,  0,  1, 0},
+  {CCS_RGM_PUMP_GAS_MODE,           0,  0,  0,  0,  0,  0, 1}
 };
 
 Regime *regimes[COUNT_REGIMES];               //!< Количество режимов, увеличивать при добавлении нового
@@ -41,6 +42,7 @@ RegimeTechnologMaintenanceParam regimeTechnologMaintenanceParam;
 RegimeTechnologAlternationFreq regimeTechnologAlternationFreq;
 RegimeTechnologOptimizationVoltage regimeTechnologOptimizationVoltage;
 RegimeTechnologJarring regimeTechnologJarring;
+RegimeTechnologPumpingGas regimeTechnologPumpingGas;
 
 
 static void regimeTask(void *argument);
@@ -53,6 +55,7 @@ void regimeInit()
   regimes[3] = &regimeTechnologAlternationFreq;
   regimes[4] = &regimeTechnologOptimizationVoltage;
   regimes[5] = &regimeTechnologJarring;
+  regimes[6] = &regimeTechnologPumpingGas;
 
   osThreadDef(Regimes, regimeTask, osPriorityNormal, 0, 4 * configMINIMAL_STACK_SIZE);
   osThreadCreate(osThread(Regimes), NULL);
@@ -225,7 +228,7 @@ void setGeneralStateRunMode()
 bool offRunModeExcept(uint16_t id)
 {
   bool err = true;
-  if (ksu.isWorkMotor()) {                                                      // Если установка в работе
+  if (ksu.isRunOrWorkMotor()) {                                                      // Если установка в работе
     return err;                                                                 // Возвращаем ошибку
   }
   else {                                                                        // Установка в останове

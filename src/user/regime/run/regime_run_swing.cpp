@@ -294,7 +294,7 @@ void RegimeRunSwing::processingStateStop()
 
 void RegimeRunSwing::automatRegime()
 {
-  if ((action_ == OffAction) && (state_ != IdleState) && (ksu.isWorkMotor())) {
+  if ((action_ == OffAction) && (state_ != IdleState) && (ksu.isRunOrWorkMotor())) {
     state_ = StopState;
   }
 
@@ -331,7 +331,7 @@ void RegimeRunSwing::automatRegime()
   case WorkState + 9:
   case WorkState + 10:
   case WorkState + 11:
-    if (ksu.isStopMotor()) {
+    if (ksu.isBreakOrStopMotor()) {
       state_ = StopState;
       break;
     }
