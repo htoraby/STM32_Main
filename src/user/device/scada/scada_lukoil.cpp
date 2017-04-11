@@ -31,7 +31,7 @@ void ScadaLukoil::calcParamsTask()
     uint32_t state = parameters.get(CCS_CONDITION);
     int reason = parameters.get(CCS_LAST_STOP_REASON);
     bool isWorkMotor = false;
-    if ((state == CCS_CONDITION_RUNNING) || (state == CCS_CONDITION_RUN))
+    if ((state == CCS_CONDITION_RUN) || (state == CCS_CONDITION_WORK))
       isWorkMotor = true;
     bool isStopMotor = false;
     if (state == CCS_CONDITION_STOP)

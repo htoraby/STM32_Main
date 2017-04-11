@@ -30,9 +30,9 @@ void RegimeTechnologAlternationFreq::processing()
   switch (state_) {
   case IdleState:
     if (action_ != OffAction) {                       // Режим - включен
-      if ((((parameters.get(CCS_CONDITION) == CCS_CONDITION_RUNNING) &&
+      if ((((parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN) &&
             (parameters.get(VSD_FREQUENCY_NOW) >= parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1))) ||
-           (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN)) && ksu.isAutoMode()) {
+           (parameters.get(CCS_CONDITION) == CCS_CONDITION_WORK)) && ksu.isAutoMode()) {
         ksu.setFreq(firstFreq_);                      // Устанавливаем первую частоту
         beginTime_ = ksu.getTime();                   // Запоминаем время когда перешли на частоту
         state_ = RunningState;                        // Переходим на работу на первой частоте
@@ -46,7 +46,7 @@ void RegimeTechnologAlternationFreq::processing()
     state_ = WorkState;                               // TODO: Задержка для перехода на новую частоту
     break;
   case WorkState:                                     // Работа на первой частоте
-    if (ksu.isWorkMotor() && ksu.isAutoMode()) {      // Двигатель - работа; Режим - авто;
+    if (ksu.isRunOrWorkMotor() && ksu.isAutoMode()) {      // Двигатель - работа; Режим - авто;
       uint32_t time = ksu.getSecFromCurTime(beginTime_);        // Вычисляем сколько времени работаем на первой частоте
       if ((time > timeFirstFreq_) && timeFirstFreq_) {// Если время работы на первой частоте вышло
         ksu.setFreq(secondFreq_);               // Посылаем команду на изменение частоты
@@ -68,7 +68,7 @@ void RegimeTechnologAlternationFreq::processing()
     state_ = WorkState + 1;                           // TODO: Задержка для перехода на новую частоту
     break;
   case WorkState + 1:
-    if (ksu.isWorkMotor() && ksu.isAutoMode()) {      // Двигатель - работа; Режим - авто;
+    if (ksu.isRunOrWorkMotor() && ksu.isAutoMode()) {      // Двигатель - работа; Режим - авто;
       uint32_t time = ksu.getSecFromCurTime(beginTime_);
       if ((time > timeSecondFreq_) && timeSecondFreq_) {
         ksu.setFreq(firstFreq_);

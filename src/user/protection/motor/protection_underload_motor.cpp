@@ -83,6 +83,12 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
     }
   }
 
+  // Если отработал режим прокачки газа
+  if ((parameters.get(CCS_RGM_PUMP_GAS_MODE) != Regime::OffAction) &&
+      (parameters.get(CCS_RGM_PUMP_GAS_STATE) == Regime::PauseState)) {
+    tripDelay_ = 0;
+  }
+
   if (delayCalc < 5) {
     delayCalc++;
   }
@@ -93,6 +99,15 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
   }
 }
 
+bool ProtectionUnderloadMotor::isNotWorkPumpingGas()
+{
+  if ((parameters.get(CCS_RGM_PUMP_GAS_MODE) == Regime::OnAction) &&            // Режим включен
+      (parameters.get(CCS_RGM_PUMP_GAS_STATE) != Regime::PauseState)) {         // Прокачка ещё работает
+    return false;
+  }
+  return true;
+}
+
 void ProtectionUnderloadMotor::setOtherParamProt()
 {
   parameters.set(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT, progressiveRestartCount_);
@@ -100,7 +115,7 @@ void ProtectionUnderloadMotor::setOtherParamProt()
 
 bool ProtectionUnderloadMotor::checkAlarm()
 {
-  return Protection::isLowerLimit(tripSetpoint_);
+  return (Protection::isLowerLimit(tripSetpoint_) && isNotWorkPumpingGas());
 }
 
 float ProtectionUnderloadMotor::calcValue()

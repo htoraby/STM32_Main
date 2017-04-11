@@ -510,7 +510,7 @@ void VsdEtalon::getNewValue(uint16_t id)
       break;
     case VSD_TURBO_ROTATION_NOW:
       setValue(id, value);
-      if (!ksu.isWorkMotor())
+      if (!ksu.isRunOrWorkMotor())
         parameters.set(CCS_TURBO_ROTATION_NOW, value);
       else
         parameters.set(CCS_TURBO_ROTATION_NOW, 0);

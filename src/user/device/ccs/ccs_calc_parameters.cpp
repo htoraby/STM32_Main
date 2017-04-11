@@ -820,7 +820,7 @@ void Ccs::calcDigitalInputs()
     if (impulse > 400)
       impulse = 400;
     if ((parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {
-      if (!isWorkMotor() || (parameters.get(CCS_RGM_RUN_PICKUP_STATE) != Regime::IdleState))
+      if (!isRunOrWorkMotor() || (parameters.get(CCS_RGM_RUN_PICKUP_STATE) != Regime::IdleState))
         setValue(CCS_TURBO_ROTATION_NOW, impulse / 2);
       else
         setValue(CCS_TURBO_ROTATION_NOW, 0);

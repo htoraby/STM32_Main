@@ -809,16 +809,16 @@
 		<rosneft>0</rosneft>
 	</param>
 	<param>
-		<name>CCS_RGM_PUMP_GAS_SETPOINT</name>
-		<rosneft>0</rosneft>
+		<name>CCS_RGM_PUMP_GAS_F1</name>
+		<rosneft>50</rosneft>
 	</param>
 	<param>
-		<name>CCS_RGM_PUMP_GAS_DELAY_REACTION</name>
-		<rosneft>0</rosneft>
+		<name>CCS_RGM_PUMP_GAS_TIME</name>
+		<rosneft>20</rosneft>
 	</param>
 	<param>
-		<name>CCS_RGM_PUMP_GAS_LIMIT_RESTART</name>
-		<rosneft>0</rosneft>
+		<name>CCS_RGM_PUMP_GAS_CICLE</name>
+		<rosneft>3</rosneft>
 	</param>
 	<param>
 		<name>CCS_RGM_CURRENT_LIMIT_MODE</name>

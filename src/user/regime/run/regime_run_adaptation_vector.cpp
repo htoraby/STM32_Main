@@ -102,7 +102,7 @@ void RegimeRunAdaptationVector::processingStateRunning()        // Состоя�
         }
         else {
           repeat_++;                                            // Не сделали 5 попыток
-          if (!ksu.isWorkMotor()) {                             // КСУ не в работе
+          if (!ksu.isRunOrWorkMotor()) {                             // КСУ не в работе
             ksu.start((LastReasonRun)parameters.get(CCS_LAST_RUN_REASON_TMP));      // Пробуем запуститься ещё раз
 #if (USE_LOG_DEBUG == 1)
             logDebug.add(DebugMsg, "RegimeRunAdaptationVector::processingStateRunning() ksu.start(LastReasonRunProgram) (repeat_ = %5.0f)",
@@ -214,7 +214,7 @@ void RegimeRunAdaptationVector::processingStateStop()
         }
         else {
           repeat_++;                                            // Не сделали 5 попыток
-          if (!ksu.isStopMotor()) {                             // КСУ не в стопе
+          if (!ksu.isBreakOrStopMotor()) {                             // КСУ не в стопе
             ksu.stop(LastReasonStopAdaptationVector);           // Пробуем остановить ещё раз
 #if (USE_LOG_DEBUG == 1)
             logDebug.add(DebugMsg, "RegimeRunAdaptationVector::processingStateStop() ksu.stop(LastReasonStopAdaptationVector) (repeat_= %5.0f)",
@@ -367,7 +367,7 @@ void RegimeRunAdaptationVector::automatRegime()
     break;
   case WorkState:                           // Состояние подбора сопротивления
   case WorkState + 1:                       // Состояние подобраного сопротивления, успешный выход
-    if (ksu.isStopMotor()) {
+    if (ksu.isBreakOrStopMotor()) {
       state_ = StopState;
     }
     processingStateWork();
@@ -377,13 +377,13 @@ void RegimeRunAdaptationVector::automatRegime()
     processingStateStop();
     break;
   case PauseState:                          // Останова в процессе работы алгоритма
-    if (ksu.isStopMotor()) {
+    if (ksu.isBreakOrStopMotor()) {
       state_ = StopState;
     }
     processingStatePause();
     break;
   case RestartState:                        // Состояние запуска в процессе работы алгоритма
-    if (ksu.isStopMotor()) {
+    if (ksu.isBreakOrStopMotor()) {
       state_ = StopState;
     }
     processingStateRestart();

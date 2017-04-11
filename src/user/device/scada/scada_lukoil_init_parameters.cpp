@@ -3999,7 +3999,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[332].command          = OPERATION_ERROR;
   scadaParameters_[332].value.float_t    = 0;
   // Частота прокачки
-  scadaParameters_[333].id               = CCS_RGM_PUMP_GAS_SETPOINT;
+  scadaParameters_[333].id               = CCS_RGM_PUMP_GAS_F1;
   scadaParameters_[333].address          = 970;
   scadaParameters_[333].operation        = OPERATION_WRITE;
   scadaParameters_[333].physic           = PHYSIC_FREQUENCY;
@@ -4035,7 +4035,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[335].command          = OPERATION_ERROR;
   scadaParameters_[335].value.float_t    = 0;
   // Длительность прокачки газа
-  scadaParameters_[336].id               = CCS_RGM_PUMP_GAS_DELAY_REACTION;
+  scadaParameters_[336].id               = CCS_RGM_PUMP_GAS_TIME;
   scadaParameters_[336].address          = 973;
   scadaParameters_[336].operation        = OPERATION_WRITE;
   scadaParameters_[336].physic           = PHYSIC_TIME;

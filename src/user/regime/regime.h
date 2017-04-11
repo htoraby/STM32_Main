@@ -47,6 +47,7 @@ public:
     StopState = 600,
   } RegimeState;
 
+
   Regime();
   ~Regime();
 

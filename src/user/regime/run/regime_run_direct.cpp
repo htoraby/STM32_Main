@@ -77,7 +77,7 @@ void RegimeRunDirect::automatRegime()
     processingStateRunning();
     break;
   case WorkState:
-    if (ksu.isStopMotor()) {
+    if (ksu.isBreakOrStopMotor()) {
       state_ = StopState;
       break;
     }

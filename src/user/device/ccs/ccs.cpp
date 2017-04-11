@@ -304,10 +304,10 @@ void Ccs::vsdConditionTask()
       }
       break;
     case VSD_CONDITION_RUN:
-      if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
+      if (getValue(CCS_CONDITION) != CCS_CONDITION_WORK) {
         if ((parameters.get(VSD_FREQUENCY_NOW) >= parameters.get(VSD_FREQUENCY))
          && (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState))
-          setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
+          setNewValue(CCS_CONDITION, CCS_CONDITION_WORK);
 #if USE_DEBUG
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #endif
@@ -360,7 +360,7 @@ void Ccs::changedCondition()
   if ((condition != conditionOld_) || (flag != flagOld_)) {
 
     switch (condition) {
-    case CCS_CONDITION_RUNNING:
+    case CCS_CONDITION_RUN:
       resetRestart();
 
       if (flag == CCS_CONDITION_FLAG_DELAY) {
@@ -372,7 +372,7 @@ void Ccs::changedCondition()
         setLedCondition(OnRedToogleYellowLed);
       }
       break;
-    case CCS_CONDITION_RUN:
+    case CCS_CONDITION_WORK:
       if (flag == CCS_CONDITION_FLAG_DELAY) {
         setNewValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
         setLedCondition(OnGreenToogleYellowLed);
@@ -382,7 +382,7 @@ void Ccs::changedCondition()
         setLedCondition(OnGreenLed);
       }
       break;
-    case CCS_CONDITION_STOPPING:
+    case CCS_CONDITION_BREAK:
       if (flag == CCS_CONDITION_FLAG_BLOCK) {
         setNewValue(CCS_GENERAL_CONDITION, GeneralConditionBlock);
         setLedCondition(ToogleGreenToogleRedLed);
@@ -450,7 +450,7 @@ void Ccs::start(LastReasonRun reason, bool force)
     initStart();
     setNewValue(CCS_LAST_RUN_REASON, reason);
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
-    setNewValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
+    setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
     calcCountersRun(reason);
   }
@@ -464,7 +464,7 @@ void Ccs::stop(LastReasonStop reason)
     if (reason == LastReasonStopRemote)
       setBlock();
 
-    setNewValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
+    setNewValue(CCS_CONDITION, CCS_CONDITION_BREAK);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
   }
 }
@@ -480,7 +480,7 @@ void Ccs::syncStart()
   setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
   setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
   setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
-  setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
+  setNewValue(CCS_CONDITION, CCS_CONDITION_WORK);
   calcCountersRun(LastReasonRunApvHardwareVsd);
 }
 
@@ -513,7 +513,7 @@ void Ccs::cmdStart(int value)
     float reason = getValue(CCS_LAST_RUN_REASON_TMP);
     setNewValue(CCS_LAST_RUN_REASON, reason);
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
-    setNewValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
+    setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
     calcCountersRun(reason);
   }
@@ -533,7 +533,7 @@ void Ccs::cmdStop(int value)
   if (checkCanStop()) {
     logData.add();
     setBlock();
-    setNewValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
+    setNewValue(CCS_CONDITION, CCS_CONDITION_BREAK);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
   }
 }
@@ -689,11 +689,34 @@ float Ccs::isAlarmStop()
 
 }
 
+bool Ccs::isBreakOrStopMotor()
+{
+  unsigned int state = getValue(CCS_CONDITION);
+  if ((state == CCS_CONDITION_BREAK) ||
+      (state == CCS_CONDITION_STOP)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 bool Ccs::isStopMotor()
 {
   unsigned int state = getValue(CCS_CONDITION);
-  if ((state == CCS_CONDITION_STOPPING) ||
-      (state == CCS_CONDITION_STOP)) {
+  if (state == CCS_CONDITION_STOP) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+bool Ccs::isRunOrWorkMotor()
+{
+  unsigned int state = getValue(CCS_CONDITION);
+  if ((state == CCS_CONDITION_RUN) ||
+      (state == CCS_CONDITION_WORK)) {
     return true;
   }
   else {
@@ -704,8 +727,7 @@ bool Ccs::isStopMotor()
 bool Ccs::isWorkMotor()
 {
   unsigned int state = getValue(CCS_CONDITION);
-  if ((state == CCS_CONDITION_RUNNING) ||
-      (state == CCS_CONDITION_RUN)) {
+  if (state == CCS_CONDITION_WORK) {
     return true;
   }
   else {
@@ -959,6 +981,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_CHANGE_FREQ_MODE:
   case CCS_RGM_MAINTENANCE_PARAM_MODE:
   case CCS_RGM_JARRING_MODE:
+  case CCS_RGM_PUMP_GAS_MODE:
     if (value != oldValue) {                          // Если новое значение
       if (value != Regime::OffAction) {               // Если включили режим
         err = offWorkRgmExcept(id);
@@ -2649,8 +2672,8 @@ void Ccs::setRelayOutputs()
 
   for (int i = 0; i < 4; ++i) {
     int action = getValue(CCS_RO_1_ACTION + i);
-    if (((action == DO_ACTION_STOP) && isStopMotor()) ||
-        ((action == DO_ACTION_RUN) && isWorkMotor()) ||
+    if (((action == DO_ACTION_STOP) && isBreakOrStopMotor()) ||
+        ((action == DO_ACTION_RUN) && isRunOrWorkMotor()) ||
         ((action == DO_ACTION_RESTART) && isRestart()) ||
         ((action == DO_ACTION_BLOCK) && isBlock())) {
       value = PinSet;

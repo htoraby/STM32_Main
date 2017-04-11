@@ -10166,7 +10166,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Состояние</text>
-		<short_text>Реакция режима</short_text>
+		<short_text>Пркч</short_text>
 		<form>5.1.8 Режим прокачки газа</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
@@ -10176,66 +10176,66 @@
 	</param>
 	<param>
 		<id>500</id>
-		<name>CCS_RGM_PUMP_GAS_SETPOINT</name>
+		<name>CCS_RGM_PUMP_GAS_F1</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_FREQUENCY</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<def>0.0</def>
+		<min>1.0</min>
+		<max>500.0</max>
+		<def>50.0</def>
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
-		<text>Нижняя частота дегазации</text>
-		<short_text>Нижняя частота дегазации</short_text>
+		<value>50.0</value>
+		<text>Верхняя частота</text>
+		<short_text>Пркч. F1</short_text>
 		<form>5.1.8 Режим прокачки газа</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
 		<code>13</code>
-		<comment>Режим прокачки газа</comment>
+		<comment>Режим прокачки газа. Верхняя частота</comment>
 	</param>
 	<param>
 		<id>501</id>
-		<name>CCS_RGM_PUMP_GAS_DELAY_REACTION</name>
+		<name>CCS_RGM_PUMP_GAS_F2</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<def>0.0</def>
-		<discret>1</discret>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>1.0</min>
+		<max>500.0</max>
+		<def>40.0</def>
+		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
-		<text>Время работы на частоте дегазации</text>
-		<short_text>Время работы на частоте дегазации</short_text>
+		<value>40.0</value>
+		<text>Нижняя частота</text>
+		<short_text>Пркч. F2</short_text>
 		<form>5.1.8 Режим прокачки газа</form>
-		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XX_XX</format>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
-		<comment>Режим прокачки газа</comment>
+		<comment>Режим прокачки газа. Нижняя частота</comment>
 	</param>
 	<param>
 		<id>502</id>
-		<name>CCS_RGM_PUMP_GAS_LIMIT_RESTART</name>
+		<name>CCS_RGM_PUMP_GAS_TIME</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>999999999.9</max>
-		<def>0.0</def>
+		<physic>PHYSIC_TIME</physic>
+		<min>1.0</min>
+		<max>59.0</max>
+		<def>20.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>0.0</value>
-		<text>Количество повторений</text>
-		<short_text>Количество повторений</short_text>
+		<value>20.0</value>
+		<text>Время</text>
+		<short_text>Пркч. T</short_text>
 		<form>5.1.8 Режим прокачки газа</form>
-		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
-		<format>XXXXXX</format>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XX</format>
 		<code>13</code>
-		<comment>Режим прокачки газа</comment>
+		<comment>Режим прокачки газа. Время</comment>
 	</param>
 	<param>
 		<id>503</id>
@@ -22483,7 +22483,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Единицы измерения</text>
-		<short_text>Ан.вх.1. Ед. измерения</short_text>
+		<short_text>Ан. вх. 1 ед. изм.</short_text>
 		<form>4.4.1 Защита по аналоговому входу 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -22504,7 +22504,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Единицы измерения</text>
-		<short_text>Ан.вх.2. Ед. измерения</short_text>
+		<short_text>Ан. вх. 2 ед. изм.</short_text>
 		<form>4.4.2 Защита по аналоговому входу 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -22525,7 +22525,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Единицы измерения</text>
-		<short_text>Ан.вх.3. Ед. измерения</short_text>
+		<short_text>Ан. вх. 3 ед. изм.</short_text>
 		<form>4.4.3 Защита по аналоговому входу 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -22546,7 +22546,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Единицы измерения</text>
-		<short_text>Ан.вх.4. Ед. измерения</short_text>
+		<short_text>Ан. вх 4 ед. изм.</short_text>
 		<form>4.4.4 Защита по аналоговому входу 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -22567,7 +22567,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Максимальное значение АПВ</text>
-		<short_text>Аналог.вх.1 Уставка Макс. АПВ</short_text>
+		<short_text>Ан. вх. 1 уст. макс. АПВ</short_text>
 		<form>4.4.1 Защита по аналоговому входу 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -22588,7 +22588,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Максимальное значение АПВ</text>
-		<short_text>Аналог.вх.2 Уставка Макс. АПВ</short_text>
+		<short_text>Ан. вх. 2 уст. макс. АПВ</short_text>
 		<form>4.4.1 Защита по аналоговому входу 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -22609,7 +22609,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Максимальное значение АПВ</text>
-		<short_text>Аналог.вх.3 Уставка Макс. АПВ</short_text>
+		<short_text>Ан. вх. 3 уст. макс. АПВ</short_text>
 		<form>4.4.1 Защита по аналоговому входу 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -22630,7 +22630,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Максимальное значение АПВ</text>
-		<short_text>Аналог.вх.4 Уставка Макс. АПВ</short_text>
+		<short_text>Ан. вх. 4 уст. макс. АПВ</short_text>
 		<form>4.4.1 Защита по аналоговому входу 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -22640,6 +22640,195 @@
 	</param>
 	<param>
 		<id>1113</id>
+		<name>CCS_RGM_PUMP_GAS_CICLE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>1.0</min>
+		<max>3.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Количество циклов прокачки</text>
+		<short_text>Пркч. кол. циклов</short_text>
+		<form>Режим прокачки газа</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>X</format>
+		<code>13</code>
+		<comment>Режим прокачки газа. Количество циклов прокачки</comment>
+	</param>
+	<param>
+		<id>1114</id>
+		<name>CCS_RGM_PUMP_GAS_UNDERLOAD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>99.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Прибавка к уставке недогруза после которой начинает работать прокачка</text>
+		<short_text>Пркч. уст. активации</short_text>
+		<form>NULL</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Режим прокачки газа. Проценты добавляемые к уставке недогруза при снижении ниже которых активируется режим</comment>
+	</param>
+	<param>
+		<id>1115</id>
+		<name>CCS_RGM_PUMP_GAS_DELAY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>0.0</min>
+		<max>59.0</max>
+		<def>3.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
+		<text>Задержка на активацию и деактивацию режима</text>
+		<short_text>Пркч. задержка</short_text>
+		<form>NULL</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Режим прокачки газа. Задержка на активацию и деактивацию режима</comment>
+	</param>
+	<param>
+		<id>1116</id>
+		<name>CCS_RGM_PUMP_GAS_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Текущее состояние режима прокачки газа</text>
+		<short_text>Пркч. тек. состояние</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Режим прокачки газа. Текущее состояние автомата режима</comment>
+	</param>
+	<param>
+		<id>1117</id>
+		<name>CCS_RGM_PUMP_GAS_POINT_TIME</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Время начала работы на частоте прокачки</text>
+		<short_text>Пркч. время начала</short_text>
+		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Режим прокачки газа. Время начала работы на частоте прокачки</comment>
+	</param>
+	<param>
+		<id>1118</id>
+		<name>CCS_RGM_PUMP_GAS_COUNT_CICLE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>3.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Текущее количество циклов прокачки</text>
+		<short_text>Пркч. тек. кол. циклов</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Режим прокачки газа. Текущее количество циклов прокачки</comment>
+	</param>
+	<param>
+		<id>1119</id>
+		<name>CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Сохранённая уставка частоты</text>
+		<short_text>Пркч. сохр. уст. F</short_text>
+		<form>NULL</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<code>0</code>
+		<comment>Режим прокачки газа. Сохранённая уставка частоты</comment>
+	</param>
+	<param>
+		<id>1120</id>
+		<name>CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_FREQUENCY</physic>
+		<min>0.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Сохранённая уставка минимальной частоты</text>
+		<short_text>Пркч. сохр. уст. мин. F</short_text>
+		<form>NULL</form>
+		<unit>FREQUENCY_HZ</unit>
+		<unit_lcd>FREQUENCY_HZ</unit_lcd>
+		<format>XXX_XX</format>
+		<code>0</code>
+		<comment>Режим прокачки газа. Сохранённая уставка минимальной частоты</comment>
+	</param>
+	<param>
+		<id>1121</id>
+		<name>CCS_RGM_PUMP_GAS_POINT_DELAY</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_DATE_TIME</physic>
+		<min>0.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Время начала выполнения условия режима прокачки</text>
+		<short_text>Пркч. время срабатывания</short_text>
+		<form>NULL</form>
+		<unit>DATE_TIME_SS</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Режим прокачки газа. Время начала выполнения условия режима прокачки</comment>
+	</param>
+	<param>
+		<id>1122</id>
 		<name>CCS_RGM_RUN_SOFT_MODE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -22661,7 +22850,7 @@
 		<comment>Прямой пуск. Режим "мягкого" пуска</comment>
 	</param>
 	<param>
-		<id>1114</id>
+		<id>1123</id>
 		<name>CCS_RGM_RUN_SOFT_STATE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
@@ -22682,7 +22871,7 @@
 		<comment>Состояние автомата режима "мягкого" пуска</comment>
 	</param>
 	<param>
-		<id>1115</id>
+		<id>1124</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

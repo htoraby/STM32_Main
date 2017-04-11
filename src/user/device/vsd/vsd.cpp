@@ -160,14 +160,15 @@ int Vsd::setMinFrequency(float value)
 
 int Vsd::setLimitsMinFrequence(float value)
 {
-  int const freqMode[9] = {
+  int const freqMode[10] = {
     CCS_RGM_ALTERNATION_FREQ_FREQ_1,
     CCS_RGM_ALTERNATION_FREQ_FREQ_2,
     CCS_RGM_CHANGE_FREQ_BEGIN_FREQ,
     CCS_RGM_CHANGE_FREQ_END_FREQ,
     CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ,
     CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ,
-    CCS_RGM_PUMP_GAS_SETPOINT,
+    CCS_RGM_PUMP_GAS_F1,
+    CCS_RGM_PUMP_GAS_F2,
     CCS_RGM_JARRING_FREQ_1,
     CCS_RGM_JARRING_FREQ_2
   };
@@ -176,7 +177,7 @@ int Vsd::setLimitsMinFrequence(float value)
     setMin(VSD_HIGH_LIM_SPEED_MOTOR, value);          // Меняем поле минимум для уставки "Максимальной частоты"
     setMin(VSD_FREQUENCY, value);                     // Меняем поле минимум для уставки "Частота"
 
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 10; i++) {
       parameters.setMin(freqMode[i], value);
       if (value > parameters.getMax(freqMode[i])) {
         parameters.setMax(freqMode[i], value);
@@ -205,14 +206,15 @@ int Vsd::setMaxFrequency(float value)
 
 int Vsd::setLimitsMaxFrequence(float value)
 {
-  int const freqMode[9] = {
+  int const freqMode[10] = {
     CCS_RGM_ALTERNATION_FREQ_FREQ_1,
     CCS_RGM_ALTERNATION_FREQ_FREQ_2,
     CCS_RGM_CHANGE_FREQ_BEGIN_FREQ,
     CCS_RGM_CHANGE_FREQ_END_FREQ,
     CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ,
     CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ,
-    CCS_RGM_PUMP_GAS_SETPOINT,
+    CCS_RGM_PUMP_GAS_F1,
+    CCS_RGM_PUMP_GAS_F2,
     CCS_RGM_JARRING_FREQ_1,
     CCS_RGM_JARRING_FREQ_2
   };
@@ -221,7 +223,7 @@ int Vsd::setLimitsMaxFrequence(float value)
     setMax(VSD_LOW_LIM_SPEED_MOTOR, value);           // Меняем поле максимум для уставки "Минимальной частоты"
     setMax(VSD_FREQUENCY, value);                     // Меняем поле максимум для уставки "Частота"
 
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 10; i++) {
       parameters.setMax(freqMode[i], value);
       if (value < parameters.getMin(freqMode[i])) {
         parameters.setMin(freqMode[i], value);
