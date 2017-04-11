@@ -418,6 +418,20 @@ void VsdEtalon::getNewValue(uint16_t id)
           parameters.get(CCS_RGM_RUN_SWING_MODE))
         parameters.set(CCS_RGM_RUN_SWING_QUANTITY, value);
       break;
+    case VSD_ETALON_DIRECT_RUN_MODE:
+      setValue(id, value);
+      if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) && !value)
+        parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OffAction);
+      else if (!parameters.get(CCS_RGM_RUN_DIRECT_MODE) && value)
+        parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OnAction);
+      break;
+    case VSD_ETALON_DIRECT_RUN_SOFT_MODE:
+      setValue(id, value);
+      if (parameters.get(CCS_RGM_RUN_SOFT_MODE) && !value)
+        parameters.set(CCS_RGM_RUN_SOFT_MODE, Regime::OffAction);
+      else if (!parameters.get(CCS_RGM_RUN_SOFT_MODE) && value)
+        parameters.set(CCS_RGM_RUN_SOFT_MODE, Regime::OnAction);
+      break;
     case VSD_MOTOR_INDUCTANCE:
       setValue(id, value);
       if (parameters.get(CCS_MOTOR_INDUCTANCE) != value)

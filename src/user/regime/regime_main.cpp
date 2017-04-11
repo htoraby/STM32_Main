@@ -1,6 +1,6 @@
 #include "regime_main.h"
 
-#define COUNT_RUN_REGIMES  7                  //!< Количество пусковых режимов, увеличивать при добавлении нового
+#define COUNT_RUN_REGIMES  8                  //!< Количество пусковых режимов, увеличивать при добавлении нового
 #define COUNT_REGIMES 6                       //!< Количество технологических режимов, увеличивать при добавлении нового
 
 
@@ -11,7 +11,8 @@ const uint16_t runRgmMode[COUNT_RUN_REGIMES] = {     //!<
   CCS_RGM_RUN_AUTO_ADAPTATION_MODE,
   CCS_RGM_RUN_SKIP_RESONANT_MODE,
   CCS_RGM_RUN_SYNCHRON_MODE,
-  CCS_RGM_RUN_DIRECT_MODE
+  CCS_RGM_RUN_DIRECT_MODE,
+  CCS_RGM_RUN_SOFT_MODE
 };
 
 const uint16_t runRgmState[COUNT_RUN_REGIMES] = {     //!<
@@ -21,7 +22,8 @@ const uint16_t runRgmState[COUNT_RUN_REGIMES] = {     //!<
   CCS_RGM_RUN_AUTO_ADAPTATION_STATE,
   CCS_RGM_RUN_SKIP_RESONANT_STATE,
   CCS_RGM_RUN_SYNCHRON_STATE,
-  CCS_RGM_RUN_DIRECT_STATE
+  CCS_RGM_RUN_DIRECT_STATE,
+  CCS_RGM_RUN_SOFT_STATE
 };
 
 const uint16_t workRgmMode[COUNT_REGIMES][COUNT_REGIMES+1] = {
@@ -86,8 +88,32 @@ bool interceptionStartRegime()
 
   // Перехватываем запуск режимом прямого пуска
   if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) != Regime::OffAction) {
-    if (parameters.get(CCS_RGM_RUN_DIRECT_STATE) < Regime::WorkState) {
-      return false;
+    switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
+    case VSD_TYPE_ETALON:
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) < Regime::WorkState) {
+        return false;
+      }
+      break;
+    default:
+      if (parameters.get(CCS_RGM_RUN_DIRECT_STATE) < Regime::WorkState) {
+        return false;
+      }
+      break;
+    }
+  }
+
+  if (parameters.get(CCS_RGM_RUN_SOFT_MODE) != Regime::OffAction) {
+    switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
+    case VSD_TYPE_ETALON:
+      if (parameters.get(CCS_RGM_RUN_VSD_STATE) < Regime::WorkState) {
+        return false;
+      }
+      break;
+    default:
+      if (parameters.get(CCS_RGM_RUN_SOFT_MODE) < Regime::WorkState) {
+        return false;
+      }
+      break;
     }
   }
 

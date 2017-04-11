@@ -1116,7 +1116,9 @@ enum enID
   CCS_PROT_AI_2_RESTART_SETPOINT_MAX = 1110,                 //!< Аналоговой вход 2. Максимальное значение
   CCS_PROT_AI_3_RESTART_SETPOINT_MAX = 1111,                 //!< Аналоговой вход 3. Максимальное значение
   CCS_PROT_AI_4_RESTART_SETPOINT_MAX = 1112,                 //!< Аналоговой вход 4. Максимальное значение
-  CCS_END = 1113,                                            //!< 
+  CCS_RGM_RUN_SOFT_MODE = 1113,                              //!< Прямой пуск. Режим "мягкого" пуска
+  CCS_RGM_RUN_SOFT_STATE = 1114,                             //!< Состояние автомата режима "мягкого" пуска
+  CCS_END = 1115,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
@@ -1619,7 +1621,13 @@ enum enID
   VSD_TEMPERATURE_AIR = 10499,                               //!< 
   VSD_FUNCTION_RELE_7 = 10500,                               //!< Реле функций Danfoss 5-40 Не используется в проекте, только при конфигурировании
   VSD_DANFOSS_COASTING = 10501,                              //!< Катушка:Coasting Danfoss
-  VSD_END = 10502,                                           //!< 
+  VSD_ETALON_DIRECT_RUN_MODE = 10502,                        //!< Прямой пуск. Действие режима "Прямой пуск"
+  VSD_ETALON_DIRECT_RUN_SOFT_MODE = 10503,                   //!< Прямой пуск. Режим мягкого пуска
+  VSD_ETALON_DIRECT_RUN_SYNC = 10504,                        //!< Прямой пуск. Синхронизация с сетью
+  VSD_ETALON_DIRECT_RUN_CMD_TRANSITION = 10505,              //!< Прямой пуск. Команда перехода с режима на режим
+  VSD_ETALON_DIRECT_RUN_IS_SYNC = 10506,                     //!< Прямой пуск. Синхронизирован с сетью?
+  VSD_ETALON_DIRECT_RUN_STATE_TRANSITION = 10507,            //!< Прямой пуск. Состояние перехода
+  VSD_END = 10508,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

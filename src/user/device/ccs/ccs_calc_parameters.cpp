@@ -108,7 +108,7 @@ float Ccs::applyCoefTransForCurrent(float vsdCurOut)
 
 float Ccs::calcMotorCurrentPhase1()
 {
-  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) && (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {
     setValue(CCS_MOTOR_CURRENT_PHASE_1, applyCoefTransForCurrent(parameters.get(CCS_CURRENT_PHASE_1)));
     setValue(CCS_RGM_RUN_DIRECT_LOAD_PHASE_1, parameters.get(CCS_MOTOR_CURRENT_PHASE_1) / parameters.get(VSD_MOTOR_CURRENT) * 100.0);
   }
@@ -120,7 +120,7 @@ float Ccs::calcMotorCurrentPhase1()
 
 float Ccs::calcMotorCurrentPhase2()
 {
-  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) && (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {
     setValue(CCS_MOTOR_CURRENT_PHASE_2, applyCoefTransForCurrent(parameters.get(CCS_CURRENT_PHASE_2)));
     setValue(CCS_RGM_RUN_DIRECT_LOAD_PHASE_2, parameters.get(CCS_MOTOR_CURRENT_PHASE_2) / parameters.get(VSD_MOTOR_CURRENT) * 100.0);
   }
@@ -132,7 +132,7 @@ float Ccs::calcMotorCurrentPhase2()
 
 float Ccs::calcMotorCurrentPhase3()
 {
-  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) && (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {
     setValue(CCS_MOTOR_CURRENT_PHASE_3, applyCoefTransForCurrent(parameters.get(CCS_CURRENT_PHASE_3)));
     setValue(CCS_RGM_RUN_DIRECT_LOAD_PHASE_3, parameters.get(CCS_MOTOR_CURRENT_PHASE_3) / parameters.get(VSD_MOTOR_CURRENT) * 100.0);
   }
@@ -640,6 +640,10 @@ void Ccs::calcRegimeRun()
   }
   if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) != Regime::OffAction) {
      parameters.set(CCS_RUNNING_TYPE, Regime::DirectRegimeRun);
+     return;
+  }
+  if (parameters.get(CCS_RGM_RUN_SOFT_MODE) != Regime::OffAction) {
+     parameters.set(CCS_RUNNING_TYPE, Regime::SoftRegimeRun);
      return;
   }
   parameters.set(CCS_RUNNING_TYPE, Regime::SmoothRegimeRun);

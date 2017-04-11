@@ -32,6 +32,7 @@ public:
     SkipFreqRegimeRun,                      //!< Пропуск резонансных частот
     AutoAdaptationRegimeRun,                //!< Автоадаптация
     DirectRegimeRun,                        //!< Прямой пуск
+    SoftRegimeRun,                          //!< "Мягкий" пуск
   } TypeRegimeRun;
   /*!
    * \brief Список состояний режима

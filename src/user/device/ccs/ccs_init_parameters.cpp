@@ -13358,5 +13358,29 @@ void Ccs::initParameters()
   parameters_[CCS_PROT_AI_4_RESTART_SETPOINT_MAX - CCS_BEGIN].discret            = 10;
   parameters_[CCS_PROT_AI_4_RESTART_SETPOINT_MAX - CCS_BEGIN].def                = 0.0;
   parameters_[CCS_PROT_AI_4_RESTART_SETPOINT_MAX - CCS_BEGIN].code               = 13;
+  // Прямой пуск. Режим "мягкого" пуска
+  parameters_[CCS_RGM_RUN_SOFT_MODE - CCS_BEGIN].id                              = CCS_RGM_RUN_SOFT_MODE;
+  parameters_[CCS_RGM_RUN_SOFT_MODE - CCS_BEGIN].access                          = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SOFT_MODE - CCS_BEGIN].operation                       = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SOFT_MODE - CCS_BEGIN].physic                          = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_SOFT_MODE - CCS_BEGIN].validity                        = VALIDITY_ERROR;
+  parameters_[CCS_RGM_RUN_SOFT_MODE - CCS_BEGIN].value.float_t                   = 0.0;
+  parameters_[CCS_RGM_RUN_SOFT_MODE - CCS_BEGIN].min                             = 0.0;
+  parameters_[CCS_RGM_RUN_SOFT_MODE - CCS_BEGIN].max                             = 3.0;
+  parameters_[CCS_RGM_RUN_SOFT_MODE - CCS_BEGIN].discret                         = 1;
+  parameters_[CCS_RGM_RUN_SOFT_MODE - CCS_BEGIN].def                             = 0.0;
+  parameters_[CCS_RGM_RUN_SOFT_MODE - CCS_BEGIN].code                            = 0;
+  // Состояние автомата режима "мягкого" пуска
+  parameters_[CCS_RGM_RUN_SOFT_STATE - CCS_BEGIN].id                             = CCS_RGM_RUN_SOFT_STATE;
+  parameters_[CCS_RGM_RUN_SOFT_STATE - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_RUN_SOFT_STATE - CCS_BEGIN].operation                      = OPERATION_WRITE;
+  parameters_[CCS_RGM_RUN_SOFT_STATE - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_RUN_SOFT_STATE - CCS_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[CCS_RGM_RUN_SOFT_STATE - CCS_BEGIN].value.float_t                  = 0.0;
+  parameters_[CCS_RGM_RUN_SOFT_STATE - CCS_BEGIN].min                            = 0.0;
+  parameters_[CCS_RGM_RUN_SOFT_STATE - CCS_BEGIN].max                            = 4294967296.0;
+  parameters_[CCS_RGM_RUN_SOFT_STATE - CCS_BEGIN].discret                        = 1;
+  parameters_[CCS_RGM_RUN_SOFT_STATE - CCS_BEGIN].def                            = 0.0;
+  parameters_[CCS_RGM_RUN_SOFT_STATE - CCS_BEGIN].code                           = 0;
 }
 

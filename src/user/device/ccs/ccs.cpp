@@ -588,7 +588,8 @@ bool Ccs::checkCanStart(bool isForce)
 bool Ccs::checkStartDevice()
 {
   bool result = false;
-  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {                                // Если прямой пуск
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) &&
+      (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {                                // Если прямой пуск
     result = parameters.get(CCS_BYPASS_CONTACTOR_KM1_STATE);                    // Состояние контактора прямого пуска
   }
   else {
@@ -634,7 +635,8 @@ bool Ccs::checkCanStop()
 bool Ccs::checkStopDevice()
 {
   bool result = false;
-  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {                                // Если прямой пуск
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) &&
+      (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {                                // Если прямой пуск
     result = !parameters.get(CCS_BYPASS_CONTACTOR_KM1_STATE);                   // Состояние контактора прямого пуска
   }
   else {
@@ -646,7 +648,8 @@ bool Ccs::checkStopDevice()
 int Ccs::stopDevice()
 {
   int err = ok_r;
-  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) &&
+      (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {
     err = parameters.set(CCS_BYPASS_CONTACTOR_KM1_CONTROL, 0);
   }
   else {
@@ -658,7 +661,8 @@ int Ccs::stopDevice()
 int Ccs::startDevice(bool init)
 {
   int err = ok_r;
-  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) &&
+      (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {
     err = parameters.set(CCS_BYPASS_CONTACTOR_KM1_CONTROL, 1);
   }
   else {
@@ -797,7 +801,8 @@ void Ccs::resetBlock()
 
 void Ccs::resetBlockDevice()
 {
-  if (!parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+  if (!(parameters.get(CCS_RGM_RUN_DIRECT_MODE) &&
+        (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON))) {
     vsd->resetBlock();
   }
 }
@@ -1540,6 +1545,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) == Regime::OnAction) {      // Был включен прямой пуск
           parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OffAction);           // Выключаем прямой пуск
         }
+        if (parameters.get(CCS_RGM_RUN_SOFT_MODE) == Regime::OnAction) {      // Был включен "мягкий" пуск
+          parameters.set(CCS_RGM_RUN_SOFT_MODE, Regime::OffAction);           // Выключаем "мягкий" пуск
+        }
       }
     }
     return err;
@@ -1822,24 +1830,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (!err) {
       parameters.set(VSD_BACK_EMF, value / parameters.get(CCS_COEF_TRANSFORMATION) * 1000);
     }
-    return err;
-  case CCS_RGM_RUN_DIRECT_MODE:                                                 // Прямой пуск
-    if (value != Regime::OffAction) {
-      err = offRunModeExcept(CCS_RGM_RUN_DIRECT_MODE);
-      if (!err) {
-        err = parameters.set(CCS_BYPASS_CONTACTOR_KM2_CONTROL, !value);
-        if (!err) {
-          err = setValue(id, value, eventType);
-        }
-      }
-    }
-    else {
-      err = parameters.set(CCS_BYPASS_CONTACTOR_KM2_CONTROL, !value);
-      if (!err) {
-        err = setValue(id, value, eventType);
-      }
-    }
-    return err;                                                                   //
+    return err;                                                                 //
   case CCS_BYPASS_CONTACTORS:
     err = setValue(id, value, NoneType);
     if ((value != oldValue) && !err) {
@@ -1867,6 +1858,54 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     else {
       err = setValue(id, value, eventType);
+    }
+    return err;
+  case CCS_RGM_RUN_DIRECT_MODE:                                                 // Прямой пуск
+    if (value != Regime::OffAction) {
+      err = offRunModeExcept(CCS_RGM_RUN_DIRECT_MODE);
+      if (!err) {
+        if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) {
+          err = setValue(id, value, eventType);
+          if (!err) {
+            parameters.set(VSD_ETALON_DIRECT_RUN_MODE, 1);
+          }
+        } else {
+          err = parameters.set(CCS_BYPASS_CONTACTOR_KM2_CONTROL, !value);
+          if (!err) {
+            err = setValue(id, value, eventType);
+          }
+        }
+      }
+    }
+    else {
+      if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) {
+        err = setValue(id, value, eventType);
+        if (!err) {
+          parameters.set(VSD_ETALON_DIRECT_RUN_MODE, 0);
+        }
+      } else {
+        err = parameters.set(CCS_BYPASS_CONTACTOR_KM2_CONTROL, !value);
+        if (!err) {
+          err = setValue(id, value, eventType);
+        }
+      }
+    }
+    return err;
+  case CCS_RGM_RUN_SOFT_MODE:                                                 // "Мягкий" пуск
+    if (value != Regime::OffAction) {
+      err = offRunModeExcept(CCS_RGM_RUN_SOFT_MODE);
+      if (!err) {
+        err = setValue(id, value, eventType);
+        if (!err) {
+          parameters.set(VSD_ETALON_DIRECT_RUN_SOFT_MODE, 1);
+        }
+      }
+    }
+    else {
+      err = setValue(id, value, eventType);
+      if (!err) {
+        parameters.set(VSD_ETALON_DIRECT_RUN_SOFT_MODE, 0);
+      }
     }
     return err;
   case CCS_SU_NOMINAL_CURRENT:

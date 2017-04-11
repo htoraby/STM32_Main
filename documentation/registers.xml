@@ -314,7 +314,7 @@
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<code>0</code>
-		<values>0-Нет;1-Плавный;2-Толчковый;3-С раскачкой;4-С синхронизацией;5-Подхват;6-Пропуск F</values>
+		<values>0-Нет;1-Плавный;2-Толчковый;3-С раскачкой;4-С синхронизацией;5-Подхват;6-Пропуск F;7-Автоадаптация;8-Прямой пуск;9-"Мягкий" пуск</values>
 		<comment>Режим пуска двигателя</comment>
 	</param>
 	<param>
@@ -22640,6 +22640,49 @@
 	</param>
 	<param>
 		<id>1113</id>
+		<name>CCS_RGM_RUN_SOFT_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>3.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Режим "мягкого" пуска</text>
+		<short_text>Прямой пуск. Режим "мягкого" пуска</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Откл;3-Вкл;</values>
+		<comment>Прямой пуск. Режим "мягкого" пуска</comment>
+	</param>
+	<param>
+		<id>1114</id>
+		<name>CCS_RGM_RUN_SOFT_STATE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4294967296.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Состояние автомата режима "мягкого" пуска</comment>
+	</param>
+	<param>
+		<id>1115</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>
@@ -32533,6 +32576,132 @@
 	</param>
 	<param>
 		<id>10502</id>
+		<name>VSD_ETALON_DIRECT_RUN_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Прямой пуск</text>
+		<short_text>Прямой пуск</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-ЧРП;1-Прямой</values>
+		<comment>Прямой пуск. Действие режима "Прямой пуск"</comment>
+	</param>
+	<param>
+		<id>10503</id>
+		<name>VSD_ETALON_DIRECT_RUN_SOFT_MODE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Режим мягкого пуска</text>
+		<short_text>Прямой пуск. Режим мягкого пуска</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Нет;1-Да</values>
+		<comment>Прямой пуск. Режим мягкого пуска</comment>
+	</param>
+	<param>
+		<id>10504</id>
+		<name>VSD_ETALON_DIRECT_RUN_SYNC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Синхронизация с сетью</text>
+		<short_text>Прямой пуск. Синхронизация с сетью</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-Нет;1-Да</values>
+		<comment>Прямой пуск. Синхронизация с сетью</comment>
+	</param>
+	<param>
+		<id>10505</id>
+		<name>VSD_ETALON_DIRECT_RUN_CMD_TRANSITION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Команда перехода с режима на режим</text>
+		<short_text>Прямой пуск. Команда перехода с режима на режим</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>0</code>
+		<values>0-нет;1-переход</values>
+		<comment>Прямой пуск. Команда перехода с режима на режим</comment>
+	</param>
+	<param>
+		<id>10506</id>
+		<name>VSD_ETALON_DIRECT_RUN_IS_SYNC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Синхронизация с сетью</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<values>0-нет;1-Да</values>
+		<comment>Прямой пуск. Синхронизирован с сетью?</comment>
+	</param>
+	<param>
+		<id>10507</id>
+		<name>VSD_ETALON_DIRECT_RUN_STATE_TRANSITION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>9.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>NAN</value>
+		<text>Состояние перехода</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<values>0-не синхр;1-Норма;2-Режим ВД;3-Fбаз;4-Синхрониз.выкл;5-Вращение;6-черед.фаз;7-Uстаб;8-ЧРП не готов;9-U баз</values>
+		<comment>Прямой пуск. Состояние перехода</comment>
+	</param>
+	<param>
+		<id>10508</id>
 		<name>VSD_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

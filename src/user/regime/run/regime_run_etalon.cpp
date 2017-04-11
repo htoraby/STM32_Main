@@ -30,7 +30,10 @@ void RegimeRunEtalon::getOtherSetpoint()
   action_ = (parameters.get(CCS_RGM_RUN_PICKUP_MODE) ||
              parameters.get(CCS_RGM_RUN_PUSH_MODE) ||
              parameters.get(CCS_RGM_RUN_SWING_MODE) ||
-             parameters.get(CCS_RGM_RUN_SKIP_RESONANT_MODE));
+             parameters.get(CCS_RGM_RUN_SKIP_RESONANT_MODE) ||
+             parameters.get(CCS_RGM_RUN_DIRECT_MODE) ||
+             parameters.get(CCS_RGM_RUN_SOFT_MODE)
+             );
   state_ = parameters.get(CCS_RGM_RUN_VSD_STATE);
 }
 

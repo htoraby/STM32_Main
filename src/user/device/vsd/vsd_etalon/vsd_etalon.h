@@ -34,8 +34,8 @@ enum enEtalonStatus
   VSD_ETALON_STATUS_OVERHEAT_MOTOR = 16,      //!< Выс. Температура
   VSD_ETALON_STATUS_OVERVIBRATION = 17,     	//!< Выс. Вибрация
   VSD_ETALON_STATUS_PRESSURE = 18,            //!< Низ. Давление
-  VSD_ETALON_STATUS_19 = 19,                  //!< Ошибка 19
-  VSD_ETALON_STATUS_PRESSURE_Z = 20,          //!< Низкое Pзатр
+  VSD_ETALON_STATUS_CONTACTOR_ALARM_OUT = 19, //!< Авария контактора вых. ЧР
+  VSD_ETALON_STATUS_CONTACTOR_ALARM_DS = 20,  //!< Авария контактора Пр.пуска
   VSD_ETALON_STATUS_IMBALANCE_CURRENT = 21, 	//!< Дисбаланс токов
   VSD_ETALON_STATUS_IMBALANCE_VOLTAGE = 22,   //!< Дисбаланс напряж.
   VSD_ETALON_STATUS_TURBINE = 23,             //!< Турбинное вращение
@@ -283,7 +283,7 @@ public:
 private: 
   void setLimitsCcsParameters();
 
-  ModbusParameter modbusParameters_[134];
+  ModbusParameter modbusParameters_[140];
   DeviceModbus *dm_;
 
   RegimeRunEtalon *regimeRun_;
