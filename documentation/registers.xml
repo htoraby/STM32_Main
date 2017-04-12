@@ -22829,6 +22829,69 @@
 	</param>
 	<param>
 		<id>1122</id>
+		<name>CCS_DHS_LOG_ROSNEFT_LAST_RECORD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>4096.0</min>
+		<max>65530.0</max>
+		<def>4096.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>4096.0</value>
+		<text>Адрес последней записи архива</text>
+		<short_text>Адрес последней записи архива</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>ГДИ Роснефть Адрес последней записи архива</comment>
+	</param>
+	<param>
+		<id>1123</id>
+		<name>CCS_DHS_LOG_ROSNEFT_FIRST_REGISTER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>4096.0</min>
+		<max>65530.0</max>
+		<def>4096.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>4096.0</value>
+		<text>Адрес первого регистра архива</text>
+		<short_text>Адрес первого регистра архива</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>ГДИ Роснефть Адрес первого регистра архива</comment>
+	</param>
+	<param>
+		<id>1124</id>
+		<name>CCS_DHS_LOG_ROSNEFT_LAST_REGISTER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>4096.0</min>
+		<max>65530.0</max>
+		<def>4096.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>4096.0</value>
+		<text>Адрес последнего регистра архива</text>
+		<short_text>Адрес последнего регистра архива</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>ГДИ Роснефть Адрес последнего регистра архива</comment>
+	</param>
+	<param>
+		<id>1125</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

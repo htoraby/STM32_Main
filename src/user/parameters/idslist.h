@@ -1125,7 +1125,10 @@ enum enID
   CCS_RGM_PUMP_GAS_SAVE_SETPOINT_FREQ = 1119,                //!< Режим прокачки газа. Сохранённая уставка частоты
   CCS_RGM_PUMP_GAS_SAVE_SETPOINT_LOW_FREQ = 1120,            //!< Режим прокачки газа. Сохранённая уставка минимальной частоты
   CCS_RGM_PUMP_GAS_POINT_DELAY = 1121,                       //!< Режим прокачки газа. Время начала выполнения условия режима прокачки
-  CCS_END = 1122,                                            //!< 
+  CCS_DHS_LOG_ROSNEFT_LAST_RECORD = 1122,                    //!< ГДИ Роснефть Адрес последней записи архива
+  CCS_DHS_LOG_ROSNEFT_FIRST_REGISTER = 1123,                 //!< ГДИ Роснефть Адрес первого регистра архива
+  CCS_DHS_LOG_ROSNEFT_LAST_REGISTER = 1124,                  //!< ГДИ Роснефть Адрес последнего регистра архива
+  CCS_END = 1125,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

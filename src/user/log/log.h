@@ -168,6 +168,10 @@ public:
     return address_;
   }
 
+  uint32_t startAddr() const {
+    return startAddr_;
+  }
+
 protected:
   /*!
    * \brief Метод записи данных в журнал
@@ -188,10 +192,9 @@ protected:
 
 private:
   FlashSpiNum flashSpiNum_;
-  uint32_t addrFram_;
-
   uint32_t address_;
   uint32_t startAddr_;
+  uint32_t addrFram_;
   uint32_t endAddr_;
   uint32_t sectorSize_;
   uint32_t addrSectorOld_;

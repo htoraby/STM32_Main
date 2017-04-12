@@ -18,9 +18,12 @@ public:
 
 private:
   void add();
+  uint32_t calcRecordLogTms();
+  void calcAddrLastRecordRosneft(uint32_t countRecord);
 
   //! Идентификатор задачи
   osThreadId threadId_;
+
 
 };
 

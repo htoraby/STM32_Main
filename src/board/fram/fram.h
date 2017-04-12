@@ -25,7 +25,7 @@ typedef enum {
   DataLogAddrFram    = 0x01FFD0,
   RunLogAddrFram     = 0x01FFD4,
   AlarmLogAddrFram   = 0x01FFD8,
-  TmsLogAddrFram     = 0x01FFDC,
+  TmsLogAddrFram     = 0x01FFDC,            //!< Указатель куда записывать следующую запись логов ТМС
   DebugLogAddrFram   = 0x01FFE0,
   RcauseAddrFram     = 0x01FFE4,
 } AddrFram;
