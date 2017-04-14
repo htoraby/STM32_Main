@@ -2095,6 +2095,9 @@ uint8_t Ccs::setNewValue(uint16_t id, int value, EventType eventType)
 void Ccs::controlPower()
 {
   if (!isPowerGood()) {
+    if (!powerOffTimeout_)
+      logEvent.add(PowerCode, AutoType, WorkUpsId);
+
     if (powerOffTimeout_ == TIMEOUT_LCD_OFF/DELAY_MAIN_TASK) {
       offLcd();
     }

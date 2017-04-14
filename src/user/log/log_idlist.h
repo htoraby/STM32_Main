@@ -278,6 +278,8 @@ typedef enum {
   RgmPumpingGasStartId,               //!< Пркч. Начало
   RgmPumpingGasFinishId,              //!< Пркч. Завершен
 
+  WorkUpsId,                          //!< "Работа от ИБП"
+
 } EventId;
 
 #endif // LOG_IDLIST
