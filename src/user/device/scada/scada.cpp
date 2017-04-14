@@ -19,6 +19,7 @@ static void scadaCalcParamsTask(void *p)
 }
 
 Scada::Scada()
+  : addrOld_(-2)
 {
   scadaParameters_ = scadaParameters;
   osThreadDef(ScadaTask, scadaTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
@@ -98,9 +99,12 @@ inline int Scada::getIndexAtAddress(int address)
         return i;
     }
   }
+  if (addrOld_ != address) {
 #if (USE_LOG_WARNING == 1)
-  logDebug.add(WarningMsg, "Scada::getIndexAtAddress() Not found register (address = %d)", address);
+    logDebug.add(WarningMsg, "Scada::getIndexAtAddress() Not found register (address = %d)", address);
 #endif
+  }
+  addrOld_ = address;
   return -1;
 }
 
