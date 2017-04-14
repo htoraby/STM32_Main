@@ -3714,7 +3714,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
-		<text>Турбинное вращение</text>
+		<text>Действие защиты</text>
 		<short_text>Турб. вращение</short_text>
 		<form>4.2.4 Турбинное вращение</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -19609,7 +19609,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Перегрев входного фильтра</text>
+		<text>Действие защиты</text>
 		<short_text>Перегрев вх.фильтра</short_text>
 		<form>4.6.5 Перегрев входного фильтра</form>
 		<unit>NUMERIC_NUMBER</unit>
