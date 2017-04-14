@@ -3174,7 +3174,7 @@ void Vsd::initParameters()
   parameters_[VSD_PICKUP_KU - VSD_BEGIN].id                                      = VSD_PICKUP_KU;
   parameters_[VSD_PICKUP_KU - VSD_BEGIN].access                                  = ACCESS_OPERATOR;
   parameters_[VSD_PICKUP_KU - VSD_BEGIN].operation                               = OPERATION_READ;
-  parameters_[VSD_PICKUP_KU - VSD_BEGIN].physic                                  = PHYSIC_PERCENT;
+  parameters_[VSD_PICKUP_KU - VSD_BEGIN].physic                                  = PHYSIC_NUMERIC;
   parameters_[VSD_PICKUP_KU - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_PICKUP_KU - VSD_BEGIN].value.float_t                           = 0.4;
   parameters_[VSD_PICKUP_KU - VSD_BEGIN].min                                     = 0.3;

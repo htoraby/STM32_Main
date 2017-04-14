@@ -27898,7 +27898,7 @@
 		<name>VSD_PICKUP_KU</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_PERCENT</physic>
+		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.3</min>
 		<max>0.8</max>
 		<def>0.4</def>
@@ -27908,8 +27908,8 @@
 		<text>Коэффициент U</text>
 		<short_text>K_U подхв</short_text>
 		<form>NULL</form>
-		<unit>PERCENT_PERCENT</unit>
-		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
 		<format>XXXX_X</format>
 		<code>0</code>
 		<comment>Коэффициент U по подхвату</comment>
