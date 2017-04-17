@@ -1,15 +1,37 @@
 #include "scada_region_3_0.h"
 #include "user_main.h"
+#include "log_tms.h"
+
+#if USE_EXT_MEM
+static uint8_t logDhs[1312] __attribute__((section(".extmem")));
+#else
+static uint8_t logDhs[1312];
+#endif
 
 ScadaRegion30::ScadaRegion30()
 {
   countParameters_ = 173;
   initParameters();
+  firstAddrDhsLog_ = parameters.get(CCS_DHS_LOG_ROSNEFT_FIRST_REGISTER);
+  lastAddrDhsLog_ = parameters.get(CCS_DHS_LOG_ROSNEFT_LAST_REGISTER);
+  logDhs_ = logDhs;
 }
 
 ScadaRegion30::~ScadaRegion30()
 {
 
+}
+
+eMBErrorCode ScadaRegion30::readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs)
+{
+  // Если первый из запрашиваемых регистров лежит в адресном поле архивов ТМС(ГДИ)
+  if ((address >= firstAddrDhsLog_) && (address <= lastAddrDhsLog_)) {
+    // Вызываем функцию обработки запроса чтения архива ТМС(ГДИ)
+    return readRegDhsLog(buffer, address, numRegs);
+  }
+  else {
+    return Scada::readReg(buffer, address, numRegs);
+  }
 }
 
 void ScadaRegion30::calcParamsTask()
@@ -280,4 +302,31 @@ int ScadaRegion30::setNewValue(ScadaParameter *param)
   }
 
   return err_r;
+}
+
+eMBErrorCode ScadaRegion30::readDhsLog(uint8_t *buffer, uint16_t address, uint16_t numRegs)
+{
+  // Если адресация выходит за пределы области архивов ГДИ
+  if ((address + numRegs) > lastAddrDhsLog_) {
+    return MB_ENOREG;                       // Возвращаем ошибку регистра
+  }
+  // Определяем по адресу в modbus запросе номер записи в архиве ГДИ
+  div_t x;
+  x = div(address - firstAddrDhsLog_, SIZE_RECORD_DHS_LOG);
+  uint32_t numRecord = x.quot;
+  // Определяем по количеству читаемых регистров в modbus запросе,
+  // количество читаемых записей из архива ГДИ
+  x = div(numRegs, SIZE_RECORD_DHS_LOG);
+  uint32_t quantityRecord = x.quot;
+  // Вычисляем сколько записей от первой запрашиваемой до конца архива ГДИ, для
+  // нахождения смещения от последней записи в архивах на flash
+  uint32_t recordToLast = (uint32_t)parameters.get(CCS_DHS_LOG_ROSNEFT_COUNT_RECORD) - numRecord;
+  // Вызываем функцию читающую в буфер logDhs_, quantityRecord записей начиная recordToLast от конца архива
+  logTms.readLogRequestedRosneft(recordToLast, logDhs_, quantityRecord);
+
+  for (uint32_t i = 0; i < quantityRecord; i++) {
+
+  }
+
+
 }

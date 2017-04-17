@@ -172,6 +172,10 @@ public:
     return startAddr_;
   }
 
+  uint32_t endAddr() const {
+    return endAddr_;
+  }
+
 protected:
   /*!
    * \brief Метод записи данных в журнал

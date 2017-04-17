@@ -13502,5 +13502,17 @@ void Ccs::initParameters()
   parameters_[CCS_DHS_LOG_ROSNEFT_LAST_REGISTER - CCS_BEGIN].discret             = 1;
   parameters_[CCS_DHS_LOG_ROSNEFT_LAST_REGISTER - CCS_BEGIN].def                 = 4096.0;
   parameters_[CCS_DHS_LOG_ROSNEFT_LAST_REGISTER - CCS_BEGIN].code                = 0;
+  // ГДИ Роснефть Счётчик записей в регистре
+  parameters_[CCS_DHS_LOG_ROSNEFT_COUNT_RECORD - CCS_BEGIN].id                   = CCS_DHS_LOG_ROSNEFT_COUNT_RECORD;
+  parameters_[CCS_DHS_LOG_ROSNEFT_COUNT_RECORD - CCS_BEGIN].access               = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_LOG_ROSNEFT_COUNT_RECORD - CCS_BEGIN].operation            = OPERATION_READ;
+  parameters_[CCS_DHS_LOG_ROSNEFT_COUNT_RECORD - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_LOG_ROSNEFT_COUNT_RECORD - CCS_BEGIN].validity             = VALIDITY_OK;
+  parameters_[CCS_DHS_LOG_ROSNEFT_COUNT_RECORD - CCS_BEGIN].value.float_t        = 0.0;
+  parameters_[CCS_DHS_LOG_ROSNEFT_COUNT_RECORD - CCS_BEGIN].min                  = 0.0;
+  parameters_[CCS_DHS_LOG_ROSNEFT_COUNT_RECORD - CCS_BEGIN].max                  = 57600.0;
+  parameters_[CCS_DHS_LOG_ROSNEFT_COUNT_RECORD - CCS_BEGIN].discret              = 1;
+  parameters_[CCS_DHS_LOG_ROSNEFT_COUNT_RECORD - CCS_BEGIN].def                  = 0.0;
+  parameters_[CCS_DHS_LOG_ROSNEFT_COUNT_RECORD - CCS_BEGIN].code                 = 0;
 }
 

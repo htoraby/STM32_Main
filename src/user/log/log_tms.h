@@ -3,6 +3,8 @@
 
 #include "log.h"
 
+#define LOG_DHS_SIZE 32
+
 /*!
  * \brief Класс архива ТМС
  */
@@ -16,13 +18,27 @@ public:
   void deInit();
   void task();
 
+  /*!
+   * \brief readLogRequestedRosneft
+   * \return
+   */
+  StatusType readLogRequestedRosneft(uint32_t shiftFromEnd, uint8_t *buffer, uint32_t quantity);
+
+
 private:
   void add();
-  uint32_t calcRecordLogTms();
-  void calcAddrLastRecordRosneft(uint32_t countRecord);
+
+  uint8_t *txBuffer_;
+
+
 
   //! Идентификатор задачи
   osThreadId threadId_;
+
+  /*!
+   * \brief Функция подсчёта записей в архивах ГДИ Роснефть
+   */
+  void calcAddrLastRecordRosneft();
 
 
 };

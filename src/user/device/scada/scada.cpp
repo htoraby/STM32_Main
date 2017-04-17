@@ -115,6 +115,7 @@ ScadaParameter * Scada::parameter(uint16_t address) {
 eMBErrorCode Scada::readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs)
 {
   for (int i = 0; i < numRegs; ++i) {
+
     int index = getIndexAtAddress(address + i);
     if (index == -1)
       return MB_ENOREG;
