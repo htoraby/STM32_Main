@@ -22833,8 +22833,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>4096.0</min>
-		<max>65530.0</max>
+		<min>0.0</min>
+		<max>65535.0</max>
 		<def>4096.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -22854,8 +22854,8 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>4096.0</min>
-		<max>65530.0</max>
+		<min>0.0</min>
+		<max>65535.0</max>
 		<def>4096.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -22875,12 +22875,12 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>4096.0</min>
+		<min>0.0</min>
 		<max>65530.0</max>
-		<def>4096.0</def>
+		<def>65530.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>4096.0</value>
+		<value>65530.0</value>
 		<text>Адрес последнего регистра архива</text>
 		<short_text>Адрес последнего регистра архива</short_text>
 		<form>NULL</form>
@@ -22892,7 +22892,7 @@
 	</param>
 	<param>
 		<id>1125</id>
-		<name>CCS_DHS_LOG_ROSNEFT_COUNT_RECORD</name>
+		<name>CCS_DHS_LOG_COUNT_RECORD</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -22909,7 +22909,7 @@
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
 		<code>0</code>
-		<comment>ГДИ Роснефть Счётчик записей в регистре</comment>
+		<comment>Счетчик записей в архиве ТМС</comment>
 	</param>
 	<param>
 		<id>1126</id>

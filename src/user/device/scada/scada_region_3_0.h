@@ -20,9 +20,9 @@ public:
    * \param numRegs количество читаемых регистров
    * \return
    */
-  eMBErrorCode readDhsLog(uint8_t *buffer, uint16_t address, uint16_t numRegs);
+  eMBErrorCode readRegDhsLog(uint8_t *buffer, uint16_t address, uint16_t numRegs);
 
-  uint8_t *logDhs_;
+  uint8_t *logDhs_;                         //!< Указатель на буфер с данными ТМС
 
 private:
   /*!
@@ -32,17 +32,8 @@ private:
   void calcParamsTask();
   int setNewValue(ScadaParameter *param);
 
-  /*!
-   * \brief Функция чтения данных архива ТМС
-   * \param address номер регистра с которого начинаем читать
-   * \param numRegs количество читамых регистров
-   * \param buffer буфер куда копируются данные архивов ТМС с flash памяти
-   * \return
-   */
-
-
-  float firstAddrDhsLog_;
-  float lastAddrDhsLog_;
+  float firstAddrDhsLog_;                   //!< Адрес первого регистра архива ГДИ
+  float lastAddrDhsLog_;                    //!< Адрес последнего регистра архива ГДИ
 
 };
 

@@ -30,6 +30,7 @@ eMBErrorCode ScadaRegion30::readReg(uint8_t *buffer, uint16_t address, uint16_t 
     return readRegDhsLog(buffer, address, numRegs);
   }
   else {
+    // Вызываем функцию чтения параметров
     return Scada::readReg(buffer, address, numRegs);
   }
 }
@@ -244,6 +245,13 @@ void ScadaRegion30::calcParamsTask()
     }
     scadaParameters_[45].value.float_t = value;
 
+    float cntRecord = parameters.get(CCS_DHS_LOG_COUNT_RECORD);
+    if (cntRecord < ((lastAddrDhsLog_ - firstAddrDhsLog_) / SIZE_RECORD_DHS_LOG)) {
+      cntRecord = firstAddrDhsLog_ + (cntRecord - 1) * SIZE_RECORD_DHS_LOG;
+    }
+    parameters.set(CCS_DHS_LOG_ROSNEFT_LAST_RECORD, cntRecord);
+    scadaParameters_[74].value.float_t = cntRecord;
+
     //346-348, 634-636
     value = 0;
     time = parameters.getU32(CCS_DATE_TIME);
@@ -304,7 +312,7 @@ int ScadaRegion30::setNewValue(ScadaParameter *param)
   return err_r;
 }
 
-eMBErrorCode ScadaRegion30::readDhsLog(uint8_t *buffer, uint16_t address, uint16_t numRegs)
+eMBErrorCode ScadaRegion30::readRegDhsLog(uint8_t *buffer, uint16_t address, uint16_t numRegs)
 {
   // Если адресация выходит за пределы области архивов ГДИ
   if ((address + numRegs) > lastAddrDhsLog_) {
@@ -320,13 +328,45 @@ eMBErrorCode ScadaRegion30::readDhsLog(uint8_t *buffer, uint16_t address, uint16
   uint32_t quantityRecord = x.quot;
   // Вычисляем сколько записей от первой запрашиваемой до конца архива ГДИ, для
   // нахождения смещения от последней записи в архивах на flash
-  uint32_t recordToLast = (uint32_t)parameters.get(CCS_DHS_LOG_ROSNEFT_COUNT_RECORD) - numRecord;
+  uint32_t recordToLast = (uint32_t)parameters.get(CCS_DHS_LOG_COUNT_RECORD) - numRecord;
   // Вызываем функцию читающую в буфер logDhs_, quantityRecord записей начиная recordToLast от конца архива
   logTms.readLogRequestedRosneft(recordToLast, logDhs_, quantityRecord);
-
+  // Разбор записей из ТМС ловов и приведение их к формату Роснефть
   for (uint32_t i = 0; i < quantityRecord; i++) {
-
+    // Код ошибки по ЕТТ 6.0 Рснефть
+    *buffer++ = logDhs_[17 + LOG_DHS_SIZE * i];
+    // Дата и время
+    unTypeData value;
+    value.char_t[0] = logDhs_[4 + LOG_DHS_SIZE * i];
+    value.char_t[1] = logDhs_[5 + LOG_DHS_SIZE * i];
+    value.char_t[2] = logDhs_[6 + LOG_DHS_SIZE * i];
+    value.char_t[3] = logDhs_[7 + LOG_DHS_SIZE * i];
+    time_t time = value.uint32_t;
+    tm dateTime = *localtime(&time);
+    if (dateTime.tm_year > 100)
+      dateTime.tm_year = dateTime.tm_year - 100;
+    else
+      dateTime.tm_year = 0;
+    *buffer++ = dateTime.tm_year;
+    *buffer++ = dateTime.tm_mon + 1;
+    *buffer++ = dateTime.tm_mday;
+    *buffer++ = dateTime.tm_hour;
+    *buffer++ = dateTime.tm_min;
+    *buffer++ = dateTime.tm_sec;
+    // Температура на приёме насоса
+    value.char_t[0] = logDhs_[18 + LOG_DHS_SIZE * i];
+    value.char_t[1] = logDhs_[19 + LOG_DHS_SIZE * i];
+    value.char_t[2] = logDhs_[20 + LOG_DHS_SIZE * i];
+    value.char_t[3] = logDhs_[21 + LOG_DHS_SIZE * i];
+    value.uint16_t[0] = value.float_t * 100;
+    *buffer++ = value.char_t[0];
+    *buffer++ = value.char_t[1];
+    // Давление на приёме насоса
+    value.char_t[0] = logDhs_[9 + LOG_DHS_SIZE * i];
+    value.char_t[1] = logDhs_[10 + LOG_DHS_SIZE * i];
+    value.char_t[2] = logDhs_[11 + LOG_DHS_SIZE * i];
+    value.char_t[3] = logDhs_[12 + LOG_DHS_SIZE * i];
+    value.uint16_t[0] = value.float_t * 10.19716213 * 100;
   }
-
-
+  return MB_ENOERR;
 }

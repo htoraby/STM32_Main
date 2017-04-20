@@ -398,6 +398,7 @@ void logDeleted()
 
   logEvent.add(DelLogCode, eventType, DelLogId);
   parameters.set(CCS_CMD_LOG_DELETE, 0);
+  parameters.set(CCS_DHS_LOG_COUNT_RECORD, 0);
 }
 
 void logDebugDeleted()

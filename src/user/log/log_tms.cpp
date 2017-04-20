@@ -61,53 +61,41 @@ void LogTms::add()
   *(uint32_t*)(buffer) = id_;
   *(uint32_t*)(buffer+4) = time;
   *(uint8_t*)(buffer+8) = code;
-  *(uint8_t*)(buffer+9) = codeErr;
-  *(float*)(buffer+10) = parameters.get(TMS_PRESSURE_INTAKE);
-  *(float*)(buffer+14) = parameters.get(TMS_TEMPERATURE_WINDING);
-
-  write(buffer, LOG_DHS_SIZE);
-  calcAddrLastRecordRosneft();
+  *(float*)(buffer+9) = parameters.get(TMS_PRESSURE_INTAKE);
+  *(float*)(buffer+13) = parameters.get(TMS_TEMPERATURE_WINDING);
+  *(uint8_t*)(buffer+17) = codeErr;
+  *(float*)(buffer +18) = parameters.get(TMS_TEMPERATURE_INTAKE);
+  write(buffer, LOG_DHS_SIZE);  
+  incCountRecordLogDhs();
 }
 
-void  LogTms::calcAddrLastRecordRosneft()
+void LogTms::incCountRecordLogDhs()
 {
-  // Получаем счётчик записей в архиве для чтения по ТТ Роснефть
-  float cntRecord = parameters.get(CCS_DHS_LOG_ROSNEFT_COUNT_RECORD);
-
-  // Если количество записей в архиве не достигло максимального по ТТ Роснефть
-  if (cntRecord < 10239) {
-    cntRecord = (address() - startAddr()) / LOG_DHS_SIZE;
-    // Сохраняем количество записей в регистре
-    parameters.set(CCS_DHS_LOG_ROSNEFT_COUNT_RECORD, cntRecord);
-    // Адрес первого регистра всегда 0x1000
-    parameters.set(CCS_DHS_LOG_ROSNEFT_FIRST_REGISTER, 0x1000);
-    // Адрес последней записи = Адрес первого регистра + количество записей * на размер записи - последняя запись
-    parameters.set(CCS_DHS_LOG_ROSNEFT_LAST_RECORD, 0x1000 + cntRecord * 6 - 6);
-    // Адрес последнего регистра  = Адрес первого регистра + количество записей * на размер записи
-    parameters.set(CCS_DHS_LOG_ROSNEFT_LAST_REGISTER, 0x1000 + cntRecord * 6);
+  float cntRecord = parameters.get(CCS_DHS_LOG_COUNT_RECORD);
+  if (cntRecord < ((endAddr() - startAddr()) / LOG_DHS_SIZE)) {
+    parameters.set(CCS_DHS_LOG_COUNT_RECORD, cntRecord + 1);
   }
 }
 
 StatusType LogTms::readLogRequestedRosneft(uint32_t shiftFromEnd, uint8_t *buffer, uint32_t quantity)
 {
-  uint32_t addr = address();                // Текущий адрес в flash памяти
-  uint32_t startAddr_ = startAddr();        //
+  uint32_t addr = address();
+  uint32_t startAddr_ = startAddr();
   uint32_t endAddr_ = endAddr();
-  for (uint16_t i = 0; i < shiftFromEnd; i++) {
-    if ((addr - LOG_DHS_SIZE) < startAddr_) {
-      addr = endAddr_;
-    }
-    addr = addr - LOG_DHS_SIZE;
+  // Вычисляем адрес в flash с которого начинаются запрашиваемые данные
+  addr = addr - shiftFromEnd * LOG_DHS_SIZE;
+  // Если адрес оказался за пределами области хранения архивов ТМС
+  if (addr < startAddr_) {
+    addr = endAddr_ - (startAddr_ - addr);
   }
-
   if ((addr + quantity * LOG_DHS_SIZE) <= endAddr_) {
     return logRead(addr, buffer, quantity * LOG_DHS_SIZE);
   }
   else {
-    // TODO: обработка чтения сначала до конца архива, а потом с начала
+    // Читаем до конца области памяти с ТМС
+    return logRead(addr, buffer, endAddr_ - addr);
+    // TODO: По идее после этого надо читать с начала до конца количества записей, но х.з. как
   }
-
-
 }
 
 

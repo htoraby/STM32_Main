@@ -73,7 +73,6 @@ void Ccs::init()
 {  
   initParameters();
   readParameters();
-
   if (getValue(CCS_PARAMETERS_CONTROL) != getValueDef(CCS_PARAMETERS_CONTROL)) {
     asm("nop");
   }

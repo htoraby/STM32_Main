@@ -20,25 +20,21 @@ public:
 
   /*!
    * \brief readLogRequestedRosneft
+   * \param shiftFromEnd
+   * \param buffer
+   * \param quantity
    * \return
    */
   StatusType readLogRequestedRosneft(uint32_t shiftFromEnd, uint8_t *buffer, uint32_t quantity);
 
 
 private:
-  void add();
-
+  void add(); 
+  void incCountRecordLogDhs();
   uint8_t *txBuffer_;
-
-
-
   //! Идентификатор задачи
   osThreadId threadId_;
 
-  /*!
-   * \brief Функция подсчёта записей в архивах ГДИ Роснефть
-   */
-  void calcAddrLastRecordRosneft();
 
 
 };

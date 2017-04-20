@@ -17,14 +17,14 @@
 #define USE_LOG_DEBUG 0           // Предлагаю формат сообщения "Группа - 10 максимум символов: Сообщение - 50 символов (Значения переменных и другая информация - максимум 100 символов)
 #define USE_LOG_WARNING 1
 #define USE_LOG_CRITICAL 1
-#define USE_POWER_OFF 1
+#define USE_POWER_OFF 0
 
 #define WATCHDOG_TIMEOUT 15 // сек (максимум 16 сек!)
 
 
 #define HARDWARE_VERSION 0x0200 // 1.0 - Ext Flash - 32мб, 2.0 - Ext Flash - 64мб
 #if (HARDWARE_VERSION >= 0x0200)
-  #define FIRMWARE_VERSION 0x0201 //
+  #define FIRMWARE_VERSION 0x0300 //
 #else
   #define FIRMWARE_VERSION 0x0103 //
 #endif
