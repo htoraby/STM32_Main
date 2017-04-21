@@ -549,7 +549,7 @@ StatusType Device::readParameters()
   uint16_t calcCrc = 0xFFFF;
   for (int i = 0; i < countParameters_; ++i) {
     parameters_[i].value.float_t = buffer[i];
-    if (i >= count) {
+    if ((i >= count) || (count >= 0xFFFF)) {
       parameters_[i].value.float_t = parameters_[i].def;
     } else {
       if (parameters_[i].physic != PHYSIC_DATE_TIME) {
