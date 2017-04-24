@@ -2094,19 +2094,31 @@ uint8_t Ccs::setNewValue(uint16_t id, int value, EventType eventType)
 
 void Ccs::controlPower()
 {
+  // Питание не в норме
   if (!isPowerGood()) {
+    // При первом определении питания не в норме
+    // Формируем запись работы от ИБП
     if (!powerOffTimeout_)
       logEvent.add(PowerCode, AutoType, WorkUpsId);
 
+    // Если питания нет в течении заданного числа мс
+    // Выключаем подсветку дисплея для экономии
     if (powerOffTimeout_ == TIMEOUT_LCD_OFF/DELAY_MAIN_TASK) {
+      logDebug.add(CriticalMsg, "*** offLcd()1 ***");
       offLcd();
     }
+
+    // Если питания нет в течении заданного числа мс
+    // Посылаем команду на выключение AM335
     if (powerOffTimeout_ == TIMEOUT_MASTER_OFF/DELAY_MAIN_TASK) {
       setCmd(CCS_CMD_AM335_POWER_OFF);
     }
 
+    // Если питания нет в течении заданного числа мс или нет(не работает) ИБП
     if ((powerOffTimeout_ == TIMEOUT_SLAVE_OFF/DELAY_MAIN_TASK) || !isUpsGood()) {
+      // Если не посылали команду на выключение
       if (!powerOffFlag_) {
+        logDebug.add(CriticalMsg, "*** offLcd()2 ***");
         offLcd();
         setCmd(CCS_CMD_AM335_POWER_OFF);
 
@@ -2121,12 +2133,16 @@ void Ccs::controlPower()
       turnPowerBattery(false);
     }
     powerOffTimeout_++;
-  } else {
+  }
+  // Питание в норме
+  else {
+
     resetCmd(CCS_CMD_AM335_POWER_OFF);
 
-    if (powerOffTimeout_ > TIMEOUT_LCD_OFF/DELAY_MAIN_TASK) {
+    if (powerOffFlag_) {
       onLcd();
     }
+
     if (powerOffTimeout_ > TIMEOUT_MASTER_OFF/DELAY_MAIN_TASK) {
       resetAm335x();
     }
