@@ -1127,7 +1127,13 @@ enum enID
   CCS_RGM_PUMP_GAS_POINT_DELAY = 1121,                       //!< Режим прокачки газа. Время начала выполнения условия режима прокачки
   CCS_RGM_RUN_SOFT_MODE = 1122,                              //!< Прямой пуск. Режим "мягкого" пуска
   CCS_RGM_RUN_SOFT_STATE = 1123,                             //!< Состояние автомата режима "мягкого" пуска
-  CCS_END = 1124,                                            //!< 
+  CCS_DHS_LOG_ROSNEFT_LAST_RECORD = 1124,                    //!< ГДИ Роснефть Адрес последней записи архива
+  CCS_DHS_LOG_ROSNEFT_FIRST_REGISTER = 1125,                 //!< ГДИ Роснефть Адрес первого регистра архива
+  CCS_DHS_LOG_ROSNEFT_LAST_REGISTER = 1126,                  //!< ГДИ Роснефть Адрес последнего регистра архива
+  CCS_DHS_LOG_COUNT_RECORD = 1127,                           //!< Счетчик записей в архиве ТМС
+  CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP = 1128,           //!< Период записи ТМС первый час после останова
+  CCS_DHS_LOG_ROSNEFT_CODE_ERROR = 1129,                     //!< Код ошибок архива ГДИ
+  CCS_END = 1130,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
