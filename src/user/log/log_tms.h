@@ -28,7 +28,7 @@ public:
   StatusType readLogRequestedRosneft(uint32_t shiftFromEnd, uint8_t *buffer, uint32_t quantity);
 
   /*!
-   * \brief calcCodeErrLogRosneft
+   * \brief calcCodeErrLogRosneft функция формирования кода ошибки для архивов ГДИ Роснефть
    * \return
    */
   uint8_t calcCodeErrLogRosneft();
