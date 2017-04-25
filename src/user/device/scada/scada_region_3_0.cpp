@@ -25,9 +25,9 @@ ScadaRegion30::~ScadaRegion30()
 eMBErrorCode ScadaRegion30::readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs)
 {
   // Если первый из запрашиваемых регистров лежит в адресном поле архивов ТМС(ГДИ)
-  if ((address >= firstAddrDhsLog_) && (address <= lastAddrDhsLog_)) {
+  if (((address - 1) >= firstAddrDhsLog_) && ((address - 1) <= lastAddrDhsLog_)) {
     // Вызываем функцию обработки запроса чтения архива ТМС(ГДИ)
-    return readRegDhsLog(buffer, address, numRegs);
+    return readRegDhsLog(buffer, address - 1, numRegs);
   }
   else {
     // Вызываем функцию чтения параметров
@@ -245,6 +245,7 @@ void ScadaRegion30::calcParamsTask()
     }
     scadaParameters_[45].value.float_t = value;
 
+    // Вычисление адреса последней записи
     float cntRecord = parameters.get(CCS_DHS_LOG_COUNT_RECORD);
     if (cntRecord < ((lastAddrDhsLog_ - firstAddrDhsLog_) / SIZE_RECORD_DHS_LOG)) {
       cntRecord = firstAddrDhsLog_ + (cntRecord - 1) * SIZE_RECORD_DHS_LOG;
@@ -334,6 +335,7 @@ eMBErrorCode ScadaRegion30::readRegDhsLog(uint8_t *buffer, uint16_t address, uin
   // Разбор записей из ТМС ловов и приведение их к формату Роснефть
   for (uint32_t i = 0; i < quantityRecord; i++) {
     // Код ошибки по ЕТТ 6.0 Рснефть
+    *buffer++ = 0;
     *buffer++ = logDhs_[17 + LOG_DHS_SIZE * i];
     // Дата и время
     unTypeData value;
@@ -367,6 +369,8 @@ eMBErrorCode ScadaRegion30::readRegDhsLog(uint8_t *buffer, uint16_t address, uin
     value.char_t[2] = logDhs_[11 + LOG_DHS_SIZE * i];
     value.char_t[3] = logDhs_[12 + LOG_DHS_SIZE * i];
     value.uint16_t[0] = value.float_t * 10.19716213 * 100;
+    *buffer++ = value.char_t[0];
+    *buffer++ = value.char_t[1];
   }
   return MB_ENOERR;
 }

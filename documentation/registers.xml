@@ -22913,6 +22913,48 @@
 	</param>
 	<param>
 		<id>1126</id>
+		<name>CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>1.0</min>
+		<max>3600.0</max>
+		<def>15.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>15.0</value>
+		<text>Период записи ТМС первый час после останова</text>
+		<short_text>Период записи ТМС после останова</short_text>
+		<form>2.0 Архивы</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
+		<code>13</code>
+		<comment>Период записи ТМС первый час после останова</comment>
+	</param>
+	<param>
+		<id>1127</id>
+		<name>CCS_DHS_LOG_ROSNEFT_CODE_ERROR</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>4.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Код ошибок архива ГДИ</text>
+		<short_text>Код ошибок архива ГДИ</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Код ошибок архива ГДИ</comment>
+	</param>
+	<param>
+		<id>1128</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

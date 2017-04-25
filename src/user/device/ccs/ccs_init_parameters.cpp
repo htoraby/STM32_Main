@@ -13514,5 +13514,29 @@ void Ccs::initParameters()
   parameters_[CCS_DHS_LOG_COUNT_RECORD - CCS_BEGIN].discret                      = 1;
   parameters_[CCS_DHS_LOG_COUNT_RECORD - CCS_BEGIN].def                          = 0.0;
   parameters_[CCS_DHS_LOG_COUNT_RECORD - CCS_BEGIN].code                         = 0;
+  // Период записи ТМС первый час после останова
+  parameters_[CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP - CCS_BEGIN].id           = CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP;
+  parameters_[CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP - CCS_BEGIN].access       = ACCESS_OPERATOR;
+  parameters_[CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP - CCS_BEGIN].operation    = OPERATION_WRITE;
+  parameters_[CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP - CCS_BEGIN].physic       = PHYSIC_TIME;
+  parameters_[CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP - CCS_BEGIN].validity     = VALIDITY_OK;
+  parameters_[CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP - CCS_BEGIN].value.float_t = 15.0;
+  parameters_[CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP - CCS_BEGIN].min          = 1.0;
+  parameters_[CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP - CCS_BEGIN].max          = 3600.0;
+  parameters_[CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP - CCS_BEGIN].discret      = 1;
+  parameters_[CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP - CCS_BEGIN].def          = 15.0;
+  parameters_[CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP - CCS_BEGIN].code         = 13;
+  // Код ошибок архива ГДИ
+  parameters_[CCS_DHS_LOG_ROSNEFT_CODE_ERROR - CCS_BEGIN].id                     = CCS_DHS_LOG_ROSNEFT_CODE_ERROR;
+  parameters_[CCS_DHS_LOG_ROSNEFT_CODE_ERROR - CCS_BEGIN].access                 = ACCESS_OPERATOR;
+  parameters_[CCS_DHS_LOG_ROSNEFT_CODE_ERROR - CCS_BEGIN].operation              = OPERATION_READ;
+  parameters_[CCS_DHS_LOG_ROSNEFT_CODE_ERROR - CCS_BEGIN].physic                 = PHYSIC_NUMERIC;
+  parameters_[CCS_DHS_LOG_ROSNEFT_CODE_ERROR - CCS_BEGIN].validity               = VALIDITY_OK;
+  parameters_[CCS_DHS_LOG_ROSNEFT_CODE_ERROR - CCS_BEGIN].value.float_t          = 0.0;
+  parameters_[CCS_DHS_LOG_ROSNEFT_CODE_ERROR - CCS_BEGIN].min                    = 0.0;
+  parameters_[CCS_DHS_LOG_ROSNEFT_CODE_ERROR - CCS_BEGIN].max                    = 4.0;
+  parameters_[CCS_DHS_LOG_ROSNEFT_CODE_ERROR - CCS_BEGIN].discret                = 1;
+  parameters_[CCS_DHS_LOG_ROSNEFT_CODE_ERROR - CCS_BEGIN].def                    = 0.0;
+  parameters_[CCS_DHS_LOG_ROSNEFT_CODE_ERROR - CCS_BEGIN].code                   = 0;
 }
 

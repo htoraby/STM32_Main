@@ -27,10 +27,16 @@ public:
    */
   StatusType readLogRequestedRosneft(uint32_t shiftFromEnd, uint8_t *buffer, uint32_t quantity);
 
+  /*!
+   * \brief calcCodeErrLogRosneft
+   * \return
+   */
+  uint8_t calcCodeErrLogRosneft();
 
 private:
   void add(); 
   void incCountRecordLogDhs();
+
   uint8_t *txBuffer_;
   //! Идентификатор задачи
   osThreadId threadId_;

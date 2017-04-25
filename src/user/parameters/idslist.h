@@ -1129,7 +1129,9 @@ enum enID
   CCS_DHS_LOG_ROSNEFT_FIRST_REGISTER = 1123,                 //!< ГДИ Роснефть Адрес первого регистра архива
   CCS_DHS_LOG_ROSNEFT_LAST_REGISTER = 1124,                  //!< ГДИ Роснефть Адрес последнего регистра архива
   CCS_DHS_LOG_COUNT_RECORD = 1125,                           //!< Счетчик записей в архиве ТМС
-  CCS_END = 1126,                                            //!< 
+  CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP = 1126,           //!< Период записи ТМС первый час после останова
+  CCS_DHS_LOG_ROSNEFT_CODE_ERROR = 1127,                     //!< Код ошибок архива ГДИ
+  CCS_END = 1128,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
