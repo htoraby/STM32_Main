@@ -111,7 +111,10 @@ StatusType Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
     }
     // Сохранение адреса с которого начнётся следующая запись
     framWriteData(addrFram_, (uint8_t*)&address_, 4);
+
   }
 
   return StatusOk;
 }
+
+

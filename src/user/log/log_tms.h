@@ -3,6 +3,8 @@
 
 #include "log.h"
 
+#define LOG_DHS_SIZE 32
+
 /*!
  * \brief Класс архива ТМС
  */
@@ -16,11 +18,30 @@ public:
   void deInit();
   void task();
 
-private:
-  void add();
+  /*!
+   * \brief readLogRequestedRosneft
+   * \param shiftFromEnd
+   * \param buffer
+   * \param quantity
+   * \return
+   */
+  StatusType readLogRequestedRosneft(uint32_t shiftFromEnd, uint8_t *buffer, uint32_t quantity);
 
+  /*!
+   * \brief calcCodeErrLogRosneft
+   * \return
+   */
+  uint8_t calcCodeErrLogRosneft();
+
+private:
+  void add(); 
+  void incCountRecordLogDhs();
+
+  uint8_t *txBuffer_;
   //! Идентификатор задачи
   osThreadId threadId_;
+
+
 
 };
 

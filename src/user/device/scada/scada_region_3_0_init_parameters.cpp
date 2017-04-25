@@ -891,39 +891,39 @@ void ScadaRegion30::initParameters()
   scadaParameters_[73].command           = OPERATION_ERROR;
   scadaParameters_[73].value.float_t     = 0;
   // Адрес последней записи архива
-  scadaParameters_[74].id                = -1;
+  scadaParameters_[74].id                = CCS_DHS_LOG_ROSNEFT_LAST_RECORD;
   scadaParameters_[74].address           = 350;
   scadaParameters_[74].operation         = OPERATION_READ;
-  scadaParameters_[74].physic            = 0;
+  scadaParameters_[74].physic            = PHYSIC_NUMERIC;
   scadaParameters_[74].unit              = 0;
   scadaParameters_[74].typeData          = TYPE_DATA_UINT16;
   scadaParameters_[74].coefficient       = 1;
-  scadaParameters_[74].min               = 0;
-  scadaParameters_[74].max               = 0;
+  scadaParameters_[74].min               = 4096;
+  scadaParameters_[74].max               = 65530;
   scadaParameters_[74].command           = OPERATION_ERROR;
   scadaParameters_[74].value.float_t     = 0;
   // Адрес первого регистра архива
-  scadaParameters_[75].id                = -1;
+  scadaParameters_[75].id                = CCS_DHS_LOG_ROSNEFT_FIRST_REGISTER;
   scadaParameters_[75].address           = 351;
   scadaParameters_[75].operation         = OPERATION_READ;
-  scadaParameters_[75].physic            = 0;
+  scadaParameters_[75].physic            = PHYSIC_NUMERIC;
   scadaParameters_[75].unit              = 0;
   scadaParameters_[75].typeData          = TYPE_DATA_UINT16;
   scadaParameters_[75].coefficient       = 1;
-  scadaParameters_[75].min               = 0;
-  scadaParameters_[75].max               = 0;
+  scadaParameters_[75].min               = 4096;
+  scadaParameters_[75].max               = 65530;
   scadaParameters_[75].command           = OPERATION_ERROR;
   scadaParameters_[75].value.float_t     = 0;
   // Адрес последнего регистра архива
-  scadaParameters_[76].id                = -1;
+  scadaParameters_[76].id                = CCS_DHS_LOG_ROSNEFT_LAST_REGISTER;
   scadaParameters_[76].address           = 352;
   scadaParameters_[76].operation         = OPERATION_READ;
-  scadaParameters_[76].physic            = 0;
+  scadaParameters_[76].physic            = PHYSIC_NUMERIC;
   scadaParameters_[76].unit              = 0;
   scadaParameters_[76].typeData          = TYPE_DATA_UINT16;
   scadaParameters_[76].coefficient       = 1;
-  scadaParameters_[76].min               = 0;
-  scadaParameters_[76].max               = 0;
+  scadaParameters_[76].min               = 4096;
+  scadaParameters_[76].max               = 65530;
   scadaParameters_[76].command           = OPERATION_ERROR;
   scadaParameters_[76].value.float_t     = 0;
   // Номинальное напряжение сети
