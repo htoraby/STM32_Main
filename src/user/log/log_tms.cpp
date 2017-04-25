@@ -36,34 +36,23 @@ void LogTms::task()
   int timeCnt = 0;
   while (1) {
     osDelay(1000);
-
-    // Если станция в останове и останов меньше часа
-    if ((parameters.get(CCS_CONDITION) == CCS_CONDITION_STOP) && (parameters.get(CCS_STOP_TIME) <= 60 * 60)) {
-      int period = parameters.get(CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP);
-      if (++timeCnt >= period) {
-        timeCnt = 0;
-        add();
+    if (parameters.get(CCS_DHS_TYPE)) {
+      // Если станция в останове и останов меньше часа
+      if ((parameters.get(CCS_CONDITION) == CCS_CONDITION_STOP) && (parameters.get(CCS_STOP_TIME) <= 60 * 60)) {
+        int period = parameters.get(CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP);
+        if (++timeCnt >= period) {
+          timeCnt = 0;
+          add();
+        }
+      }
+      else {
+        int period = parameters.get(CCS_LOG_PERIOD_DHS);
+        if (++timeCnt >= period) {
+          timeCnt = 0;
+          add();
+        }
       }
     }
-    else {
-      int period = parameters.get(CCS_LOG_PERIOD_DHS);
-      if (++timeCnt >= period) {
-        timeCnt = 0;
-        add();
-      }
-    }
-
-    /*
-    if (parameters.get(CCS_CONDITION) == CCS_CONDITION_STOP) {
-      int period = parameters.get(CCS_LOG_PERIOD_DHS);
-      if (++timeCnt >= period) {
-        timeCnt = 0;
-        add();
-      }
-    } else {
-      timeCnt = parameters.get(CCS_LOG_PERIOD_DHS);
-    }
-    */
   }
 }
 
