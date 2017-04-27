@@ -3970,7 +3970,7 @@ void Vsd::initParameters()
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].validity              = VALIDITY_ERROR;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].value.float_t         = 9999.0;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].min                   = 0.0;
-  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].max                   = 20.0;
+  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].max                   = 65535.0;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].def                   = 9999.0;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].discret               = 1;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].code                  = 0;

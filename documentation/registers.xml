@@ -29416,7 +29416,7 @@
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_RESISTANCE</physic>
 		<min>0.0</min>
-		<max>20.0</max>
+		<max>65535.0</max>
 		<def>9999.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
