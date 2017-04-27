@@ -13,69 +13,15 @@
 
 class RegimeRunEtalon;
 
-enum enEtalonStatus
-{
-  VSD_ETALON_STATUS_READY = 0,                //!< Готов
-  VSD_ETALON_STATUS_UNDERLOAD = 1,            //!< Недогруз
-  VSD_ETALON_STATUS_OVERLOAD = 2,             //!< Перегруз
-  VSD_ETALON_STATUS_RESISTANCE = 3,           //!< Низкое Rиз
-  VSD_ETALON_STATUS_UNDERVOLTAGE = 4,         //!< Низкое напряжение
-  VSD_ETALON_STATUS_OVERVOLTAGE = 5,          //!< Высокое напряжение
-  VSD_ETALON_STATUS_OVERVOLTAGE_DC = 6,       //!< Высокое U сил. Цепи
-  VSD_ETALON_STATUS_UNDERVOLTAGE_DC = 7,      //!< Низкое U сил. цепи
-  VSD_ETALON_STATUS_RUN_COUNT = 8,            //!< Прев. кол-во пусков
-  VSD_ETALON_STATUS_OVERHEAT_IGBT = 9,        //!< Перегрев IGBT
-  VSD_ETALON_STATUS_OVERHEAT_FILTER = 10,     //!< Перегрев фильтра
-  VSD_ETALON_STATUS_PROT = 11,                //!< Защита ЧРП
-  VSD_ETALON_STATUS_SUPPLY_DRIVERS = 12,      //!< Питание драйверов
-  VSD_ETALON_STATUS_MONOMETR = 13,            //!< Конт манометр
-  VSD_ETALON_STATUS_AI_0 = 14,                //!< Доп. аналог вход 0
-  VSD_ETALON_STATUS_SEQUENCE_PHASE = 15,      //!< Чередование фаз
-  VSD_ETALON_STATUS_OVERHEAT_MOTOR = 16,      //!< Выс. Температура
-  VSD_ETALON_STATUS_OVERVIBRATION = 17,     	//!< Выс. Вибрация
-  VSD_ETALON_STATUS_PRESSURE = 18,            //!< Низ. Давление
-  VSD_ETALON_STATUS_CONTACTOR_ALARM_OUT = 19, //!< Авария контактора вых. ЧР
-  VSD_ETALON_STATUS_CONTACTOR_ALARM_DS = 20,  //!< Авария контактора Пр.пуска
-  VSD_ETALON_STATUS_IMBALANCE_CURRENT = 21, 	//!< Дисбаланс токов
-  VSD_ETALON_STATUS_IMBALANCE_VOLTAGE = 22,   //!< Дисбаланс напряж.
-  VSD_ETALON_STATUS_TURBINE = 23,             //!< Турбинное вращение
-  VSD_ETALON_STATUS_24 = 24,                  //!< Прочие ошибки
-  VSD_ETALON_STATUS_FAILURE_SUPPLY = 25,      //!< Авария питания
-  VSD_ETALON_STATUS_DOOR = 26,                //!< Открыта дверь
-  VSD_ETALON_STATUS_LOST_SUPPLY = 27,         //!< Пропало питание
-  VSD_ETALON_STATUS_CONDENSATOR = 28,         //!< Нет заряда конденс.
-  VSD_ETALON_STATUS_TERISTORS = 29,           //!< Авария тиристоров
-  VSD_ETALON_STATUS_CURRENT_LIMIT = 30,       //!< Токоограничение
-  VSD_ETALON_STATUS_31 = 31,                  //!< Автомат фильтра
-  VSD_ETALON_STATUS_32 = 32,                  //!< По подхвату
-  VSD_ETALON_STATUS_AUTO_STOP = 33,           //!< Авто останов
-  VSD_ETALON_STATUS_MANUAL_STOP = 34,         //!< Ручной останов
-  VSD_ETALON_STATUS_REMOTE_STOP = 35,         //!< Внешний останов
-  VSD_ETALON_STATUS_AUTO_RUN = 36,            //!< Автоматич. пуск
-  VSD_ETALON_STATUS_MANUAL_RUN = 37,          //!< Ручной пуск
-  VSD_ETALON_STATUS_REMOTE_RUN = 38,          //!< Внешний пуск
-  VSD_ETALON_STATUS_RESTART_COUNT = 39,       //!< По количеству АПВ
-  VSD_ETALON_STATUS_MEMORY = 40,              //!< Ошибка ОЗУ
-  VSD_ETALON_STATUS_41 = 41,                  //!< Отключен
-  VSD_ETALON_STATUS_DI = 42,                  //!< Отказ дискр. вх.
-  VSD_ETALON_STATUS_ADC = 43,                 //!< Отказ АЦП
-  VSD_ETALON_STATUS_ANALOG_SUPPLY = 44,       //!< Аналог. Питание
-  VSD_ETALON_STATUS_SENSOR_SUPPLY = 45,       //!< Питание датчиков
-  VSD_ETALON_STATUS_EEPROM = 46,              //!< Ошибка EEPROM
-  VSD_ETALON_STATUS_NOT_READY = 47,           //!< ПЧ не готов
-  VSD_ETALON_STATUS_SETPOINT = 48,            //!< Сбой уставок
-  VSD_ETALON_STATUS_BLOCK_RUN = 49            //!< Блокировка пуска
-};
-
 enum enVsdEtalonAlarm {
   VSD_ETALON_ALARM_UNDERLOAD      = 3001,   //!< Недогруз
-  VSD_ETALON_ALARM_OVERLOAD       = 3002,   //!< Перегруз
+  VSD_ETALON_ALARM_MTZ_OR_ASYNC   = 3002,   //!< МТЗ или рассинхронизация ВД
   VSD_ETALON_ALARM_RESISTANCE     = 3003,   //!< Низкое Rиз
   VSD_ETALON_ALARM_UNDERVOLTAGE   = 3004,   //!< Низкое напряжение
   VSD_ETALON_ALARM_OVERVOLTAGE    = 3005,   //!< Высокое напряжение
   VSD_ETALON_ALARM_OVERVOLTAGE_DC = 3006,   //!< Высокое U сил. Цепи
   VSD_ETALON_ALARM_UNDERVOLTAGE_DC = 3007,  //!< Низкое U сил. цепи
-  VSD_ETALON_ALARM_RUN_COUNT      = 3008,   //!< Прев. кол-во пусков
+  VSD_ETALON_ALARM_RUN_COUNT      = 3008,   //!< Потеря св
   VSD_ETALON_ALARM_OVERHEAT_IGBT  = 3009,   //!< Перегрев IGBT
   VSD_ETALON_ALARM_OVERHEAT_FILTER = 3010,  //!< Перегрев фильтра
   VSD_ETALON_ALARM_PROT           = 3011,   //!< Защита ЧРП
@@ -86,8 +32,8 @@ enum enVsdEtalonAlarm {
   VSD_ETALON_ALARM_OVERHEAT_MOTOR = 3016,   //!< Выс. Температура
   VSD_ETALON_ALARM_OVERVIBRATION  = 3017,   //!< Выс. Вибрация
   VSD_ETALON_ALARM_PRESSURE       = 3018,   //!< Низ. Давление
-  VSD_ETALON_ALARM_19             = 3019,   //!< Ошибка 19
-  VSD_ETALON_ALARM_PRESSURE_Z     = 3020,   //!< Низкое Pзатр
+  VSD_ETALON_ALARM_CONTACTOR_OUT  = 3019,   //!< Авария контактора вых. ЧР
+  VSD_ETALON_ALARM_CONTACTOR_DS   = 3020,   //!< Авария контактора Пр.пуска
   VSD_ETALON_ALARM_IMBALANCE_CURRENT = 3021,//!< Дисбаланс токов
   VSD_ETALON_ALARM_IMBALANCE_VOLTAGE = 3022,//!< Дисбаланс напряж.
   VSD_ETALON_ALARM_TURBINE        = 3023,   //!< Турбинное вращение
