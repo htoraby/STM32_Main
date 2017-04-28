@@ -421,9 +421,9 @@ void VsdEtalon::getNewValue(uint16_t id)
     case VSD_ETALON_DIRECT_RUN_MODE:
       setValue(id, value);
       if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) && !value)
-        parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OffAction);
+        parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OffAction, NoneType);
       else if (!parameters.get(CCS_RGM_RUN_DIRECT_MODE) && value)
-        parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OnAction);
+        parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OnAction, NoneType);
       break;
     case VSD_ETALON_DIRECT_RUN_SOFT_MODE:
       setValue(id, value);
