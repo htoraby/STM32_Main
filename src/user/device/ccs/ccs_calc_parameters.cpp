@@ -545,6 +545,7 @@ void Ccs::calcResistanceIsolation()
 {
   float resIso = 9999000;
   uint16_t source = (uint16_t)parameters.get(CCS_SOURCE_RESISTANCE_ISOLATION);
+  float autoSource = parameters.get(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION);
   switch (source) {
   // Автоматическое определение источника сопротивления изоляции
   case 0:
@@ -555,6 +556,7 @@ void Ccs::calcResistanceIsolation()
         resIso = resIso * parameters.get(CCS_COEF_RESISTANCE_ISOLATION);
         resIso = (resIso < 0) ? 0 : resIso;
         parameters.set(CCS_RESISTANCE_ISOLATION, resIso);
+        parameters.set(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION, 1);
         return;
       }
     }
@@ -565,6 +567,7 @@ void Ccs::calcResistanceIsolation()
         resIso = resIso * parameters.get(CCS_COEF_RESISTANCE_ISOLATION);
         resIso = (resIso < 0) ? 0 : resIso;
         parameters.set(CCS_RESISTANCE_ISOLATION, resIso);
+        parameters.set(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION, 2);
         return;
       }
     }
@@ -581,10 +584,12 @@ void Ccs::calcResistanceIsolation()
         resIso = 9999 * 1000;
       }
       parameters.set(CCS_RESISTANCE_ISOLATION, resIso);
+      parameters.set(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION, 3);
       return;
     }
     parameters.set(CCS_RESISTANCE_ISOLATION, NAN);
     parameters.setValidity(CCS_RESISTANCE_ISOLATION, err_r);
+    parameters.set(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION, 0);
     break;
   // Источником сопротивления изоляции выбран ЧРП
   case 1:

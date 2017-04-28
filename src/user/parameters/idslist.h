@@ -1134,7 +1134,8 @@ enum enID
   CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP = 1128,           //!< Период записи ТМС первый час после останова
   CCS_DHS_LOG_ROSNEFT_CODE_ERROR = 1129,                     //!< Код ошибок архива ГДИ
   CCS_SOURCE_RESISTANCE_ISOLATION = 1130,                    //!< Источник сопротивления изоляции
-  CCS_END = 1131,                                            //!< 
+  CCS_AUTO_SOURCE_RESISTANCE_ISOLATION = 1131,               //!< Автоматически выбранный сточник сопротивления изоляции
+  CCS_END = 1132,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF

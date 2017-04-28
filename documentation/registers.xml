@@ -23020,6 +23020,28 @@
 	</param>
 	<param>
 		<id>1131</id>
+		<name>CCS_AUTO_SOURCE_RESISTANCE_ISOLATION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>3.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Источник сопротивления изоляции (Авто)</text>
+		<short_text>Источник R (Авто)</short_text>
+		<form>NULL</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Нет;1-ЧРП;2-ТМС;3-УКИ</values>
+		<comment>Автоматически выбранный сточник сопротивления изоляции</comment>
+	</param>
+	<param>
+		<id>1132</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>
