@@ -2317,7 +2317,7 @@ void VsdEtalon::initModbusParameters()
                             0                 // Значение
                            };
   modbusParameters_[129] = {// Автооптимизация по току
-                            VSD_ETALON_AUTO_OPTIM_MODE,
+                            VSD_RESERVED_10470,
                             308 + 0x4000,     // Адрес регистра в устройстве
                             OPERATION_WRITE,  // Операции с параметром
                             PHYSIC_NUMERIC,   // Физическая величина параметра
@@ -2335,7 +2335,7 @@ void VsdEtalon::initModbusParameters()
                             0                 // Значение
                            };
   modbusParameters_[130] = {// Дельта напряжения оптимизации
-                            VSD_ETALON_AUTO_OPTIM_DELTA_U,
+                            VSD_RESERVED_10471,
                             63 + 0x4000,      // Адрес регистра в устройстве
                             OPERATION_WRITE,  // Операции с параметром
                             PHYSIC_PERCENT,   // Физическая величина параметра
@@ -2353,7 +2353,7 @@ void VsdEtalon::initModbusParameters()
                             0                 // Значение
                            };
   modbusParameters_[131] = {// Шаг изменения напряжения за 1 мин
-                            VSD_ETALON_AUTO_OPTIM_STEP,
+                            VSD_RESERVED_10472,
                             97 + 0x4000,      // Адрес регистра в устройстве
                             OPERATION_WRITE,  // Операции с параметром
                             PHYSIC_VOLTAGE,   // Физическая величина параметра
@@ -2371,7 +2371,7 @@ void VsdEtalon::initModbusParameters()
                             0                 // Значение
                            };
   modbusParameters_[132] = {// Период оптимизации
-                            VSD_ETALON_AUTO_OPTIM_PERIOD,
+                            VSD_RESERVED_10473,
                             62 + 0x4000,      // Адрес регистра в устройстве
                             OPERATION_WRITE,  // Операции с параметром
                             PHYSIC_TIME,      // Физическая величина параметра
@@ -2389,7 +2389,7 @@ void VsdEtalon::initModbusParameters()
                             0                 // Значение
                            };
   modbusParameters_[133] = {// Задержка запуска оптимизации
-                            VSD_ETALON_AUTO_OPTIM_DELAY,
+                            VSD_RESERVED_10474,
                             64 + 0x4000,      // Адрес регистра в устройстве
                             OPERATION_WRITE,  // Операции с параметром
                             PHYSIC_NUMERIC,   // Физическая величина параметра

@@ -32342,109 +32342,108 @@
 	</param>
 	<param>
 		<id>10470</id>
-		<name>VSD_ETALON_AUTO_OPTIM_MODE</name>
+		<name>VSD_RESERVED_10470</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>2.0</max>
+		<min>-32767.0</min>
+		<max>32767.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Автооптимизация</text>
-		<short_text>Автооптимизация</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
-		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>TEXT</unit_lcd>
-		<format>TEXT</format>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
 		<code>0</code>
-		<values>0-Откл;1-Ток;2-Мощность</values>
-		<comment>Автооптимизация</comment>
+		<comment>Не используется</comment>
 	</param>
 	<param>
 		<id>10471</id>
-		<name>VSD_ETALON_AUTO_OPTIM_DELTA_U</name>
+		<name>VSD_RESERVED_10471</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_PERCENT</physic>
-		<min>50.0</min>
-		<max>110.0</max>
-		<def>50.0</def>
-		<discret>10</discret>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>50.0</value>
-		<text>Максимальное отклонение от U/f</text>
-		<short_text>Опт.U. Максимальное отклонение от U/f</short_text>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
-		<unit>PERCENT_PERCENT</unit>
-		<unit_lcd>PERCENT_PERCENT</unit_lcd>
-		<format>XXX_X</format>
-		<code>13</code>
-		<comment>Дельта напряжения оптимизации</comment>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Не используется</comment>
 	</param>
 	<param>
 		<id>10472</id>
-		<name>VSD_ETALON_AUTO_OPTIM_STEP</name>
+		<name>VSD_RESERVED_10472</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_VOLTAGE</physic>
-		<min>1.0</min>
-		<max>10.0</max>
-		<def>1.0</def>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>1.0</value>
-		<text>Шаг изменения напряжения за 1 мин</text>
-		<short_text>Опт.U. Шаг изменения напряжения за 1 мин</short_text>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
-		<unit>VOLTAGE_V</unit>
-		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XX</format>
-		<code>13</code>
-		<comment>Шаг изменения напряжения за 1 мин</comment>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Не используется</comment>
 	</param>
 	<param>
 		<id>10473</id>
-		<name>VSD_ETALON_AUTO_OPTIM_PERIOD</name>
+		<name>VSD_RESERVED_10473</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_TIME</physic>
-		<min>3600.0</min>
-		<max>26784000.0</max>
-		<def>3600.0</def>
-		<discret>10</discret>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>3600.0</value>
-		<text>Периодичность оптимизации</text>
-		<short_text>Опт.U. Периодичность оптимизации</short_text>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
-		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_HH</unit_lcd>
-		<format>XXXX_X</format>
-		<code>13</code>
-		<comment>Период оптимизации</comment>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Не используется</comment>
 	</param>
 	<param>
 		<id>10474</id>
-		<name>VSD_ETALON_AUTO_OPTIM_DELAY</name>
+		<name>VSD_RESERVED_10474</name>
 		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_WRITE</operation>
-		<physic>PHYSIC_TIME</physic>
-		<min>120.0</min>
-		<max>86400.0</max>
-		<def>120.0</def>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>-32767.0</min>
+		<max>32767.0</max>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
-		<value>120.0</value>
-		<text>Первый цикл после пуска</text>
-		<short_text>Опт.U. Первый цикл после пуска</short_text>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
-		<unit>TIME_SS</unit>
-		<unit_lcd>TIME_MM</unit_lcd>
-		<format>XXXX</format>
-		<code>13</code>
-		<comment>Задержка запуска оптимизации</comment>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Не используется</comment>
 	</param>
 	<param>
 		<id>10475</id>

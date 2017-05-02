@@ -113,8 +113,6 @@ public:
   int offRegimeSkipFreq();
 
   // ТЕХНОЛОГИЧЕСКИЕ РЕЖИМЫ
-  int onRegimeAutoOptimCurrent();
-  int offRegimeAutoOptimCurrent();
   // Режим токоограничения
   int onRegimeCurrentLimitation();
   int offRegimeCurrentLimitation();

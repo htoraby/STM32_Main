@@ -369,13 +369,6 @@ void VsdEtalon::getNewValue(uint16_t id)
       if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_TEMP) != value)
         parameters.set(CCS_RGM_RUN_SKIP_RESONANT_TEMP, value);
       break;
-    case VSD_ETALON_AUTO_OPTIM_MODE:
-      setValue(id, value);    
-      if (parameters.get(CCS_RGM_OPTIM_VOLTAGE_MODE) && !value)
-        parameters.set(CCS_RGM_OPTIM_VOLTAGE_MODE, Regime::OffAction);
-      else if (!parameters.get(CCS_RGM_OPTIM_VOLTAGE_MODE) && value)
-        parameters.set(CCS_RGM_OPTIM_VOLTAGE_MODE, Regime::OnAction);
-      break;
     case VSD_I_LIMIT_MODE:
       setValue(id, value);
       if (parameters.get(CCS_RGM_CURRENT_LIMIT_MODE) && !value)
@@ -813,16 +806,6 @@ int VsdEtalon::onRegimeSkipFreq()
 int VsdEtalon::offRegimeSkipFreq()
 {
   return setNewValue(VSD_FREQ_SKIP_MODE, 0);
-}
-
-int VsdEtalon::onRegimeAutoOptimCurrent()
-{
-  return setNewValue(VSD_ETALON_AUTO_OPTIM_MODE, 1);
-}
-
-int VsdEtalon::offRegimeAutoOptimCurrent()
-{
-  return setNewValue(VSD_ETALON_AUTO_OPTIM_MODE, 0);
 }
 
 int VsdEtalon::onRegimeCurrentLimitation()

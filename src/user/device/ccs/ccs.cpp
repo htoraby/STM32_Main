@@ -1136,16 +1136,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         err = offWorkRgmExcept(CCS_RGM_OPTIM_VOLTAGE_MODE);
         if (!err) {
           err = setValue(id, value, eventType);
-          if (!err) {
-            vsd->onRegimeAutoOptimCurrent();
-          }
         }
       }
       else {
         err = setValue(id, value, eventType);
-        if (!err) {
-          vsd->offRegimeAutoOptimCurrent();
-        }
       }
     }
     return err;

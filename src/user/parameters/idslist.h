@@ -1606,11 +1606,11 @@ enum enID
   VSD_IC_RMS = 10467,                                        //!< Выходной ток ПЧ фаза W
   VSD_BLDC_COEF_NORM_UF = 10468,                             //!< Коэффициент нормиров. хар-ки
   VSD_VOLTAGE_IN_AVARAGE = 10469,                            //!< Среднее значение вх. напряжения
-  VSD_ETALON_AUTO_OPTIM_MODE = 10470,                        //!< Автооптимизация
-  VSD_ETALON_AUTO_OPTIM_DELTA_U = 10471,                     //!< Дельта напряжения оптимизации
-  VSD_ETALON_AUTO_OPTIM_STEP = 10472,                        //!< Шаг изменения напряжения за 1 мин
-  VSD_ETALON_AUTO_OPTIM_PERIOD = 10473,                      //!< Период оптимизации
-  VSD_ETALON_AUTO_OPTIM_DELAY = 10474,                       //!< Задержка запуска оптимизации
+  VSD_RESERVED_10470 = 10470,                                //!< Не используется
+  VSD_RESERVED_10471 = 10471,                                //!< Не используется
+  VSD_RESERVED_10472 = 10472,                                //!< Не используется
+  VSD_RESERVED_10473 = 10473,                                //!< Не используется
+  VSD_RESERVED_10474 = 10474,                                //!< Не используется
   VSD_SOFT_VERSION_2 = 10475,                                //!< Версия ПО ЧРП Danfoss 15-43 Используется в проекте (2)
   VSD_SOFT_VERSION_3 = 10476,                                //!< Версия ПО ЧРП Danfoss 15-43 Используется в проекте (3)
   VSD_SOFT_VERSION_4 = 10477,                                //!< Версия ПО ЧРП Danfoss 15-43 Используется в проекте (4)
