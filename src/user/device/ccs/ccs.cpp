@@ -2103,7 +2103,6 @@ void Ccs::controlPower()
     // Если питания нет в течении заданного числа мс
     // Выключаем подсветку дисплея для экономии
     if (powerOffTimeout_ == TIMEOUT_LCD_OFF/DELAY_MAIN_TASK) {
-      logDebug.add(CriticalMsg, "*** offLcd()1 ***");
       offLcd();
     }
 
@@ -2117,7 +2116,6 @@ void Ccs::controlPower()
     if ((powerOffTimeout_ == TIMEOUT_SLAVE_OFF/DELAY_MAIN_TASK) || !isUpsGood()) {
       // Если не посылали команду на выключение
       if (!powerOffFlag_) {
-        logDebug.add(CriticalMsg, "*** offLcd()2 ***");
         offLcd();
         setCmd(CCS_CMD_AM335_POWER_OFF);
 
@@ -2138,7 +2136,7 @@ void Ccs::controlPower()
 
     resetCmd(CCS_CMD_AM335_POWER_OFF);
 
-    if (powerOffFlag_) {
+    if ((powerOffTimeout_ > TIMEOUT_LCD_OFF/DELAY_MAIN_TASK) || powerOffFlag_) {
       onLcd();
     }
 
