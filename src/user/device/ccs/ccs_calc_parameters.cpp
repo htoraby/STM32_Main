@@ -545,10 +545,9 @@ void Ccs::calcResistanceIsolation()
 {
   float resIso = 9999000;
   uint16_t source = (uint16_t)parameters.get(CCS_SOURCE_RESISTANCE_ISOLATION);
-  float autoSource = parameters.get(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION);
   switch (source) {
   // Автоматическое определение источника сопротивления изоляции
-  case 0:
+  case R_AUTO:
     if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) {                      // Если в системе ЧРП Эталон
       if (vsd->isConnect() && parameters.isValidity(VSD_ETALON_RESISTANCE_ISOLATION)) { // Если есть связь с ЧРП и Параметр сопротивления изоляции валиден
         resIso = parameters.get(VSD_ETALON_RESISTANCE_ISOLATION);
@@ -556,7 +555,9 @@ void Ccs::calcResistanceIsolation()
         resIso = resIso * parameters.get(CCS_COEF_RESISTANCE_ISOLATION);
         resIso = (resIso < 0) ? 0 : resIso;
         parameters.set(CCS_RESISTANCE_ISOLATION, resIso);
-        parameters.set(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION, 1);
+        if (parameters.get(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION) != R_VSD) {
+          parameters.set(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION, R_VSD);
+        }
         return;
       }
     }
@@ -567,7 +568,9 @@ void Ccs::calcResistanceIsolation()
         resIso = resIso * parameters.get(CCS_COEF_RESISTANCE_ISOLATION);
         resIso = (resIso < 0) ? 0 : resIso;
         parameters.set(CCS_RESISTANCE_ISOLATION, resIso);
-        parameters.set(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION, 2);
+        if (parameters.get(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION) != R_DHS) {
+          parameters.set(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION, R_DHS);
+        }
         return;
       }
     }
@@ -584,15 +587,19 @@ void Ccs::calcResistanceIsolation()
         resIso = 9999 * 1000;
       }
       parameters.set(CCS_RESISTANCE_ISOLATION, resIso);
-      parameters.set(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION, 3);
+      if (parameters.get(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION) != R_UKI) {
+        parameters.set(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION, R_UKI);
+      }
       return;
     }
     parameters.set(CCS_RESISTANCE_ISOLATION, NAN);
     parameters.setValidity(CCS_RESISTANCE_ISOLATION, err_r);
-    parameters.set(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION, 0);
+    if (parameters.get(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION) != R_NONE) {
+      parameters.set(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION, R_NONE);
+    }
     break;
   // Источником сопротивления изоляции выбран ЧРП
-  case 1:
+  case R_VSD:
     if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) {
       if (vsd->isConnect() && parameters.isValidity(VSD_ETALON_RESISTANCE_ISOLATION)) {
         resIso = parameters.get(VSD_ETALON_RESISTANCE_ISOLATION);
@@ -608,7 +615,7 @@ void Ccs::calcResistanceIsolation()
     return;
     break;
   // Источником сопротивления изоляции выбрано ТМС
-  case 2:
+  case R_DHS:
     if (parameters.get(CCS_DHS_TYPE) != TYPE_DHS_NONE) {
       if (tms->isConnect() &&  parameters.isValidity(TMS_RESISTANCE_ISOLATION)) {
         resIso = parameters.get(TMS_RESISTANCE_ISOLATION);
@@ -624,7 +631,7 @@ void Ccs::calcResistanceIsolation()
     return;
     break;
   // Источником сопротивления изоляции выбрано УКИ
-  case 3:
+  case R_UKI:
     if (parameters.isValidity(CCS_AI_5_VALUE)) {
       float volt = getValue(CCS_AI_5_VALUE);
       if (volt > 0.0142) {// Граница "разумности" 9990 кОм, если это подставить в формулу то получим U 0.0142

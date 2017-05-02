@@ -455,6 +455,18 @@ enum enDoAction
   DO_ACTION_LAST
 };
 
+/*!
+ * \brief Список источников сопротивления изоляции
+ */
+enum enSourceR
+{
+  R_NONE,               //!< Нет
+  R_AUTO,               //!< Авто
+  R_VSD,                //!< ЧРП
+  R_DHS,                //!< ТМС
+  R_UKI                 //!< УКИ
+};
+
 #define NUM_PI 3.14159265358979323846
 #define SQRT_3 1.732050807568877
 #define NOM_VOLTAGE 220
