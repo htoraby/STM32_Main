@@ -21,7 +21,7 @@ enum enVsdEtalonAlarm {
   VSD_ETALON_ALARM_OVERVOLTAGE    = 3005,   //!< Высокое напряжение
   VSD_ETALON_ALARM_OVERVOLTAGE_DC = 3006,   //!< Высокое U сил. Цепи
   VSD_ETALON_ALARM_UNDERVOLTAGE_DC = 3007,  //!< Низкое U сил. цепи
-  VSD_ETALON_ALARM_RUN_COUNT      = 3008,   //!< Потеря св
+  VSD_ETALON_ALARM_NOT_CONNECT     = 3008,   //!< Потеря связи с КСУ
   VSD_ETALON_ALARM_OVERHEAT_IGBT  = 3009,   //!< Перегрев IGBT
   VSD_ETALON_ALARM_OVERHEAT_FILTER = 3010,  //!< Перегрев фильтра
   VSD_ETALON_ALARM_PROT           = 3011,   //!< Защита ЧРП
