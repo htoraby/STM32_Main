@@ -265,6 +265,12 @@
 		<b>0</b>
 	</param>
 	<param>
+		<midIn>PHYSIC_TEMPERATURE</midIn>
+		<midOut>TEMPERATURE_F</midOut>
+		<a>9.0/5</a>
+		<b>32</b>
+	</param>
+	<param>
 		<midIn>PHYSIC_ACCELERATION</midIn>
 		<midOut>ACCELERATION_G</midOut>
 		<a>1</a>
