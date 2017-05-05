@@ -2421,34 +2421,110 @@ void Ccs::cmdProtDigitalSetpointReset()
 
 void Ccs::cmdProtAnalogInput1SetpointReset()
 {
-  for (uint16_t i = CCS_PROT_AI_1_MODE;
-       i <= CCS_PROT_AI_1_PARAMETER; i++) {
-    parameters.setDefault(i);
-  }
+  parameters.setDefault(CCS_PROT_AI_1_MODE);
+  parameters.setDefault(CCS_PROT_AI_1_PREVENT);
+  parameters.setDefault(CCS_PROT_AI_1_ACTIV_DELAY);
+  parameters.setDefault(CCS_PROT_AI_1_TRIP_DELAY);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_DELAY);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_LIMIT);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_RESET);
+  parameters.setDefault(CCS_PROT_AI_1_TRIP_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_1_PARAMETER);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_FLAG);
+  parameters.setDefault(CCS_PROT_AI_1_STATE);
+  parameters.setDefault(CCS_PROT_AI_1_TIME);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_COUNT);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_FIRST_TIME);
+  parameters.setDefault(CCS_AI_1_TYPE);
+  parameters.setDefault(CCS_AI_1_AXIS_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_1_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_1_COEF);
+  parameters.setDefault(CCS_AI_1_PARAMETER);
+  parameters.setDefault(CCS_AI_1_PARAM_UNITS);
+  parameters.setDefault(CCS_AI_1_MINIMUM);
+  parameters.setDefault(CCS_AI_1_MAXIMUM);
 }
 
 void Ccs::cmdProtAnalogInput2SetpointReset()
 {
-  for (uint16_t i = CCS_PROT_AI_2_MODE;
-       i <= CCS_PROT_AI_2_PARAMETER; i++) {
-    parameters.setDefault(i);
-  }
+  parameters.setDefault(CCS_PROT_AI_2_MODE);
+  parameters.setDefault(CCS_PROT_AI_2_PREVENT);
+  parameters.setDefault(CCS_PROT_AI_2_ACTIV_DELAY);
+  parameters.setDefault(CCS_PROT_AI_2_TRIP_DELAY);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_DELAY);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_LIMIT);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_RESET);
+  parameters.setDefault(CCS_PROT_AI_2_TRIP_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_2_PARAMETER);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_FLAG);
+  parameters.setDefault(CCS_PROT_AI_2_STATE);
+  parameters.setDefault(CCS_PROT_AI_2_TIME);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_COUNT);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_FIRST_TIME);
+  parameters.setDefault(CCS_AI_2_TYPE);
+  parameters.setDefault(CCS_AI_2_AXIS_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_2_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_2_COEF);
+  parameters.setDefault(CCS_AI_2_PARAMETER);
+  parameters.setDefault(CCS_AI_2_PARAM_UNITS);
+  parameters.setDefault(CCS_AI_2_MINIMUM);
+  parameters.setDefault(CCS_AI_2_MAXIMUM);
 }
 
 void Ccs::cmdProtAnalogInput3SetpointReset()
 {
-  for (uint16_t i = CCS_PROT_AI_3_MODE;
-       i <= CCS_PROT_AI_3_PARAMETER; i++) {
-    parameters.setDefault(i);
-  }
+  parameters.setDefault(CCS_PROT_AI_3_MODE);
+  parameters.setDefault(CCS_PROT_AI_3_PREVENT);
+  parameters.setDefault(CCS_PROT_AI_3_ACTIV_DELAY);
+  parameters.setDefault(CCS_PROT_AI_3_TRIP_DELAY);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_DELAY);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_LIMIT);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_RESET);
+  parameters.setDefault(CCS_PROT_AI_3_TRIP_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_3_PARAMETER);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_FLAG);
+  parameters.setDefault(CCS_PROT_AI_3_STATE);
+  parameters.setDefault(CCS_PROT_AI_3_TIME);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_COUNT);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_FIRST_TIME);
+  parameters.setDefault(CCS_AI_1_TYPE);
+  parameters.setDefault(CCS_AI_1_AXIS_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_1_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_1_COEF);
+  parameters.setDefault(CCS_AI_1_PARAMETER);
+  parameters.setDefault(CCS_AI_1_PARAM_UNITS);
+  parameters.setDefault(CCS_AI_1_MINIMUM);
+  parameters.setDefault(CCS_AI_1_MAXIMUM);
 }
 
 void Ccs::cmdProtAnalogInput4SetpointReset()
 {
-  for (uint16_t i = CCS_PROT_AI_4_MODE;
-       i <= CCS_PROT_AI_4_PARAMETER; i++) {
-    parameters.setDefault(i);
-  }
+  parameters.setDefault(CCS_PROT_AI_4_MODE);
+  parameters.setDefault(CCS_PROT_AI_4_PREVENT);
+  parameters.setDefault(CCS_PROT_AI_4_ACTIV_DELAY);
+  parameters.setDefault(CCS_PROT_AI_4_TRIP_DELAY);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_DELAY);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_LIMIT);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_RESET);
+  parameters.setDefault(CCS_PROT_AI_4_TRIP_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_4_PARAMETER);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_FLAG);
+  parameters.setDefault(CCS_PROT_AI_4_STATE);
+  parameters.setDefault(CCS_PROT_AI_4_TIME);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_COUNT);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_FIRST_TIME);
+  parameters.setDefault(CCS_AI_4_TYPE);
+  parameters.setDefault(CCS_AI_4_AXIS_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_4_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_4_COEF);
+  parameters.setDefault(CCS_AI_4_PARAMETER);
+  parameters.setDefault(CCS_AI_4_PARAM_UNITS);
+  parameters.setDefault(CCS_AI_4_MINIMUM);
+  parameters.setDefault(CCS_AI_4_MAXIMUM);
 }
 
 void Ccs::cmdProtAnalogSetpointReset()
