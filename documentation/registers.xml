@@ -3083,7 +3083,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Предел тока двиг.</short_text>
+		<short_text>Предел тока двигателя</short_text>
 		<form>4.2.6 Предел тока</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -3168,7 +3168,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Предел тока двиг. зад. АПВ</short_text>
+		<short_text>Предел тока двигателя Задержка АПВ</short_text>
 		<form>4.2.6 Предел тока</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -3189,7 +3189,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Предел тока двиг. раз. АПВ</short_text>
+		<short_text>Предел тока двигателя Разрешено АПВ</short_text>
 		<form>4.2.6 Предел тока</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -3209,8 +3209,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Предел тока двиг. сброс счет.</short_text>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Предел тока двигателя Сброс счётчиков АПВ</short_text>
 		<form>4.2.6 Предел тока</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
@@ -3231,7 +3231,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>160.0</value>
 		<text>Уставка останова</text>
-		<short_text>Предел тока двиг. уст. остан.</short_text>
+		<short_text>Предел тока двигателя Уставка останова</short_text>
 		<form>4.2.6 Предел тока</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
