@@ -175,7 +175,7 @@ float units[PHYSIC_LAST][MAX_CONV_ELEMS][2] =
    {1.0, 0.0},
    {1.0, 0.0}},
   {{1.0, 0.0},         //PHYSIC_TEMPERATURE -> TEMPERATURE_C
-   {1.0, 0.0},
+   {9.0/5, 32.0},      //PHYSIC_TEMPERATURE -> TEMPERATURE_F
    {1.0, 0.0},
    {1.0, 0.0},
    {1.0, 0.0},
