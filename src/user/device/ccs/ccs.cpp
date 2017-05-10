@@ -1152,7 +1152,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
           if (!err) {
             vsd->onRegimeCurrentLimitation();
           }
-        //}
       }
       else {
         err = setValue(id, value, eventType);
@@ -2303,10 +2302,26 @@ void Ccs::cmdProtDhsTemperatureMotorSetpointReset()
 
 void Ccs::cmdProtDhsResistanceSetpointReset()
 {
-  for (uint16_t i = CCS_PROT_DHS_RESISTANCE_MODE;
-       i <= CCS_PROT_DHS_RESISTANCE_PARAMETER; i++) {
-    parameters.setDefault(i);
-  }
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_MODE);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_PREVENT);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_TRIP_DELAY);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_DELAY);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_RESET);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_PARAMETER);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_FLAG);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_STATE);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_TIME);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_COUNT);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME);
+  parameters.setDefault(CCS_SOURCE_RESISTANCE_ISOLATION);
+  parameters.setDefault(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION);
+  parameters.setDefault(CCS_AXIS_SHIFT_RESISTANCE_ISOLATION);
+  parameters.setDefault(CCS_SHIFT_RESISTANCE_ISOLATION);
+  parameters.setDefault(CCS_COEF_RESISTANCE_ISOLATION);
 }
 
 void Ccs::cmdProtDhsVibrationSetpointReset()
@@ -2490,14 +2505,14 @@ void Ccs::cmdProtAnalogInput3SetpointReset()
   parameters.setDefault(CCS_PROT_AI_3_TIME);
   parameters.setDefault(CCS_PROT_AI_3_RESTART_COUNT);
   parameters.setDefault(CCS_PROT_AI_3_RESTART_FIRST_TIME);
-  parameters.setDefault(CCS_AI_1_TYPE);
-  parameters.setDefault(CCS_AI_1_AXIS_ZERO_SHIFT);
-  parameters.setDefault(CCS_AI_1_ZERO_SHIFT);
-  parameters.setDefault(CCS_AI_1_COEF);
-  parameters.setDefault(CCS_AI_1_PARAMETER);
-  parameters.setDefault(CCS_AI_1_PARAM_UNITS);
-  parameters.setDefault(CCS_AI_1_MINIMUM);
-  parameters.setDefault(CCS_AI_1_MAXIMUM);
+  parameters.setDefault(CCS_AI_3_TYPE);
+  parameters.setDefault(CCS_AI_3_AXIS_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_3_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_3_COEF);
+  parameters.setDefault(CCS_AI_3_PARAMETER);
+  parameters.setDefault(CCS_AI_3_PARAM_UNITS);
+  parameters.setDefault(CCS_AI_3_MINIMUM);
+  parameters.setDefault(CCS_AI_3_MAXIMUM);
 }
 
 void Ccs::cmdProtAnalogInput4SetpointReset()
