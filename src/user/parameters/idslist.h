@@ -1812,8 +1812,8 @@ enum enID
   EM_REACTIVE_MINUS_CUR_MONTH = 20046,                       //!< Минус реактивная энергия за месяц
   EM_REACTIVE_PLUS_PREV_MONTH = 20047,                       //!< Плюс реактивная энергия за предыдущий месяц
   EM_REACTIVE_MINUS_PREV_MONTH = 20048,                      //!< Минус реактивная энергия за предыдущий месяц
-  EM_COEFFICIENT_TRANS_CURRENT = 20049,                      //!< Коэффицинт трансформации тока
-  EM_COEFFICIENT_TRANS_VOLTAGE = 20050,                      //!< Коэффициент трансформации напряжения
+  EM_COEFFICIENT_TRANS_CURRENT = 20049,                      //!< Коэффициент трансформации тока счётчика электроэнергии
+  EM_COEFFICIENT_TRANS_VOLTAGE = 20050,                      //!< Коэффициент трансформации напряжения счётчика электроэнергии
   EM_END = 20051,                                            //!< 
 };
 

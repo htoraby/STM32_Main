@@ -1030,8 +1030,8 @@
 		<short_text>Повышен. напряж. раз. АПВ</short_text>
 		<form>4.1.1 Повышенное напряжение</form>
 		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>NULL</unit_lcd>
-		<format>NULL</format>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -1346,7 +1346,7 @@
 		<short_text>Понижен. напряж. раз. АПВ</short_text>
 		<form>4.1.2 Пониженное напряжение</form>
 		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>NULL</unit_lcd>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
@@ -36138,14 +36138,14 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
-		<text>Коэффициент трансформации</text>
-		<short_text>Коэффициент трансформации</short_text>
-		<form>3.5 Счётчик</form>
+		<text>Коэффициент трансформации тока</text>
+		<short_text>Коэффициент трансформации тока счётчика электроэнергии</short_text>
+		<form>Счётчик электроэнергии</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXX</format>
 		<code>0</code>
-		<comment>Коэффицинт трансформации тока</comment>
+		<comment>Коэффициент трансформации тока счётчика электроэнергии</comment>
 	</param>
 	<param>
 		<id>20050</id>
@@ -36159,12 +36159,14 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
-		<form>NULL</form>
+		<text>Коэффициент трансформации напряжения</text>
+		<short_text>Коэффициент трансформации напряжения счётчика электроэнергии</short_text>
+		<form>Счётчик электроэнергии</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
 		<code>0</code>
-		<comment>Коэффициент трансформации напряжения</comment>
+		<comment>Коэффициент трансформации напряжения счётчика электроэнергии</comment>
 	</param>
 	<param>
 		<id>20051</id>
