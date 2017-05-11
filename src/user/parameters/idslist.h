@@ -1644,7 +1644,8 @@ enum enID
   VSD_ETALON_DIRECT_RUN_CMD_TRANSITION = 10505,              //!< Прямой пуск. Команда перехода с режима на режим
   VSD_ETALON_DIRECT_RUN_IS_SYNC = 10506,                     //!< Прямой пуск. Синхронизирован с сетью?
   VSD_ETALON_DIRECT_RUN_STATE_TRANSITION = 10507,            //!< Прямой пуск. Состояние перехода
-  VSD_END = 10508,                                           //!< 
+  VSD_COEF_RESISTANCE_ISOLATION = 10508,                     //!< Коэффициент коррекции тока Riz
+  VSD_END = 10509,                                           //!< 
   TMS_BEGIN = 15000,                                         //!< 
   TMS_RESISTANCE_ISOLATION = 15001,                          //!< Сопротивление изоляции
   TMS_PRESSURE_INTAKE = 15002,                               //!< Давление на приёме

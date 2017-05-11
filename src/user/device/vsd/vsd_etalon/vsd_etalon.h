@@ -227,7 +227,7 @@ public:
 private: 
   void setLimitsCcsParameters();
 
-  ModbusParameter modbusParameters_[140];
+  ModbusParameter modbusParameters_[141];
   DeviceModbus *dm_;
 
   RegimeRunEtalon *regimeRun_;

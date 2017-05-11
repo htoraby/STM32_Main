@@ -6098,5 +6098,17 @@ void Vsd::initParameters()
   parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].def            = 0.0;
   parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].discret        = 1;
   parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].code           = 0;
+  // Коэффициент коррекции тока Riz
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].id                      = VSD_COEF_RESISTANCE_ISOLATION;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].access                  = ACCESS_OPERATOR;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].physic                  = PHYSIC_NUMERIC;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].validity                = VALIDITY_ERROR;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].value.float_t           = 1.0;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].min                     = 0.5;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].max                     = 1.5;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].def                     = 1.0;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].discret                 = 1000;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].code                    = 0;
 }
 

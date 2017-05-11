@@ -33060,6 +33060,27 @@
 	</param>
 	<param>
 		<id>10508</id>
+		<name>VSD_COEF_RESISTANCE_ISOLATION</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.5</min>
+		<max>1.5</max>
+		<def>1.0</def>
+		<discret>1000</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>1.0</value>
+		<text>Коэффициент коррекции тока Riz</text>
+		<short_text>Коэффициент коррекции тока Riz</short_text>
+		<form>3.3.4 Сервисное меню ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>X_XXX</format>
+		<code>0</code>
+		<comment>Коэффициент коррекции тока Riz</comment>
+	</param>
+	<param>
+		<id>10509</id>
 		<name>VSD_END</name>
 		<form>NULL</form>
 		<code>NULL</code>
