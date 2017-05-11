@@ -4900,8 +4900,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Действие защиты</text>
-		<short_text>Сопр.изоляции РРЗ</short_text>
-		<form>4.3.4 Сопротивление изоляции</form>
+		<short_text>Сопротивление изоляции</short_text>
+		<form>Сопротивление изоляции</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -4941,8 +4941,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Пусковое время</text>
-		<short_text>Сопр.изоляции пуск.время</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -4962,8 +4962,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Время</text>
-		<short_text>Сопр.изоляции время</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -4983,8 +4983,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Задержка АПВ</text>
-		<short_text>Сопр.изоляции зад.АПВ</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -5004,8 +5004,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Разрешено АПВ</text>
-		<short_text>Сопр.изоляции раз.АПВ</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -5025,8 +5025,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Сопр.изоляции сброс счет</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -5047,8 +5047,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>30000.0</value>
 		<text>Уставка останова</text>
-		<short_text>Сопр.изоляции уст.</short_text>
-		<form>4.3.4 Сопротивление изоляции</form>
+		<short_text>Сопротивление изоляции Уставка останова</short_text>
+		<form>Сопротивление изоляции</form>
 		<unit>RESISTANCE_OM</unit>
 		<unit_lcd>RESISTANCE_KOM</unit_lcd>
 		<format>XXXXXX</format>
@@ -5089,8 +5089,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Работа с пониженным сопротивлением</text>
-		<short_text>Раб.с пониж.сопр.изоляции</short_text>
-		<form>4.3.4 Сопротивление изоляции</form>
+		<short_text>Сопротивление изоляции Работа с пониженным сопротивлением</short_text>
+		<form>Сопротивление изоляции</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -10475,14 +10475,14 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.001</min>
-		<max>10.000</max>
+		<max>2.000</max>
 		<def>1.0</def>
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
-		<text>Коэф. cопротивления изоляции</text>
-		<short_text>Сопр.изоляции коэф.кор.</short_text>
-		<form>5.2 Корректировки</form>
+		<text>Коэффициент</text>
+		<short_text>Сопротивление изоляции Коэффициент</short_text>
+		<form>Сопротивление изоляции</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX_XXX</format>
@@ -20933,9 +20933,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Смещение сопротивления изоляции</text>
-		<short_text>Смещ. R</short_text>
-		<form>5.2 Корректировки</form>
+		<text>Смещение</text>
+		<short_text>Сопротивление изоляции Смещение</short_text>
+		<form>Сопротивление изоляции</form>
 		<unit>RESISTANCE_OM</unit>
 		<unit_lcd>RESISTANCE_KOM</unit_lcd>
 		<format>XXXXXX</format>
@@ -20954,14 +20954,15 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
-		<text>Ось смещения сопротивления изоляции</text>
-		<short_text>Ось смещ. R</short_text>
-		<form>5.2 Корректировки</form>
+		<text>Знак смещения</text>
+		<short_text>Сопротивление изоляции Знак смещения</short_text>
+		<form>Сопротивление изоляции</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<code>13</code>
-		<values>-1-Отрицательная;1-Положительная</values>
-		<comment>Ось смещение сопротивления изоляции</comment>
+		<values>-1-Минус;1-Плюс</values>
+		<comment>Знак смещения сопротивления изоляции</comment>
 	</param>
 	<param>
 		<id>1034</id>
@@ -23008,9 +23009,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
-		<text>Источник сопротивления изоляции</text>
-		<short_text>Источник R</short_text>
-		<form>NULL</form>
+		<text>Источник</text>
+		<short_text>Сопротивление изоляции Источник</short_text>
+		<form>Сопротивление изоляции</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -23030,15 +23031,15 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Источник сопротивления изоляции (Авто)</text>
-		<short_text>Источник R (Авто)</short_text>
-		<form>NULL</form>
+		<text>Автовыбор источника</text>
+		<short_text>Сопротивление изоляции Автовыбор источника</short_text>
+		<form>Сопротивление изоляции</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<code>13</code>
 		<values>0-Нет;1-Авто;2-ЧРП;3-ТМС;4-УКИ</values>
-		<comment>Автоматически выбранный сточник сопротивления изоляции</comment>
+		<comment>Автоматически выбранный источник сопротивления изоляции</comment>
 	</param>
 	<param>
 		<id>1132</id>

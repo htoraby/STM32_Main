@@ -1036,7 +1036,7 @@ enum enID
   CCS_MOTOR_TYPE_PROFILE_VSD = 1030,                         //!< Профиль настроек двигателя в ЧРП
   CCS_CMD_TYPE_PROFILE_VSD = 1031,                           //!< Команда применения профиля ЧРП
   CCS_SHIFT_RESISTANCE_ISOLATION = 1032,                     //!< Смещение сопротивления изоляции
-  CCS_AXIS_SHIFT_RESISTANCE_ISOLATION = 1033,                //!< Ось смещение сопротивления изоляции
+  CCS_AXIS_SHIFT_RESISTANCE_ISOLATION = 1033,                //!< Знак смещения сопротивления изоляции
   CCS_RGM_RUN_PICKUP_FREQ_WAIT = 1034,                       //!< Частота ожидания
   CCS_RGM_RUN_PICKUP_TIME_WAIT = 1035,                       //!< Время ожидания
   CCS_RGM_RUN_PICKUP_TIME_UP = 1036,                         //!< Время разгона
@@ -1134,7 +1134,7 @@ enum enID
   CCS_LOG_PERIOD_DHS_FIRST_HOUR_AFTER_STOP = 1128,           //!< Период записи ТМС первый час после останова
   CCS_DHS_LOG_ROSNEFT_CODE_ERROR = 1129,                     //!< Код ошибок архива ГДИ
   CCS_SOURCE_RESISTANCE_ISOLATION = 1130,                    //!< Источник сопротивления изоляции
-  CCS_AUTO_SOURCE_RESISTANCE_ISOLATION = 1131,               //!< Автоматически выбранный сточник сопротивления изоляции
+  CCS_AUTO_SOURCE_RESISTANCE_ISOLATION = 1131,               //!< Автоматически выбранный источник сопротивления изоляции
   CCS_END = 1132,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
