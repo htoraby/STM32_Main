@@ -36,7 +36,7 @@
 		<value>0.0</value>
 		<text>Обороты двиг.</text>
 		<short_text>Обороты двиг.</short_text>
-		<form>1.1 Текущие параметры - Состояние</form>
+		<form>Состояние</form>
 		<unit>RPM_RPM</unit>
 		<unit_lcd>RPM_RPM</unit_lcd>
 		<format>XXXXXX</format>
@@ -57,7 +57,7 @@
 		<value>0.0</value>
 		<text>Ток Ia</text>
 		<short_text>Ia, А</short_text>
-		<form>1.4 Текущие параметры двигателя</form>
+		<form>Текущие параметры двигателя</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
 		<format>XXXX_X</format>
@@ -78,7 +78,7 @@
 		<value>0.0</value>
 		<text>Ток Ib</text>
 		<short_text>Ib, А</short_text>
-		<form>1.4 Текущие параметры двигателя</form>
+		<form>Текущие параметры двигателя</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
 		<format>XXXX_X</format>
@@ -99,7 +99,7 @@
 		<value>0.0</value>
 		<text>Ток Ic</text>
 		<short_text>Ic, А</short_text>
-		<form>1.4 Текущие параметры двигателя</form>
+		<form>Текущие параметры двигателя</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
 		<format>XXXX_X</format>
@@ -119,8 +119,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Дисб. токов</text>
-		<short_text>Дисб.I</short_text>
-		<form>1.4 Текущие параметры двигателя</form>
+		<short_text>Дисб.I двиг.</short_text>
+		<form>Текущие параметры двигателя</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
@@ -140,8 +140,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Ток двигателя</text>
-		<short_text>Ток ПЭД</short_text>
-		<form>1.1 Текущие параметры - Состояние</form>
+		<short_text>Ток двиг.</short_text>
+		<form>Состояние</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
 		<format>XXXX_X</format>
@@ -162,7 +162,7 @@
 		<value>0.0</value>
 		<text>Загрузка</text>
 		<short_text>Загр., %</short_text>
-		<form>1.1 Текущие параметры - Состояние; 1.4 Текущие параметры двигателя</form>
+		<form>Состояние</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
@@ -183,7 +183,7 @@
 		<value>0.0</value>
 		<text>Напряж.</text>
 		<short_text>Двиг.U, В</short_text>
-		<form>NULL</form>
+		<form>Текущие параметры двигателя</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>XXXXXX</format>
@@ -267,7 +267,7 @@
 		<value>0.0</value>
 		<text>Черед. фаз</text>
 		<short_text>Чередование фаз</short_text>
-		<form>1.3 Текущие параметры сети</form>
+		<form>Текущие параметры сети</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -309,7 +309,7 @@
 		<value>0.0</value>
 		<text>Режим пуска</text>
 		<short_text>Режим пуска</short_text>
-		<form>1.1 Текущие параметры - Состояние</form>
+		<form>Состояние</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -331,7 +331,7 @@
 		<value>1.0</value>
 		<text>Режим работы</text>
 		<short_text>Реж.раб.</short_text>
-		<form>1.1 Текущие параметры - Состояние</form>
+		<form>Состояние</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -353,7 +353,7 @@
 		<value>0.0</value>
 		<text>Дисб. напряж.</text>
 		<short_text>Дисб.U, %</short_text>
-		<form>1.3 Текущие параметры сети</form>
+		<form>Текущие параметры сети</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
@@ -372,9 +372,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Дисб. Токов</text>
-		<short_text>Дисб.вх.токов</short_text>
-		<form>1.3 Текущие параметры сети</form>
+		<text>Дисб. токов</text>
+		<short_text>Дисб I</short_text>
+		<form>Текущие параметры сети</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
@@ -393,7 +393,7 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Ан.вх.1 Текущее значение</text>
+		<text>Аналоговый вход 1</text>
 		<short_text>Ан.вх.1</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -414,7 +414,7 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Ан.вх.2 Текущее значение</text>
+		<text>Аналоговый вход 2</text>
 		<short_text>Ан.вх.2</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -435,7 +435,7 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Ан.вх.3 Текущее значение</text>
+		<text>Аналоговый вход 3</text>
 		<short_text>Ан.вх.3</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -456,7 +456,7 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Ан.вх.4 Текущее значение</text>
+		<text>Аналоговый вход 4</text>
 		<short_text>Ан.вх.4</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -606,7 +606,7 @@
 		<value>600.0</value>
 		<text>Период записи</text>
 		<short_text>Период записи</short_text>
-		<form>2.0 Архивы</form>
+		<form>Архивы</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -627,7 +627,7 @@
 		<value>5.0</value>
 		<text>Период экстренной записи</text>
 		<short_text>Период экстренной записи</short_text>
-		<form>2.0 Архивы</form>
+		<form>Архивы</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -648,7 +648,7 @@
 		<value>300.0</value>
 		<text>Период записи ТМС</text>
 		<short_text>Период записи ТМС</short_text>
-		<form>2.0 Архивы</form>
+		<form>Архивы</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -687,8 +687,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2000000.0</value>
 		<text>Номинальная мощность</text>
-		<short_text>Ном. мощность ТМПН</short_text>
-		<form>3.2 ТМПН</form>
+		<short_text>Номинальная мощность ТМПН</short_text>
+		<form>ТМПН</form>
 		<unit>FULL_POWER_VA</unit>
 		<unit_lcd>FULL_POWER_KVA</unit_lcd>
 		<format>XXXXXX</format>
@@ -708,8 +708,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Номинальный ток</text>
-		<short_text>Ном. ток ТМПН</short_text>
-		<form>3.2 ТМПН</form>
+		<short_text>Номинальный ток ТМПН</short_text>
+		<form>ТМПН</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
 		<format>XXXX_X</format>
@@ -729,8 +729,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>380.0</value>
 		<text>Номинальное напряжение</text>
-		<short_text>Ном. напряж. ТМПН</short_text>
-		<form>3.2 ТМПН</form>
+		<short_text>Номинальное напряжение ТМПН</short_text>
+		<form>ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>TEXT</format>
@@ -752,7 +752,7 @@
 		<value>2000.0</value>
 		<text>Длина кабеля</text>
 		<short_text>Длина кабеля</short_text>
-		<form>3.2 ТМПН</form>
+		<form>ТМПН</form>
 		<unit>LENGTH_M</unit>
 		<unit_lcd>LENGTH_M</unit_lcd>
 		<format>XXXX</format>
@@ -773,7 +773,7 @@
 		<value>16.0</value>
 		<text>Сечение кабеля</text>
 		<short_text>Сечение кабеля</short_text>
-		<form>3.2 ТМПН</form>
+		<form>ТМПН</form>
 		<unit>SPACE_MM2</unit>
 		<unit_lcd>SPACE_MM2</unit_lcd>
 		<format>TEXT</format>
@@ -795,7 +795,7 @@
 		<value>380.0</value>
 		<text>Рекомендуемое напряжение отпайки</text>
 		<short_text>Рекомендуемое напряжение отпайки</short_text>
-		<form>3.2 ТМПН</form>
+		<form>ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>XXXXXX</format>
@@ -815,8 +815,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>380.0</value>
 		<text>Напряжение отпайки</text>
-		<short_text>Напряж.отпайки</short_text>
-		<form>3.2 ТМПН</form>
+		<short_text>Напряжение отпайки</short_text>
+		<form>ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>XXXX</format>
@@ -858,8 +858,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Производительность</text>
-		<short_text>Производ.насоса</short_text>
-		<form>3.7 Насос</form>
+		<short_text>Производительность</short_text>
+		<form>Насос</form>
 		<unit>FLOW_M3_DD</unit>
 		<unit_lcd>FLOW_M3_DD</unit_lcd>
 		<format>XXXX</format>
@@ -879,8 +879,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Напор</text>
-		<short_text>Напор насоса</short_text>
-		<form>3.7 Насос</form>
+		<short_text>Напор</short_text>
+		<form>Насос</form>
 		<unit>LENGTH_M</unit>
 		<unit_lcd>LENGTH_M</unit_lcd>
 		<format>XXXX</format>
@@ -900,8 +900,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Глубина спуска</text>
-		<short_text>Глубина спуска</short_text>
-		<form>3.7 Насос</form>
+		<short_text>Глубина спуска насоса</short_text>
+		<form>Насос</form>
 		<unit>LENGTH_M</unit>
 		<unit_lcd>LENGTH_M</unit_lcd>
 		<format>XXXX</format>
@@ -921,8 +921,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Повышен.напряж.</short_text>
-		<form>4.1.1 Повышенное напряжение</form>
+		<short_text>Повышенное напряжение</short_text>
+		<form>Повышенное напряжение</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -964,8 +964,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Повышен. напряж. пуск. время</short_text>
-		<form>4.1.1 Повышенное напряжение</form>
+		<short_text>Повышенное напряжение Пусковое время</short_text>
+		<form>Повышенное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -985,8 +985,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Время</text>
-		<short_text>Повышен. напряж. время</short_text>
-		<form>4.1.1 Повышенное напряжение</form>
+		<short_text>Повышенное напряжение Время</short_text>
+		<form>Повышенное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -1006,8 +1006,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>300.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Повышен. напряж. зад. АПВ</short_text>
-		<form>4.1.1 Повышенное напряжение</form>
+		<short_text>Повышенное напряжение Задержка АПВ</short_text>
+		<form>Повышенное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1027,8 +1027,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Повышен. напряж. раз. АПВ</short_text>
-		<form>4.1.1 Повышенное напряжение</form>
+		<short_text>Повышенное напряжение Разрешено АПВ</short_text>
+		<form>Повышенное напряжение</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -1047,9 +1047,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Повышен. напряж. сброс счёт.</short_text>
-		<form>4.1.1 Повышенное напряжение</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Повышенное напряжение Сброс счётчиков АПВ</short_text>
+		<form>Повышенное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -1069,8 +1069,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>120.0</value>
 		<text>Уставка останова</text>
-		<short_text>Повышен. напряж. уст. остан.</short_text>
-		<form>4.1.1 Повышенное напряжение</form>
+		<short_text>Повышенное напряжение Уставка останова</short_text>
+		<form>Повышенное напряжение</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXX</format>
@@ -1089,8 +1089,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>120.0</value>
-		<text>Уставка пуска</text>
-		<short_text>Повышен. напряж. уст. пуска.</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -1237,8 +1237,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Понижен.напряж.</short_text>
-		<form>4.1.2 Пониженное напряжение</form>
+		<short_text>Пониженное напряжение</short_text>
+		<form>Пониженное напряжение</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -1280,8 +1280,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Понижен. напряж. пуск. время</short_text>
-		<form>4.1.2 Пониженное напряжение</form>
+		<short_text>Пониженное напряжение Пусковое время</short_text>
+		<form>Пониженное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1301,8 +1301,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Время</text>
-		<short_text>Понижен. напряж. время</short_text>
-		<form>4.1.2 Пониженное напряжение</form>
+		<short_text>Пониженное напряжение Время</short_text>
+		<form>Пониженное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -1322,8 +1322,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>300.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Понижен. напряж. зад. АПВ</short_text>
-		<form>4.1.2 Пониженное напряжение</form>
+		<short_text>Пониженное напряжение Задержка АПВ</short_text>
+		<form>Пониженное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1343,8 +1343,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Понижен. напряж. раз. АПВ</short_text>
-		<form>4.1.2 Пониженное напряжение</form>
+		<short_text>Пониженное напряжение Разрешено АПВ</short_text>
+		<form>Пониженное напряжение</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -1363,9 +1363,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Понижен. напряж. сброс счёт.</short_text>
-		<form>4.1.2 Пониженное напряжение</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Пониженное напряжение Сброс счётчиков АПВ</short_text>
+		<form>Пониженное напряжение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -1385,8 +1385,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>80.0</value>
 		<text>Уставка останова</text>
-		<short_text>Понижен. напряж. уст. остан.</short_text>
-		<form>NULL</form>
+		<short_text>Пониженное напряжение Уставка останова</short_text>
+		<form>Пониженное напряжение</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
@@ -1405,8 +1405,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>80.0</value>
-		<text>Уставка пуска</text>
-		<short_text>Понижен. напряж. уст. пуска.</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -1553,8 +1553,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Дисб. напряж.</short_text>
-		<form>4.1.3 Дисбаланс напряжения</form>
+		<short_text>Дисбаланс напряжения</short_text>
+		<form>Дисбаланс напряжения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -1596,8 +1596,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Дисбал. напряж. пуск. время</short_text>
-		<form>4.1.3 Дисбаланс напряжения</form>
+		<short_text>Дисбаланс напряжения Пусковое время</short_text>
+		<form>Дисбаланс напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1617,8 +1617,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Дисбал. напряж. время</short_text>
-		<form>4.1.3 Дисбаланс напряжения</form>
+		<short_text>Дисбаланс напряжения Время</short_text>
+		<form>Дисбаланс напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -1638,8 +1638,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>300.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Дисбал. напряж. зад. АПВ</short_text>
-		<form>4.1.3 Дисбаланс напряжения</form>
+		<short_text>Дисбаланс напряжения Задержка АПВ</short_text>
+		<form>Дисбаланс напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1659,8 +1659,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Дисбал. напряж. раз. АПВ</short_text>
-		<form>4.1.3 Дисбаланс напряжения</form>
+		<short_text>Дисбаланс напряжения Разрешено АПВ</short_text>
+		<form>Дисбаланс напряжения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -1679,9 +1679,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Дисбал. напряж. сброс счёт.</short_text>
-		<form>4.1.3 Дисбаланс напряжения</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Дисбаланс напряжения Сброс счётчиков АПВ</short_text>
+		<form>Дисбаланс напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -1701,8 +1701,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Уставка останова</text>
-		<short_text>Дисбал. напряж. уст. остан.</short_text>
-		<form>4.1.3 Дисбаланс напряжения</form>
+		<short_text>Дисбаланс напряжения Уставка останова</short_text>
+		<form>Дисбаланс напряжения</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
@@ -1721,9 +1721,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
-		<text>Уставка пуска</text>
-		<short_text>Дисбал. напряж. уст. пуска.</short_text>
-		<form>4.1.3 Дисбаланс напряжения</form>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -1869,8 +1869,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Дисбал. токов</short_text>
-		<form>4.1.3 Дисбаланс токов</form>
+		<short_text>Дисбаланс токов</short_text>
+		<form>Дисбаланс токов</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -1912,8 +1912,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Дисбал. токов пуск. время</short_text>
-		<form>4.1.3 Дисбаланс  токов</form>
+		<short_text>Дисбаланс токов Пусковое время</short_text>
+		<form>Дисбаланс токов</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1933,8 +1933,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Дисбал. токов время</short_text>
-		<form>4.1.3 Дисбаланс токов</form>
+		<short_text>Дисбаланс токов Время</short_text>
+		<form>Дисбаланс токов</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -1954,8 +1954,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>300.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Дисбал. токов зад. АПВ</short_text>
-		<form>4.1.3 Дисбаланс  токов</form>
+		<short_text>Дисбаланс токов Задержка АПВ</short_text>
+		<form>Дисбаланс токов</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -1975,8 +1975,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Дисбал. токов раз. АПВ</short_text>
-		<form>4.1.3 Дисбаланс  токов</form>
+		<short_text>Дисбаланс токов Разрешено АПВ</short_text>
+		<form>Дисбаланс токов</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -1995,9 +1995,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Дисбал. токов сброс счёт.</short_text>
-		<form>4.1.3 Дисбаланс  токов</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Дисбаланс токов Сброс счётчиков АПВ</short_text>
+		<form>Дисбаланс токов</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -2017,8 +2017,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Уставка останова</text>
-		<short_text>Дисбал. токов уст. остан.</short_text>
-		<form>4.1.3 Дисбаланс  токов</form>
+		<short_text>Дисбаланс токов Уставка останова</short_text>
+		<form>Дисбаланс токов</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
@@ -2037,8 +2037,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
-		<text>Уставка пуска</text>
-		<short_text>Дисбал. токов уст. пуска.</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -2184,7 +2184,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Действие защиты</text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>13</code>
 		<comment>Защиты "Чередование фаз"</comment>
@@ -2219,7 +2220,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
-		<text>Пусковое время</text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>13</code>
 		<comment>Задержка активации уставка</comment>
@@ -2236,7 +2238,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
-		<text>Время</text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>13</code>
 		<comment>Время уставка</comment>
@@ -2253,7 +2256,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>3600.0</value>
-		<text>Задержка АПВ</text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
@@ -2270,7 +2274,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>9999.0</value>
-		<text>Разрешено АПВ</text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
@@ -2287,7 +2292,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
@@ -2304,7 +2310,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Уставка останова</text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>13</code>
 		<comment>Уставка срабатывания защиты</comment>
@@ -2321,7 +2328,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Уставка пуска</text>
+		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>13</code>
@@ -2451,8 +2458,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Перегруз двиг.</short_text>
-		<form>4.2.1 Перегруз (ЗП)</form>
+		<short_text>Перегруз (ЗП)</short_text>
+		<form>Перегруз (ЗП)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -2493,8 +2500,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Пусковое время</text>
-		<short_text>Перегруз двиг. пуск. время</short_text>
-		<form>4.2.1 Перегруз (ЗП)</form>
+		<short_text>Перегруз (ЗП) Пусковое время</short_text>
+		<form>Перегруз (ЗП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -2514,8 +2521,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
 		<text>Время</text>
-		<short_text>Перегруз двиг. время</short_text>
-		<form>4.2.1 Перегруз (ЗП)</form>
+		<short_text>Перегруз (ЗП) Время</short_text>
+		<form>Перегруз (ЗП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -2535,8 +2542,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1800.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Перегруз двиг. зад. АПВ</short_text>
-		<form>4.2.1 Перегруз (ЗП)</form>
+		<short_text>Перегруз (ЗП) Задержка АПВ</short_text>
+		<form>Перегруз (ЗП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -2556,8 +2563,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Перегруз двиг. раз. АПВ</short_text>
-		<form>4.2.1 Перегруз (ЗП)</form>
+		<short_text>Перегруз (ЗП) Разрешено АПВ</short_text>
+		<form>Перегруз (ЗП)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -2576,9 +2583,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Перегруз двиг. сброс счет.</short_text>
-		<form>4.2.1 Перегруз (ЗП)</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Перегруз (ЗП) Сброс счётчиков АПВ</short_text>
+		<form>Перегруз (ЗП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -2598,8 +2605,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>110.0</value>
 		<text>Уставка останова</text>
-		<short_text>Перегруз двиг. уст. остан.</short_text>
-		<form>4.2.1 Перегруз (ЗП)</form>
+		<short_text>Перегруз (ЗП) Уставка останова</short_text>
+		<form>Перегруз (ЗП)</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXX</format>
@@ -2766,8 +2773,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Недогруз двиг.</short_text>
-		<form>4.2.2 Недогруз (ЗСП)</form>
+		<short_text>Недогруз (ЗСП)</short_text>
+		<form>Недогруз (ЗСП)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -2809,8 +2816,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Недогруз двиг. пуск. время</short_text>
-		<form>4.2.2 Недогруз (ЗСП)</form>
+		<short_text>Недогруз (ЗСП) Пусковое время</short_text>
+		<form>Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -2830,8 +2837,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
 		<text>Время</text>
-		<short_text>Недогруз двиг. время</short_text>
-		<form>4.2.2 Недогруз (ЗСП)</form>
+		<short_text>Недогруз (ЗСП) Время</short_text>
+		<form>Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -2851,8 +2858,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>7200.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Недогруз двиг. зад. АПВ</short_text>
-		<form>4.2.2 Недогруз (ЗСП)</form>
+		<short_text>Недогруз (ЗСП) Задержка АПВ</short_text>
+		<form>Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -2872,8 +2879,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Недогруз двиг. раз.АПВ</short_text>
-		<form>4.2.2 Недогруз (ЗСП)</form>
+		<short_text>Недогруз (ЗСП) Разрешено АПВ</short_text>
+		<form>Недогруз (ЗСП)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -2892,9 +2899,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Недогруз двиг. сброс счет.</short_text>
-		<form>4.2.2 Недогруз (ЗСП)</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Недогруз (ЗСП) Сброс счётчиков АПВ</short_text>
+		<form>Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -2914,8 +2921,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
 		<text>Уставка останова</text>
-		<short_text>Недогруз двиг. уст. остан.</short_text>
-		<form>4.2.2 Недогруз (ЗСП)</form>
+		<short_text>Недогруз (ЗСП) Уставка останова</short_text>
+		<form>Недогруз (ЗСП)</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXX</format>
@@ -2955,8 +2962,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Недогруз двиг.авто.уст.</text>
-		<short_text>Недогруз двиг. авто. уст.</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -3084,7 +3091,7 @@
 		<value>2.0</value>
 		<text>Действие защиты</text>
 		<short_text>Предел тока двигателя</short_text>
-		<form>4.2.6 Предел тока</form>
+		<form>Предел тока двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -3169,7 +3176,7 @@
 		<value>3600.0</value>
 		<text>Задержка АПВ</text>
 		<short_text>Предел тока двигателя Задержка АПВ</short_text>
-		<form>4.2.6 Предел тока</form>
+		<form>Предел тока двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -3190,7 +3197,7 @@
 		<value>1.0</value>
 		<text>Разрешено АПВ</text>
 		<short_text>Предел тока двигателя Разрешено АПВ</short_text>
-		<form>4.2.6 Предел тока</form>
+		<form>Предел тока двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -3211,7 +3218,7 @@
 		<value>86400.0</value>
 		<text>Сброс счётчиков АПВ</text>
 		<short_text>Предел тока двигателя Сброс счётчиков АПВ</short_text>
-		<form>4.2.6 Предел тока</form>
+		<form>Предел тока двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -3232,7 +3239,7 @@
 		<value>160.0</value>
 		<text>Уставка останова</text>
 		<short_text>Предел тока двигателя Уставка останова</short_text>
-		<form>4.2.6 Предел тока</form>
+		<form>Предел тока двигателя</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXX</format>
@@ -3399,8 +3406,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Дисб. тока двиг.</short_text>
-		<form>4.2.3 Дисбаланс токов двигателя</form>
+		<short_text>Дисбаланс токов двигателя</short_text>
+		<form>Дисбаланс токов двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -3442,8 +3449,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Дисб. тока двиг. пуск. время</short_text>
-		<form>4.2.3 Дисбаланс токов двигателя</form>
+		<short_text>Дисбаланс токов двигателя Пусковое время</short_text>
+		<form>Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -3463,8 +3470,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
 		<text>Время</text>
-		<short_text>Дисб. тока двиг. время</short_text>
-		<form>4.2.3 Дисбаланс токов двигателя</form>
+		<short_text>Дисбаланс токов двигателя Время</short_text>
+		<form>Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -3484,8 +3491,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1800.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Дисб. тока двиг. зад. АПВ</short_text>
-		<form>4.2.3 Дисбаланс токов двигателя</form>
+		<short_text>Дисбаланс токов двигателя Задержка АПВ</short_text>
+		<form>Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -3505,8 +3512,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Дисб. тока двиг. раз. АПВ</short_text>
-		<form>4.2.3 Дисбаланс токов двигателя</form>
+		<short_text>Дисбаланс токов двигателя Разрешено АПВ</short_text>
+		<form>Дисбаланс токов двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -3525,9 +3532,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Дисб. тока двиг. сброс счет.</short_text>
-		<form>4.2.3 Дисбаланс токов двигателя</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Дисбаланс токов двигателя Сброс счётчиков АПВ</short_text>
+		<form>Дисбаланс токов двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -3547,8 +3554,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Уставка останова</text>
-		<short_text>Дисб. тока двиг. уст. остан.</short_text>
-		<form>4.2.3 Дисбаланс токов двигателя</form>
+		<short_text>Дисбаланс токов двигателя Уставка останова</short_text>
+		<form>Дисбаланс токов двигателя</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XX</format>
@@ -3567,7 +3574,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
-		<text>Уставка пуска</text>
+		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
@@ -3715,8 +3722,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
 		<text>Действие защиты</text>
-		<short_text>Турб. вращение</short_text>
-		<form>4.2.4 Турбинное вращение</form>
+		<short_text>Турбинное вращение</short_text>
+		<form>Турбинное вращение</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>TEXT</format>
@@ -3736,6 +3743,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Параметр запрещающий запуск</comment>
@@ -3752,7 +3761,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
-		<text>Пусковое время</text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Задержка активации уставка</comment>
@@ -3769,6 +3779,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Время уставка</comment>
@@ -3785,6 +3797,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>3600.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Задержка АПВ уставка</comment>
@@ -3801,6 +3815,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Количество АПВ уставка</comment>
@@ -3817,6 +3833,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Автосброс счетчика АПВ</comment>
@@ -3834,8 +3852,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Уставка останова</text>
-		<short_text>Турб.вращение уст.остан.</short_text>
-		<form>4.2.4 Турбинное вращение</form>
+		<short_text>Турбинное вращение Уставка останова</short_text>
+		<form>Турбинное вращение</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX</format>
@@ -3854,6 +3872,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Условие АПВ уставка</comment>
@@ -3870,6 +3890,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Уставка параметр защиты</comment>
@@ -3977,8 +3999,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Рассинх.двиг.РРЗ</short_text>
-		<form>4.2.6 Рассинхронизация ПВЭД</form>
+		<short_text>Рассинхронизация двигателя</short_text>
+		<form>Рассинхронизация двигателя</form>
 		<format>TEXT</format>
 		<code>13</code>
 		<comment>Защита "Рассинхронизация ПВЭД"</comment>
@@ -4014,8 +4036,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
 		<text>Пусковое время</text>
-		<short_text>Рассинх.двиг.пуск.время</short_text>
-		<form>4.2.6 Рассинхронизация ПВЭД</form>
+		<short_text>Рассинхронизация двигателя Пусковое время</short_text>
+		<form>Рассинхронизация двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -4035,8 +4057,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Время</text>
-		<short_text>Рассинх.двиг.время</short_text>
-		<form>4.2.6 Рассинхронизация ПВЭД</form>
+		<short_text>Рассинхронизация двигателя Время</short_text>
+		<form>Рассинхронизация двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -4056,8 +4078,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Рассинх.двиг.зад.АПВ</short_text>
-		<form>4.2.6 Рассинхронизация ПВЭД</form>
+		<short_text>Рассинхронизация двигателя Задержка АПВ</short_text>
+		<form>Рассинхронизация двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
@@ -4077,8 +4099,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Рассинх.двиг.раз.АПВ</short_text>
-		<form>4.2.6 Рассинхронизация ПВЭД</form>
+		<short_text>Рассинхронизация двигателя Разрешено АПВ</short_text>
+		<form>Рассинхронизация двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -4097,9 +4119,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Рассинх.двиг.сброс счет</short_text>
-		<form>4.2.6 Рассинхронизация ПВЭД</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Рассинхронизация двигателя Сброс счётчиков АПВ</short_text>
+		<form>Рассинхронизация двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
@@ -4119,8 +4141,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.5</value>
 		<text>Минимальный коэффициент мощности</text>
-		<short_text>Рассинх.двиг.мин.коэф.мощн.</short_text>
-		<form>4.2.6 Рассинхронизация ПВЭД</form>
+		<short_text>Рассинхронизация двигателя Минимальный коэффициент мощности</short_text>
+		<form>Рассинхронизация двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>X_X</format>
@@ -4140,8 +4162,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>100.0</value>
 		<text>Максимальный ток</text>
-		<short_text>Рассинх.двиг.макс.ток</short_text>
-		<form>4.2.6 Рассинхронизация ПВЭД</form>
+		<short_text>Рассинхронизация двигателя Максимальный ток</short_text>
+		<form>Рассинхронизация двигателя</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXX</format>
@@ -4269,8 +4291,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Рвх. насоса</short_text>
-		<form>4.3.1 Давление на приёме насоса</form>
+		<short_text>Давление на приёме насоса</short_text>
+		<form>Давление на приёме насоса</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -4311,8 +4333,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Рвх. пуск. время</short_text>
-		<form>4.3.1 Давление на приёме насоса</form>
+		<short_text>Давление на приёме насоса Пусковое время</short_text>
+		<form>Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -4332,8 +4354,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Рвх. время</short_text>
-		<form>4.3.1 Давление на приёме насоса</form>
+		<short_text>Давление на приёме насоса Время</short_text>
+		<form>Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -4353,8 +4375,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Рвх. зад.АПВ</short_text>
-		<form>4.3.1 Давление на приёме насоса</form>
+		<short_text>Давление на приёме насоса Задержка АПВ</short_text>
+		<form>Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -4374,8 +4396,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Рвх. раз.АПВ</short_text>
-		<form>4.3.1 Давление на приёме насоса</form>
+		<short_text>Давление на приёме насоса Разрешено АПВ</short_text>
+		<form>Давление на приёме насоса</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXX</format>
@@ -4394,9 +4416,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Рвх. сброс счет</short_text>
-		<form>4.3.1 Давление на приёме насоса</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Давление на приёме насоса Сброс счётчиков АПВ</short_text>
+		<form>Давление на приёме насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -4416,8 +4438,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>4.0</value>
 		<text>Уставка останова</text>
-		<short_text>Рвх. уставка останова</short_text>
-		<form>4.3.1 Давление на приёме насоса</form>
+		<short_text>Давление на приёме насоса Уставка останова</short_text>
+		<form>Давление на приёме насоса</form>
 		<unit>PRESSURE_MPA</unit>
 		<unit_lcd>PRESSURE_MPA</unit_lcd>
 		<format>XX_XX</format>
@@ -4437,8 +4459,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>25.0</value>
 		<text>Уставка пуска</text>
-		<short_text>Рвх. уставка пуска</short_text>
-		<form>4.3.1 Давление на приёме насоса</form>
+		<short_text>Давление на приёме насоса Уставка пуска</short_text>
+		<form>Давление на приёме насоса</form>
 		<unit>PRESSURE_MPA</unit>
 		<unit_lcd>PRESSURE_MPA</unit_lcd>
 		<format>XX_XX</format>
@@ -4458,8 +4480,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Нормализация</text>
-		<short_text>Рвх. нормализация</short_text>
-		<form>NULL</form>
+		<short_text>Давление на приёме насоса Нормализация</short_text>
+		<form>Давление на приёме насоса</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -4585,8 +4607,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Действие защиты</text>
-		<short_text>Т обмотки ПЭД РРЗ</short_text>
-		<form>4.3.3 Температура двигателя</form>
+		<short_text>Температура двигателя</short_text>
+		<form>Температура двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -4629,8 +4651,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Т обмотки ПЭД пуск.время</short_text>
-		<form>4.3.3 Температура двигателя</form>
+		<short_text>Температура двигателя Пусковое время</short_text>
+		<form>Температура двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -4650,8 +4672,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Т обмотки ПЭД время</short_text>
-		<form>4.3.3 Температура двигателя</form>
+		<short_text>Температура двигателя Время</short_text>
+		<form>Температура двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -4671,8 +4693,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Т обмотки ПЭД зад.АПВ</short_text>
-		<form>4.3.3 Температура двигателя</form>
+		<short_text>Температура двигателя Задержка АПВ</short_text>
+		<form>Температура двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -4692,8 +4714,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Т обмотки ПЭД раз.АПВ</short_text>
-		<form>4.3.3 Температура двигателя</form>
+		<short_text>Температура двигателя Разрешено АПВ</short_text>
+		<form>Температура двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -4712,9 +4734,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Т обмотки ПЭД сброс счет</short_text>
-		<form>4.3.3 Температура двигателя</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Температура двигателя Сброс счётчиков АПВ</short_text>
+		<form>Температура двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -4734,8 +4756,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>115.0</value>
 		<text>Уставка останова</text>
-		<short_text>Т обмотки ПЭД Температура отключения</short_text>
-		<form>4.3.3 Температура двигателя</form>
+		<short_text>Температура двигателя Уставка останова</short_text>
+		<form>Температура двигателя</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
 		<format>XXX</format>
@@ -4754,9 +4776,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>80.0</value>
-		<text>Температура включения</text>
-		<short_text>Т обмотки ПЭД Температура включения</short_text>
-		<form>4.3.3 Температура двигателя</form>
+		<text>Уставка пуска</text>
+		<short_text>Температура двигателя Уставка пуска</short_text>
+		<form>Температура двигателя</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
 		<format>XXX</format>
@@ -5215,8 +5237,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Действие защиты</text>
-		<short_text>Вибрация двиг.РР3</short_text>
-		<form>4.3.5 Вибрация двигателя</form>
+		<short_text>Вибрация двигателя</short_text>
+		<form>Вибрация двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -5254,8 +5276,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Вибрация двиг.пуск.время</short_text>
-		<form>4.3.5 Вибрация двигателя</form>
+		<short_text>Вибрация двигателя Пусковое время</short_text>
+		<form>Вибрация двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -5275,8 +5297,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Вибрация двиг.время</short_text>
-		<form>4.3.5 Вибрация двигателя</form>
+		<short_text>Вибрация двигателя Время</short_text>
+		<form>Вибрация двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -5296,8 +5318,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Вибрация двиг.зад.АПВ</short_text>
-		<form>4.3.5 Вибрация двигателя</form>
+		<short_text>Вибрация двигателя Задержка АПВ</short_text>
+		<form>Вибрация двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -5317,8 +5339,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Вибрация двиг.раз.АПВ</short_text>
-		<form>4.3.5 Вибрация двигателя</form>
+		<short_text>Вибрация двигателя Разрешено АПВ</short_text>
+		<form>Вибрация двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -5337,9 +5359,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Вибрация двиг.сброс счет</short_text>
-		<form>4.3.5 Вибрация двигателя</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Вибрация двигателя Сброс счётчиков АПВ</short_text>
+		<form>Вибрация двигателя</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -5359,8 +5381,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.2</value>
 		<text>Уставка останова</text>
-		<short_text>Вибрация двиг.уст.</short_text>
-		<form>4.3.5 Вибрация двигателя</form>
+		<short_text>Вибрация двигателя Уставка останова</short_text>
+		<form>Вибрация двигателя</form>
 		<unit>ACCELERATION_G</unit>
 		<unit_lcd>ACCELERATION_G</unit_lcd>
 		<format>XX_XXX</format>
@@ -5379,6 +5401,8 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.2</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<format>XX_XXX</format>
 		<code>0</code>
@@ -5396,6 +5420,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Уставка параметр защиты</comment>
@@ -5503,8 +5529,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Аналог.вх.1 РРЗ</short_text>
-		<form>4.4.1 Защита по аналоговому входу 1</form>
+		<short_text>Аналоговый вход 1</short_text>
+		<form>Аналоговый вход 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -5545,8 +5571,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Ан.вх.1 пуск.время</short_text>
-		<form>4.4.1 Защита по аналоговому входу 1</form>
+		<short_text>Аналоговый вход 1 Пусковое время</short_text>
+		<form>Аналоговый вход 1</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -5566,8 +5592,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Ан.вх.1 время</short_text>
-		<form>4.4.1 Защита по аналоговому входу 1</form>
+		<short_text>Аналоговый вход 1 Задержка АПВ</short_text>
+		<form>Аналоговый вход 1</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -5587,8 +5613,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Аналог.вх.1 зад.АПВ</short_text>
-		<form>4.4.1 Защита по аналоговому входу 1</form>
+		<short_text>Аналоговый вход 1 Задержка АПВ</short_text>
+		<form>Аналоговый вход 1</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -5608,8 +5634,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Аналог.вх.1 раз.АПВ</short_text>
-		<form>4.4.1 Защита по аналоговому входу 1</form>
+		<short_text>Аналоговый вход 1 Разрешено АПВ</short_text>
+		<form>Аналоговый вход 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -5628,9 +5654,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Аналог.вх.1 сброс счет</short_text>
-		<form>4.4.1 Защита по аналоговому входу 1</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Аналоговый вход 1 Сброс счётчиков АПВ</short_text>
+		<form>Аналоговый вход 1</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -5649,9 +5675,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Минимальное значение</text>
-		<short_text>Аналог.вх.1 Уставка Мин.</short_text>
-		<form>4.4.1 Защита по аналоговому входу 1</form>
+		<text>Уставка останова минимум</text>
+		<short_text>Аналоговый вход 1 Уставка останова минимум</short_text>
+		<form>Аналоговый вход 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
@@ -5670,9 +5696,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Минимальное значение АПВ</text>
-		<short_text>Аналог.вх.1 Уставка Мин. АПВ</short_text>
-		<form>4.4.1 Защита по аналоговому входу 1</form>
+		<text>Уставка пуска минимум</text>
+		<short_text>Аналоговый вход 1 Уставка пуска минимум</short_text>
+		<form>Аналоговый вход 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
@@ -5691,9 +5717,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Максимальное значение</text>
-		<short_text>Аналог.вх.1 Уставка Макс.</short_text>
-		<form>4.4.1 Защита по аналоговому входу 1</form>
+		<text>Уставка останова максимум</text>
+		<short_text>Аналоговый вход 1 Уставка останова максимум</short_text>
+		<form>Аналоговый вход 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
@@ -5818,8 +5844,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Ан.вх.2 РРЗ</short_text>
-		<form>4.4.2 Защита по аналоговому входу 2</form>
+		<short_text>Аналоговый вход 2</short_text>
+		<form>Аналоговый вход 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -5860,8 +5886,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Аналог.вх.2 пуск.время</short_text>
-		<form>4.4.2 Защита по аналоговому входу 2</form>
+		<short_text>Аналоговый вход 2 Пусковое время</short_text>
+		<form>Аналоговый вход 2</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -5881,8 +5907,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Аналог.вх.2 время</short_text>
-		<form>4.4.2 Защита по аналоговому входу 2</form>
+		<short_text>Аналоговый вход 2 Время</short_text>
+		<form>Аналоговый вход 2</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -5902,8 +5928,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Аналог.вх.2 зад.АПВ</short_text>
-		<form>4.4.2 Защита по аналоговому входу 2</form>
+		<short_text>Аналоговый вход 2 Задержка АПВ</short_text>
+		<form>Аналоговый вход 2</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -5923,8 +5949,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Аналог.вх.2 раз.АПВ</short_text>
-		<form>4.4.2 Защита по аналоговому входу 2</form>
+		<short_text>Аналоговый вход 2 Разрешено АПВ</short_text>
+		<form>Аналоговый вход 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -5943,9 +5969,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Аналог.вх.2 сброс счет</short_text>
-		<form>4.4.2 Защита по аналоговому входу 2</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Аналоговый вход 2 Сброс счётчиков АПВ</short_text>
+		<form>Аналоговый вход 2</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -5964,9 +5990,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Минимальное значение</text>
-		<short_text>Аналог.вх.2 Уставка Мин.</short_text>
-		<form>4.4.2 Защита по аналоговому входу 2</form>
+		<text>Уставка останова минимум</text>
+		<short_text>Аналоговый вход 2 Уставка останова минимум</short_text>
+		<form>Аналоговый вход 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
@@ -5985,9 +6011,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Минимальное значение АПВ</text>
-		<short_text>Аналог.вх.2 Уставка Мин. АПВ</short_text>
-		<form>4.4.2 Защита по аналоговому входу 2</form>
+		<text>Уставка пуска минимум</text>
+		<short_text>Аналоговый вход 2 Уставка пуска минимум</short_text>
+		<form>Аналоговый вход 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
@@ -6006,9 +6032,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Максимальное значение</text>
-		<short_text>Аналог.вх.2 Уставка Макс.</short_text>
-		<form>4.4.2 Защита по аналоговому входу 2</form>
+		<text>Уставка останова максимум</text>
+		<short_text>Аналоговый вход 2 Уставка останова максимум</short_text>
+		<form>Аналоговый вход 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
@@ -6133,8 +6159,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Аналог.вх.3 РРЗ</short_text>
-		<form>4.4.3 Защита по аналоговому входу 3</form>
+		<short_text>Аналоговый вход 3</short_text>
+		<form>Аналоговый вход 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -6175,8 +6201,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Аналог.вх.3 пуск.время</short_text>
-		<form>4.4.3 Защита по аналоговому входу 3</form>
+		<short_text>Аналоговый вход 3 Пусковое время</short_text>
+		<form>Аналоговый вход 3</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -6196,8 +6222,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Аналог.вх.3 время</short_text>
-		<form>4.4.3 Защита по аналоговому входу 3</form>
+		<short_text>Аналоговый вход 3 Время</short_text>
+		<form>Аналоговый вход 3</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -6217,8 +6243,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Аналог.вх.3 зад.АПВ</short_text>
-		<form>4.4.3 Защита по аналоговому входу 3</form>
+		<short_text>Аналоговый вход 3 Задержка АПВ</short_text>
+		<form>Аналоговый вход 3</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -6238,8 +6264,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Аналог.вх.3 раз.АПВ</short_text>
-		<form>4.4.3 Защита по аналоговому входу 3</form>
+		<short_text>Аналоговый вход 3 Разрешено АПВ</short_text>
+		<form>Аналоговый вход 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -6258,9 +6284,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Аналог.вх.3 сброс счет</short_text>
-		<form>4.4.3 Защита по аналоговому входу 3</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Аналоговый вход 3 Сброс счётчиков АПВ</short_text>
+		<form>Аналоговый вход 3</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -6279,9 +6305,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Минимальное значение</text>
-		<short_text>Аналог.вх.3 Уставка Мин.</short_text>
-		<form>4.4.3 Защита по аналоговому входу 3</form>
+		<text>Уставка останова минимум</text>
+		<short_text>Аналоговый вход 3 Уставка останова минимум</short_text>
+		<form>Аналоговый вход 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
@@ -6300,9 +6326,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Минимальное значение АПВ</text>
-		<short_text>Аналог.вх.3 Уставка Мин. АПВ</short_text>
-		<form>4.4.3 Защита по аналоговому входу 3</form>
+		<text>Уставка пуска минимум</text>
+		<short_text>Аналоговый вход 3 Уставка пуска минимум</short_text>
+		<form>Аналоговый вход 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
@@ -6321,9 +6347,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Максимальное значение</text>
-		<short_text>Аналог.вх.3 Уставка Макс.</short_text>
-		<form>4.4.3 Защита по аналоговому входу 3</form>
+		<text>Уставка останова максимум</text>
+		<short_text>Аналоговый вход 3 Уставка останова максимум</short_text>
+		<form>Аналоговый вход 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
@@ -6448,8 +6474,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Аналог.вх.4 РРЗ</short_text>
-		<form>4.4.4 Защита по аналоговому входу 4</form>
+		<short_text>Аналоговый вход 4</short_text>
+		<form>Аналоговый вход 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -6490,8 +6516,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Аналог.вх.4 пуск.время</short_text>
-		<form>4.4.4 Защита по аналоговому входу 4</form>
+		<short_text>Аналоговый вход 4 Пусковое время</short_text>
+		<form>Аналоговый вход 4</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -6511,8 +6537,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Аналог.вх.4 время</short_text>
-		<form>4.4.4 Защита по аналоговому входу 4</form>
+		<short_text>Аналоговый вход 4 Время</short_text>
+		<form>Аналоговый вход 4</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -6532,8 +6558,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Аналог.вх.4 зад.АПВ</short_text>
-		<form>4.4.4 Защита по аналоговому входу 4</form>
+		<short_text>Аналоговый вход 4 Задержка АПВ</short_text>
+		<form>Аналоговый вход 4</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -6553,8 +6579,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Аналог.вх.4 раз.АПВ</short_text>
-		<form>4.4.4 Защита по аналоговому входу 4</form>
+		<short_text>Аналоговый вход 4 Разрешено АПВ</short_text>
+		<form>Аналоговый вход 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -6573,9 +6599,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Аналог.вх.4 сброс счет</short_text>
-		<form>4.4.4 Защита по аналоговому входу 4</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Аналоговый вход 4 Сброс счётчиков АПВ</short_text>
+		<form>Аналоговый вход 4</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -6594,9 +6620,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Минимальное значение</text>
-		<short_text>Аналог.вх.4 Уставка Мин.</short_text>
-		<form>4.4.4 Защита по аналоговому входу 4</form>
+		<text>Уставка останова минимум</text>
+		<short_text>Аналоговый вход 4 Уставка останова минимум</short_text>
+		<form>Аналоговый вход 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
@@ -6615,9 +6641,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Минимальное значение АПВ</text>
-		<short_text>Аналог.вх.4 Уставка Мин. АПВ</short_text>
-		<form>4.4.4 Защита по аналоговому входу 4</form>
+		<text>Уставка пуска минимум</text>
+		<short_text>Аналоговый вход 4 Уставка пуска минимум</short_text>
+		<form>Аналоговый вход 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
@@ -6636,9 +6662,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Максимальное значение</text>
-		<short_text>Аналог.вх.4 Уставка Макс.</short_text>
-		<form>4.4.4 Защита по аналоговому входу 4</form>
+		<text>Уставка останова максимум</text>
+		<short_text>Аналоговый вход 4 Уставка останова максимум</short_text>
+		<form>Аналоговый вход 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>XXXXX_X</format>
@@ -6763,8 +6789,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Цифр.вх.1 РРЗ</short_text>
-		<form>4.5.1 Защита по цифровому входу 1</form>
+		<short_text>Цифровой вход 1</short_text>
+		<form>Цифровой вход 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -6805,8 +6831,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Цифр.вх.1 пуск.время</short_text>
-		<form>4.5.1 Защита по цифровому входу 1</form>
+		<short_text>Цифровой вход 1 Пусковое время</short_text>
+		<form>Цифровой вход 1</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -6826,8 +6852,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Цифр.вх.1 время</short_text>
-		<form>4.5.1 Защита по цифровому входу 1</form>
+		<short_text>Цифровой вход 1 Время</short_text>
+		<form>Цифровой вход 1</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -6847,8 +6873,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Цифр.вх.1 зад.АПВ</short_text>
-		<form>4.5.1 Защита по цифровому входу 1</form>
+		<short_text>Цифровой вход 1 Задержка АПВ</short_text>
+		<form>Цифровой вход 1</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -6868,8 +6894,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Цифр.вх.1 раз.АПВ</short_text>
-		<form>4.5.1 Защита по цифровому входу 1</form>
+		<short_text>Цифровой вход 1 Разрешено АПВ</short_text>
+		<form>Цифровой вход 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -6888,9 +6914,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Цифр.вх.1 сброс счет</short_text>
-		<form>4.5.1 Защита по цифровому входу 1</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Цифровой вход 1 Сброс счётчиков АПВ</short_text>
+		<form>Цифровой вход 1</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -7078,8 +7104,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Цифр.вх.2 РРЗ</short_text>
-		<form>4.5.2 Защита по цифровому входу 2</form>
+		<short_text>Цифровой вход 2</short_text>
+		<form>Цифровой вход 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -7120,8 +7146,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Цифр.вх.2 пуск.время</short_text>
-		<form>4.5.2 Защита по цифровому входу 2</form>
+		<short_text>Цифровой вход 2 Пусковое время</short_text>
+		<form>Цифровой вход 2</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -7141,8 +7167,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Цифр.вх.2 время</short_text>
-		<form>4.5.2 Защита по цифровому входу 2</form>
+		<short_text>Цифровой вход 2 Время</short_text>
+		<form>Цифровой вход 2</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -7162,8 +7188,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Цифр.вх.2 зад.АПВ</short_text>
-		<form>4.5.2 Защита по цифровому входу 2</form>
+		<short_text>Цифровой вход 2 Задержка АПВ</short_text>
+		<form>Цифровой вход 2</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -7183,8 +7209,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Цифр.вх.2 раз.АПВ</short_text>
-		<form>4.5.2 Защита по цифровому входу 2</form>
+		<short_text>Цифровой вход 2 Разрешено АПВ</short_text>
+		<form>Цифровой вход 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -7203,9 +7229,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Цифр.вх.2 сброс счет</short_text>
-		<form>4.5.2 Защита по цифровому входу 2</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Цифровой вход 2 Сброс счётчиков АПВ</short_text>
+		<form>Цифровой вход 2</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -7393,8 +7419,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Цифр.вх.3 РРЗ</short_text>
-		<form>4.5.3 Защита по цифровому входу 3</form>
+		<short_text>Цифровой вход 3</short_text>
+		<form>Цифровой вход 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -7435,8 +7461,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Цифр.вх.3 пуск.время</short_text>
-		<form>4.5.3 Защита по цифровому входу 3</form>
+		<short_text>Цифровой вход 3 Пусковое время</short_text>
+		<form>Цифровой вход 3</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -7456,8 +7482,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Цифр.вх.3 время</short_text>
-		<form>4.5.3 Защита по цифровому входу 3</form>
+		<short_text>Цифровой вход 3 Время</short_text>
+		<form>Цифровой вход 3</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -7477,8 +7503,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Цифр.вх.3 зад.АПВ</short_text>
-		<form>4.5.3 Защита по цифровому входу 3</form>
+		<short_text>Цифровой вход 3 Задержка АПВ</short_text>
+		<form>Цифровой вход 3</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -7498,8 +7524,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Цифр.вх.3 раз.АПВ</short_text>
-		<form>4.5.3 Защита по цифровому входу 3</form>
+		<short_text>Цифровой вход 3 Разрешено АПВ</short_text>
+		<form>Цифровой вход 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -7518,9 +7544,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Цифр.вх.3 сброс счет</short_text>
-		<form>4.5.3 Защита по цифровому входу 3</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Цифровой вход 3 Сброс счётчиков АПВ</short_text>
+		<form>Цифровой вход 3</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -7708,8 +7734,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Цифр.вх.4 РРЗ</short_text>
-		<form>4.5.4 Защита по цифровому входу 4</form>
+		<short_text>Цифровой вход 4</short_text>
+		<form>Цифровой вход 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -7750,8 +7776,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Цифр.вх.4 пуск.время</short_text>
-		<form>4.5.4 Защита по цифровому входу 4</form>
+		<short_text>Цифровой вход 4 Пусковое время</short_text>
+		<form>Цифровой вход 4</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -7771,8 +7797,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Цифр.вх.4 время</short_text>
-		<form>4.5.4 Защита по цифровому входу 4</form>
+		<short_text>Цифровой вход 4 Время</short_text>
+		<form>Цифровой вход 4</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -7792,8 +7818,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Цифр.вх.4 зад.АПВ</short_text>
-		<form>4.5.4 Защита по цифровому входу 4</form>
+		<short_text>Цифровой вход 4 Задержка АПВ</short_text>
+		<form>Цифровой вход 4</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -7813,8 +7839,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Цифр.вх.4 раз.АПВ</short_text>
-		<form>4.5.4 Защита по цифровому входу 4</form>
+		<short_text>Цифровой вход 4 Разрешено АПВ</short_text>
+		<form>Цифровой вход 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -7833,9 +7859,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Цифр.вх.4 сброс счет</short_text>
-		<form>4.5.4 Защита по цифровому входу 4</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Цифровой вход 4 Сброс счётчиков АПВ</short_text>
+		<form>Цифровой вход 4</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -8023,8 +8049,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Действие защиты</text>
-		<short_text>Превыш.пусков.РР3</short_text>
-		<form>4.6.1 Защита от превышения числа пусков</form>
+		<short_text>Превышение числа пусков</short_text>
+		<form>Превышение числа пусков</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -8062,8 +8088,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Пусковое время</text>
-		<short_text>Превыш.пусков пуск.время</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Задержка активации уставка</comment>
@@ -8080,8 +8106,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Время</text>
-		<short_text>Превыш.пусков время</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Время уставка</comment>
@@ -8098,8 +8124,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Задержка АПВ</text>
-		<short_text>Превыш.пусков зад.АПВ</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Задержка АПВ уставка</comment>
@@ -8116,8 +8142,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Разрешено АПВ</text>
-		<short_text>Превыш.пусков раз.АПВ</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Количество АПВ уставка</comment>
@@ -8134,8 +8160,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Превыш.пусков сброс счет</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Автосброс счетчика АПВ</comment>
@@ -8147,19 +8173,19 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>40</max>
+		<max>40.0</max>
 		<def>5</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>5</value>
-		<text>Максимальное число пусков</text>
-		<short_text>Превыш.пусков уст.</short_text>
-		<form>4.6.1 Защита от превышения числа пусков</form>
+		<text>Уставка останова</text>
+		<short_text>Превышение числа пусков Уставка останова</short_text>
+		<form>Превышение числа пусков</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX</format>
 		<code>13</code>
-		<comment>Макс. число пусков</comment>
+		<comment>Превышение числа пусков Уставка останова</comment>
 	</param>
 	<param>
 		<id>396</id>
@@ -8186,19 +8212,19 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>86400</max>
+		<max>86400.0</max>
 		<def>36000</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>36000</value>
-		<text>Период времени</text>
-		<short_text>Превыш.пусков период врем.</short_text>
-		<form>4.6.1 Защита от превышения числа пусков</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Превышение числа пусков Сброс счётчиков АПВ</short_text>
+		<form>Превышение числа пусков</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH</unit_lcd>
 		<format>XX</format>
 		<code>13</code>
-		<comment>Период времени</comment>
+		<comment>Превышение числа пусков Сброс счётчиков АПВ</comment>
 	</param>
 	<param>
 		<id>398</id>
@@ -8212,6 +8238,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Текущий параметр Флаг что защита в АПВ</comment>
@@ -8228,6 +8256,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Текущий параметр состояние автомата</comment>
@@ -8244,6 +8274,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Текущий параметр Фиксированное время</comment>
@@ -8279,8 +8311,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Блок.двери РРЗ</short_text>
-		<form>4.6.2 Блокировка силового отсека</form>
+		<short_text>Блокировка двери</short_text>
+		<form>Блокировка двери</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -8318,6 +8350,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Задержка активации уставка</comment>
@@ -8334,6 +8368,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -8353,6 +8389,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Задержка АПВ уставка</comment>
@@ -8369,6 +8407,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Количество АПВ уставка</comment>
@@ -8385,6 +8425,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Автосброс счетчика АПВ</comment>
@@ -8401,6 +8443,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -8420,6 +8464,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Условие АПВ уставка</comment>
@@ -8436,6 +8482,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -8546,8 +8594,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>2.0</value>
 		<text>Действие защиты</text>
-		<short_text>Аппарат.защиты ЧРП РРЗ</short_text>
-		<form>4.6.3 Аппаратные защиты ЧРП</form>
+		<short_text>Аппаратные защиты ЧРП</short_text>
+		<form>Аппаратные защиты ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -8615,15 +8663,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>60.0</min>
-		<max>180000.0</max>
+		<min>1.0</min>
+		<max>59999.0</max>
 		<def>3600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>3600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Аппарат.защиты ЧРП Задержка АПВ</short_text>
-		<form>4.6.3 Аппаратные защиты ЧРП</form>
+		<short_text>Аппаратные защиты ЧРП Задержка АПВ</short_text>
+		<form>Аппаратные защиты ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_MM_SS</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Задержка АПВ уставка</comment>
 	</param>
@@ -8640,8 +8691,10 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Аппарат.защиты ЧРП раз.АПВ</short_text>
-		<form>4.6.3 Аппаратные защиты ЧРП</form>
+		<short_text>Аппаратные защиты ЧРП Разрешено АПВ</short_text>
+		<form>Аппаратные защиты ЧРП</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
@@ -8652,15 +8705,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
+		<min>60.0</min>
 		<max>3599940.0</max>
-		<def>3600.0</def>
+		<def>86400.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>3600.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Аппарат.защиты ЧРП сброс счет</short_text>
-		<form>4.6.3 Аппаратные защиты ЧРП</form>
+		<value>86400.0</value>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Аппаратные защиты ЧРП Сброс счётчиков АПВ</short_text>
+		<form>Аппаратные защиты ЧРП</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_HH_MM</unit_lcd>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Автосброс счетчика АПВ</comment>
 	</param>
@@ -8820,9 +8876,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Контроль</text>
-		<short_text>Контроль</short_text>
-		<form>4.6.4 Контроль УКИ</form>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -8859,7 +8915,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Пусковое время</text>
+		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
@@ -8949,7 +9005,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Уставка останова</text>
+		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
@@ -9093,9 +9149,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
+		<text>Действие режима</text>
 		<short_text>Периодика</short_text>
-		<form>5.1.1 Периодика</form>
+		<form>Периодика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -9137,8 +9193,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3600.0</value>
 		<text>Время работы</text>
-		<short_text>Периодика. Время работы</short_text>
-		<form>5.1.1 Периодика</form>
+		<short_text>Периодика Время работы</short_text>
+		<form>Периодика</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
@@ -9158,8 +9214,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3600.0</value>
 		<text>Время паузы</text>
-		<short_text>Периодика. Время паузы</short_text>
-		<form>5.1.1 Периодика</form>
+		<short_text>Периодика Время паузы</short_text>
+		<form>Периодика</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
@@ -9200,7 +9256,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Время до конца работы по программе</text>
-		<short_text>Периодика. Время до конца работы по прогр.</short_text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM_SS</unit_lcd>
@@ -9241,7 +9297,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Время до конца паузы по программе</text>
-		<short_text>Периодика. Время до конца паузы по прогр.</short_text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM_SS</unit_lcd>
@@ -9261,9 +9317,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Черед. F.</short_text>
-		<form>5.1.2 Чередование частот</form>
+		<text>Действие режима</text>
+		<short_text>Чередование частот</short_text>
+		<form>Чередование частот</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -9284,8 +9340,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Рабочая частота f1</text>
-		<short_text>Черед. F. F1</short_text>
-		<form>5.1.2 Чередование частот</form>
+		<short_text>Чередование частот Рабочая частота f1</short_text>
+		<form>Чередование частот</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
@@ -9305,8 +9361,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Время работы на частоте f1</text>
-		<short_text>Черед. F. Время F1</short_text>
-		<form>5.1.2 Чередование частот</form>
+		<short_text>Чередование частот Время работы на частоте f1</short_text>
+		<form>Чередование частот</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
@@ -9347,8 +9403,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
 		<text>Недогруз на частоте f1</text>
-		<short_text>Черед. F. Недогруз F1</short_text>
-		<form>5.1.2 Чередование частот</form>
+		<short_text>Чередование частот Недогруз на частоте f1</short_text>
+		<form>Чередование частот</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXX</format>
@@ -9368,8 +9424,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Рабочая частота f2</text>
-		<short_text>Черед. F. F2</short_text>
-		<form>5.1.2 Чередование частот</form>
+		<short_text>Чередование частот Рабочая частота f2</short_text>
+		<form>Чередование частот</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
@@ -9389,8 +9445,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Время работы на частоте f2</text>
-		<short_text>Черед. F. Время F2</short_text>
-		<form>5.1.2 Чередование частот</form>
+		<short_text>Чередование частот Время работы на частоте f2</short_text>
+		<form>Чередование частот</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
@@ -9431,8 +9487,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
 		<text>Недогруз на частоте f2</text>
-		<short_text>Черед. F. Недогруз F2</short_text>
-		<form>5.1.2 Чередование частот</form>
+		<short_text>Чередование частот Недогруз на частоте f2</short_text>
+		<form>Чередование частот</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXX</format>
@@ -9451,9 +9507,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>ВНР</short_text>
-		<form>5.1.3 Программного изменения частоты</form>
+		<text>Действие режима</text>
+		<short_text>Программное изменения частоты (ВНР)</short_text>
+		<form>Программное изменения частоты (ВНР)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -9473,8 +9529,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>35.0</value>
 		<text>Начальная частота</text>
-		<short_text>ВНР. Начальная частота</short_text>
-		<form>5.1.3 Программного изменения частоты</form>
+		<short_text>Программное изменения частоты (ВНР) Начальная частота</short_text>
+		<form>Программное изменения частоты (ВНР)</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
@@ -9494,8 +9550,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>45.0</value>
 		<text>Конечная частота</text>
-		<short_text>ВНР. Конечная частота</short_text>
-		<form>5.1.3 Программного изменения частоты</form>
+		<short_text>Программное изменения частоты (ВНР) Конечная частота</short_text>
+		<form>Программное изменения частоты (ВНР)</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
@@ -9515,8 +9571,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
 		<text>Период времени</text>
-		<short_text>ВНР. Период времени</short_text>
-		<form>5.1.3 Программного изменения частоты</form>
+		<short_text>Программное изменения частоты (ВНР) Период времени</short_text>
+		<form>Программное изменения частоты (ВНР)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
@@ -9577,8 +9633,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0</value>
-		<text>Дата время</text>
-		<short_text>Дата время</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD_HH_MM_SS</unit_lcd>
@@ -9598,8 +9654,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Рабочий ток</text>
-		<short_text>Рабочий ток</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
@@ -9618,8 +9674,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Рабочее напряжение</text>
-		<short_text>Рабочее напряжение</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -9628,7 +9684,7 @@
 	</param>
 	<param>
 		<id>473</id>
-		<name>CCS_RGM_MODE_LOAD</name>
+		<name>CCS_RESERVED_473</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_PERCENT</physic>
@@ -9638,8 +9694,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Загрузка</text>
-		<short_text>Загрузка</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -9658,9 +9714,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Поддержание</short_text>
-		<form>5.1.4 Поддержание параметра</form>
+		<text>Действие режима</text>
+		<short_text>Поддержание параметра</short_text>
+		<form>Поддержание параметра</form>
 		<format>TEXT</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Включение</comment>
@@ -9678,8 +9734,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Параметр</text>
-		<short_text>Поддержание. Параметр</short_text>
-		<form>5.1.4 Поддержание параметра</form>
+		<short_text>Поддержание параметра Параметр</short_text>
+		<form>Поддержание параметра</form>
 		<format>TEXT</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Тип параметра</comment>
@@ -9697,8 +9753,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Зависимость</text>
-		<short_text>Поддержание. Зависимость</short_text>
-		<form>5.1.4 Поддержание параметра</form>
+		<short_text>Поддержание параметра Зависимость</short_text>
+		<form>Поддержание параметра</form>
 		<format>TEXT</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Зависимость</comment>
@@ -9716,8 +9772,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Поддерживаемое значение</text>
-		<short_text>Поддержание. Значение - Ток</short_text>
-		<form>5.1.4 Поддержание параметра</form>
+		<short_text>Поддержание параметра Поддерживаемое значение</short_text>
+		<form>Поддержание параметра</form>
 		<format>XXXX_X</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Поддержка значения - Ток</comment>
@@ -9735,8 +9791,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Период регулирования</text>
-		<short_text>Поддержание. Период</short_text>
-		<form>5.1.4 Поддержание параметра</form>
+		<short_text>Поддержание параметра Период регулирования</short_text>
+		<form>Поддержание параметра</form>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Период регулирования</comment>
 	</param>
@@ -9752,9 +9808,9 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
-		<text>Пропорциональный коэф-т</text>
-		<short_text>Поддержание. Пропорц.коэф.</short_text>
-		<form>5.1.4 Поддержание параметра</form>
+		<text>Пропорциональный коэффициент</text>
+		<short_text>Поддержание параметра Пропорциональный коэффициент</short_text>
+		<form>Поддержание параметра</form>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Пропорциональный коэффициент</comment>
@@ -9771,9 +9827,9 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
-		<text>Интегральный коэф-т</text>
-		<short_text>Поддержание. Интеграл.коэф.</short_text>
-		<form>5.1.4 Поддержание параметра</form>
+		<text>Интегральный коэффициент</text>
+		<short_text>Поддержание параметра Интегральный коэффициент</short_text>
+		<form>Поддержание параметра</form>
 		<format>XX_XXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Интегральный коэффициент</comment>
@@ -9791,8 +9847,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Минимальная частота</text>
-		<short_text>Поддержание. Мин. F</short_text>
-		<form>5.1.4 Поддержание параметра</form>
+		<short_text>Поддержание параметра Минимальная частота</short_text>
+		<form>Поддержание параметра</form>
 		<format>XXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Мин рабочая частота</comment>
@@ -9810,8 +9866,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
 		<text>Максимальная частота</text>
-		<short_text>Поддержание. Макс. F</short_text>
-		<form>5.1.4 Поддержание параметра</form>
+		<short_text>Поддержание параметра Максимальная частота</short_text>
+		<form>Поддержание параметра</form>
 		<format>XXX</format>
 		<code>13</code>
 		<comment>Режим поддержания параметра. Макс рабочая частота</comment>
@@ -9828,9 +9884,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
+		<text>Действие режима</text>
 		<short_text>Встряхивание</short_text>
-		<form>5.1.7 Встряхивание</form>
+		<form>Встряхивание</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -9850,9 +9906,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
-		<text>Периодичность встряхивания</text>
-		<short_text>Встряхивание. Период</short_text>
-		<form>5.1.7 Встряхивание</form>
+		<text>Периодичность</text>
+		<short_text>Встряхивание Периодичность</short_text>
+		<form>Встряхивание</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
@@ -9871,9 +9927,9 @@
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>45.0</value>
-		<text>Частота встряхивания F1</text>
-		<short_text>Встряхивание. Частота F1</short_text>
-		<form>5.1.7 Встряхивание</form>
+		<text>Частота f1</text>
+		<short_text>Встряхивание Частота f1</short_text>
+		<form>Встряхивание</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
@@ -9893,8 +9949,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Темп увеличения частоты</text>
-		<short_text>Встряхивание. Темп увелич. F</short_text>
-		<form>5.1.7 Встряхивание</form>
+		<short_text>Встряхивание Темп увеличения частоты</short_text>
+		<form>Встряхивание</form>
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -9913,9 +9969,9 @@
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>55.0</value>
-		<text>Частота встряхивания F2</text>
-		<short_text>Встряхивание. Частота F2</short_text>
-		<form>5.1.7 Встряхивание</form>
+		<text>Частота f2</text>
+		<short_text>Встряхивание Частота f2</short_text>
+		<form>Встряхивание</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
@@ -9935,8 +9991,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Темп уменьшения частоты</text>
-		<short_text>Встряхивание. Темп уменьш. F</short_text>
-		<form>5.1.7 Встряхивание</form>
+		<short_text>Встряхивание Темп уменьшения частоты</short_text>
+		<form>Встряхивание</form>
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -9955,9 +10011,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Действие режима</short_text>
-		<form>5.1.10 Режим учёт нагрева кабеля</form>
+		<text>Действие режима</text>
+		<short_text>Режим учёт нагрева кабеля</short_text>
+		<form>Режим учёт нагрева кабеля</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -9977,8 +10033,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сопротивление при 20С</text>
-		<short_text>Сопротивление при 20С</short_text>
-		<form>5.1.10 Режим учёт нагрева кабеля</form>
+		<short_text>Режим учёт нагрева кабеля Сопротивление при 20С</short_text>
+		<form>Режим учёт нагрева кабеля</form>
 		<unit>RESIST_CABLE_KOM_M</unit>
 		<unit_lcd>RESIST_CABLE_KOM_M</unit_lcd>
 		<format>XXXXXXXXX</format>
@@ -9998,8 +10054,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сопротивление при 80С</text>
-		<short_text>Сопротивление при 80С</short_text>
-		<form>5.1.10 Режим учёт нагрева кабеля</form>
+		<short_text>Режим учёт нагрева кабеля Сопротивление при 80С</short_text>
+		<form>Режим учёт нагрева кабеля</form>
 		<unit>RESIST_CABLE_KOM_M</unit>
 		<unit_lcd>RESIST_CABLE_KOM_M</unit_lcd>
 		<format>XXXXXXXXX</format>
@@ -10019,8 +10075,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Номинальный ток кабеля</text>
-		<short_text>Номинальный ток кабеля</short_text>
-		<form>5.1.10 Режим учёт нагрева кабеля</form>
+		<short_text>Режим учёт нагрева кабеля Номинальный ток кабеля</short_text>
+		<form>Режим учёт нагрева кабеля</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
 		<format>XXXXXXXXX</format>
@@ -10040,8 +10096,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Время нагрева</text>
-		<short_text>Время нагрева</short_text>
-		<form>5.1.10 Режим учёт нагрева кабеля</form>
+		<short_text>Режим учёт нагрева кабеля Время нагрева</short_text>
+		<form>Режим учёт нагрева кабеля</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
@@ -10060,9 +10116,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Опт.U.</short_text>
-		<form>5.1.5 Режим оптимизации напряжения</form>
+		<text>Действие режима</text>
+		<short_text>Оптимизация напряжения</short_text>
+		<form>Оптимизация напряжения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -10082,8 +10138,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Максимальное отклонение от U/f</text>
-		<short_text>Опт.U. Макс. U/f</short_text>
-		<form>5.1.5 Режим оптимизации напряжения</form>
+		<short_text>Оптимизация напряжения Максимальное отклонение от U/f</short_text>
+		<form>Оптимизация напряжения</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XX</format>
@@ -10103,8 +10159,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Шаг изменения напряжения</text>
-		<short_text>Опт.U. Шаг изм. U</short_text>
-		<form>5.1.5 Режим оптимизации напряжения</form>
+		<short_text>Оптимизация напряжения Шаг изменения напряжения</short_text>
+		<form>Оптимизация напряжения</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>XX</format>
@@ -10117,18 +10173,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>86400.0</max>
+		<min>60.0</min>
+		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Первый цикл после пуска</text>
-		<short_text>Опт.U. 1 цикл после пуска</short_text>
-		<form>5.1.5 Режим оптимизации напряжения</form>
+		<short_text>Оптимизация напряжения Первый цикл после пуска</short_text>
+		<form>Оптимизация напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Режим оптимизации напряжения первый цикл после запуска</comment>
 	</param>
@@ -10138,18 +10194,18 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
-		<min>0.0</min>
-		<max>86400.0</max>
+		<min>60.0</min>
+		<max>3599940.0</max>
 		<def>3600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>3600.0</value>
 		<text>Периодичность оптимизации</text>
-		<short_text>Опт.U. Период оптимизации</short_text>
-		<form>5.1.5 Режим оптимизации напряжения</form>
+		<short_text>Оптимизация напряжения Периодичность оптимизации</short_text>
+		<form>Оптимизация напряжения</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Режим оптимизации напряжения периодичность оптимизации</comment>
 	</param>
@@ -10165,9 +10221,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Пркч</short_text>
-		<form>5.1.8 Режим прокачки газа</form>
+		<text>Действие режима</text>
+		<short_text>Прокачка газа</short_text>
+		<form>Прокачка газа</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -10187,8 +10243,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>50.0</value>
 		<text>Верхняя частота</text>
-		<short_text>Пркч. F1</short_text>
-		<form>5.1.8 Режим прокачки газа</form>
+		<short_text>Прокачка газа Верхняя частота</short_text>
+		<form>Прокачка газа</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
@@ -10208,8 +10264,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>40.0</value>
 		<text>Нижняя частота</text>
-		<short_text>Пркч. F2</short_text>
-		<form>5.1.8 Режим прокачки газа</form>
+		<short_text>Прокачка газа Нижняя частота</short_text>
+		<form>Прокачка газа</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
@@ -10229,8 +10285,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Время</text>
-		<short_text>Пркч. T</short_text>
-		<form>5.1.8 Режим прокачки газа</form>
+		<short_text>Прокачка газа Время</short_text>
+		<form>Прокачка газа</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
 		<format>XX</format>
@@ -10249,9 +10305,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Токоограничение. Состояние</short_text>
-		<form>5.1.6 Режим токоограничения</form>
+		<text>Действие режима</text>
+		<short_text>Токоограничение</short_text>
+		<form>Токоограничение</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -10271,8 +10327,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>100.0</value>
 		<text>Порог токоограничения</text>
-		<short_text>Токоограничение. Порог токоограничения</short_text>
-		<form>5.1.6 Режим токоограничения</form>
+		<short_text>Токоограничение Порог токоограничения</short_text>
+		<form>Токоограничение</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
 		<format>XXXX_X</format>
@@ -10292,8 +10348,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Шаг снижения частоты</text>
-		<short_text>Токоограничение. Шаг снижения частоты</short_text>
-		<form>NULL</form>
+		<short_text>Токоограничение Шаг снижения частоты</short_text>
+		<form>Токоограничение</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX_XX</format>
@@ -10313,8 +10369,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Задержка отключения</text>
-		<short_text>Токоограничение. Задержка отключения</short_text>
-		<form>5.1.6 Режим токоограничения</form>
+		<short_text>Токоограничение Задержка отключения</short_text>
+		<form>Токоограничение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -10334,8 +10390,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Токоограничение. Задержка АПВ</short_text>
-		<form>NULL</form>
+		<short_text>Токоограничение Задержка АПВ</short_text>
+		<form>Токоограничение</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
@@ -10586,7 +10642,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Количество отключений по перегрузу</text>
-		<short_text>Счетч.кол-ва откл ПЭД по ЗСП</short_text>
+		<short_text>Количество отключений по перегрузу</short_text>
 		<form>6.2 Счётчики</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -10607,7 +10663,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Количество отключений по недогрузу</text>
-		<short_text>Счетч.кол-ва откл ПЭД по ЗП</short_text>
+		<short_text>Количество отключений по недогрузу</short_text>
 		<form>6.2 Счётчики</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -10628,7 +10684,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Количество отключений по остальным защитам</text>
-		<short_text>Счетч.кол-ва откл ПЭД по др.защ.</short_text>
+		<short_text>Количество отключений по остальным защитам</short_text>
 		<form>6.2 Счётчики</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -10649,7 +10705,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Количество АПВ после остановов по напряжению</text>
-		<short_text>Счётчик АПВ после остановов по напряжению</short_text>
+		<short_text>Количество АПВ после остановов по напряжению</short_text>
 		<form>6.2 Счётчики</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -10670,7 +10726,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Количество АПВ после остановов по перегрузу</text>
-		<short_text>Счётчик АПВ после остановов по перегрузу</short_text>
+		<short_text>Количество АПВ после остановов по перегрузу</short_text>
 		<form>6.2 Счётчики</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -10691,7 +10747,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Количество АПВ после остановов по недогрузу</text>
-		<short_text>Счётчик АПВ после остановов по недогрузу</short_text>
+		<short_text>Количество АПВ после остановов по недогрузу</short_text>
 		<form>6.2 Счётчики</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -10711,8 +10767,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Количество АПВ после остановов по дисб.тока ПЭД</text>
-		<short_text>Счётчик АПВ после остановов по дисб.тока</short_text>
+		<text>Количество АПВ после остановов по дисбалансу тока двигателя</text>
+		<short_text>Количество АПВ после остановов по дисбалансу тока двигателя</short_text>
 		<form>6.2 Счётчики</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -10732,7 +10788,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Общее время работы ПЭД</text>
+		<text>Общее время работы</text>
 		<short_text>Общее время работы</short_text>
 		<form>6.3 Статистика</form>
 		<unit>TIME_SS</unit>
@@ -10753,7 +10809,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Общее время простоя ПЭД</text>
+		<text>Общее время простоя</text>
 		<short_text>Общее время простоя</short_text>
 		<form>6.3 Статистика</form>
 		<unit>TIME_SS</unit>
@@ -10859,7 +10915,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0</value>
 		<text>Последнее включение</text>
-		<short_text>Послед.включ.</short_text>
+		<short_text>Последнее включение</short_text>
 		<form>6.3 Статистика</form>
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD_HH_MM_SS</unit_lcd>
@@ -10900,7 +10956,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0</value>
 		<text>Последнее отключение</text>
-		<short_text>Послед.отключ.</short_text>
+		<short_text>Последнее отключение</short_text>
 		<form>6.3 Статистика</form>
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD_HH_MM_SS</unit_lcd>
@@ -10921,7 +10977,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Причина последнего отключения</text>
-		<short_text>Причина последн.стопа</short_text>
+		<short_text>Причина последнего отключения</short_text>
 		<form>6.3 Статистика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
@@ -10941,7 +10997,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0</value>
 		<text>Последнее изменение частоты</text>
-		<short_text>Послед.изм.F</short_text>
+		<short_text>Последнее изменение частоты</short_text>
 		<form>6.3 Статистика</form>
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD_HH_MM_SS</unit_lcd>
@@ -10962,7 +11018,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Предпоследняя частота</text>
-		<short_text>Предпоследняя F</short_text>
+		<short_text>Предпоследняя частота</short_text>
 		<form>6.3 Статистика</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -11004,7 +11060,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
 		<text>Предприятие изготовитель КСУ</text>
-		<short_text>Предп.изг.КСУ</short_text>
+		<short_text>Предприятие изготовитель КСУ</short_text>
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -11046,7 +11102,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Версия программы КСУ</text>
-		<short_text>Вер.програм.КСУ</short_text>
+		<short_text>Версия программы КСУ</short_text>
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -11067,7 +11123,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Версия программы МС</text>
-		<short_text>Вер.програм.МС</short_text>
+		<short_text>Версия программы МС</short_text>
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -11088,7 +11144,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Версия программы ПЧ</text>
-		<short_text>Вер.програм.КПЧ</short_text>
+		<short_text>Версия программы ПЧ</short_text>
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -11109,7 +11165,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0</value>
 		<text>Дата изготовления КСУ</text>
-		<short_text>Дата изгот.КСУ</short_text>
+		<short_text>Дата изготовления КСУ</short_text>
 		<form>6.4 Станция управления</form>
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD</unit_lcd>
@@ -11130,7 +11186,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0</value>
 		<text>Дата установки ПО КСУ</text>
-		<short_text>Дата уст.ПО КСУ</short_text>
+		<short_text>Дата установки ПО КСУ</short_text>
 		<form>6.4 Станция управления</form>
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD</unit_lcd>
@@ -11151,7 +11207,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0</value>
 		<text>Дата генерации ПО КСУ</text>
-		<short_text>Дата генер.КСУ</short_text>
+		<short_text>Дата генерации ПО КСУ</short_text>
 		<form>6.4 Станция управления</form>
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD</unit_lcd>
@@ -11172,7 +11228,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0</value>
 		<text>Дата установки ПО ПЧ</text>
-		<short_text>Дата уст.ПО КПЧ</short_text>
+		<short_text>Дата установки ПО ПЧ</short_text>
 		<form>6.4 Станция управления</form>
 		<unit>DATE_TIME_SS</unit>
 		<unit_lcd>DATE_TIME_YY_MM_DD</unit_lcd>
@@ -11235,7 +11291,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Заводской номер СУ</text>
-		<short_text>Зав.№ СУ</short_text>
+		<short_text>Заводской номер СУ</short_text>
 		<form>6.4 Станция управления</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -11656,8 +11712,9 @@
 		<value>0.0</value>
 		<text>Язык интерфейса</text>
 		<short_text>Язык интерфейса</short_text>
-		<form>7.1 Система</form>
+		<form>Интерфейс</form>
 		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
 		<code>13</code>
 		<values>0-Русский;1-Английский;2-Испанский</values>
@@ -11697,7 +11754,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Текущий уровень доступа</text>
-		<short_text>Уровень доступа</short_text>
+		<short_text>Текущий уровень доступа</short_text>
 		<form>7.2 Пароли</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
@@ -11718,7 +11775,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0000.0</value>
 		<text>Пароль первого уровня</text>
-		<short_text>Пароль</short_text>
+		<short_text>Пароль первого уровня</short_text>
 		<form>7.2 Пароли</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -11739,7 +11796,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1111.0</value>
 		<text>Пароль второго уровня</text>
-		<short_text>Мастер пароль</short_text>
+		<short_text>Пароль второго уровня</short_text>
 		<form>7.2 Пароли</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -11823,8 +11880,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Протокол</text>
-		<short_text>Телемеханика. Протокол</short_text>
-		<form>7.3 Телемеханика</form>
+		<short_text>Протокол</short_text>
+		<form>Телемеханика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>TEXT</format>
@@ -11846,7 +11903,7 @@
 		<value>0.0</value>
 		<text>Протокол обмена</text>
 		<short_text>Протокол обмена</short_text>
-		<form>7.3 Телемеханика</form>
+		<form>Телемеханика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -11864,9 +11921,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Адрес СУ в ТМ</text>
-		<short_text>Адрес СУ в ТМ</short_text>
-		<form>7.3 Телемеханика</form>
+		<text>Адрес</text>
+		<short_text>Адрес</short_text>
+		<form>Телемеханика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXX</format>
@@ -11887,7 +11944,7 @@
 		<value>9600.0</value>
 		<text>Скорость порта</text>
 		<short_text>Скорость обмена</short_text>
-		<form>7.3 Телемеханика</form>
+		<form>Телемеханика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -11908,7 +11965,7 @@
 		<value>0.0</value>
 		<text>Четность</text>
 		<short_text>Четность</short_text>
-		<form>7.3 Телемеханика</form>
+		<form>Телемеханика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -11929,7 +11986,7 @@
 		<value>1.0</value>
 		<text>Количество стоп бит</text>
 		<short_text>Стоп-бит</short_text>
-		<form>7.3 Телемеханика</form>
+		<form>Телемеханика</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -11950,7 +12007,7 @@
 		<value>0.0</value>
 		<text>Задержка ответа</text>
 		<short_text>Задержка ответа</short_text>
-		<form>7.3 Телемеханика</form>
+		<form>Телемеханика</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MS</unit_lcd>
 		<format>XXXXXX</format>
@@ -11971,7 +12028,7 @@
 		<value>0.0</value>
 		<text>Давление</text>
 		<short_text>Давление</short_text>
-		<form>7.4 Единицы измерения</form>
+		<form>Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -11993,7 +12050,7 @@
 		<value>0.0</value>
 		<text>Температура</text>
 		<short_text>Температура</short_text>
-		<form>7.4 Единицы измерения</form>
+		<form>Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -12015,7 +12072,7 @@
 		<value>0.0</value>
 		<text>Виброускорение</text>
 		<short_text>Виброускорение</short_text>
-		<form>7.4 Единицы измерения</form>
+		<form>Единицы измерения</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -12035,9 +12092,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Длина</text>
-		<short_text>Длина</short_text>
-		<form>7.4 Единицы измерения</form>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -12057,9 +12114,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Расход</text>
-		<short_text>Расход</short_text>
-		<form>7.4 Единицы измерения</form>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -12079,9 +12136,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Площадь</text>
-		<short_text>Площадь</short_text>
-		<form>7.4 Единицы измерения</form>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -12170,7 +12227,7 @@
 		<value>0.0</value>
 		<text>Очистить архив</text>
 		<short_text>Очистить архив</short_text>
-		<form>2.0 Архивы</form>
+		<form>Архивы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>0</code>
@@ -12273,7 +12330,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
-		<short_text>Защиты по сети. Сброс уставок</short_text>
+		<short_text>Защиты по сети Сброс уставок</short_text>
 		<form>4.1 Защиты по сети</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
@@ -12293,7 +12350,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
-		<short_text>Повышен.напряж. Сброс уставок</short_text>
+		<short_text>Повышенное напряжение Сброс уставок</short_text>
 		<form>NULL</form>
 		<format>NULL</format>
 		<code>106</code>
@@ -12311,7 +12368,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
-		<short_text>Понижен.напряж. Сброс уставок</short_text>
+		<short_text>Пониженное напряжение Сброс уставок</short_text>
 		<form>NULL</form>
 		<format>NULL</format>
 		<code>106</code>
@@ -12329,7 +12386,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
-		<short_text>Дисбал.напряж. Сброс уставок</short_text>
+		<short_text>Дисбаланс напряжения Сброс уставок</short_text>
 		<form>NULL</form>
 		<format>NULL</format>
 		<code>106</code>
@@ -12347,7 +12404,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
-		<short_text>Дисбал.токов. Сброс уставок</short_text>
+		<short_text>Дисбаланс токов Сброс уставок</short_text>
 		<form>NULL</form>
 		<format>NULL</format>
 		<code>106</code>
@@ -12419,7 +12476,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
-		<short_text>Перегруз двиг. Сброс уставок</short_text>
+		<short_text>Перегруз (ЗП) Сброс уставок</short_text>
 		<form>NULL</form>
 		<format>NULL</format>
 		<code>106</code>
@@ -12437,7 +12494,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
-		<short_text>Недогруз двиг. Сброс уставок</short_text>
+		<short_text>Недогруз (ЗСП) Сброс уставок</short_text>
 		<form>NULL</form>
 		<format>NULL</format>
 		<code>106</code>
@@ -12455,7 +12512,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
-		<short_text>Дисб.тока.двиг. Сброс уставок</short_text>
+		<short_text>Дисбаланс токов двигателя Сброс уставок</short_text>
 		<form>NULL</form>
 		<format>NULL</format>
 		<code>106</code>
@@ -12473,7 +12530,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
-		<short_text>Турбин.вращение. Сброс уставок</short_text>
+		<short_text>Турбинное вращение Сброс уставок</short_text>
 		<form>NULL</form>
 		<format>NULL</format>
 		<code>106</code>
@@ -12912,8 +12969,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>7200.0</value>
 		<text>Прогрессивная задержка АПВ</text>
-		<short_text>Недогруз Пргс.зад.АПВ</short_text>
-		<form>4.2.2 Недогруз (ЗСП)</form>
+		<short_text>Недогруз Прогрессивная задержка АПВ</short_text>
+		<form>Недогруз (ЗСП)</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -13514,6 +13571,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
+		<text>NULL</text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Коэффициент трансформации</comment>
@@ -13530,13 +13588,14 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Причина последнего останова - регистр временного хранения значения</comment>
 	</param>
 	<param>
 		<id>669</id>
-		<name>CCS_WORK_WITH_LOW_RESISTANCE</name>
+		<name>CCS_RESERVED_669</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -13546,9 +13605,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Раб.с пониж.сопр.изоляции</text>
-		<short_text>Раб.с пониж.сопр.изоляции</short_text>
-		<form>4.3.3 Сопротивление изоляции</form>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -13568,8 +13627,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Прогрессивная задержка</text>
-		<short_text>Недогруз Пргс.зад.</short_text>
-		<form>4.2.2 Недогруз (ЗСП)</form>
+		<short_text>Недогруз Прогрессивная задержка</short_text>
+		<form>Недогруз (ЗСП)</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -13610,8 +13669,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>60.0</value>
 		<text>Начальная уставка недогруза</text>
-		<short_text>ВНР. Начальная уставка ЗСП</short_text>
-		<form>5.1.3 Программного изменения частоты</form>
+		<short_text>Программное изменение частоты (ВНР) Начальная уставка ЗСП</short_text>
+		<form>Программное изменение частоты (ВНР)</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXX</format>
@@ -13630,7 +13689,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
+		<text>Действие режима</text>
 		<short_text>Толчковый</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -13673,7 +13732,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Частота толчка</text>
-		<short_text>Толчковый. Частота</short_text>
+		<short_text>Толчковый Частота</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -13694,7 +13753,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Время толчка</text>
-		<short_text>Толчковый. Время</short_text>
+		<short_text>Толчковый Время толчка</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
@@ -13715,7 +13774,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Время между толчками</text>
-		<short_text>Толчковый. Время</short_text>
+		<short_text>Толчковый Время между толчками</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
@@ -13736,7 +13795,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>125.0</value>
 		<text>Напряжение толчка</text>
-		<short_text>Толчковый. Напряжение</short_text>
+		<short_text>Толчковый Напряжение толчка</short_text>
 		<form>3.2.1.2 Толчковый</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -13777,7 +13836,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
+		<text>Действие режима</text>
 		<short_text>Раскачка</short_text>
 		<form>3.2.1.3 Раскачка</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -13904,6 +13963,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Режим поддержания параметра. Состояние автомата</comment>
@@ -13941,7 +14001,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Поддерживаемое значение</text>
-		<short_text>Поддержание. Значение  - Давление</short_text>
+		<short_text>Поддержание параметра Давление</short_text>
 		<form>5.1.4 Поддержание параметра</form>
 		<unit>PRESSURE_MPA</unit>
 		<unit_lcd>PRESSURE_MPA</unit_lcd>
@@ -13962,7 +14022,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Поддерживаемое значение</text>
-		<short_text>Поддержание. Значение - Температура</short_text>
+		<short_text>Поддержание параметра Температура</short_text>
 		<form>5.1.4 Поддержание параметра</form>
 		<unit>TEMPERATURE_C</unit>
 		<unit_lcd>TEMPERATURE_C</unit_lcd>
@@ -13983,7 +14043,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Поддерживаемое значение</text>
-		<short_text>Поддержание. Значение - Аналоговый вход</short_text>
+		<short_text>Поддержание параметра  Аналоговый вход</short_text>
 		<form>5.1.4 Поддержание параметра</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -14003,8 +14063,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Подхват. Состояние</short_text>
+		<text>Действие режима</text>
+		<short_text>Подхват</short_text>
 		<form>NULL</form>
 		<format>TEXT</format>
 		<code>13</code>
@@ -14022,6 +14082,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -14037,6 +14099,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -14052,6 +14116,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Команда отключения модуля AM335x</comment>
@@ -14069,7 +14135,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Индуктивность выходного фильтра</text>
-		<short_text>Индукт. вых. фильтра</short_text>
+		<short_text>Индуктивность выходного фильтра</short_text>
 		<form>3.6 Фильтры</form>
 		<unit>INDUNCTANCE_MH</unit>
 		<unit_lcd>INDUNCTANCE_MKH</unit_lcd>
@@ -14109,8 +14175,8 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Полн.инд.сопр.фазы</text>
-		<short_text>Полн.инд.сопр.фазы</short_text>
+		<text>Полное индуктивное сопротивление фазы</text>
+		<short_text>Полное индуктивное сопротивление фазы</short_text>
 		<form>3.1 Двигателя</form>
 		<unit>RESISTANCE_OM</unit>
 		<unit_lcd>RESISTANCE_OM</unit_lcd>
@@ -14643,6 +14709,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Количество попыток ввода пароля</comment>
@@ -14659,6 +14727,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Время последней попытки ввода пароля</comment>
@@ -14675,6 +14745,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Текущее значение операции (например, копирование архивов)</comment>
@@ -14691,6 +14763,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<code>0</code>
 		<comment>Максимальное значение прогресс-бара (например, копирование архивов)</comment>
@@ -15434,14 +15508,14 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
-		<text>Время циклического переключения окон состояния</text>
-		<short_text>Время циклического переключения окон состояния</short_text>
-		<form>7.5 Интерфейс</form>
+		<text>Время автоматического переключения окон</text>
+		<short_text>Время автоматического переключения окон</short_text>
+		<form>Интерфейс</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
 		<format>XXX</format>
 		<code>13</code>
-		<comment>Время циклического переключения окон состояния</comment>
+		<comment>Время автоматического переключения окон</comment>
 	</param>
 	<param>
 		<id>763</id>
@@ -15771,7 +15845,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
 		<text>Действие защиты</text>
-		<short_text>РРЗ от потери связи с ЧРП</short_text>
+		<short_text>Потеря связи с ЧРП</short_text>
 		<form>4.6.4 Защита от потери связи с ЧРП</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -15793,7 +15867,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>180.0</value>
 		<text>Время</text>
-		<short_text>Потеря связи с ЧРП время</short_text>
+		<short_text>Потеря связи с ЧРП Время</short_text>
 		<form>4.6.4 Защита от потери связи с ЧРП</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
@@ -15854,7 +15928,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Тип двигателя</text>
-		<short_text>Тип двиг.</short_text>
+		<short_text>Тип двигателя</short_text>
 		<form>1.1 Текущие параметры - Состояние; 3.1 Двигатель</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -15875,7 +15949,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
+		<text>Действие режима</text>
 		<short_text>Автоадаптация.Состояние</short_text>
 		<form>3.2.1.2 Автоадаптация</form>
 		<unit>NUMERIC_NUMBER</unit>
@@ -16233,7 +16307,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Тип сигнала</text>
-		<short_text>Цифр.вх.1. Тип сигнала</short_text>
+		<short_text>Цифровой вход 1 Тип сигнала</short_text>
 		<form>3.8.2 Цифровые входы; 4.5.1 Защита по цифровому входу 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16255,7 +16329,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Тип сигнала</text>
-		<short_text>Цифр.вх.2. Тип сигнала</short_text>
+		<short_text>Цифровой вход 2 Тип сигнала</short_text>
 		<form>3.8.2 Цифровые входы; 4.5.2 Защита по цифровому входу 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16277,7 +16351,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Тип сигнала</text>
-		<short_text>Цифр.вх.3. Тип сигнала</short_text>
+		<short_text>Цифровой вход 3 Тип сигнала</short_text>
 		<form>3.8.2 Цифровые входы; 4.5.3 Защита по цифровому входу 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16299,7 +16373,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Тип сигнала</text>
-		<short_text>Цифр.вх.4. Тип сигнала</short_text>
+		<short_text>Цифровой вход 4 Тип сигнала</short_text>
 		<form>3.8.2 Цифровые входы; 4.5.4 Защита по цифровому входу 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16321,7 +16395,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие по сигналу</text>
-		<short_text>Цифр.вх.1. Действие</short_text>
+		<short_text>Цифровой вход 1 Действие</short_text>
 		<form>3.8.2 Цифровые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16343,7 +16417,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие по сигналу</text>
-		<short_text>Цифр.вх.2. Действие</short_text>
+		<short_text>Цифровой вход 2 Действие</short_text>
 		<form>3.8.2 Цифровые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16365,7 +16439,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие по сигналу</text>
-		<short_text>Цифр.вх.3. Действие</short_text>
+		<short_text>Цифровой вход 3 Действие</short_text>
 		<form>3.8.2 Цифровые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16387,7 +16461,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие по сигналу</text>
-		<short_text>Цифр.вх.4. Действие</short_text>
+		<short_text>Цифровой вход 4 Действие</short_text>
 		<form>3.8.2 Цифровые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16679,8 +16753,8 @@
 		<discret>1000</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Ан.вх.5 Текущее значение</text>
-		<short_text>Доп.ан.вх.5</short_text>
+		<text>Аналоговый вход 5</text>
+		<short_text>Аналоговый вход 5</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -16700,7 +16774,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Параметр</text>
-		<short_text>Ан.вх.1. Параметр</short_text>
+		<short_text>Аналоговый вход 1 Параметр</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16720,8 +16794,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Ан.вх.1 Тип входа</text>
-		<short_text>Ан.вх.1. Тип</short_text>
+		<text>Аналоговый вход 1 Тип входа</text>
+		<short_text>Аналоговый вход 1 Тип входа</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16742,7 +16816,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Минимум шкалы</text>
-		<short_text>Ан.вх.1. Минимум</short_text>
+		<short_text>Аналоговый вход 1 Минимум</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -16763,7 +16837,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Максимум шкалы</text>
-		<short_text>Ан.вх.1. Максимум</short_text>
+		<short_text>Аналоговый вход 1 Максимум</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -16784,7 +16858,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Параметр</text>
-		<short_text>Ан.вх.2. Параметр</short_text>
+		<short_text>Аналоговый вход 2 Параметр</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16804,8 +16878,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Ан.вх.2 Тип входа</text>
-		<short_text>Ан.вх.2. Тип</short_text>
+		<text>Аналоговый вход 2 Тип входа</text>
+		<short_text>Аналоговый вход 2 Тип входа</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16826,7 +16900,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Минимум шкалы</text>
-		<short_text>Ан.вх.2. Минимум</short_text>
+		<short_text>Аналоговый вход 2 Минимум</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -16847,7 +16921,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Максимум шкалы</text>
-		<short_text>Ан.вх.2. Максимум</short_text>
+		<short_text>Аналоговый вход 2 Максимум</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -16868,7 +16942,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Параметр</text>
-		<short_text>Ан.вх.3. Параметр</short_text>
+		<short_text>Аналоговый вход 3 Параметр</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16888,8 +16962,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Ан.вх.3 Тип входа</text>
-		<short_text>Ан.вх.3. Тип</short_text>
+		<text>Аналоговый вход 3 Тип входа</text>
+		<short_text>Аналоговый вход 3 Тип входа</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16910,7 +16984,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Минимум шкалы</text>
-		<short_text>Ан.вх.3. Минимум</short_text>
+		<short_text>Аналоговый вход 3 Минимум</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -16931,7 +17005,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Максимум шкалы</text>
-		<short_text>Ан.вх.3. Максимум</short_text>
+		<short_text>Аналоговый вход 3 Максимум</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -16952,7 +17026,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Параметр</text>
-		<short_text>Ан.вх.4. Параметр</short_text>
+		<short_text>Аналоговый вход 4 Параметр</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16972,8 +17046,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Ан.вх.4 Тип входа</text>
-		<short_text>Ан.вх.4. Тип</short_text>
+		<text>Аналоговый вход 4 Тип входа</text>
+		<short_text>Аналоговый вход 4 Тип входа</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -16994,7 +17068,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Минимум шкалы</text>
-		<short_text>Ан.вх.4. Минимум</short_text>
+		<short_text>Аналоговый вход 4 Минимум</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -17015,7 +17089,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Максимум шкалы</text>
-		<short_text>Ан.вх.4. Максимум</short_text>
+		<short_text>Аналоговый вход 4 Максимум</short_text>
 		<form>3.8.1 Аналоговые входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -17037,7 +17111,7 @@
 		<value>0.0</value>
 		<text>Аналог.вход 1</text>
 		<short_text>Аналог.вход 1</short_text>
-		<form>1.6 Текущие параметры входы</form>
+		<form>Текущие параметры входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
@@ -17058,7 +17132,7 @@
 		<value>0.0</value>
 		<text>Аналог.вход 2</text>
 		<short_text>Аналог.вход 2</short_text>
-		<form>1.6 Текущие параметры входы</form>
+		<form>Текущие параметры входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
@@ -17079,7 +17153,7 @@
 		<value>0.0</value>
 		<text>Аналог.вход 3</text>
 		<short_text>Аналог.вход 3</short_text>
-		<form>1.6 Текущие параметры входы</form>
+		<form>Текущие параметры входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
@@ -17100,7 +17174,7 @@
 		<value>0.0</value>
 		<text>Аналог.вход 4</text>
 		<short_text>Аналог.вход 4</short_text>
-		<form>1.6 Текущие параметры входы</form>
+		<form>Текущие параметры входы</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
@@ -17986,9 +18060,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>110.0</value>
-		<text>Загрузка</text>
-		<short_text>Загрузка</short_text>
-		<form>4.2.2 Недогруз (ЗСП)</form>
+		<text>Текущая загрузка</text>
+		<short_text>NULL</short_text>
+		<form>Недогруз (ЗСП)</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
 		<format>XXXXXX</format>
@@ -18126,7 +18200,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Качество связи</text>
-		<short_text>Качество связи</short_text>
+		<short_text>Качество связи с ЧРП</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -18146,7 +18220,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Счётчик запросов</text>
-		<short_text>Счётчик запросов</short_text>
+		<short_text>Счётчик запросов к ЧРП</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -18163,7 +18237,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Счетчик ответов</text>
-		<short_text>Счетчик ответов</short_text>
+		<short_text>Счетчик ответов от ЧРП</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -18180,7 +18254,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Счетчик некорректных ответов</text>
-		<short_text>Счетчик некорректных ответов</short_text>
+		<short_text>Счетчик некорректных ответов от ЧРП</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -18197,7 +18271,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Счётчик ошибок контрольной суммы</text>
-		<short_text>Счётчик ошибок контрольной суммы</short_text>
+		<short_text>Счётчик ошибок контрольной суммы от ЧРП</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -18214,7 +18288,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Счётчик ошибок устройства</text>
-		<short_text>Счётчик ошибок устройства</short_text>
+		<short_text>Счётчик ошибок устройства от ЧРП</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -18231,7 +18305,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Счётчик потерянных ответов</text>
-		<short_text>Счётчик потерянных ответов</short_text>
+		<short_text>Счётчик потерянных ответов от ЧРП</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -18308,7 +18382,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Качество связи</text>
-		<short_text>Качество связи</short_text>
+		<short_text>Качество связи с ТМС</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -18328,7 +18402,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Счётчик запросов</text>
-		<short_text>Счётчик запросов</short_text>
+		<short_text>Счётчик запросов к ТМС</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -18345,7 +18419,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Счетчик ответов</text>
-		<short_text>Счетчик ответов</short_text>
+		<short_text>Счетчик ответов от ТМС</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -18362,7 +18436,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Счетчик некорректных ответов</text>
-		<short_text>Счетчик некорректных ответов</short_text>
+		<short_text>Счетчик некорректных ответов от ТМС</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -18379,7 +18453,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Счётчик ошибок контрольной суммы</text>
-		<short_text>Счётчик ошибок контрольной суммы</short_text>
+		<short_text>Счётчик ошибок контрольной суммы от ТМС</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -18396,7 +18470,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Счётчик ошибок устройства</text>
-		<short_text>Счётчик ошибок устройства</short_text>
+		<short_text>Счётчик ошибок устройства от ТМС</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -18413,7 +18487,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Счётчик потерянных ответов</text>
-		<short_text>Счётчик потерянных ответов</short_text>
+		<short_text>Счётчик потерянных ответов от ТМС</short_text>
 		<form>NULL</form>
 		<code>0</code>
 	</param>
@@ -18490,7 +18564,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Сбросить счётчики качества связи</text>
-		<short_text>ТМС. Сброс счётчиков качества связи</short_text>
+		<short_text>Сброс счётчиков качества связи с ТМС</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -18511,7 +18585,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Сбросить счётчики качества связи</text>
-		<short_text>ЧРП. Сброс счётчиков качества связи</short_text>
+		<short_text>Сброс счётчиков качества связи с ЧРП</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
@@ -18615,8 +18689,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Мин.расход РР3</short_text>
-		<form>4.3.6 Минимальный расход</form>
+		<short_text>Минимальный расход</short_text>
+		<form>Минимальный расход</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -18654,8 +18728,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Мин.расход пуск.время</short_text>
-		<form>4.3.6 Минимальный расход</form>
+		<short_text>Минимальный расход Пусковое время</short_text>
+		<form>Минимальный расход</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -18675,8 +18749,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Мин.расход время</short_text>
-		<form>4.3.6 Минимальный расход</form>
+		<short_text>Минимальный расход Время</short_text>
+		<form>Минимальный расход</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -18696,8 +18770,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Мин.расход зад.АПВ</short_text>
-		<form>4.3.6 Минимальный расход</form>
+		<short_text>Минимальный расход Задержка АПВ</short_text>
+		<form>Минимальный расход</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -18717,8 +18791,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Мин.расход раз.АПВ</short_text>
-		<form>4.3.6 Минимальный расход</form>
+		<short_text>Минимальный расход Разрешено АПВ</short_text>
+		<form>Минимальный расход</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -18737,9 +18811,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Мин.расход сброс счет</short_text>
-		<form>4.3.6 Минимальный расход</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Минимальный расход Сброс счётчиков АПВ</short_text>
+		<form>Минимальный расход</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -18759,8 +18833,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>30.0</value>
 		<text>Уставка останова</text>
-		<short_text>Мин.расход уст.</short_text>
-		<form>4.3.6 Минимальный расход</form>
+		<short_text>Минимальный расход Уставка останова</short_text>
+		<form>Минимальный расход</form>
 		<unit>FLOW_M3_DD</unit>
 		<unit_lcd>FLOW_M3_DD</unit_lcd>
 		<format>XX_X</format>
@@ -18945,8 +19019,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
-		<short_text>Мин.расход. Сброс уставок</short_text>
-		<form>NULL</form>
+		<short_text>Минимальный расход Сброс уставок</short_text>
+		<form>Минимальный расход</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>106</code>
@@ -18965,8 +19039,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Рвых.нас.РРЗ</short_text>
-		<form>4.3.2 Давление на выкиде насоса</form>
+		<short_text>Давление на выкиде насоса</short_text>
+		<form>Давление на выкиде насоса</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>13</code>
@@ -19007,8 +19081,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Пусковое время</text>
-		<short_text>Рmax.вых.нас.пуск.время</short_text>
-		<form>4.3.2 Давление на выкиде насоса</form>
+		<short_text>Давление на выкиде насоса Пусковое время</short_text>
+		<form>Давление на выкиде насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -19028,8 +19102,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
 		<text>Время</text>
-		<short_text>Рmax.вых.нас.время</short_text>
-		<form>4.3.2 Давление на выкиде насоса</form>
+		<short_text>Давление на выкиде насоса Время</short_text>
+		<form>Давление на выкиде насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XXX_XX</format>
@@ -19049,8 +19123,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Рmax.вых.нас.зад.АПВ</short_text>
-		<form>4.3.2 Давление на выкиде насоса</form>
+		<short_text>Давление на выкиде насоса Задержка АПВ</short_text>
+		<form>Давление на выкиде насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -19070,8 +19144,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>5.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Рmax.вых.нас.раз.АПВ</short_text>
-		<form>4.3.2 Давление на выкиде насоса</form>
+		<short_text>Давление на выкиде насоса Разрешено АПВ</short_text>
+		<form>Давление на выкиде насоса</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
@@ -19090,9 +19164,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Рmax.вых.нас.сброс счет</short_text>
-		<form>4.3.2 Давление на выкиде насоса</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Давление на выкиде насоса Сброс счётчиков АПВ</short_text>
+		<form>Давление на выкиде насоса</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XXX_XX</format>
@@ -19112,8 +19186,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>50.0</value>
 		<text>Уставка останова</text>
-		<short_text>Рmax.вых.нас.Уст.давления</short_text>
-		<form>4.3.2 Давление на выкиде насоса</form>
+		<short_text>Давление на выкиде насоса Уставка останова</short_text>
+		<form>Давление на выкиде насоса</form>
 		<unit>PRESSURE_MPA</unit>
 		<unit_lcd>PRESSURE_MPA</unit_lcd>
 		<format>XX_XX</format>
@@ -19132,9 +19206,9 @@
 		<discret>100</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>25.0</value>
-		<text>Давление АПВ</text>
-		<short_text>Рmax.вых.нас.Давление АПВ</short_text>
-		<form>4.3.2 Давление на выкиде насоса</form>
+		<text>Уставка пуска</text>
+		<short_text>Давление на выкиде насоса Уставка пуска</short_text>
+		<form>Давление на выкиде насоса</form>
 		<unit>PRESSURE_MPA</unit>
 		<unit_lcd>PRESSURE_MPA</unit_lcd>
 		<format>XX_XX</format>
@@ -19315,8 +19389,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
-		<short_text>Рmax.вых.нас. Сброс уставок</short_text>
-		<form>NULL</form>
+		<short_text>Давление на выкиде насоса Сброс уставок</short_text>
+		<form>Давление на выкиде насоса</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
 		<code>106</code>
@@ -19588,7 +19662,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
-		<short_text>Макс.ток двиг. Сброс уставок</short_text>
+		<short_text>Предел тока двигателя Сброс уставок</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -19610,8 +19684,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Действие защиты</text>
-		<short_text>Перегрев вх.фильтра</short_text>
-		<form>4.6.5 Перегрев входного фильтра</form>
+		<short_text>Перегрев фильтра</short_text>
+		<form>Перегрев фильтра</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -19653,8 +19727,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Пусковое время</text>
-		<short_text>Перегрев вх.фильтра. Пуск.время</short_text>
-		<form>NULL</form>
+		<short_text>Перегрев фильтра Пусковое время</short_text>
+		<form>Перегрев фильтра</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -19674,8 +19748,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>1.0</value>
 		<text>Время</text>
-		<short_text>Перегрев вх.фильтра. Время</short_text>
-		<form>NULL</form>
+		<short_text>Перегрев фильтра Время</short_text>
+		<form>Перегрев фильтра</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
 		<format>XX_XX</format>
@@ -19689,17 +19763,17 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>60.0</min>
-		<max>86400.0</max>
+		<max>3599940.0</max>
 		<def>600.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>600.0</value>
 		<text>Задержка АПВ</text>
-		<short_text>Перегрев вх.фильтра. Зад.АПВ</short_text>
-		<form>4.6.5 Перегрев входного фильтра</form>
+		<short_text>Перегрев фильтра Задержка АПВ</short_text>
+		<form>Перегрев фильтра</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
-		<format>XX_XX</format>
+		<format>XXX_XX</format>
 		<code>13</code>
 		<comment>Перегрев вх.фильтра. Зад.АПВ</comment>
 	</param>
@@ -19716,8 +19790,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>3.0</value>
 		<text>Разрешено АПВ</text>
-		<short_text>Перегрев вх.фильтра. Раз.АПВ</short_text>
-		<form>4.6.5 Перегрев входного фильтра</form>
+		<short_text>Перегрев фильтра Разрешено АПВ</short_text>
+		<form>Перегрев фильтра</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XX</format>
@@ -19736,9 +19810,9 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>86400.0</value>
-		<text>Сброс счетчиков АПВ</text>
-		<short_text>Перегрев вх.фильтра. Сброс счёт.</short_text>
-		<form>4.6.5 Перегрев входного фильтра</form>
+		<text>Сброс счётчиков АПВ</text>
+		<short_text>Перегрев фильтра Сброс счётчиков АПВ</short_text>
+		<form>Перегрев фильтра</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_HH_MM</unit_lcd>
 		<format>XX_XX</format>
@@ -19757,7 +19831,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Уставка останова</text>
+		<text>NULL</text>
 		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>NULL</unit>
@@ -19968,8 +20042,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Сбросить значения уставок по умолчанию?</text>
-		<short_text>Перегрев вх.фильтра. Сброс уставок</short_text>
-		<form>Перегрев входного фильтра</form>
+		<short_text>Перегрев фильтра Сброс уставок</short_text>
+		<form>Перегрев фильтра</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -20512,8 +20586,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Состояние</text>
-		<short_text>Пропуск F</short_text>
+		<text>Действие режима</text>
+		<short_text>Пропуск резонансных частот</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
@@ -20555,7 +20629,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>20.0</value>
 		<text>Начальная частота</text>
-		<short_text>Пропуск F. Начальная F</short_text>
+		<short_text>Пропуск резонансных частот Начальная частота</short_text>
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -20576,7 +20650,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>25.0</value>
 		<text>Конечная частота</text>
-		<short_text>Пропуск F. Конечная F</short_text>
+		<short_text>Пропуск резонансных частот Конечная частота</short_text>
 		<form>NULL</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -20596,8 +20670,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>10.0</value>
-		<text>Скорость изменения частоты</text>
-		<short_text>Пропуск F. Скорость изм. F</short_text>
+		<text>Темп изменения частоты</text>
+		<short_text>Пропуск резонансных частот Темп изменения частоты</short_text>
 		<form>NULL</form>
 		<unit>TEMP_HZ_SS</unit>
 		<unit_lcd>TEMP_HZ_SS</unit_lcd>
@@ -20890,15 +20964,15 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>3000.0</value>
-		<text>Профиль настроек двигателя в ЧРП</text>
-		<short_text>Профиль ЧРП</short_text>
-		<form>3.1 Двигатель</form>
+		<text>Профиль двигателя в ЧРП</text>
+		<short_text>Профиль двигателя в ЧРП</short_text>
+		<form>Двигатель</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXX</format>
 		<code>13</code>
 		<values>1;2;500;1000;3000;6000;8500</values>
-		<comment>Профиль настроек двигателя в ЧРП</comment>
+		<comment>Профиль двигателя в ЧРП</comment>
 	</param>
 	<param>
 		<id>1031</id>
@@ -21516,7 +21590,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Загрузка Ia</text>
-		<short_text>Загр., %</short_text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -21537,7 +21611,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Загрузка Ib</text>
-		<short_text>Загр., %</short_text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -21558,7 +21632,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Загрузка Ic</text>
-		<short_text>Загр., %</short_text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -21853,7 +21927,7 @@
 		<value>0.0</value>
 		<text>Сохранить уставки в профиль</text>
 		<short_text>Конфигурации. Сохранение уставок в профиль</short_text>
-		<form>7.6 Конфигурации</form>
+		<form>Конфигурации</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -21875,7 +21949,7 @@
 		<value>0.0</value>
 		<text>Загрузить уставки из профиля</text>
 		<short_text>Конфигурации. Загрузка уставок из профиля</short_text>
-		<form>7.6 Конфигурации</form>
+		<form>Конфигурации</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -21897,7 +21971,7 @@
 		<value>0.0</value>
 		<text>Профиль уставок по умолчанию</text>
 		<short_text>Конфигурации. Профиль уставок по умолчанию</short_text>
-		<form>7.6 Конфигурации</form>
+		<form>Конфигурации</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>TEXT</format>
@@ -21919,7 +21993,7 @@
 		<value>0.0</value>
 		<text>Сбросить значения всех уставок по умолчанию?</text>
 		<short_text>Конфигурации. Сброс всех уставок</short_text>
-		<form>7.6 Конфигурации</form>
+		<form>Конфигурации</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -21962,7 +22036,7 @@
 		<value>0.0</value>
 		<text>Сохранить конфигурацию на USB носитель</text>
 		<short_text>Конфигурации. Сохранение конфигурации на USB носитель</short_text>
-		<form>7.6 Конфигурации</form>
+		<form>Конфигурации</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -21983,7 +22057,7 @@
 		<value>0.0</value>
 		<text>Загрузить конфигурацию с USB носителя</text>
 		<short_text>Конфигурации. Загрузка конфигурации с USB носителя</short_text>
-		<form>7.6 Конфигурации</form>
+		<form>Конфигурации</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NULL</unit_lcd>
 		<format>NULL</format>
@@ -22484,8 +22558,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Единицы измерения</text>
-		<short_text>Ан. вх. 1 ед. изм.</short_text>
-		<form>4.4.1 Защита по аналоговому входу 1</form>
+		<short_text>Аналоговый вход 1 Единицы измерения</short_text>
+		<form>Аналоговый вход 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -22505,8 +22579,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Единицы измерения</text>
-		<short_text>Ан. вх. 2 ед. изм.</short_text>
-		<form>4.4.2 Защита по аналоговому входу 2</form>
+		<short_text>Аналоговый вход 2 Единицы измерения</short_text>
+		<form>Аналоговый вход 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -22526,8 +22600,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Единицы измерения</text>
-		<short_text>Ан. вх. 3 ед. изм.</short_text>
-		<form>4.4.3 Защита по аналоговому входу 3</form>
+		<short_text>Аналоговый вход 3 Единицы измерения</short_text>
+		<form>Аналоговый вход 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -22547,8 +22621,8 @@
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
 		<text>Единицы измерения</text>
-		<short_text>Ан. вх 4 ед. изм.</short_text>
-		<form>4.4.4 Защита по аналоговому входу 4</form>
+		<short_text>Аналоговый вход 4 Единицы измерения</short_text>
+		<form>Аналоговый вход 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
 		<format>TEXT</format>
@@ -22567,9 +22641,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Максимальное значение АПВ</text>
-		<short_text>Ан. вх. 1 уст. макс. АПВ</short_text>
-		<form>4.4.1 Защита по аналоговому входу 1</form>
+		<text>Уставка пуска максимум</text>
+		<short_text>Аналоговый вход 1 Уставка пуска максимум</short_text>
+		<form>Аналоговый вход 1</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXX_X</format>
@@ -22588,9 +22662,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Максимальное значение АПВ</text>
-		<short_text>Ан. вх. 2 уст. макс. АПВ</short_text>
-		<form>4.4.1 Защита по аналоговому входу 2</form>
+		<text>Уставка пуска максимум</text>
+		<short_text>Аналоговый вход 2 Уставка пуска максимум</short_text>
+		<form>Аналоговый вход 2</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXX_X</format>
@@ -22609,9 +22683,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Максимальное значение АПВ</text>
-		<short_text>Ан. вх. 3 уст. макс. АПВ</short_text>
-		<form>4.4.1 Защита по аналоговому входу 3</form>
+		<text>Уставка пуска максимум</text>
+		<short_text>Аналоговый вход 3 Уставка пуска максимум</short_text>
+		<form>Аналоговый вход 3</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXX_X</format>
@@ -22630,9 +22704,9 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Максимальное значение АПВ</text>
-		<short_text>Ан. вх. 4 уст. макс. АПВ</short_text>
-		<form>4.4.1 Защита по аналоговому входу 4</form>
+		<text>Уставка пуска максимум</text>
+		<short_text>Аналоговый вход 4 Уставка пуска максимум</short_text>
+		<form>Аналоговый вход 4</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXX_X</format>
@@ -22969,10 +23043,10 @@
 		<value>15.0</value>
 		<text>Период записи ТМС первый час после останова</text>
 		<short_text>Период записи ТМС после останова</short_text>
-		<form>2.0 Архивы</form>
+		<form>Архивы</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MM_SS</unit_lcd>
-		<format>XXX_XX</format>
+		<format>XX_XX</format>
 		<code>13</code>
 		<comment>Период записи ТМС первый час после останова</comment>
 	</param>
@@ -23359,8 +23433,8 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>125000.0</value>
 		<text>Номинальная мощность</text>
-		<short_text>Мощн.двигателя</short_text>
-		<form>3.1 Двигатель</form>
+		<short_text>Номинальная мощность двигателя</short_text>
+		<form>Двигатель</form>
 		<unit>POWER_W</unit>
 		<unit_lcd>POWER_KW</unit_lcd>
 		<format>XXXX_X</format>
@@ -23380,8 +23454,8 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>380.0</value>
 		<text>Номинальное напряжение</text>
-		<short_text>Ном. напряжение двиг.</short_text>
-		<form>3.1 Двигатель</form>
+		<short_text>Номинальное напряжение двигателя</short_text>
+		<form>Двигатель</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
 		<format>XXXXXX</format>
@@ -23401,8 +23475,8 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>26.5</value>
 		<text>Номинальный ток</text>
-		<short_text>Ном. ток двиг.</short_text>
-		<form>3.1 Двигатель</form>
+		<short_text>Номинальный ток двигателя</short_text>
+		<form>Двигатель</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
 		<format>XXXX_X</format>
@@ -23422,8 +23496,8 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>2895.0</value>
 		<text>Номинальная скорость</text>
-		<short_text>Ном. скорость двиг.</short_text>
-		<form>3.1 Двигатель</form>
+		<short_text>Номинальная скорость двигателя</short_text>
+		<form>Двигатель</form>
 		<unit>RPM_RPM</unit>
 		<unit_lcd>RPM_RPM</unit_lcd>
 		<format>XXXXX</format>
@@ -23443,8 +23517,8 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>50.0</value>
 		<text>Номинальная частота</text>
-		<short_text>Ном. частота двиг.</short_text>
-		<form>3.1 Двигатель</form>
+		<short_text>Номинальная частота двигателя</short_text>
+		<form>Двигатель</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXX</format>
@@ -23464,8 +23538,8 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.85</value>
 		<text>Номинальный коэффициент мощности</text>
-		<short_text>Ном. коэф. мощ. двиг.</short_text>
-		<form>3.1 Двигатель</form>
+		<short_text>Номинальный коэффициент мощности двигателя</short_text>
+		<form>Двигатель</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>X_XX</format>
@@ -23521,7 +23595,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Напряжение холостого хода</text>
-		<short_text>Напряжение ХХ</short_text>
+		<short_text>Напряжение холостого хода двигателя</short_text>
 		<form>NULL</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23542,8 +23616,8 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Количество пар полюсов</text>
-		<short_text>Кол-во пар полюсов ПЭД</short_text>
-		<form>3.1 Двигатель</form>
+		<short_text>Количество пар полюсов двигателя</short_text>
+		<form>Двигатель</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>XXXXXX</format>
@@ -23563,7 +23637,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>40.0</value>
 		<text>Минимальная частота</text>
-		<short_text>Миним.частота регул.</short_text>
+		<short_text>Минимальная частота</short_text>
 		<form>3.3.1 Настройка ЧРП</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -23584,7 +23658,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>60.0</value>
 		<text>Максимальная частота</text>
-		<short_text>Максим.частота регул.</short_text>
+		<short_text>Максимальная частота</short_text>
 		<form>3.3.1 Настройка ЧРП</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
@@ -27632,8 +27706,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>2.0</value>
-		<text>Выходной фильтр</text>
-		<short_text>Выходной фильтр</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -28307,14 +28381,14 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>2000.0</value>
-		<text>Глубина спуска</text>
-		<short_text>Глубина спуска</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>LENGTH_M</unit>
 		<unit_lcd>LENGTH_M</unit_lcd>
 		<format>XXXXXX</format>
 		<code>0</code>
-		<comment>Глубина спуска</comment>
+		<comment>Глубина спуска в ЧРП</comment>
 	</param>
 	<param>
 		<id>10276</id>
@@ -29276,8 +29350,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Загрузка в ЧРП</text>
-		<short_text>Загрузка в ЧРП</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>PERCENT_PERCENT</unit>
 		<unit_lcd>PERCENT_PERCENT</unit_lcd>
@@ -29466,8 +29540,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>9999.0</value>
-		<text>Сопротивление изоляции</text>
-		<short_text>Сопротивление изоляции</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>RESISTANCE_OM</unit>
 		<unit_lcd>RESISTANCE_KOM</unit_lcd>
@@ -30559,8 +30633,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Дверь</text>
-		<short_text>Дверь</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>TEXT</unit_lcd>
@@ -30582,7 +30656,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
 		<text>NULL</text>
-		<short_text>Задержка отключения при неисправности инвертера</short_text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_SS</unit_lcd>
@@ -35202,8 +35276,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Напряжение Ua</text>
-		<short_text>Напряжение Ua</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -35223,8 +35297,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Напряжение Ub</text>
-		<short_text>Напряжение Ub</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -35244,8 +35318,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Напряжение Uc</text>
-		<short_text>Напряжение Uc</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -35330,7 +35404,7 @@
 		<value>NAN</value>
 		<text>Активная мощн.</text>
 		<short_text>Акт.Pвх, кВт</short_text>
-		<form>1.3 Текущие параметры сети</form>
+		<form>Текущие параметры сети</form>
 		<unit>ACTIV_POWER_W</unit>
 		<unit_lcd>ACTIV_POWER_KW</unit_lcd>
 		<format>XXXX_XX</format>
@@ -35351,7 +35425,7 @@
 		<value>NAN</value>
 		<text>Частота</text>
 		<short_text>Частота</short_text>
-		<form>1.3 Текущие параметры сети</form>
+		<form>Текущие параметры сети</form>
 		<unit>FREQUENCY_HZ</unit>
 		<unit_lcd>FREQUENCY_HZ</unit_lcd>
 		<format>XXXX_XX</format>
@@ -35372,7 +35446,7 @@
 		<value>NAN</value>
 		<text>Полная мощн.</text>
 		<short_text>Pвх., кВА</short_text>
-		<form>1.3 Текущие параметры сети</form>
+		<form>Текущие параметры сети</form>
 		<unit>FULL_POWER_VA</unit>
 		<unit_lcd>FULL_POWER_KVA</unit_lcd>
 		<format>XXXX_XX</format>
@@ -35391,9 +35465,9 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Активная энергия</text>
-		<short_text>Активная энергия</short_text>
-		<form>6.3 Статистика</form>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<format>XXXX_XX</format>
@@ -35412,6 +35486,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -35431,6 +35507,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -35450,6 +35528,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -35469,8 +35549,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Коэф.Pвх</text>
-		<short_text>Коэф.Pвх</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -35489,6 +35569,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -35507,6 +35589,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -35525,6 +35609,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
@@ -35543,6 +35629,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>FULL_POWER_VA</unit>
 		<unit_lcd>FULL_POWER_KVA</unit_lcd>
@@ -35561,6 +35649,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>FULL_POWER_VA</unit>
 		<unit_lcd>FULL_POWER_KVA</unit_lcd>
@@ -35579,6 +35669,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>FULL_POWER_VA</unit>
 		<unit_lcd>FULL_POWER_KVA</unit_lcd>
@@ -35597,6 +35689,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>ACTIV_POWER_W</unit>
 		<unit_lcd>ACTIV_POWER_KW</unit_lcd>
@@ -35615,6 +35709,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>ACTIV_POWER_W</unit>
 		<unit_lcd>ACTIV_POWER_KW</unit_lcd>
@@ -35633,6 +35729,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>ACTIV_POWER_W</unit>
 		<unit_lcd>ACTIV_POWER_KW</unit_lcd>
@@ -35651,8 +35749,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Реактивная мощность</text>
-		<short_text>Реакт.Pвх, кВАр</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>REACTIV_POWER_VAR</unit>
 		<unit_lcd>REACTIV_POWER_KVAR</unit_lcd>
@@ -35672,6 +35770,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>REACTIV_POWER_VAR</unit>
 		<unit_lcd>REACTIV_POWER_KVAR</unit_lcd>
@@ -35690,6 +35790,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>REACTIV_POWER_VAR</unit>
 		<unit_lcd>REACTIV_POWER_KVAR</unit_lcd>
@@ -35708,6 +35810,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>REACTIV_POWER_VAR</unit>
 		<unit_lcd>REACTIV_POWER_KVAR</unit_lcd>
@@ -35728,7 +35832,7 @@
 		<value>NAN</value>
 		<text>Общая активная энергия</text>
 		<short_text>Общая активная энергия</short_text>
-		<form>NULL</form>
+		<form>Статистика</form>
 		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<format>XXXX_XX</format>
@@ -35747,6 +35851,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
@@ -35766,6 +35872,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
@@ -35785,6 +35893,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
@@ -35806,7 +35916,7 @@
 		<value>NAN</value>
 		<text>Активная энергия за предыдущий день</text>
 		<short_text>Активная энергия за предыдущий день</short_text>
-		<form>NULL</form>
+		<form>Статистика</form>
 		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<format>XXXX_XX</format>
@@ -35825,6 +35935,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
@@ -35844,6 +35956,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
@@ -35863,6 +35977,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
@@ -35884,7 +36000,7 @@
 		<value>NAN</value>
 		<text>Активная энергия за предыдущий месяц</text>
 		<short_text>Активная энергия за предыдущий месяц</short_text>
-		<form>NULL</form>
+		<form>Статистика</form>
 		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
 		<format>XXXX_XX</format>
@@ -35903,6 +36019,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>ACTIVE_ENERGY_KW_HH</unit>
 		<unit_lcd>ACTIVE_ENERGY_KW_HH</unit_lcd>
@@ -35922,9 +36040,9 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Реактивная энергия</text>
-		<short_text>Реактивная энергия</short_text>
-		<form>6.3 Статистика</form>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
 		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<format>XXXX_XX</format>
@@ -35945,7 +36063,7 @@
 		<value>NAN</value>
 		<text>Общая реактивная энергия</text>
 		<short_text>Общая реактивная энергия</short_text>
-		<form>NULL</form>
+		<form>Статистика</form>
 		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<format>XXXX_XX</format>
@@ -35964,6 +36082,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
@@ -35983,6 +36103,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
@@ -36002,6 +36124,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
@@ -36023,7 +36147,7 @@
 		<value>NAN</value>
 		<text>Реактивная энергия за предыдущий день</text>
 		<short_text>Реактивная энергия за предыдущий день</short_text>
-		<form>NULL</form>
+		<form>Статистика</form>
 		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<format>XXXX_XX</format>
@@ -36042,6 +36166,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
@@ -36061,6 +36187,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
@@ -36080,6 +36208,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
@@ -36101,7 +36231,7 @@
 		<value>NAN</value>
 		<text>Реактивная энергия за предыдущий месяц</text>
 		<short_text>Реактивная энергия за предыдущий месяц</short_text>
-		<form>NULL</form>
+		<form>Статистика</form>
 		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
 		<format>XXXX_XX</format>
@@ -36120,6 +36250,8 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>NULL</form>
 		<unit>REACTIVE_ENERGY_KVAR_HH</unit>
 		<unit_lcd>REACTIVE_ENERGY_KVAR_HH</unit_lcd>
@@ -36160,8 +36292,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>1.0</value>
-		<text>Коэффициент трансформации напряжения</text>
-		<short_text>Коэффициент трансформации напряжения счётчика электроэнергии</short_text>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
 		<form>Счётчик электроэнергии</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
