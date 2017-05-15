@@ -427,6 +427,7 @@ void Parameters::saveConfigProfile(int profile)
   case 3: address = AddrSaveConfig3; break;
   case 4: address = AddrSaveConfig4; break;
   case 5: address = AddrSaveConfig5; break;
+  default: address = AddrSaveConfig1; break;
   }
   ksu.saveConfig(address);
   vsd->saveConfig(address);
@@ -604,6 +605,7 @@ void Parameters::loadConfigProfile(int profile)
   case 3: address = AddrSaveConfig3; break;
   case 4: address = AddrSaveConfig4; break;
   case 5: address = AddrSaveConfig5; break;
+  default: address = AddrSaveConfig1; break;
   }
   ksu.loadConfig(address);
   vsd->loadConfig(address);
@@ -782,6 +784,7 @@ void Parameters::setProfileDefaultSetpoint()
   case 3: address = AddrSaveConfig3; break;
   case 4: address = AddrSaveConfig4; break;
   case 5: address = AddrSaveConfig5; break;
+  default: address = AddrSaveConfig1; break;
   }
   ksu.loadConfigInProfileDefault(address, profileDefaultParams_);
   vsd->loadConfigInProfileDefault(address, profileDefaultParams_);
