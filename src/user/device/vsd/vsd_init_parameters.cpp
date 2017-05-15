@@ -3302,7 +3302,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].def                         = 3950.0;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].discret                     = 1;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].code                        = 0;
-  // Глубина спуска
+  // Глубина спуска в ЧРП
   parameters_[VSD_DEPTH - VSD_BEGIN].id                                          = VSD_DEPTH;
   parameters_[VSD_DEPTH - VSD_BEGIN].access                                      = ACCESS_OPERATOR;
   parameters_[VSD_DEPTH - VSD_BEGIN].operation                                   = OPERATION_READ;

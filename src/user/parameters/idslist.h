@@ -398,9 +398,9 @@ enum enID
   CCS_PROT_OTHER_LIMIT_RESTART_RESTART_DELAY = 392,          //!< Задержка АПВ уставка
   CCS_PROT_OTHER_LIMIT_RESTART_RESTART_LIMIT = 393,          //!< Количество АПВ уставка
   CCS_PROT_OTHER_LIMIT_RESTART_RESTART_RESET = 394,          //!< Автосброс счетчика АПВ
-  CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT = 395,          //!< Макс. число пусков
+  CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT = 395,          //!< Превышение числа пусков Уставка останова
   CCS_PROT_OTHER_LIMIT_RESTART_RESTART_SETPOINT = 396,       //!< Условие АПВ уставка
-  CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER = 397,              //!< Период времени
+  CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER = 397,              //!< Превышение числа пусков Сброс счётчиков АПВ
   CCS_PROT_OTHER_LIMIT_RESTART_RESTART_FLAG = 398,           //!< Текущий параметр Флаг что защита в АПВ
   CCS_PROT_OTHER_LIMIT_RESTART_STATE = 399,                  //!< Текущий параметр состояние автомата
   CCS_PROT_OTHER_LIMIT_RESTART_TIME = 400,                   //!< Текущий параметр Фиксированное время
@@ -476,7 +476,7 @@ enum enID
   CCS_RGM_MODE_DATE_TIME = 470,                              //!< Параметры ВНР
   CCS_RGM_MODE_CURRENT = 471,                                //!< 
   CCS_RGM_MODE_VOLTAGE = 472,                                //!< 
-  CCS_RGM_MODE_LOAD = 473,                                   //!< 
+  CCS_RESERVED_473 = 473,                                    //!< 
   CCS_RGM_MAINTENANCE_PARAM_MODE = 474,                      //!< Режим поддержания параметра. Включение
   CCS_RGM_MAINTENANCE_PARAM_TYPE = 475,                      //!< Режим поддержания параметра. Тип параметра
   CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE = 476,                //!< Режим поддержания параметра. Зависимость
@@ -672,7 +672,7 @@ enum enID
   CCS_GENERAL_CONDITION = 666,                               //!< Общее состояние
   CCS_COEF_TRANSFORMATION = 667,                             //!< Коэффициент трансформации
   CCS_LAST_STOP_REASON_TMP = 668,                            //!< Причина последнего останова - регистр временного хранения значения
-  CCS_WORK_WITH_LOW_RESISTANCE = 669,                        //!< Работа с пониженным сопротивлением изоляции
+  CCS_RESERVED_669 = 669,                                    //!< Работа с пониженным сопротивлением изоляции
   CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_FLAG = 670,       //!< Защита ЗСП: Флаг использования прогрессивной задержки АПВ
   CCS_RGM_CHANGE_FREQ_STATE = 671,                           //!< Состояние автомата режима "Программного изменения частоты"
   CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD = 672,                 //!< Начальная уставка ЗСП режима "Программного изменения частоты"
@@ -765,7 +765,7 @@ enum enID
   CCS_CMD_REBOOT_MASTER = 759,                               //!< Команда перезагрузки модуля AM335x
   CCS_CMD_SYNC_ALL_PARAMS = 760,                             //!< Команда синхронизации параметров
   CCS_CMD_START_REBOOT_SLAVE = 761,                          //!< Команда запуска перезапуска Slave (STM32)
-  CCS_INTERFACE_CYCLE_TIME = 762,                            //!< Время циклического переключения окон состояния
+  CCS_INTERFACE_CYCLE_TIME = 762,                            //!< Время автоматического переключения окон
   CCS_CMD_UPDATE_SW_MASTER = 763,                            //!< Команда обновления ПО модуля AM335x
   CCS_CMD_START_UPDATE_SW_SLAVE = 764,                       //!< Команда запуска перезапуска Slave (STM32)
   CCS_ERROR_SLAVE = 765,                                     //!< Регистр ошибок Slave
@@ -1033,7 +1033,7 @@ enum enID
   CCS_RGM_RUN_PUSH_COUNTER = 1027,                           //!< Текущее количество толчков
   CCS_RGM_RUN_PUSH_TIMER = 1028,                             //!< Текущее значение таймера-счётчика
   CCS_RGM_RUN_SWING_COUNTER = 1029,                          //!< Количество текущих толчков в режиме пуска "Раскачка"
-  CCS_MOTOR_TYPE_PROFILE_VSD = 1030,                         //!< Профиль настроек двигателя в ЧРП
+  CCS_MOTOR_TYPE_PROFILE_VSD = 1030,                         //!< Профиль двигателя в ЧРП
   CCS_CMD_TYPE_PROFILE_VSD = 1031,                           //!< Команда применения профиля ЧРП
   CCS_SHIFT_RESISTANCE_ISOLATION = 1032,                     //!< Смещение сопротивления изоляции
   CCS_AXIS_SHIFT_RESISTANCE_ISOLATION = 1033,                //!< Знак смещения сопротивления изоляции
@@ -1411,7 +1411,7 @@ enum enID
   VSD_COEF_VOLTAGE_OUT_1 = 10272,                            //!< Коэф. корр. показ.напряжения Uвых
   VSD_COEF_VOLTAGE_OUT_2 = 10273,                            //!< Коэффициент корр.напряжения Uвых
   VSD_TRANS_VOLTAGE_TAP_OFF = 10274,                         //!< Напряжение отпайки
-  VSD_DEPTH = 10275,                                         //!< Глубина спуска
+  VSD_DEPTH = 10275,                                         //!< Глубина спуска в ЧРП
   VSD_ETALON_FAST_OFF = 10276,                               //!< Быстрый останов
   VSD_ETALON_UNLOCK = 10277,                                 //!< Сброс аварии
   VSD_ON = 10278,                                            //!< Запуск
