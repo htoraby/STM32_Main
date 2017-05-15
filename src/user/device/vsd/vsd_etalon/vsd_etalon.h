@@ -15,7 +15,7 @@ class RegimeRunEtalon;
 
 enum enVsdEtalonAlarm {
   VSD_ETALON_ALARM_UNDERLOAD      = 3001,   //!< Недогруз
-  VSD_ETALON_ALARM_MTZ_OR_ASYNC   = 3002,   //!< МТЗ или рассинхронизация ВД
+  VSD_ETALON_ALARM_OUT_OF_SYNC    = 3002,   //!< Рассинхронизация ВД
   VSD_ETALON_ALARM_RESISTANCE     = 3003,   //!< Низкое Rиз
   VSD_ETALON_ALARM_UNDERVOLTAGE   = 3004,   //!< Низкое напряжение
   VSD_ETALON_ALARM_OVERVOLTAGE    = 3005,   //!< Высокое напряжение
