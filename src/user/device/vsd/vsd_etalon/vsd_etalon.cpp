@@ -259,6 +259,7 @@ bool VsdEtalon::checkPreventVsd()
 void VsdEtalon::getNewValue(uint16_t id)
 {
   float value = 0;
+  uint8_t err = ok_r;
   // Преобразуем данные из полученного типа данных в float
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
 
@@ -298,7 +299,9 @@ void VsdEtalon::getNewValue(uint16_t id)
     // Преобразования для параметров требующих особой обработки по id
     switch (id) {
     case VSD_MOTOR_TYPE:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_MOTOR_TYPE) != value) {
         parameters.set(CCS_MOTOR_TYPE, value);
         ksu.setMaxBaseFrequency();
@@ -330,8 +333,10 @@ void VsdEtalon::getNewValue(uint16_t id)
       setValue(VSD_UF_CHARACTERISTIC_U_4, roundf(BASE_VOLTAGE * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_5_PERCENT:
-      setValue(id, value);
+      err = setValue(id, value);
       setValue(VSD_UF_CHARACTERISTIC_U_5, roundf(BASE_VOLTAGE * value / 100.0));
+      if (err)
+        break;
       if (value > 100)
         ksu.setError(SetVoltageTapOfErr);
       break;
@@ -346,7 +351,9 @@ void VsdEtalon::getNewValue(uint16_t id)
       parameters.set(CCS_VERSION_SW_VSD, value);
       break;
     case VSD_SW_STARTUP_FREQUENCY:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if ((parameters.get(CCS_RGM_RUN_PUSH_FREQ) != value) &&
           parameters.get(CCS_RGM_RUN_PUSH_MODE))
         parameters.set(CCS_RGM_RUN_PUSH_FREQ, value);
@@ -355,55 +362,75 @@ void VsdEtalon::getNewValue(uint16_t id)
         parameters.set(CCS_RGM_RUN_SWING_FREQ, value);
       break;
     case VSD_FREQ_SKIP_START_FREQ:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ) != value)
         parameters.set(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ, value);
       break;
     case VSD_FREQ_SKIP_STOP_FREQ:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ) != value)
         parameters.set(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ, value);
       break;
     case VSD_FREQ_SKIP_ACCEL:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_TEMP) != value)
         parameters.set(CCS_RGM_RUN_SKIP_RESONANT_TEMP, value);
       break;
     case VSD_I_LIMIT_MODE:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_RGM_CURRENT_LIMIT_MODE) && !value)
         parameters.set(CCS_RGM_CURRENT_LIMIT_MODE, Regime::OffAction);
       else if (!parameters.get(CCS_RGM_CURRENT_LIMIT_MODE) && value)
         parameters.set(CCS_RGM_CURRENT_LIMIT_MODE, Regime::OnAction);
       break;
     case VSD_ILIMIT:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       parameters.set(CCS_RGM_CURRENT_LIMIT_SETPOINT, value);
       break;
     case VSD_I_LIMIT_TM:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       parameters.set(CCS_RGM_CURRENT_LIMIT_DELAY_REACTION, value);
       break;
     case VSD_SW_STARTUP_U_PULSE:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if ((parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) != (value + 100.0)) &&
           parameters.get(CCS_RGM_RUN_PUSH_MODE))
         parameters.set(CCS_RGM_RUN_PUSH_VOLTAGE, value + 100.0);
       break;
     case VSD_RGM_RUN_PUSH_UPTIME:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if ((parameters.get(CCS_RGM_RUN_PUSH_TIME) != value) &&
           parameters.get(CCS_RGM_RUN_PUSH_MODE))
         parameters.set(CCS_RGM_RUN_PUSH_TIME, value);
       break;
     case VSD_RGM_RUN_PUSH_PERIOD:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if ((parameters.get(CCS_RGM_RUN_PUSH_PERIOD) != value) &&
           parameters.get(CCS_RGM_RUN_PUSH_MODE))
         parameters.set(CCS_RGM_RUN_PUSH_PERIOD, value);
       break;
     case VSD_SW_STARTUP_OSC_COUNT:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if ((parameters.get(CCS_RGM_RUN_PUSH_QUANTITY) != value) &&
           parameters.get(CCS_RGM_RUN_PUSH_MODE))
         parameters.set(CCS_RGM_RUN_PUSH_QUANTITY, value);
@@ -412,31 +439,41 @@ void VsdEtalon::getNewValue(uint16_t id)
         parameters.set(CCS_RGM_RUN_SWING_QUANTITY, value);
       break;
     case VSD_ETALON_DIRECT_RUN_MODE:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) && !value)
         parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OffAction, NoneType);
       else if (!parameters.get(CCS_RGM_RUN_DIRECT_MODE) && value)
         parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OnAction, NoneType);
       break;
     case VSD_ETALON_DIRECT_RUN_SOFT_MODE:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_RGM_RUN_SOFT_MODE) && !value)
         parameters.set(CCS_RGM_RUN_SOFT_MODE, Regime::OffAction);
       else if (!parameters.get(CCS_RGM_RUN_SOFT_MODE) && value)
         parameters.set(CCS_RGM_RUN_SOFT_MODE, Regime::OnAction);
       break;
     case VSD_MOTOR_INDUCTANCE:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_MOTOR_INDUCTANCE) != value)
         parameters.set(CCS_MOTOR_INDUCTANCE, value);
       break;
     case VSD_TRANS_CABLE_CROSS:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_TRANS_CABLE_CROSS) != value)
         parameters.set(CCS_TRANS_CABLE_CROSS, value);
       break;
     case VSD_TRANS_VOLTAGE_TAP_OFF:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_TRANS_VOLTAGE_TAP_OFF) != value)
         parameters.set(CCS_TRANS_VOLTAGE_TAP_OFF, value);
       break;
@@ -446,12 +483,16 @@ void VsdEtalon::getNewValue(uint16_t id)
         parameters.set(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, value);
       break;
     case VSD_BASE_VOLTAGE:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_BASE_VOLTAGE) != value)
         parameters.set(CCS_BASE_VOLTAGE, value);
       break;
     case VSD_BASE_FREQUENCY:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_BASE_FREQUENCY) != value)
         parameters.set(CCS_BASE_FREQUENCY, value);
       break;
@@ -469,17 +510,23 @@ void VsdEtalon::getNewValue(uint16_t id)
       ksu.calcMotorSpeed();
       break;
     case VSD_COEF_OUT_CURRENT_1:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_COEF_OUT_CURRENT_1) != value)
         parameters.set(CCS_COEF_OUT_CURRENT_1, value);
       break;
     case VSD_COEF_OUT_CURRENT_2:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_COEF_OUT_CURRENT_2) != value)
         parameters.set(CCS_COEF_OUT_CURRENT_2, value);
       break;
     case VSD_COEF_OUT_CURRENT_3:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_COEF_OUT_CURRENT_3) != value)
         parameters.set(CCS_COEF_OUT_CURRENT_3, value);
       break;
@@ -490,14 +537,18 @@ void VsdEtalon::getNewValue(uint16_t id)
       setValue(id, value);
       break;
     case VSD_PROT_NO_CONNECT_MODE:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE) && !value)
         parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, Protection::ProtModeOff);
       else if (!parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE) && value)
         parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, Protection::ProtModeOn);
       break;
     case VSD_PROT_NO_CONNECT_TRIP_DELAY:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY) != value)
         parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY, value);
       break;
