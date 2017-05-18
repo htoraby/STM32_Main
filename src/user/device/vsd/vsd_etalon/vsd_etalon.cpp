@@ -11,8 +11,6 @@
 #include "vsd_etalon_log.h"
 #include "protection.h"
 
-#define BASE_VOLTAGE 380
-
 VsdEtalon::VsdEtalon()
 {
   regimeRun_ = new RegimeRunEtalon();
@@ -318,23 +316,23 @@ void VsdEtalon::getNewValue(uint16_t id)
       break;
     case VSD_UF_CHARACTERISTIC_U_1_PERCENT:           // Получили точку напряжения U/f
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_1, roundf(BASE_VOLTAGE * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_1, roundf(getValue(VSD_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_2_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_2, roundf(BASE_VOLTAGE * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_2, roundf(getValue(VSD_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_3_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_3, roundf(BASE_VOLTAGE * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_3, roundf(getValue(VSD_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_4_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_4, roundf(BASE_VOLTAGE * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_4, roundf(getValue(VSD_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_5_PERCENT:
       err = setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_5, roundf(BASE_VOLTAGE * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_5, roundf(getValue(VSD_BASE_VOLTAGE) * value / 100.0));
       if (err)
         break;
       if (value > 100)
@@ -893,10 +891,15 @@ void VsdEtalon::readUfCharacterictic()
   readInDevice(VSD_UF_CHARACTERISTIC_F_3);
   readInDevice(VSD_UF_CHARACTERISTIC_F_4);
   readInDevice(VSD_UF_CHARACTERISTIC_F_5);
+  setValidity(VSD_UF_CHARACTERISTIC_U_1_PERCENT, err_r);
   readInDevice(VSD_UF_CHARACTERISTIC_U_1_PERCENT);
+  setValidity(VSD_UF_CHARACTERISTIC_U_2_PERCENT, err_r);
   readInDevice(VSD_UF_CHARACTERISTIC_U_2_PERCENT);
+  setValidity(VSD_UF_CHARACTERISTIC_U_3_PERCENT, err_r);
   readInDevice(VSD_UF_CHARACTERISTIC_U_3_PERCENT);
+  setValidity(VSD_UF_CHARACTERISTIC_U_4_PERCENT, err_r);
   readInDevice(VSD_UF_CHARACTERISTIC_U_4_PERCENT);
+  setValidity(VSD_UF_CHARACTERISTIC_U_5_PERCENT, err_r);
   readInDevice(VSD_UF_CHARACTERISTIC_U_5_PERCENT);
 }
 
@@ -929,9 +932,9 @@ void VsdEtalon::readTransNeedVoltageTapOff()
   readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
   osDelay(200);
 
-  float value = getValue(VSD_BASE_VOLTAGE) + 10;
+  float value = getValue(VSD_BASE_VOLTAGE);
   if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT)
-    value = BASE_VOLTAGE*(getValue(VSD_TRANS_NEED_VOLTAGE_TAP_OFF)/getValue(VSD_TRANS_VOLTAGE_TAP_OFF)) + 10;
+    value = getValue(VSD_BASE_VOLTAGE)*(getValue(VSD_TRANS_NEED_VOLTAGE_TAP_OFF)/getValue(VSD_TRANS_VOLTAGE_TAP_OFF));
 
   setMax(VSD_UF_CHARACTERISTIC_U_1, value);
   setMax(VSD_UF_CHARACTERISTIC_U_2, value);
@@ -944,7 +947,7 @@ void VsdEtalon::readTransNeedVoltageTapOff()
 int VsdEtalon::setUfU(uint16_t idU, uint16_t idUPercent, float value)
 {
   if (!Vsd::setUfU(idU, value)) {
-    if (!setValue(idUPercent, (getValue(idU) * 100.0) / BASE_VOLTAGE)) {
+    if (!setValue(idUPercent, (getValue(idU) * 100.0) / getValue(VSD_BASE_VOLTAGE))) {
       writeToDevice(idUPercent, getValue(idUPercent));
       return ok_r;
     }
