@@ -4,6 +4,7 @@
 #include "board.h"
 
 #define FLASH_TIMEOUT 5000
+#define FLASH_SECTOR_SIZE 4096
 
 /*!
  * \brief Список SPI каналов задействованых для Flash памяти
@@ -17,7 +18,7 @@ typedef enum {
 typedef struct {
   SPI_HandleTypeDef spi;  //!< Структура SPI
   osSemaphoreId cmdSemaphoreId;
-  uint8_t spiReady;
+  volatile uint8_t spiReady;
   GPIO_TypeDef* nss_port; //!< Порт вывода NSS
   uint16_t nss_pin;       //!< Номер вывода NSS
   uint8_t manufacturer;   //!< Производитель
@@ -25,6 +26,7 @@ typedef struct {
   uint32_t pageSize;      //!< Размер страницы
   uint32_t sectorSize;    //!< Размер сектора
   uint32_t blockSize;     //!< Размер блока
+  volatile uint8_t *data;
 } FlashTypeDef;
 
 extern FlashTypeDef flashExts[];
