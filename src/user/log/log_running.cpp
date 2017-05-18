@@ -85,10 +85,10 @@ void LogRunning::add()
   // Получение значений с ЧРП Ia, Ib, Ic, Ud, cos
   vsd->log()->readRunningLog(iaValue, ibValue, icValue, udValue, cosValue);
 
-  memset(buffer, 0, sizeof(buffer));
+  memset((uint8_t *)buffer, 0, sizeof(buffer));
   *(uint32_t*)(buffer) = eventId_;
   *(float*)(buffer+4) = parameters.get(CCS_RESISTANCE_ISOLATION);
-  write(buffer, SIZE_BUF_LOG, false);
+  write((uint8_t *)buffer, SIZE_BUF_LOG, false);
 
   int idxU = 0;
   int idxI = 0;
@@ -100,7 +100,7 @@ void LogRunning::add()
   int pauseCount = 0;
 
   for (int i = 0; i < ADC_POINTS_NUM; ) {
-    memset(buffer, 0xFF, sizeof(buffer));
+    memset((uint8_t *)buffer, 0xFF, sizeof(buffer));
     for (int j = 0; j < 4; ++j) {
       switch (typeVsd) {
       case VSD_TYPE_ETALON:
@@ -153,9 +153,9 @@ void LogRunning::add()
       i++;
     }
     if (i == ADC_POINTS_NUM)
-      write(buffer, SIZE_BUF_LOG, true, true);
+      write((uint8_t *)buffer, SIZE_BUF_LOG, true, true);
     else
-      write(buffer, SIZE_BUF_LOG, false);
+      write((uint8_t *)buffer, SIZE_BUF_LOG, false);
 
     if (pauseCount < 20) {
       pauseCount++;

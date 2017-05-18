@@ -17,7 +17,7 @@ uint32_t LogEvent::add(EventCode code, EventType type, EventId id,
 {
   osSemaphoreWait(semaphoreId_, osWaitForever);
 
-  memset(buffer, 0, sizeof(buffer));
+  memset((uint8_t *)buffer, 0, sizeof(buffer));
 
   const uint32_t addr = address();
   time_t time = ksu.getTime();
@@ -31,7 +31,7 @@ uint32_t LogEvent::add(EventCode code, EventType type, EventId id,
   *(float*)(buffer+12) = oldValue;
   *(float*)(buffer+16) = newValue;
   *(uint8_t*)(buffer+20) = units;
-  StatusType status = write(buffer, LOG_EVENT_SIZE);
+  StatusType status = write((uint8_t *)buffer, LOG_EVENT_SIZE);
 
   // Сообщить контроллеру визуализации о новом событии
   if (status == StatusOk)

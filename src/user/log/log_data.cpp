@@ -84,8 +84,8 @@ void LogData::add()
 
 void LogData::add(uint8_t code)
 {
-  memset(buffer, 0, sizeof(buffer));
-  float tempVal = 0.0;
+  memset((uint8_t *)buffer, 0, sizeof(buffer));
+  volatile float tempVal = 0.0;
   time_t time = ksu.getTime();
 
   ++id_;
@@ -161,17 +161,17 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+249) = parameters.get(TMS_PSW_TMSP_1);
 
 #if (HARDWARE_VERSION >= 0x0200)
-  write(buffer, 253, false);
+  write((uint8_t *)buffer, 253, false);
 
-  memset(buffer, 0, sizeof(buffer));
+  memset((uint8_t *)buffer, 0, sizeof(buffer));
 
   *(float*)(buffer+0) = parameters.get(CCS_VOLTAGE_PHASE_1_2);
   *(float*)(buffer+4) = parameters.get(CCS_VOLTAGE_PHASE_2_3);
   *(float*)(buffer+8) = parameters.get(CCS_VOLTAGE_PHASE_3_1);
 
-  write(buffer, 256);
+  write((uint8_t *)buffer, 256);
 #else
-  write(buffer, 253);
+  write((uint8_t *)buffer, 253);
 #endif
 }
 
