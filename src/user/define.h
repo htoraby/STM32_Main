@@ -14,12 +14,12 @@
  */
 union unTypeData
 {
-  unsigned char      char_t[4];
-  signed short int   int16_t[2];
-  signed long int    int32_t;
-  unsigned short int uint16_t[2];
-  unsigned long int  uint32_t;
-  float              float_t;
+  volatile unsigned char      char_t[4];
+  volatile signed short int   int16_t[2];
+  volatile signed long int    int32_t;
+  volatile unsigned short int uint16_t[2];
+  volatile unsigned long int  uint32_t;
+  volatile float              float_t;
 };
 
 /*!
