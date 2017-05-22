@@ -1662,8 +1662,8 @@
 		<short_text>Дисбаланс напряжения Разрешено АПВ</short_text>
 		<form>Дисбаланс напряжения</form>
 		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>NULL</unit_lcd>
-		<format>NULL</format>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -1978,8 +1978,8 @@
 		<short_text>Дисбаланс токов Разрешено АПВ</short_text>
 		<form>Дисбаланс токов</form>
 		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>NULL</unit_lcd>
-		<format>NULL</format>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -3515,8 +3515,8 @@
 		<short_text>Дисбаланс токов двигателя Разрешено АПВ</short_text>
 		<form>Дисбаланс токов двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>NULL</unit_lcd>
-		<format>NULL</format>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
@@ -4102,8 +4102,8 @@
 		<short_text>Рассинхронизация двигателя Разрешено АПВ</short_text>
 		<form>Рассинхронизация двигателя</form>
 		<unit>NUMERIC_NUMBER</unit>
-		<unit_lcd>NULL</unit_lcd>
-		<format>NULL</format>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXXX</format>
 		<code>13</code>
 		<comment>Количество АПВ уставка</comment>
 	</param>
