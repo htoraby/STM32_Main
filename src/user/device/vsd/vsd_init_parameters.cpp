@@ -3298,7 +3298,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].value.float_t               = 3950.0;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].min                         = 380.0;
-  parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].max                         = 5000.0;
+  parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].max                         = 10000.0;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].def                         = 3950.0;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].discret                     = 1;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].code                        = 0;
@@ -3982,7 +3982,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].validity               = VALIDITY_ERROR;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].value.float_t          = 380.0;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].min                    = 380.0;
-  parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].max                    = 5000.0;
+  parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].max                    = 10000.0;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].def                    = 380.0;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].discret                = 1;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].code                   = 0;
