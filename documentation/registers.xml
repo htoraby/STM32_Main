@@ -245,7 +245,7 @@
 		<valid>VALIDITY_OK</valid>
 		<value>9999000.0</value>
 		<text>Сопр.изоляции</text>
-		<short_text>R, кОм</short_text>
+		<short_text>Rиз., кОм</short_text>
 		<form>NULL</form>
 		<unit>RESISTANCE_OM</unit>
 		<unit_lcd>RESISTANCE_KOM</unit_lcd>
@@ -33197,7 +33197,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>P на приёме</text>
-		<short_text>P, МПа</short_text>
+		<short_text>Pвх, МПа</short_text>
 		<form>1.1 Текущие параметры - Состояние; 1.5 Текущие параметры ТМС</form>
 		<unit>PRESSURE_MPA</unit>
 		<unit_lcd>PRESSURE_MPA</unit_lcd>
@@ -33363,7 +33363,7 @@
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
 		<text>Q на выкиде</text>
-		<short_text>Расход, куб/м3</short_text>
+		<short_text>Расход, м3/сут</short_text>
 		<form>1.5 Текущие параметры ТМС</form>
 		<unit>FLOW_M3_DD</unit>
 		<unit_lcd>FLOW_M3_DD</unit_lcd>
