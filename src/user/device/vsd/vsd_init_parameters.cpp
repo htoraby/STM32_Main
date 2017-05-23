@@ -3962,7 +3962,7 @@ void Vsd::initParameters()
   parameters_[VSD_FLAG - VSD_BEGIN].def                                          = 0.0;
   parameters_[VSD_FLAG - VSD_BEGIN].discret                                      = 1;
   parameters_[VSD_FLAG - VSD_BEGIN].code                                         = 13;
-  // 
+  // Сопротивление изоляции
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].id                    = VSD_ETALON_RESISTANCE_ISOLATION;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].access                = ACCESS_OPERATOR;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].operation             = OPERATION_READ;

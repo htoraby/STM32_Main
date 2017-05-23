@@ -29540,13 +29540,14 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>9999.0</value>
-		<text>NULL</text>
-		<short_text>NULL</short_text>
+		<text>Сопротивление изоляции</text>
+		<short_text>Сопротивление изоляции</short_text>
 		<form>NULL</form>
 		<unit>RESISTANCE_OM</unit>
 		<unit_lcd>RESISTANCE_KOM</unit_lcd>
 		<format>XXXXXX</format>
 		<code>0</code>
+		<comment>Сопротивление изоляции</comment>
 	</param>
 	<param>
 		<id>10331</id>
