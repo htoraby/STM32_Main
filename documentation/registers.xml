@@ -11936,7 +11936,7 @@
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
-		<min>9600.0</min>
+		<min>1200.0</min>
 		<max>115200.0</max>
 		<def>9600.0</def>
 		<discret>1</discret>
