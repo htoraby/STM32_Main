@@ -23117,6 +23117,261 @@
 	</param>
 	<param>
 		<id>1132</id>
+		<name>CCS_RGM_OPTIM_VOLTAGE_LIMITS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Пересчитывать границы</text>
+		<short_text>Оптимизация напряжения Пересчитывать границы</short_text>
+		<form>Оптимизация напряжения</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Вкл</values>
+		<comment>Оптимизация напряжения Пересчитывать границы</comment>
+	</param>
+	<param>
+		<id>1133</id>
+		<name>CCS_RGM_OPTIM_VOLTAGE_RESTORE_U</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>1.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>1.0</value>
+		<text>Восстанавливать характеристику</text>
+		<short_text>Оптимизация напряжения Восстанавливать характеристику</short_text>
+		<form>Оптимизация напряжения</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Откл;1-Вкл</values>
+		<comment>Оптимизация напряжения Восстанавливать характеристику</comment>
+	</param>
+	<param>
+		<id>1134</id>
+		<name>CCS_RGM_OPTIM_VOLTAGE_FIRST_STEP</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Первый шаг</text>
+		<short_text>Оптимизация напряжения Первый шаг</short_text>
+		<form>Оптимизация напряжения</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Вниз;1-Вверх</values>
+		<comment>Оптимизация напряжения Первый шаг</comment>
+	</param>
+	<param>
+		<id>1135</id>
+		<name>CCS_RGM_OPTIM_VOLTAGE_U1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>380.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Оптимизация напряжения U1</comment>
+	</param>
+	<param>
+		<id>1136</id>
+		<name>CCS_RGM_OPTIM_VOLTAGE_U2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>380.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Оптимизация напряжения U2</comment>
+	</param>
+	<param>
+		<id>1137</id>
+		<name>CCS_RGM_OPTIM_VOLTAGE_U3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>380.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Оптимизация напряжения U3</comment>
+	</param>
+	<param>
+		<id>1138</id>
+		<name>CCS_RGM_OPTIM_VOLTAGE_U4</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>380.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Оптимизация напряжения U4</comment>
+	</param>
+	<param>
+		<id>1139</id>
+		<name>CCS_RGM_OPTIM_VOLTAGE_U5</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>380.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Оптимизация напряжения U5</comment>
+	</param>
+	<param>
+		<id>1140</id>
+		<name>CCS_RGM_OPTIM_VOLTAGE_U6</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>380.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>NULL</text>
+		<short_text>NULL</short_text>
+		<form>NULL</form>
+		<unit>NULL</unit>
+		<unit_lcd>NULL</unit_lcd>
+		<format>NULL</format>
+		<code>0</code>
+		<comment>Оптимизация напряжения U6</comment>
+	</param>
+	<param>
+		<id>1141</id>
+		<name>CCS_RGM_OPTIM_VOLTAGE_DELTA</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>100.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Изменение тока для принятия решения</text>
+		<short_text>Оптимизация напряжения Изменение тока для принятия решения</short_text>
+		<form>Оптимизация напряжения</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XX</format>
+		<code>13</code>
+		<comment>Оптимизация напряжения Изменение тока для принятия решения</comment>
+	</param>
+	<param>
+		<id>1142</id>
+		<name>CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>1.0</min>
+		<max>60.0</max>
+		<def>3.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
+		<text>Период усреднения тока</text>
+		<short_text>Оптимизация напряжения Период усреднения тока</short_text>
+		<form>Оптимизация напряжения</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XX</format>
+		<code>13</code>
+		<comment>Оптимизация напряжения Время усреднения тока</comment>
+	</param>
+	<param>
+		<id>1143</id>
+		<name>CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TIME</physic>
+		<min>1.0</min>
+		<max>60.0</max>
+		<def>3.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>3.0</value>
+		<text>Первый цикл после возврата характеристики</text>
+		<short_text>Оптимизация напряжения Первый цикл после возврата характеристики</short_text>
+		<form>Оптимизация напряжения</form>
+		<unit>TIME_SS</unit>
+		<unit_lcd>TIME_SS</unit_lcd>
+		<format>XX</format>
+		<code>13</code>
+		<comment>Оптимизация напряжения Первый цикл после возврата характеристики</comment>
+	</param>
+	<param>
+		<id>1144</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

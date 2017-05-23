@@ -16,34 +16,38 @@ public:
   ~RegimeTechnologOptimizationVoltage();
 
   void processing();
+  void saveUfBeforeOptim();
+  void loadUfAfterOptim();
+  void calcOptim();
 
 private:
-
+  // Уставки режима
   uint32_t delay_;                                    //! Уставка "Первый цикл после запуска"
-  uint32_t period_;                                   //! Периодичность оптимизации
-  uint32_t beginPeriod_;                              //! Время начала периода оптимизации
-  uint32_t time_;
   float scale_;                                       //! Максимальное отклонение
   float step_;                                        //! Шаг оптимизации
 
-  uint16_t idUfLowPoint_;                             //! Точка U/f верхняя
-  uint16_t idUfHiPoint_;                              //! Точка U/f нижняя
+  // Скрытые настройки
+  float recalcLimits_;                                //! Пересчитывать границы от текущей характеристики U/f
+  float beginUp_;                                     //! Первый шаг 0-вниз, 1-вверх
+  float delta_;                                       //! Дельта изменения тока для принятия решения
+  uint32_t timeCur_;                                  //! Время усреднения тока
 
-  float valueUfLowPoint_;                             //!
-  float valueUfHiPoint_;
+  // Прочие уставки станции
+  float maxUfPoint_;                                  //! Максимальное рабочее напряжение
 
-  float limUpUfLowPoint_;
-  float limDownUfLowPoint_;
-  float limUpUfHiPoint_;
-  float limDownUfHiPoint_;
+  // Флаги и переменные
+  uint32_t beginPause_;                               //! Время начала периода паузы между оптимизациями
+  uint32_t beginCurrent_;                             //! Время начала усреднения тока
 
-  float maxUfPoint_;
+  float oldCurrent_;                                  //! Значение тока до шага оптимизации
+  float newCurrent_;                                  //! Значения тока после шага оптимизации
+  uint16_t cntCurrent_;                               //! Счётчик выборок для усреднения тока
 
-  float oldCurrent_;
-  float newCurrent_;
-  uint16_t cntCurrent_;
-
-
+  /*!
+   * \brief Массив с параметрами на время работы режима строки точки U/f,
+   * столбцы: id f(U/f), id U(U/f), f, U, minU, maxU
+   */
+  float optim_[6][6];
 };
 
 #endif // REGIMETECHNOLOGOPTIMIZATIONVOLTAGE_H
