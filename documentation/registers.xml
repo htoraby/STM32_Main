@@ -11728,12 +11728,12 @@
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
 		<max>1.0</max>
-		<def>1.0</def>
+		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
-		<value>1.0</value>
-		<text>Уровни доступа</text>
-		<short_text>Уровни доступа</short_text>
+		<value>0.0</value>
+		<text>Парольная защита</text>
+		<short_text>Парольная защита</short_text>
 		<form>7.2 Пароли</form>
 		<unit>NUMERIC_NUMBER</unit>
 		<format>TEXT</format>
