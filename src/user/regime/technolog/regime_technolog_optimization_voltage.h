@@ -18,7 +18,7 @@ public:
   void processing();
   void saveUfBeforeOptim();
   void loadUfAfterOptim();
-  void calcOptim();
+  void createOptim(bool first);
 
 private:
   // Уставки режима

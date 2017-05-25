@@ -13712,11 +13712,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].operation          = OPERATION_WRITE;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].physic             = PHYSIC_TIME;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].validity           = VALIDITY_OK;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].value.float_t      = 3.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].value.float_t      = 5.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].min                = 1.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].max                = 60.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].discret            = 1;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].def                = 3.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].def                = 5.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].code               = 13;
   // Оптимизация напряжения Первый цикл после возврата характеристики
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].id              = CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U;
@@ -13724,11 +13724,11 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].operation       = OPERATION_WRITE;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].physic          = PHYSIC_TIME;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].validity        = VALIDITY_OK;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].value.float_t   = 3.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].value.float_t   = 5.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].min             = 1.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].max             = 60.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].discret         = 1;
-  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].def             = 3.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].def             = 5.0;
   parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].code            = 13;
 }
 

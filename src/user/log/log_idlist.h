@@ -220,8 +220,11 @@ typedef enum {
   RgmPumpingGasF2Id,                  //!< Пркч. F2
   RgmPumpingGasStartId,               //!< Пркч. Начало
   RgmPumpingGasFinishId,              //!< Пркч. Завершен
-
   WorkUpsId,                          //!< "Работа от ИБП"
+  RgmOptimVoltageStartId,             //!< Оптимизация напряжения
+  RgmOptimVoltageFinishId,            //!< Оптимизация напряжения завершена
+  RgmOptimVoltageRestoreId,           //!< Оптимизация напряжения возврат характеристики
+  RgmOptimVoltageFailId,              //!< Оптимизация напряжения прервана
 
 } EventId;
 
