@@ -454,7 +454,7 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].value.float_t          = 380.0;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].min                    = 300.0;
-  parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].max                    = 10000.0;
+  parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].max                    = 9999.0;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].discret                = 1;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].def                    = 380.0;
   parameters_[CCS_TRANS_NEED_VOLTAGE_TAP_OFF - CCS_BEGIN].code                   = 0;
@@ -466,7 +466,7 @@ void Ccs::initParameters()
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].validity                    = VALIDITY_OK;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].value.float_t               = 380.0;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].min                         = 300.0;
-  parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].max                         = 10000.0;
+  parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].max                         = 9999.0;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].discret                     = 1;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].def                         = 380.0;
   parameters_[CCS_TRANS_VOLTAGE_TAP_OFF - CCS_BEGIN].code                        = 13;
@@ -6981,7 +6981,7 @@ void Ccs::initParameters()
   parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].physic                             = PHYSIC_NUMERIC;
   parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].validity                           = VALIDITY_OK;
   parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].value.float_t                      = 9600.0;
-  parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].min                                = 1200.0;
+  parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].min                                = 9600.0;
   parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].max                                = 115200.0;
   parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].discret                            = 1;
   parameters_[CCS_SCADA_BYTERATE - CCS_BEGIN].def                                = 9600.0;
@@ -13586,5 +13586,149 @@ void Ccs::initParameters()
   parameters_[CCS_AUTO_SOURCE_RESISTANCE_ISOLATION - CCS_BEGIN].discret          = 1;
   parameters_[CCS_AUTO_SOURCE_RESISTANCE_ISOLATION - CCS_BEGIN].def              = 0.0;
   parameters_[CCS_AUTO_SOURCE_RESISTANCE_ISOLATION - CCS_BEGIN].code             = 13;
+  // Оптимизация напряжения Пересчитывать границы
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_LIMITS - CCS_BEGIN].id                       = CCS_RGM_OPTIM_VOLTAGE_LIMITS;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_LIMITS - CCS_BEGIN].access                   = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_LIMITS - CCS_BEGIN].operation                = OPERATION_WRITE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_LIMITS - CCS_BEGIN].physic                   = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_LIMITS - CCS_BEGIN].validity                 = VALIDITY_OK;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_LIMITS - CCS_BEGIN].value.float_t            = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_LIMITS - CCS_BEGIN].min                      = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_LIMITS - CCS_BEGIN].max                      = 1.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_LIMITS - CCS_BEGIN].discret                  = 1;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_LIMITS - CCS_BEGIN].def                      = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_LIMITS - CCS_BEGIN].code                     = 13;
+  // Оптимизация напряжения Восстанавливать характеристику
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_RESTORE_U - CCS_BEGIN].id                    = CCS_RGM_OPTIM_VOLTAGE_RESTORE_U;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_RESTORE_U - CCS_BEGIN].access                = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_RESTORE_U - CCS_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_RESTORE_U - CCS_BEGIN].physic                = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_RESTORE_U - CCS_BEGIN].validity              = VALIDITY_OK;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_RESTORE_U - CCS_BEGIN].value.float_t         = 1.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_RESTORE_U - CCS_BEGIN].min                   = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_RESTORE_U - CCS_BEGIN].max                   = 1.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_RESTORE_U - CCS_BEGIN].discret               = 1;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_RESTORE_U - CCS_BEGIN].def                   = 1.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_RESTORE_U - CCS_BEGIN].code                  = 13;
+  // Оптимизация напряжения Первый шаг
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_FIRST_STEP - CCS_BEGIN].id                   = CCS_RGM_OPTIM_VOLTAGE_FIRST_STEP;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_FIRST_STEP - CCS_BEGIN].access               = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_FIRST_STEP - CCS_BEGIN].operation            = OPERATION_WRITE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_FIRST_STEP - CCS_BEGIN].physic               = PHYSIC_NUMERIC;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_FIRST_STEP - CCS_BEGIN].validity             = VALIDITY_OK;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_FIRST_STEP - CCS_BEGIN].value.float_t        = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_FIRST_STEP - CCS_BEGIN].min                  = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_FIRST_STEP - CCS_BEGIN].max                  = 1.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_FIRST_STEP - CCS_BEGIN].discret              = 1;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_FIRST_STEP - CCS_BEGIN].def                  = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_FIRST_STEP - CCS_BEGIN].code                 = 13;
+  // Оптимизация напряжения U1
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U1 - CCS_BEGIN].id                           = CCS_RGM_OPTIM_VOLTAGE_U1;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U1 - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U1 - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U1 - CCS_BEGIN].physic                       = PHYSIC_VOLTAGE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U1 - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U1 - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U1 - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U1 - CCS_BEGIN].max                          = 380.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U1 - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U1 - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U1 - CCS_BEGIN].code                         = 0;
+  // Оптимизация напряжения U2
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U2 - CCS_BEGIN].id                           = CCS_RGM_OPTIM_VOLTAGE_U2;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U2 - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U2 - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U2 - CCS_BEGIN].physic                       = PHYSIC_VOLTAGE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U2 - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U2 - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U2 - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U2 - CCS_BEGIN].max                          = 380.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U2 - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U2 - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U2 - CCS_BEGIN].code                         = 0;
+  // Оптимизация напряжения U3
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U3 - CCS_BEGIN].id                           = CCS_RGM_OPTIM_VOLTAGE_U3;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U3 - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U3 - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U3 - CCS_BEGIN].physic                       = PHYSIC_VOLTAGE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U3 - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U3 - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U3 - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U3 - CCS_BEGIN].max                          = 380.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U3 - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U3 - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U3 - CCS_BEGIN].code                         = 0;
+  // Оптимизация напряжения U4
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U4 - CCS_BEGIN].id                           = CCS_RGM_OPTIM_VOLTAGE_U4;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U4 - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U4 - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U4 - CCS_BEGIN].physic                       = PHYSIC_VOLTAGE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U4 - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U4 - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U4 - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U4 - CCS_BEGIN].max                          = 380.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U4 - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U4 - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U4 - CCS_BEGIN].code                         = 0;
+  // Оптимизация напряжения U5
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U5 - CCS_BEGIN].id                           = CCS_RGM_OPTIM_VOLTAGE_U5;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U5 - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U5 - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U5 - CCS_BEGIN].physic                       = PHYSIC_VOLTAGE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U5 - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U5 - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U5 - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U5 - CCS_BEGIN].max                          = 380.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U5 - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U5 - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U5 - CCS_BEGIN].code                         = 0;
+  // Оптимизация напряжения U6
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U6 - CCS_BEGIN].id                           = CCS_RGM_OPTIM_VOLTAGE_U6;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U6 - CCS_BEGIN].access                       = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U6 - CCS_BEGIN].operation                    = OPERATION_WRITE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U6 - CCS_BEGIN].physic                       = PHYSIC_VOLTAGE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U6 - CCS_BEGIN].validity                     = VALIDITY_OK;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U6 - CCS_BEGIN].value.float_t                = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U6 - CCS_BEGIN].min                          = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U6 - CCS_BEGIN].max                          = 380.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U6 - CCS_BEGIN].discret                      = 1;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U6 - CCS_BEGIN].def                          = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_U6 - CCS_BEGIN].code                         = 0;
+  // Оптимизация напряжения Изменение тока для принятия решения
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELTA - CCS_BEGIN].id                        = CCS_RGM_OPTIM_VOLTAGE_DELTA;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELTA - CCS_BEGIN].access                    = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELTA - CCS_BEGIN].operation                 = OPERATION_WRITE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELTA - CCS_BEGIN].physic                    = PHYSIC_PERCENT;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELTA - CCS_BEGIN].validity                  = VALIDITY_OK;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELTA - CCS_BEGIN].value.float_t             = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELTA - CCS_BEGIN].min                       = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELTA - CCS_BEGIN].max                       = 100.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELTA - CCS_BEGIN].discret                   = 1;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELTA - CCS_BEGIN].def                       = 0.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELTA - CCS_BEGIN].code                      = 13;
+  // Оптимизация напряжения Время усреднения тока
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].id                 = CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].access             = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].operation          = OPERATION_WRITE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].physic             = PHYSIC_TIME;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].validity           = VALIDITY_OK;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].value.float_t      = 5.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].min                = 1.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].max                = 60.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].discret            = 1;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].def                = 5.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_TIME_CURRENT - CCS_BEGIN].code               = 13;
+  // Оптимизация напряжения Первый цикл после возврата характеристики
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].id              = CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].access          = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].operation       = OPERATION_WRITE;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].physic          = PHYSIC_TIME;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].validity        = VALIDITY_OK;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].value.float_t   = 5.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].min             = 1.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].max             = 60.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].discret         = 1;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].def             = 5.0;
+  parameters_[CCS_RGM_OPTIM_VOLTAGE_DELAY_RESTORE_U - CCS_BEGIN].code            = 13;
 }
 

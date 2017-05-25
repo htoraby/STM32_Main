@@ -3298,7 +3298,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].value.float_t               = 3950.0;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].min                         = 380.0;
-  parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].max                         = 10000.0;
+  parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].max                         = 5000.0;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].def                         = 3950.0;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].discret                     = 1;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].code                        = 0;
@@ -3962,7 +3962,7 @@ void Vsd::initParameters()
   parameters_[VSD_FLAG - VSD_BEGIN].def                                          = 0.0;
   parameters_[VSD_FLAG - VSD_BEGIN].discret                                      = 1;
   parameters_[VSD_FLAG - VSD_BEGIN].code                                         = 13;
-  // Сопротивление изоляции
+  // 
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].id                    = VSD_ETALON_RESISTANCE_ISOLATION;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].access                = ACCESS_OPERATOR;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].operation             = OPERATION_READ;
@@ -3982,7 +3982,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].validity               = VALIDITY_ERROR;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].value.float_t          = 380.0;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].min                    = 380.0;
-  parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].max                    = 10000.0;
+  parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].max                    = 5000.0;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].def                    = 380.0;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].discret                = 1;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].code                   = 0;
