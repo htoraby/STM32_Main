@@ -20,7 +20,7 @@ uint32_t LogDebug::add(MsgType type, const char *msg, ...)
   osSemaphoreWait(semaphoreId_, osWaitForever);
 
   memset(msg_, 0, sizeof(msg_));
-  memset(buffer, 0, sizeof(buffer));
+  memset((uint8_t *)buffer, 0, sizeof(buffer));
 
   va_list args;
   va_start(args, msg);
@@ -36,9 +36,9 @@ uint32_t LogDebug::add(MsgType type, const char *msg, ...)
   int size = strlen(msg_);
   if (size > SIZE_MSG_DEBUG)
     size = SIZE_MSG_DEBUG;
-  memcpy(&buffer[9], msg_, size);
+  memcpy((uint8_t *)&buffer[9], msg_, size);
 
-  write(buffer, SIZE_BUF_LOG);
+  write((uint8_t *)buffer, SIZE_BUF_LOG);
 
 #ifdef USE_RTT
   tm *dateTime = localtime(&time);

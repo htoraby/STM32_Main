@@ -190,7 +190,7 @@ protected:
   /*!
    * \brief Буфер для формирования записи журнала
    */
-  uint8_t buffer[SIZE_BUF_LOG];
+  volatile uint8_t buffer[SIZE_BUF_LOG];
 
   TypeLog type_;
 

@@ -338,19 +338,19 @@ void DeviceModbus::exchangeTask()
         writeUint16Register(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].value.uint16_t[0]);
         break;
       case TYPE_DATA_INT32:
-        writeInt32Register(devAdrs_, mbParams_[outOfTurn].address, &mbParams_[outOfTurn].value.int32_t, count);
+        writeInt32Register(devAdrs_, mbParams_[outOfTurn].address, (int32_t *)&mbParams_[outOfTurn].value.int32_t, count);
         break;
       case TYPE_DATA_UINT32:
-        writeUint32Register(devAdrs_, mbParams_[outOfTurn].address, &mbParams_[outOfTurn].value.uint32_t, count);
+        writeUint32Register(devAdrs_, mbParams_[outOfTurn].address, (uint32_t *)&mbParams_[outOfTurn].value.uint32_t, count);
         break;
       case TYPE_DATA_FLOAT:
-        writeFloatRegister(devAdrs_ ,mbParams_[outOfTurn].address, &mbParams_[outOfTurn].value.float_t, count);
+        writeFloatRegister(devAdrs_ ,mbParams_[outOfTurn].address, (float *)&mbParams_[outOfTurn].value.float_t, count);
         break;
       case TYPE_DATA_ARRAY_INT16:
         writeArrayInt16Register(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].index, mbParams_[outOfTurn].value.int16_t[0]);
         break;
       case TYPE_DATA_ARRAY_INT32:
-         writeArrayInt32Register(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].index, &mbParams_[outOfTurn].value.int32_t, count);
+         writeArrayInt32Register(devAdrs_, mbParams_[outOfTurn].address, mbParams_[outOfTurn].index, (int32_t *)&mbParams_[outOfTurn].value.int32_t, count);
         break;
       default:
         break;

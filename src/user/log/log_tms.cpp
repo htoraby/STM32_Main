@@ -58,7 +58,7 @@ void LogTms::task()
 
 void LogTms::add()
 {
-  memset(buffer, 0, sizeof(buffer));
+  memset((uint8_t *)buffer, 0, sizeof(buffer));
 
   time_t time = ksu.getTime();
   uint8_t code = TmsCode;
@@ -71,7 +71,7 @@ void LogTms::add()
   *(float*)(buffer+13) = parameters.get(TMS_TEMPERATURE_WINDING);
   *(uint8_t*)(buffer+17) = calcCodeErrLogRosneft();
   *(float*)(buffer +18) = parameters.get(TMS_TEMPERATURE_INTAKE);
-  write(buffer, LOG_DHS_SIZE);  
+  write((uint8_t *)buffer, LOG_DHS_SIZE);
   incCountRecordLogDhs();
 }
 
