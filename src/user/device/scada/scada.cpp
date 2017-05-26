@@ -49,7 +49,7 @@ void Scada::task()
   uint32_t baudRate = parameters.get(CCS_SCADA_BYTERATE);
   eMBParity parity = (eMBParity)parameters.get(CCS_SCADA_PARITY);
   uint8_t stopBits = parameters.get(CCS_SCADA_STOPBIT);
-  delay_ = parameters.get(CCS_SCADA_DELAY);
+  delay_ = parameters.get(CCS_SCADA_DELAY)*1000;
 
   if (parameters.get(CCS_SCADA_TYPE) == Scada::SurgutneftegasType) {
     eMbSngInit(address, SCADA_UART, baudRate,  parity, stopBits);

@@ -11886,7 +11886,7 @@
 		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
 		<format>TEXT</format>
 		<code>13</code>
-		<values>0-Откл;1-Новомет;2-Регион 3.0;3-Регион 2000;4-Телескоп;5-Лукойл;6-Каракудукмунай;7-Сургутнефтегаз</values>
+		<values>0-Откл;1-Новомет;2-Регион 3.0;3-Регион 2000;4-ЮНГ-Универсал;5-Лукойл;6-Каракудукмунай;7-Сургутнефтегаз</values>
 		<comment>Протокол телемеханики</comment>
 	</param>
 	<param>
@@ -12000,7 +12000,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_TIME</physic>
 		<min>0.0</min>
-		<max>999.0</max>
+		<max>0.999</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -12010,7 +12010,7 @@
 		<form>Настройки.Телемеханика</form>
 		<unit>TIME_SS</unit>
 		<unit_lcd>TIME_MS</unit_lcd>
-		<format>XXXXXX</format>
+		<format>XXX</format>
 		<code>13</code>
 		<comment>Задержка ответа в телемеханкие</comment>
 	</param>
