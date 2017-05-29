@@ -686,7 +686,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>2000000.0</value>
-		<text>Номинальная мощность</text>
+		<text>Номинальная мощность ТМПН</text>
 		<short_text>Номинальная мощность ТМПН</short_text>
 		<form>Оборудование.ТМПН</form>
 		<unit>FULL_POWER_VA</unit>
@@ -707,7 +707,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Номинальный ток</text>
+		<text>Номинальный ток ТМПН</text>
 		<short_text>Номинальный ток ТМПН</short_text>
 		<form>Оборудование.ТМПН</form>
 		<unit>CURRENT_A</unit>
@@ -728,7 +728,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>380.0</value>
-		<text>Номинальное напряжение</text>
+		<text>Номинальное напряжение ТМПН</text>
 		<short_text>Номинальное напряжение ТМПН</short_text>
 		<form>Оборудование.ТМПН</form>
 		<unit>VOLTAGE_V</unit>
