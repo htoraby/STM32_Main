@@ -1478,7 +1478,7 @@ enum enID
   VSD_FILTER_TEMPERATURE_1 = 10327,                          //!< Температура выходного фильтра
   VSD_FILTER_TEMPERATURE_2 = 10328,                          //!< Температура выходного фильтра
   VSD_FLAG = 10329,                                          //!< Выбор источника расчёта точек U/f
-  VSD_ETALON_RESISTANCE_ISOLATION = 10330,                   //!< 
+  VSD_ETALON_RESISTANCE_ISOLATION = 10330,                   //!< Сопротивление изоляции
   VSD_TRANS_NEED_VOLTAGE_TAP_OFF = 10331,                    //!< Необходимое напряжение отпайки
   VSD_BASE_FREQUENCY = 10332,                                //!< Максимальная рабочая частота (базовая)
   VSD_BASE_VOLTAGE = 10333,                                  //!< Максимальное рабочие напряжение
