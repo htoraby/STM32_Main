@@ -309,8 +309,8 @@ void VsdEtalon::initModbusParameters()
                            VALIDITY_ERROR,  // Поле состояния параметра
                            0                // Значение
                           };
-  modbusParameters_[17] = {// Текущее выходное напряжение ПЧ
-                           VSD_OUT_VOLTAGE_MOTOR, // Уникальный идентификатор параметра
+  modbusParameters_[17] = {// Текущее выходное напряжение СУ с учётом потерь в фильтре
+                           VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE , // Уникальный идентификатор параметра
                            30 + 0x4000,     // 0x401E Адрес регистра в устройстве
                            OPERATION_READ,  // Операции с параметром
                            PHYSIC_VOLTAGE,  // Физическая величина параметра

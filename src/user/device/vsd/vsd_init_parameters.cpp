@@ -51,17 +51,17 @@ void Vsd::initParameters()
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].code                                = 0;
   // Напряжение на выходе ПЧ
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].id                              = VSD_OUT_VOLTAGE_MOTOR;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].operation                       = OPERATION_READ;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].physic                          = PHYSIC_VOLTAGE;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].value.float_t                   = 0.0;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].max                             = 999999999.9;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].def                             = 0.0;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].discret                         = 10;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].code                            = 0;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].id                                   = VSD_VOLTAGE_LINE;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].operation                            = OPERATION_READ;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].physic                               = PHYSIC_VOLTAGE;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].validity                             = VALIDITY_ERROR;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].value.float_t                        = 0.0;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].min                                  = 0.0;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].max                                  = 999999999.9;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].def                                  = 0.0;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].discret                              = 10;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].code                                 = 0;
   // Конструкция двигателя Danfoss 1-10
   parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].id                                     = VSD_MOTOR_TYPE;
   parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].access                                 = ACCESS_OPERATOR;
@@ -6110,5 +6110,17 @@ void Vsd::initParameters()
   parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].def                     = 1.0;
   parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].discret                 = 1000;
   parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].code                    = 0;
+  // Напряжение на выходе СУ
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].id               = VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].access           = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].operation        = OPERATION_READ;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].physic           = PHYSIC_VOLTAGE;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].validity         = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].value.float_t    = 0.0;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].min              = 0.0;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].max              = 999999999.9;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].def              = 0.0;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].discret          = 10;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].code             = 0;
 }
 

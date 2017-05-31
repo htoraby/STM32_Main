@@ -279,7 +279,7 @@ void ScadaRegion30::initParameters()
   scadaParameters_[22].command           = OPERATION_ERROR;
   scadaParameters_[22].value.float_t     = 0;
   // Выходное напряжение ПЧ
-  scadaParameters_[23].id                = VSD_OUT_VOLTAGE_MOTOR;
+  scadaParameters_[23].id                = VSD_VOLTAGE_LINE;
   scadaParameters_[23].address           = 279;
   scadaParameters_[23].operation         = OPERATION_READ;
   scadaParameters_[23].physic            = PHYSIC_VOLTAGE;
@@ -291,7 +291,7 @@ void ScadaRegion30::initParameters()
   scadaParameters_[23].command           = OPERATION_ERROR;
   scadaParameters_[23].value.float_t     = 0;
   // Напряжение на выходе ТМПН
-  scadaParameters_[24].id                = CCS_VOLTAGE_TRANS_OUT;
+  scadaParameters_[24].id                = CCS_TRANS_OUTPUT_VOLTAGE_LINE;
   scadaParameters_[24].address           = 280;
   scadaParameters_[24].operation         = OPERATION_READ;
   scadaParameters_[24].physic            = PHYSIC_VOLTAGE;

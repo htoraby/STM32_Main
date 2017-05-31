@@ -447,7 +447,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[36].command           = OPERATION_ERROR;
   scadaParameters_[36].value.float_t     = 0;
   // Выходное напряжение ПЧ
-  scadaParameters_[37].id                = VSD_OUT_VOLTAGE_MOTOR;
+  scadaParameters_[37].id                = VSD_VOLTAGE_LINE;
   scadaParameters_[37].address           = 39;
   scadaParameters_[37].operation         = OPERATION_READ;
   scadaParameters_[37].physic            = PHYSIC_VOLTAGE;
@@ -867,7 +867,7 @@ void ScadaNovomet::initParameters()
   scadaParameters_[71].command           = OPERATION_ERROR;
   scadaParameters_[71].value.float_t     = 0;
   // Напряжение двигателя Um
-  scadaParameters_[72].id                = CCS_MOTOR_VOLTAGE_NOW;
+  scadaParameters_[72].id                = CCS_MOTOR_VOLTAGE_LINE;
   scadaParameters_[72].address           = 77;
   scadaParameters_[72].operation         = OPERATION_READ;
   scadaParameters_[72].physic            = PHYSIC_VOLTAGE;

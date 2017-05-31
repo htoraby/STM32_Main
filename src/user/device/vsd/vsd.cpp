@@ -513,7 +513,7 @@ float Vsd::calcVsdPowerFull()
            calcAverage3Values(getValue(VSD_CURRENT_OUT_PHASE_1),
                               getValue(VSD_CURRENT_OUT_PHASE_2),
                               getValue(VSD_CURRENT_OUT_PHASE_3)) *
-                              getValue(VSD_OUT_VOLTAGE_MOTOR) * 1.73);
+                              getValue(VSD_VOLTAGE_LINE) * 1.73);
   return getValue(VSD_POWER_FULL);
 }
 

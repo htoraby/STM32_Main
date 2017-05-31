@@ -15,6 +15,39 @@
 
 #define RESTART_TIME_MAX 100
 
+struct stCalcAsync                          // Структура для вычисления параметров по модели
+{
+  float UVSD;                               // Выходное напряжение ЧРП
+  float Un;                                 // Напряжение UVSD * sin(PhiVSD)
+  float ULn;                                //
+  float dUn;
+  float Ut;
+  float URn;
+  float dUt;
+  float Usu[3];                  // íàïðÿæåíèå íà âûõîäå ÑÓ
+  float ULf;
+  float dFi;                     //
+  float FiL;                     // ñäâèã íàïðÿæåíèÿ Usu îòíîñèòåëüíî íàïðÿæåíèÿ UVSD
+  float IVSD[3];                 // òîê íà âûõîäå Ï× (ïî-ôàçíî)
+  float Cf;
+  float Isf;
+  float In[3];
+  float dIn;
+  float It;
+  float IH[3];
+  float ULped[3];
+  float Uped[3];                 // íàïðÿæåíèå íà ÏÝÄ
+  float FiH;
+  float dFiH;
+  float LH;                      // èíäóêòèâíîñòü ñèñòåìû
+  float Rn;
+  float Psi;                     // óãîë ìåæäó òîêîì íàãðóçêè è ÝÄÑ
+  float EMF[3];
+  float EMFaver;
+  float EMFModel;                // ÝÄÑ ïî ìîäåëè
+  bool  flEMF;                   // ôëàã, óêàçûâàþùèé íà êîððåêòíîñòü ðàñ÷¸òà ÝÄÑ
+};
+
 class Ccs: public Device
 {
 public:
@@ -282,8 +315,6 @@ public:
   float calcMotorCurrentPhase1();
   float calcMotorCurrentPhase2();
   float calcMotorCurrentPhase3();
-  float calcMotorCurrentAverage();
-  float calcMotorCurrentImbalance();
 
   /*!
    * \brief Функция вычисления падения напряжения на фильтре
@@ -300,28 +331,11 @@ public:
   float calcDropVoltageCable(float current);
 
   /*!
-   * \brief Функция вычисления напряжения на фазе двигателя
-   * \param dropVoltFilter - падение напряжения на фильтре
-   * \param dropVoltCable - падение напряжения на кабеле
-   * \return напряжение фазы двигателя
+   * \brief calcPowerMotor
    */
-  float calcMotorVoltagePhase(float dropVoltFilter, float dropVoltCable);
-  float calcMotorVoltagePhase1();
-  float calcMotorVoltagePhase2();
-  float calcMotorVoltagePhase3();
+  void calcPowerMotor();
 
-  /*!
-   * \brief Функция вычисления дисбаланса напряжения двигателя
-   * \return
-   */
-  float calcMotorVoltageImbalance();
-
-  void calcMotorVoltageAverage();
-
-  /*!
-   * \brief Функция вычисления напряжения на выходе ТМПН
-   */
-  void calcVoltageTransOut();
+  void calcAsyncMotor();
 
   /*!
    * \brief Функция вычисления текущей скорости вращения двигателя
@@ -340,6 +354,7 @@ public:
    * \return
    */
   float calcMotorLoad();
+  float calcMotorActivePower();
 
   /*!
    * \brief Функция вычисления корректированного значения входного напряжения
@@ -351,7 +366,7 @@ public:
   float calcInputVoltagePhase12();
   float calcInputVoltagePhase23();
   float calcInputVoltagePhase31();
-  float calcInputVoltageImbalance();
+
 
   /*!
    * \brief Функция вычисления корректированного значения входного тока
@@ -361,6 +376,11 @@ public:
   float calcInputCurrentPhase2();
   float calcInputCurrentPhase3();
   float calcInputCurrentImbalance();
+
+  /*!
+   * \brief calcCurrentParam
+   */
+  void calcCurrentParam();
 
   /*!
    * \brief Функция вычисления индуктивности двигателя по полному сопротивлению фаз двигателя
@@ -409,10 +429,6 @@ public:
    */
   void calcRegimeRun();
 
-  /*!
-   * \brief Функция вычисления входных напряжений с АЦП
-   */
-  void calcInputVoltageFromAdc();
 
   /*!
    * \brief Контроль питания и отключение ИБП по таймауту
@@ -453,10 +469,7 @@ public:
    */
   void setMaxBaseFrequency();
 
-  /*!
-   * \brief calcTest
-   */
-  void calcTest();
+
 
   /*!
    * \brief Функция записи кода ошибки Slave в параметр для передачи в Master
@@ -472,6 +485,29 @@ public:
   void resetRestartCount();
 
 private:
+
+  //! Расчётные параметры
+  /*!
+   * \brief Получение значений с цифровых входов, сохранение и обработка
+   */
+  void calcDigitalInputs();
+
+  /*!
+   * \brief calcTest
+   */
+  void calcTest();
+
+  /*!
+   * \brief Функция вычисления входных напряжений с АЦП
+   */
+  void calcInputVoltageFromAdc();
+
+  /*!
+   * \brief calcInputVoltageImbalance
+   * \return
+   */
+  float calcInputVoltageImbalance();
+
   /*!
    * \brief Метод добавления в очередь событий включения/мигания LED
    */
@@ -602,10 +638,7 @@ private:
   void setCmd(uint16_t id);
   void resetCmd(uint16_t id);
 
-  /*!
-   * \brief Получение значений с цифровых входов, сохранение и обработка
-   */
-  void calcDigitalInputs();
+
 
   /*!
    * \brief Метод обработки значения сигнала с цифрового входа
@@ -670,6 +703,8 @@ private:
   uint32_t restartTime_[RESTART_TIME_MAX+1];
 
   bool isParametersControl_;
+
+  stCalcAsync calcAsync_;
 
 };
 
