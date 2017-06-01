@@ -1324,7 +1324,7 @@ void VsdDanfoss::getNewValue(uint16_t id)
       calcVsdPowerFull();
       calcMotorCos();
       break;
-    case VSD_OUT_VOLTAGE_MOTOR:
+    case CCS_TRANS_OUTPUT_VOLTAGE_LINE:
       setValue(id, value);
       calcVsdPowerFull();
       calcMotorCos();

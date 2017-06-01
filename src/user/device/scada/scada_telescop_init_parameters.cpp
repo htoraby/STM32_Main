@@ -267,7 +267,7 @@ void ScadaTelescop::initParameters()
   scadaParameters_[21].command           = OPERATION_ERROR;
   scadaParameters_[21].value.float_t     = 0;
   // Выходное напряжение ПЧ
-  scadaParameters_[22].id                = VSD_OUT_VOLTAGE_MOTOR;
+  scadaParameters_[22].id                = VSD_VOLTAGE_LINE;
   scadaParameters_[22].address           = 40022;
   scadaParameters_[22].operation         = OPERATION_READ;
   scadaParameters_[22].physic            = PHYSIC_VOLTAGE;
@@ -279,7 +279,7 @@ void ScadaTelescop::initParameters()
   scadaParameters_[22].command           = OPERATION_ERROR;
   scadaParameters_[22].value.float_t     = 0;
   // Напряжение на выходе ТМПН
-  scadaParameters_[23].id                = CCS_VOLTAGE_TRANS_OUT;
+  scadaParameters_[23].id                = CCS_TRANS_OUTPUT_VOLTAGE_LINE;
   scadaParameters_[23].address           = 40023;
   scadaParameters_[23].operation         = OPERATION_READ;
   scadaParameters_[23].physic            = PHYSIC_VOLTAGE;

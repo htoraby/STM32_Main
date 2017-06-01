@@ -261,7 +261,7 @@
 		<name>Выходной ток ПЧ</name>
 	</param>
 	<param>
-		<id>VSD_OUT_VOLTAGE_MOTOR</id>
+		<id>VSD_VOLTAGE_LINE</id>
 		<address>276</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>

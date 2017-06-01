@@ -2011,7 +2011,7 @@ void VsdDanfoss::initModbusParameters()
                             0               // Значение
                            };
   modbusParameters_[111] = {// Напряжение на выходе ЧРП
-                            VSD_OUT_VOLTAGE_MOTOR,
+                            VSD_VOLTAGE_LINE,
                             16119,          // Адрес регистра в устройстве
                             OPERATION_READ, // Операции с параметром
                             PHYSIC_VOLTAGE, // Физическая величина параметра

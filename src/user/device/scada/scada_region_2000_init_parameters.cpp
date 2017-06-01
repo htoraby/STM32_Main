@@ -243,7 +243,7 @@ void ScadaRegion2000::initParameters()
   scadaParameters_[19].command           = OPERATION_ERROR;
   scadaParameters_[19].value.float_t     = 0;
   // Выходное напряжение ПЧ
-  scadaParameters_[20].id                = VSD_OUT_VOLTAGE_MOTOR;
+  scadaParameters_[20].id                = VSD_VOLTAGE_LINE;
   scadaParameters_[20].address           = 276;
   scadaParameters_[20].operation         = OPERATION_READ;
   scadaParameters_[20].physic            = PHYSIC_VOLTAGE;

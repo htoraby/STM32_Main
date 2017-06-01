@@ -528,11 +528,15 @@ void VsdEtalon::getNewValue(uint16_t id)
       if (parameters.get(CCS_COEF_OUT_CURRENT_3) != value)
         parameters.set(CCS_COEF_OUT_CURRENT_3, value);
       break;
-    case VSD_OUT_VOLTAGE_MOTOR:
-      setValue(id, value);
+    case VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE:
+      err = setValue(id, value);
+      if (err)
+        break;
+      parameters.set(VSD_VOLTAGE_LINE, value);
+      parameters.set(CCS_OUTPUT_VOLTAGE_LINE, value);
       break;
     case VSD_COEF_VOLTAGE_OUT_1:
-      setValue(id, value);
+      err = setValue(id, value);
       break;
     case VSD_PROT_NO_CONNECT_MODE:
       err = setValue(id, value);
