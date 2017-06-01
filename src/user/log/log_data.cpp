@@ -168,6 +168,8 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+0) = parameters.get(CCS_VOLTAGE_PHASE_1_2);
   *(float*)(buffer+4) = parameters.get(CCS_VOLTAGE_PHASE_2_3);
   *(float*)(buffer+8) = parameters.get(CCS_VOLTAGE_PHASE_3_1);
+  *(float*)(buffer+12) = parameters.get(EM_ACTIVE_PLUS_ALL);
+  *(float*)(buffer+16) = parameters.get(EM_ACTIVE_MINUS_ALL);
 
   write((uint8_t *)buffer, 256);
 #else
