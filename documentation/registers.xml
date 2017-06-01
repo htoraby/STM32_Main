@@ -23454,7 +23454,7 @@
 		<min>0.0</min>
 		<max>999999999.9</max>
 		<def>0.0</def>
-		<discret>10</discret>
+		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
 		<text>Вых. напряж.</text>
@@ -23462,7 +23462,7 @@
 		<form>Текущие параметры.Текущие параметры ЧРП</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
-		<format>XXXX_X</format>
+		<format>XXXX</format>
 		<code>0</code>
 		<comment>Напряжение на выходе ПЧ</comment>
 	</param>

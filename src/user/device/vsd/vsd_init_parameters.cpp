@@ -60,7 +60,7 @@ void Vsd::initParameters()
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].min                             = 0.0;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].max                             = 999999999.9;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].def                             = 0.0;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].discret                         = 10;
+  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].discret                         = 1;
   parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].code                            = 0;
   // Конструкция двигателя Danfoss 1-10
   parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].id                                     = VSD_MOTOR_TYPE;
