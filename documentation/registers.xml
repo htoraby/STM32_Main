@@ -55,7 +55,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Ток Ia</text>
+		<text>Ток фазы A</text>
 		<short_text>Ia, А</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>CURRENT_A</unit>
@@ -76,7 +76,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Ток Ib</text>
+		<text>Ток фазы B</text>
 		<short_text>Ib, А</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>CURRENT_A</unit>
@@ -97,7 +97,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Ток Ic</text>
+		<text>Ток фазы C</text>
 		<short_text>Ic, А</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>CURRENT_A</unit>
@@ -14370,7 +14370,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряжение Ua</text>
+		<text>Напряжение A</text>
 		<short_text>Uвх.А, В</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
@@ -14391,7 +14391,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряжение Ub</text>
+		<text>Напряжение B</text>
 		<short_text>Uвх.B, В</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
@@ -14412,7 +14412,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряжение Uc</text>
+		<text>Напряжение C</text>
 		<short_text>Uвх.C, В</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
@@ -14433,7 +14433,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряжение Uab</text>
+		<text>Напряжение AB</text>
 		<short_text>Uвх.АB, В</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
@@ -14454,7 +14454,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряжение Ubc</text>
+		<text>Напряжение BC</text>
 		<short_text>Uвх.BC, В</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
@@ -14475,7 +14475,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряжение Uca</text>
+		<text>Напряжение CA</text>
 		<short_text>Uвх.CA, В</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
@@ -14582,7 +14582,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряж. Ua</text>
+		<text>Напряжение A</text>
 		<short_text>Напряж. ПЭД Ua</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>VOLTAGE_V</unit>
@@ -14603,7 +14603,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряж. Ub</text>
+		<text>Напряжение B</text>
 		<short_text>Напряж. ПЭД Ub</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>VOLTAGE_V</unit>
@@ -14624,7 +14624,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряж. Uc</text>
+		<text>Напряжение C</text>
 		<short_text>Напряж. ПЭД Uc</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>VOLTAGE_V</unit>
@@ -17511,7 +17511,7 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Ток фазы Ia</text>
+		<text>Ток фазы A</text>
 		<short_text>Iвх.A, A</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>CURRENT_A</unit>
@@ -17532,7 +17532,7 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Ток фазы Ib</text>
+		<text>Ток фазы B</text>
 		<short_text>Iвх B, А</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>CURRENT_A</unit>
@@ -17553,7 +17553,7 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Ток фазы Ic</text>
+		<text>Ток фазы C</text>
 		<short_text>Iвх С, А</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>CURRENT_A</unit>
@@ -23386,8 +23386,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uвых A</text>
-		<short_text>Uвых A</short_text>
+		<text>Напряжение U</text>
+		<short_text>Вых. СУ Uu</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23406,8 +23406,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uвых  B</text>
-		<short_text>Uвых  B</short_text>
+		<text>Напряжение V</text>
+		<short_text>Вых. СУ Uv</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23426,8 +23426,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uвых  C</text>
-		<short_text>Uвых  C</short_text>
+		<text>Напряжение W</text>
+		<short_text>Вых. СУ Uw</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23446,8 +23446,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uвых</text>
-		<short_text>Uвых</short_text>
+		<text>Напряжение</text>
+		<short_text>Вых. СУ U</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23466,7 +23466,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uвых  AB</text>
+		<text>Напряжение UV</text>
 		<short_text>Uвых  AB</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
@@ -23486,7 +23486,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uвых  BC</text>
+		<text>Напряжение VW</text>
 		<short_text>Uвых  BC</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
@@ -23506,7 +23506,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uвых  CA</text>
+		<text>Напряжение WU</text>
 		<short_text>Uвых  CA</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
@@ -23526,8 +23526,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uвых</text>
-		<short_text>Uвых</short_text>
+		<text>Напряжение</text>
+		<short_text>Вых. СУ U</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23546,7 +23546,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uтмпн A</text>
+		<text>Напряжение A</text>
 		<short_text>Uтмпн A</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
@@ -23566,7 +23566,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uтмпн B</text>
+		<text>Напряжение B</text>
 		<short_text>Uтмпн B</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
@@ -23586,7 +23586,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uтмпн C</text>
+		<text>Напряжение C</text>
 		<short_text>Uтмпн C</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
@@ -23606,8 +23606,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uтмпн</text>
-		<short_text>Uтмпн</short_text>
+		<text>Напряжение</text>
+		<short_text>ТМПН U</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23626,8 +23626,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uтмпн AB</text>
-		<short_text>Uтмпн AB</short_text>
+		<text>Напряжение AB</text>
+		<short_text>ТМПН Uab</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23647,8 +23647,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uтмпн BC</text>
-		<short_text>Uтмпн BC</short_text>
+		<text>Напряжение BC</text>
+		<short_text>ТМПН Ubc</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23668,8 +23668,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uтмпн CA</text>
-		<short_text>Uтмпн CA</short_text>
+		<text>Напряжение CA</text>
+		<short_text>ТМПН Uca</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23689,8 +23689,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uдвиг AB</text>
-		<short_text>Uдвиг AB</short_text>
+		<text>Напряжение AB</text>
+		<short_text>Двиг. Uab</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23709,8 +23709,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uдвиг BC</text>
-		<short_text>Uдвиг BC</short_text>
+		<text>Напряжение BC</text>
+		<short_text>Двиг. Ubc</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23729,8 +23729,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uдвиг CA</text>
-		<short_text>Uдвиг CA</short_text>
+		<text>Напряжение CA</text>
+		<short_text>Двиг. Uca</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23749,8 +23749,8 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Uдвиг</text>
-		<short_text>Uдвиг</short_text>
+		<text>Напряжение</text>
+		<short_text>Двиг. U</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>VOLTAGE_V</unit>
 		<unit_lcd>VOLTAGE_V</unit_lcd>
@@ -23769,8 +23769,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Iвых A</text>
-		<short_text>Iвых A</short_text>
+		<text>Ток фазы U</text>
+		<short_text>Вых. СУ Iu</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
@@ -23789,8 +23789,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Iвыху B</text>
-		<short_text>Iвыху B</short_text>
+		<text>Ток фазы V</text>
+		<short_text>Вых. СУ Iv</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
@@ -23809,8 +23809,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Iвых C</text>
-		<short_text>Iвых C</short_text>
+		<text>Ток фазы W</text>
+		<short_text>Вых. СУ Iw</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
@@ -23829,8 +23829,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Iвых</text>
-		<short_text>Iвых</short_text>
+		<text>Ток</text>
+		<short_text>Вых. СУ I</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
@@ -23849,8 +23849,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Iтмпн A</text>
-		<short_text>Iтмпн A</short_text>
+		<text>Ток фазы A</text>
+		<short_text>ТМПН Ia</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
@@ -23869,8 +23869,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Iтмпн B</text>
-		<short_text>Iтмпн B</short_text>
+		<text>Ток фазы B</text>
+		<short_text>ТМПН Ib</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
@@ -23889,8 +23889,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Iтмпн C</text>
-		<short_text>Iтмпн C</short_text>
+		<text>Ток фазы C</text>
+		<short_text>ТМПН Ic</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
@@ -23909,8 +23909,8 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Iтмпн</text>
-		<short_text>Iтмпн</short_text>
+		<text>Ток</text>
+		<short_text>ТМПН I</short_text>
 		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
 		<unit>CURRENT_A</unit>
 		<unit_lcd>CURRENT_A</unit_lcd>
@@ -23929,7 +23929,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Акт.Pдвиг</text>
+		<text>Активная мощн.</text>
 		<short_text>Акт.P, кВт</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>ACTIV_POWER_W</unit>
@@ -24256,7 +24256,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Ток фазы Iu</text>
+		<text>Ток фазы U</text>
 		<short_text>Ток фазы Iu</short_text>
 		<form>Текущие параметры.Текущие параметры ЧРП</form>
 		<unit>CURRENT_A</unit>
@@ -24277,7 +24277,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Ток фазы Iv</text>
+		<text>Ток фазы V</text>
 		<short_text>Ток фазы Iv</short_text>
 		<form>Текущие параметры.Текущие параметры ЧРП</form>
 		<unit>CURRENT_A</unit>
@@ -24298,7 +24298,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Ток фазы Iw</text>
+		<text>Ток фазы W</text>
 		<short_text>Ток фазы Iw</short_text>
 		<form>Текущие параметры.Текущие параметры ЧРП</form>
 		<unit>CURRENT_A</unit>
@@ -24319,7 +24319,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Ток Idc</text>
+		<text>Ток DC</text>
 		<short_text>Id, А</short_text>
 		<form>Текущие параметры.Текущие параметры ЧРП</form>
 		<unit>CURRENT_A</unit>
@@ -24340,7 +24340,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Напряжение Udc</text>
+		<text>Напряжение DC</text>
 		<short_text>Ud, U</short_text>
 		<form>Текущие параметры.Текущие параметры ЧРП</form>
 		<unit>VOLTAGE_V</unit>
