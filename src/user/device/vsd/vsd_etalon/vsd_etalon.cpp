@@ -105,6 +105,15 @@ int VsdEtalon::setMotorType(float value)
   if (!Vsd::setMotorType(value)) {          // Записываем в массив
     writeToDevice(VSD_MOTOR_TYPE, value);   // Записываем в ЧРП
     ksu.setMaxBaseFrequency();
+
+    parameters.set(VSD_MOTOR_SPEED, 3000.0);
+    if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
+      parameters.set(VSD_MOTOR_FREQUENCY, 50.0);
+    } else {
+      parameters.set(VSD_MOTOR_FREQUENCY, 100.0);
+      parameters.set(CCS_MOTOR_INDUCTANCE, 0.0);
+      parameters.set(VSD_MOTOR_ACTIVE_RESIST, 0.0);
+    }
     return ok_r;
   }
   return err_r;
