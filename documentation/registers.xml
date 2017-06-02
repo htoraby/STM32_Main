@@ -55,7 +55,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Ток Ia</text>
+		<text>Ток фазы A</text>
 		<short_text>Ia, А</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>CURRENT_A</unit>
@@ -76,7 +76,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Ток Ib</text>
+		<text>Ток фазы B</text>
 		<short_text>Ib, А</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>CURRENT_A</unit>
@@ -97,7 +97,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Ток Ic</text>
+		<text>Ток фазы C</text>
 		<short_text>Ic, А</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>CURRENT_A</unit>
@@ -171,7 +171,7 @@
 	</param>
 	<param>
 		<id>8</id>
-		<name>CCS_MOTOR_VOLTAGE_NOW</name>
+		<name>CCS_MOTOR_VOLTAGE_PHASE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
@@ -12871,7 +12871,7 @@
 	</param>
 	<param>
 		<id>632</id>
-		<name>CCS_VOLTAGE_TRANS_OUT</name>
+		<name>CCS_TRANS_OUTPUT_VOLTAGE_LINE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
@@ -14370,7 +14370,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряжение Ua</text>
+		<text>Напряжение A</text>
 		<short_text>Uвх.А, В</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
@@ -14391,7 +14391,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряжение Ub</text>
+		<text>Напряжение B</text>
 		<short_text>Uвх.B, В</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
@@ -14412,7 +14412,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряжение Uc</text>
+		<text>Напряжение C</text>
 		<short_text>Uвх.C, В</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
@@ -14433,7 +14433,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряжение Uab</text>
+		<text>Напряжение AB</text>
 		<short_text>Uвх.АB, В</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
@@ -14454,7 +14454,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряжение Ubc</text>
+		<text>Напряжение BC</text>
 		<short_text>Uвх.BC, В</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
@@ -14475,7 +14475,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряжение Uca</text>
+		<text>Напряжение CA</text>
 		<short_text>Uвх.CA, В</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>VOLTAGE_V</unit>
@@ -14582,7 +14582,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряж. Ua</text>
+		<text>Напряжение A</text>
 		<short_text>Напряж. ПЭД Ua</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>VOLTAGE_V</unit>
@@ -14603,7 +14603,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряж. Ub</text>
+		<text>Напряжение B</text>
 		<short_text>Напряж. ПЭД Ub</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>VOLTAGE_V</unit>
@@ -14624,7 +14624,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-		<text>Напряж. Uc</text>
+		<text>Напряжение C</text>
 		<short_text>Напряж. ПЭД Uc</short_text>
 		<form>Текущие параметры.Текущие параметры двигателя</form>
 		<unit>VOLTAGE_V</unit>
@@ -17511,7 +17511,7 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Ток фазы Ia</text>
+		<text>Ток фазы A</text>
 		<short_text>Iвх.A, A</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>CURRENT_A</unit>
@@ -17532,7 +17532,7 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Ток фазы Ib</text>
+		<text>Ток фазы B</text>
 		<short_text>Iвх B, А</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>CURRENT_A</unit>
@@ -17553,7 +17553,7 @@
 		<discret>100</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>NAN</value>
-		<text>Ток фазы Ic</text>
+		<text>Ток фазы C</text>
 		<short_text>Iвх С, А</short_text>
 		<form>Текущие параметры.Текущие параметры сети</form>
 		<unit>CURRENT_A</unit>
@@ -23376,6 +23376,718 @@
 	</param>
 	<param>
 		<id>1144</id>
+		<name>CCS_OUTPUT_VOLTAGE_PHASE_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение U</text>
+		<short_text>Вых. СУ Uu</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1145</id>
+		<name>CCS_OUTPUT_VOLTAGE_PHASE_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение V</text>
+		<short_text>Вых. СУ Uv</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1146</id>
+		<name>CCS_OUTPUT_VOLTAGE_PHASE_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение W</text>
+		<short_text>Вых. СУ Uw</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1147</id>
+		<name>CCS_OUTPUT_VOLTAGE_PHASE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение</text>
+		<short_text>Вых. СУ U</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1148</id>
+		<name>CCS_OUTPUT_VOLTAGE_LINE_1_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение UV</text>
+		<short_text>Uвых  AB</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1149</id>
+		<name>CCS_OUTPUT_VOLTAGE_LINE_2_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение VW</text>
+		<short_text>Uвых  BC</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1150</id>
+		<name>CCS_OUTPUT_VOLTAGE_LINE_3_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение WU</text>
+		<short_text>Uвых  CA</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1151</id>
+		<name>CCS_OUTPUT_VOLTAGE_LINE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение</text>
+		<short_text>Вых. СУ U</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1152</id>
+		<name>CCS_TRANS_OUTPUT_VOLTAGE_PHASE_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение A</text>
+		<short_text>Uтмпн A</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1153</id>
+		<name>CCS_TRANS_OUTPUT_VOLTAGE_PHASE_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение B</text>
+		<short_text>Uтмпн B</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1154</id>
+		<name>CCS_TRANS_OUTPUT_VOLTAGE_PHASE_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение C</text>
+		<short_text>Uтмпн C</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1155</id>
+		<name>CCS_TRANS_OUTPUT_VOLTAGE_PHASE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение</text>
+		<short_text>ТМПН U</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1156</id>
+		<name>CCS_TRANS_OUTPUT_VOLTAGE_LINE_1_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение AB</text>
+		<short_text>ТМПН Uab</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Выходное напряжение ТМПН фаз AB</comment>
+	</param>
+	<param>
+		<id>1157</id>
+		<name>CCS_TRANS_OUTPUT_VOLTAGE_LINE_2_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение BC</text>
+		<short_text>ТМПН Ubc</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Выходное напряжение ТМПН фаз BC</comment>
+	</param>
+	<param>
+		<id>1158</id>
+		<name>CCS_TRANS_OUTPUT_VOLTAGE_LINE_3_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение CA</text>
+		<short_text>ТМПН Uca</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+		<comment>Выходное напряжение ТМПН фаз CA</comment>
+	</param>
+	<param>
+		<id>1159</id>
+		<name>CCS_MOTOR_VOLTAGE_LINE_1_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение AB</text>
+		<short_text>Двиг. Uab</short_text>
+		<form>Текущие параметры.Текущие параметры двигателя</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1160</id>
+		<name>CCS_MOTOR_VOLTAGE_LINE_2_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение BC</text>
+		<short_text>Двиг. Ubc</short_text>
+		<form>Текущие параметры.Текущие параметры двигателя</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1161</id>
+		<name>CCS_MOTOR_VOLTAGE_LINE_3_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение CA</text>
+		<short_text>Двиг. Uca</short_text>
+		<form>Текущие параметры.Текущие параметры двигателя</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1162</id>
+		<name>CCS_MOTOR_VOLTAGE_LINE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Напряжение</text>
+		<short_text>Двиг. U</short_text>
+		<form>Текущие параметры.Текущие параметры двигателя</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXXXX</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1163</id>
+		<name>CCS_OUTPUT_CURRENT_PHASE_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Ток фазы U</text>
+		<short_text>Вых. СУ Iu</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1164</id>
+		<name>CCS_OUTPUT_CURRENT_PHASE_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Ток фазы V</text>
+		<short_text>Вых. СУ Iv</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1165</id>
+		<name>CCS_OUTPUT_CURRENT_PHASE_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Ток фазы W</text>
+		<short_text>Вых. СУ Iw</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1166</id>
+		<name>CCS_OUTPUT_CURRENT_PHASE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Ток</text>
+		<short_text>Вых. СУ I</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1167</id>
+		<name>CCS_TRANS_OUTPUT_CURRENT_PHASE_1</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Ток фазы A</text>
+		<short_text>ТМПН Ia</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1168</id>
+		<name>CCS_TRANS_OUTPUT_CURRENT_PHASE_2</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Ток фазы B</text>
+		<short_text>ТМПН Ib</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1169</id>
+		<name>CCS_TRANS_OUTPUT_CURRENT_PHASE_3</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Ток фазы C</text>
+		<short_text>ТМПН Ic</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1170</id>
+		<name>CCS_TRANS_OUTPUT_CURRENT_PHASE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_CURRENT</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Ток</text>
+		<short_text>ТМПН I</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>CURRENT_A</unit>
+		<unit_lcd>CURRENT_A</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1171</id>
+		<name>CCS_MOTOR_ACTIVE_POWER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_ACTIVE_POWER</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Активная мощн.</text>
+		<short_text>Акт.P, кВт</short_text>
+		<form>Текущие параметры.Текущие параметры двигателя</form>
+		<unit>ACTIV_POWER_W</unit>
+		<unit_lcd>ACTIV_POWER_KW</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+		<comment>Мощность двигателя</comment>
+	</param>
+	<param>
+		<id>1172</id>
+		<name>CCS_TRANS_FULL_RESISTANCE_PHASE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_RESISTANCE</physic>
+		<min>0.0</min>
+		<max>10.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Полное сопротивление фазы</text>
+		<short_text>ТМПН Полное сопротивление фазы</short_text>
+		<form>Оборудование.ТМПН</form>
+		<unit>RESISTANCE_OM</unit>
+		<unit_lcd>RESISTANCE_OM</unit_lcd>
+		<format>XX</format>
+		<code>13</code>
+		<comment>ТМПН Полное сопротивление фазы</comment>
+	</param>
+	<param>
+		<id>1173</id>
+		<name>CCS_TRANS_ACTIVE_RESISTANCE_PHASE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_RESISTANCE</physic>
+		<min>0.0</min>
+		<max>10.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Активное сопротивление фазы</text>
+		<short_text>ТМПН Активное сопротивление фазы</short_text>
+		<form>Оборудование.ТМПН</form>
+		<unit>RESISTANCE_OM</unit>
+		<unit_lcd>RESISTANCE_OM</unit_lcd>
+		<format>XX</format>
+		<code>13</code>
+		<comment>ТМПН Активное сопротивление фазы</comment>
+	</param>
+	<param>
+		<id>1174</id>
+		<name>CCS_CABLE_INDUCTANCE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_INDUNCTANCE</physic>
+		<min>0.0</min>
+		<max>10.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Погонная индуктивность кабеля на км</text>
+		<short_text>ТМПН Погонная индуктивность кабеля на км</short_text>
+		<form>Оборудование.ТМПН</form>
+		<unit>INDUNCTANCE_MH</unit>
+		<unit_lcd>INDUNCTANCE_MH</unit_lcd>
+		<format>XX</format>
+		<code>13</code>
+		<comment>ТМПН Погонная индуктивность кабеля на км</comment>
+	</param>
+	<param>
+		<id>1175</id>
+		<name>CCS_TRANS_OUTPUT_COS</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>100</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Коэф. мощн.</text>
+		<short_text>ТМПН Коэффициент мощности</short_text>
+		<form>Текущие параметры.Текущие параметры выхода СУ и ТМПН</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>NUMERIC_NUMBER</unit_lcd>
+		<format>XXX_XX</format>
+		<code>0</code>
+		<comment>Текущий Косинус Фи</comment>
+	</param>
+	<param>
+		<id>1176</id>
+		<name>CCS_TEMP_WATER_OUT_OF_SYNC</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_TEMPERATURE</physic>
+		<min>0.0</min>
+		<max>150.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Температура жидкости для расчёта ЭДС</text>
+		<short_text>Температура жидкости для расчёта ЭДС</short_text>
+		<form>NULL</form>
+		<unit>TEMPERATURE_C</unit>
+		<unit_lcd>TEMPERATURE_C</unit_lcd>
+		<format>XXX</format>
+		<code>0</code>
+		<comment>Температура жидкости для расчёта ЭДС</comment>
+	</param>
+	<param>
+		<id>1177</id>
+		<name>CCS_EMF_MODEL</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>-2147483647.0</min>
+		<max>2147483647.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>ЭДС по расчётной модели</text>
+		<short_text>ЭДС по расчётной модели</short_text>
+		<form>NULL</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXX</format>
+		<code>0</code>
+		<comment>ЭДС по расчётной модели</comment>
+	</param>
+	<param>
+		<id>1178</id>
+		<name>CCS_INTERFACE_VOLTAGE_PHASE_OR_LINE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>1.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Формат вывода напряжения</text>
+		<short_text>Формат вывода напряжения</short_text>
+		<form>Настройки.Интерфейс</form>
+		<unit>NUMERIC_NUMBER</unit>
+		<unit_lcd>TEXT</unit_lcd>
+		<format>TEXT</format>
+		<code>13</code>
+		<values>0-Фазное;1-Линейное</values>
+		<comment>Формат вывода напряжения</comment>
+	</param>
+	<param>
+		<id>1179</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>
@@ -23447,7 +24159,7 @@
 	</param>
 	<param>
 		<id>10004</id>
-		<name>VSD_OUT_VOLTAGE_MOTOR</name>
+		<name>VSD_VOLTAGE_LINE</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
@@ -23544,7 +24256,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Ток фазы Iu</text>
+		<text>Ток фазы U</text>
 		<short_text>Ток фазы Iu</short_text>
 		<form>Текущие параметры.Текущие параметры ЧРП</form>
 		<unit>CURRENT_A</unit>
@@ -23565,7 +24277,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Ток фазы Iv</text>
+		<text>Ток фазы V</text>
 		<short_text>Ток фазы Iv</short_text>
 		<form>Текущие параметры.Текущие параметры ЧРП</form>
 		<unit>CURRENT_A</unit>
@@ -23586,7 +24298,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Ток фазы Iw</text>
+		<text>Ток фазы W</text>
 		<short_text>Ток фазы Iw</short_text>
 		<form>Текущие параметры.Текущие параметры ЧРП</form>
 		<unit>CURRENT_A</unit>
@@ -23607,7 +24319,7 @@
 		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Ток Idc</text>
+		<text>Ток DC</text>
 		<short_text>Id, А</short_text>
 		<form>Текущие параметры.Текущие параметры ЧРП</form>
 		<unit>CURRENT_A</unit>
@@ -23628,7 +24340,7 @@
 		<discret>1</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>0.0</value>
-		<text>Напряжение Udc</text>
+		<text>Напряжение DC</text>
 		<short_text>Ud, U</short_text>
 		<form>Текущие параметры.Текущие параметры ЧРП</form>
 		<unit>VOLTAGE_V</unit>
@@ -33416,6 +34128,27 @@
 	</param>
 	<param>
 		<id>10509</id>
+		<name>VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_VOLTAGE</physic>
+		<min>0.0</min>
+		<max>999999999.9</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_ERROR</valid>
+		<value>0.0</value>
+		<text>Вых. напряж.</text>
+		<short_text>Uвых, В</short_text>
+		<form>Текущие параметры.Текущие параметры ЧРП</form>
+		<unit>VOLTAGE_V</unit>
+		<unit_lcd>VOLTAGE_V</unit_lcd>
+		<format>XXXX_X</format>
+		<code>0</code>
+		<comment>Напряжение на выходе СУ</comment>
+	</param>
+	<param>
+		<id>10510</id>
 		<name>VSD_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

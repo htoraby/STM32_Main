@@ -35,7 +35,7 @@ public:
   uint32_t add(MsgType type, const char *msg, ...);
 
 private:
-  char msg_[SIZE_BUF_LOG];
+  volatile char msg_[SIZE_BUF_LOG];
   //! Идентификатор семафора начала записи архива
   osSemaphoreId semaphoreId_;
 

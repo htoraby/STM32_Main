@@ -375,7 +375,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[30].command           = OPERATION_ERROR;
   scadaParameters_[30].value.float_t     = 0;
   // Выходное напряжение ПЧ
-  scadaParameters_[31].id                = VSD_OUT_VOLTAGE_MOTOR;
+  scadaParameters_[31].id                = VSD_VOLTAGE_LINE;
   scadaParameters_[31].address           = 280;
   scadaParameters_[31].operation         = OPERATION_READ;
   scadaParameters_[31].physic            = PHYSIC_VOLTAGE;
@@ -387,7 +387,7 @@ void ScadaLukoil::initParameters()
   scadaParameters_[31].command           = OPERATION_ERROR;
   scadaParameters_[31].value.float_t     = 0;
   // Выходное напряжение ТМПН
-  scadaParameters_[32].id                = CCS_MOTOR_VOLTAGE_NOW;
+  scadaParameters_[32].id                = CCS_TRANS_OUTPUT_VOLTAGE_LINE;
   scadaParameters_[32].address           = 281;
   scadaParameters_[32].operation         = OPERATION_READ;
   scadaParameters_[32].physic            = PHYSIC_VOLTAGE;

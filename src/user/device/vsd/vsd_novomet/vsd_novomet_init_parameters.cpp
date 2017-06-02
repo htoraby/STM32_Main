@@ -1933,7 +1933,7 @@ void VsdNovomet::initModbusParameters()
                           0                 // Значение
   };
   modbusParameters_[104] = {// Текущее выходное напряжение ПЧ
-                          VSD_OUT_VOLTAGE_MOTOR,
+                          VSD_VOLTAGE_LINE,
                           180,              // Адрес регистра в устройстве
                           OPERATION_READ,   // Операции с параметром
                           PHYSIC_VOLTAGE,   // Физическая величина параметра

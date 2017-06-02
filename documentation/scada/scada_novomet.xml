@@ -447,7 +447,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>VSD_OUT_VOLTAGE_MOTOR</id>
+		<id>VSD_VOLTAGE_LINE</id>
 		<address>39</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
@@ -870,7 +870,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>CCS_MOTOR_VOLTAGE_NOW</id>
+		<id>CCS_MOTOR_VOLTAGE_LINE</id>
 		<address>77</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
