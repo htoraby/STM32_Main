@@ -2,1114 +2,1377 @@
 <KSU-02_default xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<param>
 		<name>CCS_LOG_PERIOD_NORMAL</name>
-		<rosneft>900</rosneft>
+		<rn_asyn>120</rn_asyn>
+		<rn_pmm>120</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_LOG_PERIOD_FAST</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_LOG_PERIOD_DHS</name>
-		<rosneft>300</rosneft>
+		<rn_asyn>300</rn_asyn>
+		<rn_pmm>300</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_OVERVOLTAGE_MODE</name>
-		<rosneft>2</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY</name>
-		<rosneft>20</rosneft>
+		<rn_asyn>20</rn_asyn>
+		<rn_pmm>20</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY</name>
-		<rosneft>300</rosneft>
+		<rn_asyn>300</rn_asyn>
+		<rn_pmm>300</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT</name>
-		<rosneft>120</rosneft>
+		<rn_asyn>120</rn_asyn>
+		<rn_pmm>120</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE</name>
-		<rosneft>2</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY</name>
-		<rosneft>20</rosneft>
+		<rn_asyn>20</rn_asyn>
+		<rn_pmm>20</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY</name>
-		<rosneft>300</rosneft>
+		<rn_asyn>300</rn_asyn>
+		<rn_pmm>300</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT</name>
-		<rosneft>80</rosneft>
+		<rn_asyn>50</rn_asyn>
+		<rn_pmm>50</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE</name>
-		<rosneft>2</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY</name>
-		<rosneft>300</rosneft>
+		<rn_asyn>300</rn_asyn>
+		<rn_pmm>300</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY</name>
-		<rosneft>300</rosneft>
+		<rn_asyn>300</rn_asyn>
+		<rn_pmm>300</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_SUPPLY_IMBALANCE_CURRENT_TRIP_SETPOINT</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OVERLOAD_MODE</name>
-		<rosneft>2</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY</name>
-		<rosneft>45</rosneft>
+		<rn_asyn>120</rn_asyn>
+		<rn_pmm>120</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY</name>
-		<rosneft>1800</rosneft>
+		<rn_asyn>1800</rn_asyn>
+		<rn_pmm>1800</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OVERLOAD_RESTART_LIMIT</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OVERLOAD_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT</name>
-		<rosneft>100</rosneft>
+		<rn_asyn>110</rn_asyn>
+		<rn_pmm>110</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_UNDERLOAD_MODE</name>
-		<rosneft>2</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY</name>
-		<rosneft>60</rosneft>
+		<rn_asyn>60</rn_asyn>
+		<rn_pmm>60</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY</name>
-		<rosneft>45</rosneft>
+		<rn_asyn>45</rn_asyn>
+		<rn_pmm>45</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY</name>
-		<rosneft>7200</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_UNDERLOAD_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_UNDERLOAD_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_UNDERLOAD_TRIP_SETPOINT</name>
-		<rosneft>85</rosneft>
+		<rn_asyn>15</rn_asyn>
+		<rn_pmm>15</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_CURRENT_MODE</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_CURRENT_RESTART_DELAY</name>
-		<rosneft>3600</rosneft>
+		<rn_asyn>3600</rn_asyn>
+		<rn_pmm>3600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_CURRENT_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_CURRENT_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_CURRENT_TRIP_SETPOINT</name>
-		<rosneft>160</rosneft>
+		<rn_asyn>160</rn_asyn>
+		<rn_pmm>160</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE</name>
-		<rosneft>2</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY</name>
-		<rosneft>300</rosneft>
+		<rn_asyn>300</rn_asyn>
+		<rn_pmm>300</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_SETPOINT</name>
-		<rosneft>20</rosneft>
+		<rn_asyn>20</rn_asyn>
+		<rn_pmm>20</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_ASYNC_MODE</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>3</rn_asyn>
+		<rn_pmm>3</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT</name>
-		<rosneft>5</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_ACTIV_DELAY</name>
-		<rosneft>30</rosneft>
+		<rn_asyn>30</rn_asyn>
+		<rn_pmm>30</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_DELAY</name>
-		<rosneft>2</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_DELAY</name>
-		<rosneft>3600</rosneft>
+		<rn_asyn>3600</rn_asyn>
+		<rn_pmm>3600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_TRIP_SETPOINT</name>
-		<rosneft>0.5</rosneft>
+		<rn_asyn>0.5</rn_asyn>
+		<rn_pmm>0.5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_OUT_OF_SYNC_RESTART_SETPOINT</name>
-		<rosneft>100</rosneft>
+		<rn_asyn>100</rn_asyn>
+		<rn_pmm>100</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_INTAKE_MODE</name>
-		<rosneft>2</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_INTAKE_ACTIV_DELAY</name>
-		<rosneft>120</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY</name>
-		<rosneft>120</rosneft>
+		<rn_asyn>120</rn_asyn>
+		<rn_pmm>120</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY</name>
-		<rosneft>7200</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT</name>
-		<rosneft>3.04</rosneft>
+		<rn_asyn>3.04</rn_asyn>
+		<rn_pmm>3.04</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT</name>
-		<rosneft>25</rosneft>
+		<rn_asyn>25</rn_asyn>
+		<rn_pmm>25</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_TEMPERATURE_MOTOR_ACTIV_DELAY</name>
-		<rosneft>120</rosneft>
+		<rn_asyn>60</rn_asyn>
+		<rn_pmm>60</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY</name>
-		<rosneft>30</rosneft>
+		<rn_asyn>60</rn_asyn>
+		<rn_pmm>60</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY</name>
-		<rosneft>7200</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_SETPOINT</name>
-		<rosneft>90</rosneft>
+		<rn_asyn>120</rn_asyn>
+		<rn_pmm>120</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_SETPOINT</name>
-		<rosneft>80</rosneft>
+		<rn_asyn>80</rn_asyn>
+		<rn_pmm>80</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_RESISTANCE_MODE</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT</name>
-		<rosneft>30000</rosneft>
+		<rn_asyn>30000</rn_asyn>
+		<rn_pmm>30000</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_RESISTANCE_PARAMETER</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_VIBRATION_MODE</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_VIBRATION_ACTIV_DELAY</name>
-		<rosneft>60</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_VIBRATION_TRIP_DELAY</name>
-		<rosneft>45</rosneft>
+		<rn_asyn>120</rn_asyn>
+		<rn_pmm>120</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_VIBRATION_RESTART_DELAY</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>60</rn_asyn>
+		<rn_pmm>60</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_VIBRATION_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_VIBRATION_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT</name>
-		<rosneft>0.2</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_1_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_1_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_1_TRIP_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_1_RESTART_DELAY</name>
-		<rosneft>600</rosneft>
+		<rn_asyn>600</rn_asyn>
+		<rn_pmm>600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_1_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_1_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_1_TRIP_SETPOINT</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_1_RESTART_SETPOINT</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_1_PARAMETER</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_2_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_2_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_2_TRIP_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_2_RESTART_DELAY</name>
-		<rosneft>600</rosneft>
+		<rn_asyn>600</rn_asyn>
+		<rn_pmm>600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_2_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_2_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_2_TRIP_SETPOINT</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_2_RESTART_SETPOINT</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_2_PARAMETER</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_3_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_3_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_3_TRIP_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_3_RESTART_DELAY</name>
-		<rosneft>600</rosneft>
+		<rn_asyn>600</rn_asyn>
+		<rn_pmm>600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_3_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_3_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_3_TRIP_SETPOINT</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_3_RESTART_SETPOINT</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_3_PARAMETER</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_4_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_4_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_4_TRIP_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_4_RESTART_DELAY</name>
-		<rosneft>600</rosneft>
+		<rn_asyn>600</rn_asyn>
+		<rn_pmm>600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_4_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_4_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_4_TRIP_SETPOINT</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_4_RESTART_SETPOINT</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_AI_4_PARAMETER</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_1_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_1_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_1_TRIP_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_1_RESTART_DELAY</name>
-		<rosneft>600</rosneft>
+		<rn_asyn>600</rn_asyn>
+		<rn_pmm>600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_1_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_1_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_2_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_2_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_2_TRIP_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_2_RESTART_DELAY</name>
-		<rosneft>600</rosneft>
+		<rn_asyn>600</rn_asyn>
+		<rn_pmm>600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_2_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_2_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_3_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_3_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_3_TRIP_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_3_RESTART_DELAY</name>
-		<rosneft>600</rosneft>
+		<rn_asyn>600</rn_asyn>
+		<rn_pmm>600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_3_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_3_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_4_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_4_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_4_TRIP_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_4_RESTART_DELAY</name>
-		<rosneft>600</rosneft>
+		<rn_asyn>600</rn_asyn>
+		<rn_pmm>600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_4_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DI_4_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_TRIP_SETPOINT</name>
-		<rosneft>5</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_LIMIT_RESTART_PARAMETER</name>
-		<rosneft>36000</rosneft>
+		<rn_asyn>36000</rn_asyn>
+		<rn_pmm>36000</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_LOCK_DOOR_MODE</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>3</rn_asyn>
+		<rn_pmm>3</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_VSD_MODE</name>
-		<rosneft>2</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_VSD_RESTART_DELAY</name>
-		<rosneft>3600</rosneft>
+		<rn_asyn>3600</rn_asyn>
+		<rn_pmm>3600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_VSD_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_VSD_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_IMB_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_PERIODIC_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_PERIODIC_RUN_PERIOD</name>
-		<rosneft>3600</rosneft>
+		<rn_asyn>3600</rn_asyn>
+		<rn_pmm>3600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_PERIODIC_STOP_PERIOD</name>
-		<rosneft>3600</rosneft>
+		<rn_asyn>3600</rn_asyn>
+		<rn_pmm>3600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_ALTERNATION_FREQ_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_ALTERNATION_FREQ_FREQ_1</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_ALTERNATION_FREQ_TIMER_1</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1</name>
-		<rosneft>60</rosneft>
+		<rn_asyn>60</rn_asyn>
+		<rn_pmm>60</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_ALTERNATION_FREQ_FREQ_2</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_ALTERNATION_FREQ_TIMER_2</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2</name>
-		<rosneft>60</rosneft>
+		<rn_asyn>60</rn_asyn>
+		<rn_pmm>60</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_CHANGE_FREQ_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_CHANGE_FREQ_BEGIN_FREQ</name>
-		<rosneft>35</rosneft>
+		<rn_asyn>35</rn_asyn>
+		<rn_pmm>35</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_CHANGE_FREQ_END_FREQ</name>
-		<rosneft>45</rosneft>
+		<rn_asyn>45</rn_asyn>
+		<rn_pmm>45</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_CHANGE_FREQ_PERIOD</name>
-		<rosneft>60</rosneft>
+		<rn_asyn>60</rn_asyn>
+		<rn_pmm>60</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_MAINTENANCE_PARAM_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_MAINTENANCE_PARAM_TYPE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_MAINTENANCE_PARAM_PERIOD</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_MAINTENANCE_PARAM_PROP</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_MAINTENANCE_PARAM_INT</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ</name>
-		<rosneft>60</rosneft>
+		<rn_asyn>60</rn_asyn>
+		<rn_pmm>60</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_JARRING_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_JARRING_PERIOD</name>
-		<rosneft>60</rosneft>
+		<rn_asyn>60</rn_asyn>
+		<rn_pmm>60</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_JARRING_FREQ_1</name>
-		<rosneft>45</rosneft>
+		<rn_asyn>45</rn_asyn>
+		<rn_pmm>45</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_JARRING_UPTEMP</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_JARRING_FREQ_2</name>
-		<rosneft>55</rosneft>
+		<rn_asyn>55</rn_asyn>
+		<rn_pmm>55</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_JARRING_DOWNTEMP</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_HEAT_CABLE_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_HEAT_CABLE_RESISTANCE_20</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_HEAT_CABLE_RESISTANCE_80</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_HEAT_CABLE_MODE_CURRENT</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_HEAT_CABLE_MODE_DELAY_REACTION</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_OPTIM_VOLTAGE_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>3</rn_asyn>
+		<rn_pmm>3</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_OPTIM_VOLTAGE_SCALE</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_OPTIM_VOLTAGE_STEP</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_OPTIM_VOLTAGE_DELAY</name>
-		<rosneft>600</rosneft>
+		<rn_asyn>600</rn_asyn>
+		<rn_pmm>600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_OPTIM_VOLTAGE_PERIOD</name>
-		<rosneft>3600</rosneft>
+		<rn_asyn>3600</rn_asyn>
+		<rn_pmm>3600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_PUMP_GAS_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_PUMP_GAS_F1</name>
-		<rosneft>50</rosneft>
+		<rn_asyn>50</rn_asyn>
+		<rn_pmm>50</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_PUMP_GAS_TIME</name>
-		<rosneft>20</rosneft>
+		<rn_asyn>20</rn_asyn>
+		<rn_pmm>20</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_PUMP_GAS_CICLE</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>3</rn_asyn>
+		<rn_pmm>3</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_CURRENT_LIMIT_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_CURRENT_LIMIT_SETPOINT</name>
-		<rosneft>100</rosneft>
+		<rn_asyn>100</rn_asyn>
+		<rn_pmm>100</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_CURRENT_LIMIT_DELAY_REACTION</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_COEF_VOLTAGE_IN_A</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_COEF_VOLTAGE_IN_B</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_COEF_VOLTAGE_IN_C</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_COEF_OUT_CURRENT_1</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_COEF_OUT_CURRENT_2</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_COEF_OUT_CURRENT_3</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_COEF_RESISTANCE_ISOLATION</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD</name>
-		<rosneft>60</rosneft>
+		<rn_asyn>60</rn_asyn>
+		<rn_pmm>60</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_PUSH_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_PUSH_FREQ</name>
-		<rosneft>5</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_PUSH_TIME</name>
-		<rosneft>5</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_PUSH_PERIOD</name>
-		<rosneft>5</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_PUSH_VOLTAGE</name>
-		<rosneft>125</rosneft>
+		<rn_asyn>125</rn_asyn>
+		<rn_pmm>125</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_PUSH_QUANTITY</name>
-		<rosneft>5</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_SWING_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_SWING_FREQ</name>
-		<rosneft>5</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_SWING_VOLTAGE</name>
-		<rosneft>100</rosneft>
+		<rn_asyn>100</rn_asyn>
+		<rn_pmm>100</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_SWING_QUANTITY</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_SYNCHRON_MODE</name>
-		<rosneft>2</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_SYNCHRON_FREQ</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_SYNCHRON_TIME</name>
-		<rosneft>4</rosneft>
+		<rn_asyn>4</rn_asyn>
+		<rn_pmm>4</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_PICKUP_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_PRESSURE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_TEMPERATURE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_JARRING_COUNT</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_VSD_NO_CONNECT_MODE</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>3</rn_asyn>
+		<rn_pmm>3</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY</name>
-		<rosneft>180</rosneft>
+		<rn_asyn>180</rn_asyn>
+		<rn_pmm>180</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_RGM_RUN_AUTO_ADAPTATION_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_SW_STARTUP_FREQUENCY_PUSH</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>3</rn_asyn>
+		<rn_pmm>3</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_SW_STARTUP_ANGLE_OSC_PUSH</name>
-		<rosneft>2</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_SW_STARTUP_ROTATIONS_PUSH</name>
-		<rosneft>25</rosneft>
+		<rn_asyn>25</rn_asyn>
+		<rn_pmm>25</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_SW_STARTUP_U_PULSE_PUSH</name>
-		<rosneft>5</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_SW_STARTUP_I_LIM_PUSH</name>
-		<rosneft>1500</rosneft>
+		<rn_asyn>1500</rn_asyn>
+		<rn_pmm>1500</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_SW_STARTUP_I_LIM_PULSE_PUSH</name>
-		<rosneft>3000</rosneft>
+		<rn_asyn>3000</rn_asyn>
+		<rn_pmm>3000</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_SW_STARTUP_FREQUENCY_SWING</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>3</rn_asyn>
+		<rn_pmm>3</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_SW_STARTUP_ANGLE_OSC_SWING</name>
-		<rosneft>2</rosneft>
+		<rn_asyn>2</rn_asyn>
+		<rn_pmm>2</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_SW_STARTUP_OSC_COUNT_SWING</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>1</rn_asyn>
+		<rn_pmm>1</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_SW_STARTUP_ROTATIONS_SWING</name>
-		<rosneft>25</rosneft>
+		<rn_asyn>25</rn_asyn>
+		<rn_pmm>25</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_SW_STARTUP_U_PULSE_SWING</name>
-		<rosneft>5</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_SW_STARTUP_I_LIM_SWING</name>
-		<rosneft>1500</rosneft>
+		<rn_asyn>1500</rn_asyn>
+		<rn_pmm>1500</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_SW_STARTUP_I_LIM_PULSE_SWING</name>
-		<rosneft>3000</rosneft>
+		<rn_asyn>3000</rn_asyn>
+		<rn_pmm>3000</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_DI_1_TYPE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_DI_2_TYPE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_DI_3_TYPE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_DI_4_TYPE</name>
-		<rosneft>0</rosneft>
-	</param>
-	<param>
-		<name>CCS_COEF_CURRENT_IN_A</name>
-		<rosneft>1</rosneft>
-	</param>
-	<param>
-		<name>CCS_COEF_CURRENT_IN_B</name>
-		<rosneft>1</rosneft>
-	</param>
-	<param>
-		<name>CCS_COEF_CURRENT_IN_C</name>
-		<rosneft>1</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_TRIP_DELAY</name>
-		<rosneft>120</rosneft>
+		<rn_asyn>120</rn_asyn>
+		<rn_pmm>120</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_DELAY</name>
-		<rosneft>7200</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_FLOW_DISCHARGE_TRIP_SETPOINT</name>
-		<rosneft>30</rosneft>
+		<rn_asyn>30</rn_asyn>
+		<rn_pmm>30</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_ACTIV_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_TRIP_DELAY</name>
-		<rosneft>10</rosneft>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_DELAY</name>
-		<rosneft>600</rosneft>
+		<rn_asyn>600</rn_asyn>
+		<rn_pmm>600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_TRIP_SETPOINT</name>
-		<rosneft>50</rosneft>
+		<rn_asyn>50</rn_asyn>
+		<rn_pmm>50</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_DHS_PRESSURE_DISCHARGE_RESTART_SETPOINT</name>
-		<rosneft>25</rosneft>
+		<rn_asyn>25</rn_asyn>
+		<rn_pmm>25</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_MODE</name>
-		<rosneft>0</rosneft>
+		<rn_asyn>0</rn_asyn>
+		<rn_pmm>0</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_DELAY</name>
-		<rosneft>600</rosneft>
+		<rn_asyn>600</rn_asyn>
+		<rn_pmm>600</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_LIMIT</name>
-		<rosneft>3</rosneft>
+		<rn_asyn>5</rn_asyn>
+		<rn_pmm>5</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_RESET</name>
-		<rosneft>86400</rosneft>
+		<rn_asyn>7200</rn_asyn>
+		<rn_pmm>7200</rn_pmm>
 	</param>
 	<param>
 		<name>VSD_TIMER_DISPERSAL</name>
-		<rosneft>30</rosneft>
+		<rn_asyn>12</rn_asyn>
+		<rn_pmm>60</rn_pmm>
 	</param>
 	<param>
 		<name>VSD_TIMER_DELAY</name>
-		<rosneft>30</rosneft>
+		<rn_asyn>12</rn_asyn>
+		<rn_pmm>60</rn_pmm>
 	</param>
 </KSU-02_default>

@@ -795,6 +795,7 @@ void Parameters::setProfileDefaultSetpoint()
 void Parameters::setAllDefault()
 {
   int profile = parameters.get(CCS_PROFILE_DEFAULT_SETPOINT);
+  float mtrType = parameters.get(CCS_MOTOR_TYPE);
 
   switch (profile) {
   case NovometDefaultSetpoint:
@@ -804,7 +805,10 @@ void Parameters::setAllDefault()
     break;
   case RosneftDefaultSetpoint:
     for (int i = 0; i < COUNT_PARAMETERS_DEFAULT; ++i) {
-      set(defaultParams[i][0], defaultParams[i][1], NoneType);
+      if (mtrType == VSD_MOTOR_TYPE_ASYNC)
+        set(defaultParams[i][0], defaultParams[i][1], NoneType);
+      else
+        set(defaultParams[i][0], defaultParams[i][2], NoneType);
     }
     break;
   case Profile1DefaultSetpoint: case Profile2DefaultSetpoint:
@@ -820,6 +824,7 @@ void Parameters::setAllDefault()
 void Parameters::setDefault(uint16_t id)
 {
   int profile = parameters.get(CCS_PROFILE_DEFAULT_SETPOINT);
+  float mtrType = parameters.get(CCS_MOTOR_TYPE);
 
   switch (profile) {
   case NovometDefaultSetpoint:
@@ -828,7 +833,10 @@ void Parameters::setDefault(uint16_t id)
   case RosneftDefaultSetpoint:
     for (int i = 0; i < COUNT_PARAMETERS_DEFAULT; ++i) {
       if (defaultParams[i][0] == id) {
-        set(defaultParams[i][0], defaultParams[i][1], NoneType);
+        if (mtrType == VSD_MOTOR_TYPE_ASYNC)
+          set(defaultParams[i][0], defaultParams[i][1], NoneType);
+        else
+          set(defaultParams[i][0], defaultParams[i][2], NoneType);
         return;
       }
     }
