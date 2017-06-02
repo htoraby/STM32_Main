@@ -241,6 +241,7 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
                    id, value, min);
 #endif
     }
+
     if ((check == err_max_r) && (getFieldValidity(index) != VALIDITY_MAX)) {
       setFieldValidity(index, VALIDITY_MAX);
 #if (USE_LOG_WARNING == 1)

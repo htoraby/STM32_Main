@@ -44,7 +44,7 @@ void LogData::task()
 
   while (1) {  
     if (osSemaphoreWait(addSemaphoreId_, 1) != osEventTimeout)
-      add(NormModeCode);
+      add(FastModeCode);
 
     if ((HAL_GetTick() - time1s) >= 1000) {
       time1s = HAL_GetTick();
@@ -72,6 +72,12 @@ void LogData::task()
           normTimeCnt = 0;
           add(NormModeCode);
         }
+      }
+
+      if ((parameters.get(CCS_DATE_TIME_HOUR) == 0) &&
+          (parameters.get(CCS_DATE_TIME_MIN) == 0) &&
+          (parameters.get(CCS_DATE_TIME_SEC) == 0)) {
+        add(PowerMeterModeCode);
       }
     }
   }

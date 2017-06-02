@@ -59,6 +59,7 @@ typedef enum {
   WarningVsdCode,                     //!< Предупреждение ЧРП
   SetpointResetCode    = 106,         //!< Сброс уставок
   MultiSetpointCode    = 107,         //!< Изм нескольких уставок
+  PowerMeterModeCode   = 108,         //!< Запись в лог для учёта электроэнергии
 
   LastCode,
 } EventCode;
