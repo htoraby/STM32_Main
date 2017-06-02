@@ -119,7 +119,7 @@ void RegimeRunSynchron::offRegime()
 
 int16_t RegimeRunSynchron::setMinFreq()
 {
-  int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, 1);
+  int16_t err = setConfirmation(VSD_LOW_LIM_SPEED_MOTOR, parameters.getMin(VSD_LOW_LIM_SPEED_MOTOR));
   if (err == err_r) {
 #if (USE_LOG_DEBUG == 1)
     logDebug.add(DebugMsg, "RegimeRunSynchron::setMinFreq()");

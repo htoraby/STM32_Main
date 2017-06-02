@@ -12,6 +12,7 @@
 #include "device_modbus.h"
 
 class RegimeRunEtalon;
+class RegimeRunSynchron;
 
 enum enVsdEtalonAlarm {
   VSD_ETALON_ALARM_UNDERLOAD      = 3001,   //!< Недогруз
@@ -231,6 +232,7 @@ private:
   DeviceModbus *dm_;
 
   RegimeRunEtalon *regimeRun_;
+  RegimeRunSynchron *regimeRunSynchron_;
 
 };
 

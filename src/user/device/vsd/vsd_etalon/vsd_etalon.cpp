@@ -8,18 +8,21 @@
 #include "vsd_etalon.h"
 #include "user_main.h"
 #include "regime_run_etalon.h"
+#include "regime_run_synchron.h"
 #include "vsd_etalon_log.h"
 #include "protection.h"
 
 VsdEtalon::VsdEtalon()
 {
   regimeRun_ = new RegimeRunEtalon();
+  regimeRunSynchron_ = new RegimeRunSynchron();
   log_ = new VsdEtalonLog();
 }
 
 VsdEtalon::~VsdEtalon()
 {
   delete regimeRun_;
+  delete regimeRunSynchron_;
   delete dm_;
   delete log_;
 }
@@ -806,6 +809,7 @@ int VsdEtalon::resetBlock()
 void VsdEtalon::processingRegimeRun()
 {
   regimeRun_->processing();
+  regimeRunSynchron_->processing();
 }
 
 int VsdEtalon::onRegimePush()

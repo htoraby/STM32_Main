@@ -191,6 +191,9 @@ bool interceptionStartRegime()
         return false;
       }
       break;
+    case VSD_TYPE_ETALON:
+      parameters.set(CCS_RGM_RUN_AUTO_ADAPTATION_MODE, Regime::OffAction);
+      break;
     default:
       if (parameters.get(CCS_RGM_RUN_AUTO_ADAPTATION_STATE) < Regime::WorkState) {
         return false;
@@ -202,7 +205,6 @@ bool interceptionStartRegime()
   if (parameters.get(CCS_RGM_RUN_SYNCHRON_MODE) != Regime::OffAction) {
     switch ((uint16_t)parameters.get(CCS_TYPE_VSD)) {
     case VSD_TYPE_NOVOMET:
-    case VSD_TYPE_ETALON:
       if (parameters.get(CCS_RGM_RUN_VSD_STATE) < Regime::WorkState) {
         return false;
       }
