@@ -19,12 +19,12 @@ uint32_t LogDebug::add(MsgType type, const char *msg, ...)
 {
   osSemaphoreWait(semaphoreId_, osWaitForever);
 
-  memset(msg_, 0, sizeof(msg_));
+  memset((char *)msg_, 0, sizeof(msg_));
   memset((uint8_t *)buffer, 0, sizeof(buffer));
 
   va_list args;
   va_start(args, msg);
-  vsprintf(msg_, msg, args);
+  vsprintf((char *)msg_, msg, args);
   va_end(args);
 
   time_t time = ksu.getTime();
@@ -33,10 +33,10 @@ uint32_t LogDebug::add(MsgType type, const char *msg, ...)
   *(uint32_t*)(buffer+4) = time;
   *(uint8_t*)(buffer+8) = type;
 
-  int size = strlen(msg_);
+  int size = strlen((char *)msg_);
   if (size > SIZE_MSG_DEBUG)
     size = SIZE_MSG_DEBUG;
-  memcpy((uint8_t *)&buffer[9], msg_, size);
+  memcpy((uint8_t *)&buffer[9], (char *)msg_, size);
 
   write((uint8_t *)buffer, SIZE_BUF_LOG);
 
