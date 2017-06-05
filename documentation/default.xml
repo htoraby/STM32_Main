@@ -282,8 +282,8 @@
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_SETPOINT</name>
-		<rn_asyn>20</rn_asyn>
-		<rn_pmm>20</rn_pmm>
+		<rn_asyn>10</rn_asyn>
+		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
 		<name>CCS_PROT_MOTOR_ASYNC_MODE</name>
