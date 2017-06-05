@@ -324,27 +324,27 @@ void Ccs::calcCurrentParam()
   setValue(CCS_OUTPUT_CURRENT_PHASE_2, outCurPh2);
   setValue(CCS_OUTPUT_CURRENT_PHASE_3, outCurPh3);
   setValue(CCS_OUTPUT_CURRENT_PHASE, outCurPh);
-  setValue(CCS_OUTPUT_VOLTAGE_PHASE_1, outVoltPh1);
-  setValue(CCS_OUTPUT_VOLTAGE_PHASE_2, outVoltPh2);
-  setValue(CCS_OUTPUT_VOLTAGE_PHASE_3, outVoltPh3);
-  setValue(CCS_OUTPUT_VOLTAGE_PHASE, outVoltPh);
-  setValue(CCS_OUTPUT_VOLTAGE_LINE_1_2, outVoltLn1);
-  setValue(CCS_OUTPUT_VOLTAGE_LINE_2_3, outVoltLn2);
-  setValue(CCS_OUTPUT_VOLTAGE_LINE_3_1, outVoltLn3);
-  setValue(CCS_OUTPUT_VOLTAGE_LINE, outVoltLn);
+  setValue(CCS_OUTPUT_VOLTAGE_PHASE_1, (outVoltPh1 < 0) ? 0 : outVoltPh1);
+  setValue(CCS_OUTPUT_VOLTAGE_PHASE_2, (outVoltPh2 < 0) ? 0 : outVoltPh2);
+  setValue(CCS_OUTPUT_VOLTAGE_PHASE_3, (outVoltPh3 < 0) ? 0 : outVoltPh3);
+  setValue(CCS_OUTPUT_VOLTAGE_PHASE, (outVoltPh < 0) ? 0 : outVoltPh);
+  setValue(CCS_OUTPUT_VOLTAGE_LINE_1_2, (outVoltLn1 < 0) ? 0 : outVoltLn1);
+  setValue(CCS_OUTPUT_VOLTAGE_LINE_2_3, (outVoltLn2 < 0) ? 0 : outVoltLn2);
+  setValue(CCS_OUTPUT_VOLTAGE_LINE_3_1, (outVoltLn3 < 0) ? 0 : outVoltLn3);
+  setValue(CCS_OUTPUT_VOLTAGE_LINE, (outVoltLn < 0) ? 0 : outVoltLn);
 
   setValue(CCS_TRANS_OUTPUT_CURRENT_PHASE_1, transCurPh1);
   setValue(CCS_TRANS_OUTPUT_CURRENT_PHASE_2, transCurPh2);
   setValue(CCS_TRANS_OUTPUT_CURRENT_PHASE_3, transCurPh3);
   setValue(CCS_TRANS_OUTPUT_CURRENT_PHASE, transCurPh);
-  setValue(CCS_TRANS_OUTPUT_VOLTAGE_PHASE_1, transVoltPh1);
-  setValue(CCS_TRANS_OUTPUT_VOLTAGE_PHASE_2, transVoltPh2);
-  setValue(CCS_TRANS_OUTPUT_VOLTAGE_PHASE_3, transVoltPh3);
-  setValue(CCS_TRANS_OUTPUT_VOLTAGE_PHASE, transVoltPh);
-  setValue(CCS_TRANS_OUTPUT_VOLTAGE_LINE_1_2, transVoltLn1);
-  setValue(CCS_TRANS_OUTPUT_VOLTAGE_LINE_2_3, transVoltLn2);
-  setValue(CCS_TRANS_OUTPUT_VOLTAGE_LINE_3_1, transVoltLn3);
-  setValue(CCS_TRANS_OUTPUT_VOLTAGE_LINE, transVoltLn);
+  setValue(CCS_TRANS_OUTPUT_VOLTAGE_PHASE_1, (transVoltPh1 < 0) ? 0 : transVoltPh1);
+  setValue(CCS_TRANS_OUTPUT_VOLTAGE_PHASE_2, (transVoltPh2 < 0) ? 0 : transVoltPh2);
+  setValue(CCS_TRANS_OUTPUT_VOLTAGE_PHASE_3, (transVoltPh3 < 0) ? 0 : transVoltPh3);
+  setValue(CCS_TRANS_OUTPUT_VOLTAGE_PHASE, (transVoltPh < 0) ? 0 : transVoltPh);
+  setValue(CCS_TRANS_OUTPUT_VOLTAGE_LINE_1_2, (transVoltLn1 < 0) ? 0 : transVoltLn1);
+  setValue(CCS_TRANS_OUTPUT_VOLTAGE_LINE_2_3, (transVoltLn2 < 0) ? 0 : transVoltLn2);
+  setValue(CCS_TRANS_OUTPUT_VOLTAGE_LINE_3_1, (transVoltLn3 < 0) ? 0 : transVoltLn3);
+  setValue(CCS_TRANS_OUTPUT_VOLTAGE_LINE, (transVoltLn < 0) ? 0 : transVoltLn);
 
   setValue(CCS_MOTOR_CURRENT_PHASE_1, mtrCurPh1);
   setValue(CCS_MOTOR_CURRENT_PHASE_2, mtrCurPh2);
@@ -352,16 +352,16 @@ void Ccs::calcCurrentParam()
   setValue(CCS_MOTOR_CURRENT_AVARAGE, mtrCurPh);
   setValue(CCS_MOTOR_CURRENT_IMBALANCE, mtrCurPhDisb);
 
-  setValue(CCS_MOTOR_VOLTAGE_PHASE_1, mtrVoltPh1);
-  setValue(CCS_MOTOR_VOLTAGE_PHASE_2, mtrVoltPh2);
-  setValue(CCS_MOTOR_VOLTAGE_PHASE_3, mtrVoltPh3);
-  setValue(CCS_MOTOR_VOLTAGE_PHASE, mtrVoltPh);
-  setValue(CCS_MOTOR_VOLTAGE_IMBALANCE, mtrVoltPhDisb);
+  setValue(CCS_MOTOR_VOLTAGE_PHASE_1, (mtrVoltPh1 < 0) ? 0 : mtrVoltPh1);
+  setValue(CCS_MOTOR_VOLTAGE_PHASE_2, (mtrVoltPh2 < 0) ? 0 : mtrVoltPh2);
+  setValue(CCS_MOTOR_VOLTAGE_PHASE_3, (mtrVoltPh3 < 0) ? 0 : mtrVoltPh3);
+  setValue(CCS_MOTOR_VOLTAGE_PHASE, (mtrVoltPh < 0) ? 0 : mtrVoltPh);
+  setValue(CCS_MOTOR_VOLTAGE_IMBALANCE, (mtrVoltPhDisb < 0) ? 0 : mtrVoltPhDisb);
 
-  setValue(CCS_MOTOR_VOLTAGE_LINE_1_2, mtrVoltLn1);
-  setValue(CCS_MOTOR_VOLTAGE_LINE_2_3, mtrVoltLn2);
-  setValue(CCS_MOTOR_VOLTAGE_LINE_3_1, mtrVoltLn3);
-  setValue(CCS_MOTOR_VOLTAGE_LINE, mtrVoltLn);
+  setValue(CCS_MOTOR_VOLTAGE_LINE_1_2, (mtrVoltLn1 < 0) ? 0 : mtrVoltLn1);
+  setValue(CCS_MOTOR_VOLTAGE_LINE_2_3, (mtrVoltLn2 < 0) ? 0 : mtrVoltLn2);
+  setValue(CCS_MOTOR_VOLTAGE_LINE_3_1, (mtrVoltLn3 < 0) ? 0 : mtrVoltLn3);
+  setValue(CCS_MOTOR_VOLTAGE_LINE, (mtrVoltLn < 0) ? 0 : mtrVoltLn);
 
   setValue(CCS_MOTOR_COS_PHI_NOW, cosMtr);
   setValue(CCS_MOTOR_ACTIVE_POWER, mtrActPwr);
@@ -811,13 +811,13 @@ void Ccs::calcDigitalInputs()
 
 void Ccs::calcTest()
 {
-  float a = 70.0;
-  float b = 9.869232667;
-  float c = a/b;
-  float d = c * b;
-  float e;
-  e = 2 * d;
-  e = e * e;
+//  float a = 70.0;
+//  float b = 9.869232667;
+//  float c = a/b;
+//  float d = c * b;
+//  float e;
+//  e = 2 * d;
+//  e = e * e;
 }
 
 void Ccs::changedDigitalInput(int num)
