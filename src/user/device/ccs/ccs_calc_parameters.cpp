@@ -142,13 +142,11 @@ float Ccs::calcMotorSpeed()
     if (mtrType == VSD_MOTOR_TYPE_ASYNC) {
       mtrSpeed = freq * 60;
     }
+    else if (mtrType == VSD_MOTOR_TYPE_VENT) {
+      mtrSpeed = freq * 60 / parameters.get(VSD_MOTOR_POLES);
+    }
     else {
-      if (mtrType == VSD_MOTOR_TYPE_VENT) {
-        mtrSpeed = freq * 30;
-      }
-      else {
-        mtrSpeed = 0;
-      }
+      mtrSpeed = 0;
     }
   }
   setValue(CCS_MOTOR_SPEED_NOW, mtrSpeed);
