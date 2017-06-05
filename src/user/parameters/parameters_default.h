@@ -3,9 +3,9 @@
 
 /*! Файл параметров со значениями по умолчанию создаётся автоматический из default.xml */
 
-#define COUNT_PARAMETERS_DEFAULT 275
+#define COUNT_PARAMETERS_DEFAULT 269
 
-const float defaultParams[275][3] = {
+const float defaultParams[269][3] = {
   { CCS_LOG_PERIOD_NORMAL, 120, 120 },
   { CCS_LOG_PERIOD_FAST, 1, 1 },
   { CCS_LOG_PERIOD_DHS, 300, 300 },
@@ -214,13 +214,6 @@ const float defaultParams[275][3] = {
   { CCS_RGM_CURRENT_LIMIT_MODE, 0, 0 },
   { CCS_RGM_CURRENT_LIMIT_SETPOINT, 100, 100 },
   { CCS_RGM_CURRENT_LIMIT_DELAY_REACTION, 10, 10 },
-  { CCS_COEF_VOLTAGE_IN_A, 1, 1 },
-  { CCS_COEF_VOLTAGE_IN_B, 1, 1 },
-  { CCS_COEF_VOLTAGE_IN_C, 1, 1 },
-  { CCS_COEF_OUT_CURRENT_1, 1, 1 },
-  { CCS_COEF_OUT_CURRENT_2, 1, 1 },
-  { CCS_COEF_OUT_CURRENT_3, 1, 1 },
-  { CCS_COEF_RESISTANCE_ISOLATION, 1, 1 },
   { CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD, 60, 60 },
   { CCS_RGM_RUN_PUSH_MODE, 0, 0 },
   { CCS_RGM_RUN_PUSH_FREQ, 5, 5 },
@@ -281,6 +274,7 @@ const float defaultParams[275][3] = {
   { CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_RESTART_RESET, 7200, 7200 },
   { VSD_TIMER_DISPERSAL, 12, 60 },
   { VSD_TIMER_DELAY, 12, 60 },
+  { CCS_TRANS_NOMINAL_VOLTAGE_INPUT, 380, 380 },
 };
 
 #endif // PARAMETERS_DEFAULT

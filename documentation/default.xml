@@ -1041,41 +1041,6 @@
 		<rn_pmm>10</rn_pmm>
 	</param>
 	<param>
-		<name>CCS_COEF_VOLTAGE_IN_A</name>
-		<rn_asyn>1</rn_asyn>
-		<rn_pmm>1</rn_pmm>
-	</param>
-	<param>
-		<name>CCS_COEF_VOLTAGE_IN_B</name>
-		<rn_asyn>1</rn_asyn>
-		<rn_pmm>1</rn_pmm>
-	</param>
-	<param>
-		<name>CCS_COEF_VOLTAGE_IN_C</name>
-		<rn_asyn>1</rn_asyn>
-		<rn_pmm>1</rn_pmm>
-	</param>
-	<param>
-		<name>CCS_COEF_OUT_CURRENT_1</name>
-		<rn_asyn>1</rn_asyn>
-		<rn_pmm>1</rn_pmm>
-	</param>
-	<param>
-		<name>CCS_COEF_OUT_CURRENT_2</name>
-		<rn_asyn>1</rn_asyn>
-		<rn_pmm>1</rn_pmm>
-	</param>
-	<param>
-		<name>CCS_COEF_OUT_CURRENT_3</name>
-		<rn_asyn>1</rn_asyn>
-		<rn_pmm>1</rn_pmm>
-	</param>
-	<param>
-		<name>CCS_COEF_RESISTANCE_ISOLATION</name>
-		<rn_asyn>1</rn_asyn>
-		<rn_pmm>1</rn_pmm>
-	</param>
-	<param>
 		<name>CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD</name>
 		<rn_asyn>60</rn_asyn>
 		<rn_pmm>60</rn_pmm>
@@ -1374,5 +1339,10 @@
 		<name>VSD_TIMER_DELAY</name>
 		<rn_asyn>12</rn_asyn>
 		<rn_pmm>60</rn_pmm>
+	</param>
+	<param>
+		<name>CCS_TRANS_NOMINAL_VOLTAGE_INPUT</name>
+		<rn_asyn>380</rn_asyn>
+		<rn_pmm>380</rn_pmm>
 	</param>
 </KSU-02_default>
