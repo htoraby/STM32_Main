@@ -1,10 +1,10 @@
 #include "gpio.h"
 
 GPIO_TypeDef* portLeds[LedMax] = {
-  STOP_LED_PORT, WAIT_LED_PORT, WORK_LED_PORT, FAN_LED_PORT
+  STOP_LED_PORT, WAIT_LED_PORT, WORK_LED_PORT, TURBO_LED_PORT
 };
 const uint16_t pinLeds[LedMax] = {
-  STOP_LED_PIN, WAIT_LED_PIN, WORK_LED_PIN, FAN_LED_PIN
+  STOP_LED_PIN, WAIT_LED_PIN, WORK_LED_PIN, TURBO_LED_PIN
 };
 
 GPIO_TypeDef* portDI[DigitalInputMax] = {
@@ -50,7 +50,7 @@ void gpioInit()
   initLed(StopLed);
   initLed(WaitLed);
   initLed(WorkLed);
-  initLed(TestLed);
+  initLed(TurboLed);
 
   initPinOut(POWER_BUTTON_PIN, PinSet);
 //  initPinOut(SYS_RESET_BUTTON_PIN, PinSet);
@@ -107,7 +107,6 @@ void offAllLeds()
   offLed(StopLed);
   offLed(WaitLed);
   offLed(WorkLed);
-  offLed(TestLed);
 }
 
 void initPinInput(GPIO_TypeDef* port, const uint16_t pin)

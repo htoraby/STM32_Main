@@ -145,6 +145,8 @@ void Ccs::initTask()
 void Ccs::mainTask()
 {
   int time10ms = HAL_GetTick();
+  int time1s = HAL_GetTick();
+
   while (1) {
     osDelay(DELAY_MAIN_TASK);
 
@@ -162,6 +164,12 @@ void Ccs::mainTask()
       calcTime();
       checkConnectDevice();
       setRelayOutputs();
+    }
+
+    if ((HAL_GetTick() - time1s) >= 1000) {
+      time1s = HAL_GetTick();
+
+      indicationTurbineRotation();
     }
   }
 }
@@ -2793,5 +2801,18 @@ void Ccs::setDhsScadaInterface()
   } else {
     clrPinOut(DHS_SCADA_RS_1_PIN);
     clrPinOut(DHS_SCADA_RS_2_PIN);
+  }
+}
+
+void Ccs::indicationTurbineRotation()
+{
+  if (!isStopMotor()) {
+    onLed(TurboLed);
+  } else {
+    if (getValue(CCS_TURBO_ROTATION_NOW)) {
+      toggleLed(TurboLed);
+    } else {
+      offLed(TurboLed);
+    }
   }
 }

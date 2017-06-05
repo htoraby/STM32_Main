@@ -95,7 +95,6 @@ static void mainThread(void *argument)
 
   while(1) {
     osDelay(500);
-    toggleLed(TestLed);
   }
 }
 

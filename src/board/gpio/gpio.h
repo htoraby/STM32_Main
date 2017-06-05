@@ -18,7 +18,7 @@ enum LedType {
   StopLed,
   WaitLed,
   WorkLed,
-  TestLed,
+  TurboLed,
   LedMax,
 };
 
@@ -52,8 +52,8 @@ enum RoNum {
 #define WAIT_LED_PORT                   GPIOB
 #define WORK_LED_PIN                    GPIO_PIN_8
 #define WORK_LED_PORT                   GPIOB
-#define FAN_LED_PIN                     GPIO_PIN_3
-#define FAN_LED_PORT                    GPIOH
+#define TURBO_LED_PIN                   GPIO_PIN_3
+#define TURBO_LED_PORT                  GPIOH
 
 #define POWER_BUTTON_PIN                GPIOI, GPIO_PIN_9
 #define SYS_RESET_BUTTON_PIN            GPIOC, GPIO_PIN_13

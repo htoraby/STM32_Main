@@ -664,6 +664,11 @@ private:
    */
   void setDhsScadaInterface();
 
+  /*!
+   * \brief Индикация турбинного вращения
+   */
+  void indicationTurbineRotation();
+
   //! Очередь событий включения/мигания LED
   osMessageQId ledMessage_;
   //! Предыдущие состояние станции
