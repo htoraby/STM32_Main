@@ -225,7 +225,7 @@ typedef enum {
   RgmOptimVoltageFinishId,            //!< Оптимизация напряжения завершена
   RgmOptimVoltageRestoreId,           //!< Оптимизация напряжения возврат характеристики
   RgmOptimVoltageFailId,              //!< Оптимизация напряжения прервана
-
+  DefaultSetpointResetId,             //!< Сброс всех уставок по умолчанию
 } EventId;
 
 #endif // LOG_IDLIST

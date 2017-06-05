@@ -414,7 +414,7 @@ void Parameters::saveConfig()
 void Parameters::saveConfigProfile(int profile)
 {
   int time = HAL_GetTick();
-  logEvent.add(OtherCode, AutoType, SaveConfigId, 0, profile);
+  logEvent.add(OtherCode, OperatorType, SaveConfigId, 0, profile);
 
   uint32_t save = parameters.getU32(CCS_SAVE_SETPOINT);
   save |= (1 << (profile-1));
@@ -460,7 +460,7 @@ void Parameters::getFilePath(char *path)
 bool Parameters::saveConfigUsb()
 {
   int time = HAL_GetTick();
-  logEvent.add(OtherCode, AutoType, SaveConfigUsbId);
+  logEvent.add(OtherCode, OperatorType, SaveConfigUsbId);
 
   startSave();
   osDelay(100);
@@ -596,7 +596,7 @@ void Parameters::loadConfig()
 void Parameters::loadConfigProfile(int profile)
 {
   int time = HAL_GetTick();
-  logEvent.add(OtherCode, AutoType, LoadConfigId, 0, profile);
+  logEvent.add(OtherCode, OperatorType, LoadConfigId, 0, profile);
 
   uint32_t address;
   switch (profile) {
@@ -667,7 +667,7 @@ void Parameters::getConfigFile(char *fileName)
 bool Parameters::loadConfigUsb()
 {
   int time = HAL_GetTick();
-  logEvent.add(OtherCode, AutoType, LoadConfigUsbId);
+  logEvent.add(OtherCode, OperatorType, LoadConfigUsbId);
 
   uint32_t timeReady = 0;
   while(!usbIsReady()) {
@@ -794,6 +794,8 @@ void Parameters::setProfileDefaultSetpoint()
 
 void Parameters::setAllDefault()
 {
+  logEvent.add(SetpointResetCode, OperatorType, DefaultSetpointResetId);
+
   int profile = parameters.get(CCS_PROFILE_DEFAULT_SETPOINT);
   float mtrType = parameters.get(CCS_MOTOR_TYPE);
 
