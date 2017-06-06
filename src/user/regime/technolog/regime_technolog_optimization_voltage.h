@@ -43,6 +43,9 @@ private:
   float newCurrent_;                                  //! Значения тока после шага оптимизации
   uint16_t cntCurrent_;                               //! Счётчик выборок для усреднения тока
 
+  float oldSetULow_;
+  float oldSetUHi_;
+
   /*!
    * \brief Массив с параметрами на время работы режима строки точки U/f,
    * столбцы: id f(U/f), id U(U/f), f, U, minU, maxU
