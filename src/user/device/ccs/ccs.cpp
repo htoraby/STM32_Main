@@ -1423,13 +1423,16 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_CMD_PROT_ALL_SETPOINT_RESET:
     err = setValue(id, value, eventType);
-    cmdProtSetpointReset();
+    if (!err) {
+      cmdProtSetpointReset();
+      logEvent.add(ResetCountsCode, eventType, CounterAllResetId);
+    }
     return err;
   case CCS_CMD_COUNTER_ALL_RESET:
     err = setValue(id, value, eventType);
     if (!err) {
       cmdCountersAllReset();
-       logEvent.add(ResetCountsCode, eventType, CounterAllResetId);
+      logEvent.add(ResetCountsCode, eventType, CounterAllResetId);
     }
     return err;
   case CCS_DHS_TYPE:
@@ -2329,7 +2332,6 @@ void Ccs::cmdProtDhsResistanceSetpointReset()
   parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_COUNT);
   parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME);
   parameters.setDefault(CCS_SOURCE_RESISTANCE_ISOLATION);
-  parameters.setDefault(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION);
   parameters.setDefault(CCS_AXIS_SHIFT_RESISTANCE_ISOLATION);
   parameters.setDefault(CCS_SHIFT_RESISTANCE_ISOLATION);
   parameters.setDefault(CCS_COEF_RESISTANCE_ISOLATION);
