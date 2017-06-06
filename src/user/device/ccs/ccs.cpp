@@ -401,10 +401,7 @@ void Ccs::changedCondition()
       break;
     default:
       if (condition != conditionOld_) {
-        float reason = getValue(CCS_LAST_STOP_REASON_TMP);
-        setNewValue(CCS_LAST_STOP_REASON, reason);
-        calcCountersStop(reason);
-        logEvent.add(StopCode, NoneType, (EventId)reason);
+        logEvent.add(OtherCode, AutoType, StopMotorId);
       }
 
       if (flag == CCS_CONDITION_FLAG_BLOCK) {
@@ -465,14 +462,20 @@ void Ccs::start(LastReasonRun reason, bool force)
 
 void Ccs::stop(LastReasonStop reason)
 {
+  if (reason == LastReasonStopRemote) {
+    setNewValue(CCS_LAST_STOP_REASON, reason);
+    setBlock();
+  }
+
   if (checkCanStop()) {
     logData.add();
-    setNewValue(CCS_LAST_STOP_REASON_TMP, reason);
-    if (reason == LastReasonStopRemote)
-      setBlock();
+    logEvent.add(StopCode, NoneType, (EventId)reason);
+    setNewValue(CCS_LAST_STOP_REASON, reason);
 
     setNewValue(CCS_CONDITION, CCS_CONDITION_BREAK);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
+
+    calcCountersStop(reason);
   }
 }
 
@@ -498,12 +501,15 @@ void Ccs::syncStop()
 #endif
 
   setBlock();
-  setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopVsdErrControl);
+  logEvent.add(StopCode, NoneType, (EventId)LastReasonStopVsdErrControl);
+  setNewValue(CCS_LAST_STOP_REASON, LastReasonStopVsdErrControl);
   setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
 }
 
 void Ccs::cmdStart(int value)
 {
+  resetCmd(CCS_CMD_START);
+
   switch (value) {
   case CmdStartRemote:
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunRemote);
@@ -514,7 +520,6 @@ void Ccs::cmdStart(int value)
     break;
   }
 
-  resetCmd(CCS_CMD_START);
   if (checkCanStart()) {
     initStart();
     float reason = getValue(CCS_LAST_RUN_REASON_TMP);
@@ -529,20 +534,26 @@ void Ccs::cmdStart(int value)
 void Ccs::cmdStop(int value)
 {
   resetCmd(CCS_CMD_STOP);
-  switch (value) {
-  case CmdStopRemote:
-    setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopRemote);
-    break;
-  default:
-    setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopOperator);
-    break;
+
+  float reason = LastReasonStopOperator;
+  if (value == CmdStopRemote) {
+    setNewValue(CCS_LAST_STOP_REASON, LastReasonStopRemote);
+    reason = LastReasonStopRemote;
+    setBlock();
+  } else if (isRestart()) {
+    setBlock();
   }
+
   if (checkCanStop()) {
     logData.add();
+    logEvent.add(StopCode, NoneType, (EventId)reason);
+    setNewValue(CCS_LAST_STOP_REASON, reason);
     setBlock();
+
     setNewValue(CCS_CONDITION, CCS_CONDITION_BREAK);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
-  }
+    calcCountersStop(reason);
+  }    
 }
 
 bool Ccs::checkCanStart(bool isForce)
@@ -622,8 +633,6 @@ bool Ccs::checkCanStop()
 #endif
 
   if ((int)getValue(CCS_VSD_CONDITION) == VSD_CONDITION_STOP) {
-    setBlock();
-    setNewValue(CCS_LAST_STOP_REASON, getValue(CCS_LAST_STOP_REASON_TMP));
     return false;
   }
 
@@ -637,7 +646,7 @@ bool Ccs::checkStopDevice()
 {
   bool result = false;
   if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) &&
-      (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {                                // Если прямой пуск
+      (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {                      // Если прямой пуск
     result = !parameters.get(CCS_BYPASS_CONTACTOR_KM1_STATE);                   // Состояние контактора прямого пуска
   }
   else {
@@ -674,7 +683,7 @@ int Ccs::startDevice(bool init)
 
 float Ccs::isAlarmStop()
 {
-  float reason = getValue(CCS_LAST_STOP_REASON_TMP);
+  float reason = getValue(CCS_LAST_STOP_REASON);
   if ((reason == LastReasonStopOperator) ||
       (reason == LastReasonStopProgram) ||
       (reason == LastReasonStopRemote) ||

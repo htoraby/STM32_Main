@@ -113,8 +113,8 @@ void ProtectionPowerOff::processingStateRun()       // Состояние раб
           ksu.setBlock();
         ksu.stop(lastReasonStop_);
       }
-      else if (ksu.isBreakOrStopMotor() && (parameters.get(CCS_LAST_STOP_REASON_TMP) == LastReasonStopProgram)) {
-        parameters.set(CCS_LAST_STOP_REASON_TMP, lastReasonStop_);
+      else if (ksu.isBreakOrStopMotor() && (parameters.get(CCS_LAST_STOP_REASON) == LastReasonStopProgram)) {
+        parameters.set(CCS_LAST_STOP_REASON, lastReasonStop_);
       }
 
       timer_ = 0;
