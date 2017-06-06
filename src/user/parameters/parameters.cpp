@@ -794,8 +794,6 @@ void Parameters::setProfileDefaultSetpoint()
 
 void Parameters::setAllDefault()
 {
-  logEvent.add(SetpointResetCode, OperatorType, DefaultSetpointResetId);
-
   int profile = parameters.get(CCS_PROFILE_DEFAULT_SETPOINT);
   float mtrType = parameters.get(CCS_MOTOR_TYPE);
 

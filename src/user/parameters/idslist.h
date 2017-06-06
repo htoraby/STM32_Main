@@ -602,7 +602,7 @@ enum enID
   CCS_CMD_SERVICE_LOG_DELETE = 596,                          //!< 
   CCS_CMD_DHS_TYPE_AUTO = 597,                               //!< 
   CCS_CMD_PROT_ALL_UNBLOCKING = 598,                         //!< 
-  CCS_CMD_PROT_ALL_SETPOINT_RESET = 599,                     //!< 
+  CCS_CMD_PROT_ALL_SETPOINT_RESET = 599,                     //!< Команда сброса уставок во всех защитах
   CCS_CMD_PROT_SUPPLY_UNBLOCKING = 600,                      //!< 
   CCS_CMD_PROT_SUPPLY_SETPOINT_RESET = 601,                  //!< 
   CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET = 602,      //!< 

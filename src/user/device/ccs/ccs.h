@@ -635,7 +635,7 @@ private:
    */
   void checkConnectMaster();
 
-  void setCmd(uint16_t id);
+  uint8_t setCmd(uint16_t id, EventType eventType = AutoType);
   void resetCmd(uint16_t id);
 
 

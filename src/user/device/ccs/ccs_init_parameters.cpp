@@ -7190,7 +7190,7 @@ void Ccs::initParameters()
   parameters_[CCS_CMD_PROT_ALL_UNBLOCKING - CCS_BEGIN].discret                   = 1;
   parameters_[CCS_CMD_PROT_ALL_UNBLOCKING - CCS_BEGIN].def                       = 0.0;
   parameters_[CCS_CMD_PROT_ALL_UNBLOCKING - CCS_BEGIN].code                      = 6;
-  // 
+  // Команда сброса уставок во всех защитах
   parameters_[CCS_CMD_PROT_ALL_SETPOINT_RESET - CCS_BEGIN].id                    = CCS_CMD_PROT_ALL_SETPOINT_RESET;
   parameters_[CCS_CMD_PROT_ALL_SETPOINT_RESET - CCS_BEGIN].access                = ACCESS_OPERATOR;
   parameters_[CCS_CMD_PROT_ALL_SETPOINT_RESET - CCS_BEGIN].operation             = OPERATION_WRITE;

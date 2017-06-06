@@ -12301,9 +12301,12 @@
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
+		<text>Сбросить значения уставок по умолчанию?</text>
+		<short_text>Сброс  уставок во всех защитах</short_text>
 		<form>NULL</form>
 		<format>NULL</format>
 		<code>106</code>
+		<comment>Команда сброса  уставок во всех защитах</comment>
 	</param>
 	<param>
 		<id>600</id>
