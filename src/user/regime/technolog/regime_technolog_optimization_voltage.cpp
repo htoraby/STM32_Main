@@ -125,10 +125,12 @@ void RegimeTechnologOptimizationVoltage::processing()
           }
         }
         else {                                                                  // Можем понизить напряжение
-          for (int j = i; j >= i - 1; j--) {                                    // Понижаем напряжение на шаг
-            optim_[j][3] = ((optim_[j][3] - step_) > optim_[j][4]) ? (optim_[j][3] - step_) : optim_[j][4];
-            parameters.set(optim_[j][1], optim_[j][3], NoneType);               // Пишем в устройство
-          }
+          optim_[i][3] = ((optim_[i][3] - step_) > optim_[i][4]) ? (optim_[i][3] - step_) : optim_[i][4];
+          parameters.set(optim_[i][1], optim_[i][3], NoneType);               // Пишем в устройство
+          optim_[i-1][3] = ((optim_[i-1][3] - step_) > optim_[i-1][4]) ? (optim_[i-1][3] - step_) : optim_[i-1][4];
+          parameters.set(optim_[i-1][1], optim_[i-1][3], NoneType);               // Пишем в устройство
+          oldSetUHi_ = optim_[i][3];
+          oldSetULow_ = optim_[i-1][3];
           beginCurrent_ = ksu.getTime();
           state_ = WorkState + 2;                                               // Переход на контроль тока после первого понижения
           #if (USE_LOG_DEBUG == 1)
@@ -202,16 +204,24 @@ void RegimeTechnologOptimizationVoltage::processing()
           #endif
         }
         else {
-          for (int j = i; j >= i-1; j--) {
-            optim_[j][3] = ((optim_[j][3] - step_) > optim_[j][4]) ? (optim_[j][3] - step_) : optim_[j][4];
-            parameters.set(optim_[j][1], optim_[j][3], NoneType);
+          optim_[i][3] = ((optim_[i][3] - step_) > optim_[i][4]) ? (optim_[i][3] - step_) : optim_[i][4];
+          parameters.set(optim_[i][1], optim_[i][3], NoneType);                 // Пишем в устройство
+          optim_[i-1][3] = ((optim_[i-1][3] - step_) > optim_[i-1][4]) ? (optim_[i-1][3] - step_) : optim_[i-1][4];
+          parameters.set(optim_[i-1][1], optim_[i-1][3], NoneType);             // Пишем в устройство
+          if ((oldSetUHi_ == optim_[i][3]) && (oldSetULow_ == optim_[i-1][3])) {// Второй раз задаём одни и теже точки
+            beginPause_ = ksu.getTime();                                        // Конец оптимизации
+            state_ = PauseState;
           }
-          beginCurrent_ = ksu.getTime();
-          state_ = WorkState + 4;                                               // Переход на контроль тока после второго и последующих понижений
-          #if (USE_LOG_DEBUG == 1)
-          logDebug.add(DebugMsg, "Optim::processing() Work+3 -> Work+4 (state_=%d, action_=%d, freqNow=%6.2f, i=%d, f1=%5.1f, U1=%5.1f, U1min=%5.1f, U1max=%5.1f, f2=%5.1f, U2=%5.1f, U2min=%5.1f, U2max=%5.1f)",
-                       state_, action_, parameters.get(VSD_FREQUENCY_NOW), i, optim_[i-1][2], optim_[i-1][3], optim_[i-1][4], optim_[i-1][5], optim_[i][2], optim_[i][3], optim_[i][4], optim_[i][5]);
-          #endif
+          else {
+            beginCurrent_ = ksu.getTime();
+            state_ = WorkState + 4;                                               // Переход на контроль тока после второго и последующих понижений
+            #if (USE_LOG_DEBUG == 1)
+            logDebug.add(DebugMsg, "Optim::processing() Work+3 -> Work+4 (state_=%d, action_=%d, freqNow=%6.2f, i=%d, f1=%5.1f, U1=%5.1f, U1min=%5.1f, U1max=%5.1f, f2=%5.1f, U2=%5.1f, U2min=%5.1f, U2max=%5.1f)",
+                         state_, action_, parameters.get(VSD_FREQUENCY_NOW), i, optim_[i-1][2], optim_[i-1][3], optim_[i-1][4], optim_[i-1][5], optim_[i][2], optim_[i][3], optim_[i][4], optim_[i][5]);
+            #endif
+          }
+          oldSetUHi_ = optim_[i][3];
+          oldSetULow_ = optim_[i-1][3];
         }
         break;                                                                  // Выход из цикла
       }
@@ -265,10 +275,12 @@ void RegimeTechnologOptimizationVoltage::processing()
           #endif
         }
         else {
-          for (int j = i; j >= i - 1; j--) {
-            optim_[j][3] = ((optim_[j][3] - step_) > optim_[j][4]) ? (optim_[j][3] - step_) : optim_[j][4];
-            parameters.set(optim_[j][1], optim_[j][3], NoneType);               // Пишем в устройство
-          }
+          optim_[i][3] = ((optim_[i][3] - step_) > optim_[i][4]) ? (optim_[i][3] - step_) : optim_[i][4];
+          parameters.set(optim_[i][1], optim_[i][3], NoneType);               // Пишем в устройство
+          optim_[i-1][3] = ((optim_[i-1][3] - step_) > optim_[i-1][4]) ? (optim_[i-1][3] - step_) : optim_[i-1][4];
+          parameters.set(optim_[i-1][1], optim_[i-1][3], NoneType);               // Пишем в устройство
+          oldSetUHi_ = optim_[i][3];
+          oldSetULow_ = optim_[i-1][3];
           beginPause_ = ksu.getTime();
           state_ = PauseState;                                                  // Оптимизация закончена переход на паузу
           #if (USE_LOG_DEBUG == 1)
@@ -292,7 +304,6 @@ void RegimeTechnologOptimizationVoltage::processing()
               logDebug.add(DebugMsg, "Optim::processing() Work+6 -> Work+1 (state_=%d, action_=%d, freqNow=%6.2f, i=%d, f1=%5.1f, U1=%5.1f, U1min=%5.1f, U1max=%5.1f, f2=%5.1f, U2=%5.1f, U2min=%5.1f, U2max=%5.1f, beginUp_=%3.1f)",
                            state_, action_, parameters.get(VSD_FREQUENCY_NOW), i, optim_[i-1][2], optim_[i-1][3], optim_[i-1][4], optim_[i-1][5], optim_[i][2], optim_[i][3], optim_[i][4], optim_[i][5], beginUp_);
               #endif
-
             }
             else {
               beginPause_ = ksu.getTime();
@@ -304,10 +315,12 @@ void RegimeTechnologOptimizationVoltage::processing()
             }
         }
         else {
-          for (int j = i; j >= i - 1; j--) {
-            optim_[j][3] = ((optim_[j][3] + step_) < optim_[j][5]) ? (optim_[j][3] + step_) : optim_[j][5];
-            parameters.set(optim_[j][1], optim_[j][3], NoneType);               // Пишем в устройство
-          }
+          optim_[i][3] = ((optim_[i][3] + step_) < optim_[i][5]) ? (optim_[i][3] + step_) : optim_[i][5];
+          parameters.set(optim_[i][1], optim_[i][3], NoneType);               // Пишем в устройство
+          optim_[i-1][3] = ((optim_[i-1][3] + step_) < optim_[i-1][5]) ? (optim_[i-1][3] + step_) : optim_[i-1][5];
+          parameters.set(optim_[i-1][1], optim_[i-1][3], NoneType);               // Пишем в устройство
+          oldSetUHi_ = optim_[i][3];
+          oldSetULow_ = optim_[i-1][3];
           beginCurrent_ = ksu.getTime();
           state_ = WorkState + 7;                                               // Переход на контроль тока после первого повышения
           #if (USE_LOG_DEBUG == 1)
@@ -374,23 +387,31 @@ void RegimeTechnologOptimizationVoltage::processing()
         if ((optim_[i][3] >= optim_[i][5]) &&                                   // Нет возможности повышать напряжение
             (optim_[i-1][3] >= optim_[i-1][5])) {                               // Нижняя и верхняя точка отрезка в максимуме
           beginPause_ = ksu.getTime();
-          state_ = PauseState;                                                // Переход на первое понижение напряжения
+          state_ = PauseState;                                                  // Переход на первое понижение напряжения
           #if (USE_LOG_DEBUG == 1)
           logDebug.add(DebugMsg, "Optim::processing() Work+8 -> Pause (state_=%d, action_=%d, freqNow=%6.2f, i=%d, f1=%5.1f, U1=%5.1f, U1min=%5.1f, U1max=%5.1f, f2=%5.1f, U2=%5.1f, U2min=%5.1f, U2max=%5.1f)",
                        state_, action_, parameters.get(VSD_FREQUENCY_NOW), i, optim_[i-1][2], optim_[i-1][3], optim_[i-1][4], optim_[i-1][5], optim_[i][2], optim_[i][3], optim_[i][4], optim_[i][5]);
           #endif
         }
         else {
-          for (int j = i; j >= i - 1; j--) {
-            optim_[j][3] = ((optim_[j][3] + step_) < optim_[j][5]) ? (optim_[j][3] + step_) : optim_[j][5];
-            parameters.set(optim_[j][1], optim_[j][3], NoneType);               // Пишем в устройство
+          optim_[i][3] = ((optim_[i][3] + step_) < optim_[i][5]) ? (optim_[i][3] + step_) : optim_[i][5];
+          parameters.set(optim_[i][1], optim_[i][3], NoneType);                 // Пишем в устройство
+          optim_[i-1][3] = ((optim_[i-1][3] + step_) < optim_[i-1][5]) ? (optim_[i-1][3] + step_) : optim_[i-1][5];
+          parameters.set(optim_[i-1][1], optim_[i-1][3], NoneType);             // Пишем в устройство
+          if ((oldSetUHi_ == optim_[i][3]) && (oldSetULow_ == optim_[i-1][3])) {// Второй раз задаём одни и теже точки
+            beginPause_ = ksu.getTime();                                        // Конец оптимизации
+            state_ = PauseState;
           }
-          beginCurrent_ = ksu.getTime();
-          state_ = WorkState + 9;                                               // Переход на контроль тока после первого повышения
-          #if (USE_LOG_DEBUG == 1)
-          logDebug.add(DebugMsg, "Optim::processing() Work+8 -> Work+9 (state_=%d, action_=%d, freqNow=%6.2f, i=%d, f1=%5.1f, U1=%5.1f, U1min=%5.1f, U1max=%5.1f, f2=%5.1f, U2=%5.1f, U2min=%5.1f, U2max=%5.1f)",
-                       state_, action_, parameters.get(VSD_FREQUENCY_NOW), i, optim_[i-1][2], optim_[i-1][3], optim_[i-1][4], optim_[i-1][5], optim_[i][2], optim_[i][3], optim_[i][4], optim_[i][5]);
-          #endif
+          else {
+            beginCurrent_ = ksu.getTime();
+            state_ = WorkState + 9;                                               // Переход на контроль тока после первого повышения
+            #if (USE_LOG_DEBUG == 1)
+            logDebug.add(DebugMsg, "Optim::processing() Work+8 -> Work+9 (state_=%d, action_=%d, freqNow=%6.2f, i=%d, f1=%5.1f, U1=%5.1f, U1min=%5.1f, U1max=%5.1f, f2=%5.1f, U2=%5.1f, U2min=%5.1f, U2max=%5.1f)",
+                         state_, action_, parameters.get(VSD_FREQUENCY_NOW), i, optim_[i-1][2], optim_[i-1][3], optim_[i-1][4], optim_[i-1][5], optim_[i][2], optim_[i][3], optim_[i][4], optim_[i][5]);
+            #endif
+          }
+          oldSetUHi_ = optim_[i][3];
+          oldSetULow_ = optim_[i-1][3];
         }
         break;                                                                  // Выход из цикла
       }
@@ -448,10 +469,12 @@ void RegimeTechnologOptimizationVoltage::processing()
           #endif
         }
         else {
-          for (int j = i; j >= i - 1; j--) {
-            optim_[j][3] = ((optim_[j][3] + step_) < optim_[j][5]) ? (optim_[j][3] + step_) : optim_[j][5];
-            parameters.set(optim_[j][1], optim_[j][3], NoneType);               // Пишем в устройство
-          }
+          optim_[i][3] = ((optim_[i][3] + step_) < optim_[i][5]) ? (optim_[i][3] + step_) : optim_[i][5];
+          parameters.set(optim_[i][1], optim_[i][3], NoneType);               // Пишем в устройство
+          optim_[i-1][3] = ((optim_[i-1][3] + step_) < optim_[i-1][5]) ? (optim_[i-1][3] + step_) : optim_[i-1][5];
+          parameters.set(optim_[i-1][1], optim_[i-1][3], NoneType);               // Пишем в устройство
+          oldSetUHi_ = optim_[i][3];
+          oldSetULow_ = optim_[i-1][3];
           beginPause_ = ksu.getTime();
           state_ = PauseState;                                                  // Оптимизация закончена
           #if (USE_LOG_DEBUG == 1)
