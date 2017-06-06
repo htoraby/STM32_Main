@@ -286,7 +286,7 @@
 		<name>Выходная частота ПЧ</name>
 	</param>
 	<param>
-		<id>VSD_OUT_VOLTAGE_MOTOR</id>
+		<id>VSD_VOLTAGE_LINE</id>
 		<address>40022</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
@@ -299,7 +299,7 @@
 		<name>Выходное напряжение ПЧ</name>
 	</param>
 	<param>
-		<id>CCS_VOLTAGE_TRANS_OUT</id>
+		<id>CCS_TRANS_OUTPUT_VOLTAGE_LINE</id>
 		<address>40023</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>

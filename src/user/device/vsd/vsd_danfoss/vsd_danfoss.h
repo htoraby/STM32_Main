@@ -4,6 +4,7 @@
 #include "vsd.h"
 #include "device_modbus.h"
 
+
 class RegimeRunPush;
 class RegimeRunSwing;
 class RegimeRunAdaptationVector;
@@ -12,8 +13,10 @@ class RegimeRunSkipResonantFreq;
 class RegimeRunSynchron;
 class RegimeRunDirect;
 
-#define QUNTITY_PROFILES_MOTOR    15
-#define QUANTITY_PARAMETER_MOTOR  45
+#define QUNTITY_PROFILES_MOTOR    16
+#define QUANTITY_PARAMETER_MOTOR  43
+#define QUANTITY_PARAMETER_SSP_FILE 130
+
 
 enum enVsdDanfosStatus1
 {
@@ -148,11 +151,15 @@ public:
   bool isConnect();
   void setLimitsCcsParameters();
 
+  void setSspTask();
+
   // ЗАДАВАЕМЫЕ ПАРАМЕТРЫ ДВИГАТЕЛЯ
   int setMotorType(float value);
   int getMotorTypeProfile();
   int setMotorTypeProfile();
+  int setSspMotorTypeProfile();
   int setMotorCurrent(float value, EventType eventType = NoneType);
+
 
   /*!
    * \brief setLimitsMotor функция задания пределов параметров двигателя
@@ -178,6 +185,14 @@ public:
    * \return
    */
   int setMotorVoltage(float value, float coef, EventType eventType);
+
+  /*!
+   * \brief setMotorFrequency
+   * \param value
+   * \param eventType
+   * \return
+   */
+  enReturns setMotorFrequency(float value, EventType eventType = NoneType);
 
   int setMotorResistanceStator(float value);
   int setCurrentLim(float curLimit, float nomCurMtr, float coefTrans);
@@ -238,6 +253,7 @@ public:
   bool checkStop();
   bool isSetPointFreq();
 
+  int setSspFile();
   int resetSetpoints();
   void processingRegimeRun();
 
@@ -258,8 +274,11 @@ public:
   float getMaxBaseFrequency();
 
 private:
-  ModbusParameter modbusParameters_[230];
+  ModbusParameter modbusParameters_[232];
   DeviceModbus *dm_;
+
+  osSemaphoreId setSspFileSemaphoreId_;
+  osSemaphoreId setSspProfileSemaphoreId_;
 
   RegimeRunPush *regimeRunPush_;
   RegimeRunSwing *regimeRunSwing_;

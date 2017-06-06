@@ -19,7 +19,7 @@
 #define TIMEOUT_LCD_OFF 1000 //!< Время на отключение подсветки (мс)
 #define TIMEOUT_MASTER_OFF 3000 //!< Время на отключение верхнего контроллера (мс)
 #define TIMEOUT_SLAVE_OFF 10000 //!< Время на отключение нижнего контроллера (мс)
-#define DELAY_CHECK_CONNECT_DEVICE 1000 //!< Задержка проверки подключения устройств - 20 сек
+#define DELAY_CHECK_CONNECT_DEVICE 1000 //!< Задержка проверки подключения устройств - x*10мс
 
 //! Массив параметров устройства
 static parameter parametersArray[CCS_END - CCS_BEGIN] __attribute__((section(".extmem")));
@@ -73,7 +73,6 @@ void Ccs::init()
 {  
   initParameters();
   readParameters();
-
   if (getValue(CCS_PARAMETERS_CONTROL) != getValueDef(CCS_PARAMETERS_CONTROL)) {
     asm("nop");
   }
@@ -122,6 +121,8 @@ void Ccs::initTask()
   resetCmd(CCS_ERROR_SLAVE);
   resetCmd(CCS_CMD_SAVE_SETPOINT);
   resetCmd(CCS_CMD_LOAD_SETPOINT);
+  resetCmd(CCS_CMD_SAVE_CONFIG_USB);
+  resetCmd(CCS_CMD_LOAD_CONFIG_USB);
   setValue(CCS_PROT_SUPPLY_POWEROFF_PREVENT, 0);
 
   uint32_t installSw = getValueUint32(CCS_DATE_INSTALL_SW_CCS);
@@ -129,9 +130,14 @@ void Ccs::initTask()
     installSw = getTime();
     setValue(CCS_DATE_INSTALL_SW_CCS, installSw, NoneType);
   }
+  setValue(CCS_REVISION_SW_CORE, VCS_REVISION, NoneType);
   if (getValueUint32(CCS_LAST_STOP_DATE_TIME) == 0)
     setValue(CCS_LAST_STOP_DATE_TIME, getTime());
 
+  // Выключить контактор KM1
+  setValue(CCS_BYPASS_CONTACTOR_KM1_CONTROL, 0);
+  // Переключение RS-485/RS-232 ТМС/Скады
+  setDhsScadaInterface();
 
   intRestartCount();
 }
@@ -139,6 +145,8 @@ void Ccs::initTask()
 void Ccs::mainTask()
 {
   int time10ms = HAL_GetTick();
+  int time1s = HAL_GetTick();
+
   while (1) {
     osDelay(DELAY_MAIN_TASK);
 
@@ -156,6 +164,12 @@ void Ccs::mainTask()
       calcTime();
       checkConnectDevice();
       setRelayOutputs();
+    }
+
+    if ((HAL_GetTick() - time1s) >= 1000) {
+      time1s = HAL_GetTick();
+
+      indicationTurbineRotation();
     }
   }
 }
@@ -297,10 +311,10 @@ void Ccs::vsdConditionTask()
       }
       break;
     case VSD_CONDITION_RUN:
-      if (getValue(CCS_CONDITION) != CCS_CONDITION_RUN) {
+      if (getValue(CCS_CONDITION) != CCS_CONDITION_WORK) {
         if ((parameters.get(VSD_FREQUENCY_NOW) >= parameters.get(VSD_FREQUENCY))
          && (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState))
-          setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
+          setNewValue(CCS_CONDITION, CCS_CONDITION_WORK);
 #if USE_DEBUG
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
 #endif
@@ -353,7 +367,7 @@ void Ccs::changedCondition()
   if ((condition != conditionOld_) || (flag != flagOld_)) {
 
     switch (condition) {
-    case CCS_CONDITION_RUNNING:
+    case CCS_CONDITION_RUN:
       resetRestart();
 
       if (flag == CCS_CONDITION_FLAG_DELAY) {
@@ -365,7 +379,7 @@ void Ccs::changedCondition()
         setLedCondition(OnRedToogleYellowLed);
       }
       break;
-    case CCS_CONDITION_RUN:
+    case CCS_CONDITION_WORK:
       if (flag == CCS_CONDITION_FLAG_DELAY) {
         setNewValue(CCS_GENERAL_CONDITION, GeneralConditionDelay);
         setLedCondition(OnGreenToogleYellowLed);
@@ -375,7 +389,7 @@ void Ccs::changedCondition()
         setLedCondition(OnGreenLed);
       }
       break;
-    case CCS_CONDITION_STOPPING:
+    case CCS_CONDITION_BREAK:
       if (flag == CCS_CONDITION_FLAG_BLOCK) {
         setNewValue(CCS_GENERAL_CONDITION, GeneralConditionBlock);
         setLedCondition(ToogleGreenToogleRedLed);
@@ -387,10 +401,7 @@ void Ccs::changedCondition()
       break;
     default:
       if (condition != conditionOld_) {
-        float reason = getValue(CCS_LAST_STOP_REASON_TMP);
-        setNewValue(CCS_LAST_STOP_REASON, reason);
-        calcCountersStop(reason);
-        logEvent.add(StopCode, NoneType, (EventId)reason);
+        logEvent.add(OtherCode, AutoType, StopMotorId);
       }
 
       if (flag == CCS_CONDITION_FLAG_BLOCK) {
@@ -443,7 +454,7 @@ void Ccs::start(LastReasonRun reason, bool force)
     initStart();
     setNewValue(CCS_LAST_RUN_REASON, reason);
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
-    setNewValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
+    setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
     calcCountersRun(reason);
   }
@@ -451,14 +462,20 @@ void Ccs::start(LastReasonRun reason, bool force)
 
 void Ccs::stop(LastReasonStop reason)
 {
+  if (reason == LastReasonStopRemote) {
+    setNewValue(CCS_LAST_STOP_REASON, reason);
+    setBlock();
+  }
+
   if (checkCanStop()) {
     logData.add();
-    setNewValue(CCS_LAST_STOP_REASON_TMP, reason);
-    if (reason == LastReasonStopRemote)
-      setBlock();
+    logEvent.add(StopCode, NoneType, (EventId)reason);
+    setNewValue(CCS_LAST_STOP_REASON, reason);
 
-    setNewValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
+    setNewValue(CCS_CONDITION, CCS_CONDITION_BREAK);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
+
+    calcCountersStop(reason);
   }
 }
 
@@ -473,7 +490,7 @@ void Ccs::syncStart()
   setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
   setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
   setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
-  setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
+  setNewValue(CCS_CONDITION, CCS_CONDITION_WORK);
   calcCountersRun(LastReasonRunApvHardwareVsd);
 }
 
@@ -484,12 +501,15 @@ void Ccs::syncStop()
 #endif
 
   setBlock();
-  setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopVsdErrControl);
+  logEvent.add(StopCode, NoneType, (EventId)LastReasonStopVsdErrControl);
+  setNewValue(CCS_LAST_STOP_REASON, LastReasonStopVsdErrControl);
   setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
 }
 
 void Ccs::cmdStart(int value)
 {
+  resetCmd(CCS_CMD_START);
+
   switch (value) {
   case CmdStartRemote:
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunRemote);
@@ -500,13 +520,12 @@ void Ccs::cmdStart(int value)
     break;
   }
 
-  resetCmd(CCS_CMD_START);
   if (checkCanStart()) {
     initStart();
     float reason = getValue(CCS_LAST_RUN_REASON_TMP);
     setNewValue(CCS_LAST_RUN_REASON, reason);
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
-    setNewValue(CCS_CONDITION, CCS_CONDITION_RUNNING);
+    setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
     calcCountersRun(reason);
   }
@@ -515,20 +534,26 @@ void Ccs::cmdStart(int value)
 void Ccs::cmdStop(int value)
 {
   resetCmd(CCS_CMD_STOP);
+
+  float reason = LastReasonStopOperator;
+  if (value == CmdStopRemote) {
+    setNewValue(CCS_LAST_STOP_REASON, LastReasonStopRemote);
+    reason = LastReasonStopRemote;
+    setBlock();
+  } else if (isRestart()) {
+    setBlock();
+  }
+
   if (checkCanStop()) {
     logData.add();
-    switch (value) {
-    case CmdStopRemote:
-      setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopRemote);
-      break;
-    default:
-      setNewValue(CCS_LAST_STOP_REASON_TMP, LastReasonStopOperator);
-      break;
-    }
+    logEvent.add(StopCode, NoneType, (EventId)reason);
+    setNewValue(CCS_LAST_STOP_REASON, reason);
     setBlock();
-    setNewValue(CCS_CONDITION, CCS_CONDITION_STOPPING);
+
+    setNewValue(CCS_CONDITION, CCS_CONDITION_BREAK);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
-  }
+    calcCountersStop(reason);
+  }    
 }
 
 bool Ccs::checkCanStart(bool isForce)
@@ -550,18 +575,14 @@ bool Ccs::checkCanStart(bool isForce)
         addEventProtectionPrevent();
         return false;
       }
+      if (parameters.get(CCS_LAST_RUN_REASON_TMP) != LastReasonRunOperator)
+         return false;
     }
     else {
       setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
       addEventProtectionPrevent();
       return false;
     }
-  }
-
-  if ((parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) && (parameters.get(VSD_UF_CHARACTERISTIC_U_5_PERCENT) > 100)) {
-    setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
-    ksu.setError(SetVoltageTapOfErr);
-    return false;
   }
 
   if (!isForce) {
@@ -579,7 +600,8 @@ bool Ccs::checkCanStart(bool isForce)
 bool Ccs::checkStartDevice()
 {
   bool result = false;
-  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {                                // Если прямой пуск
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) &&
+      (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {                                // Если прямой пуск
     result = parameters.get(CCS_BYPASS_CONTACTOR_KM1_STATE);                    // Состояние контактора прямого пуска
   }
   else {
@@ -611,7 +633,6 @@ bool Ccs::checkCanStop()
 #endif
 
   if ((int)getValue(CCS_VSD_CONDITION) == VSD_CONDITION_STOP) {
-    setBlock();
     return false;
   }
 
@@ -624,7 +645,8 @@ bool Ccs::checkCanStop()
 bool Ccs::checkStopDevice()
 {
   bool result = false;
-  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {                                // Если прямой пуск
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) &&
+      (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {                      // Если прямой пуск
     result = !parameters.get(CCS_BYPASS_CONTACTOR_KM1_STATE);                   // Состояние контактора прямого пуска
   }
   else {
@@ -636,7 +658,8 @@ bool Ccs::checkStopDevice()
 int Ccs::stopDevice()
 {
   int err = ok_r;
-  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) &&
+      (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {
     err = parameters.set(CCS_BYPASS_CONTACTOR_KM1_CONTROL, 0);
   }
   else {
@@ -648,7 +671,8 @@ int Ccs::stopDevice()
 int Ccs::startDevice(bool init)
 {
   int err = ok_r;
-  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+  if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) &&
+      (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON)) {
     err = parameters.set(CCS_BYPASS_CONTACTOR_KM1_CONTROL, 1);
   }
   else {
@@ -659,7 +683,7 @@ int Ccs::startDevice(bool init)
 
 float Ccs::isAlarmStop()
 {
-  float reason = getValue(CCS_LAST_STOP_REASON_TMP);
+  float reason = getValue(CCS_LAST_STOP_REASON);
   if ((reason == LastReasonStopOperator) ||
       (reason == LastReasonStopProgram) ||
       (reason == LastReasonStopRemote) ||
@@ -675,11 +699,34 @@ float Ccs::isAlarmStop()
 
 }
 
+bool Ccs::isBreakOrStopMotor()
+{
+  unsigned int state = getValue(CCS_CONDITION);
+  if ((state == CCS_CONDITION_BREAK) ||
+      (state == CCS_CONDITION_STOP)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 bool Ccs::isStopMotor()
 {
   unsigned int state = getValue(CCS_CONDITION);
-  if ((state == CCS_CONDITION_STOPPING) ||
-      (state == CCS_CONDITION_STOP)) {
+  if (state == CCS_CONDITION_STOP) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+bool Ccs::isRunOrWorkMotor()
+{
+  unsigned int state = getValue(CCS_CONDITION);
+  if ((state == CCS_CONDITION_RUN) ||
+      (state == CCS_CONDITION_WORK)) {
     return true;
   }
   else {
@@ -690,8 +737,7 @@ bool Ccs::isStopMotor()
 bool Ccs::isWorkMotor()
 {
   unsigned int state = getValue(CCS_CONDITION);
-  if ((state == CCS_CONDITION_RUNNING) ||
-      (state == CCS_CONDITION_RUN)) {
+  if (state == CCS_CONDITION_WORK) {
     return true;
   }
   else {
@@ -787,7 +833,8 @@ void Ccs::resetBlock()
 
 void Ccs::resetBlockDevice()
 {
-  if (!parameters.get(CCS_RGM_RUN_DIRECT_MODE)) {
+  if (!(parameters.get(CCS_RGM_RUN_DIRECT_MODE) &&
+        (parameters.get(CCS_TYPE_VSD) != VSD_TYPE_ETALON))) {
     vsd->resetBlock();
   }
 }
@@ -914,7 +961,46 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(ModeCode, eventType, ModeCodeAutoId, oldValue, value);
       }
       if (value == CCS_WORKING_MODE_PROGRAM) {
+        setValue(CCS_RGM_PERIODIC_MODE, Regime::OnAction);
         logEvent.add(ModeCode, eventType, ModeCodeProgramId, oldValue, value);
+      } else {
+        setValue(CCS_RGM_PERIODIC_MODE, Regime::OffAction);
+      }
+    }
+    return err;
+  case CCS_RGM_PERIODIC_MODE:
+    if (value != oldValue) {                          // Если новое значение
+      if (value != Regime::OffAction) {               // Если включили режим
+        err = offWorkRgmExcept(CCS_RGM_PERIODIC_MODE);
+        if (!err) {
+          err = setValue(id, value, eventType);         // Запись в регистр
+          if (!err) {
+            setNewValue(CCS_WORKING_MODE, CCS_WORKING_MODE_PROGRAM);
+          }
+        }
+      }
+      else {                                          // Выключили режим
+        err = setValue(id, value, eventType);         // Запись в регистр
+        if (!err) {                                   // Нет ошибок записи в регистр
+          setNewValue(CCS_WORKING_MODE, CCS_WORKING_MODE_AUTO);
+        }
+      }
+    }
+    return err;
+  case CCS_RGM_ALTERNATION_FREQ_MODE:
+  case CCS_RGM_CHANGE_FREQ_MODE:
+  case CCS_RGM_MAINTENANCE_PARAM_MODE:
+  case CCS_RGM_JARRING_MODE:
+  case CCS_RGM_PUMP_GAS_MODE:
+    if (value != oldValue) {                          // Если новое значение
+      if (value != Regime::OffAction) {               // Если включили режим
+        err = offWorkRgmExcept(id);
+        if (!err) {
+          err = setValue(id, value, eventType);       // Запись в регистр
+        }
+      }
+      else {
+        err = setValue(id, value, eventType);         // Запись в регистр
       }
     }
     return err;
@@ -951,23 +1037,37 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     calcRegimeChangeFreqPeriodOneStep();
     return err;
   case CCS_RGM_RUN_PUSH_MODE:
-    err = setValue(id, value, eventType);
-    if (value != Regime::OffAction) {
-      offRunModeExcept(CCS_RGM_RUN_PUSH_MODE);
-      vsd->onRegimePush();
+    if (value != Regime::OffAction) {                 // Включаем режим
+      err = offRunModeExcept(CCS_RGM_RUN_PUSH_MODE);  // Выключаем все режимы кроме этого
+      if (!err) {                                     // Если выключили
+        err = setValue(id, value, eventType);         // Пишем в регистр
+        if (!err) {                                   // Записали в регистр
+          vsd->onRegimePush();                        // Функция ЧРП если она есть
+        }
+      }
     }
-    else {
-      vsd->offRegimePush();
+    else {                                            // Выключаем режим
+      err = setValue(id, value, eventType);           //
+      if (!err) {
+        vsd->offRegimePush();
+      }
     }
     return err;
   case CCS_RGM_RUN_SWING_MODE:
-    err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      offRunModeExcept(CCS_RGM_RUN_SWING_MODE);
-      vsd->onRegimeSwing();
+      err = offRunModeExcept(CCS_RGM_RUN_SWING_MODE);
+      if (!err) {
+        err = setValue(id, value, eventType);
+        if (!err) {
+          vsd->onRegimeSwing();
+        }
+      }
     }
     else {
-      vsd->offRegimeSwing();
+      err = setValue(id, value, eventType);
+      if (!err) {
+        vsd->offRegimeSwing();
+      }
     }
     return err;
   case CCS_RGM_RUN_PUSH_FREQ: case CCS_RGM_RUN_PUSH_TIME:
@@ -985,54 +1085,91 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     vsd->onRegimeSwing();
     return err;
   case CCS_RGM_RUN_PICKUP_MODE:
-    err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      offRunModeExcept(CCS_RGM_RUN_PICKUP_MODE);
-      parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ProtModeOff); // Отключаем защиту турбин. вращен.
-      vsd->onRegimePickup();
+      err = offRunModeExcept(CCS_RGM_RUN_PICKUP_MODE);
+      if (!err) {
+        err = setValue(id, value, eventType);
+        if (!err) {
+          parameters.set(CCS_PROT_MOTOR_ASYNC_MODE, Protection::ProtModeOff); // Отключаем защиту турбин. вращен.
+          vsd->onRegimePickup();
+        }
+      }
     }
     else {
-      vsd->offRegimePickup();
+      err = setValue(id, value, eventType);
+      if (!err) {
+        vsd->offRegimePickup();
+      }
     }
     return err;
   case CCS_RGM_RUN_SKIP_RESONANT_MODE:
-    err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      offRunModeExcept(CCS_RGM_RUN_SKIP_RESONANT_MODE);
-      vsd->onRegimeSkipFreq();
+      err = offRunModeExcept(CCS_RGM_RUN_SKIP_RESONANT_MODE);
+      if (!err) {
+        err = setValue(id, value, eventType);
+        if (!err) {
+          vsd->onRegimeSkipFreq();
+        }
+      }
     }
     else {
-      vsd->offRegimeSkipFreq();
+      err = setValue(id, value, eventType);
+      if (!err) {
+        vsd->offRegimeSkipFreq();
+      }
     }
     return err;
   case CCS_RGM_RUN_AUTO_ADAPTATION_MODE:
-    err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      offRunModeExcept(CCS_RGM_RUN_AUTO_ADAPTATION_MODE);
+      err = offRunModeExcept(CCS_RGM_RUN_AUTO_ADAPTATION_MODE);
+      if (!err) {
+        err = setValue(id, value, eventType);
+      }
+    }
+    else {
+      err = setValue(id, value, eventType);
     }
     return err;
   case CCS_RGM_RUN_SYNCHRON_MODE:
-    err = setValue(id, value, eventType);
     if (value != Regime::OffAction) {
-      offRunModeExcept(CCS_RGM_RUN_SYNCHRON_MODE);
+      err = offRunModeExcept(CCS_RGM_RUN_SYNCHRON_MODE);
+      if (!err) {
+        err = setValue(id, value, eventType);
+      }
+    }
+    else {
+      err = setValue(id, value, eventType);
     }
     return err;
   case CCS_RGM_OPTIM_VOLTAGE_MODE:
-    err = setValue(id, value, eventType);
-    if (value != Regime::OffAction) {
-      vsd->onRegimeAutoOptimCurrent();
-    }
-    else {
-      vsd->offRegimeAutoOptimCurrent();
+    if (value != oldValue) {
+      if (value != Regime::OffAction) {
+        err = offWorkRgmExcept(CCS_RGM_OPTIM_VOLTAGE_MODE);
+        if (!err) {
+          err = setValue(id, value, eventType);
+        }
+      }
+      else {
+        err = setValue(id, value, eventType);
+      }
     }
     return err;
   case CCS_RGM_CURRENT_LIMIT_MODE:
-    err = setValue(id, value, eventType);
-    if (value != Regime::OffAction) {
-      vsd->onRegimeCurrentLimitation();
-    }
-    else {
-      vsd->offRegimeCurrentLimitation();
+    if (value != oldValue) {
+      if (value != Regime::OffAction) {
+        //err = offWorkRgmExcept(CCS_RGM_CURRENT_LIMIT_MODE);
+        //if (!err) {
+          err = setValue(id, value, eventType);
+          if (!err) {
+            vsd->onRegimeCurrentLimitation();
+          }
+      }
+      else {
+        err = setValue(id, value, eventType);
+        if (!err) {
+          vsd->offRegimeCurrentLimitation();
+        }
+      }
     }
     return err;
   case CCS_RGM_CURRENT_LIMIT_SETPOINT:
@@ -1290,7 +1427,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     return err;
   case CCS_CMD_COUNTER_ALL_RESET:
     err = setValue(id, value, eventType);
-    cmdCountersAllReset();
+    if (!err) {
+      cmdCountersAllReset();
+       logEvent.add(ResetCountsCode, eventType, CounterAllResetId);
+    }
     return err;
   case CCS_DHS_TYPE:
     err = setValue(id, value, NoneType);
@@ -1299,7 +1439,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(AddDeviceCode, eventType, AddDeviceDhsId, oldValue, value);
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceDhsId, oldValue, value);
-      tms->initParameters();
+      tms->resetAllDefault();
       startReboot();
     }
     return err;
@@ -1310,7 +1450,11 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(AddDeviceCode, eventType, AddDeviceVsdId, oldValue, value);
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceVsdId, oldValue, value);
-      vsd->initParameters();
+
+      resetAllDefault();
+      vsd->resetAllDefault();
+      setValue(id, value, NoneType);
+
       startReboot();
     }
     return err;
@@ -1321,7 +1465,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
         logEvent.add(AddDeviceCode, eventType, AddDeviceEmId, oldValue, value);
       else
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceEmId, oldValue, value);
-      em->initParameters();
+      em->resetAllDefault();
       startReboot();
     }
     return err;
@@ -1338,10 +1482,29 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_FILTER_INPUT:
     err = setValue(id, value, NoneType);
     if ((value != oldValue) && !err) {
-      if (value)
+      if (value) {
         logEvent.add(AddDeviceCode, eventType, AddDeviceFiltInputId, oldValue, value);
-      else
+        parameters.set(VSD_DI_33, value * 2 );
+      }
+      else {
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceFiltInputId, oldValue, value);
+        if (!parameters.get(CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_SENSOR)) {     // Выключен датчик в выходном фильтре
+          parameters.set(VSD_DI_33, value * 2 );
+        }
+      }
+    }
+    return err;
+  case CCS_PROT_OTHER_OVERHEAT_INPUT_FILTER_SENSOR:
+    err = setValue(id, value, NoneType);
+    if ((value != oldValue) && !err) {
+      if (value) {
+        parameters.set(VSD_DI_33, value * 2 );
+      }
+      else {
+        if (!parameters.get(CCS_FILTER_INPUT)) {
+           parameters.set(VSD_DI_33, value * 2 );
+        }
+      }
     }
     return err;
   case CCS_SCADA_TYPE:
@@ -1385,6 +1548,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     cmdStop(value);
     return ok_r;
   case CCS_CMD_VSD_RESET_SETPOINTS:
+    logEvent.add(SetpointResetCode, OperatorType, VsdResetSetpointId);
     return vsd->resetSetpoints();
   case CCS_PROT_OTHER_VSD_NO_CONNECT_MODE:
     err = setValue(id, value, eventType);
@@ -1406,6 +1570,9 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       if (value == VSD_MOTOR_TYPE_VENT) {                                       // Переключили на вентильный двигатель
         if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) == Regime::OnAction) {      // Был включен прямой пуск
           parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OffAction);           // Выключаем прямой пуск
+        }
+        if (parameters.get(CCS_RGM_RUN_SOFT_MODE) == Regime::OnAction) {      // Был включен "мягкий" пуск
+          parameters.set(CCS_RGM_RUN_SOFT_MODE, Regime::OffAction);           // Выключаем "мягкий" пуск
         }
       }
     }
@@ -1482,6 +1649,16 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (!err)
       setModeAnalogInExt(AI6, value);
     return err;
+  case CCS_AI_7_TYPE:
+    err = setValue(id, value, eventType);
+    if (!err)
+      setModeAnalogInExt(AI7, value);
+    return err;
+  case CCS_AI_8_TYPE:
+    err = setValue(id, value, eventType);
+    if (!err)
+      setModeAnalogInExt(AI8, value);
+    return err;
   case CCS_PROT_SUPPLY_RESTART_DELAY:
   case CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY:
   case CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY:
@@ -1489,23 +1666,29 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY:
     err = setValue(CCS_PROT_SUPPLY_RESTART_DELAY, value, eventType);
     if (!err) {
-      setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY, value, eventType);
-      setValue(CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY, value, eventType);
-      setValue(CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY, value, eventType);
-      setValue(CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY, value, eventType);
+      setValue(CCS_PROT_SUPPLY_OVERVOLTAGE_RESTART_DELAY, value, NoneType);
+      setValue(CCS_PROT_SUPPLY_UNDERVOLTAGE_RESTART_DELAY, value, NoneType);
+      setValue(CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_RESTART_DELAY, value, NoneType);
+      setValue(CCS_PROT_SUPPLY_IMBALANCE_CURRENT_RESTART_DELAY, value, NoneType);
     }
     return err;
   case CCS_CMD_DHS_CONNECTION_RESET:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
+    checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
     tms->resetConnect();
+    logEvent.add(OtherCode, eventType, DhsConnectionCountersResetId);
     return err;
   case CCS_CMD_VSD_CONNECTION_RESET:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
+    checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
     vsd->resetConnect();
+    logEvent.add(OtherCode, eventType, VsdConnectionCountersResetId);
     return err;
   case CCS_CMD_EM_CONNECTION_RESET:
-    err = setValue(id, value, eventType);
+    err = setValue(id, value, NoneType);
+    checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
     em->resetConnect();
+    logEvent.add(OtherCode, eventType, EmConnectionCountersResetId);
     return err;
   case CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ:
     err = setValue(id, value, eventType);
@@ -1673,21 +1856,13 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (!err) {
       parameters.set(VSD_BACK_EMF, value / parameters.get(CCS_COEF_TRANSFORMATION) * 1000);
     }
-    return err;
-  case CCS_RGM_RUN_DIRECT_MODE:                                                 // Прямой пуск
-    err = parameters.set(CCS_BYPASS_CONTACTOR_KM2_CONTROL, !value);             // Посылаем команду на контактор ЧРП
-    if (!err) {                                                                 // Прошла команда на контактор ЧРП
-      err = setValue(id, value, eventType);                                     // Меняем состояние регистра
-      if (value != Regime::OffAction) {
-        offRunModeExcept(CCS_RGM_RUN_DIRECT_MODE);
-      }
-    }
-    return err;
+    return err;                                                                 //
   case CCS_BYPASS_CONTACTORS:
     err = setValue(id, value, NoneType);
     if ((value != oldValue) && !err) {
       if (value) {
         logEvent.add(AddDeviceCode, eventType, AddDeviceBypassContactorsInputId, oldValue, value);
+        parameters.set(CCS_BYPASS_CONTACTOR_KM2_CONTROL, value);
       }
       else {
         logEvent.add(RemoveDeviceCode, eventType, RemoveDeviceBypassContactorsInputId, oldValue, value);
@@ -1701,12 +1876,6 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     else {                                                                      // Включить контактор ПП и выключен контактор ЧРП или выключить ПП
       err = setValue(id, value, eventType);                                     // Записываем в регистр
-      if (!err) {
-        if (value) {
-          setRelayOutput(RO6, (PinState)!value);
-        }
-        setRelayOutput(RO5, (PinState)value);                                 // Переключаем реле
-      }
     }
     return err;
   case CCS_BYPASS_CONTACTOR_KM2_CONTROL:                                        // Контактор ЧРП
@@ -1715,11 +1884,53 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     else {
       err = setValue(id, value, eventType);
+    }
+    return err;
+  case CCS_RGM_RUN_DIRECT_MODE:                                                 // Прямой пуск
+    if (value != Regime::OffAction) {
+      err = offRunModeExcept(CCS_RGM_RUN_DIRECT_MODE);
       if (!err) {
-        if (value) {
-          setRelayOutput(RO5, (PinState)!value);
+        if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) {
+          err = setValue(id, value, eventType);
+          if (!err) {
+            parameters.set(VSD_ETALON_DIRECT_RUN_MODE, 1);
+          }
+        } else {
+          err = parameters.set(CCS_BYPASS_CONTACTOR_KM2_CONTROL, !value);
+          if (!err) {
+            err = setValue(id, value, eventType);
+          }
         }
-        setRelayOutput(RO6, (PinState)value);
+      }
+    }
+    else {
+      if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_ETALON) {
+        err = setValue(id, value, eventType);
+        if (!err) {
+          parameters.set(VSD_ETALON_DIRECT_RUN_MODE, 0);
+        }
+      } else {
+        err = parameters.set(CCS_BYPASS_CONTACTOR_KM2_CONTROL, !value);
+        if (!err) {
+          err = setValue(id, value, eventType);
+        }
+      }
+    }
+    return err;
+  case CCS_RGM_RUN_SOFT_MODE:                                                 // "Мягкий" пуск
+    if (value != Regime::OffAction) {
+      err = offRunModeExcept(CCS_RGM_RUN_SOFT_MODE);
+      if (!err) {
+        err = setValue(id, value, eventType);
+        if (!err) {
+          parameters.set(VSD_ETALON_DIRECT_RUN_SOFT_MODE, 1);
+        }
+      }
+    }
+    else {
+      err = setValue(id, value, eventType);
+      if (!err) {
+        parameters.set(VSD_ETALON_DIRECT_RUN_SOFT_MODE, 0);
       }
     }
     return err;
@@ -1727,13 +1938,14 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     err = setValue(id, value, eventType);
     if (!err) {
       if (parameters.get(CCS_TYPE_VSD) == VSD_TYPE_DANFOSS) {
+        vsd->setLimitsMotor();
         switch ((uint16_t)value) {
         case 160: value = 195; break;
         case 250: value = 286; break;
         case 400: value = 435; break;
         case 630: value = 724; break;
         case 800: value = 880; break;
-        default:  value = 195; break;
+        default:  break;
         }
         parameters.set(CCS_SU_MAX_CURRENT, value);
       }
@@ -1745,13 +1957,13 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       osSemaphoreRelease(setProfileDefaultSemaphoreId_);
     }
     return err;
-  case CCS_CMD_SAVE_SETPOINT:
+  case CCS_CMD_SAVE_SETPOINT: case CCS_CMD_SAVE_CONFIG_USB:
     err = setValue(id, value, eventType);
     if (!err && value) {
       osSemaphoreRelease(saveConfigSemaphoreId_);
     }
     return err;
-  case CCS_CMD_LOAD_SETPOINT:
+  case CCS_CMD_LOAD_SETPOINT: case CCS_CMD_LOAD_CONFIG_USB:
     err = setValue(id, value, eventType);
     if (!err && value) {
       osSemaphoreRelease(loadConfigSemaphoreId_);
@@ -1763,6 +1975,85 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       parameters.setAllDefault();
     }
     return err;
+  case CCS_NUM_PRODUCTION_CCS_2:
+    err = setValue(id, value, NoneType);
+    if (!err) {
+      logEvent.add(MultiSetpointCode, eventType, (EventId)id,
+                   getValue(CCS_NUM_PRODUCTION_CCS_2), getValue(CCS_NUM_PRODUCTION_CCS));
+      logDebug.add(WarningMsg, "Ccs::setNewValue() CCS_NUM_PRODUCTION_CCS (%d, %d)",
+                   getValueUint32(CCS_NUM_PRODUCTION_CCS_2),
+                   getValueUint32(CCS_NUM_PRODUCTION_CCS));
+    }
+    return err;
+  case CCS_NUM_PRODUCTION_SU_2:
+    err = setValue(id, value, NoneType);
+    if (!err) {
+      logEvent.add(MultiSetpointCode, eventType, (EventId)id,
+                   getValue(CCS_NUM_PRODUCTION_SU_2), getValue(CCS_NUM_PRODUCTION_SU));
+      logDebug.add(WarningMsg, "Ccs::setNewValue() CCS_NUM_PRODUCTION_SU (%d, %d)",
+                   getValueUint32(CCS_NUM_PRODUCTION_SU_2),
+                   getValueUint32(CCS_NUM_PRODUCTION_SU));
+    }
+    return err;
+  case CCS_IP_ADDRESS_4:
+    err = setValue(id, value, NoneType);
+    if (!err) {
+      logEvent.add(MultiSetpointCode, eventType, (EventId)id,
+                   getValue(CCS_IP_ADDRESS_1)*1000+getValue(CCS_IP_ADDRESS_2),
+                   getValue(CCS_IP_ADDRESS_3)*1000+getValue(CCS_IP_ADDRESS_4));
+      logDebug.add(WarningMsg, "Ccs::setNewValue() CCS_IP_ADDRESS (%f, %f, %f, %f)",
+                   getValue(CCS_IP_ADDRESS_1),
+                   getValue(CCS_IP_ADDRESS_2),
+                   getValue(CCS_IP_ADDRESS_3),
+                   getValue(CCS_IP_ADDRESS_4));
+    }
+    return err;
+  case CCS_NETMASK_4:
+    err = setValue(id, value, NoneType);
+    if (!err) {
+      logEvent.add(MultiSetpointCode, eventType, (EventId)id,
+                   getValue(CCS_NETMASK_1)*1000+getValue(CCS_NETMASK_2),
+                   getValue(CCS_NETMASK_3)*1000+getValue(CCS_NETMASK_4));
+      logDebug.add(WarningMsg, "Ccs::setNewValue() CCS_NETMASK (%f, %f, %f, %f)",
+                   getValue(CCS_NETMASK_1),
+                   getValue(CCS_NETMASK_2),
+                   getValue(CCS_NETMASK_3),
+                   getValue(CCS_NETMASK_4));
+    }
+    return err;
+  case CCS_DHS_INTERFACE:
+    err = setValue(id, value, eventType);
+    if (!err) {
+      setDhsScadaInterface();
+      checkConnectDeviceTimer_ = DELAY_CHECK_CONNECT_DEVICE;
+      tms->resetConnect();
+    }
+    return err;
+  case CCS_AI_1_PARAMETER:
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      setValue(CCS_AI_1_PARAM_UNITS, 0.0, NoneType);
+    }
+    return err;
+  case CCS_AI_2_PARAMETER:
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      setValue(CCS_AI_2_PARAM_UNITS, 0.0, NoneType);
+    }
+    return err;
+  case CCS_AI_3_PARAMETER:
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      setValue(CCS_AI_3_PARAM_UNITS, 0.0, NoneType);
+    }
+    return err;
+  case CCS_AI_4_PARAMETER:
+    err = setValue(id, value, eventType);
+    if ((value != oldValue) && !err) {
+      setValue(CCS_AI_4_PARAM_UNITS, 0.0, NoneType);
+    }
+    return err;
+
   default:
     return setValue(id, value, eventType);
   }
@@ -1772,18 +2063,27 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
 
 uint8_t Ccs::setNewValue(uint16_t id, uint32_t value, EventType eventType)
 {
+  uint8_t err = ok_r;
   switch (id) {
   case CCS_DATE_TIME:
     {
       time_t time = value;
-      rtcSetTime(&time);
       tm dateTime = *localtime(&time);
-      setNewValue(CCS_DATE_TIME_SEC, dateTime.tm_sec, NoneType);
-      setNewValue(CCS_DATE_TIME_MIN, dateTime.tm_min, NoneType);
-      setNewValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour, NoneType);
-      setNewValue(CCS_DATE_TIME_DAY, dateTime.tm_mday, NoneType);
-      setNewValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon + 1, NoneType);
-      setNewValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year, NoneType);
+      err = setNewValue(CCS_DATE_TIME_SEC, dateTime.tm_sec, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_MIN, dateTime.tm_min, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_HOUR, dateTime.tm_hour, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_DAY, dateTime.tm_mday, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_MONTH, dateTime.tm_mon + 1, NoneType);
+      if (err == ok_r)
+        err = setNewValue(CCS_DATE_TIME_YEAR, 1900 + dateTime.tm_year, NoneType);
+      if (err == ok_r)
+        rtcSetTime(&time);
+      if (err != ok_r)
+        return err;
     }
     break;
   }
@@ -1797,15 +2097,28 @@ uint8_t Ccs::setNewValue(uint16_t id, int value, EventType eventType)
 
 void Ccs::controlPower()
 {
+  // Питание не в норме
   if (!isPowerGood()) {
+    // При первом определении питания не в норме
+    // Формируем запись работы от ИБП
+    if (!powerOffTimeout_)
+      logEvent.add(PowerCode, AutoType, WorkUpsId);
+
+    // Если питания нет в течении заданного числа мс
+    // Выключаем подсветку дисплея для экономии
     if (powerOffTimeout_ == TIMEOUT_LCD_OFF/DELAY_MAIN_TASK) {
       offLcd();
     }
+
+    // Если питания нет в течении заданного числа мс
+    // Посылаем команду на выключение AM335
     if (powerOffTimeout_ == TIMEOUT_MASTER_OFF/DELAY_MAIN_TASK) {
       setCmd(CCS_CMD_AM335_POWER_OFF);
     }
 
+    // Если питания нет в течении заданного числа мс или нет(не работает) ИБП
     if ((powerOffTimeout_ == TIMEOUT_SLAVE_OFF/DELAY_MAIN_TASK) || !isUpsGood()) {
+      // Если не посылали команду на выключение
       if (!powerOffFlag_) {
         offLcd();
         setCmd(CCS_CMD_AM335_POWER_OFF);
@@ -1821,12 +2134,16 @@ void Ccs::controlPower()
       turnPowerBattery(false);
     }
     powerOffTimeout_++;
-  } else {
+  }
+  // Питание в норме
+  else {
+
     resetCmd(CCS_CMD_AM335_POWER_OFF);
 
-    if (powerOffTimeout_ > TIMEOUT_LCD_OFF/DELAY_MAIN_TASK) {
+    if ((powerOffTimeout_ > TIMEOUT_LCD_OFF/DELAY_MAIN_TASK) || powerOffFlag_) {
       onLcd();
     }
+
     if (powerOffTimeout_ > TIMEOUT_MASTER_OFF/DELAY_MAIN_TASK) {
       resetAm335x();
     }
@@ -1855,11 +2172,11 @@ void Ccs::checkConnectDevice()
       setNewValue(CCS_EM_CONNECTION, 0);
 
     if (vsd->log() && vsd->log()->isConnect())
-      setNewValue(CCS_VSD_LOG_CONNECTION, 1);
+      setNewValue(CCS_VSD_LOG_CONNECTION, 1, NoneType);
     else
-      setNewValue(CCS_VSD_LOG_CONNECTION, 0);
+      setNewValue(CCS_VSD_LOG_CONNECTION, 0, NoneType);
 
-    if (usbState == USB_READY)
+    if (usbIsReady())
       setNewValue(CCS_USB_CONNECTION, 1);
     else
       setNewValue(CCS_USB_CONNECTION, 0);
@@ -1996,10 +2313,26 @@ void Ccs::cmdProtDhsTemperatureMotorSetpointReset()
 
 void Ccs::cmdProtDhsResistanceSetpointReset()
 {
-  for (uint16_t i = CCS_PROT_DHS_RESISTANCE_MODE;
-       i <= CCS_PROT_DHS_RESISTANCE_PARAMETER; i++) {
-    parameters.setDefault(i);
-  }
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_MODE);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_PREVENT);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_ACTIV_DELAY);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_TRIP_DELAY);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_DELAY);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_LIMIT);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_RESET);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_SETPOINT);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_PARAMETER);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_FLAG);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_STATE);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_TIME);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_COUNT);
+  parameters.setDefault(CCS_PROT_DHS_RESISTANCE_RESTART_FIRST_TIME);
+  parameters.setDefault(CCS_SOURCE_RESISTANCE_ISOLATION);
+  parameters.setDefault(CCS_AUTO_SOURCE_RESISTANCE_ISOLATION);
+  parameters.setDefault(CCS_AXIS_SHIFT_RESISTANCE_ISOLATION);
+  parameters.setDefault(CCS_SHIFT_RESISTANCE_ISOLATION);
+  parameters.setDefault(CCS_COEF_RESISTANCE_ISOLATION);
 }
 
 void Ccs::cmdProtDhsVibrationSetpointReset()
@@ -2114,34 +2447,110 @@ void Ccs::cmdProtDigitalSetpointReset()
 
 void Ccs::cmdProtAnalogInput1SetpointReset()
 {
-  for (uint16_t i = CCS_PROT_AI_1_MODE;
-       i <= CCS_PROT_AI_1_PARAMETER; i++) {
-    parameters.setDefault(i);
-  }
+  parameters.setDefault(CCS_PROT_AI_1_MODE);
+  parameters.setDefault(CCS_PROT_AI_1_PREVENT);
+  parameters.setDefault(CCS_PROT_AI_1_ACTIV_DELAY);
+  parameters.setDefault(CCS_PROT_AI_1_TRIP_DELAY);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_DELAY);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_LIMIT);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_RESET);
+  parameters.setDefault(CCS_PROT_AI_1_TRIP_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_1_PARAMETER);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_FLAG);
+  parameters.setDefault(CCS_PROT_AI_1_STATE);
+  parameters.setDefault(CCS_PROT_AI_1_TIME);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_COUNT);
+  parameters.setDefault(CCS_PROT_AI_1_RESTART_FIRST_TIME);
+  parameters.setDefault(CCS_AI_1_TYPE);
+  parameters.setDefault(CCS_AI_1_AXIS_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_1_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_1_COEF);
+  parameters.setDefault(CCS_AI_1_PARAMETER);
+  parameters.setDefault(CCS_AI_1_PARAM_UNITS);
+  parameters.setDefault(CCS_AI_1_MINIMUM);
+  parameters.setDefault(CCS_AI_1_MAXIMUM);
 }
 
 void Ccs::cmdProtAnalogInput2SetpointReset()
 {
-  for (uint16_t i = CCS_PROT_AI_2_MODE;
-       i <= CCS_PROT_AI_2_PARAMETER; i++) {
-    parameters.setDefault(i);
-  }
+  parameters.setDefault(CCS_PROT_AI_2_MODE);
+  parameters.setDefault(CCS_PROT_AI_2_PREVENT);
+  parameters.setDefault(CCS_PROT_AI_2_ACTIV_DELAY);
+  parameters.setDefault(CCS_PROT_AI_2_TRIP_DELAY);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_DELAY);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_LIMIT);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_RESET);
+  parameters.setDefault(CCS_PROT_AI_2_TRIP_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_2_PARAMETER);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_FLAG);
+  parameters.setDefault(CCS_PROT_AI_2_STATE);
+  parameters.setDefault(CCS_PROT_AI_2_TIME);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_COUNT);
+  parameters.setDefault(CCS_PROT_AI_2_RESTART_FIRST_TIME);
+  parameters.setDefault(CCS_AI_2_TYPE);
+  parameters.setDefault(CCS_AI_2_AXIS_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_2_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_2_COEF);
+  parameters.setDefault(CCS_AI_2_PARAMETER);
+  parameters.setDefault(CCS_AI_2_PARAM_UNITS);
+  parameters.setDefault(CCS_AI_2_MINIMUM);
+  parameters.setDefault(CCS_AI_2_MAXIMUM);
 }
 
 void Ccs::cmdProtAnalogInput3SetpointReset()
 {
-  for (uint16_t i = CCS_PROT_AI_3_MODE;
-       i <= CCS_PROT_AI_3_PARAMETER; i++) {
-    parameters.setDefault(i);
-  }
+  parameters.setDefault(CCS_PROT_AI_3_MODE);
+  parameters.setDefault(CCS_PROT_AI_3_PREVENT);
+  parameters.setDefault(CCS_PROT_AI_3_ACTIV_DELAY);
+  parameters.setDefault(CCS_PROT_AI_3_TRIP_DELAY);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_DELAY);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_LIMIT);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_RESET);
+  parameters.setDefault(CCS_PROT_AI_3_TRIP_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_3_PARAMETER);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_FLAG);
+  parameters.setDefault(CCS_PROT_AI_3_STATE);
+  parameters.setDefault(CCS_PROT_AI_3_TIME);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_COUNT);
+  parameters.setDefault(CCS_PROT_AI_3_RESTART_FIRST_TIME);
+  parameters.setDefault(CCS_AI_3_TYPE);
+  parameters.setDefault(CCS_AI_3_AXIS_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_3_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_3_COEF);
+  parameters.setDefault(CCS_AI_3_PARAMETER);
+  parameters.setDefault(CCS_AI_3_PARAM_UNITS);
+  parameters.setDefault(CCS_AI_3_MINIMUM);
+  parameters.setDefault(CCS_AI_3_MAXIMUM);
 }
 
 void Ccs::cmdProtAnalogInput4SetpointReset()
 {
-  for (uint16_t i = CCS_PROT_AI_4_MODE;
-       i <= CCS_PROT_AI_4_PARAMETER; i++) {
-    parameters.setDefault(i);
-  }
+  parameters.setDefault(CCS_PROT_AI_4_MODE);
+  parameters.setDefault(CCS_PROT_AI_4_PREVENT);
+  parameters.setDefault(CCS_PROT_AI_4_ACTIV_DELAY);
+  parameters.setDefault(CCS_PROT_AI_4_TRIP_DELAY);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_DELAY);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_LIMIT);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_RESET);
+  parameters.setDefault(CCS_PROT_AI_4_TRIP_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_SETPOINT);
+  parameters.setDefault(CCS_PROT_AI_4_PARAMETER);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_FLAG);
+  parameters.setDefault(CCS_PROT_AI_4_STATE);
+  parameters.setDefault(CCS_PROT_AI_4_TIME);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_COUNT);
+  parameters.setDefault(CCS_PROT_AI_4_RESTART_FIRST_TIME);
+  parameters.setDefault(CCS_AI_4_TYPE);
+  parameters.setDefault(CCS_AI_4_AXIS_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_4_ZERO_SHIFT);
+  parameters.setDefault(CCS_AI_4_COEF);
+  parameters.setDefault(CCS_AI_4_PARAMETER);
+  parameters.setDefault(CCS_AI_4_PARAM_UNITS);
+  parameters.setDefault(CCS_AI_4_MINIMUM);
+  parameters.setDefault(CCS_AI_4_MAXIMUM);
 }
 
 void Ccs::cmdProtAnalogSetpointReset()
@@ -2233,12 +2642,14 @@ void Ccs::cmdCountersAllReset()
   setValue(CCS_PROT_IMBALANCE_CURRENT_MOTOR_COUNT_RESTART, 0.0);
 }
 
-void Ccs::startReboot()
+void Ccs::startReboot(bool isSaveParameters)
 {
   setCmd(CCS_CMD_START_REBOOT_SLAVE);
   logEvent.add(PowerCode, AutoType, RebootSoftwareId);
-  parameters.startSave();
-  osDelay(200);
+  if (isSaveParameters) {
+    parameters.startSave();
+    osDelay(200);
+  }
   osSemaphoreRelease(rebootSemaphoreId_);
 }
 
@@ -2373,8 +2784,8 @@ void Ccs::setRelayOutputs()
 
   for (int i = 0; i < 4; ++i) {
     int action = getValue(CCS_RO_1_ACTION + i);
-    if (((action == DO_ACTION_STOP) && isStopMotor()) ||
-        ((action == DO_ACTION_RUN) && isWorkMotor()) ||
+    if (((action == DO_ACTION_STOP) && isBreakOrStopMotor()) ||
+        ((action == DO_ACTION_RUN) && isRunOrWorkMotor()) ||
         ((action == DO_ACTION_RESTART) && isRestart()) ||
         ((action == DO_ACTION_BLOCK) && isBlock())) {
       value = PinSet;
@@ -2385,5 +2796,32 @@ void Ccs::setRelayOutputs()
       setRelayOutput(DO1 + i, value);
     valueOld[i] = value;
   }
+
+  setRelayOutput(RO5, (PinState)parameters.get(CCS_BYPASS_CONTACTOR_KM1_CONTROL));
+  setRelayOutput(RO6, (PinState)!parameters.get(CCS_BYPASS_CONTACTOR_KM2_CONTROL));
 }
 
+void Ccs::setDhsScadaInterface()
+{
+  int dhsInterface = getValue(CCS_DHS_INTERFACE);
+  if (dhsInterface) {
+    clrPinOut(DHS_SCADA_RS_1_PIN);
+    setPinOut(DHS_SCADA_RS_2_PIN);
+  } else {
+    clrPinOut(DHS_SCADA_RS_1_PIN);
+    clrPinOut(DHS_SCADA_RS_2_PIN);
+  }
+}
+
+void Ccs::indicationTurbineRotation()
+{
+  if (!isStopMotor()) {
+    onLed(TurboLed);
+  } else {
+    if (getValue(CCS_TURBO_ROTATION_NOW)) {
+      toggleLed(TurboLed);
+    } else {
+      offLed(TurboLed);
+    }
+  }
+}

@@ -57,7 +57,9 @@ typedef enum {
   OtherCode,                          //!< Другие события
   ProtectVsdCode,                     //!< Аппаратная защита ЧРП
   WarningVsdCode,                     //!< Предупреждение ЧРП
-  SetpiontResetCode    = 106,         //!< Сброс уставок
+  SetpointResetCode    = 106,         //!< Сброс уставок
+  MultiSetpointCode    = 107,         //!< Изм нескольких уставок
+  PowerMeterModeCode   = 108,         //!< Запись в лог для учёта электроэнергии
 
   LastCode,
 } EventCode;
@@ -167,6 +169,14 @@ public:
     return address_;
   }
 
+  uint32_t startAddr() const {
+    return startAddr_;
+  }
+
+  uint32_t endAddr() const {
+    return endAddr_;
+  }
+
 protected:
   /*!
    * \brief Метод записи данных в журнал
@@ -181,16 +191,15 @@ protected:
   /*!
    * \brief Буфер для формирования записи журнала
    */
-  uint8_t buffer[SIZE_BUF_LOG];
+  volatile uint8_t buffer[SIZE_BUF_LOG];
 
   TypeLog type_;
 
 private:
   FlashSpiNum flashSpiNum_;
-  uint32_t addrFram_;
-
   uint32_t address_;
   uint32_t startAddr_;
+  uint32_t addrFram_;
   uint32_t endAddr_;
   uint32_t sectorSize_;
   uint32_t addrSectorOld_;

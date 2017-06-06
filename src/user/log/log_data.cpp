@@ -44,13 +44,13 @@ void LogData::task()
 
   while (1) {  
     if (osSemaphoreWait(addSemaphoreId_, 1) != osEventTimeout)
-      add(NormModeCode);
+      add(FastModeCode);
 
     if ((HAL_GetTick() - time1s) >= 1000) {
       time1s = HAL_GetTick();
 
-      if ((ksu.isDelay()) || (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUNNING) ||
-          (parameters.get(CCS_CONDITION) == CCS_CONDITION_STOPPING)) {
+      if ((ksu.isDelay()) || (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN) ||
+          (parameters.get(CCS_CONDITION) == CCS_CONDITION_BREAK)) {
         normTimeCnt = 0;
 
         if (!startFastMode) {
@@ -73,6 +73,12 @@ void LogData::task()
           add(NormModeCode);
         }
       }
+
+      if ((parameters.get(CCS_DATE_TIME_HOUR) == 0) &&
+          (parameters.get(CCS_DATE_TIME_MIN) == 0) &&
+          (parameters.get(CCS_DATE_TIME_SEC) == 0)) {
+        add(PowerMeterModeCode);
+      }
     }
   }
 }
@@ -84,8 +90,8 @@ void LogData::add()
 
 void LogData::add(uint8_t code)
 {
-  memset(buffer, 0, sizeof(buffer));
-  float tempVal = 0.0;
+  memset((uint8_t *)buffer, 0, sizeof(buffer));
+  volatile float tempVal = 0.0;
   time_t time = ksu.getTime();
 
   ++id_;
@@ -98,10 +104,10 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+17) = parameters.get(CCS_MOTOR_CURRENT_PHASE_2);                 // Электон
   *(float*)(buffer+21) = parameters.get(CCS_MOTOR_CURRENT_PHASE_3);                 // Электон
   *(float*)(buffer+25) = parameters.get(CCS_MOTOR_CURRENT_IMBALANCE);               // Электон
-  *(float*)(buffer+29) = parameters.get(CCS_MOTOR_VOLTAGE_NOW);                     // Электон
+  *(float*)(buffer+29) = parameters.get(CCS_MOTOR_VOLTAGE_LINE);                     // Электон
   *(float*)(buffer+33) = parameters.get(VSD_CURRENT_DC);                            // Электон
   *(float*)(buffer+37) = parameters.get(VSD_VOLTAGE_DC);                            // Электон
-  *(float*)(buffer+41) = parameters.get(VSD_OUT_VOLTAGE_MOTOR);                     // Электон
+  *(float*)(buffer+41) = parameters.get(VSD_VOLTAGE_LINE);                          // Электон
   tempVal = parameters.get(VSD_POWER_ACTIVE) / 1000.0;
   *(float*)(buffer+45) = tempVal;
   tempVal = parameters.get(VSD_POWER_FULL) / 1000.0;
@@ -154,24 +160,26 @@ void LogData::add(uint8_t code)
   *(float*)(buffer+221) = parameters.get(TMS_PSW_TMS);
   *(float*)(buffer+225) = parameters.get(TMS_PSW_TMSN);
   *(float*)(buffer+229) = parameters.get(CCS_VOLTAGE_IMBALANCE_IN);
-  *(float*)(buffer+233) = parameters.get(CCS_VOLTAGE_TRANS_OUT);
+  *(float*)(buffer+233) = parameters.get(CCS_TRANS_OUTPUT_VOLTAGE_LINE);
   *(float*)(buffer+237) = parameters.get(CCS_TURBO_ROTATION_NOW);
   *(float*)(buffer+241) = parameters.get(VSD_ROTATION);
   *(float*)(buffer+245) = parameters.get(TMS_HOWMIDITY_DISCHARGE);
   *(float*)(buffer+249) = parameters.get(TMS_PSW_TMSP_1);
 
 #if (HARDWARE_VERSION >= 0x0200)
-  write(buffer, 253, false);
+  write((uint8_t *)buffer, 253, false);
 
-  memset(buffer, 0, sizeof(buffer));
+  memset((uint8_t *)buffer, 0, sizeof(buffer));
 
   *(float*)(buffer+0) = parameters.get(CCS_VOLTAGE_PHASE_1_2);
   *(float*)(buffer+4) = parameters.get(CCS_VOLTAGE_PHASE_2_3);
   *(float*)(buffer+8) = parameters.get(CCS_VOLTAGE_PHASE_3_1);
+  *(float*)(buffer+12) = parameters.get(EM_ACTIVE_PLUS_ALL);
+  *(float*)(buffer+16) = parameters.get(EM_ACTIVE_MINUS_ALL);
 
-  write(buffer, 256);
+  write((uint8_t *)buffer, 256);
 #else
-  write(buffer, 253);
+  write((uint8_t *)buffer, 253);
 #endif
 }
 

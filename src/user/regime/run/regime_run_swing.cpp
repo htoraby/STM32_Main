@@ -294,14 +294,16 @@ void RegimeRunSwing::processingStateStop()
 
 void RegimeRunSwing::automatRegime()
 {
-  if ((action_ == OffAction) && (state_ != IdleState)) {
+  if ((action_ == OffAction) && (state_ != IdleState) && (ksu.isRunOrWorkMotor())) {
     state_ = StopState;
   }
 
-  update_ ++;
-  if (update_ >= 3) {
-    vsd->readInDevice(VSD_ROTATION);
-    update_ = 0;
+  if ((state_ > IdleState) && (state_ < StopState)) {
+    update_ ++;
+    if (update_ >= 3) {
+      vsd->readInDevice(VSD_ROTATION);
+      update_ = 0;
+    }
   }
 
   switch (state_) {
@@ -314,6 +316,7 @@ void RegimeRunSwing::automatRegime()
   case RunningState + 3:
   case RunningState + 4:
   case RunningState + 5:
+
     processingStateRunning();
     break;
   case WorkState:
@@ -328,7 +331,7 @@ void RegimeRunSwing::automatRegime()
   case WorkState + 9:
   case WorkState + 10:
   case WorkState + 11:
-    if (ksu.isStopMotor()) {
+    if (ksu.isBreakOrStopMotor()) {
       state_ = StopState;
       break;
     }
@@ -344,7 +347,7 @@ void RegimeRunSwing::automatRegime()
     processingStateStop();
     break;
   default:
-    state_ = StopState;
+    state_ = IdleState;
     break;
   }
 }

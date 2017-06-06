@@ -5,7 +5,21 @@
 #include "fram.h"
 #include "parameters_default.h"
 
+#define PARAMETERS_SIZE 21504*4
 #define PARAMS_SAVE_TIME 60000 //!< Период сохранения параметров в миллисекундах
+
+#pragma pack(1)
+
+typedef struct {
+  unsigned int size;
+  unsigned short codeProduction;
+  unsigned char codeEquip;
+  unsigned char subCodeEquip;
+  unsigned short version;
+  unsigned int date;
+} CFG_FILE_HEADER;
+
+#pragma pack()
 
 /*!
  * \brief Класс сохранения/чтения параметров в/из Flash
@@ -53,6 +67,8 @@ public:
    * \return значение параметра
    */
   uint32_t getU32(unsigned short id);
+
+  uint32_t getDiscret(unsigned short id);
 
   /*!
    * \brief Метод записи параметра по ID с определением необходимого массива
@@ -129,24 +145,6 @@ public:
   float checkZero(unsigned short id, bool reset, float value = 0);
 
   /*!
-   * \brief Конвертация значения из формата STM
-   * \param value
-   * \param physic
-   * \param unit
-   * \return
-   */
-  float convertFrom(float value, int physic, int unit);
-
-  /*!
-   * \brief Конвертация значения в формат STM
-   * \param value
-   * \param physic
-   * \param unit
-   * \return
-   */
-  float convertTo(float value, int physic, int unit);
-
-  /*!
    * \brief Сохрание текущих параметров в профиль
    */
   void saveConfig();
@@ -174,6 +172,34 @@ public:
   void setDefault(uint16_t id);
 
 private:
+  /*!
+   * \brief Сохранение конфигурации в профиль
+   * \param profile
+   */
+  void saveConfigProfile(int profile);
+  /*!
+   * \brief Сохранение конфигурации на USB
+   * \param profile
+   */
+  bool saveConfigUsb();
+  /*!
+   * \brief Получение пути файла
+   */
+  void getFilePath(char *path);
+  /*!
+   * \brief Загрузка конфигурации из профиля
+   */
+  void loadConfigProfile(int profile);
+  /*!
+   * \brief Загрузка конфигурации с USB
+   */
+  bool loadConfigUsb();
+  /*!
+   * \brief Поиск файла на USB носителе
+   * \param fileName
+   */
+  void getConfigFile(char *fileName);
+
   //! Идентификатор семафора
   osSemaphoreId semaphoreId_;
 
@@ -181,6 +207,7 @@ private:
   osMessageQId messageValueParams_;
 
   float profileDefaultParams_[COUNT_PARAMETERS_DEFAULT];
+  bool isBanSaveConfig_;
 
 };
 

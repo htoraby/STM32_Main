@@ -47,6 +47,10 @@ enum ErrorSlave {
   MiniLzoUsbErr,               //!< Ошибка архиватора MiniLZO
   SetProfileVsdErr,            //!< Ошибка конфигурирования ЧРП
   SetVoltageTapOfErr,          //!< Неправильно выбрано напряжение отпайки ТМПН
+  NotFoundConfigFileErr,       //!< Файл конфигурации не найден
+  MultipleConfigFilesErr,      //!< Найдено несколько файлов конфигурации!\n Должен быть только один файл
+  HeaderConfigFileErr,         //!< Ошибка в заголовке файла конфигурации
+  CrcConfigFileErr,            //!< Ошибка CRC файла конфигурации
 };
 
 /*!
@@ -69,6 +73,72 @@ enum ProfileDefaultSetpoint {
   Profile4DefaultSetpoint,    //!< Профиль 4
   Profile5DefaultSetpoint,    //!< Профиль 5
   RosneftDefaultSetpoint,     //!< Роснефть
+};
+
+/*!
+ * \brief Список параметров для аналоговых входов
+ */
+enum AnalogInParamType {
+  AnalogInParamUnit,
+  AnalogInParamPressure,
+  AnalogInParamTemp,
+  AnalogInParamVibrAcceler,
+  AnalogInParamVibrSpeed,
+  AnalogInParamResistIsol,
+  AnalogInParamConsumption,
+};
+
+/*!
+ * \brief Список единиц измерения давления для аналоговых входов
+ */
+enum AiUnitsPressure {
+  AiUnitsPressureMpa,
+  AiUnitsPressureAtm,
+  AiUnitsPressurePsi,
+  AiUnitsPressureKgSm2,
+  AiUnitsPressureBar,
+};
+
+/*!
+ * \brief Список единиц измерения температуры для аналоговых входов
+ */
+enum AiUnitsTemp {
+  AiUnitsTempC,
+  AiUnitsTempF,
+};
+
+/*!
+ * \brief Список единиц измерения виброускорения для аналоговых входов
+ */
+enum AiUnitsVibrationAcceler {
+  AiUnitsVibrationG,
+  AiUnitsVibrationMS2,
+  AiUnitsVibrationMmS2,
+};
+
+/*!
+ * \brief Список единиц измерения виброскорости для аналоговых входов
+ */
+enum AiUnitsVibrationSpeed {
+  AiUnitsVibrationMS,
+  AiUnitsVibrationMmS,
+};
+
+/*!
+ * \brief Список единиц измерения сопротивления изоляции для аналоговых входов
+ */
+enum AiUnitsResistIsol {
+  AiUnitsResistIsolKom,
+};
+
+/*!
+ * \brief Список единиц измерения расхода для аналоговых входов
+ */
+enum AiUnitsConsumption {
+  AiUnitsConsumptionM3Day,
+  AiUnitsConsumptionM3Hour,
+  AiUnitsConsumptionBblDay,
+  AiUnitsConsumptionBblHour,
 };
 
 /*!
@@ -236,6 +306,24 @@ float calcAverage3Values(float value1, float value2, float value3);
  * \return значение в секундах
  */
 uint32_t getTimeToEnd(uint32_t period, uint32_t time);
+
+/*!
+ * \brief Конвертация значения из формата STM
+ * \param value
+ * \param physic
+ * \param unit
+ * \return
+ */
+float convertFrom(float value, int physic, int unit);
+
+/*!
+ * \brief Конвертация значения в формат STM
+ * \param value
+ * \param physic
+ * \param unit
+ * \return
+ */
+float convertTo(float value, int physic, int unit);
 
 /*!
  * \brief Функция возвращает число value со знаком числа sign

@@ -615,7 +615,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[50].command           = OPERATION_ERROR;
   scadaParameters_[50].value.float_t     = 0;
   // Максимальное значение сигнала на аналоговом входе 1
-  scadaParameters_[51].id                = CCS_PROT_AI_1_RESTART_SETPOINT;
+  scadaParameters_[51].id                = CCS_PROT_AI_1_PARAMETER;
   scadaParameters_[51].address           = 51;
   scadaParameters_[51].operation         = OPERATION_WRITE;
   scadaParameters_[51].physic            = PHYSIC_PERCENT;
@@ -627,7 +627,7 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[51].command           = OPERATION_ERROR;
   scadaParameters_[51].value.float_t     = 0;
   // Максимальное значение сигнала на аналоговом входе 2
-  scadaParameters_[52].id                = CCS_PROT_AI_2_RESTART_SETPOINT;
+  scadaParameters_[52].id                = CCS_PROT_AI_2_PARAMETER;
   scadaParameters_[52].address           = 52;
   scadaParameters_[52].operation         = OPERATION_WRITE;
   scadaParameters_[52].physic            = PHYSIC_PERCENT;

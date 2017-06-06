@@ -30,6 +30,7 @@ public:
 private:
   uint32_t timer_;
   float delta_;
+  int deltaCount_;
 
 };
 

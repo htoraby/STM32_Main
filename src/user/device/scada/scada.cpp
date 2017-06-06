@@ -19,6 +19,7 @@ static void scadaCalcParamsTask(void *p)
 }
 
 Scada::Scada()
+  : addrOld_(-2)
 {
   scadaParameters_ = scadaParameters;
   osThreadDef(ScadaTask, scadaTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
@@ -48,7 +49,7 @@ void Scada::task()
   uint32_t baudRate = parameters.get(CCS_SCADA_BYTERATE);
   eMBParity parity = (eMBParity)parameters.get(CCS_SCADA_PARITY);
   uint8_t stopBits = parameters.get(CCS_SCADA_STOPBIT);
-  delay_ = parameters.get(CCS_SCADA_DELAY);
+  delay_ = parameters.get(CCS_SCADA_DELAY)*1000;
 
   if (parameters.get(CCS_SCADA_TYPE) == Scada::SurgutneftegasType) {
     eMbSngInit(address, SCADA_UART, baudRate,  parity, stopBits);
@@ -98,9 +99,12 @@ inline int Scada::getIndexAtAddress(int address)
         return i;
     }
   }
+  if (addrOld_ != address) {
 #if (USE_LOG_WARNING == 1)
-  logDebug.add(WarningMsg, "Scada::getIndexAtAddress() Not found register (address = %d)", address);
+    logDebug.add(WarningMsg, "Scada::getIndexAtAddress() Not found register (address = %d)", address);
 #endif
+  }
+  addrOld_ = address;
   return -1;
 }
 
@@ -115,6 +119,7 @@ ScadaParameter * Scada::parameter(uint16_t address) {
 eMBErrorCode Scada::readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs)
 {
   for (int i = 0; i < numRegs; ++i) {
+
     int index = getIndexAtAddress(address + i);
     if (index == -1)
       return MB_ENOREG;
@@ -125,7 +130,7 @@ eMBErrorCode Scada::readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs)
       return MB_EINVAL;
 
     float value = param->value.float_t;
-    value = parameters.convertFrom(value, param->physic, param->unit);
+    value = convertFrom(value, param->physic, param->unit);
     value = value / param->coefficient;
     unTypeData data;
     if ((param->typeData == TYPE_DATA_FLOAT) || (param->typeData == TYPE_DATA_UINT16_B) ||
@@ -202,7 +207,7 @@ eMBErrorCode Scada::writeReg(uint8_t *buffer, uint16_t address, uint16_t numRegs
     else
       value = (float)data.uint32_t;
     value = value * param->coefficient;
-    value = parameters.convertTo(value, param->physic, param->unit);
+    value = convertTo(value, param->physic, param->unit);
     param->value.float_t = value;
 
     if (setNewValue(param) != ok_r)

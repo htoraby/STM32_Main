@@ -75,7 +75,8 @@ StatusType Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
   if (ksu.isPowerOff())
     return StatusError;
 
-  flashExtWrite(flashSpiNum_, address_, data, size);
+  if (flashExtWrite(flashSpiNum_, address_, data, size) == StatusError)
+    asm("nop");
 
   // Вычисление адреса для следующей записи
   address_ = address_ + size;
@@ -93,7 +94,8 @@ StatusType Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
 
   if (addrSector != addrSectorOld_) {
     address_ = addrSector;
-    flashExtEraseSector4k(flashSpiNum_, address_);
+    if (flashExtEraseSector4k(flashSpiNum_, address_) == StatusError)
+      asm("nop");
     addrSectorOld_ = addrSector;
   }
 
@@ -111,7 +113,10 @@ StatusType Log::write(uint8_t *data, uint32_t size, bool saveId, bool endLog)
     }
     // Сохранение адреса с которого начнётся следующая запись
     framWriteData(addrFram_, (uint8_t*)&address_, 4);
+
   }
 
   return StatusOk;
 }
+
+

@@ -190,6 +190,8 @@ public:
    */
   uint8_t getPhysic(unsigned short id);
 
+  uint32_t getDiscret(unsigned short id);
+
   uint8_t getValidity(unsigned short id);
 
   void setValidity(uint16_t id, uint8_t validity);
@@ -239,6 +241,11 @@ public:
    * \return
    */
   StatusType loadConfigInProfileDefault(uint32_t address, float *data);
+
+  /*!
+   * \brief Сброс значений всех параметров по умолчанию
+   */
+  void resetAllDefault();
 
   /*!
    * \brief Функция проверки есть ли связь с утройством

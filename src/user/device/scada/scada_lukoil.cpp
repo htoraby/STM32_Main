@@ -31,7 +31,7 @@ void ScadaLukoil::calcParamsTask()
     uint32_t state = parameters.get(CCS_CONDITION);
     int reason = parameters.get(CCS_LAST_STOP_REASON);
     bool isWorkMotor = false;
-    if ((state == CCS_CONDITION_RUNNING) || (state == CCS_CONDITION_RUN))
+    if ((state == CCS_CONDITION_RUN) || (state == CCS_CONDITION_WORK))
       isWorkMotor = true;
     bool isStopMotor = false;
     if (state == CCS_CONDITION_STOP)
@@ -364,51 +364,75 @@ void ScadaLukoil::calcParamsTask()
       value = 6;
     scadaParameters_[242].value.float_t = value;
 
-    // 890
+    // 890  
+    value = 0;
     switch ((int)parameters.get(CCS_AI_1_PARAMETER)) {
-    case 1: value = 2; break;
-    case 2: value = 4; break;
-    case 3: value = 5; break;
-    case 4: value = 7; break;
-    case 5: value = 8; break;
-    case 6: value = 9; break;
-    case 7: value = 10; break;
-    case 9: value = 11; break;
-    case 10: value = 12; break;
-    case 11: value = 13; break;
-    case 12: value = 14; break;
-    default: value = 0; break;
+    case AnalogInParamPressure:
+      if (parameters.get(CCS_AI_1_PARAM_UNITS) == AiUnitsPressureKgSm2)
+        value = 1;
+      else if (parameters.get(CCS_AI_1_PARAM_UNITS) == AiUnitsPressureAtm)
+        value = 2;
+      else if (parameters.get(CCS_AI_1_PARAM_UNITS) == AiUnitsPressureMpa)
+        value = 4;
+      else if (parameters.get(CCS_AI_1_PARAM_UNITS) == AiUnitsPressurePsi)
+        value = 5;
+      else if (parameters.get(CCS_AI_1_PARAM_UNITS) == AiUnitsPressureBar)
+        value = 6;
+      break;
+    case AnalogInParamTemp:
+      if (parameters.get(CCS_AI_1_PARAM_UNITS) == AiUnitsTempC)
+        value = 7;
+      else if (parameters.get(CCS_AI_1_PARAM_UNITS) == AiUnitsTempF)
+        value = 8;
+      break;
+    case AnalogInParamVibrAcceler:
+      if (parameters.get(CCS_AI_1_PARAM_UNITS) == AiUnitsVibrationG)
+        value = 9;
+      else if (parameters.get(CCS_AI_1_PARAM_UNITS) == AiUnitsVibrationMS2)
+        value = 10;
+      break;
+    case AnalogInParamConsumption:
+      if (parameters.get(CCS_AI_1_PARAM_UNITS) == AiUnitsConsumptionM3Day)
+        value = 13;
+      else if (parameters.get(CCS_AI_1_PARAM_UNITS) == AiUnitsConsumptionBblDay)
+        value = 14;
+      break;
     }
     scadaParameters_[253].value.float_t = value;
 
-    // 895
-    value = parameters.get(CCS_PROT_AI_1_RESTART_SETPOINT) * parameters.get(CCS_PROT_AI_1_PARAMETER) / 100;
-    scadaParameters_[258].value.float_t = value;
-    // 896
-    value = parameters.get(CCS_PROT_AI_1_TRIP_SETPOINT) * parameters.get(CCS_PROT_AI_1_PARAMETER) / 100;
-    scadaParameters_[259].value.float_t = value;
-
-    // 909
-    value = parameters.get(CCS_PROT_AI_2_RESTART_SETPOINT) * parameters.get(CCS_PROT_AI_2_PARAMETER) / 100;
-    scadaParameters_[272].value.float_t = value;
-    // 910
-    value = parameters.get(CCS_PROT_AI_2_TRIP_SETPOINT) * parameters.get(CCS_PROT_AI_2_PARAMETER) / 100;
-    scadaParameters_[273].value.float_t = value;
-
     // 904
+    value = 0;
     switch ((int)parameters.get(CCS_AI_2_PARAMETER)) {
-    case 1: value = 2; break;
-    case 2: value = 4; break;
-    case 3: value = 5; break;
-    case 4: value = 7; break;
-    case 5: value = 8; break;
-    case 6: value = 9; break;
-    case 7: value = 10; break;
-    case 9: value = 11; break;
-    case 10: value = 12; break;
-    case 11: value = 13; break;
-    case 12: value = 14; break;
-    default: value = 0; break;
+    case AnalogInParamPressure:
+      if (parameters.get(CCS_AI_2_PARAM_UNITS) == AiUnitsPressureKgSm2)
+        value = 1;
+      else if (parameters.get(CCS_AI_2_PARAM_UNITS) == AiUnitsPressureAtm)
+        value = 2;
+      else if (parameters.get(CCS_AI_2_PARAM_UNITS) == AiUnitsPressureMpa)
+        value = 4;
+      else if (parameters.get(CCS_AI_2_PARAM_UNITS) == AiUnitsPressurePsi)
+        value = 5;
+      else if (parameters.get(CCS_AI_2_PARAM_UNITS) == AiUnitsPressureBar)
+        value = 6;
+      break;
+    case AnalogInParamTemp:
+      if (parameters.get(CCS_AI_2_PARAM_UNITS) == AiUnitsTempC)
+        value = 7;
+      else if (parameters.get(CCS_AI_2_PARAM_UNITS) == AiUnitsTempF)
+        value = 8;
+      break;
+    case AnalogInParamVibrAcceler:
+      if (parameters.get(CCS_AI_2_PARAM_UNITS) == AiUnitsVibrationG)
+        value = 9;
+      else if (parameters.get(CCS_AI_2_PARAM_UNITS) == AiUnitsVibrationMS2)
+        value = 10;
+      break;
+    case AnalogInParamConsumption:
+      if (parameters.get(CCS_AI_2_PARAM_UNITS) == AiUnitsConsumptionM3Day)
+        value = 13;
+      else if (parameters.get(CCS_AI_2_PARAM_UNITS) == AiUnitsConsumptionBblDay)
+        value = 14;
+      break;
     }
     scadaParameters_[267].value.float_t = value;
 
@@ -727,73 +751,125 @@ int ScadaLukoil::setNewValue(ScadaParameter *param)
   // 890
   if (param->address == 890) {
     value.float_t = -1;
+    float units = 0;
     switch (int(param->value.float_t)) {
-    case 0: value.float_t = 0; break;
-    case 2: value.float_t = 1; break;
-    case 4: value.float_t = 2; break;
-    case 5: value.float_t = 3; break;
-    case 7: value.float_t = 4; break;
-    case 8: value.float_t = 5; break;
-    case 9: value.float_t = 6; break;
-    case 10: value.float_t = 7; break;
-    case 11: value.float_t = 9; break;
-    case 12: value.float_t = 10; break;
-    case 13: value.float_t = 11; break;
-    case 14: value.float_t = 12; break;
+    case 0:
+      value.float_t = AnalogInParamUnit;
+      units = 0;
+      break;
+    case 1:
+      value.float_t = AnalogInParamPressure;
+      units = AiUnitsPressureKgSm2;
+      break;
+    case 2:
+      value.float_t = AnalogInParamPressure;
+      units = AiUnitsPressureAtm;
+      break;
+    case 4:
+      value.float_t = AnalogInParamPressure;
+      units = AiUnitsPressureMpa;
+      break;
+    case 5:
+      value.float_t = AnalogInParamPressure;
+      units = AiUnitsPressurePsi;
+      break;
+    case 6:
+      value.float_t = AnalogInParamPressure;
+      units = AiUnitsPressureBar;
+      break;
+    case 7:
+      value.float_t = AnalogInParamTemp;
+      units = AiUnitsTempC;
+      break;
+    case 8:
+      value.float_t = AnalogInParamTemp;
+      units = AiUnitsTempF;
+      break;
+    case 9:
+      value.float_t = AnalogInParamVibrAcceler;
+      units = AiUnitsVibrationG;
+      break;
+    case 10:
+      value.float_t = AnalogInParamVibrAcceler;
+      units = AiUnitsVibrationMS2;
+      break;
+    case 13:
+      value.float_t = AnalogInParamConsumption;
+      units = AiUnitsConsumptionM3Day;
+      break;
+    case 14:
+      value.float_t = AnalogInParamConsumption;
+      units = AiUnitsConsumptionBblDay;
+      break;
     }
     if (value.float_t != -1) {
       parameters.set(CCS_AI_1_PARAMETER, value.float_t, RemoteType);
+      parameters.set(CCS_AI_1_PARAM_UNITS, units, RemoteType);
       return ok_r;
     }
     return err_r;
-  }
-  // 895
-  if (param->address == 895) {
-    value.float_t  = param->value.float_t * 100 / parameters.get(CCS_PROT_AI_1_PARAMETER);
-    parameters.set(CCS_PROT_AI_1_RESTART_SETPOINT, value.float_t, RemoteType);
-    return ok_r;
-  }
-  // 896
-  if (param->address == 896) {
-    value.float_t  = param->value.float_t * 100 / parameters.get(CCS_PROT_AI_1_PARAMETER);
-    parameters.set(CCS_PROT_AI_1_TRIP_SETPOINT, value.float_t, RemoteType);
-    return ok_r;
   }
 
   // 904
   if (param->address == 904) {
     value.float_t = -1;
+    float units = 0;
     switch (int(param->value.float_t)) {
-    case 0: value.float_t = 0; break;
-    case 2: value.float_t = 1; break;
-    case 4: value.float_t = 2; break;
-    case 5: value.float_t = 3; break;
-    case 7: value.float_t = 4; break;
-    case 8: value.float_t = 5; break;
-    case 9: value.float_t = 6; break;
-    case 10: value.float_t = 7; break;
-    case 11: value.float_t = 9; break;
-    case 12: value.float_t = 10; break;
-    case 13: value.float_t = 11; break;
-    case 14: value.float_t = 12; break;
+    case 0:
+      value.float_t = AnalogInParamUnit;
+      units = 0;
+      break;
+    case 1:
+      value.float_t = AnalogInParamPressure;
+      units = AiUnitsPressureKgSm2;
+      break;
+    case 2:
+      value.float_t = AnalogInParamPressure;
+      units = AiUnitsPressureAtm;
+      break;
+    case 4:
+      value.float_t = AnalogInParamPressure;
+      units = AiUnitsPressureMpa;
+      break;
+    case 5:
+      value.float_t = AnalogInParamPressure;
+      units = AiUnitsPressurePsi;
+      break;
+    case 6:
+      value.float_t = AnalogInParamPressure;
+      units = AiUnitsPressureBar;
+      break;
+    case 7:
+      value.float_t = AnalogInParamTemp;
+      units = AiUnitsTempC;
+      break;
+    case 8:
+      value.float_t = AnalogInParamTemp;
+      units = AiUnitsTempF;
+      break;
+    case 9:
+      value.float_t = AnalogInParamVibrAcceler;
+      units = AiUnitsVibrationG;
+      break;
+    case 10:
+      value.float_t = AnalogInParamVibrAcceler;
+      units = AiUnitsVibrationMS2;
+      break;
+    case 13:
+      value.float_t = AnalogInParamConsumption;
+      units = AiUnitsConsumptionM3Day;
+      break;
+    case 14:
+      value.float_t = AnalogInParamConsumption;
+      units = AiUnitsConsumptionBblDay;
+      break;
     }
     if (value.float_t != -1) {
       parameters.set(CCS_AI_2_PARAMETER, value.float_t, RemoteType);
+      parameters.set(CCS_AI_2_PARAM_UNITS, units, RemoteType);
       return ok_r;
     }
     return err_r;
-  }
-  // 909
-  if (param->address == 909) {
-    value.float_t  = param->value.float_t * 100 / parameters.get(CCS_PROT_AI_2_PARAMETER);
-    parameters.set(CCS_PROT_AI_2_RESTART_SETPOINT, value.float_t, RemoteType);
-    return ok_r;
-  }
-  // 910
-  if (param->address == 910) {
-    value.float_t  = param->value.float_t * 100 / parameters.get(CCS_PROT_AI_2_PARAMETER);
-    parameters.set(CCS_PROT_AI_2_TRIP_SETPOINT, value.float_t, RemoteType);
-    return ok_r;
   }
 
   // 931

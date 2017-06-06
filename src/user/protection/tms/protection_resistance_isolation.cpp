@@ -1,4 +1,5 @@
 #include "protection_resistance_isolation.h"
+#include "protection_main.h"
 
 ProtectionResistanceIsolation::ProtectionResistanceIsolation()
 {
@@ -34,14 +35,14 @@ ProtectionResistanceIsolation::~ProtectionResistanceIsolation()
 
 }
 
-void ProtectionResistanceIsolation::getOtherSetpointProt()
-{
-  workWithAlarmFlag_ = ksu.getValue(idParam_);
-}
-
 bool ProtectionResistanceIsolation::checkAlarm()
 {
-  return Protection::isLowerLimit(tripSetpoint_);
+  if (ksu.getValue(idParam_)) {
+    return (protOverloadMotor.externalCheckAlarm() && Protection::isLowerLimit(tripSetpoint_));
+  }
+  else {
+    return Protection::isLowerLimit(tripSetpoint_);
+  }
 }
 
 bool ProtectionResistanceIsolation::checkPrevent()

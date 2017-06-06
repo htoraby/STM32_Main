@@ -20,9 +20,9 @@
 #define UPDATE_MASTER_TIMEOUT 6000
 
 #if USE_EXT_MEM
-static uint8_t buffer[BUFFER_SIZE] __attribute__((section(".extmem")));
+static volatile uint8_t buffer[BUFFER_SIZE] __attribute__((section(".extmem")));
 #else
-static uint8_t buffer[BUFFER_SIZE];
+static volatile uint8_t buffer[BUFFER_SIZE];
 #endif
 
 static UPDATE_HEADER updateHeader;
@@ -107,15 +107,13 @@ static bool saveSwInFlashExt(char *fileName)
 
         calcCrc = crc16_ibm((uint8_t*)&imageHeader, readSize);
         flashExtWriteEx(FlashSpi1, lastAddress, (uint8_t*)&imageHeader, readSize);
-        flashExtRead(FlashSpi1, lastAddress, buffer, readSize);
-        calcCrcRx = crc16_ibm(buffer, readSize, calcCrcRx);
+        flashExtRead(FlashSpi1, lastAddress, (uint8_t*)buffer, readSize);
+        calcCrcRx = crc16_ibm((uint8_t*)buffer, readSize, calcCrcRx);
         lastAddress += readSize;
         allSize += readSize;
 
         int count = 0;
-        while ((readflag == 1) && (usbState == USB_READY)) {
-          osDelay(1);
-
+        while (readflag && usbIsReady()) {
           size = file.fsize - allSize - BUFFER_SIZE;
           if ((size > 0) && (size < 6)) {
             size = BUFFER_SIZE-6;
@@ -125,7 +123,7 @@ static bool saveSwInFlashExt(char *fileName)
           } else {
             size = BUFFER_SIZE;
           }
-          f_read(&file, buffer, size, &readSize);
+          f_read(&file, (uint8_t*)buffer, size, &readSize);
 
           if (readSize < 6) {
             logDebug.add(WarningMsg, "update.saveSwInFlashExt() Error reading firmware file");
@@ -133,26 +131,27 @@ static bool saveSwInFlashExt(char *fileName)
           }
 
           if (readflag)
-            calcCrc = crc16_ibm(buffer, readSize, calcCrc);
+            calcCrc = crc16_ibm((uint8_t*)buffer, readSize, calcCrc);
           else
-            calcCrc = crc16_ibm(buffer, readSize-6, calcCrc);
-          if (flashExtWriteEx(FlashSpi1, lastAddress, buffer, readSize))
+            calcCrc = crc16_ibm((uint8_t*)buffer, readSize-6, calcCrc);
+          if (flashExtWriteEx(FlashSpi1, lastAddress, (uint8_t*)buffer, readSize))
             printf("Error: file %s on line %d\r\n", __FILE__, __LINE__);
-          if (flashExtRead(FlashSpi1, lastAddress, buffer, readSize))
+
+          if (flashExtRead(FlashSpi1, lastAddress, (uint8_t*)buffer, readSize))
             printf("Error: file %s on line %d\r\n", __FILE__, __LINE__);
           if (readflag)
-            calcCrcRx = crc16_ibm(buffer, readSize, calcCrcRx);
+            calcCrcRx = crc16_ibm((uint8_t*)buffer, readSize, calcCrcRx);
           else
-            calcCrcRx = crc16_ibm(buffer, readSize-6, calcCrcRx);
+            calcCrcRx = crc16_ibm((uint8_t*)buffer, readSize-6, calcCrcRx);
+
+          if (calcCrc != calcCrcRx)
+            break;
 
           lastAddress += readSize;
           allSize += readSize;
 
-          if (++count > 10) {
+          if (++count > 5) {
             count = 0;
-            if (calcCrc != calcCrcRx) {
-              break;
-            }
             parameters.set(CCS_PROGRESS_VALUE, (float)(lastAddress - startAddress)/1024);
           }
 
@@ -193,9 +192,10 @@ static bool saveSwInFlashExt(char *fileName)
 
 bool updateFromUsb()
 {
-  static char fileName[_MAX_LFN] = {0};
+  static char fileName[_MAX_LFN];
+  fileName[0] = 0;
 
-  if (usbState != USB_READY) {
+  if (!usbIsReady()) {
     logDebug.add(WarningMsg, "update.updateFromUsb() Not connected USB drive");
     ksu.setError(NoConnectionUsbErr);
     return false;

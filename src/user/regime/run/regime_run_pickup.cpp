@@ -233,7 +233,7 @@ void RegimeRunPickup::processingStateStop()
 
 void RegimeRunPickup::automatRegime()
 {
-  if ((action_ == OffAction) && (state_ != IdleState)) {
+  if ((action_ == OffAction) && (state_ != IdleState) && (ksu.isRunOrWorkMotor())) {
     state_ = StopState;
   }
 
@@ -259,7 +259,7 @@ void RegimeRunPickup::automatRegime()
   case WorkState + 8:
   case WorkState + 9:
   case WorkState + 10:
-    if (ksu.isStopMotor()) {
+    if (ksu.isBreakOrStopMotor()) {
       state_ = StopState;
     }
     else {

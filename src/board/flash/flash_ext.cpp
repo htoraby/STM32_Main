@@ -6,8 +6,7 @@
 
 #define CMD_JEDEC_ID 0x9F
 
-static uint8_t bufData[4096];
-static uint8_t buf[10];
+static volatile uint8_t bufData[FlashSpiMax][FLASH_SECTOR_SIZE];
 
 /*!
  \brief Спискок возможных производителей
@@ -67,6 +66,8 @@ static void flashWriteDisable(FlashSpiNum num);
 
 void flashExtInit(FlashSpiNum num)
 {
+  volatile uint8_t buf[10];
+
   SPI_HandleTypeDef *spiX = &flashExts[num].spi;
   switch (num) {
     case FlashSpi1:
@@ -99,7 +100,6 @@ void flashExtInit(FlashSpiNum num)
   spiX->Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
   spiX->Init.CRCPolynomial = 7;
   HAL_SPI_Init(spiX);
-
 
   /* Peripheral DMA init*/
   if (num == FlashSpi1) {
@@ -172,10 +172,11 @@ void flashExtInit(FlashSpiNum num)
   }
 
   flashExts[num].cmdSemaphoreId = osSemaphoreCreate(NULL, 1);
+  flashExts[num].data = bufData[num];
 
   // Чтение данных из JEDEC ID регистров для определения производителя
   buf[0] = CMD_JEDEC_ID;
-  spiTransmitReceive(num, &buf[0], &buf[0], 1, 4);
+  spiTransmitReceive(num, (uint8_t *)&buf[0], (uint8_t *)&buf[0], 1, 4);
 
   // Определение производителя
   flashExts[num].manufacturer = buf[0];
@@ -183,25 +184,25 @@ void flashExtInit(FlashSpiNum num)
   case VENDOR_ATMEL:
     flashExts[num].size = 0;
     flashExts[num].pageSize = 256;
-    flashExts[num].sectorSize = 4096;
+    flashExts[num].sectorSize = FLASH_SECTOR_SIZE;
     flashExts[num].blockSize = 65536;
     break;
   case VENDOR_WINBOND:
     flashExts[num].size = 0x00800000;
     flashExts[num].pageSize = 256;
-    flashExts[num].sectorSize = 4096;
+    flashExts[num].sectorSize = FLASH_SECTOR_SIZE;
     flashExts[num].blockSize = 65536;
     break;
   case VENDOR_MACRONIX:
     flashExts[num].size = 0x01000000;
     flashExts[num].pageSize = 256;
-    flashExts[num].sectorSize = 4096;
+    flashExts[num].sectorSize = FLASH_SECTOR_SIZE;
     flashExts[num].blockSize = 65536;
     break;
   case VENDOR_GIGADEVICE:
     flashExts[num].size = 0x02000000;
     flashExts[num].pageSize = 256;
-    flashExts[num].sectorSize = 4096;
+    flashExts[num].sectorSize = FLASH_SECTOR_SIZE;
     flashExts[num].blockSize = 65536;
 
     flashSetAddressMode(num);
@@ -209,25 +210,12 @@ void flashExtInit(FlashSpiNum num)
   default:
     flashExts[num].size = 0x02000000;
     flashExts[num].pageSize = 256;
-    flashExts[num].sectorSize = 4096;
+    flashExts[num].sectorSize = FLASH_SECTOR_SIZE;
     flashExts[num].blockSize = 65536;
 
     flashSetAddressMode(num);
     break;
   }
-
-  asm("nop");
-}
-
-static StatusType flashDmaWait(FlashSpiNum num)
-{
-  int timeOut = FLASH_TIMEOUT;
-  while (!flashExts[num].spiReady) {
-    osDelay(1);
-    if (--timeOut <= 0)
-      return StatusError;
-  }
-  return StatusOk;
 }
 
 void flashTxRxCpltCallback(FlashSpiNum num)
@@ -235,7 +223,7 @@ void flashTxRxCpltCallback(FlashSpiNum num)
   flashExts[num].spiReady = true;
 }
 
-StatusType spiTransmitReceive(FlashSpiNum num, uint8_t *txData, uint8_t *rxData,
+static StatusType spiTransmitReceive(FlashSpiNum num, uint8_t *txData, uint8_t *rxData,
                              uint16_t txSize, uint16_t rxSize)
 {
   StatusType status = StatusError;
@@ -252,62 +240,354 @@ StatusType spiTransmitReceive(FlashSpiNum num, uint8_t *txData, uint8_t *rxData,
 
 static void flashSetAddressMode(FlashSpiNum num)
 {
+  volatile uint8_t buf[10];
+
 #if (HARDWARE_VERSION >= 0x0200)
   buf[0] = CMD_W_ADDRESS_MODE;
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  HAL_SPI_Transmit(&flashExts[num].spi, buf, 1, FLASH_TIMEOUT);
+  HAL_SPI_Transmit(&flashExts[num].spi, (uint8_t *)buf, 1, FLASH_TIMEOUT);
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 #endif
 
   buf[0] = 0x35;
   buf[1] = 0xFF;
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  HAL_SPI_TransmitReceive(&flashExts[num].spi, buf, buf, 2, FLASH_TIMEOUT);
+  HAL_SPI_TransmitReceive(&flashExts[num].spi, (uint8_t *)buf, (uint8_t *)buf, 2, FLASH_TIMEOUT);
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  asm("nop");
+}
+
+static StatusType flashDmaWait(FlashSpiNum num)
+{
+  int timeOut = FLASH_TIMEOUT;
+  int attempt = 0;
+  while (!flashExts[num].spiReady) {
+    if (++attempt > 500) {
+      attempt = 0;
+      osDelay(1);
+      if (--timeOut <= 0)
+        return StatusError;
+    }
+  }
+  return StatusOk;
 }
 
 static void flashReady(FlashSpiNum num)
 {
   StatusType status = StatusError;
+  volatile uint8_t buf[10];
 
+  int attempt = 0;
   while (1) {
     buf[0] = CMD_W_READ_SR;
     buf[1] = 0xFF;
     clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-    if (HAL_SPI_TransmitReceive(&flashExts[num].spi, buf, buf, 2, FLASH_TIMEOUT) == HAL_OK)
+    if (HAL_SPI_TransmitReceive(&flashExts[num].spi, (uint8_t *)buf, (uint8_t *)buf, 2, FLASH_TIMEOUT) == HAL_OK)
       status = StatusOk;
     setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
     if (status == StatusError)
       return;
     if(!(buf[1] & 0x01)) {
-      asm("nop");
       return;
     }
-    HAL_Delay(1);
+    if (++attempt > 500) {
+      attempt = 0;
+      osDelay(1);
+    }
   }
 }
 
 static void flashWriteEnable(FlashSpiNum num)
 {
+  volatile uint8_t buf[10];
   buf[0] = CMD_W_WRITE_ENABLE;
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  HAL_SPI_Transmit(&flashExts[num].spi, buf, 1, FLASH_TIMEOUT);
+  HAL_SPI_Transmit(&flashExts[num].spi, (uint8_t *)buf, 1, FLASH_TIMEOUT);
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 }
 
 static void flashWriteDisable(FlashSpiNum num)
 {
+  volatile uint8_t buf[10];
   buf[0] = CMD_W_WRITE_DISABLE;
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  HAL_SPI_Transmit(&flashExts[num].spi, buf, 1, FLASH_TIMEOUT);
+  HAL_SPI_Transmit(&flashExts[num].spi, (uint8_t *)buf, 1, FLASH_TIMEOUT);
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+}
+
+static StatusType flashEraseSector(FlashSpiNum num, uint32_t address)
+{
+  StatusType status = StatusError;
+  volatile uint8_t buf[10];
+
+  address &= ~(flashExts[num].sectorSize - 1);
+
+  flashWriteEnable(num);
+
+  uint8_t sizeTx = 5;
+  buf[0] = CMD_W_SECTOR_ERASE;
+#if (HARDWARE_VERSION >= 0x0200)
+  buf[1] = address>>24;
+  buf[2] = address>>16;
+  buf[3] = address>>8;
+  buf[4] = address&0xFF;
+#else
+  buf[1] = address>>16;
+  buf[2] = address>>8;
+  buf[3] = address&0xFF;
+  sizeTx = 4;
+#endif
+
+  clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+  if (HAL_SPI_Transmit(&flashExts[num].spi, (uint8_t *)buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
+    status = StatusOk;
+  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+
+  // Ожидание завершения операции
+  osDelay(20);
+  flashReady(num);
+  flashWriteDisable(num);
+
+  return status;
+}
+
+static StatusType flashRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
+{
+  StatusType status = StatusError;
+  volatile uint8_t buf[10];
+
+  if (address > flashExts[num].size)
+    return status;
+
+  uint8_t sizeTx = 6;
+  buf[0] = CMD_W_FAST_READ;
+#if (HARDWARE_VERSION >= 0x0200)
+  buf[1] = address>>24;
+  buf[2] = address>>16;
+  buf[3] = address>>8;
+  buf[4] = address&0xFF;
+  buf[5] = 0xFF;
+#else
+  buf[1] = address>>16;
+  buf[2] = address>>8;
+  buf[3] = address&0xFF;
+  buf[4] = 0xFF;
+  sizeTx = 5;
+#endif
+
+  clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+  if (HAL_SPI_Transmit(&flashExts[num].spi, (uint8_t *)buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
+    status = StatusOk;
+  if (status == StatusOk) {
+    flashExts[num].spiReady = false;
+    if (HAL_SPI_Receive_DMA(&flashExts[num].spi, data, size) != HAL_OK)
+      status = StatusError;
+    else
+      status = flashDmaWait(num);
+  }
+  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+
+  return status;
+}
+
+static StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
+{
+  StatusType status = StatusError;
+  volatile uint8_t buf[10];
+
+  if (address > flashExts[num].size)
+    return status;
+
+  flashWriteEnable(num);
+
+  uint8_t sizeTx = 5;
+  buf[0] = CMD_W_PAGE_PROGRAM;
+#if (HARDWARE_VERSION >= 0x0200)
+  buf[1] = address>>24;
+  buf[2] = address>>16;
+  buf[3] = address>>8;
+  buf[4] = address&0xFF;
+#else
+  buf[1] = address>>16;
+  buf[2] = address>>8;
+  buf[3] = address&0xFF;
+  sizeTx = 4;
+#endif
+
+  clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+  if (HAL_SPI_Transmit(&flashExts[num].spi, (uint8_t *)buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
+    status = StatusOk;
+  if (status == StatusOk) {
+    flashExts[num].spiReady = false;
+    if (HAL_SPI_Transmit_DMA(&flashExts[num].spi, data, size) != HAL_OK)
+      status = StatusError;
+    else
+      status = flashDmaWait(num);
+  }
+  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+
+  // Ожидание завершения операции
+  flashReady(num);
+  flashWriteDisable(num);
+
+  return status;
+}
+
+static StatusType flashWriteSector(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
+{
+  uint32_t offSetPage = 0;
+  uint32_t len = 0;
+
+  flashEraseSector(num, address);
+
+  while(size) {
+    if(address > flashExts[num].size)
+      break;
+
+    offSetPage = address % flashExts[num].pageSize;
+    len = flashExts[num].pageSize - offSetPage;
+    if(size < len)
+      len = size;
+
+    if (flashWritePage(num, address, data, len) != StatusOk)
+      return StatusError;
+
+    address += len;
+    data += len;
+    size -= len;
+  }
+
+  return StatusOk;
+}
+
+StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
+{
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, 3*FLASH_TIMEOUT) != osOK)
+    return StatusError;
+
+  StatusType status = StatusError;
+  volatile uint8_t buf[10];
+
+  if (address > flashExts[num].size)
+    return status;
+
+  osDelay(1);
+
+  uint8_t sizeTx = 6;
+  buf[0] = CMD_W_FAST_READ;
+#if (HARDWARE_VERSION >= 0x0200)
+  buf[1] = address>>24;
+  buf[2] = address>>16;
+  buf[3] = address>>8;
+  buf[4] = address&0xFF;
+  buf[5] = 0xFF;
+#else
+  buf[1] = address>>16;
+  buf[2] = address>>8;
+  buf[3] = address&0xFF;
+  buf[4] = 0xFF;
+  sizeTx = 5;
+#endif
+
+  clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+  if (HAL_SPI_Transmit(&flashExts[num].spi, (uint8_t *)buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
+    status = StatusOk;
+  if (status == StatusOk) {
+    flashExts[num].spiReady = false;
+    if (HAL_SPI_Receive_DMA(&flashExts[num].spi, data, size) != HAL_OK)
+      status = StatusError;
+    else
+      status = flashDmaWait(num);
+  }
+  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
+
+  osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
+
+  return status;
+}
+
+StatusType flashExtWrite(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
+{
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, 3*FLASH_TIMEOUT) != osOK)
+    return StatusError;
+
+  StatusType status = StatusOk;
+  uint32_t offSetPage = 0;
+  uint32_t len = 0;
+
+  while(size) {
+    if(address > flashExts[num].size) {
+      status = StatusError;
+      break;
+    }
+
+    offSetPage = address % flashExts[num].pageSize;
+    len = flashExts[num].pageSize - offSetPage;
+    if(size < len)
+      len = size;
+
+    status = flashWritePage(num, address, data, len);
+    if (status != StatusOk)
+      break;
+
+    address += len;
+    data += len;
+    size -= len;
+  }
+
+  osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
+
+  return status;
+}
+
+StatusType flashExtWriteEx(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
+{
+  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, 3*FLASH_TIMEOUT) != osOK)
+    return StatusError;
+
+  StatusType status = StatusOk;
+  uint32_t offSetPage = 0;
+  uint32_t len = 0;
+  uint32_t addrSector;
+
+  while(size) {
+    if(address > flashExts[num].size) {
+      status = StatusError;
+      break;
+    }
+
+    addrSector = address/flashExts[num].sectorSize*flashExts[num].sectorSize;
+    offSetPage = address % flashExts[num].sectorSize;
+    len = flashExts[num].sectorSize - offSetPage;
+    if(size < len)
+      len = size;
+    memset((uint8_t*)flashExts[num].data, 0, sizeof(bufData[0]));
+
+    status = flashRead(num, addrSector, (uint8_t*)flashExts[num].data, flashExts[num].sectorSize);
+    if (status != StatusOk)
+      break;
+    for(uint32_t i = 0; i < len; i++) {
+      flashExts[num].data[offSetPage + i] = data[i];
+    }
+
+    status = flashWriteSector(num, addrSector, (uint8_t*)flashExts[num].data, flashExts[num].sectorSize);
+    if (status != StatusOk)
+      break;
+
+    address += len;
+    data += len;
+    size -= len;
+  }
+
+  osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
+
+  return status;
 }
 
 StatusType flashExtEraseSector4k(FlashSpiNum num, uint32_t address)
 {
   StatusType status = StatusError;
+  volatile uint8_t buf[10];
 
   if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
     return status;
@@ -331,11 +611,12 @@ StatusType flashExtEraseSector4k(FlashSpiNum num, uint32_t address)
 #endif
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, (uint8_t *)buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
     status = StatusOk;
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
   // Ожидание завершения операции
+  osDelay(20);
   flashReady(num);
   flashWriteDisable(num);
 
@@ -347,6 +628,7 @@ StatusType flashExtEraseSector4k(FlashSpiNum num, uint32_t address)
 StatusType flashExtEraseBlock(FlashSpiNum num, uint32_t address)
 {
   StatusType status = StatusError;
+  volatile uint8_t buf[10];
 
   if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
     return status;
@@ -370,203 +652,24 @@ StatusType flashExtEraseBlock(FlashSpiNum num, uint32_t address)
 #endif
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, (uint8_t *)buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
     status = StatusOk;
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
   // Ожидание завершения операции
+  osDelay(200);
   flashReady(num);
   flashWriteDisable(num);
 
   osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
 
   return status;
-}
-
-StatusType flashExtRead(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
-{
-  StatusType status = StatusError;
-
-  if (address > flashExts[num].size)
-    return status;
-
-  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, 3*FLASH_TIMEOUT) != osOK)
-    return status;
-
-  osDelay(1);
-
-  uint8_t sizeTx = 6;
-  buf[0] = CMD_W_FAST_READ;
-#if (HARDWARE_VERSION >= 0x0200)
-  buf[1] = address>>24;
-  buf[2] = address>>16;
-  buf[3] = address>>8;
-  buf[4] = address&0xFF;
-  buf[5] = 0xFF;
-#else
-  buf[1] = address>>16;
-  buf[2] = address>>8;
-  buf[3] = address&0xFF;
-  buf[4] = 0xFF;
-  sizeTx = 5;
-#endif
-
-  clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
-    status = StatusOk;
-
-  if (status == StatusOk) {
-    flashExts[num].spiReady = false;
-    if (HAL_SPI_Receive_DMA(&flashExts[num].spi, data, size) != HAL_OK)
-      status = StatusError;
-    else
-      status = flashDmaWait(num);
-  }
-  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-
-  osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
-
-  return status;
-}
-
-StatusType flashWritePage(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
-{
-  StatusType status = StatusError;
-
-  if (address > flashExts[num].size)
-    return status;
-
-  if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, 3*FLASH_TIMEOUT) != osOK)
-    return status;
-
-  flashWriteEnable(num);
-
-  uint8_t sizeTx = 5;
-  buf[0] = CMD_W_PAGE_PROGRAM;
-#if (HARDWARE_VERSION >= 0x0200)
-  buf[1] = address>>24;
-  buf[2] = address>>16;
-  buf[3] = address>>8;
-  buf[4] = address&0xFF;
-#else
-  buf[1] = address>>16;
-  buf[2] = address>>8;
-  buf[3] = address&0xFF;
-  sizeTx = 4;
-#endif
-
-  clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, sizeTx, FLASH_TIMEOUT) == HAL_OK)
-    status = StatusOk;
-  if (status == StatusOk) {
-    flashExts[num].spiReady = false;
-    if (HAL_SPI_Transmit_DMA(&flashExts[num].spi, data, size) != HAL_OK)
-      status = StatusError;
-    else
-      status = flashDmaWait(num);
-  }
-  setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
-
-  // Ожидание завершения операции
-  flashReady(num);
-  flashWriteDisable(num);
-
-  osSemaphoreRelease(flashExts[num].cmdSemaphoreId);
-  if (status == StatusError)
-    asm("nop");
-
-  return status;
-}
-
-StatusType flashWriteSector(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
-{
-  uint32_t offSetPage = 0;
-  uint32_t len = 0;
-
-  flashExtEraseSector4k(num, address);
-
-  while(size) {
-    if(address > flashExts[num].size)
-      break;
-
-    offSetPage = address % flashExts[num].pageSize;
-    len = flashExts[num].pageSize - offSetPage;
-    if(size < len)
-      len = size;
-
-    if (flashWritePage(num, address, data, len) != StatusOk)
-      return StatusError;
-
-    address += len;
-    data += len;
-    size -= len;
-  }
-
-  return StatusOk;
-}
-
-StatusType flashExtWrite(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
-{
-  uint32_t offSetPage = 0;
-  uint32_t len = 0;
-
-  while(size) {
-    if(address > flashExts[num].size)
-      break;
-
-    offSetPage = address % flashExts[num].pageSize;
-    len = flashExts[num].pageSize - offSetPage;
-    if(size < len)
-      len = size;
-
-    if (flashWritePage(num, address, data, len) != StatusOk)
-      return StatusError;
-
-    address += len;
-    data += len;
-    size -= len;
-  }
-
-  return StatusOk;
-}
-
-StatusType flashExtWriteEx(FlashSpiNum num, uint32_t address, uint8_t *data, uint32_t size)
-{
-  uint32_t offSetPage = 0;
-  uint32_t len = 0;
-  uint32_t addrSector;
-
-  while(size) {
-    if(address > flashExts[num].size)
-      break;
-
-    addrSector = address/flashExts[num].sectorSize*flashExts[num].sectorSize;
-    offSetPage = address % flashExts[num].sectorSize;
-    len = flashExts[num].sectorSize - offSetPage;
-    if(size < len)
-      len = size;
-    memset(bufData, 0, sizeof(bufData));
-
-    if (flashExtRead(num, addrSector, bufData, flashExts[num].sectorSize) != StatusOk)
-      return StatusError;
-    for(uint32_t i = 0; i < len; i++) {
-      bufData[offSetPage + i] = data[i];
-    }
-
-    if (flashWriteSector(num, addrSector, bufData, flashExts[num].sectorSize) != StatusOk)
-      return StatusError;
-
-    address += len;
-    data += len;
-    size -= len;
-  }
-
-  return StatusOk;
 }
 
 StatusType flashExtChipErase(FlashSpiNum num)
 {
   StatusType status = StatusError;
+  volatile uint8_t buf[10];
 
   if (osSemaphoreWait(flashExts[num].cmdSemaphoreId, FLASH_TIMEOUT) != osOK)
     return status;
@@ -575,11 +678,12 @@ StatusType flashExtChipErase(FlashSpiNum num)
 
   clrPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
   buf[0] = CMD_W_CHIP_ERASE;
-  if (HAL_SPI_Transmit(&flashExts[num].spi, buf, 1, FLASH_TIMEOUT) == HAL_OK)
+  if (HAL_SPI_Transmit(&flashExts[num].spi, (uint8_t *)buf, 1, FLASH_TIMEOUT) == HAL_OK)
     status = StatusOk;
   setPinOut(flashExts[num].nss_port, flashExts[num].nss_pin);
 
   // Ожидание завершения операции
+  osDelay(100000);
   flashReady(num);
   flashWriteDisable(num);
 

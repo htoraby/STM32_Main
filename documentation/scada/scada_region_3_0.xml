@@ -299,7 +299,7 @@
 		<name>Выходная частота ПЧ</name>
 	</param>
 	<param>
-		<id>VSD_OUT_VOLTAGE_MOTOR</id>
+		<id>VSD_VOLTAGE_LINE</id>
 		<address>279</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
@@ -312,7 +312,7 @@
 		<name>Выходное напряжение ПЧ</name>
 	</param>
 	<param>
-		<id>CCS_VOLTAGE_TRANS_OUT</id>
+		<id>CCS_TRANS_OUTPUT_VOLTAGE_LINE</id>
 		<address>280</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
@@ -945,35 +945,38 @@
 		<name>Периодичность синхронизации по NTP</name>
 	</param>
 	<param>
-		<id>-1</id>
+		<id>CCS_DHS_LOG_ROSNEFT_LAST_RECORD</id>
 		<address>350</address>
 		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
-		<min>0</min>
-		<max>0</max>
+		<min>4096</min>
+		<max>65530</max>
 		<command>OPERATION_ERROR</command>
 		<name>Адрес последней записи архива</name>
 	</param>
 	<param>
-		<id>-1</id>
+		<id>CCS_DHS_LOG_ROSNEFT_FIRST_REGISTER</id>
 		<address>351</address>
 		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
-		<min>0</min>
-		<max>0</max>
+		<min>4096</min>
+		<max>65530</max>
 		<command>OPERATION_ERROR</command>
 		<name>Адрес первого регистра архива</name>
 	</param>
 	<param>
-		<id>-1</id>
+		<id>CCS_DHS_LOG_ROSNEFT_LAST_REGISTER</id>
 		<address>352</address>
 		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
 		<typeData>TYPE_DATA_UINT16</typeData>
 		<coefficient>1</coefficient>
-		<min>0</min>
-		<max>0</max>
+		<min>4096</min>
+		<max>65530</max>
 		<command>OPERATION_ERROR</command>
 		<name>Адрес последнего регистра архива</name>
 	</param>

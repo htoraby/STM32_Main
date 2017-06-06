@@ -639,7 +639,7 @@
 		<name>Зарезервирован</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_1_RESTART_SETPOINT</id>
+		<id>CCS_PROT_AI_1_PARAMETER</id>
 		<address>51</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
@@ -652,7 +652,7 @@
 		<name>Максимальное значение сигнала на аналоговом входе 1</name>
 	</param>
 	<param>
-		<id>CCS_PROT_AI_2_RESTART_SETPOINT</id>
+		<id>CCS_PROT_AI_2_PARAMETER</id>
 		<address>52</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>

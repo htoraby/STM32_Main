@@ -136,6 +136,8 @@ private:
   osThreadId calcParamsThreadId_;
   //! Задержка ответа
   float delay_;
+  //!
+  int addrOld_;
 
 };
 

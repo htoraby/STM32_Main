@@ -183,7 +183,7 @@ float Device::applyCoef(float value, float coef)
 
 float Device::applyUnit(float value, int physic, int unit)
 { 
-  return ((value - (units[physic][unit][1]))/(units[physic][unit][0]));
+  return convertTo(value, physic, unit);
 }
 
 unsigned short Device::getIndexAtId(unsigned short id)
@@ -223,7 +223,7 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
   uint16_t discret = getFieldDiscret(index);
   uint8_t operation = getFieldOperation(index);
 
-  if ((operation == OPERATION_LIMITED) && ksu.isWorkMotor()) {
+  if ((operation == OPERATION_LIMITED) && (ksu.getValue(CCS_CONDITION) != CCS_CONDITION_STOP)) {
     novobusSlave.putMessageParams(id);
     return RETURN_ERROR_OPERATION;
   }
@@ -241,6 +241,7 @@ uint8_t Device::setValue(uint16_t id, float value, EventType eventType)
                    id, value, min);
 #endif
     }
+
     if ((check == err_max_r) && (getFieldValidity(index) != VALIDITY_MAX)) {
       setFieldValidity(index, VALIDITY_MAX);
 #if (USE_LOG_WARNING == 1)
@@ -282,7 +283,7 @@ uint8_t Device::setValueForce(uint16_t id, float value, EventType eventType)
   uint16_t discret = getFieldDiscret(index);
   uint8_t operation = getFieldOperation(index);
 
-  if ((operation == OPERATION_LIMITED) && ksu.isWorkMotor()) {
+  if ((operation == OPERATION_LIMITED) && (ksu.getValue(CCS_CONDITION) != CCS_CONDITION_STOP)) {
     novobusSlave.putMessageParams(id);
     return RETURN_ERROR_OPERATION;
   }
@@ -342,7 +343,7 @@ uint8_t Device::setValue(uint16_t id, uint32_t value, EventType eventType)
   uint8_t units = getFieldPhysic(index);
   uint8_t operation = getFieldOperation(index);
 
-  if ((operation == OPERATION_LIMITED) && ksu.isWorkMotor()) {
+  if ((operation == OPERATION_LIMITED) && (ksu.getValue(CCS_CONDITION) != CCS_CONDITION_STOP)) {
     novobusSlave.putMessageParams(id);
     return RETURN_ERROR_OPERATION;
   }
@@ -406,6 +407,11 @@ void Device::resetValue(uint16_t id)
 uint8_t Device::getPhysic(unsigned short id)
 {
   return getFieldPhysic(getIndexAtId(id));
+}
+
+uint32_t Device::getDiscret(unsigned short id)
+{
+  return getFieldDiscret(getIndexAtId(id));
 }
 
 uint8_t Device::getValidity(unsigned short id)
@@ -544,7 +550,7 @@ StatusType Device::readParameters()
   uint16_t calcCrc = 0xFFFF;
   for (int i = 0; i < countParameters_; ++i) {
     parameters_[i].value.float_t = buffer[i];
-    if (i >= count) {
+    if ((i >= count) || (count >= 0xFFFF)) {
       parameters_[i].value.float_t = parameters_[i].def;
     } else {
       if (parameters_[i].physic != PHYSIC_DATE_TIME) {
@@ -649,6 +655,13 @@ StatusType Device::loadConfigInProfileDefault(uint32_t address, float *data)
   }
 
   return status;
+}
+
+void Device::resetAllDefault()
+{
+  for (int i = 0; i < countParameters_; ++i) {
+    parameters_[i].value.float_t = parameters_[i].def;
+  }
 }
 
 bool Device::isConnect()

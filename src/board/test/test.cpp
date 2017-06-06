@@ -117,8 +117,6 @@ static void testThread(void * argument)
 //  int t1  = 0;
 
   while(1) {
-//    toggleLed(TestLed);
-
     osDelay(500);
 
 //    if (t1 < 300000) {

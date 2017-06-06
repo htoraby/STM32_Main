@@ -361,7 +361,7 @@ void TmsElekton3::getNewValue(uint16_t id)
     break;
   }
   value = value * param->coefficient;
-  value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
+  value = convertTo(value, param->physic, param->unit);
 
   switch (id) {
   case TMS_PRESSURE_INTAKE:

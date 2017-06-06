@@ -20,7 +20,6 @@ ProtectionAnalogInput4::ProtectionAnalogInput4()
   idRestartCount_ = CCS_PROT_AI_4_RESTART_COUNT;
   idRestartFirstTime_ = CCS_PROT_AI_4_RESTART_FIRST_TIME;
 
-  protReactEventId_ = AnalogInput4ProtReactId;
   apvEventId_ = AnalogInput4ApvId;
   apvDisabledEventId_ = AnalogInput4ApvDisabledId;
   protBlockedEventId_ = AnalogInput4ProtBlockedId;
@@ -34,18 +33,19 @@ ProtectionAnalogInput4::~ProtectionAnalogInput4()
 bool ProtectionAnalogInput4::checkAlarm()
 {
   float min = tripSetpoint_;
-  float max = restartSetpoint_;
-  nominal_ = parameters.get(idParam_);
+  float max = parameters.get(CCS_PROT_AI_4_PARAMETER);
   valueParameter_ = parameters.get(CCS_AI_4_VALUE_CALC);
 
-  if (valueParameter_ > nominal_ * max / 100) {
+  if (valueParameter_ > max) {
     lastReasonRun_ = LastReasonRunApvMaxAnalog4;
     lastReasonStop_ = LastReasonStopMaxAnalog4;
+    protReactEventId_ = AnalogInput4MaxProtReactId;
     parameters.set(CCS_PROT_AI_4_ALARM_TYPE, 1);
     return true;
-  } else if (valueParameter_ < nominal_ * min / 100) {
+  } else if (valueParameter_ < min) {
     lastReasonRun_ = LastReasonRunApvMinAnalog4;
     lastReasonStop_ = LastReasonStopMinAnalog4;
+    protReactEventId_ = AnalogInput4MinProtReactId;
     parameters.set(CCS_PROT_AI_4_ALARM_TYPE, 0);
     return true;
   } else {
@@ -55,10 +55,21 @@ bool ProtectionAnalogInput4::checkAlarm()
 
 bool ProtectionAnalogInput4::checkPrevent()
 {
-  return alarm_;
+  if (restart_) {
+    float minRestart = restartSetpoint_;
+    float maxRestart = parameters.get(CCS_PROT_AI_4_RESTART_SETPOINT_MAX);
+    if ((valueParameter_ > maxRestart) || (valueParameter_ < minRestart)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  else {
+    return alarm_;
+  }
 }
 
 void ProtectionAnalogInput4::addEventReactionProt()
 {
-  logEvent.add(ProtectCode, AutoType, protReactEventId_, nominal_, valueParameter_);
+  logEvent.add(ProtectCode, AutoType, protReactEventId_, 0, valueParameter_);
 }

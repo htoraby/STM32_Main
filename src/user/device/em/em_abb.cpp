@@ -121,6 +121,7 @@ void EmAbb::sendRequest()
 
   sendUart(txBuffer_, sizePktTx);
   counters_.transmite++;
+  calcConnect();
 }
 
 void EmAbb::receiveAnswer()

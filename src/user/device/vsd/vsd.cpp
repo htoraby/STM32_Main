@@ -40,7 +40,6 @@ int Vsd::setMotorTypeProfile()
 enReturns Vsd::setMotorFrequency(float value, EventType eventType)
 {
   return (enReturns)setValue(VSD_MOTOR_FREQUENCY, value, eventType);
-  // TODO: тут была функция задания максимума частоты в зависимости от типа двигателя, считаю её туда и надо перенести
 }
 
 int Vsd::setMotorCurrent(float value, EventType eventType)
@@ -161,28 +160,32 @@ int Vsd::setMinFrequency(float value)
 
 int Vsd::setLimitsMinFrequence(float value)
 {
+  int const freqMode[10] = {
+    CCS_RGM_ALTERNATION_FREQ_FREQ_1,
+    CCS_RGM_ALTERNATION_FREQ_FREQ_2,
+    CCS_RGM_CHANGE_FREQ_BEGIN_FREQ,
+    CCS_RGM_CHANGE_FREQ_END_FREQ,
+    CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ,
+    CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ,
+    CCS_RGM_PUMP_GAS_F1,
+    CCS_RGM_PUMP_GAS_F2,
+    CCS_RGM_JARRING_FREQ_1,
+    CCS_RGM_JARRING_FREQ_2
+  };
+
   if (!setValue(VSD_LOW_LIM_SPEED_MOTOR, value)) {    // Если записали минимум частоты
     setMin(VSD_HIGH_LIM_SPEED_MOTOR, value);          // Меняем поле минимум для уставки "Максимальной частоты"
     setMin(VSD_FREQUENCY, value);                     // Меняем поле минимум для уставки "Частота"
-    if (value > parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1))
-      parameters.setMin(CCS_RGM_ALTERNATION_FREQ_FREQ_1, value);
-    if (value > parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_2))
-      parameters.setMin(CCS_RGM_ALTERNATION_FREQ_FREQ_2, value);
-    if (value > parameters.getMax(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ))
-      parameters.setMin(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ, value);
-    if (value > parameters.getMax(CCS_RGM_CHANGE_FREQ_END_FREQ))
-      parameters.setMin(CCS_RGM_CHANGE_FREQ_END_FREQ, value);
-    if (value > parameters.getMax(CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ))
-      parameters.setMin(CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ, value);
-    if (value > parameters.getMax(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ))
-      parameters.setMin(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ, value);
-    if (value > parameters.getMax(CCS_RGM_PUMP_GAS_SETPOINT))
-      parameters.setMin(CCS_RGM_PUMP_GAS_SETPOINT, value);
-    if (value > parameters.getMax(CCS_RGM_JARRING_FREQ_1))
-      parameters.setMin(CCS_RGM_JARRING_FREQ_1, value);
-    if (value > parameters.getMax(CCS_RGM_JARRING_FREQ_2))
-      parameters.setMin(CCS_RGM_JARRING_FREQ_2, value);
 
+    for (int i = 0; i < 10; i++) {
+      parameters.setMin(freqMode[i], value);
+      if (value > parameters.getMax(freqMode[i])) {
+        parameters.setMax(freqMode[i], value);
+      }
+      if (value > parameters.get(freqMode[i])) {
+        parameters.set(freqMode[i], value, NoneType);
+      }
+    }
     return ok_r;
   }
   return err_r;
@@ -203,29 +206,32 @@ int Vsd::setMaxFrequency(float value)
 
 int Vsd::setLimitsMaxFrequence(float value)
 {
+  int const freqMode[10] = {
+    CCS_RGM_ALTERNATION_FREQ_FREQ_1,
+    CCS_RGM_ALTERNATION_FREQ_FREQ_2,
+    CCS_RGM_CHANGE_FREQ_BEGIN_FREQ,
+    CCS_RGM_CHANGE_FREQ_END_FREQ,
+    CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ,
+    CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ,
+    CCS_RGM_PUMP_GAS_F1,
+    CCS_RGM_PUMP_GAS_F2,
+    CCS_RGM_JARRING_FREQ_1,
+    CCS_RGM_JARRING_FREQ_2
+  };
+
   if (!setValue(VSD_HIGH_LIM_SPEED_MOTOR, value)) {   // Если записали максимум частоты
     setMax(VSD_LOW_LIM_SPEED_MOTOR, value);           // Меняем поле максимум для уставки "Минимальной частоты"
     setMax(VSD_FREQUENCY, value);                     // Меняем поле максимум для уставки "Частота"
-    if (value < parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1))
-      parameters.setMax(CCS_RGM_ALTERNATION_FREQ_FREQ_1, value);
-    if (value < parameters.getMax(CCS_RGM_ALTERNATION_FREQ_FREQ_2))
-      parameters.setMax(CCS_RGM_ALTERNATION_FREQ_FREQ_2, value);
-    if (value < parameters.getMax(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ))
-      parameters.setMax(CCS_RGM_CHANGE_FREQ_BEGIN_FREQ, value);
-    if (value < parameters.getMax(CCS_RGM_CHANGE_FREQ_END_FREQ))
-      parameters.setMax(CCS_RGM_CHANGE_FREQ_END_FREQ, value);
-    if (value < parameters.getMax(CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ))
-      parameters.setMax(CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ, value);
-    if (value < parameters.getMax(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ))
-      parameters.setMax(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ, value);
-    if (value < parameters.getMax(CCS_RGM_PUMP_GAS_SETPOINT))
-      parameters.setMax(CCS_RGM_PUMP_GAS_SETPOINT, value);
-    if (value < parameters.getMax(CCS_RGM_JARRING_FREQ_1))
-      parameters.setMax(CCS_RGM_JARRING_FREQ_1, value);
-    if (value < parameters.getMax(CCS_RGM_JARRING_FREQ_2))
-      parameters.setMax(CCS_RGM_JARRING_FREQ_2, value);
-    if (value < parameters.getMax(CCS_RGM_RUN_PICKUP_FREQ_WAIT))
-      parameters.setMax(CCS_RGM_RUN_PICKUP_FREQ_WAIT, value);
+
+    for (int i = 0; i < 10; i++) {
+      parameters.setMax(freqMode[i], value);
+      if (value < parameters.getMin(freqMode[i])) {
+        parameters.setMin(freqMode[i], value);
+      }
+      if (value < parameters.get(freqMode[i])) {
+        parameters.set(freqMode[i], value, NoneType);
+      }
+    }
     return ok_r;
   }
   return err_r;
@@ -507,7 +513,7 @@ float Vsd::calcVsdPowerFull()
            calcAverage3Values(getValue(VSD_CURRENT_OUT_PHASE_1),
                               getValue(VSD_CURRENT_OUT_PHASE_2),
                               getValue(VSD_CURRENT_OUT_PHASE_3)) *
-                              getValue(VSD_OUT_VOLTAGE_MOTOR) * 1.73);
+                              getValue(VSD_VOLTAGE_LINE) * 1.73);
   return getValue(VSD_POWER_FULL);
 }
 
@@ -709,7 +715,7 @@ int Vsd::offRegimeAutoOptimCurrent()
 
 int Vsd::resetSetpoints()
 {
-  return 0;
+  return ok_r;
 }
 
 void Vsd::getConnect() {}

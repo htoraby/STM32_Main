@@ -44,7 +44,7 @@ void RegimeTechnologPeriodic::processing()
     stopTimeToEnd_ = 0;
     addTime_ = 0;
     if (action_ != OffAction) {                       // Режим - включен
-      if (ksu.isWorkMotor() && ksu.isProgramMode()) { // Двигатель - работа; Режим - программа;
+      if (ksu.isRunOrWorkMotor() && ksu.isProgramMode()) { // Двигатель - работа; Режим - программа;
         state_ = WorkState;
 #if (USE_LOG_DEBUG == 1)
         logDebug.add(DebugMsg, "RegimeTechnologPeriodic::processing() Start-up mode (state_ = %d)", state_);
@@ -70,16 +70,16 @@ void RegimeTechnologPeriodic::processing()
       }
     }
     else { // Станция в останове
-      if (runReason != LastReasonRunNone) { // Попытка пуска
-        // Если причина останова "Исключение"
-        if ((stopReason == LastReasonStopOperator) ||
-            (stopReason == LastReasonStopRemote) ||
-            (stopReason == LastReasonStopUnderVoltIn) ||
-            (stopReason == LastReasonStopOverVoltIn) ||
-            (stopReason == LastReasonStopImbalanceVoltIn) ||
-            (stopReason == LastReasonStopNoVoltage)) {
+      // Если причина останова "Исключение"
+      if ((stopReason == LastReasonStopOperator) ||
+          (stopReason == LastReasonStopRemote) ||
+          (stopReason == LastReasonStopUnderVoltIn) ||
+          (stopReason == LastReasonStopOverVoltIn) ||
+          (stopReason == LastReasonStopImbalanceVoltIn) ||
+          (stopReason == LastReasonStopNoVoltage)) {
+        if (runReason != LastReasonRunNone) { // Попытка пуска
           if (ksu.isProgramMode()) { // Режим - программа;
-            uint32_t stopBeginTime = parameters.getU32(CCS_LAST_STOP_DATE_TIME); // Время остановки двигателя
+            uint32_t stopBeginTime = parameters.getU32(CCS_LAST_STOP_DATE_TIME);        // Время остановки двигателя
             uint32_t workEndTime = workBeginTime_ + workPeriod_;                         // Предпологаемое время останова по программе
             uint32_t workTimeToEnd = workEndTime - stopBeginTime;                        // Время доработки по программе
             uint32_t stopTime = ksu.getSecFromCurTime(stopBeginTime);                    // Время от останова до пуска
@@ -124,24 +124,13 @@ void RegimeTechnologPeriodic::processing()
 #endif
           }
         }
-        else {
-          if (ksu.isProgramMode()) {
-            workBeginTime_ = ksu.getTime();
-            state_ = RunningState;
+      }
+      else {
+        state_ = IdleState;
 #if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "RegimeTechnologPeriodic::processing() Stop during operation (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
-                         workPeriod_, workTimeToEnd_, stopReason, state_);
+        logDebug.add(DebugMsg, "RegimeTechnologPeriodic::processing() Stop during operation (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
+                     workPeriod_, workTimeToEnd_, stopReason, state_);
 #endif
-          }
-          else {
-            ksu.start(runReason);
-            state_ = IdleState;
-#if (USE_LOG_DEBUG == 1)
-            logDebug.add(DebugMsg, "RegimeTechnologPeriodic::processing() Stop during operation and shut down program (workPeriod = %d, workTimeToEnd = %d, stopReason = %d, state = %d)",
-                         workPeriod_, workTimeToEnd_, stopReason, state_);
-#endif
-          }
-        }
       }
     }
     break;
@@ -156,7 +145,7 @@ void RegimeTechnologPeriodic::processing()
     }
     break;
   case PauseState:
-    if (ksu.isStopMotor()) {       // Двигатель - останов;
+    if (ksu.isBreakOrStopMotor() && ksu.isRestart()) {       // Двигатель - останов;
       uint32_t time = ksu.getSecFromCurTime(stopBeginTime_); // Прошедшее время с начала останова
       stopTimeToEnd_ = getTimeToEnd(stopPeriod_ + addTime_, time);
       workTimeToEnd_ = 0;
@@ -197,7 +186,7 @@ void RegimeTechnologPeriodic::processing()
     break;
   case RestartState:
     if (ksu.isProgramMode()) { // Режим - программа;
-      if (ksu.isStopMotor()) {
+      if (ksu.isBreakOrStopMotor()) {
         if (ksu.isPrevent()) {
           if (!attempt_) {                // Первая попытка запуска
             attempt_ = true;
@@ -225,7 +214,7 @@ void RegimeTechnologPeriodic::processing()
     }
     break;
   case StopState:
-    if (ksu.isStopMotor()) {     // Двигатель - останов;
+    if (ksu.isBreakOrStopMotor()) {     // Двигатель - останов;
       uint32_t time = ksu.getSecFromCurTime(stopBeginTime_);
       stopTimeToEnd_ = getTimeToEnd(stopPeriod_, time);
       parameters.set(CCS_RESTART_TIMER, stopTimeToEnd_);

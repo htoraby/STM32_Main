@@ -447,7 +447,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>VSD_OUT_VOLTAGE_MOTOR</id>
+		<id>VSD_VOLTAGE_LINE</id>
 		<address>39</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
@@ -870,7 +870,7 @@
 		<name>Нет операции</name>
 	</param>
 	<param>
-		<id>CCS_MOTOR_VOLTAGE_NOW</id>
+		<id>CCS_MOTOR_VOLTAGE_LINE</id>
 		<address>77</address>
 		<operation>OPERATION_READ</operation>
 		<physic>PHYSIC_VOLTAGE</physic>
@@ -6585,7 +6585,7 @@
 		<name>Тип аналогового входа 1</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_1_PARAMETER</id>
 		<address>601</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6597,7 +6597,7 @@
 		<name>Сигнал на аналоговом входе 1</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_1_PARAM_UNITS</id>
 		<address>602</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6645,7 +6645,7 @@
 		<name>Минимальное значение срабатывания защиты по AI1</name>
 	</param>
 	<param>
-		<id>-1</id>
+		<id>CCS_PROT_AI_1_RESTART_SETPOINT</id>
 		<address>609</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6657,7 +6657,7 @@
 		<name>Минимальное значение АПВ защиты по AI1</name>
 	</param>
 	<param>
-		<id>-1</id>
+		<id>CCS_PROT_AI_1_RESTART_SETPOINT_MAX</id>
 		<address>611</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6757,7 +6757,7 @@
 		<name>Тип аналогового входа 2</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_2_PARAMETER</id>
 		<address>622</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6769,7 +6769,7 @@
 		<name>Сигнал на аналоговом входе 2</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_2_PARAM_UNITS</id>
 		<address>623</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6817,7 +6817,7 @@
 		<name>Минимальное значение срабатывания защиты по AI2</name>
 	</param>
 	<param>
-		<id>-1</id>
+		<id>CCS_PROT_AI_2_RESTART_SETPOINT</id>
 		<address>630</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6829,7 +6829,7 @@
 		<name>Минимальное значение АПВ защиты по AI2</name>
 	</param>
 	<param>
-		<id>-1</id>
+		<id>CCS_PROT_AI_2_RESTART_SETPOINT_MAX</id>
 		<address>632</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6929,7 +6929,7 @@
 		<name>Тип аналогового входа 3</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_3_PARAMETER</id>
 		<address>643</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6941,7 +6941,7 @@
 		<name>Сигнал на аналоговом входе 3</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_3_PARAM_UNITS</id>
 		<address>644</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -6989,7 +6989,7 @@
 		<name>Минимальное значение срабатывания защиты по AI3</name>
 	</param>
 	<param>
-		<id>-1</id>
+		<id>CCS_PROT_AI_3_RESTART_SETPOINT</id>
 		<address>651</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7001,7 +7001,7 @@
 		<name>Минимальное значение АПВ защиты по AI3</name>
 	</param>
 	<param>
-		<id>-1</id>
+		<id>CCS_PROT_AI_3_RESTART_SETPOINT_MAX</id>
 		<address>653</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7101,7 +7101,7 @@
 		<name>Тип аналогового входа 4</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_4_PARAMETER</id>
 		<address>664</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7113,7 +7113,7 @@
 		<name>Сигнал на аналоговом входе 4</name>
 	</param>
 	<param>
-		<id>0</id>
+		<id>CCS_AI_4_PARAM_UNITS</id>
 		<address>665</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7161,7 +7161,7 @@
 		<name>Минимальное значение срабатывания защиты по AI4</name>
 	</param>
 	<param>
-		<id>-1</id>
+		<id>CCS_PROT_AI_4_RESTART_SETPOINT</id>
 		<address>672</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
@@ -7173,7 +7173,7 @@
 		<name>Минимальное значение АПВ защиты по AI4</name>
 	</param>
 	<param>
-		<id>-1</id>
+		<id>CCS_PROT_AI_4_RESTART_SETPOINT_MAX</id>
 		<address>674</address>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>

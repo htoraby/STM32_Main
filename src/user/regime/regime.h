@@ -32,6 +32,7 @@ public:
     SkipFreqRegimeRun,                      //!< Пропуск резонансных частот
     AutoAdaptationRegimeRun,                //!< Автоадаптация
     DirectRegimeRun,                        //!< Прямой пуск
+    SoftRegimeRun,                          //!< "Мягкий" пуск
   } TypeRegimeRun;
   /*!
    * \brief Список состояний режима
@@ -45,6 +46,7 @@ public:
     RestartState = 500,
     StopState = 600,
   } RegimeState;
+
 
   Regime();
   ~Regime();

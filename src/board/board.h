@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include "common.h"
+#include "version_rev.h"
 #include "stm32f4xx_hal.h"
 #include "cmsis_os.h"
 
@@ -13,7 +14,7 @@
 #define USE_EXT_MEM  1
 #define USE_TEST     0
 #define USE_DEBUG    0
-#define USE_LOG_DEBUG 0           // Предлагаю формат сообщения "Группа - 10 масимум символов: Сообщение - 50 символов (Значения переменных и другая информация - максимум 100 символов)
+#define USE_LOG_DEBUG 0           // Предлагаю формат сообщения "Группа - 10 максимум символов: Сообщение - 50 символов (Значения переменных и другая информация - максимум 100 символов)
 #define USE_LOG_WARNING 1
 #define USE_LOG_CRITICAL 1
 #define USE_POWER_OFF 1
@@ -23,9 +24,9 @@
 
 #define HARDWARE_VERSION 0x0200 // 1.0 - Ext Flash - 32мб, 2.0 - Ext Flash - 64мб
 #if (HARDWARE_VERSION >= 0x0200)
-  #define FIRMWARE_VERSION 0x0200 //
+  #define FIRMWARE_VERSION 0x0206 //
 #else
-  #define FIRMWARE_VERSION 0x0102 //
+  #define FIRMWARE_VERSION 0x0106 //
 #endif
 #define FIRMWARE_DATE __DATE__
 #define FIRMWARE_TIME __TIME__

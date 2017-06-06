@@ -78,10 +78,10 @@ void LogAlarm::add()
   // Получение значений с ЧРП Ia, Ib, Ic, Ud
   vsd->log()->readAlarmLog(iaValue, ibValue, icValue, udValue);
 
-  memset(buffer, 0, sizeof(buffer));
+  memset((uint8_t *)buffer, 0, sizeof(buffer));
   *(uint32_t*)(buffer) = eventId_;
   *(float*)(buffer+4) = parameters.get(CCS_RESISTANCE_ISOLATION);
-  write(buffer, SIZE_BUF_LOG, false);
+  write((uint8_t *)buffer, SIZE_BUF_LOG, false);
 
   int idxU = 0;
   int idxI = 0;
@@ -90,8 +90,10 @@ void LogAlarm::add()
   int shiftIa = 0;
   float current = 0;
   float maxCurrent = parameters.get(CCS_SU_MAX_CURRENT);
+  int pauseCount = 0;
+
   for (int i = 0; i < ADC_POINTS_NUM; ) {
-    memset(buffer, 0xFF, sizeof(buffer));
+    memset((uint8_t *)buffer, 0xFF, sizeof(buffer));
     for (int j = 0; j < 4; ++j) {
       switch (typeVsd) {
       case VSD_TYPE_ETALON:
@@ -118,12 +120,12 @@ void LogAlarm::add()
 
       case VSD_TYPE_DANFOSS:
         if (shiftIa == 0) {                                           // Если новая точка тока
-          current = iaValue[idxI] * 10000 / 0xFFF / 493;              // Вычисляем милиА на входе
-          if (current < 4100) {                                       // Граница "разумности" параметра 4100 милиапмер
+          current = (float)iaValue[idxI] * 10000.0 / 0xFFF / 493;              // Вычисляем милиА на входе
+          if (current < 4.1) {                                       // Граница "разумности" параметра 4100 милиапмер
             current = 0;                                              // Ток ЧРП 0
           }
           else {
-            current = (maxCurrent * (current - 4000)) / 16000;        // Вычисляем ток ЧРП
+            current = (maxCurrent * (current - 4.0)) / 16.0;        // Вычисляем ток ЧРП
           }
         }
 
@@ -147,9 +149,17 @@ void LogAlarm::add()
       i++;
     }
     if (i == ADC_POINTS_NUM)
-      write(buffer, SIZE_BUF_LOG, true, true);
+      write((uint8_t *)buffer, SIZE_BUF_LOG, true, true);
     else
-      write(buffer, SIZE_BUF_LOG, false);
+      write((uint8_t *)buffer, SIZE_BUF_LOG, false);
+
+    if (pauseCount < 20) {
+      pauseCount++;
+    }
+    else {
+      pauseCount = 0;
+      osDelay(1);
+    }
   }
 
   time = HAL_GetTick() - time;

@@ -190,7 +190,6 @@ void RegimeRunPush::processingStateWork()
       logEvent.add(OtherCode, AutoType, RegimeRunPushFinishId);
       if (parameters.get(CCS_RGM_RUN_PUSH_MODE) == SingleAction) {
         parameters.set(CCS_RGM_RUN_PUSH_MODE, OffAction);         // Выключаем режим
-        logEvent.add(SetpointCode, AutoType, RegimeRunPushOffId); // Записываем данные в лог
       }
       state_ = IdleState;
     }
@@ -237,7 +236,7 @@ void RegimeRunPush::processingStateStop()             // Состояние ос
 void RegimeRunPush::automatRegime()
 {
   // Выключили режим во время работы, переход на состояние остановки режима
-  if ((action_ == OffAction) && (state_ != IdleState)) {
+  if ((action_ == OffAction) && (state_ != IdleState) && (ksu.isRunOrWorkMotor())) {
     state_ = StopState;
   }
 
@@ -259,7 +258,7 @@ void RegimeRunPush::automatRegime()
   case WorkState + 6:
   case WorkState + 7:
   case WorkState + 8:
-    if (ksu.isStopMotor()) {
+    if (ksu.isBreakOrStopMotor()) {
       state_ = StopState;
       break;
     }

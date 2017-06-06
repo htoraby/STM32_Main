@@ -91,7 +91,7 @@ void ProtectionPowerOff::addEventReactionProt()
 
 void ProtectionPowerOff::processingStateRun()       // Состояние работа
 {
-  if (ksu.isWorkMotor() ||
+  if (ksu.isRunOrWorkMotor() ||
       (ksu.isProgramMode() && (parameters.get(CCS_RGM_PERIODIC_MODE) != Regime::OffAction))) {
     if (alarm_ && !protUnderVoltIn.isRestart()) {
 #if (USE_LOG_DEBUG == 1)
@@ -108,13 +108,13 @@ void ProtectionPowerOff::processingStateRun()       // Состояние раб
         restart_ = false;
       }
 
-      if (ksu.isWorkMotor()) {
+      if (ksu.isRunOrWorkMotor()) {
         if (!restart_)
           ksu.setBlock();
         ksu.stop(lastReasonStop_);
       }
-      else if (ksu.isStopMotor() && (parameters.get(CCS_LAST_STOP_REASON_TMP) == LastReasonStopProgram)) {
-        parameters.set(CCS_LAST_STOP_REASON_TMP, lastReasonStop_);
+      else if (ksu.isBreakOrStopMotor() && (parameters.get(CCS_LAST_STOP_REASON) == LastReasonStopProgram)) {
+        parameters.set(CCS_LAST_STOP_REASON, lastReasonStop_);
       }
 
       timer_ = 0;
@@ -127,11 +127,11 @@ void ProtectionPowerOff::processingStateRun()       // Состояние раб
 
 void ProtectionPowerOff::proccessingStateStop()
 {
-  if (ksu.isWorkMotor()) {
+  if (ksu.isRunOrWorkMotor()) {
     restart_ = false;
     state_ = StateRun;
   }
-  else if (ksu.isStopMotor()) {               // Двигатель - стоп;
+  else if (ksu.isBreakOrStopMotor()) {               // Двигатель - стоп;
     if (ksu.isAutoMode() && !ksu.isBlock()) { // Двигатель - стоп; Режим - авто; Нет блокировки;
       if (restart_) {                         // Двигатель - стоп; Режим - авто; Флаг - АПВ;
         float restartTimer = restartDelay_;

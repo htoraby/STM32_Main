@@ -6,7 +6,8 @@
 #include "regime_technolog_maintenance_param.h"
 #include "regime_technolog_alternation_freq.h"
 #include "regime_technolog_optimization_voltage.h"
-#include "regime_technolog_jarring.h"      
+#include "regime_technolog_jarring.h"
+#include "regime_technolog_pumping_gas.h"
 
 /*!
  * \brief Функция инициализации задачи обработки всех режимов
@@ -35,7 +36,14 @@ void setGeneralStateRunMode();
  * \brief Функция выключает (переводит MODE в Off) все пусковые режимы кроме
  * id указанного в параметре
  */
-void offRunModeExcept(uint16_t id);
+bool offRunModeExcept(uint16_t id);
+
+/*!
+ * \brief offWorkRgmExcept
+ * \param id
+ * \return
+ */
+bool offWorkRgmExcept(uint16_t id);
 
 
 

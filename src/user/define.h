@@ -14,12 +14,12 @@
  */
 union unTypeData
 {
-  unsigned char      char_t[4];
-  signed short int   int16_t[2];
-  signed long int    int32_t;
-  unsigned short int uint16_t[2];
-  unsigned long int  uint32_t;
-  float              float_t;
+  volatile unsigned char      char_t[4];
+  volatile signed short int   int16_t[2];
+  volatile signed long int    int32_t;
+  volatile unsigned short int uint16_t[2];
+  volatile unsigned long int  uint32_t;
+  volatile float              float_t;
 };
 
 /*!
@@ -257,9 +257,9 @@ enum enUpdate {
 
 enum enCcsCondition {
   CCS_CONDITION_STOP,                       //!< Останов
-  CCS_CONDITION_STOPPING,                   //!< Торможение
-  CCS_CONDITION_RUNNING,                    //!< Запуск
-  CCS_CONDITION_RUN                         //!< Работа
+  CCS_CONDITION_BREAK,                      //!< Торможение
+  CCS_CONDITION_RUN,                    //!< Запуск
+  CCS_CONDITION_WORK                         //!< Работа
 };
 
 enum enCcsWorkingMode {
@@ -332,7 +332,7 @@ enum LastReasonRun {
   LastReasonRunApvImbalanceCurIn        = 116,  //!< "АПВ по защите: Дисбаланс входных токов"
   LastReasonRunApvFlowDischarge         = 117,  //!< "АПВ по защите: Минимальный расход"
   LastReasonRunApvPressureDischarge     = 118,  //!< "АПВ по защите: Pmax на выкиде насоса"
-  LastReasonRunApvOverheatInputFilter   = 119,  //!< "АПВ по защите: Перегрев вх.фильтра"
+  LastReasonRunApvOverheatInputFilter   = 119,  //!< "АПВ по защите: Перегрев фильтра"
   LastReasonRunAdaptationVector         = 120,  //!<
 
   LastReasonRunLast
@@ -394,7 +394,7 @@ enum LastReasonStop {
   LastReasonStopOvernumberOfStart,              //!< "Превышение числа пусков"
   LastReasonStopFlowDischarge,                  //!< "Минимальный расход"
   LastReasonStopPressureDischarge,              //!< "Pmax на выкиде насоса"
-  LastReasonStopOverheatInputFilter,            //!< "Пререгрев вх.фильтра"
+  LastReasonStopOverheatInputFilter,            //!< "Перегрев фильтра"
   LastReasonStopAdaptationVector,               //!< "Режим автоадаптации"
   LastReasonStopLast                    = 65535,
 };
@@ -453,6 +453,18 @@ enum enDoAction
   DO_ACTION_RESTART,    //!< АПВ
   DO_ACTION_BLOCK,      //!< Блок
   DO_ACTION_LAST
+};
+
+/*!
+ * \brief Список источников сопротивления изоляции
+ */
+enum enSourceR
+{
+  R_NONE,               //!< Нет
+  R_AUTO,               //!< Авто
+  R_VSD,                //!< ЧРП
+  R_DHS,                //!< ТМС
+  R_UKI                 //!< УКИ
 };
 
 #define NUM_PI 3.14159265358979323846

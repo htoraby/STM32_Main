@@ -10,7 +10,6 @@
 
 #define IN_BUF_SIZE 4096
 #define OUT_BUF_SIZE (IN_BUF_SIZE + IN_BUF_SIZE / 16 + 64 + 3 + 8)
-#define PARAMETERS_SIZE 21504*4
 
 #define HEAP_ALLOC(var,size) \
   lzo_align_t __LZO_MMODEL var [((size) + (sizeof(lzo_align_t) - 1)) / sizeof(lzo_align_t)]
@@ -195,7 +194,7 @@ static bool logSave()
   char buf[_MAX_LFN + 1];
 
   uint32_t timeReady = 0;
-  while(usbState != USB_READY) {
+  while(!usbIsReady()) {
     osDelay(10);
     timeReady += 10;
     if (timeReady > 5000) {
@@ -235,7 +234,7 @@ static bool logSave()
       }
       calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
 
-      while (usbState == USB_READY) {
+      while (usbIsReady()) {
         StatusType status = logRead(addr, inBufData, inLen);
         if (status == StatusError)
           asm("nop");
@@ -277,7 +276,7 @@ static bool logSave()
       addr = 0;
       inLen = IN_BUF_SIZE;
       count = 0;
-      while (usbState == USB_READY) {
+      while (usbIsReady()) {
         StatusType status = logDebugRead(addr, inBufData, inLen);
         if (status == StatusError)
           asm("nop");
@@ -319,7 +318,7 @@ static bool logSave()
       addr = 0;
       inLen = IN_BUF_SIZE;
       count = 0;
-      while (usbState == USB_READY) {
+      while (usbIsReady()) {
         StatusType status = logParamsRead(addr, inBufData, inLen);
         if (status == StatusError)
           asm("nop");
@@ -413,6 +412,7 @@ void logDeleted()
 
   logEvent.add(DelLogCode, eventType, DelLogId);
   parameters.set(CCS_CMD_LOG_DELETE, 0);
+  parameters.set(CCS_DHS_LOG_COUNT_RECORD, 0);
 }
 
 static bool logCompress()

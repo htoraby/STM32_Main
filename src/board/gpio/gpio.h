@@ -18,7 +18,7 @@ enum LedType {
   StopLed,
   WaitLed,
   WorkLed,
-  TestLed,
+  TurboLed,
   LedMax,
 };
 
@@ -52,8 +52,8 @@ enum RoNum {
 #define WAIT_LED_PORT                   GPIOB
 #define WORK_LED_PIN                    GPIO_PIN_8
 #define WORK_LED_PORT                   GPIOB
-#define FAN_LED_PIN                     GPIO_PIN_3
-#define FAN_LED_PORT                    GPIOH
+#define TURBO_LED_PIN                   GPIO_PIN_3
+#define TURBO_LED_PORT                  GPIOH
 
 #define POWER_BUTTON_PIN                GPIOI, GPIO_PIN_9
 #define SYS_RESET_BUTTON_PIN            GPIOC, GPIO_PIN_13
@@ -70,6 +70,9 @@ enum RoNum {
 #define LCD_ON_PIN  GPIOD, GPIO_PIN_3
 //! Вывод переключения USB между контроллерами
 #define USB_ON_PIN  GPIOG, GPIO_PIN_9
+//! Выводы переключения RS-485/RS-232
+#define DHS_SCADA_RS_1_PIN  GPIOE, GPIO_PIN_3
+#define DHS_SCADA_RS_2_PIN  GPIOI, GPIO_PIN_7
 
 /*!
  \brief Инициализация выводов, кнопок, LED, DI, DO

@@ -65,12 +65,28 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
 
   // Если включен режим "Чередования частот"
   if (parameters.get(CCS_RGM_ALTERNATION_FREQ_MODE) != Regime::OffAction) {
-    if (vsd->getCurrentFreq() == parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1)) {
-      tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1);
+    if (parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1) <= parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2)) {
+      if (vsd->getCurrentFreq() <= parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_1)) {
+        tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1);
+      }
+      else {
+        tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2);
+      }
     }
-    if (vsd->getCurrentFreq() == parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_2)) {
-      tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2);
+    else {
+      if (vsd->getCurrentFreq() <= parameters.get(CCS_RGM_ALTERNATION_FREQ_FREQ_2)) {
+        tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_2);
+      }
+      else {
+        tripSetpoint_ = parameters.get(CCS_RGM_ALTERNATION_FREQ_UNDERLOAD_1);
+      }
     }
+  }
+
+  // Если отработал режим прокачки газа
+  if ((parameters.get(CCS_RGM_PUMP_GAS_MODE) != Regime::OffAction) &&
+      (parameters.get(CCS_RGM_PUMP_GAS_STATE) == Regime::PauseState)) {
+    tripDelay_ = 0;
   }
 
   if (delayCalc < 5) {
@@ -83,6 +99,15 @@ void ProtectionUnderloadMotor::getOtherSetpointProt()
   }
 }
 
+bool ProtectionUnderloadMotor::isNotWorkPumpingGas()
+{
+  if ((parameters.get(CCS_RGM_PUMP_GAS_MODE) == Regime::OnAction) &&            // Режим включен
+      (parameters.get(CCS_RGM_PUMP_GAS_STATE) != Regime::PauseState)) {         // Прокачка ещё работает
+    return false;
+  }
+  return true;
+}
+
 void ProtectionUnderloadMotor::setOtherParamProt()
 {
   parameters.set(CCS_PROT_MOTOR_UNDERLOAD_PROGRES_RESTART_COUNT, progressiveRestartCount_);
@@ -90,7 +115,7 @@ void ProtectionUnderloadMotor::setOtherParamProt()
 
 bool ProtectionUnderloadMotor::checkAlarm()
 {
-  return Protection::isLowerLimit(tripSetpoint_);
+  return (Protection::isLowerLimit(tripSetpoint_) && isNotWorkPumpingGas());
 }
 
 float ProtectionUnderloadMotor::calcValue()

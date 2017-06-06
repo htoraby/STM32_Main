@@ -8,19 +8,21 @@
 #include "vsd_etalon.h"
 #include "user_main.h"
 #include "regime_run_etalon.h"
+#include "regime_run_synchron.h"
 #include "vsd_etalon_log.h"
-
-#define BASE_VOLTAGE 380
+#include "protection.h"
 
 VsdEtalon::VsdEtalon()
 {
   regimeRun_ = new RegimeRunEtalon();
+  regimeRunSynchron_ = new RegimeRunSynchron();
   log_ = new VsdEtalonLog();
 }
 
 VsdEtalon::~VsdEtalon()
 {
   delete regimeRun_;
+  delete regimeRunSynchron_;
   delete dm_;
   delete log_;
 }
@@ -104,10 +106,17 @@ bool VsdEtalon::isConnect()
 int VsdEtalon::setMotorType(float value)
 {
   if (!Vsd::setMotorType(value)) {          // Записываем в массив
-    if (value == VSD_MOTOR_TYPE_VENT) {
-    }
     writeToDevice(VSD_MOTOR_TYPE, value);   // Записываем в ЧРП
     ksu.setMaxBaseFrequency();
+
+    parameters.set(VSD_MOTOR_SPEED, 3000.0);
+    if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
+      parameters.set(VSD_MOTOR_FREQUENCY, 50.0);
+    } else {
+      parameters.set(VSD_MOTOR_FREQUENCY, 100.0);
+      parameters.set(CCS_MOTOR_INDUCTANCE, 0.0);
+      parameters.set(VSD_MOTOR_ACTIVE_RESIST, 0.0);
+    }
     return ok_r;
   }
   return err_r;
@@ -260,6 +269,7 @@ bool VsdEtalon::checkPreventVsd()
 void VsdEtalon::getNewValue(uint16_t id)
 {
   float value = 0;
+  uint8_t err = ok_r;
   // Преобразуем данные из полученного типа данных в float
   ModbusParameter *param = dm_->getFieldAll(dm_->getIndexAtId(id));
 
@@ -288,7 +298,7 @@ void VsdEtalon::getNewValue(uint16_t id)
     value = value * param->coefficient;
 
     // Применяем единицы измерения
-    value = (value - (units[param->physic][param->unit][1]))/(units[param->physic][param->unit][0]);
+    value = convertTo(value, param->physic, param->unit);
   }
   else {
     value = NAN;
@@ -299,9 +309,13 @@ void VsdEtalon::getNewValue(uint16_t id)
     // Преобразования для параметров требующих особой обработки по id
     switch (id) {
     case VSD_MOTOR_TYPE:
-      setValue(id, value);
-      if (parameters.get(CCS_MOTOR_TYPE) != value)
+      err = setValue(id, value);
+      if (err)
+        break;
+      if (parameters.get(CCS_MOTOR_TYPE) != value) {
         parameters.set(CCS_MOTOR_TYPE, value);
+        ksu.setMaxBaseFrequency();
+      }
       break;
     case VSD_ETALON_ON_STATE:                 // Получили подтверждение запуска
       setValue(id, value);
@@ -314,23 +328,25 @@ void VsdEtalon::getNewValue(uint16_t id)
       break;
     case VSD_UF_CHARACTERISTIC_U_1_PERCENT:           // Получили точку напряжения U/f
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_1, roundf(BASE_VOLTAGE * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_1, roundf(getValue(VSD_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_2_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_2, roundf(BASE_VOLTAGE * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_2, roundf(getValue(VSD_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_3_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_3, roundf(BASE_VOLTAGE * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_3, roundf(getValue(VSD_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_4_PERCENT:
       setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_4, roundf(BASE_VOLTAGE * value / 100.0));
+      setValue(VSD_UF_CHARACTERISTIC_U_4, roundf(getValue(VSD_BASE_VOLTAGE) * value / 100.0));
       break;
     case VSD_UF_CHARACTERISTIC_U_5_PERCENT:
-      setValue(id, value);
-      setValue(VSD_UF_CHARACTERISTIC_U_5, roundf(BASE_VOLTAGE * value / 100.0));
+      err = setValue(id, value);
+      setValue(VSD_UF_CHARACTERISTIC_U_5, roundf(getValue(VSD_BASE_VOLTAGE) * value / 100.0));
+      if (err)
+        break;
       if (value > 100)
         ksu.setError(SetVoltageTapOfErr);
       break;
@@ -345,7 +361,9 @@ void VsdEtalon::getNewValue(uint16_t id)
       parameters.set(CCS_VERSION_SW_VSD, value);
       break;
     case VSD_SW_STARTUP_FREQUENCY:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if ((parameters.get(CCS_RGM_RUN_PUSH_FREQ) != value) &&
           parameters.get(CCS_RGM_RUN_PUSH_MODE))
         parameters.set(CCS_RGM_RUN_PUSH_FREQ, value);
@@ -354,56 +372,75 @@ void VsdEtalon::getNewValue(uint16_t id)
         parameters.set(CCS_RGM_RUN_SWING_FREQ, value);
       break;
     case VSD_FREQ_SKIP_START_FREQ:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ) != value)
         parameters.set(CCS_RGM_RUN_SKIP_RESONANT_BEGIN_FREQ, value);
       break;
     case VSD_FREQ_SKIP_STOP_FREQ:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ) != value)
         parameters.set(CCS_RGM_RUN_SKIP_RESONANT_END_FREQ, value);
       break;
     case VSD_FREQ_SKIP_ACCEL:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_RGM_RUN_SKIP_RESONANT_TEMP) != value)
         parameters.set(CCS_RGM_RUN_SKIP_RESONANT_TEMP, value);
       break;
-    case VSD_ETALON_AUTO_OPTIM_MODE:
-      setValue(id, value);
-      parameters.set(CCS_RGM_OPTIM_VOLTAGE_MODE, value);
-      break;
     case VSD_I_LIMIT_MODE:
-      setValue(id, value);
-      parameters.set(CCS_RGM_CURRENT_LIMIT_MODE, value);
+      err = setValue(id, value);
+      if (err)
+        break;
+      if (parameters.get(CCS_RGM_CURRENT_LIMIT_MODE) && !value)
+        parameters.set(CCS_RGM_CURRENT_LIMIT_MODE, Regime::OffAction);
+      else if (!parameters.get(CCS_RGM_CURRENT_LIMIT_MODE) && value)
+        parameters.set(CCS_RGM_CURRENT_LIMIT_MODE, Regime::OnAction);
       break;
     case VSD_ILIMIT:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       parameters.set(CCS_RGM_CURRENT_LIMIT_SETPOINT, value);
       break;
     case VSD_I_LIMIT_TM:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       parameters.set(CCS_RGM_CURRENT_LIMIT_DELAY_REACTION, value);
       break;
     case VSD_SW_STARTUP_U_PULSE:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if ((parameters.get(CCS_RGM_RUN_PUSH_VOLTAGE) != (value + 100.0)) &&
           parameters.get(CCS_RGM_RUN_PUSH_MODE))
         parameters.set(CCS_RGM_RUN_PUSH_VOLTAGE, value + 100.0);
       break;
     case VSD_RGM_RUN_PUSH_UPTIME:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if ((parameters.get(CCS_RGM_RUN_PUSH_TIME) != value) &&
           parameters.get(CCS_RGM_RUN_PUSH_MODE))
         parameters.set(CCS_RGM_RUN_PUSH_TIME, value);
       break;
     case VSD_RGM_RUN_PUSH_PERIOD:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if ((parameters.get(CCS_RGM_RUN_PUSH_PERIOD) != value) &&
           parameters.get(CCS_RGM_RUN_PUSH_MODE))
         parameters.set(CCS_RGM_RUN_PUSH_PERIOD, value);
       break;
     case VSD_SW_STARTUP_OSC_COUNT:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if ((parameters.get(CCS_RGM_RUN_PUSH_QUANTITY) != value) &&
           parameters.get(CCS_RGM_RUN_PUSH_MODE))
         parameters.set(CCS_RGM_RUN_PUSH_QUANTITY, value);
@@ -411,18 +448,42 @@ void VsdEtalon::getNewValue(uint16_t id)
           parameters.get(CCS_RGM_RUN_SWING_MODE))
         parameters.set(CCS_RGM_RUN_SWING_QUANTITY, value);
       break;
+    case VSD_ETALON_DIRECT_RUN_MODE:
+      err = setValue(id, value);
+      if (err)
+        break;
+      if (parameters.get(CCS_RGM_RUN_DIRECT_MODE) && !value)
+        parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OffAction, NoneType);
+      else if (!parameters.get(CCS_RGM_RUN_DIRECT_MODE) && value)
+        parameters.set(CCS_RGM_RUN_DIRECT_MODE, Regime::OnAction, NoneType);
+      break;
+    case VSD_ETALON_DIRECT_RUN_SOFT_MODE:
+      err = setValue(id, value);
+      if (err)
+        break;
+      if (parameters.get(CCS_RGM_RUN_SOFT_MODE) && !value)
+        parameters.set(CCS_RGM_RUN_SOFT_MODE, Regime::OffAction);
+      else if (!parameters.get(CCS_RGM_RUN_SOFT_MODE) && value)
+        parameters.set(CCS_RGM_RUN_SOFT_MODE, Regime::OnAction);
+      break;
     case VSD_MOTOR_INDUCTANCE:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_MOTOR_INDUCTANCE) != value)
         parameters.set(CCS_MOTOR_INDUCTANCE, value);
       break;
     case VSD_TRANS_CABLE_CROSS:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_TRANS_CABLE_CROSS) != value)
         parameters.set(CCS_TRANS_CABLE_CROSS, value);
       break;
     case VSD_TRANS_VOLTAGE_TAP_OFF:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_TRANS_VOLTAGE_TAP_OFF) != value)
         parameters.set(CCS_TRANS_VOLTAGE_TAP_OFF, value);
       break;
@@ -432,12 +493,16 @@ void VsdEtalon::getNewValue(uint16_t id)
         parameters.set(CCS_TRANS_NEED_VOLTAGE_TAP_OFF, value);
       break;
     case VSD_BASE_VOLTAGE:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_BASE_VOLTAGE) != value)
         parameters.set(CCS_BASE_VOLTAGE, value);
       break;
     case VSD_BASE_FREQUENCY:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_BASE_FREQUENCY) != value)
         parameters.set(CCS_BASE_FREQUENCY, value);
       break;
@@ -455,41 +520,55 @@ void VsdEtalon::getNewValue(uint16_t id)
       ksu.calcMotorSpeed();
       break;
     case VSD_COEF_OUT_CURRENT_1:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_COEF_OUT_CURRENT_1) != value)
         parameters.set(CCS_COEF_OUT_CURRENT_1, value);
       break;
     case VSD_COEF_OUT_CURRENT_2:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_COEF_OUT_CURRENT_2) != value)
         parameters.set(CCS_COEF_OUT_CURRENT_2, value);
       break;
     case VSD_COEF_OUT_CURRENT_3:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_COEF_OUT_CURRENT_3) != value)
         parameters.set(CCS_COEF_OUT_CURRENT_3, value);
       break;
-    case VSD_OUT_VOLTAGE_MOTOR:
-      setValue(id, value);
+    case VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE:
+      err = setValue(id, value);
+      if (err)
+        break;
+      parameters.set(VSD_VOLTAGE_LINE, value);
+      parameters.set(CCS_OUTPUT_VOLTAGE_LINE, value);
       break;
     case VSD_COEF_VOLTAGE_OUT_1:
-      setValue(id, value);
+      err = setValue(id, value);
       break;
     case VSD_PROT_NO_CONNECT_MODE:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE) && !value)
-        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, 0.0);
+        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, Protection::ProtModeOff);
       else if (!parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE) && value)
-        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, 3.0);
+        parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_MODE, Protection::ProtModeOn);
       break;
     case VSD_PROT_NO_CONNECT_TRIP_DELAY:
-      setValue(id, value);
+      err = setValue(id, value);
+      if (err)
+        break;
       if (parameters.get(CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY) != value)
         parameters.set(CCS_PROT_OTHER_VSD_NO_CONNECT_TRIP_DELAY, value);
       break;
     case VSD_TURBO_ROTATION_NOW:
       setValue(id, value);
-      if (!ksu.isWorkMotor())
+      if (!ksu.isRunOrWorkMotor())
         parameters.set(CCS_TURBO_ROTATION_NOW, value);
       else
         parameters.set(CCS_TURBO_ROTATION_NOW, 0);
@@ -516,6 +595,8 @@ uint8_t VsdEtalon::setNewValue(uint16_t id, float value, EventType eventType)
   case VSD_MOTOR_TYPE:
     if (!setMotorType(value)) {
       readTransNeedVoltageTapOff();
+      readInDevice(VSD_BASE_FREQUENCY);
+      readInDevice(VSD_FREQUENCY);
       if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_ASYNC) {
         return setVsdControl(VSD_MOTOR_CONTROL_UF);
       }
@@ -728,6 +809,7 @@ int VsdEtalon::resetBlock()
 void VsdEtalon::processingRegimeRun()
 {
   regimeRun_->processing();
+  regimeRunSynchron_->processing();
 }
 
 int VsdEtalon::onRegimePush()
@@ -792,16 +874,6 @@ int VsdEtalon::offRegimeSkipFreq()
   return setNewValue(VSD_FREQ_SKIP_MODE, 0);
 }
 
-int VsdEtalon::onRegimeAutoOptimCurrent()
-{
-  return setNewValue(VSD_ETALON_AUTO_OPTIM_MODE, 1);
-}
-
-int VsdEtalon::offRegimeAutoOptimCurrent()
-{
-  return setNewValue(VSD_ETALON_AUTO_OPTIM_MODE, 0);
-}
-
 int VsdEtalon::onRegimeCurrentLimitation()
 {
   return setNewValue(VSD_I_LIMIT_MODE, 1);
@@ -836,10 +908,15 @@ void VsdEtalon::readUfCharacterictic()
   readInDevice(VSD_UF_CHARACTERISTIC_F_3);
   readInDevice(VSD_UF_CHARACTERISTIC_F_4);
   readInDevice(VSD_UF_CHARACTERISTIC_F_5);
+  setValidity(VSD_UF_CHARACTERISTIC_U_1_PERCENT, err_r);
   readInDevice(VSD_UF_CHARACTERISTIC_U_1_PERCENT);
+  setValidity(VSD_UF_CHARACTERISTIC_U_2_PERCENT, err_r);
   readInDevice(VSD_UF_CHARACTERISTIC_U_2_PERCENT);
+  setValidity(VSD_UF_CHARACTERISTIC_U_3_PERCENT, err_r);
   readInDevice(VSD_UF_CHARACTERISTIC_U_3_PERCENT);
+  setValidity(VSD_UF_CHARACTERISTIC_U_4_PERCENT, err_r);
   readInDevice(VSD_UF_CHARACTERISTIC_U_4_PERCENT);
+  setValidity(VSD_UF_CHARACTERISTIC_U_5_PERCENT, err_r);
   readInDevice(VSD_UF_CHARACTERISTIC_U_5_PERCENT);
 }
 
@@ -872,9 +949,9 @@ void VsdEtalon::readTransNeedVoltageTapOff()
   readInDevice(VSD_TRANS_NEED_VOLTAGE_TAP_OFF);
   osDelay(200);
 
-  float value = getValue(VSD_BASE_VOLTAGE) + 10;
+  float value = getValue(VSD_BASE_VOLTAGE);
   if (getValue(VSD_MOTOR_TYPE) == VSD_MOTOR_TYPE_VENT)
-    value = BASE_VOLTAGE*(getValue(VSD_TRANS_NEED_VOLTAGE_TAP_OFF)/getValue(VSD_TRANS_VOLTAGE_TAP_OFF)) + 10;
+    value = getValue(VSD_BASE_VOLTAGE)*(getValue(VSD_TRANS_NEED_VOLTAGE_TAP_OFF)/getValue(VSD_TRANS_VOLTAGE_TAP_OFF));
 
   setMax(VSD_UF_CHARACTERISTIC_U_1, value);
   setMax(VSD_UF_CHARACTERISTIC_U_2, value);
@@ -887,7 +964,7 @@ void VsdEtalon::readTransNeedVoltageTapOff()
 int VsdEtalon::setUfU(uint16_t idU, uint16_t idUPercent, float value)
 {
   if (!Vsd::setUfU(idU, value)) {
-    if (!setValue(idUPercent, (getValue(idU) * 100.0) / BASE_VOLTAGE)) {
+    if (!setValue(idUPercent, (getValue(idU) * 100.0) / getValue(VSD_BASE_VOLTAGE))) {
       writeToDevice(idUPercent, getValue(idUPercent));
       return ok_r;
     }

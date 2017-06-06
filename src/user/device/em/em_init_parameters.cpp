@@ -590,7 +590,7 @@ void Em::initParameters()
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].def                       = 0.0;
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].discret                   = 100;
   parameters_[EM_REACTIVE_MINUS_PREV_MONTH - EM_BEGIN].code                      = 0;
-  // Коэффицинт трансформации тока
+  // Коэффициент трансформации тока счётчика электроэнергии
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].id                        = EM_COEFFICIENT_TRANS_CURRENT;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].access                    = ACCESS_OPERATOR;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].operation                 = OPERATION_WRITE;
@@ -602,7 +602,7 @@ void Em::initParameters()
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].def                       = 1.0;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].discret                   = 1;
   parameters_[EM_COEFFICIENT_TRANS_CURRENT - EM_BEGIN].code                      = 0;
-  // Коэффициент трансформации напряжения
+  // Коэффициент трансформации напряжения счётчика электроэнергии
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].id                        = EM_COEFFICIENT_TRANS_VOLTAGE;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].access                    = ACCESS_OPERATOR;
   parameters_[EM_COEFFICIENT_TRANS_VOLTAGE - EM_BEGIN].operation                 = OPERATION_READ;

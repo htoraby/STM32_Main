@@ -3,6 +3,7 @@
 RegimeTechnologMaintenanceParam::RegimeTechnologMaintenanceParam()
   : timer_(0)
   , delta_(0)
+  , deltaCount_(0)
 {
 
 }
@@ -18,7 +19,7 @@ void RegimeTechnologMaintenanceParam::processing()
   state_ = parameters.get(CCS_RGM_MAINTENANCE_PARAM_STATE);
 
   if ((action_ == OffAction) ||                                // Режим - выключен
-      (parameters.get(CCS_CONDITION) != CCS_CONDITION_RUN)) {  // Двигатель не в работе
+      (parameters.get(CCS_CONDITION) != CCS_CONDITION_WORK)) {  // Двигатель не в работе
     state_ = IdleState;
   }
 
@@ -26,8 +27,9 @@ void RegimeTechnologMaintenanceParam::processing()
   case IdleState:
     timer_ = 0;
     delta_ = 0;
+    deltaCount_ = 0;
     if (action_ != OffAction) { // Режим - включен
-      if (parameters.get(CCS_CONDITION) == CCS_CONDITION_RUN) {  // Двигатель - работа;
+      if (parameters.get(CCS_CONDITION) == CCS_CONDITION_WORK) {  // Двигатель - работа;
         state_ = WorkState;
       }
     }
@@ -63,26 +65,25 @@ void RegimeTechnologMaintenanceParam::processing()
 
       // Накопление площади для интегрального слагаемого
       delta_ += curValue - setpoint;
+      deltaCount_++;
 
       float period = parameters.get(CCS_RGM_MAINTENANCE_PARAM_PERIOD);
       if ((ksu.getSecFromCurTime(timer_) >= period) && (period > 0)) {
         // Посчёт пропорционального и интегрального слагаемого
         float delta = curValue - setpoint;
         float propSum = parameters.get(CCS_RGM_MAINTENANCE_PARAM_PROP) * delta;
-        float intSum = parameters.get(CCS_RGM_MAINTENANCE_PARAM_INT) * delta_ / period;
+        float intSum = parameters.get(CCS_RGM_MAINTENANCE_PARAM_INT) * delta_ / deltaCount_;
         float freq = propSum + intSum;
 
         // Регулировка частоты
         float minFreq = parameters.get(CCS_RGM_MAINTENANCE_PARAM_MIN_FREQ);
         float maxFreq = parameters.get(CCS_RGM_MAINTENANCE_PARAM_MAX_FREQ);
-        freq = min((int)freq, (int)(0.1 * maxFreq));
         if (fabs(freq) > (0.1 * maxFreq)) {
           if (freq > 0)
             freq = 0.1 * maxFreq;
           else
             freq = -0.1 * maxFreq;
         }
-        freq = min((int)freq, (int)(0.1 * maxFreq));
 
         // Расчёт новой частоты с учётом изменения
         bool depend = parameters.get(CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE);
@@ -96,6 +97,7 @@ void RegimeTechnologMaintenanceParam::processing()
 
         timer_ = 0;
         delta_ = 0;
+        deltaCount_ = 0;
         state_ = PauseState;
       }
     }

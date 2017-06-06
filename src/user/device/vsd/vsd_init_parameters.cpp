@@ -51,17 +51,17 @@ void Vsd::initParameters()
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_SPEED_RPM_NOW - VSD_BEGIN].code                                = 0;
   // Напряжение на выходе ПЧ
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].id                              = VSD_OUT_VOLTAGE_MOTOR;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].access                          = ACCESS_OPERATOR;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].operation                       = OPERATION_READ;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].physic                          = PHYSIC_VOLTAGE;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].validity                        = VALIDITY_ERROR;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].value.float_t                   = 0.0;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].min                             = 0.0;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].max                             = 999999999.9;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].def                             = 0.0;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].discret                         = 10;
-  parameters_[VSD_OUT_VOLTAGE_MOTOR - VSD_BEGIN].code                            = 0;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].id                                   = VSD_VOLTAGE_LINE;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].access                               = ACCESS_OPERATOR;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].operation                            = OPERATION_READ;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].physic                               = PHYSIC_VOLTAGE;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].validity                             = VALIDITY_ERROR;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].value.float_t                        = 0.0;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].min                                  = 0.0;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].max                                  = 999999999.9;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].def                                  = 0.0;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].discret                              = 1;
+  parameters_[VSD_VOLTAGE_LINE - VSD_BEGIN].code                                 = 0;
   // Конструкция двигателя Danfoss 1-10
   parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].id                                     = VSD_MOTOR_TYPE;
   parameters_[VSD_MOTOR_TYPE - VSD_BEGIN].access                                 = ACCESS_OPERATOR;
@@ -225,8 +225,8 @@ void Vsd::initParameters()
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].physic                                = PHYSIC_RPM;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].validity                              = VALIDITY_ERROR;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].value.float_t                         = 2895.0;
-  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].min                                   = 0.0;
-  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].max                                   = 10000.0;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].min                                   = 10.0;
+  parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].max                                   = 30000.0;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].def                                   = 2895.0;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].discret                               = 1;
   parameters_[VSD_MOTOR_SPEED - VSD_BEGIN].code                                  = 13;
@@ -1018,7 +1018,7 @@ void Vsd::initParameters()
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].validity                            = VALIDITY_ERROR;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].value.float_t                       = 700.0;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].min                                 = 400.0;
-  parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].max                                 = 800.9;
+  parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].max                                 = 800.0;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].def                                 = 700.0;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].discret                             = 1;
   parameters_[VSD_UD_HIGH_FAULT - VSD_BEGIN].code                                = 13;
@@ -1030,7 +1030,7 @@ void Vsd::initParameters()
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].value.float_t                      = 30.0;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].min                                = 10.0;
-  parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].max                                = 90.9;
+  parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].max                                = 90.0;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].def                                = 30.0;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].discret                            = 1;
   parameters_[VSD_UIN_ASYM_LEVEL - VSD_BEGIN].code                               = 13;
@@ -1042,7 +1042,7 @@ void Vsd::initParameters()
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].value.float_t                      = 5.0;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].min                                = 1.0;
-  parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].max                                = 90.9;
+  parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].max                                = 90.0;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].def                                = 5.0;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].discret                            = 1;
   parameters_[VSD_UIN_ASYM_DELAY - VSD_BEGIN].code                               = 13;
@@ -1068,7 +1068,7 @@ void Vsd::initParameters()
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].min                                    = 0.0;
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].max                                    = 0.5;
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].def                                    = 0.03;
-  parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].discret                                = 1000;
+  parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].discret                                = 10000;
   parameters_[VSD_VFREQ_GAIN - VSD_BEGIN].code                                   = 0;
   // Фазовый коэффициент усиления системы подавления резонанса
   parameters_[VSD_RES_PROP_GAIN - VSD_BEGIN].id                                  = VSD_RES_PROP_GAIN;
@@ -1160,7 +1160,7 @@ void Vsd::initParameters()
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].operation                         = OPERATION_WRITE;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].physic                            = PHYSIC_TIME;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].validity                          = VALIDITY_ERROR;
-  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].value.float_t                     = 100.0;
+  parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].value.float_t                     = 0.25;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].min                               = 0.0;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].max                               = 999999999.9;
   parameters_[VSD_DECEL_SPEEDDOWN - VSD_BEGIN].def                               = 0.25;
@@ -1604,7 +1604,7 @@ void Vsd::initParameters()
   parameters_[VSD_M_IRMS - VSD_BEGIN].operation                                  = OPERATION_READ;
   parameters_[VSD_M_IRMS - VSD_BEGIN].physic                                     = PHYSIC_PERCENT;
   parameters_[VSD_M_IRMS - VSD_BEGIN].validity                                   = VALIDITY_ERROR;
-  parameters_[VSD_M_IRMS - VSD_BEGIN].value.float_t                              = 200.0;
+  parameters_[VSD_M_IRMS - VSD_BEGIN].value.float_t                              = 110.0;
   parameters_[VSD_M_IRMS - VSD_BEGIN].min                                        = 0.0;
   parameters_[VSD_M_IRMS - VSD_BEGIN].max                                        = 200.0;
   parameters_[VSD_M_IRMS - VSD_BEGIN].def                                        = 110.0;
@@ -1844,7 +1844,7 @@ void Vsd::initParameters()
   parameters_[VSD_INDEX - VSD_BEGIN].operation                                   = OPERATION_READ;
   parameters_[VSD_INDEX - VSD_BEGIN].physic                                      = PHYSIC_NUMERIC;
   parameters_[VSD_INDEX - VSD_BEGIN].validity                                    = VALIDITY_ERROR;
-  parameters_[VSD_INDEX - VSD_BEGIN].value.float_t                               = 5.0;
+  parameters_[VSD_INDEX - VSD_BEGIN].value.float_t                               = 0.0;
   parameters_[VSD_INDEX - VSD_BEGIN].min                                         = 0.0;
   parameters_[VSD_INDEX - VSD_BEGIN].max                                         = 5.0;
   parameters_[VSD_INDEX - VSD_BEGIN].def                                         = 0.0;
@@ -1880,7 +1880,7 @@ void Vsd::initParameters()
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].operation                           = OPERATION_READ;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].physic                              = PHYSIC_NUMERIC;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].validity                            = VALIDITY_ERROR;
-  parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].value.float_t                       = 0.0;
+  parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].value.float_t                       = 1.0;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].min                                 = 0.0;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].max                                 = 1.0;
   parameters_[VSD_OVERLOAD_MODE - VSD_BEGIN].def                                 = 1.0;
@@ -1982,17 +1982,17 @@ void Vsd::initParameters()
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].def                              = 100.0;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].discret                          = 1;
   parameters_[VSD_RESONANCE_REMOVE - VSD_BEGIN].code                             = 0;
-  // Постаянная времени подавления Danfoss 1-65 Не используется в проекте, только при конфигурировании Novomet 0х0067
+  // Постоянная времени подавления Danfoss 1-65 Не используется в проекте, только при конфигурировании Novomet 0х0067
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].id                                 = VSD_RESONANCE_TIME;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].access                             = ACCESS_OPERATOR;
-  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].operation                          = OPERATION_READ;
+  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].operation                          = OPERATION_WRITE;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].physic                             = PHYSIC_TIME;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].validity                           = VALIDITY_ERROR;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].value.float_t                      = 0.005;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].min                                = 0.001;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].max                                = 0.050;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].def                                = 0.005;
-  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].discret                            = 3;
+  parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].discret                            = 1000;
   parameters_[VSD_RESONANCE_TIME - VSD_BEGIN].code                               = 0;
   // Минимальный ток при низкой скорости Danfoss 1-66 Не используется в проекте, только при конфигурировании
   parameters_[VSD_MIN_CURRENT_LOW_SPEED - VSD_BEGIN].id                          = VSD_MIN_CURRENT_LOW_SPEED;
@@ -2136,7 +2136,7 @@ void Vsd::initParameters()
   parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].min                                 = -2147483648.0;
   parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].max                                 = 2147483647.0;
   parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].def                                 = 0.0;
-  parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].discret                             = 3;
+  parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].discret                             = 1000;
   parameters_[VSD_MIN_REFERENCE - VSD_BEGIN].code                                = 0;
   // Максимальное задани Danfoss 3-03 Не используется в проекте, только при конфигурировании
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].id                                  = VSD_MAX_REFERENCE;
@@ -2148,7 +2148,7 @@ void Vsd::initParameters()
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].min                                 = -2147483648.0;
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].max                                 = 2147483647.0;
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].def                                 = 0.0;
-  parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].discret                             = 3;
+  parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].discret                             = 1000;
   parameters_[VSD_MAX_REFERENCE - VSD_BEGIN].code                                = 0;
   // Ресурс задания 1 Danfoss 3-15 Не используется в проекте, только при конфигурировании
   parameters_[VSD_RESOURCE_TASK_1 - VSD_BEGIN].id                                = VSD_RESOURCE_TASK_1;
@@ -2849,14 +2849,14 @@ void Vsd::initParameters()
   // Время фильтра регулятора тока Danfoss 14-32 Используется в проекте, CalcParam()
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].id                         = VSD_FIL_TIME_CURRENT_LIMIT;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].operation                  = OPERATION_READ;
+  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].operation                  = OPERATION_WRITE;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].physic                     = PHYSIC_TIME;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].validity                   = VALIDITY_ERROR;
-  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].value.float_t              = 0.01;
-  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].min                        = 0.0001;
+  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].value.float_t              = 0.1;
+  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].min                        = 0.001;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].max                        = 0.1;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].def                        = 0.1;
-  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].discret                    = 4;
+  parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].discret                    = 10000;
   parameters_[VSD_FIL_TIME_CURRENT_LIMIT - VSD_BEGIN].code                       = 0;
   // Компенсация напряжения постоянного тока Danfoss 14-51 Не используется в проекте, только при конфигурировании
   parameters_[VSD_DC_COMPENSATION - VSD_BEGIN].id                                = VSD_DC_COMPENSATION;
@@ -3096,7 +3096,7 @@ void Vsd::initParameters()
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].min                               = 0.05;
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].max                               = 1.0;
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].def                               = 0.10;
-  parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].discret                           = 2;
+  parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].discret                           = 100;
   parameters_[VSD_LOCK_ROTOR_TIME - VSD_BEGIN].code                              = 0;
   // Темп набора частоты
   parameters_[VSD_TEMP_SPEEDUP - VSD_BEGIN].id                                   = VSD_TEMP_SPEEDUP;
@@ -3174,7 +3174,7 @@ void Vsd::initParameters()
   parameters_[VSD_PICKUP_KU - VSD_BEGIN].id                                      = VSD_PICKUP_KU;
   parameters_[VSD_PICKUP_KU - VSD_BEGIN].access                                  = ACCESS_OPERATOR;
   parameters_[VSD_PICKUP_KU - VSD_BEGIN].operation                               = OPERATION_READ;
-  parameters_[VSD_PICKUP_KU - VSD_BEGIN].physic                                  = PHYSIC_PERCENT;
+  parameters_[VSD_PICKUP_KU - VSD_BEGIN].physic                                  = PHYSIC_NUMERIC;
   parameters_[VSD_PICKUP_KU - VSD_BEGIN].validity                                = VALIDITY_ERROR;
   parameters_[VSD_PICKUP_KU - VSD_BEGIN].value.float_t                           = 0.4;
   parameters_[VSD_PICKUP_KU - VSD_BEGIN].min                                     = 0.3;
@@ -3298,11 +3298,11 @@ void Vsd::initParameters()
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].validity                    = VALIDITY_ERROR;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].value.float_t               = 3950.0;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].min                         = 380.0;
-  parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].max                         = 5000.0;
+  parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].max                         = 10000.0;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].def                         = 3950.0;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].discret                     = 1;
   parameters_[VSD_TRANS_VOLTAGE_TAP_OFF - VSD_BEGIN].code                        = 0;
-  // Глубина спуска
+  // Глубина спуска в ЧРП
   parameters_[VSD_DEPTH - VSD_BEGIN].id                                          = VSD_DEPTH;
   parameters_[VSD_DEPTH - VSD_BEGIN].access                                      = ACCESS_OPERATOR;
   parameters_[VSD_DEPTH - VSD_BEGIN].operation                                   = OPERATION_READ;
@@ -3962,7 +3962,7 @@ void Vsd::initParameters()
   parameters_[VSD_FLAG - VSD_BEGIN].def                                          = 0.0;
   parameters_[VSD_FLAG - VSD_BEGIN].discret                                      = 1;
   parameters_[VSD_FLAG - VSD_BEGIN].code                                         = 13;
-  // 
+  // Сопротивление изоляции
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].id                    = VSD_ETALON_RESISTANCE_ISOLATION;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].access                = ACCESS_OPERATOR;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].operation             = OPERATION_READ;
@@ -3970,7 +3970,7 @@ void Vsd::initParameters()
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].validity              = VALIDITY_ERROR;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].value.float_t         = 9999.0;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].min                   = 0.0;
-  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].max                   = 20.0;
+  parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].max                   = 65535.0;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].def                   = 9999.0;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].discret               = 1;
   parameters_[VSD_ETALON_RESISTANCE_ISOLATION - VSD_BEGIN].code                  = 0;
@@ -3982,7 +3982,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].validity               = VALIDITY_ERROR;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].value.float_t          = 380.0;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].min                    = 380.0;
-  parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].max                    = 5000.0;
+  parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].max                    = 10000.0;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].def                    = 380.0;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].discret                = 1;
   parameters_[VSD_TRANS_NEED_VOLTAGE_TAP_OFF - VSD_BEGIN].code                   = 0;
@@ -4040,7 +4040,7 @@ void Vsd::initParameters()
   parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].operation                      = OPERATION_READ;
   parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].physic                         = PHYSIC_NUMERIC;
   parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].validity                       = VALIDITY_ERROR;
-  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].value.float_t                  = 0.0;
+  parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].value.float_t                  = 1.0;
   parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].min                            = 0.0;
   parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].max                            = 1.0;
   parameters_[VSD_WORK_STATE_WHEN_ON - VSD_BEGIN].def                            = 1.0;
@@ -4604,7 +4604,7 @@ void Vsd::initParameters()
   parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].operation            = OPERATION_READ;
   parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].physic               = PHYSIC_TIME;
   parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].validity             = VALIDITY_ERROR;
-  parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].value.float_t        = 0.0;
+  parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].value.float_t        = 1.0;
   parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].min                  = 0.0;
   parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].max                  = 35.0;
   parameters_[VSD_TRIP_DELAY_AT_INVERTER_FAULT - VSD_BEGIN].def                  = 1.0;
@@ -5396,7 +5396,7 @@ void Vsd::initParameters()
   parameters_[VSD_LINK_SETUP - VSD_BEGIN].operation                              = OPERATION_READ;
   parameters_[VSD_LINK_SETUP - VSD_BEGIN].physic                                 = PHYSIC_NUMERIC;
   parameters_[VSD_LINK_SETUP - VSD_BEGIN].validity                               = VALIDITY_ERROR;
-  parameters_[VSD_LINK_SETUP - VSD_BEGIN].value.float_t                          = 1.0;
+  parameters_[VSD_LINK_SETUP - VSD_BEGIN].value.float_t                          = 0.0;
   parameters_[VSD_LINK_SETUP - VSD_BEGIN].min                                    = 0.0;
   parameters_[VSD_LINK_SETUP - VSD_BEGIN].max                                    = 4.0;
   parameters_[VSD_LINK_SETUP - VSD_BEGIN].def                                    = 0.0;
@@ -5642,66 +5642,66 @@ void Vsd::initParameters()
   parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].def                            = 0;
   parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].discret                        = 1;
   parameters_[VSD_VOLTAGE_IN_AVARAGE - VSD_BEGIN].code                           = 0;
-  // Автооптимизация
-  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].id                         = VSD_ETALON_AUTO_OPTIM_MODE;
-  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].operation                  = OPERATION_READ;
-  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].physic                     = PHYSIC_NUMERIC;
-  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].validity                   = VALIDITY_ERROR;
-  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].value.float_t              = 0.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].min                        = 0.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].max                        = 2.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].def                        = 0.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].discret                    = 1;
-  parameters_[VSD_ETALON_AUTO_OPTIM_MODE - VSD_BEGIN].code                       = 0;
-  // Дельта напряжения оптимизации
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].id                      = VSD_ETALON_AUTO_OPTIM_DELTA_U;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].access                  = ACCESS_OPERATOR;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].operation               = OPERATION_WRITE;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].physic                  = PHYSIC_PERCENT;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].validity                = VALIDITY_ERROR;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].value.float_t           = 50.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].min                     = 50.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].max                     = 110.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].def                     = 50.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].discret                 = 10;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELTA_U - VSD_BEGIN].code                    = 13;
-  // Шаг изменения напряжения за 1 мин
-  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].id                         = VSD_ETALON_AUTO_OPTIM_STEP;
-  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].access                     = ACCESS_OPERATOR;
-  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].operation                  = OPERATION_WRITE;
-  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].physic                     = PHYSIC_VOLTAGE;
-  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].validity                   = VALIDITY_ERROR;
-  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].value.float_t              = 1.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].min                        = 1.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].max                        = 10.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].def                        = 1.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].discret                    = 1;
-  parameters_[VSD_ETALON_AUTO_OPTIM_STEP - VSD_BEGIN].code                       = 13;
-  // Период оптимизации
-  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].id                       = VSD_ETALON_AUTO_OPTIM_PERIOD;
-  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].access                   = ACCESS_OPERATOR;
-  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].operation                = OPERATION_WRITE;
-  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].physic                   = PHYSIC_TIME;
-  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].validity                 = VALIDITY_ERROR;
-  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].value.float_t            = 3600.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].min                      = 3600.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].max                      = 26784000.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].def                      = 3600.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].discret                  = 10;
-  parameters_[VSD_ETALON_AUTO_OPTIM_PERIOD - VSD_BEGIN].code                     = 13;
-  // Задержка запуска оптимизации
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].id                        = VSD_ETALON_AUTO_OPTIM_DELAY;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].access                    = ACCESS_OPERATOR;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].operation                 = OPERATION_WRITE;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].physic                    = PHYSIC_TIME;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].validity                  = VALIDITY_ERROR;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].value.float_t             = 120.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].min                       = 120.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].max                       = 86400.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].def                       = 120.0;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].discret                   = 1;
-  parameters_[VSD_ETALON_AUTO_OPTIM_DELAY - VSD_BEGIN].code                      = 13;
+  // Не используется
+  parameters_[VSD_RESERVED_10470 - VSD_BEGIN].id                                 = VSD_RESERVED_10470;
+  parameters_[VSD_RESERVED_10470 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[VSD_RESERVED_10470 - VSD_BEGIN].operation                          = OPERATION_READ;
+  parameters_[VSD_RESERVED_10470 - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[VSD_RESERVED_10470 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[VSD_RESERVED_10470 - VSD_BEGIN].value.float_t                      = 0.0;
+  parameters_[VSD_RESERVED_10470 - VSD_BEGIN].min                                = -32767.0;
+  parameters_[VSD_RESERVED_10470 - VSD_BEGIN].max                                = 32767.0;
+  parameters_[VSD_RESERVED_10470 - VSD_BEGIN].def                                = 0.0;
+  parameters_[VSD_RESERVED_10470 - VSD_BEGIN].discret                            = 1;
+  parameters_[VSD_RESERVED_10470 - VSD_BEGIN].code                               = 0;
+  // Не используется
+  parameters_[VSD_RESERVED_10471 - VSD_BEGIN].id                                 = VSD_RESERVED_10471;
+  parameters_[VSD_RESERVED_10471 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[VSD_RESERVED_10471 - VSD_BEGIN].operation                          = OPERATION_READ;
+  parameters_[VSD_RESERVED_10471 - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[VSD_RESERVED_10471 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[VSD_RESERVED_10471 - VSD_BEGIN].value.float_t                      = 0.0;
+  parameters_[VSD_RESERVED_10471 - VSD_BEGIN].min                                = -32767.0;
+  parameters_[VSD_RESERVED_10471 - VSD_BEGIN].max                                = 32767.0;
+  parameters_[VSD_RESERVED_10471 - VSD_BEGIN].def                                = 0.0;
+  parameters_[VSD_RESERVED_10471 - VSD_BEGIN].discret                            = 1;
+  parameters_[VSD_RESERVED_10471 - VSD_BEGIN].code                               = 0;
+  // Не используется
+  parameters_[VSD_RESERVED_10472 - VSD_BEGIN].id                                 = VSD_RESERVED_10472;
+  parameters_[VSD_RESERVED_10472 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[VSD_RESERVED_10472 - VSD_BEGIN].operation                          = OPERATION_READ;
+  parameters_[VSD_RESERVED_10472 - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[VSD_RESERVED_10472 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[VSD_RESERVED_10472 - VSD_BEGIN].value.float_t                      = 0.0;
+  parameters_[VSD_RESERVED_10472 - VSD_BEGIN].min                                = -32767.0;
+  parameters_[VSD_RESERVED_10472 - VSD_BEGIN].max                                = 32767.0;
+  parameters_[VSD_RESERVED_10472 - VSD_BEGIN].def                                = 0.0;
+  parameters_[VSD_RESERVED_10472 - VSD_BEGIN].discret                            = 1;
+  parameters_[VSD_RESERVED_10472 - VSD_BEGIN].code                               = 0;
+  // Не используется
+  parameters_[VSD_RESERVED_10473 - VSD_BEGIN].id                                 = VSD_RESERVED_10473;
+  parameters_[VSD_RESERVED_10473 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[VSD_RESERVED_10473 - VSD_BEGIN].operation                          = OPERATION_READ;
+  parameters_[VSD_RESERVED_10473 - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[VSD_RESERVED_10473 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[VSD_RESERVED_10473 - VSD_BEGIN].value.float_t                      = 0.0;
+  parameters_[VSD_RESERVED_10473 - VSD_BEGIN].min                                = -32767.0;
+  parameters_[VSD_RESERVED_10473 - VSD_BEGIN].max                                = 32767.0;
+  parameters_[VSD_RESERVED_10473 - VSD_BEGIN].def                                = 0.0;
+  parameters_[VSD_RESERVED_10473 - VSD_BEGIN].discret                            = 1;
+  parameters_[VSD_RESERVED_10473 - VSD_BEGIN].code                               = 0;
+  // Не используется
+  parameters_[VSD_RESERVED_10474 - VSD_BEGIN].id                                 = VSD_RESERVED_10474;
+  parameters_[VSD_RESERVED_10474 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
+  parameters_[VSD_RESERVED_10474 - VSD_BEGIN].operation                          = OPERATION_READ;
+  parameters_[VSD_RESERVED_10474 - VSD_BEGIN].physic                             = PHYSIC_NUMERIC;
+  parameters_[VSD_RESERVED_10474 - VSD_BEGIN].validity                           = VALIDITY_ERROR;
+  parameters_[VSD_RESERVED_10474 - VSD_BEGIN].value.float_t                      = 0.0;
+  parameters_[VSD_RESERVED_10474 - VSD_BEGIN].min                                = -32767.0;
+  parameters_[VSD_RESERVED_10474 - VSD_BEGIN].max                                = 32767.0;
+  parameters_[VSD_RESERVED_10474 - VSD_BEGIN].def                                = 0.0;
+  parameters_[VSD_RESERVED_10474 - VSD_BEGIN].discret                            = 1;
+  parameters_[VSD_RESERVED_10474 - VSD_BEGIN].code                               = 0;
   // Версия ПО ЧРП Danfoss 15-43 Используется в проекте (2)
   parameters_[VSD_SOFT_VERSION_2 - VSD_BEGIN].id                                 = VSD_SOFT_VERSION_2;
   parameters_[VSD_SOFT_VERSION_2 - VSD_BEGIN].access                             = ACCESS_OPERATOR;
@@ -5914,9 +5914,9 @@ void Vsd::initParameters()
   parameters_[VSD_LF - VSD_BEGIN].validity                                       = VALIDITY_ERROR;
   parameters_[VSD_LF - VSD_BEGIN].value.float_t                                  = NAN;
   parameters_[VSD_LF - VSD_BEGIN].min                                            = 0.0;
-  parameters_[VSD_LF - VSD_BEGIN].max                                            = 2500.0;
-  parameters_[VSD_LF - VSD_BEGIN].def                                            = 200.0;
-  parameters_[VSD_LF - VSD_BEGIN].discret                                        = 10;
+  parameters_[VSD_LF - VSD_BEGIN].max                                            = 2.5;
+  parameters_[VSD_LF - VSD_BEGIN].def                                            = 0.0;
+  parameters_[VSD_LF - VSD_BEGIN].discret                                        = 1000;
   parameters_[VSD_LF - VSD_BEGIN].code                                           = 0;
   // Ёмкость выходного фильтра
   parameters_[VSD_CF - VSD_BEGIN].id                                             = VSD_CF;
@@ -6014,5 +6014,113 @@ void Vsd::initParameters()
   parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].def                               = 2.0;
   parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].discret                           = 1;
   parameters_[VSD_FUNCTION_RELE_7 - VSD_BEGIN].code                              = 0;
+  // Катушка:Coasting Danfoss
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].id                               = VSD_DANFOSS_COASTING;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].access                           = ACCESS_OPERATOR;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].operation                        = OPERATION_READ;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].physic                           = PHYSIC_NUMERIC;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].validity                         = VALIDITY_ERROR;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].value.float_t                    = NAN;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].min                              = 0.0;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].max                              = 255.0;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].def                              = 0.0;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].discret                          = 1;
+  parameters_[VSD_DANFOSS_COASTING - VSD_BEGIN].code                             = 0;
+  // Прямой пуск. Действие режима "Прямой пуск"
+  parameters_[VSD_ETALON_DIRECT_RUN_MODE - VSD_BEGIN].id                         = VSD_ETALON_DIRECT_RUN_MODE;
+  parameters_[VSD_ETALON_DIRECT_RUN_MODE - VSD_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_DIRECT_RUN_MODE - VSD_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[VSD_ETALON_DIRECT_RUN_MODE - VSD_BEGIN].physic                     = PHYSIC_NUMERIC;
+  parameters_[VSD_ETALON_DIRECT_RUN_MODE - VSD_BEGIN].validity                   = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_DIRECT_RUN_MODE - VSD_BEGIN].value.float_t              = NAN;
+  parameters_[VSD_ETALON_DIRECT_RUN_MODE - VSD_BEGIN].min                        = 0.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_MODE - VSD_BEGIN].max                        = 1.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_MODE - VSD_BEGIN].def                        = 0.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_MODE - VSD_BEGIN].discret                    = 1;
+  parameters_[VSD_ETALON_DIRECT_RUN_MODE - VSD_BEGIN].code                       = 0;
+  // Прямой пуск. Режим мягкого пуска
+  parameters_[VSD_ETALON_DIRECT_RUN_SOFT_MODE - VSD_BEGIN].id                    = VSD_ETALON_DIRECT_RUN_SOFT_MODE;
+  parameters_[VSD_ETALON_DIRECT_RUN_SOFT_MODE - VSD_BEGIN].access                = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_DIRECT_RUN_SOFT_MODE - VSD_BEGIN].operation             = OPERATION_WRITE;
+  parameters_[VSD_ETALON_DIRECT_RUN_SOFT_MODE - VSD_BEGIN].physic                = PHYSIC_NUMERIC;
+  parameters_[VSD_ETALON_DIRECT_RUN_SOFT_MODE - VSD_BEGIN].validity              = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_DIRECT_RUN_SOFT_MODE - VSD_BEGIN].value.float_t         = NAN;
+  parameters_[VSD_ETALON_DIRECT_RUN_SOFT_MODE - VSD_BEGIN].min                   = 0.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_SOFT_MODE - VSD_BEGIN].max                   = 1.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_SOFT_MODE - VSD_BEGIN].def                   = 0.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_SOFT_MODE - VSD_BEGIN].discret               = 1;
+  parameters_[VSD_ETALON_DIRECT_RUN_SOFT_MODE - VSD_BEGIN].code                  = 0;
+  // Прямой пуск. Синхронизация с сетью
+  parameters_[VSD_ETALON_DIRECT_RUN_SYNC - VSD_BEGIN].id                         = VSD_ETALON_DIRECT_RUN_SYNC;
+  parameters_[VSD_ETALON_DIRECT_RUN_SYNC - VSD_BEGIN].access                     = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_DIRECT_RUN_SYNC - VSD_BEGIN].operation                  = OPERATION_WRITE;
+  parameters_[VSD_ETALON_DIRECT_RUN_SYNC - VSD_BEGIN].physic                     = PHYSIC_NUMERIC;
+  parameters_[VSD_ETALON_DIRECT_RUN_SYNC - VSD_BEGIN].validity                   = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_DIRECT_RUN_SYNC - VSD_BEGIN].value.float_t              = NAN;
+  parameters_[VSD_ETALON_DIRECT_RUN_SYNC - VSD_BEGIN].min                        = 0.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_SYNC - VSD_BEGIN].max                        = 1.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_SYNC - VSD_BEGIN].def                        = 0.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_SYNC - VSD_BEGIN].discret                    = 1;
+  parameters_[VSD_ETALON_DIRECT_RUN_SYNC - VSD_BEGIN].code                       = 0;
+  // Прямой пуск. Команда перехода с режима на режим
+  parameters_[VSD_ETALON_DIRECT_RUN_CMD_TRANSITION - VSD_BEGIN].id               = VSD_ETALON_DIRECT_RUN_CMD_TRANSITION;
+  parameters_[VSD_ETALON_DIRECT_RUN_CMD_TRANSITION - VSD_BEGIN].access           = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_DIRECT_RUN_CMD_TRANSITION - VSD_BEGIN].operation        = OPERATION_WRITE;
+  parameters_[VSD_ETALON_DIRECT_RUN_CMD_TRANSITION - VSD_BEGIN].physic           = PHYSIC_NUMERIC;
+  parameters_[VSD_ETALON_DIRECT_RUN_CMD_TRANSITION - VSD_BEGIN].validity         = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_DIRECT_RUN_CMD_TRANSITION - VSD_BEGIN].value.float_t    = NAN;
+  parameters_[VSD_ETALON_DIRECT_RUN_CMD_TRANSITION - VSD_BEGIN].min              = 0.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_CMD_TRANSITION - VSD_BEGIN].max              = 1.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_CMD_TRANSITION - VSD_BEGIN].def              = 0.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_CMD_TRANSITION - VSD_BEGIN].discret          = 1;
+  parameters_[VSD_ETALON_DIRECT_RUN_CMD_TRANSITION - VSD_BEGIN].code             = 0;
+  // Прямой пуск. Синхронизирован с сетью?
+  parameters_[VSD_ETALON_DIRECT_RUN_IS_SYNC - VSD_BEGIN].id                      = VSD_ETALON_DIRECT_RUN_IS_SYNC;
+  parameters_[VSD_ETALON_DIRECT_RUN_IS_SYNC - VSD_BEGIN].access                  = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_DIRECT_RUN_IS_SYNC - VSD_BEGIN].operation               = OPERATION_READ;
+  parameters_[VSD_ETALON_DIRECT_RUN_IS_SYNC - VSD_BEGIN].physic                  = PHYSIC_NUMERIC;
+  parameters_[VSD_ETALON_DIRECT_RUN_IS_SYNC - VSD_BEGIN].validity                = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_DIRECT_RUN_IS_SYNC - VSD_BEGIN].value.float_t           = NAN;
+  parameters_[VSD_ETALON_DIRECT_RUN_IS_SYNC - VSD_BEGIN].min                     = 0.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_IS_SYNC - VSD_BEGIN].max                     = 1.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_IS_SYNC - VSD_BEGIN].def                     = 0.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_IS_SYNC - VSD_BEGIN].discret                 = 1;
+  parameters_[VSD_ETALON_DIRECT_RUN_IS_SYNC - VSD_BEGIN].code                    = 0;
+  // Прямой пуск. Состояние перехода
+  parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].id             = VSD_ETALON_DIRECT_RUN_STATE_TRANSITION;
+  parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].access         = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].operation      = OPERATION_READ;
+  parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].physic         = PHYSIC_NUMERIC;
+  parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].validity       = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].value.float_t  = NAN;
+  parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].min            = 0.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].max            = 9.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].def            = 0.0;
+  parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].discret        = 1;
+  parameters_[VSD_ETALON_DIRECT_RUN_STATE_TRANSITION - VSD_BEGIN].code           = 0;
+  // Коэффициент коррекции тока Riz
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].id                      = VSD_COEF_RESISTANCE_ISOLATION;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].access                  = ACCESS_OPERATOR;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].operation               = OPERATION_WRITE;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].physic                  = PHYSIC_NUMERIC;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].validity                = VALIDITY_ERROR;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].value.float_t           = 1.0;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].min                     = 0.5;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].max                     = 1.5;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].def                     = 1.0;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].discret                 = 1000;
+  parameters_[VSD_COEF_RESISTANCE_ISOLATION - VSD_BEGIN].code                    = 0;
+  // Напряжение на выходе СУ
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].id               = VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].access           = ACCESS_OPERATOR;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].operation        = OPERATION_READ;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].physic           = PHYSIC_VOLTAGE;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].validity         = VALIDITY_ERROR;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].value.float_t    = 0.0;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].min              = 0.0;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].max              = 999999999.9;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].def              = 0.0;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].discret          = 10;
+  parameters_[VSD_ETALON_SU_OUTPUT_VOLTAGE_AVARAGE - VSD_BEGIN].code             = 0;
 }
 

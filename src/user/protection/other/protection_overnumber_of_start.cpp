@@ -80,7 +80,7 @@ void ProtectionOvernumberOfStart::processingStateRun()
 void ProtectionOvernumberOfStart::proccessingStateStop()
 {
   if (isModeBlock()) {
-    if (ksu.isWorkMotor()) {
+    if (ksu.isRunOrWorkMotor()) {
       state_ = StateRun;
     }
   }

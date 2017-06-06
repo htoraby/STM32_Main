@@ -11,6 +11,7 @@ public:
 private:
   bool checkAlarm();
   bool checkPrevent();
+  bool isProtect();
 };
 
 #endif // PROTECTIONOVERHEATINPUTFILTER_H

@@ -15,8 +15,7 @@ typedef enum {
   USB_DISCONNECT,
 } UsbStateTypeDef;
 
-extern UsbStateTypeDef usbState;
-extern USBH_HandleTypeDef hUsbHostFS;
+uint8_t usbIsReady();
 
 /*!
  * \brief Инициализация USB и подключение файловой системы
