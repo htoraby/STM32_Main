@@ -5710,7 +5710,7 @@ void Ccs::initParameters()
   parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].validity               = VALIDITY_OK;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].value.float_t          = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].min                    = 0.0;
-  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].max                    = 6.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].max                    = 8.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].discret                = 1;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].def                    = 0.0;
   parameters_[CCS_RGM_MAINTENANCE_PARAM_TYPE - CCS_BEGIN].code                   = 13;
@@ -14150,5 +14150,29 @@ void Ccs::initParameters()
   parameters_[CCS_INTERFACE_VOLTAGE_PHASE_OR_LINE - CCS_BEGIN].discret           = 1;
   parameters_[CCS_INTERFACE_VOLTAGE_PHASE_OR_LINE - CCS_BEGIN].def               = 0.0;
   parameters_[CCS_INTERFACE_VOLTAGE_PHASE_OR_LINE - CCS_BEGIN].code              = 13;
+  // Режим поддержания параметра. Поддержка значения - Загрузка
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD - CCS_BEGIN].id            = CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD - CCS_BEGIN].access        = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD - CCS_BEGIN].operation     = OPERATION_WRITE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD - CCS_BEGIN].physic        = PHYSIC_PERCENT;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD - CCS_BEGIN].validity      = VALIDITY_OK;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD - CCS_BEGIN].value.float_t = 0.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD - CCS_BEGIN].min           = 0.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD - CCS_BEGIN].max           = 5000.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD - CCS_BEGIN].discret       = 1;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD - CCS_BEGIN].def           = 0.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD - CCS_BEGIN].code          = 13;
+  // Режим поддержания параметра. Поддержка значения - Мощность
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER - CCS_BEGIN].id           = CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER - CCS_BEGIN].access       = ACCESS_OPERATOR;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER - CCS_BEGIN].operation    = OPERATION_WRITE;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER - CCS_BEGIN].physic       = PHYSIC_ACTIVE_POWER;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER - CCS_BEGIN].validity     = VALIDITY_OK;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER - CCS_BEGIN].value.float_t = 0.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER - CCS_BEGIN].min          = 0.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER - CCS_BEGIN].max          = 10000000.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER - CCS_BEGIN].discret      = 10;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER - CCS_BEGIN].def          = 0.0;
+  parameters_[CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER - CCS_BEGIN].code         = 13;
 }
 

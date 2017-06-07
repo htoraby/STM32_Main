@@ -9734,7 +9734,7 @@
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_NUMERIC</physic>
 		<min>0.0</min>
-		<max>6.0</max>
+		<max>8.0</max>
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
@@ -24097,6 +24097,48 @@
 	</param>
 	<param>
 		<id>1179</id>
+		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_PERCENT</physic>
+		<min>0.0</min>
+		<max>5000.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Поддерживаемое значение</text>
+		<short_text>Поддержание параметра Загрузка</short_text>
+		<form>Технологические настройки.Режимы.Поддержание параметра</form>
+		<unit>PERCENT_PERCENT</unit>
+		<unit_lcd>PERCENT_PERCENT</unit_lcd>
+		<format>XXXX</format>
+		<code>13</code>
+		<comment>Режим поддержания параметра. Поддержка значения - Загрузка</comment>
+	</param>
+	<param>
+		<id>1180</id>
+		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_WRITE</operation>
+		<physic>PHYSIC_ACTIVE_POWER</physic>
+		<min>0.0</min>
+		<max>10000000.0</max>
+		<def>0.0</def>
+		<discret>10</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Поддерживаемое значение</text>
+		<short_text>Поддержание параметра Мощность</short_text>
+		<form>Технологические настройки.Режимы.Поддержание параметра</form>
+		<unit>ACTIV_POWER_W</unit>
+		<unit_lcd>ACTIV_POWER_KW</unit_lcd>
+		<format>XXXXX_X</format>
+		<code>13</code>
+		<comment>Режим поддержания параметра. Поддержка значения - Мощность</comment>
+	</param>
+	<param>
+		<id>1181</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

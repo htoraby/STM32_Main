@@ -1182,7 +1182,9 @@ enum enID
   CCS_TEMP_WATER_OUT_OF_SYNC = 1176,                         //!< Температура жидкости для расчёта ЭДС
   CCS_EMF_MODEL = 1177,                                      //!< ЭДС по расчётной модели
   CCS_INTERFACE_VOLTAGE_PHASE_OR_LINE = 1178,                //!< Формат вывода напряжения
-  CCS_END = 1179,                                            //!< 
+  CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD = 1179,            //!< Режим поддержания параметра. Поддержка значения - Загрузка
+  CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER = 1180,           //!< Режим поддержания параметра. Поддержка значения - Мощность
+  CCS_END = 1181,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ
   VSD_FREQUENCY = 10002,                                     //!< Фиксированная скорость Danfoss 3-11 Уставка частоты, основной задаваемый параметр Novomet 0х0034 IREG_FREQ_REF
