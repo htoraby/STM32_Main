@@ -454,6 +454,8 @@ void Ccs::start(LastReasonRun reason, bool force)
     initStart();
     setNewValue(CCS_LAST_RUN_REASON, reason);
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+    setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());
+
     setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
     calcCountersRun(reason);
@@ -471,6 +473,7 @@ void Ccs::stop(LastReasonStop reason)
     logData.add();
     logEvent.add(StopCode, NoneType, (EventId)reason);
     setNewValue(CCS_LAST_STOP_REASON, reason);
+    setNewValue(CCS_LAST_STOP_DATE_TIME, getTime());
 
     setNewValue(CCS_CONDITION, CCS_CONDITION_BREAK);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
@@ -489,6 +492,8 @@ void Ccs::syncStart()
   resetRestart();
   setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
   setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+  setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());
+
   setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
   setNewValue(CCS_CONDITION, CCS_CONDITION_WORK);
   calcCountersRun(LastReasonRunApvHardwareVsd);
@@ -503,6 +508,8 @@ void Ccs::syncStop()
   setBlock();
   logEvent.add(StopCode, NoneType, (EventId)LastReasonStopVsdErrControl);
   setNewValue(CCS_LAST_STOP_REASON, LastReasonStopVsdErrControl);
+  setNewValue(CCS_LAST_STOP_DATE_TIME, getTime());
+
   setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
 }
 
@@ -525,6 +532,8 @@ void Ccs::cmdStart(int value)
     float reason = getValue(CCS_LAST_RUN_REASON_TMP);
     setNewValue(CCS_LAST_RUN_REASON, reason);
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+    setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());
+
     setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
     calcCountersRun(reason);
@@ -548,6 +557,7 @@ void Ccs::cmdStop(int value)
     logData.add();
     logEvent.add(StopCode, NoneType, (EventId)reason);
     setNewValue(CCS_LAST_STOP_REASON, reason);
+    setNewValue(CCS_LAST_STOP_DATE_TIME, getTime());
     setBlock();
 
     setNewValue(CCS_CONDITION, CCS_CONDITION_BREAK);
@@ -903,7 +913,6 @@ uint32_t Ccs::getSecFromCurTime(enID timeId)
 
 void Ccs::calcTime()
 {
-  static int conditionOld = getValue(CCS_CONDITION);
   static uint32_t timer = HAL_GetTick();
   static float generalRunTime = getValue(CCS_GENERAL_RUN_DATE_TIME);
   static float generalStopTime = getValue(CCS_GENERAL_STOP_DATE_TIME);
@@ -924,19 +933,7 @@ void Ccs::calcTime()
     // TODO: Синхронизация времени
   }
 
-  if (conditionOld != condition) {
-    if ((condition != CCS_CONDITION_STOP) && (conditionOld == CCS_CONDITION_STOP)) {
-      setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());
-      generalStopTime = getValue(CCS_GENERAL_STOP_DATE_TIME);
-    }
-    if ((condition == CCS_CONDITION_STOP) && (conditionOld != CCS_CONDITION_STOP)) {
-      setNewValue(CCS_LAST_STOP_DATE_TIME, getTime());          // Сохранили время перехода в СТО
-      generalRunTime = getValue(CCS_GENERAL_RUN_DATE_TIME);     // Сохранили общее время наработки
-    }
-    conditionOld = condition;
-  }
-
-  if (condition == CCS_CONDITION_STOP) {
+  if ((condition == CCS_CONDITION_STOP) || (condition == CCS_CONDITION_BREAK)) {
     setNewValue(CCS_STOP_TIME, (float)getSecFromCurTime(CCS_LAST_STOP_DATE_TIME));
     setNewValue(CCS_GENERAL_STOP_DATE_TIME, generalStopTime + (float)getSecFromCurTime(CCS_LAST_STOP_DATE_TIME));
   }

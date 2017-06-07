@@ -258,8 +258,8 @@ enum enUpdate {
 enum enCcsCondition {
   CCS_CONDITION_STOP,                       //!< Останов
   CCS_CONDITION_BREAK,                      //!< Торможение
-  CCS_CONDITION_RUN,                    //!< Запуск
-  CCS_CONDITION_WORK                         //!< Работа
+  CCS_CONDITION_RUN,                        //!< Запуск
+  CCS_CONDITION_WORK                        //!< Работа
 };
 
 enum enCcsWorkingMode {
