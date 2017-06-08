@@ -310,6 +310,7 @@ void Ccs::calcCurrentParam()
   float mtrVoltLn2 = mtrVoltPh2 * SQRT_3;
   float mtrVoltLn3 = mtrVoltPh3 * SQRT_3;
   float mtrVoltLn = calcAverage3Values(mtrVoltLn1, mtrVoltLn2, mtrVoltLn3);
+  mtrVoltLn = (mtrVoltLn < 0) ? 0 : mtrVoltLn;
   // Расчёт прочих параметров двигателя
   float cosMtr = cosVsd;
   float mtrActPwr = SQRT_3 * mtrVoltLn * mtrCurPh * cosMtr;
@@ -359,7 +360,7 @@ void Ccs::calcCurrentParam()
   setValue(CCS_MOTOR_VOLTAGE_LINE_1_2, (mtrVoltLn1 < 0) ? 0 : mtrVoltLn1);
   setValue(CCS_MOTOR_VOLTAGE_LINE_2_3, (mtrVoltLn2 < 0) ? 0 : mtrVoltLn2);
   setValue(CCS_MOTOR_VOLTAGE_LINE_3_1, (mtrVoltLn3 < 0) ? 0 : mtrVoltLn3);
-  setValue(CCS_MOTOR_VOLTAGE_LINE, (mtrVoltLn < 0) ? 0 : mtrVoltLn);
+  setValue(CCS_MOTOR_VOLTAGE_LINE, mtrVoltLn);
 
   setValue(CCS_MOTOR_COS_PHI_NOW, cosMtr);
   setValue(CCS_MOTOR_ACTIVE_POWER, mtrActPwr);
