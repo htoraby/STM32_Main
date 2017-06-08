@@ -19,9 +19,9 @@ static void scadaCalcParamsTask(void *p)
 }
 
 Scada::Scada()
-  : addrOld_(-2)
+  : scadaParameters_(scadaParameters)
+  , addrOld_(-2)
 {
-  scadaParameters_ = scadaParameters;
   osThreadDef(ScadaTask, scadaTask, osPriorityNormal, 0, 4*configMINIMAL_STACK_SIZE);
   mbThreadId_ = osThreadCreate(osThread(ScadaTask), this);
 

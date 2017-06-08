@@ -2,6 +2,14 @@
 
 void ScadaRegion30::initParameters()
 {
+  countParameters_ = 173;
+#ifdef USE_SERVER
+  scadaParameters_ = new ScadaParameter[countParameters_];
+#endif
+  for (int i = 0; i < countParameters_; ++i) {
+    scadaParameters_[i].value.uint32_t = 0;
+  }
+
   // Состояние СУ
   scadaParameters_[0].id                 = 0;
   scadaParameters_[0].address            = 256;
@@ -12,8 +20,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[0].coefficient        = 1;
   scadaParameters_[0].min                = 0;
   scadaParameters_[0].max                = 0;
-  scadaParameters_[0].command            = OPERATION_ERROR;
-  scadaParameters_[0].value.float_t      = 0;
   // Причина, мешающая запуску СУ
   scadaParameters_[1].id                 = 0;
   scadaParameters_[1].address            = 257;
@@ -24,8 +30,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[1].coefficient        = 1;
   scadaParameters_[1].min                = 0;
   scadaParameters_[1].max                = 0;
-  scadaParameters_[1].command            = OPERATION_ERROR;
-  scadaParameters_[1].value.float_t      = 0;
   // Причина, мешающая запуску СУ
   scadaParameters_[2].id                 = 0;
   scadaParameters_[2].address            = 258;
@@ -36,8 +40,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[2].coefficient        = 1;
   scadaParameters_[2].min                = 0;
   scadaParameters_[2].max                = 0;
-  scadaParameters_[2].command            = OPERATION_ERROR;
-  scadaParameters_[2].value.float_t      = 0;
   // Причина последнего останова
   scadaParameters_[3].id                 = 0;
   scadaParameters_[3].address            = 259;
@@ -48,8 +50,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[3].coefficient        = 1;
   scadaParameters_[3].min                = 0;
   scadaParameters_[3].max                = 0;
-  scadaParameters_[3].command            = OPERATION_ERROR;
-  scadaParameters_[3].value.float_t      = 0;
   // Дата последнего останова
   scadaParameters_[4].id                 = 0;
   scadaParameters_[4].address            = 260;
@@ -60,8 +60,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[4].coefficient        = 1;
   scadaParameters_[4].min                = 0;
   scadaParameters_[4].max                = 0;
-  scadaParameters_[4].command            = OPERATION_ERROR;
-  scadaParameters_[4].value.float_t      = 0;
   // Дата-время последнего останова
   scadaParameters_[5].id                 = 0;
   scadaParameters_[5].address            = 261;
@@ -72,8 +70,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[5].coefficient        = 1;
   scadaParameters_[5].min                = 0;
   scadaParameters_[5].max                = 0;
-  scadaParameters_[5].command            = OPERATION_ERROR;
-  scadaParameters_[5].value.float_t      = 0;
   // Время последнего останова
   scadaParameters_[6].id                 = 0;
   scadaParameters_[6].address            = 262;
@@ -84,8 +80,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[6].coefficient        = 1;
   scadaParameters_[6].min                = 0;
   scadaParameters_[6].max                = 0;
-  scadaParameters_[6].command            = OPERATION_ERROR;
-  scadaParameters_[6].value.float_t      = 0;
   // Время оставшееся до автозапуска(время АПВ)
   scadaParameters_[7].id                 = CCS_RESTART_TIMER;
   scadaParameters_[7].address            = 263;
@@ -96,8 +90,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[7].coefficient        = 1;
   scadaParameters_[7].min                = 0;
   scadaParameters_[7].max                = 0;
-  scadaParameters_[7].command            = OPERATION_ERROR;
-  scadaParameters_[7].value.float_t      = 0;
   // Ток двигателя фаза 1
   scadaParameters_[8].id                 = CCS_MOTOR_CURRENT_PHASE_1;
   scadaParameters_[8].address            = 264;
@@ -108,8 +100,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[8].coefficient        = 0.1;
   scadaParameters_[8].min                = 0;
   scadaParameters_[8].max                = 65535;
-  scadaParameters_[8].command            = OPERATION_ERROR;
-  scadaParameters_[8].value.float_t      = 0;
   // Ток двигателя фаза 2
   scadaParameters_[9].id                 = CCS_MOTOR_CURRENT_PHASE_2;
   scadaParameters_[9].address            = 265;
@@ -120,8 +110,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[9].coefficient        = 0.1;
   scadaParameters_[9].min                = 0;
   scadaParameters_[9].max                = 65535;
-  scadaParameters_[9].command            = OPERATION_ERROR;
-  scadaParameters_[9].value.float_t      = 0;
   // Ток двигателя фаза 3
   scadaParameters_[10].id                = CCS_MOTOR_CURRENT_PHASE_3;
   scadaParameters_[10].address           = 266;
@@ -132,8 +120,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[10].coefficient       = 0.1;
   scadaParameters_[10].min               = 0;
   scadaParameters_[10].max               = 65535;
-  scadaParameters_[10].command           = OPERATION_ERROR;
-  scadaParameters_[10].value.float_t     = 0;
   // Дисбаланс токов
   scadaParameters_[11].id                = CCS_MOTOR_CURRENT_IMBALANCE;
   scadaParameters_[11].address           = 267;
@@ -144,8 +130,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[11].coefficient       = 1;
   scadaParameters_[11].min               = 0;
   scadaParameters_[11].max               = 100;
-  scadaParameters_[11].command           = OPERATION_ERROR;
-  scadaParameters_[11].value.float_t     = 0;
   // Межфазное напряжение Uin(AB)
   scadaParameters_[12].id                = CCS_VOLTAGE_PHASE_1_2;
   scadaParameters_[12].address           = 268;
@@ -156,8 +140,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[12].coefficient       = 1;
   scadaParameters_[12].min               = 0;
   scadaParameters_[12].max               = 10000;
-  scadaParameters_[12].command           = OPERATION_ERROR;
-  scadaParameters_[12].value.float_t     = 0;
   // Межфазное напряжение Uin(BC)
   scadaParameters_[13].id                = CCS_VOLTAGE_PHASE_2_3;
   scadaParameters_[13].address           = 269;
@@ -168,8 +150,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[13].coefficient       = 1;
   scadaParameters_[13].min               = 0;
   scadaParameters_[13].max               = 10000;
-  scadaParameters_[13].command           = OPERATION_ERROR;
-  scadaParameters_[13].value.float_t     = 0;
   // Межфазное напряжение Uin(CA)
   scadaParameters_[14].id                = CCS_VOLTAGE_PHASE_3_1;
   scadaParameters_[14].address           = 270;
@@ -180,8 +160,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[14].coefficient       = 1;
   scadaParameters_[14].min               = 0;
   scadaParameters_[14].max               = 10000;
-  scadaParameters_[14].command           = OPERATION_ERROR;
-  scadaParameters_[14].value.float_t     = 0;
   // Дисбаланс входного напряжения dUin
   scadaParameters_[15].id                = CCS_VOLTAGE_IMBALANCE_IN;
   scadaParameters_[15].address           = 271;
@@ -192,8 +170,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[15].coefficient       = 1;
   scadaParameters_[15].min               = 0;
   scadaParameters_[15].max               = 100;
-  scadaParameters_[15].command           = OPERATION_ERROR;
-  scadaParameters_[15].value.float_t     = 0;
   // Коэф. Мощности
   scadaParameters_[16].id                = CCS_MOTOR_COS_PHI_NOW;
   scadaParameters_[16].address           = 272;
@@ -204,8 +180,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[16].coefficient       = 0.01;
   scadaParameters_[16].min               = 0;
   scadaParameters_[16].max               = 65535;
-  scadaParameters_[16].command           = OPERATION_ERROR;
-  scadaParameters_[16].value.float_t     = 0;
   // Загрузка двигателя
   scadaParameters_[17].id                = CCS_MOTOR_LOAD_NOW;
   scadaParameters_[17].address           = 273;
@@ -216,8 +190,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[17].coefficient       = 1;
   scadaParameters_[17].min               = 0;
   scadaParameters_[17].max               = 200;
-  scadaParameters_[17].command           = OPERATION_ERROR;
-  scadaParameters_[17].value.float_t     = 0;
   // Полная мощность
   scadaParameters_[18].id                = VSD_POWER_FULL;
   scadaParameters_[18].address           = 274;
@@ -228,8 +200,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[18].coefficient       = 0.1;
   scadaParameters_[18].min               = 0;
   scadaParameters_[18].max               = 10000;
-  scadaParameters_[18].command           = OPERATION_ERROR;
-  scadaParameters_[18].value.float_t     = 0;
   // Активная мощность
   scadaParameters_[19].id                = VSD_POWER_ACTIVE;
   scadaParameters_[19].address           = 275;
@@ -240,8 +210,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[19].coefficient       = 0.1;
   scadaParameters_[19].min               = 0;
   scadaParameters_[19].max               = 10000;
-  scadaParameters_[19].command           = OPERATION_ERROR;
-  scadaParameters_[19].value.float_t     = 0;
   // Сопротивление изоляции Rinsul
   scadaParameters_[20].id                = CCS_RESISTANCE_ISOLATION;
   scadaParameters_[20].address           = 276;
@@ -252,8 +220,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[20].coefficient       = 1;
   scadaParameters_[20].min               = 0;
   scadaParameters_[20].max               = 9999;
-  scadaParameters_[20].command           = OPERATION_ERROR;
-  scadaParameters_[20].value.float_t     = 0;
   // Частота турбинного вращения
   scadaParameters_[21].id                = CCS_TURBO_ROTATION_NOW;
   scadaParameters_[21].address           = 277;
@@ -264,8 +230,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[21].coefficient       = 1;
   scadaParameters_[21].min               = 0;
   scadaParameters_[21].max               = 8000;
-  scadaParameters_[21].command           = OPERATION_ERROR;
-  scadaParameters_[21].value.float_t     = 0;
   // Выходная частота ПЧ
   scadaParameters_[22].id                = VSD_FREQUENCY_NOW;
   scadaParameters_[22].address           = 278;
@@ -276,8 +240,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[22].coefficient       = 0.01;
   scadaParameters_[22].min               = 0;
   scadaParameters_[22].max               = 20000;
-  scadaParameters_[22].command           = OPERATION_ERROR;
-  scadaParameters_[22].value.float_t     = 0;
   // Выходное напряжение ПЧ
   scadaParameters_[23].id                = VSD_VOLTAGE_LINE;
   scadaParameters_[23].address           = 279;
@@ -288,8 +250,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[23].coefficient       = 1;
   scadaParameters_[23].min               = 0;
   scadaParameters_[23].max               = 10000;
-  scadaParameters_[23].command           = OPERATION_ERROR;
-  scadaParameters_[23].value.float_t     = 0;
   // Напряжение на выходе ТМПН
   scadaParameters_[24].id                = CCS_TRANS_OUTPUT_VOLTAGE_LINE;
   scadaParameters_[24].address           = 280;
@@ -300,8 +260,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[24].coefficient       = 1;
   scadaParameters_[24].min               = 0;
   scadaParameters_[24].max               = 10000;
-  scadaParameters_[24].command           = OPERATION_ERROR;
-  scadaParameters_[24].value.float_t     = 0;
   // Ток в звене постоянного тока Id
   scadaParameters_[25].id                = VSD_CURRENT_DC;
   scadaParameters_[25].address           = 281;
@@ -312,8 +270,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[25].coefficient       = 1;
   scadaParameters_[25].min               = 0;
   scadaParameters_[25].max               = 0;
-  scadaParameters_[25].command           = OPERATION_ERROR;
-  scadaParameters_[25].value.float_t     = 0;
   // Напряжение цепи постоянного тока Ud
   scadaParameters_[26].id                = VSD_VOLTAGE_DC;
   scadaParameters_[26].address           = 282;
@@ -324,8 +280,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[26].coefficient       = 1;
   scadaParameters_[26].min               = 0;
   scadaParameters_[26].max               = 10000;
-  scadaParameters_[26].command           = OPERATION_ERROR;
-  scadaParameters_[26].value.float_t     = 0;
   // Время работы в часах
   scadaParameters_[27].id                = CCS_GENERAL_RUN_DATE_TIME;
   scadaParameters_[27].address           = 283;
@@ -336,8 +290,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[27].coefficient       = 1;
   scadaParameters_[27].min               = 0;
   scadaParameters_[27].max               = 999999;
-  scadaParameters_[27].command           = OPERATION_ERROR;
-  scadaParameters_[27].value.float_t     = 0;
   // Общее количество запусков насоса
   scadaParameters_[28].id                = CCS_COUNT_START;
   scadaParameters_[28].address           = 284;
@@ -348,8 +300,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[28].coefficient       = 1;
   scadaParameters_[28].min               = 0;
   scadaParameters_[28].max               = 999999;
-  scadaParameters_[28].command           = OPERATION_ERROR;
-  scadaParameters_[28].value.float_t     = 0;
   // Динамический уровень
   scadaParameters_[29].id                = -1;
   scadaParameters_[29].address           = 285;
@@ -360,8 +310,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[29].coefficient       = 1;
   scadaParameters_[29].min               = 0;
   scadaParameters_[29].max               = 0;
-  scadaParameters_[29].command           = OPERATION_ERROR;
-  scadaParameters_[29].value.float_t     = 0;
   // Устьевое давление
   scadaParameters_[30].id                = -1;
   scadaParameters_[30].address           = 286;
@@ -372,8 +320,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[30].coefficient       = 1;
   scadaParameters_[30].min               = 0;
   scadaParameters_[30].max               = 0;
-  scadaParameters_[30].command           = OPERATION_ERROR;
-  scadaParameters_[30].value.float_t     = 0;
   // Затрубное давление
   scadaParameters_[31].id                = -1;
   scadaParameters_[31].address           = 287;
@@ -384,8 +330,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[31].coefficient       = 1;
   scadaParameters_[31].min               = 0;
   scadaParameters_[31].max               = 0;
-  scadaParameters_[31].command           = OPERATION_ERROR;
-  scadaParameters_[31].value.float_t     = 0;
   // Линейное давление
   scadaParameters_[32].id                = -1;
   scadaParameters_[32].address           = 288;
@@ -396,8 +340,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[32].coefficient       = 1;
   scadaParameters_[32].min               = 0;
   scadaParameters_[32].max               = 0;
-  scadaParameters_[32].command           = OPERATION_ERROR;
-  scadaParameters_[32].value.float_t     = 0;
   // Давление на приеме
   scadaParameters_[33].id                = TMS_PRESSURE_INTAKE;
   scadaParameters_[33].address           = 289;
@@ -408,8 +350,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[33].coefficient       = 0.01;
   scadaParameters_[33].min               = 0;
   scadaParameters_[33].max               = 40;
-  scadaParameters_[33].command           = OPERATION_ERROR;
-  scadaParameters_[33].value.float_t     = 0;
   // Давление на приеме насоса (масло двигателя)
   scadaParameters_[34].id                = -1;
   scadaParameters_[34].address           = 290;
@@ -420,8 +360,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[34].coefficient       = 1;
   scadaParameters_[34].min               = 0;
   scadaParameters_[34].max               = 0;
-  scadaParameters_[34].command           = OPERATION_ERROR;
-  scadaParameters_[34].value.float_t     = 0;
   // Давление на выкиде насоса
   scadaParameters_[35].id                = TMS_PRESSURE_DISCHARGE;
   scadaParameters_[35].address           = 291;
@@ -432,8 +370,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[35].coefficient       = 1;
   scadaParameters_[35].min               = 0;
   scadaParameters_[35].max               = 40;
-  scadaParameters_[35].command           = OPERATION_ERROR;
-  scadaParameters_[35].value.float_t     = 0;
   // Температура на приемеTin
   scadaParameters_[36].id                = TMS_TEMPERATURE_INTAKE;
   scadaParameters_[36].address           = 292;
@@ -444,8 +380,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[36].coefficient       = 1;
   scadaParameters_[36].min               = 0;
   scadaParameters_[36].max               = 150;
-  scadaParameters_[36].command           = OPERATION_ERROR;
-  scadaParameters_[36].value.float_t     = 0;
   // Температура  на приеме насоса (масло двигателя)
   scadaParameters_[37].id                = TMS_TEMPERATURE_MOTOR;
   scadaParameters_[37].address           = 293;
@@ -456,8 +390,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[37].coefficient       = 1;
   scadaParameters_[37].min               = 0;
   scadaParameters_[37].max               = 0;
-  scadaParameters_[37].command           = OPERATION_ERROR;
-  scadaParameters_[37].value.float_t     = 0;
   // Температура обмоток двигателя Tw
   scadaParameters_[38].id                = TMS_TEMPERATURE_WINDING;
   scadaParameters_[38].address           = 294;
@@ -468,8 +400,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[38].coefficient       = 1;
   scadaParameters_[38].min               = 0;
   scadaParameters_[38].max               = 300;
-  scadaParameters_[38].command           = OPERATION_ERROR;
-  scadaParameters_[38].value.float_t     = 0;
   // Температура на выкиде насоса
   scadaParameters_[39].id                = TMS_TEMPERATURE_DISCHARGE;
   scadaParameters_[39].address           = 295;
@@ -480,8 +410,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[39].coefficient       = 1;
   scadaParameters_[39].min               = 0;
   scadaParameters_[39].max               = 150;
-  scadaParameters_[39].command           = OPERATION_ERROR;
-  scadaParameters_[39].value.float_t     = 0;
   // Вибрация насоса радиальная Vradial
   scadaParameters_[40].id                = TMS_ACCELERATION_XY_INTAKE;
   scadaParameters_[40].address           = 296;
@@ -492,8 +420,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[40].coefficient       = 1;
   scadaParameters_[40].min               = 0;
   scadaParameters_[40].max               = 40;
-  scadaParameters_[40].command           = OPERATION_ERROR;
-  scadaParameters_[40].value.float_t     = 0;
   // Вибрация насоса осевая Vaxial
   scadaParameters_[41].id                = TMS_ACCELERATION_Z_INTAKE;
   scadaParameters_[41].address           = 297;
@@ -504,8 +430,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[41].coefficient       = 1;
   scadaParameters_[41].min               = 0;
   scadaParameters_[41].max               = 40;
-  scadaParameters_[41].command           = OPERATION_ERROR;
-  scadaParameters_[41].value.float_t     = 0;
   // Виброускорение(результирующий вектор)
   scadaParameters_[42].id                = TMS_ACCELERATIN_XYZ_INTAKE;
   scadaParameters_[42].address           = 298;
@@ -516,8 +440,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[42].coefficient       = 1;
   scadaParameters_[42].min               = 0;
   scadaParameters_[42].max               = 0;
-  scadaParameters_[42].command           = OPERATION_ERROR;
-  scadaParameters_[42].value.float_t     = 0;
   // Расход жидкости
   scadaParameters_[43].id                = TMS_FLOW_DISCHARGE;
   scadaParameters_[43].address           = 299;
@@ -528,8 +450,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[43].coefficient       = 1;
   scadaParameters_[43].min               = 0;
   scadaParameters_[43].max               = 0;
-  scadaParameters_[43].command           = OPERATION_ERROR;
-  scadaParameters_[43].value.float_t     = 0;
   // Связь с ТМС
   scadaParameters_[44].id                = CCS_DHS_CONNECTION;
   scadaParameters_[44].address           = 300;
@@ -540,8 +460,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[44].coefficient       = 1;
   scadaParameters_[44].min               = 0;
   scadaParameters_[44].max               = 0;
-  scadaParameters_[44].command           = OPERATION_ERROR;
-  scadaParameters_[44].value.float_t     = 0;
   // Тип ТМС
   scadaParameters_[45].id                = 0;
   scadaParameters_[45].address           = 301;
@@ -552,8 +470,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[45].coefficient       = 1;
   scadaParameters_[45].min               = 0;
   scadaParameters_[45].max               = 65535;
-  scadaParameters_[45].command           = OPERATION_ERROR;
-  scadaParameters_[45].value.float_t     = 0;
   // Количество качаний в минуту
   scadaParameters_[46].id                = -1;
   scadaParameters_[46].address           = 302;
@@ -564,8 +480,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[46].coefficient       = 1;
   scadaParameters_[46].min               = 0;
   scadaParameters_[46].max               = 0;
-  scadaParameters_[46].command           = OPERATION_ERROR;
-  scadaParameters_[46].value.float_t     = 0;
   // Нагрузка на шток минимальная
   scadaParameters_[47].id                = -1;
   scadaParameters_[47].address           = 303;
@@ -576,8 +490,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[47].coefficient       = 1;
   scadaParameters_[47].min               = 0;
   scadaParameters_[47].max               = 0;
-  scadaParameters_[47].command           = OPERATION_ERROR;
-  scadaParameters_[47].value.float_t     = 0;
   // Нагрузка на шток максимальная
   scadaParameters_[48].id                = -1;
   scadaParameters_[48].address           = 304;
@@ -588,8 +500,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[48].coefficient       = 1;
   scadaParameters_[48].min               = 0;
   scadaParameters_[48].max               = 0;
-  scadaParameters_[48].command           = OPERATION_ERROR;
-  scadaParameters_[48].value.float_t     = 0;
   // Дисбаланс хода полуходовой
   scadaParameters_[49].id                = -1;
   scadaParameters_[49].address           = 305;
@@ -600,8 +510,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[49].coefficient       = 1;
   scadaParameters_[49].min               = 0;
   scadaParameters_[49].max               = 0;
-  scadaParameters_[49].command           = OPERATION_ERROR;
-  scadaParameters_[49].value.float_t     = 0;
   // А+ за весь период
   scadaParameters_[50].id                = EM_ACTIVE_PLUS_ALL;
   scadaParameters_[50].address           = 306;
@@ -612,8 +520,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[50].coefficient       = 0.1;
   scadaParameters_[50].min               = 0;
   scadaParameters_[50].max               = 0;
-  scadaParameters_[50].command           = OPERATION_ERROR;
-  scadaParameters_[50].value.float_t     = 0;
   // А- за весь период
   scadaParameters_[51].id                = EM_ACTIVE_MINUS_ALL;
   scadaParameters_[51].address           = 308;
@@ -624,8 +530,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[51].coefficient       = 0.1;
   scadaParameters_[51].min               = 0;
   scadaParameters_[51].max               = 0;
-  scadaParameters_[51].command           = OPERATION_ERROR;
-  scadaParameters_[51].value.float_t     = 0;
   // R+ за весь период
   scadaParameters_[52].id                = EM_REACTIVE_PLUS_ALL;
   scadaParameters_[52].address           = 310;
@@ -636,8 +540,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[52].coefficient       = 0.1;
   scadaParameters_[52].min               = 0;
   scadaParameters_[52].max               = 0;
-  scadaParameters_[52].command           = OPERATION_ERROR;
-  scadaParameters_[52].value.float_t     = 0;
   // R- за весь период
   scadaParameters_[53].id                = EM_REACTIVE_MINUS_ALL;
   scadaParameters_[53].address           = 312;
@@ -648,8 +550,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[53].coefficient       = 0.1;
   scadaParameters_[53].min               = 0;
   scadaParameters_[53].max               = 0;
-  scadaParameters_[53].command           = OPERATION_ERROR;
-  scadaParameters_[53].value.float_t     = 0;
   // А+ за текущие сутки
   scadaParameters_[54].id                = EM_ACTIVE_PLUS_CUR_DAY;
   scadaParameters_[54].address           = 314;
@@ -660,8 +560,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[54].coefficient       = 0.1;
   scadaParameters_[54].min               = 0;
   scadaParameters_[54].max               = 0;
-  scadaParameters_[54].command           = OPERATION_ERROR;
-  scadaParameters_[54].value.float_t     = 0;
   // А- за текущие сутки
   scadaParameters_[55].id                = EM_ACTIVE_MINUS_CUR_DAY;
   scadaParameters_[55].address           = 316;
@@ -672,8 +570,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[55].coefficient       = 0.1;
   scadaParameters_[55].min               = 0;
   scadaParameters_[55].max               = 0;
-  scadaParameters_[55].command           = OPERATION_ERROR;
-  scadaParameters_[55].value.float_t     = 0;
   // R+ за текущие сутки
   scadaParameters_[56].id                = EM_REACTIVE_PLUS_CUR_DAY;
   scadaParameters_[56].address           = 318;
@@ -684,8 +580,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[56].coefficient       = 0.1;
   scadaParameters_[56].min               = 0;
   scadaParameters_[56].max               = 0;
-  scadaParameters_[56].command           = OPERATION_ERROR;
-  scadaParameters_[56].value.float_t     = 0;
   // R- за текущие сутки
   scadaParameters_[57].id                = EM_REACTIVE_MINUS_CUR_DAY;
   scadaParameters_[57].address           = 320;
@@ -696,8 +590,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[57].coefficient       = 0.1;
   scadaParameters_[57].min               = 0;
   scadaParameters_[57].max               = 0;
-  scadaParameters_[57].command           = OPERATION_ERROR;
-  scadaParameters_[57].value.float_t     = 0;
   // А+ за предыдущие сутки
   scadaParameters_[58].id                = EM_ACTIVE_PLUS_PREV_DAY;
   scadaParameters_[58].address           = 322;
@@ -708,8 +600,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[58].coefficient       = 0.1;
   scadaParameters_[58].min               = 0;
   scadaParameters_[58].max               = 0;
-  scadaParameters_[58].command           = OPERATION_ERROR;
-  scadaParameters_[58].value.float_t     = 0;
   // А- за предыдущие сутки
   scadaParameters_[59].id                = EM_ACTIVE_MINUS_PREV_DAY;
   scadaParameters_[59].address           = 324;
@@ -720,8 +610,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[59].coefficient       = 0.1;
   scadaParameters_[59].min               = 0;
   scadaParameters_[59].max               = 0;
-  scadaParameters_[59].command           = OPERATION_ERROR;
-  scadaParameters_[59].value.float_t     = 0;
   // R+ за предыдущие сутки
   scadaParameters_[60].id                = EM_REACTIVE_PLUS_PREV_DAY;
   scadaParameters_[60].address           = 326;
@@ -732,8 +620,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[60].coefficient       = 0.1;
   scadaParameters_[60].min               = 0;
   scadaParameters_[60].max               = 0;
-  scadaParameters_[60].command           = OPERATION_ERROR;
-  scadaParameters_[60].value.float_t     = 0;
   // R- за предыдущие сутки
   scadaParameters_[61].id                = EM_REACTIVE_MINUS_PREV_DAY;
   scadaParameters_[61].address           = 328;
@@ -744,8 +630,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[61].coefficient       = 0.1;
   scadaParameters_[61].min               = 0;
   scadaParameters_[61].max               = 0;
-  scadaParameters_[61].command           = OPERATION_ERROR;
-  scadaParameters_[61].value.float_t     = 0;
   // А+ за текущий месяц
   scadaParameters_[62].id                = EM_ACTIVE_PLUS_CUR_MONTH;
   scadaParameters_[62].address           = 330;
@@ -756,8 +640,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[62].coefficient       = 0.1;
   scadaParameters_[62].min               = 0;
   scadaParameters_[62].max               = 0;
-  scadaParameters_[62].command           = OPERATION_ERROR;
-  scadaParameters_[62].value.float_t     = 0;
   // А- за текущий месяц
   scadaParameters_[63].id                = EM_ACTIVE_MINUS_CUR_MONTH;
   scadaParameters_[63].address           = 332;
@@ -768,8 +650,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[63].coefficient       = 0.1;
   scadaParameters_[63].min               = 0;
   scadaParameters_[63].max               = 0;
-  scadaParameters_[63].command           = OPERATION_ERROR;
-  scadaParameters_[63].value.float_t     = 0;
   // R+ за текущий месяц
   scadaParameters_[64].id                = EM_REACTIVE_PLUS_CUR_MONTH;
   scadaParameters_[64].address           = 334;
@@ -780,8 +660,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[64].coefficient       = 0.1;
   scadaParameters_[64].min               = 0;
   scadaParameters_[64].max               = 0;
-  scadaParameters_[64].command           = OPERATION_ERROR;
-  scadaParameters_[64].value.float_t     = 0;
   // R- за текущий месяц
   scadaParameters_[65].id                = EM_REACTIVE_MINUS_CUR_MONTH;
   scadaParameters_[65].address           = 336;
@@ -792,8 +670,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[65].coefficient       = 0.1;
   scadaParameters_[65].min               = 0;
   scadaParameters_[65].max               = 0;
-  scadaParameters_[65].command           = OPERATION_ERROR;
-  scadaParameters_[65].value.float_t     = 0;
   // А+ за предыдущий месяц
   scadaParameters_[66].id                = EM_ACTIVE_PLUS_PREV_MONTH;
   scadaParameters_[66].address           = 338;
@@ -804,8 +680,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[66].coefficient       = 0.1;
   scadaParameters_[66].min               = 0;
   scadaParameters_[66].max               = 0;
-  scadaParameters_[66].command           = OPERATION_ERROR;
-  scadaParameters_[66].value.float_t     = 0;
   // А- за предыдущий месяц
   scadaParameters_[67].id                = EM_ACTIVE_MINUS_PREV_MONTH;
   scadaParameters_[67].address           = 340;
@@ -816,8 +690,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[67].coefficient       = 0.1;
   scadaParameters_[67].min               = 0;
   scadaParameters_[67].max               = 0;
-  scadaParameters_[67].command           = OPERATION_ERROR;
-  scadaParameters_[67].value.float_t     = 0;
   // R+ за предыдущий месяц
   scadaParameters_[68].id                = EM_REACTIVE_PLUS_PREV_MONTH;
   scadaParameters_[68].address           = 342;
@@ -828,8 +700,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[68].coefficient       = 0.1;
   scadaParameters_[68].min               = 0;
   scadaParameters_[68].max               = 0;
-  scadaParameters_[68].command           = OPERATION_ERROR;
-  scadaParameters_[68].value.float_t     = 0;
   // R- за предыдущий месяц
   scadaParameters_[69].id                = EM_REACTIVE_MINUS_PREV_MONTH;
   scadaParameters_[69].address           = 344;
@@ -840,8 +710,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[69].coefficient       = 0.1;
   scadaParameters_[69].min               = 0;
   scadaParameters_[69].max               = 0;
-  scadaParameters_[69].command           = OPERATION_ERROR;
-  scadaParameters_[69].value.float_t     = 0;
   // Тек.Дата
   scadaParameters_[70].id                = 0;
   scadaParameters_[70].address           = 346;
@@ -852,8 +720,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[70].coefficient       = 1;
   scadaParameters_[70].min               = 0;
   scadaParameters_[70].max               = 65535;
-  scadaParameters_[70].command           = OPERATION_ERROR;
-  scadaParameters_[70].value.float_t     = 0;
   // Тек.Дата-время
   scadaParameters_[71].id                = 0;
   scadaParameters_[71].address           = 347;
@@ -864,8 +730,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[71].coefficient       = 1;
   scadaParameters_[71].min               = 0;
   scadaParameters_[71].max               = 65535;
-  scadaParameters_[71].command           = OPERATION_ERROR;
-  scadaParameters_[71].value.float_t     = 0;
   // Тек.Время
   scadaParameters_[72].id                = 0;
   scadaParameters_[72].address           = 348;
@@ -876,8 +740,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[72].coefficient       = 1;
   scadaParameters_[72].min               = 0;
   scadaParameters_[72].max               = 65535;
-  scadaParameters_[72].command           = OPERATION_ERROR;
-  scadaParameters_[72].value.float_t     = 0;
   // Периодичность синхронизации по NTP
   scadaParameters_[73].id                = -1;
   scadaParameters_[73].address           = 349;
@@ -888,8 +750,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[73].coefficient       = 1;
   scadaParameters_[73].min               = 0;
   scadaParameters_[73].max               = 0;
-  scadaParameters_[73].command           = OPERATION_ERROR;
-  scadaParameters_[73].value.float_t     = 0;
   // Адрес последней записи архива
   scadaParameters_[74].id                = CCS_DHS_LOG_ROSNEFT_LAST_RECORD;
   scadaParameters_[74].address           = 350;
@@ -900,8 +760,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[74].coefficient       = 1;
   scadaParameters_[74].min               = 4096;
   scadaParameters_[74].max               = 65530;
-  scadaParameters_[74].command           = OPERATION_ERROR;
-  scadaParameters_[74].value.float_t     = 0;
   // Адрес первого регистра архива
   scadaParameters_[75].id                = CCS_DHS_LOG_ROSNEFT_FIRST_REGISTER;
   scadaParameters_[75].address           = 351;
@@ -912,8 +770,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[75].coefficient       = 1;
   scadaParameters_[75].min               = 4096;
   scadaParameters_[75].max               = 65530;
-  scadaParameters_[75].command           = OPERATION_ERROR;
-  scadaParameters_[75].value.float_t     = 0;
   // Адрес последнего регистра архива
   scadaParameters_[76].id                = CCS_DHS_LOG_ROSNEFT_LAST_REGISTER;
   scadaParameters_[76].address           = 352;
@@ -924,8 +780,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[76].coefficient       = 1;
   scadaParameters_[76].min               = 4096;
   scadaParameters_[76].max               = 65530;
-  scadaParameters_[76].command           = OPERATION_ERROR;
-  scadaParameters_[76].value.float_t     = 0;
   // Номинальное напряжение сети
   scadaParameters_[77].id                = CCS_TRANS_NOMINAL_VOLTAGE_INPUT;
   scadaParameters_[77].address           = 544;
@@ -936,8 +790,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[77].coefficient       = 1;
   scadaParameters_[77].min               = 100;
   scadaParameters_[77].max               = 600;
-  scadaParameters_[77].command           = OPERATION_ERROR;
-  scadaParameters_[77].value.float_t     = 0;
   // Высокое напряжение
   scadaParameters_[78].id                = CCS_PROT_SUPPLY_OVERVOLTAGE_MODE;
   scadaParameters_[78].address           = 545;
@@ -948,8 +800,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[78].coefficient       = 1;
   scadaParameters_[78].min               = 0;
   scadaParameters_[78].max               = 2;
-  scadaParameters_[78].command           = OPERATION_ERROR;
-  scadaParameters_[78].value.float_t     = 0;
   // Уставка высокого напряжения фазы
   scadaParameters_[79].id                = CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT;
   scadaParameters_[79].address           = 546;
@@ -960,8 +810,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[79].coefficient       = 1;
   scadaParameters_[79].min               = 0;
   scadaParameters_[79].max               = 260;
-  scadaParameters_[79].command           = OPERATION_ERROR;
-  scadaParameters_[79].value.float_t     = 0;
   // Задержка срабатывания уставка
   scadaParameters_[80].id                = CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY;
   scadaParameters_[80].address           = 547;
@@ -972,8 +820,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[80].coefficient       = 1;
   scadaParameters_[80].min               = 0;
   scadaParameters_[80].max               = 600;
-  scadaParameters_[80].command           = OPERATION_ERROR;
-  scadaParameters_[80].value.float_t     = 0;
   // Задержка активации уставка
   scadaParameters_[81].id                = CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY;
   scadaParameters_[81].address           = 548;
@@ -984,8 +830,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[81].coefficient       = 1;
   scadaParameters_[81].min               = 0;
   scadaParameters_[81].max               = 9999;
-  scadaParameters_[81].command           = OPERATION_ERROR;
-  scadaParameters_[81].value.float_t     = 0;
   // Низкое напряжение
   scadaParameters_[82].id                = CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE;
   scadaParameters_[82].address           = 549;
@@ -996,8 +840,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[82].coefficient       = 1;
   scadaParameters_[82].min               = 0;
   scadaParameters_[82].max               = 2;
-  scadaParameters_[82].command           = OPERATION_ERROR;
-  scadaParameters_[82].value.float_t     = 0;
   // Уставка низкого напряжения фазы
   scadaParameters_[83].id                = CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT;
   scadaParameters_[83].address           = 550;
@@ -1008,8 +850,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[83].coefficient       = 1;
   scadaParameters_[83].min               = 0;
   scadaParameters_[83].max               = 100;
-  scadaParameters_[83].command           = OPERATION_ERROR;
-  scadaParameters_[83].value.float_t     = 0;
   // Задержка срабатывания уставка
   scadaParameters_[84].id                = CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY;
   scadaParameters_[84].address           = 551;
@@ -1020,8 +860,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[84].coefficient       = 1;
   scadaParameters_[84].min               = 0;
   scadaParameters_[84].max               = 600;
-  scadaParameters_[84].command           = OPERATION_ERROR;
-  scadaParameters_[84].value.float_t     = 0;
   // Задержка активации уставка
   scadaParameters_[85].id                = CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY;
   scadaParameters_[85].address           = 552;
@@ -1032,8 +870,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[85].coefficient       = 1;
   scadaParameters_[85].min               = 0;
   scadaParameters_[85].max               = 9999;
-  scadaParameters_[85].command           = OPERATION_ERROR;
-  scadaParameters_[85].value.float_t     = 0;
   // Дисбаланс напряжения
   scadaParameters_[86].id                = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE;
   scadaParameters_[86].address           = 553;
@@ -1044,8 +880,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[86].coefficient       = 1;
   scadaParameters_[86].min               = 0;
   scadaParameters_[86].max               = 2;
-  scadaParameters_[86].command           = OPERATION_ERROR;
-  scadaParameters_[86].value.float_t     = 0;
   // Уставка дисбаланса напряжений
   scadaParameters_[87].id                = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT;
   scadaParameters_[87].address           = 554;
@@ -1056,8 +890,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[87].coefficient       = 1;
   scadaParameters_[87].min               = 0;
   scadaParameters_[87].max               = 200;
-  scadaParameters_[87].command           = OPERATION_ERROR;
-  scadaParameters_[87].value.float_t     = 0;
   // Задержка срабатывания уставка
   scadaParameters_[88].id                = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY;
   scadaParameters_[88].address           = 555;
@@ -1068,8 +900,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[88].coefficient       = 1;
   scadaParameters_[88].min               = 0;
   scadaParameters_[88].max               = 600;
-  scadaParameters_[88].command           = OPERATION_ERROR;
-  scadaParameters_[88].value.float_t     = 0;
   // Задержка активации уставка
   scadaParameters_[89].id                = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY;
   scadaParameters_[89].address           = 556;
@@ -1080,8 +910,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[89].coefficient       = 1;
   scadaParameters_[89].min               = 0;
   scadaParameters_[89].max               = 9999;
-  scadaParameters_[89].command           = OPERATION_ERROR;
-  scadaParameters_[89].value.float_t     = 0;
   // Время АПВ защит по напряжению (Автозапуск)
   scadaParameters_[90].id                = CCS_PROT_SUPPLY_RESTART_DELAY;
   scadaParameters_[90].address           = 557;
@@ -1092,8 +920,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[90].coefficient       = 1;
   scadaParameters_[90].min               = 1;
   scadaParameters_[90].max               = 9999;
-  scadaParameters_[90].command           = OPERATION_ERROR;
-  scadaParameters_[90].value.float_t     = 0;
   // Номинальный ток ПЭД
   scadaParameters_[91].id                = VSD_MOTOR_CURRENT;
   scadaParameters_[91].address           = 558;
@@ -1104,8 +930,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[91].coefficient       = 0.1;
   scadaParameters_[91].min               = 0;
   scadaParameters_[91].max               = 3000;
-  scadaParameters_[91].command           = OPERATION_ERROR;
-  scadaParameters_[91].value.float_t     = 0;
   // Номинальный коэффициент мощности
   scadaParameters_[92].id                = VSD_MOTOR_COS_PHI;
   scadaParameters_[92].address           = 559;
@@ -1116,8 +940,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[92].coefficient       = 0.01;
   scadaParameters_[92].min               = 0;
   scadaParameters_[92].max               = 100;
-  scadaParameters_[92].command           = OPERATION_ERROR;
-  scadaParameters_[92].value.float_t     = 0;
   // Напряж. Отпайки ТМПН
   scadaParameters_[93].id                = CCS_TRANS_VOLTAGE_TAP_OFF;
   scadaParameters_[93].address           = 560;
@@ -1128,8 +950,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[93].coefficient       = 1;
   scadaParameters_[93].min               = 380;
   scadaParameters_[93].max               = 5500;
-  scadaParameters_[93].command           = OPERATION_ERROR;
-  scadaParameters_[93].value.float_t     = 0;
   // Перегруз (ЗП)
   scadaParameters_[94].id                = CCS_PROT_MOTOR_OVERLOAD_MODE;
   scadaParameters_[94].address           = 561;
@@ -1140,8 +960,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[94].coefficient       = 1;
   scadaParameters_[94].min               = 0;
   scadaParameters_[94].max               = 2;
-  scadaParameters_[94].command           = OPERATION_ERROR;
-  scadaParameters_[94].value.float_t     = 0;
   // Уставка перегрузки
   scadaParameters_[95].id                = CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT;
   scadaParameters_[95].address           = 562;
@@ -1152,8 +970,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[95].coefficient       = 1;
   scadaParameters_[95].min               = 100;
   scadaParameters_[95].max               = 200;
-  scadaParameters_[95].command           = OPERATION_ERROR;
-  scadaParameters_[95].value.float_t     = 0;
   // Задержка срабатывания уставка
   scadaParameters_[96].id                = CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY;
   scadaParameters_[96].address           = 563;
@@ -1164,8 +980,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[96].coefficient       = 1;
   scadaParameters_[96].min               = 0;
   scadaParameters_[96].max               = 600;
-  scadaParameters_[96].command           = OPERATION_ERROR;
-  scadaParameters_[96].value.float_t     = 0;
   // Задержка активации уставка
   scadaParameters_[97].id                = CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY;
   scadaParameters_[97].address           = 564;
@@ -1176,8 +990,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[97].coefficient       = 1;
   scadaParameters_[97].min               = 0;
   scadaParameters_[97].max               = 5;
-  scadaParameters_[97].command           = OPERATION_ERROR;
-  scadaParameters_[97].value.float_t     = 0;
   // Задержка АПВ уставка
   scadaParameters_[98].id                = CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY;
   scadaParameters_[98].address           = 565;
@@ -1188,8 +1000,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[98].coefficient       = 1;
   scadaParameters_[98].min               = 1;
   scadaParameters_[98].max               = 9999;
-  scadaParameters_[98].command           = OPERATION_ERROR;
-  scadaParameters_[98].value.float_t     = 0;
   // Недогруз (ЗСП)
   scadaParameters_[99].id                = CCS_PROT_MOTOR_UNDERLOAD_MODE;
   scadaParameters_[99].address           = 566;
@@ -1200,8 +1010,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[99].coefficient       = 1;
   scadaParameters_[99].min               = 0;
   scadaParameters_[99].max               = 2;
-  scadaParameters_[99].command           = OPERATION_ERROR;
-  scadaParameters_[99].value.float_t     = 0;
   // Уставка недогрузки
   scadaParameters_[100].id               = CCS_PROT_MOTOR_UNDERLOAD_TRIP_SETPOINT;
   scadaParameters_[100].address          = 567;
@@ -1212,8 +1020,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[100].coefficient      = 1;
   scadaParameters_[100].min              = 0;
   scadaParameters_[100].max              = 100;
-  scadaParameters_[100].command          = OPERATION_ERROR;
-  scadaParameters_[100].value.float_t    = 0;
   // Задержка срабатывания уставка
   scadaParameters_[101].id               = CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY;
   scadaParameters_[101].address          = 568;
@@ -1224,8 +1030,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[101].coefficient      = 1;
   scadaParameters_[101].min              = 0;
   scadaParameters_[101].max              = 600;
-  scadaParameters_[101].command          = OPERATION_ERROR;
-  scadaParameters_[101].value.float_t    = 0;
   // Задержка активации уставка
   scadaParameters_[102].id               = CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY;
   scadaParameters_[102].address          = 569;
@@ -1236,8 +1040,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[102].coefficient      = 1;
   scadaParameters_[102].min              = 0;
   scadaParameters_[102].max              = 120;
-  scadaParameters_[102].command          = OPERATION_ERROR;
-  scadaParameters_[102].value.float_t    = 0;
   // Задержка АПВ уставка
   scadaParameters_[103].id               = CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY;
   scadaParameters_[103].address          = 570;
@@ -1248,8 +1050,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[103].coefficient      = 1;
   scadaParameters_[103].min              = 1;
   scadaParameters_[103].max              = 9999;
-  scadaParameters_[103].command          = OPERATION_ERROR;
-  scadaParameters_[103].value.float_t    = 0;
   // Дисбаланс тока
   scadaParameters_[104].id               = CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE;
   scadaParameters_[104].address          = 571;
@@ -1260,8 +1060,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[104].coefficient      = 1;
   scadaParameters_[104].min              = 0;
   scadaParameters_[104].max              = 2;
-  scadaParameters_[104].command          = OPERATION_ERROR;
-  scadaParameters_[104].value.float_t    = 0;
   // Дисбаланс тока, уставка
   scadaParameters_[105].id               = CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_SETPOINT;
   scadaParameters_[105].address          = 572;
@@ -1272,8 +1070,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[105].coefficient      = 1;
   scadaParameters_[105].min              = 0;
   scadaParameters_[105].max              = 100;
-  scadaParameters_[105].command          = OPERATION_ERROR;
-  scadaParameters_[105].value.float_t    = 0;
   // Дисбаланс тока, задержка отключения
   scadaParameters_[106].id               = CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY;
   scadaParameters_[106].address          = 573;
@@ -1284,8 +1080,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[106].coefficient      = 1;
   scadaParameters_[106].min              = 0;
   scadaParameters_[106].max              = 600;
-  scadaParameters_[106].command          = OPERATION_ERROR;
-  scadaParameters_[106].value.float_t    = 0;
   // Дисбаланс тока, пусковое время
   scadaParameters_[107].id               = CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY;
   scadaParameters_[107].address          = 574;
@@ -1296,8 +1090,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[107].coefficient      = 1;
   scadaParameters_[107].min              = 0;
   scadaParameters_[107].max              = 9999;
-  scadaParameters_[107].command          = OPERATION_ERROR;
-  scadaParameters_[107].value.float_t    = 0;
   // Дисбаланс тока, задержка АПВ
   scadaParameters_[108].id               = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY;
   scadaParameters_[108].address          = 575;
@@ -1308,8 +1100,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[108].coefficient      = 1;
   scadaParameters_[108].min              = 0;
   scadaParameters_[108].max              = 9999;
-  scadaParameters_[108].command          = OPERATION_ERROR;
-  scadaParameters_[108].value.float_t    = 0;
   // Сопротивление изоляции
   scadaParameters_[109].id               = CCS_PROT_DHS_RESISTANCE_MODE;
   scadaParameters_[109].address          = 576;
@@ -1320,8 +1110,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[109].coefficient      = 1;
   scadaParameters_[109].min              = 0;
   scadaParameters_[109].max              = 1;
-  scadaParameters_[109].command          = OPERATION_ERROR;
-  scadaParameters_[109].value.float_t    = 0;
   // Минимальное сопротивление изоляции
   scadaParameters_[110].id               = CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT;
   scadaParameters_[110].address          = 577;
@@ -1332,8 +1120,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[110].coefficient      = 1;
   scadaParameters_[110].min              = 30;
   scadaParameters_[110].max              = 9999;
-  scadaParameters_[110].command          = OPERATION_ERROR;
-  scadaParameters_[110].value.float_t    = 0;
   // Турбинное вращение
   scadaParameters_[111].id               = CCS_PROT_MOTOR_ASYNC_MODE;
   scadaParameters_[111].address          = 578;
@@ -1344,8 +1130,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[111].coefficient      = 1;
   scadaParameters_[111].min              = 0;
   scadaParameters_[111].max              = 1;
-  scadaParameters_[111].command          = OPERATION_ERROR;
-  scadaParameters_[111].value.float_t    = 0;
   // Турбин.вращение уст.
   scadaParameters_[112].id               = CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT;
   scadaParameters_[112].address          = 579;
@@ -1356,8 +1140,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[112].coefficient      = 1;
   scadaParameters_[112].min              = 1;
   scadaParameters_[112].max              = 255;
-  scadaParameters_[112].command          = OPERATION_ERROR;
-  scadaParameters_[112].value.float_t    = 0;
   // Ввод единиц измерения давления
   scadaParameters_[113].id               = CCS_UNIT_PRESSURE;
   scadaParameters_[113].address          = 580;
@@ -1368,8 +1150,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[113].coefficient      = 1;
   scadaParameters_[113].min              = 0;
   scadaParameters_[113].max              = 9999;
-  scadaParameters_[113].command          = OPERATION_ERROR;
-  scadaParameters_[113].value.float_t    = 0;
   // Давление
   scadaParameters_[114].id               = CCS_PROT_DHS_PRESSURE_INTAKE_MODE;
   scadaParameters_[114].address          = 581;
@@ -1380,8 +1160,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[114].coefficient      = 1;
   scadaParameters_[114].min              = 0;
   scadaParameters_[114].max              = 2;
-  scadaParameters_[114].command          = OPERATION_ERROR;
-  scadaParameters_[114].value.float_t    = 0;
   // Максимальное давление
   scadaParameters_[115].id               = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT;
   scadaParameters_[115].address          = 582;
@@ -1392,8 +1170,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[115].coefficient      = 1;
   scadaParameters_[115].min              = 0;
   scadaParameters_[115].max              = 9999;
-  scadaParameters_[115].command          = OPERATION_ERROR;
-  scadaParameters_[115].value.float_t    = 0;
   // Минимальное давление
   scadaParameters_[116].id               = CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT;
   scadaParameters_[116].address          = 583;
@@ -1404,8 +1180,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[116].coefficient      = 1;
   scadaParameters_[116].min              = 0;
   scadaParameters_[116].max              = 9999;
-  scadaParameters_[116].command          = OPERATION_ERROR;
-  scadaParameters_[116].value.float_t    = 0;
   // Задержка АПВ уставка
   scadaParameters_[117].id               = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY;
   scadaParameters_[117].address          = 584;
@@ -1416,8 +1190,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[117].coefficient      = 1;
   scadaParameters_[117].min              = 1;
   scadaParameters_[117].max              = 9999;
-  scadaParameters_[117].command          = OPERATION_ERROR;
-  scadaParameters_[117].value.float_t    = 0;
   // Ввод единиц измерения температуры
   scadaParameters_[118].id               = CCS_UNIT_TEMPERATURE;
   scadaParameters_[118].address          = 585;
@@ -1428,8 +1200,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[118].coefficient      = 1;
   scadaParameters_[118].min              = 0;
   scadaParameters_[118].max              = 9999;
-  scadaParameters_[118].command          = OPERATION_ERROR;
-  scadaParameters_[118].value.float_t    = 0;
   // Температура
   scadaParameters_[119].id               = CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE;
   scadaParameters_[119].address          = 586;
@@ -1440,8 +1210,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[119].coefficient      = 1;
   scadaParameters_[119].min              = 0;
   scadaParameters_[119].max              = 2;
-  scadaParameters_[119].command          = OPERATION_ERROR;
-  scadaParameters_[119].value.float_t    = 0;
   // Макс.температура
   scadaParameters_[120].id               = CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_SETPOINT;
   scadaParameters_[120].address          = 587;
@@ -1452,8 +1220,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[120].coefficient      = 1;
   scadaParameters_[120].min              = 0;
   scadaParameters_[120].max              = 9999;
-  scadaParameters_[120].command          = OPERATION_ERROR;
-  scadaParameters_[120].value.float_t    = 0;
   // Мин.температура
   scadaParameters_[121].id               = CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_SETPOINT;
   scadaParameters_[121].address          = 588;
@@ -1464,8 +1230,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[121].coefficient      = 1;
   scadaParameters_[121].min              = 0;
   scadaParameters_[121].max              = 9999;
-  scadaParameters_[121].command          = OPERATION_ERROR;
-  scadaParameters_[121].value.float_t    = 0;
   // Задержка АПВ уставка
   scadaParameters_[122].id               = CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY;
   scadaParameters_[122].address          = 589;
@@ -1476,8 +1240,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[122].coefficient      = 1;
   scadaParameters_[122].min              = 1;
   scadaParameters_[122].max              = 9999;
-  scadaParameters_[122].command          = OPERATION_ERROR;
-  scadaParameters_[122].value.float_t    = 0;
   // Максимальная токовая защита
   scadaParameters_[123].id               = CCS_PROT_MOTOR_CURRENT_MODE;
   scadaParameters_[123].address          = 590;
@@ -1488,8 +1250,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[123].coefficient      = 1;
   scadaParameters_[123].min              = 1;
   scadaParameters_[123].max              = 2;
-  scadaParameters_[123].command          = OPERATION_ERROR;
-  scadaParameters_[123].value.float_t    = 0;
   // Электрическая блокировка силового отсека
   scadaParameters_[124].id               = CCS_PROT_OTHER_LOCK_DOOR_MODE;
   scadaParameters_[124].address          = 591;
@@ -1500,8 +1260,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[124].coefficient      = 1;
   scadaParameters_[124].min              = 0;
   scadaParameters_[124].max              = 1;
-  scadaParameters_[124].command          = OPERATION_ERROR;
-  scadaParameters_[124].value.float_t    = 0;
   // Недогруз (ЗСП). Количество разрешенных АПВ
   scadaParameters_[125].id               = CCS_PROT_MOTOR_UNDERLOAD_RESTART_LIMIT;
   scadaParameters_[125].address          = 592;
@@ -1512,8 +1270,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[125].coefficient      = 1;
   scadaParameters_[125].min              = 1;
   scadaParameters_[125].max              = 200;
-  scadaParameters_[125].command          = OPERATION_ERROR;
-  scadaParameters_[125].value.float_t    = 0;
   // Перегруз (ЗП). Количество разрешенных АПВ
   scadaParameters_[126].id               = CCS_PROT_MOTOR_OVERLOAD_RESTART_LIMIT;
   scadaParameters_[126].address          = 593;
@@ -1524,8 +1280,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[126].coefficient      = 1;
   scadaParameters_[126].min              = 1;
   scadaParameters_[126].max              = 200;
-  scadaParameters_[126].command          = OPERATION_ERROR;
-  scadaParameters_[126].value.float_t    = 0;
   // Кол-во разрешенных АПВ после других защит
   scadaParameters_[127].id               = CCS_PROT_OTHER_RESTART_LIMIT;
   scadaParameters_[127].address          = 594;
@@ -1536,8 +1290,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[127].coefficient      = 1;
   scadaParameters_[127].min              = 1;
   scadaParameters_[127].max              = 200;
-  scadaParameters_[127].command          = OPERATION_ERROR;
-  scadaParameters_[127].value.float_t    = 0;
   // Периодический режим работы
   scadaParameters_[128].id               = CCS_RGM_PERIODIC_MODE;
   scadaParameters_[128].address          = 595;
@@ -1548,8 +1300,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[128].coefficient      = 1;
   scadaParameters_[128].min              = 0;
   scadaParameters_[128].max              = 1;
-  scadaParameters_[128].command          = OPERATION_ERROR;
-  scadaParameters_[128].value.float_t    = 0;
   // Период работы по программе
   scadaParameters_[129].id               = CCS_RGM_PERIODIC_RUN_PERIOD;
   scadaParameters_[129].address          = 596;
@@ -1560,8 +1310,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[129].coefficient      = 1;
   scadaParameters_[129].min              = 1;
   scadaParameters_[129].max              = 9999;
-  scadaParameters_[129].command          = OPERATION_ERROR;
-  scadaParameters_[129].value.float_t    = 0;
   // Период паузы по программе
   scadaParameters_[130].id               = CCS_RGM_PERIODIC_STOP_PERIOD;
   scadaParameters_[130].address          = 597;
@@ -1572,8 +1320,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[130].coefficient      = 1;
   scadaParameters_[130].min              = 1;
   scadaParameters_[130].max              = 9999;
-  scadaParameters_[130].command          = OPERATION_ERROR;
-  scadaParameters_[130].value.float_t    = 0;
   // Режим работы ПЧ
   scadaParameters_[131].id               = -1;
   scadaParameters_[131].address          = 598;
@@ -1584,8 +1330,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[131].coefficient      = 1;
   scadaParameters_[131].min              = 0;
   scadaParameters_[131].max              = 12;
-  scadaParameters_[131].command          = OPERATION_ERROR;
-  scadaParameters_[131].value.float_t    = 0;
   // Уставка частоты
   scadaParameters_[132].id               = VSD_FREQUENCY;
   scadaParameters_[132].address          = 599;
@@ -1596,8 +1340,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[132].coefficient      = 0.01;
   scadaParameters_[132].min              = 350;
   scadaParameters_[132].max              = 20000;
-  scadaParameters_[132].command          = OPERATION_ERROR;
-  scadaParameters_[132].value.float_t    = 0;
   // Поддерживаемый ток двигателя, уставка
   scadaParameters_[133].id               = -1;
   scadaParameters_[133].address          = 600;
@@ -1608,8 +1350,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[133].coefficient      = 0.1;
   scadaParameters_[133].min              = 0.1;
   scadaParameters_[133].max              = 1000;
-  scadaParameters_[133].command          = OPERATION_ERROR;
-  scadaParameters_[133].value.float_t    = 0;
   // Значение поддерживаемого параметра, уставка
   scadaParameters_[134].id               = -1;
   scadaParameters_[134].address          = 601;
@@ -1620,8 +1360,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[134].coefficient      = 1;
   scadaParameters_[134].min              = 0;
   scadaParameters_[134].max              = 9999;
-  scadaParameters_[134].command          = OPERATION_ERROR;
-  scadaParameters_[134].value.float_t    = 0;
   // Темп замедления
   scadaParameters_[135].id               = VSD_TEMP_SPEEDDOWN;
   scadaParameters_[135].address          = 602;
@@ -1632,8 +1370,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[135].coefficient      = 0.01;
   scadaParameters_[135].min              = 1;
   scadaParameters_[135].max              = 3600;
-  scadaParameters_[135].command          = OPERATION_ERROR;
-  scadaParameters_[135].value.float_t    = 0;
   // Темп разгона
   scadaParameters_[136].id               = VSD_TEMP_SPEEDUP;
   scadaParameters_[136].address          = 603;
@@ -1644,8 +1380,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[136].coefficient      = 0.01;
   scadaParameters_[136].min              = 1;
   scadaParameters_[136].max              = 3600;
-  scadaParameters_[136].command          = OPERATION_ERROR;
-  scadaParameters_[136].value.float_t    = 0;
   // Минимальная частота
   scadaParameters_[137].id               = -1;
   scadaParameters_[137].address          = 604;
@@ -1656,8 +1390,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[137].coefficient      = 1;
   scadaParameters_[137].min              = 0;
   scadaParameters_[137].max              = 2;
-  scadaParameters_[137].command          = OPERATION_ERROR;
-  scadaParameters_[137].value.float_t    = 0;
   // Уставка минимального значения частоты
   scadaParameters_[138].id               = VSD_LOW_LIM_SPEED_MOTOR;
   scadaParameters_[138].address          = 605;
@@ -1668,8 +1400,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[138].coefficient      = 0.01;
   scadaParameters_[138].min              = 350;
   scadaParameters_[138].max              = 20000;
-  scadaParameters_[138].command          = OPERATION_ERROR;
-  scadaParameters_[138].value.float_t    = 0;
   // Минимальная частота, задержка отключения
   scadaParameters_[139].id               = -1;
   scadaParameters_[139].address          = 606;
@@ -1680,8 +1410,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[139].coefficient      = 1;
   scadaParameters_[139].min              = 0;
   scadaParameters_[139].max              = 600;
-  scadaParameters_[139].command          = OPERATION_ERROR;
-  scadaParameters_[139].value.float_t    = 0;
   // Минимальная частота, пусковое время
   scadaParameters_[140].id               = -1;
   scadaParameters_[140].address          = 607;
@@ -1692,8 +1420,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[140].coefficient      = 1;
   scadaParameters_[140].min              = 0;
   scadaParameters_[140].max              = 9999;
-  scadaParameters_[140].command          = OPERATION_ERROR;
-  scadaParameters_[140].value.float_t    = 0;
   // Минимальная частота, задержка АПВ
   scadaParameters_[141].id               = -1;
   scadaParameters_[141].address          = 608;
@@ -1704,8 +1430,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[141].coefficient      = 1;
   scadaParameters_[141].min              = 0;
   scadaParameters_[141].max              = 9999;
-  scadaParameters_[141].command          = OPERATION_ERROR;
-  scadaParameters_[141].value.float_t    = 0;
   // Максимальная частота
   scadaParameters_[142].id               = -1;
   scadaParameters_[142].address          = 609;
@@ -1716,8 +1440,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[142].coefficient      = 1;
   scadaParameters_[142].min              = 0;
   scadaParameters_[142].max              = 2;
-  scadaParameters_[142].command          = OPERATION_ERROR;
-  scadaParameters_[142].value.float_t    = 0;
   // Уставка максимального значения частоты
   scadaParameters_[143].id               = VSD_HIGH_LIM_SPEED_MOTOR;
   scadaParameters_[143].address          = 610;
@@ -1728,8 +1450,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[143].coefficient      = 0.01;
   scadaParameters_[143].min              = 350;
   scadaParameters_[143].max              = 20000;
-  scadaParameters_[143].command          = OPERATION_ERROR;
-  scadaParameters_[143].value.float_t    = 0;
   // Максимальная частота, задержка отключения
   scadaParameters_[144].id               = -1;
   scadaParameters_[144].address          = 611;
@@ -1740,8 +1460,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[144].coefficient      = 1;
   scadaParameters_[144].min              = 0;
   scadaParameters_[144].max              = 0;
-  scadaParameters_[144].command          = OPERATION_ERROR;
-  scadaParameters_[144].value.float_t    = 0;
   // Максимальная частота, пусковое время
   scadaParameters_[145].id               = -1;
   scadaParameters_[145].address          = 612;
@@ -1752,8 +1470,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[145].coefficient      = 1;
   scadaParameters_[145].min              = 0;
   scadaParameters_[145].max              = 0;
-  scadaParameters_[145].command          = OPERATION_ERROR;
-  scadaParameters_[145].value.float_t    = 0;
   // Максимальная частота, задержка АПВ
   scadaParameters_[146].id               = -1;
   scadaParameters_[146].address          = 613;
@@ -1764,8 +1480,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[146].coefficient      = 1;
   scadaParameters_[146].min              = 0;
   scadaParameters_[146].max              = 0;
-  scadaParameters_[146].command          = OPERATION_ERROR;
-  scadaParameters_[146].value.float_t    = 0;
   // Уставка частоты
   scadaParameters_[147].id               = VSD_FREQUENCY;
   scadaParameters_[147].address          = 614;
@@ -1776,8 +1490,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[147].coefficient      = 0.01;
   scadaParameters_[147].min              = 350;
   scadaParameters_[147].max              = 20000;
-  scadaParameters_[147].command          = OPERATION_ERROR;
-  scadaParameters_[147].value.float_t    = 0;
   // Пуск/останов в "ручном" режиме
   scadaParameters_[148].id               = -1;
   scadaParameters_[148].address          = 615;
@@ -1788,8 +1500,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[148].coefficient      = 1;
   scadaParameters_[148].min              = 0;
   scadaParameters_[148].max              = 0;
-  scadaParameters_[148].command          = OPERATION_ERROR;
-  scadaParameters_[148].value.float_t    = 0;
   // Режим встряхивания
   scadaParameters_[149].id               = CCS_RGM_JARRING_MODE;
   scadaParameters_[149].address          = 616;
@@ -1800,8 +1510,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[149].coefficient      = 1;
   scadaParameters_[149].min              = 0;
   scadaParameters_[149].max              = 1;
-  scadaParameters_[149].command          = OPERATION_ERROR;
-  scadaParameters_[149].value.float_t    = 0;
   // Период встряхивания
   scadaParameters_[150].id               = CCS_RGM_JARRING_PERIOD;
   scadaParameters_[150].address          = 617;
@@ -1812,8 +1520,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[150].coefficient      = 1;
   scadaParameters_[150].min              = 1;
   scadaParameters_[150].max              = 9999;
-  scadaParameters_[150].command          = OPERATION_ERROR;
-  scadaParameters_[150].value.float_t    = 0;
   // Кол-во встряхиваний
   scadaParameters_[151].id               = CCS_RGM_JARRING_COUNT;
   scadaParameters_[151].address          = 618;
@@ -1824,8 +1530,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[151].coefficient      = 1;
   scadaParameters_[151].min              = 1;
   scadaParameters_[151].max              = 99;
-  scadaParameters_[151].command          = OPERATION_ERROR;
-  scadaParameters_[151].value.float_t    = 0;
   // Чередование фаз
   scadaParameters_[152].id               = -1;
   scadaParameters_[152].address          = 619;
@@ -1836,8 +1540,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[152].coefficient      = 1;
   scadaParameters_[152].min              = 0;
   scadaParameters_[152].max              = 0;
-  scadaParameters_[152].command          = OPERATION_ERROR;
-  scadaParameters_[152].value.float_t    = 0;
   // Нагрузка на шток
   scadaParameters_[153].id               = -1;
   scadaParameters_[153].address          = 620;
@@ -1848,8 +1550,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[153].coefficient      = 1;
   scadaParameters_[153].min              = 0;
   scadaParameters_[153].max              = 0;
-  scadaParameters_[153].command          = OPERATION_ERROR;
-  scadaParameters_[153].value.float_t    = 0;
   // Нагрузка на шток, минимальная уставка
   scadaParameters_[154].id               = -1;
   scadaParameters_[154].address          = 621;
@@ -1860,8 +1560,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[154].coefficient      = 1;
   scadaParameters_[154].min              = 0;
   scadaParameters_[154].max              = 0;
-  scadaParameters_[154].command          = OPERATION_ERROR;
-  scadaParameters_[154].value.float_t    = 0;
   // Нагрузка на шток, максимальная уставка
   scadaParameters_[155].id               = -1;
   scadaParameters_[155].address          = 622;
@@ -1872,8 +1570,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[155].coefficient      = 1;
   scadaParameters_[155].min              = 0;
   scadaParameters_[155].max              = 0;
-  scadaParameters_[155].command          = OPERATION_ERROR;
-  scadaParameters_[155].value.float_t    = 0;
   // Нагрузка на шток, задержка отключения
   scadaParameters_[156].id               = -1;
   scadaParameters_[156].address          = 623;
@@ -1884,8 +1580,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[156].coefficient      = 1;
   scadaParameters_[156].min              = 0;
   scadaParameters_[156].max              = 0;
-  scadaParameters_[156].command          = OPERATION_ERROR;
-  scadaParameters_[156].value.float_t    = 0;
   // Нагрузка на шток, пусковое время
   scadaParameters_[157].id               = -1;
   scadaParameters_[157].address          = 624;
@@ -1896,8 +1590,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[157].coefficient      = 1;
   scadaParameters_[157].min              = 0;
   scadaParameters_[157].max              = 0;
-  scadaParameters_[157].command          = OPERATION_ERROR;
-  scadaParameters_[157].value.float_t    = 0;
   // Нагрузка на шток, задержка АПВ
   scadaParameters_[158].id               = -1;
   scadaParameters_[158].address          = 625;
@@ -1908,8 +1600,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[158].coefficient      = 1;
   scadaParameters_[158].min              = 0;
   scadaParameters_[158].max              = 0;
-  scadaParameters_[158].command          = OPERATION_ERROR;
-  scadaParameters_[158].value.float_t    = 0;
   // Номер куста
   scadaParameters_[159].id               = CCS_NUMBER_BUSH;
   scadaParameters_[159].address          = 626;
@@ -1920,8 +1610,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[159].coefficient      = 1;
   scadaParameters_[159].min              = 0;
   scadaParameters_[159].max              = 9999;
-  scadaParameters_[159].command          = OPERATION_ERROR;
-  scadaParameters_[159].value.float_t    = 0;
   // Номер скважины
   scadaParameters_[160].id               = CCS_NUMBER_WELL;
   scadaParameters_[160].address          = 627;
@@ -1932,8 +1620,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[160].coefficient      = 1;
   scadaParameters_[160].min              = 0;
   scadaParameters_[160].max              = 65535;
-  scadaParameters_[160].command          = OPERATION_ERROR;
-  scadaParameters_[160].value.float_t    = 0;
   // Адрес Модбас Слейва
   scadaParameters_[161].id               = CCS_SCADA_ADDRESS;
   scadaParameters_[161].address          = 628;
@@ -1944,8 +1630,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[161].coefficient      = 1;
   scadaParameters_[161].min              = 1;
   scadaParameters_[161].max              = 247;
-  scadaParameters_[161].command          = OPERATION_ERROR;
-  scadaParameters_[161].value.float_t    = 0;
   // Мощн. Двигателя
   scadaParameters_[162].id               = VSD_MOTOR_POWER;
   scadaParameters_[162].address          = 629;
@@ -1956,8 +1640,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[162].coefficient      = 0.1;
   scadaParameters_[162].min              = 0;
   scadaParameters_[162].max              = 10000;
-  scadaParameters_[162].command          = OPERATION_ERROR;
-  scadaParameters_[162].value.float_t    = 0;
   // Производительность насоса
   scadaParameters_[163].id               = CCS_PUMP_CAPACITY;
   scadaParameters_[163].address          = 630;
@@ -1968,8 +1650,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[163].coefficient      = 1;
   scadaParameters_[163].min              = 0;
   scadaParameters_[163].max              = 2000;
-  scadaParameters_[163].command          = OPERATION_ERROR;
-  scadaParameters_[163].value.float_t    = 0;
   // Напор насоса
   scadaParameters_[164].id               = CCS_PUMP_HEAD;
   scadaParameters_[164].address          = 631;
@@ -1980,8 +1660,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[164].coefficient      = 1;
   scadaParameters_[164].min              = 0;
   scadaParameters_[164].max              = 9999;
-  scadaParameters_[164].command          = OPERATION_ERROR;
-  scadaParameters_[164].value.float_t    = 0;
   // Глубина спуска
   scadaParameters_[165].id               = CCS_DEPTH;
   scadaParameters_[165].address          = 632;
@@ -1992,8 +1670,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[165].coefficient      = 1;
   scadaParameters_[165].min              = 0;
   scadaParameters_[165].max              = 9999;
-  scadaParameters_[165].command          = OPERATION_ERROR;
-  scadaParameters_[165].value.float_t    = 0;
   // Диаметр НКТ
   scadaParameters_[166].id               = -1;
   scadaParameters_[166].address          = 633;
@@ -2004,8 +1680,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[166].coefficient      = 0.001;
   scadaParameters_[166].min              = 0;
   scadaParameters_[166].max              = 9999000;
-  scadaParameters_[166].command          = OPERATION_ERROR;
-  scadaParameters_[166].value.float_t    = 0;
   // Дата
   scadaParameters_[167].id               = 0;
   scadaParameters_[167].address          = 634;
@@ -2016,8 +1690,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[167].coefficient      = 1;
   scadaParameters_[167].min              = 0;
   scadaParameters_[167].max              = 65535;
-  scadaParameters_[167].command          = OPERATION_ERROR;
-  scadaParameters_[167].value.float_t    = 0;
   // Дата-время
   scadaParameters_[168].id               = 0;
   scadaParameters_[168].address          = 635;
@@ -2028,8 +1700,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[168].coefficient      = 1;
   scadaParameters_[168].min              = 0;
   scadaParameters_[168].max              = 65535;
-  scadaParameters_[168].command          = OPERATION_ERROR;
-  scadaParameters_[168].value.float_t    = 0;
   // Время
   scadaParameters_[169].id               = 0;
   scadaParameters_[169].address          = 636;
@@ -2040,8 +1710,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[169].coefficient      = 1;
   scadaParameters_[169].min              = 0;
   scadaParameters_[169].max              = 65535;
-  scadaParameters_[169].command          = OPERATION_ERROR;
-  scadaParameters_[169].value.float_t    = 0;
   // Пароль
   scadaParameters_[170].id               = CCS_PASSWORD_LEVEL_1;
   scadaParameters_[170].address          = 637;
@@ -2052,8 +1720,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[170].coefficient      = 1;
   scadaParameters_[170].min              = 0;
   scadaParameters_[170].max              = 9999;
-  scadaParameters_[170].command          = OPERATION_ERROR;
-  scadaParameters_[170].value.float_t    = 0;
   // Мастер пароль
   scadaParameters_[171].id               = CCS_PASSWORD_LEVEL_2;
   scadaParameters_[171].address          = 638;
@@ -2064,8 +1730,6 @@ void ScadaRegion30::initParameters()
   scadaParameters_[171].coefficient      = 1;
   scadaParameters_[171].min              = 0;
   scadaParameters_[171].max              = 9999;
-  scadaParameters_[171].command          = OPERATION_ERROR;
-  scadaParameters_[171].value.float_t    = 0;
   // Время работы с момента последнего пуска
   scadaParameters_[172].id               = CCS_RUN_TIME;
   scadaParameters_[172].address          = 353;
@@ -2076,7 +1740,5 @@ void ScadaRegion30::initParameters()
   scadaParameters_[172].coefficient      = 1;
   scadaParameters_[172].min              = 0;
   scadaParameters_[172].max              = 65535;
-  scadaParameters_[172].command          = OPERATION_ERROR;
-  scadaParameters_[172].value.float_t    = 0;
 }
 

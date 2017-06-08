@@ -2,6 +2,14 @@
 
 void ScadaLukoil::initParameters()
 {
+  countParameters_ = 437;
+#ifdef USE_SERVER
+  scadaParameters_ = new ScadaParameter[countParameters_];
+#endif
+  for (int i = 0; i < countParameters_; ++i) {
+    scadaParameters_[i].value.uint32_t = 0;
+  }
+
   // Текущий режим работы
   scadaParameters_[0].id                 = 0;
   scadaParameters_[0].address            = 249;
@@ -12,8 +20,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[0].coefficient        = 1;
   scadaParameters_[0].min                = 0;
   scadaParameters_[0].max                = 65535;
-  scadaParameters_[0].command            = OPERATION_ERROR;
-  scadaParameters_[0].value.float_t      = 0;
   // Время СУ (месяц, день)
   scadaParameters_[1].id                 = 0;
   scadaParameters_[1].address            = 250;
@@ -24,8 +30,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[1].coefficient        = 1;
   scadaParameters_[1].min                = 0;
   scadaParameters_[1].max                = 65535;
-  scadaParameters_[1].command            = OPERATION_ERROR;
-  scadaParameters_[1].value.float_t      = 0;
   // Время СУ (час, год)
   scadaParameters_[2].id                 = 0;
   scadaParameters_[2].address            = 251;
@@ -36,8 +40,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[2].coefficient        = 1;
   scadaParameters_[2].min                = 0;
   scadaParameters_[2].max                = 65535;
-  scadaParameters_[2].command            = OPERATION_ERROR;
-  scadaParameters_[2].value.float_t      = 0;
   // Время СУ (секунды, минуты)
   scadaParameters_[3].id                 = 0;
   scadaParameters_[3].address            = 252;
@@ -48,8 +50,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[3].coefficient        = 1;
   scadaParameters_[3].min                = 0;
   scadaParameters_[3].max                = 65535;
-  scadaParameters_[3].command            = OPERATION_ERROR;
-  scadaParameters_[3].value.float_t      = 0;
   // Таймер СУ (часы)
   scadaParameters_[4].id                 = 0;
   scadaParameters_[4].address            = 253;
@@ -60,8 +60,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[4].coefficient        = 1;
   scadaParameters_[4].min                = 0;
   scadaParameters_[4].max                = 65535;
-  scadaParameters_[4].command            = OPERATION_ERROR;
-  scadaParameters_[4].value.float_t      = 0;
   // Таймер СУ (минуты, секунды)
   scadaParameters_[5].id                 = 0;
   scadaParameters_[5].address            = 254;
@@ -72,8 +70,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[5].coefficient        = 1;
   scadaParameters_[5].min                = 0;
   scadaParameters_[5].max                = 65535;
-  scadaParameters_[5].command            = OPERATION_ERROR;
-  scadaParameters_[5].value.float_t      = 0;
   // Состояние СУ
   scadaParameters_[6].id                 = 0;
   scadaParameters_[6].address            = 255;
@@ -84,8 +80,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[6].coefficient        = 1;
   scadaParameters_[6].min                = 0;
   scadaParameters_[6].max                = 65535;
-  scadaParameters_[6].command            = OPERATION_ERROR;
-  scadaParameters_[6].value.float_t      = 0;
   // Резерв
   scadaParameters_[7].id                 = -1;
   scadaParameters_[7].address            = 256;
@@ -96,8 +90,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[7].coefficient        = 1;
   scadaParameters_[7].min                = 0;
   scadaParameters_[7].max                = 65535;
-  scadaParameters_[7].command            = OPERATION_ERROR;
-  scadaParameters_[7].value.float_t      = 0;
   // Сопротивление изоляции, кОм
   scadaParameters_[8].id                 = CCS_RESISTANCE_ISOLATION;
   scadaParameters_[8].address            = 257;
@@ -108,8 +100,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[8].coefficient        = 1;
   scadaParameters_[8].min                = 0;
   scadaParameters_[8].max                = 10000;
-  scadaParameters_[8].command            = OPERATION_ERROR;
-  scadaParameters_[8].value.float_t      = 0;
   // Напряжение Uab, В
   scadaParameters_[9].id                 = CCS_VOLTAGE_PHASE_1_2;
   scadaParameters_[9].address            = 258;
@@ -120,8 +110,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[9].coefficient        = 1;
   scadaParameters_[9].min                = 0;
   scadaParameters_[9].max                = 500;
-  scadaParameters_[9].command            = OPERATION_ERROR;
-  scadaParameters_[9].value.float_t      = 0;
   // Напряжение Ubc, В
   scadaParameters_[10].id                = CCS_VOLTAGE_PHASE_2_3;
   scadaParameters_[10].address           = 259;
@@ -132,8 +120,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[10].coefficient       = 1;
   scadaParameters_[10].min               = 0;
   scadaParameters_[10].max               = 500;
-  scadaParameters_[10].command           = OPERATION_ERROR;
-  scadaParameters_[10].value.float_t     = 0;
   // Напряжение Uac, В
   scadaParameters_[11].id                = CCS_VOLTAGE_PHASE_3_1;
   scadaParameters_[11].address           = 260;
@@ -144,8 +130,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[11].coefficient       = 1;
   scadaParameters_[11].min               = 0;
   scadaParameters_[11].max               = 500;
-  scadaParameters_[11].command           = OPERATION_ERROR;
-  scadaParameters_[11].value.float_t     = 0;
   // Ток Ia, А
   scadaParameters_[12].id                = CCS_MOTOR_CURRENT_PHASE_1;
   scadaParameters_[12].address           = 261;
@@ -156,8 +140,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[12].coefficient       = 0.1;
   scadaParameters_[12].min               = 0;
   scadaParameters_[12].max               = 65535;
-  scadaParameters_[12].command           = OPERATION_ERROR;
-  scadaParameters_[12].value.float_t     = 0;
   // Ток Ib, А
   scadaParameters_[13].id                = CCS_MOTOR_CURRENT_PHASE_2;
   scadaParameters_[13].address           = 262;
@@ -168,8 +150,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[13].coefficient       = 0.1;
   scadaParameters_[13].min               = 0;
   scadaParameters_[13].max               = 65535;
-  scadaParameters_[13].command           = OPERATION_ERROR;
-  scadaParameters_[13].value.float_t     = 0;
   // Ток Ic, А
   scadaParameters_[14].id                = CCS_MOTOR_CURRENT_PHASE_3;
   scadaParameters_[14].address           = 263;
@@ -180,8 +160,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[14].coefficient       = 0.1;
   scadaParameters_[14].min               = 0;
   scadaParameters_[14].max               = 65535;
-  scadaParameters_[14].command           = OPERATION_ERROR;
-  scadaParameters_[14].value.float_t     = 0;
   // Коэф. мощности
   scadaParameters_[15].id                = CCS_MOTOR_COS_PHI_NOW;
   scadaParameters_[15].address           = 264;
@@ -192,8 +170,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[15].coefficient       = 0.001;
   scadaParameters_[15].min               = 0;
   scadaParameters_[15].max               = 65535;
-  scadaParameters_[15].command           = OPERATION_ERROR;
-  scadaParameters_[15].value.float_t     = 0;
   // Загрузка ПЭД
   scadaParameters_[16].id                = CCS_MOTOR_LOAD_NOW;
   scadaParameters_[16].address           = 265;
@@ -204,8 +180,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[16].coefficient       = 0.1;
   scadaParameters_[16].min               = 0;
   scadaParameters_[16].max               = 5000;
-  scadaParameters_[16].command           = OPERATION_ERROR;
-  scadaParameters_[16].value.float_t     = 0;
   // Напряжение Ua, В
   scadaParameters_[17].id                = CCS_VOLTAGE_PHASE_1;
   scadaParameters_[17].address           = 266;
@@ -216,8 +190,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[17].coefficient       = 1;
   scadaParameters_[17].min               = 0;
   scadaParameters_[17].max               = 350;
-  scadaParameters_[17].command           = OPERATION_ERROR;
-  scadaParameters_[17].value.float_t     = 0;
   // Напряжение Ub, В
   scadaParameters_[18].id                = CCS_VOLTAGE_PHASE_2;
   scadaParameters_[18].address           = 267;
@@ -228,8 +200,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[18].coefficient       = 1;
   scadaParameters_[18].min               = 0;
   scadaParameters_[18].max               = 350;
-  scadaParameters_[18].command           = OPERATION_ERROR;
-  scadaParameters_[18].value.float_t     = 0;
   // Напряжение Uc, В
   scadaParameters_[19].id                = CCS_VOLTAGE_PHASE_3;
   scadaParameters_[19].address           = 268;
@@ -240,8 +210,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[19].coefficient       = 1;
   scadaParameters_[19].min               = 0;
   scadaParameters_[19].max               = 350;
-  scadaParameters_[19].command           = OPERATION_ERROR;
-  scadaParameters_[19].value.float_t     = 0;
   // Выходная частота
   scadaParameters_[20].id                = VSD_FREQUENCY_NOW;
   scadaParameters_[20].address           = 269;
@@ -252,8 +220,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[20].coefficient       = 0.1;
   scadaParameters_[20].min               = 0;
   scadaParameters_[20].max               = 2000;
-  scadaParameters_[20].command           = OPERATION_ERROR;
-  scadaParameters_[20].value.float_t     = 0;
   // Выходной ток ПЧ
   scadaParameters_[21].id                = VSD_IOUT;
   scadaParameters_[21].address           = 270;
@@ -264,8 +230,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[21].coefficient       = 0.1;
   scadaParameters_[21].min               = 0;
   scadaParameters_[21].max               = 65535;
-  scadaParameters_[21].command           = OPERATION_ERROR;
-  scadaParameters_[21].value.float_t     = 0;
   // Напряжение в звене постоянного тока ПЧ
   scadaParameters_[22].id                = VSD_VOLTAGE_DC;
   scadaParameters_[22].address           = 271;
@@ -276,8 +240,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[22].coefficient       = 1;
   scadaParameters_[22].min               = 0;
   scadaParameters_[22].max               = 65535;
-  scadaParameters_[22].command           = OPERATION_ERROR;
-  scadaParameters_[22].value.float_t     = 0;
   // Температура радиатора ПЧ
   scadaParameters_[23].id                = VSD_RADIATOR_TEMPERATURE;
   scadaParameters_[23].address           = 272;
@@ -288,8 +250,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[23].coefficient       = 1;
   scadaParameters_[23].min               = 0;
   scadaParameters_[23].max               = 65535;
-  scadaParameters_[23].command           = OPERATION_ERROR;
-  scadaParameters_[23].value.float_t     = 0;
   // Дисбаланс токов
   scadaParameters_[24].id                = CCS_MOTOR_CURRENT_IMBALANCE;
   scadaParameters_[24].address           = 273;
@@ -300,8 +260,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[24].coefficient       = 0.1;
   scadaParameters_[24].min               = 0;
   scadaParameters_[24].max               = 65535;
-  scadaParameters_[24].command           = OPERATION_ERROR;
-  scadaParameters_[24].value.float_t     = 0;
   // Дисбаланс напряжений
   scadaParameters_[25].id                = CCS_VOLTAGE_IMBALANCE_IN;
   scadaParameters_[25].address           = 274;
@@ -312,8 +270,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[25].coefficient       = 0.1;
   scadaParameters_[25].min               = 0;
   scadaParameters_[25].max               = 65535;
-  scadaParameters_[25].command           = OPERATION_ERROR;
-  scadaParameters_[25].value.float_t     = 0;
   // Чередование фаз (0 - ABC)
   scadaParameters_[26].id                = CCS_PHASE_ROTATION;
   scadaParameters_[26].address           = 275;
@@ -324,8 +280,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[26].coefficient       = 1;
   scadaParameters_[26].min               = 0;
   scadaParameters_[26].max               = 1;
-  scadaParameters_[26].command           = OPERATION_ERROR;
-  scadaParameters_[26].value.float_t     = 0;
   // Частота турбинного вращения
   scadaParameters_[27].id                = CCS_TURBO_ROTATION_NOW;
   scadaParameters_[27].address           = 276;
@@ -336,8 +290,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[27].coefficient       = 0.1;
   scadaParameters_[27].min               = 0;
   scadaParameters_[27].max               = 480;
-  scadaParameters_[27].command           = OPERATION_ERROR;
-  scadaParameters_[27].value.float_t     = 0;
   // Состояние двери шкафа СУ (0 - закрыта)
   scadaParameters_[28].id                = 0;
   scadaParameters_[28].address           = 277;
@@ -348,8 +300,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[28].coefficient       = 1;
   scadaParameters_[28].min               = 0;
   scadaParameters_[28].max               = 1;
-  scadaParameters_[28].command           = OPERATION_ERROR;
-  scadaParameters_[28].value.float_t     = 0;
   // Активная выходная мощность
   scadaParameters_[29].id                = VSD_POWER_ACTIVE;
   scadaParameters_[29].address           = 278;
@@ -360,8 +310,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[29].coefficient       = 1;
   scadaParameters_[29].min               = 0;
   scadaParameters_[29].max               = 65535;
-  scadaParameters_[29].command           = OPERATION_ERROR;
-  scadaParameters_[29].value.float_t     = 0;
   // Полная выходная мощность
   scadaParameters_[30].id                = VSD_POWER_FULL;
   scadaParameters_[30].address           = 279;
@@ -372,8 +320,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[30].coefficient       = 1;
   scadaParameters_[30].min               = 0;
   scadaParameters_[30].max               = 65535;
-  scadaParameters_[30].command           = OPERATION_ERROR;
-  scadaParameters_[30].value.float_t     = 0;
   // Выходное напряжение ПЧ
   scadaParameters_[31].id                = VSD_VOLTAGE_LINE;
   scadaParameters_[31].address           = 280;
@@ -384,8 +330,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[31].coefficient       = 1;
   scadaParameters_[31].min               = 0;
   scadaParameters_[31].max               = 65535;
-  scadaParameters_[31].command           = OPERATION_ERROR;
-  scadaParameters_[31].value.float_t     = 0;
   // Выходное напряжение ТМПН
   scadaParameters_[32].id                = CCS_TRANS_OUTPUT_VOLTAGE_LINE;
   scadaParameters_[32].address           = 281;
@@ -396,8 +340,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[32].coefficient       = 1;
   scadaParameters_[32].min               = 0;
   scadaParameters_[32].max               = 65535;
-  scadaParameters_[32].command           = OPERATION_ERROR;
-  scadaParameters_[32].value.float_t     = 0;
   // Температура на приеме насоса
   scadaParameters_[33].id                = TMS_TEMPERATURE_INTAKE;
   scadaParameters_[33].address           = 282;
@@ -408,8 +350,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[33].coefficient       = 0.01;
   scadaParameters_[33].min               = 0;
   scadaParameters_[33].max               = 65535;
-  scadaParameters_[33].command           = OPERATION_ERROR;
-  scadaParameters_[33].value.float_t     = 0;
   // Температура масла ПЭД
   scadaParameters_[34].id                = TMS_TEMPERATURE_MOTOR;
   scadaParameters_[34].address           = 283;
@@ -420,8 +360,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[34].coefficient       = 0.01;
   scadaParameters_[34].min               = 0;
   scadaParameters_[34].max               = 65535;
-  scadaParameters_[34].command           = OPERATION_ERROR;
-  scadaParameters_[34].value.float_t     = 0;
   // Вибрация X, g
   scadaParameters_[35].id                = TMS_ACCELERATION_X_INTAKE;
   scadaParameters_[35].address           = 284;
@@ -432,8 +370,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[35].coefficient       = 0.01;
   scadaParameters_[35].min               = 0;
   scadaParameters_[35].max               = 65535;
-  scadaParameters_[35].command           = OPERATION_ERROR;
-  scadaParameters_[35].value.float_t     = 0;
   // Вибрация Y, g
   scadaParameters_[36].id                = TMS_ACCELERATION_Y_INTAKE;
   scadaParameters_[36].address           = 285;
@@ -444,8 +380,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[36].coefficient       = 0.01;
   scadaParameters_[36].min               = 0;
   scadaParameters_[36].max               = 65535;
-  scadaParameters_[36].command           = OPERATION_ERROR;
-  scadaParameters_[36].value.float_t     = 0;
   // Давление на приеме насоса, МПа
   scadaParameters_[37].id                = TMS_PRESSURE_INTAKE;
   scadaParameters_[37].address           = 286;
@@ -456,8 +390,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[37].coefficient       = 0.001;
   scadaParameters_[37].min               = 0;
   scadaParameters_[37].max               = 65535;
-  scadaParameters_[37].command           = OPERATION_ERROR;
-  scadaParameters_[37].value.float_t     = 0;
   // Давление масла ПЭД, Мпа
   scadaParameters_[38].id                = TMS_PRESSURE_MOTOR;
   scadaParameters_[38].address           = 287;
@@ -468,8 +400,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[38].coefficient       = 0.001;
   scadaParameters_[38].min               = 0;
   scadaParameters_[38].max               = 65535;
-  scadaParameters_[38].command           = OPERATION_ERROR;
-  scadaParameters_[38].value.float_t     = 0;
   // Резерв
   scadaParameters_[39].id                = -1;
   scadaParameters_[39].address           = 288;
@@ -480,8 +410,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[39].coefficient       = 1;
   scadaParameters_[39].min               = 0;
   scadaParameters_[39].max               = 65535;
-  scadaParameters_[39].command           = OPERATION_ERROR;
-  scadaParameters_[39].value.float_t     = 0;
   // Резерв
   scadaParameters_[40].id                = -1;
   scadaParameters_[40].address           = 289;
@@ -492,8 +420,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[40].coefficient       = 1;
   scadaParameters_[40].min               = 0;
   scadaParameters_[40].max               = 65535;
-  scadaParameters_[40].command           = OPERATION_ERROR;
-  scadaParameters_[40].value.float_t     = 0;
   // Резерв
   scadaParameters_[41].id                = -1;
   scadaParameters_[41].address           = 290;
@@ -504,8 +430,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[41].coefficient       = 1;
   scadaParameters_[41].min               = 0;
   scadaParameters_[41].max               = 65535;
-  scadaParameters_[41].command           = OPERATION_ERROR;
-  scadaParameters_[41].value.float_t     = 0;
   // Резерв
   scadaParameters_[42].id                = -1;
   scadaParameters_[42].address           = 291;
@@ -516,8 +440,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[42].coefficient       = 1;
   scadaParameters_[42].min               = 0;
   scadaParameters_[42].max               = 65535;
-  scadaParameters_[42].command           = OPERATION_ERROR;
-  scadaParameters_[42].value.float_t     = 0;
   // Сигнал на аналоговом входе 1
   scadaParameters_[43].id                = CCS_AI_1_VALUE;
   scadaParameters_[43].address           = 292;
@@ -528,8 +450,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[43].coefficient       = 1;
   scadaParameters_[43].min               = 0;
   scadaParameters_[43].max               = 65535;
-  scadaParameters_[43].command           = OPERATION_ERROR;
-  scadaParameters_[43].value.float_t     = 0;
   // Сигнал на аналоговом входе 2
   scadaParameters_[44].id                = CCS_AI_2_VALUE;
   scadaParameters_[44].address           = 293;
@@ -540,8 +460,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[44].coefficient       = 1;
   scadaParameters_[44].min               = 0;
   scadaParameters_[44].max               = 65535;
-  scadaParameters_[44].command           = OPERATION_ERROR;
-  scadaParameters_[44].value.float_t     = 0;
   // Температура обмотки двигателя
   scadaParameters_[45].id                = TMS_TEMPERATURE_WINDING;
   scadaParameters_[45].address           = 294;
@@ -552,8 +470,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[45].coefficient       = 0.01;
   scadaParameters_[45].min               = 0;
   scadaParameters_[45].max               = 65535;
-  scadaParameters_[45].command           = OPERATION_ERROR;
-  scadaParameters_[45].value.float_t     = 0;
   // Вибрация XY, g
   scadaParameters_[46].id                = TMS_ACCELERATION_XY_INTAKE;
   scadaParameters_[46].address           = 295;
@@ -564,8 +480,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[46].coefficient       = 0.01;
   scadaParameters_[46].min               = 0;
   scadaParameters_[46].max               = 65535;
-  scadaParameters_[46].command           = OPERATION_ERROR;
-  scadaParameters_[46].value.float_t     = 0;
   // Вибрация Z, g
   scadaParameters_[47].id                = TMS_ACCELERATION_Z_INTAKE;
   scadaParameters_[47].address           = 296;
@@ -576,8 +490,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[47].coefficient       = 0.01;
   scadaParameters_[47].min               = 0;
   scadaParameters_[47].max               = 65535;
-  scadaParameters_[47].command           = OPERATION_ERROR;
-  scadaParameters_[47].value.float_t     = 0;
   // Давление на приеме насоса, кгс/см2
   scadaParameters_[48].id                = TMS_PRESSURE_INTAKE;
   scadaParameters_[48].address           = 297;
@@ -588,8 +500,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[48].coefficient       = 0.01;
   scadaParameters_[48].min               = 0;
   scadaParameters_[48].max               = 65535;
-  scadaParameters_[48].command           = OPERATION_ERROR;
-  scadaParameters_[48].value.float_t     = 0;
   // Давление масла ПЭД, кгс/см2
   scadaParameters_[49].id                = TMS_PRESSURE_MOTOR;
   scadaParameters_[49].address           = 298;
@@ -600,8 +510,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[49].coefficient       = 0.01;
   scadaParameters_[49].min               = 0;
   scadaParameters_[49].max               = 65535;
-  scadaParameters_[49].command           = OPERATION_ERROR;
-  scadaParameters_[49].value.float_t     = 0;
   // Номер последнего принятого кадра ТМС
   scadaParameters_[50].id                = -1;
   scadaParameters_[50].address           = 299;
@@ -612,8 +520,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[50].coefficient       = 1;
   scadaParameters_[50].min               = 0;
   scadaParameters_[50].max               = 65535;
-  scadaParameters_[50].command           = OPERATION_ERROR;
-  scadaParameters_[50].value.float_t     = 0;
   // Состояние ТМС
   scadaParameters_[51].id                = 0;
   scadaParameters_[51].address           = 300;
@@ -624,8 +530,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[51].coefficient       = 1;
   scadaParameters_[51].min               = 0;
   scadaParameters_[51].max               = 65535;
-  scadaParameters_[51].command           = OPERATION_ERROR;
-  scadaParameters_[51].value.float_t     = 0;
   // Потребляемая СУ активная мощность
   scadaParameters_[52].id                = EM_ACTIVE_POWER;
   scadaParameters_[52].address           = 301;
@@ -636,8 +540,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[52].coefficient       = 0.1;
   scadaParameters_[52].min               = 0;
   scadaParameters_[52].max               = 65535;
-  scadaParameters_[52].command           = OPERATION_ERROR;
-  scadaParameters_[52].value.float_t     = 0;
   // Потребляемая СУ реактивная мощность
   scadaParameters_[53].id                = EM_REACTIVE_POWER;
   scadaParameters_[53].address           = 302;
@@ -648,8 +550,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[53].coefficient       = 0.1;
   scadaParameters_[53].min               = 0;
   scadaParameters_[53].max               = 65535;
-  scadaParameters_[53].command           = OPERATION_ERROR;
-  scadaParameters_[53].value.float_t     = 0;
   // Потребляемая СУ полная мощность
   scadaParameters_[54].id                = EM_FULL_POWER;
   scadaParameters_[54].address           = 303;
@@ -660,8 +560,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[54].coefficient       = 0.1;
   scadaParameters_[54].min               = 0;
   scadaParameters_[54].max               = 65535;
-  scadaParameters_[54].command           = OPERATION_ERROR;
-  scadaParameters_[54].value.float_t     = 0;
   // Кол-во отключений ПЭД по ЗСП
   scadaParameters_[55].id                = CCS_PROT_UNDERLOAD_COUNT_STOP;
   scadaParameters_[55].address           = 2301;
@@ -672,8 +570,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[55].coefficient       = 1;
   scadaParameters_[55].min               = 0;
   scadaParameters_[55].max               = 65535;
-  scadaParameters_[55].command           = OPERATION_ERROR;
-  scadaParameters_[55].value.float_t     = 0;
   // Кол-во отключений ПЭД по ЗП
   scadaParameters_[56].id                = CCS_PROT_OVERLOAD_COUNT_STOP;
   scadaParameters_[56].address           = 2302;
@@ -684,8 +580,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[56].coefficient       = 1;
   scadaParameters_[56].min               = 0;
   scadaParameters_[56].max               = 65535;
-  scadaParameters_[56].command           = OPERATION_ERROR;
-  scadaParameters_[56].value.float_t     = 0;
   // Кол-во отключений ПЭД по другим защитам
   scadaParameters_[57].id                = CCS_PROT_OTHER_COUNT_STOP;
   scadaParameters_[57].address           = 2303;
@@ -696,8 +590,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[57].coefficient       = 1;
   scadaParameters_[57].min               = 0;
   scadaParameters_[57].max               = 65535;
-  scadaParameters_[57].command           = OPERATION_ERROR;
-  scadaParameters_[57].value.float_t     = 0;
   // Всего кол-во пусков ПЭД
   scadaParameters_[58].id                = CCS_COUNT_START;
   scadaParameters_[58].address           = 2304;
@@ -708,8 +600,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[58].coefficient       = 1;
   scadaParameters_[58].min               = 0;
   scadaParameters_[58].max               = 65535;
-  scadaParameters_[58].command           = OPERATION_ERROR;
-  scadaParameters_[58].value.float_t     = 0;
   // Кол-во пусков ПЭД за месяц
   scadaParameters_[59].id                = 0;
   scadaParameters_[59].address           = 2305;
@@ -720,8 +610,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[59].coefficient       = 1;
   scadaParameters_[59].min               = 0;
   scadaParameters_[59].max               = 65535;
-  scadaParameters_[59].command           = OPERATION_ERROR;
-  scadaParameters_[59].value.float_t     = 0;
   // Кол-во пусков ПЭД за день
   scadaParameters_[60].id                = 0;
   scadaParameters_[60].address           = 2306;
@@ -732,8 +620,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[60].coefficient       = 1;
   scadaParameters_[60].min               = 0;
   scadaParameters_[60].max               = 65535;
-  scadaParameters_[60].command           = OPERATION_ERROR;
-  scadaParameters_[60].value.float_t     = 0;
   // Общее время работы ПЭД (часы)
   scadaParameters_[61].id                = CCS_GENERAL_RUN_DATE_TIME;
   scadaParameters_[61].address           = 2307;
@@ -744,8 +630,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[61].coefficient       = 1;
   scadaParameters_[61].min               = 0;
   scadaParameters_[61].max               = 65535;
-  scadaParameters_[61].command           = OPERATION_ERROR;
-  scadaParameters_[61].value.float_t     = 0;
   // Время работы за месяц (часы)
   scadaParameters_[62].id                = 0;
   scadaParameters_[62].address           = 2308;
@@ -756,8 +640,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[62].coefficient       = 1;
   scadaParameters_[62].min               = 0;
   scadaParameters_[62].max               = 65535;
-  scadaParameters_[62].command           = OPERATION_ERROR;
-  scadaParameters_[62].value.float_t     = 0;
   // Время работы за день (часы)
   scadaParameters_[63].id                = 0;
   scadaParameters_[63].address           = 2309;
@@ -768,8 +650,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[63].coefficient       = 1;
   scadaParameters_[63].min               = 0;
   scadaParameters_[63].max               = 23;
-  scadaParameters_[63].command           = OPERATION_ERROR;
-  scadaParameters_[63].value.float_t     = 0;
   // Время работы за день (минуты)
   scadaParameters_[64].id                = 0;
   scadaParameters_[64].address           = 2310;
@@ -780,8 +660,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[64].coefficient       = 1;
   scadaParameters_[64].min               = 0;
   scadaParameters_[64].max               = 59;
-  scadaParameters_[64].command           = OPERATION_ERROR;
-  scadaParameters_[64].value.float_t     = 0;
   // Резерв
   scadaParameters_[65].id                = -1;
   scadaParameters_[65].address           = 2311;
@@ -792,8 +670,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[65].coefficient       = 1;
   scadaParameters_[65].min               = 0;
   scadaParameters_[65].max               = 65535;
-  scadaParameters_[65].command           = OPERATION_ERROR;
-  scadaParameters_[65].value.float_t     = 0;
   // Время работы с момента последнего пуска (часы)
   scadaParameters_[66].id                = 0;
   scadaParameters_[66].address           = 2312;
@@ -804,8 +680,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[66].coefficient       = 1;
   scadaParameters_[66].min               = 0;
   scadaParameters_[66].max               = 65535;
-  scadaParameters_[66].command           = OPERATION_ERROR;
-  scadaParameters_[66].value.float_t     = 0;
   // Время работы с момента последнего пуска (минуты)
   scadaParameters_[67].id                = 0;
   scadaParameters_[67].address           = 2313;
@@ -816,8 +690,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[67].coefficient       = 1;
   scadaParameters_[67].min               = 0;
   scadaParameters_[67].max               = 65535;
-  scadaParameters_[67].command           = OPERATION_ERROR;
-  scadaParameters_[67].value.float_t     = 0;
   // Время последнего пуска (месяц, день)
   scadaParameters_[68].id                = 0;
   scadaParameters_[68].address           = 2314;
@@ -828,8 +700,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[68].coefficient       = 1;
   scadaParameters_[68].min               = 0;
   scadaParameters_[68].max               = 65535;
-  scadaParameters_[68].command           = OPERATION_ERROR;
-  scadaParameters_[68].value.float_t     = 0;
   // Время последнего пуска (час, год)
   scadaParameters_[69].id                = 0;
   scadaParameters_[69].address           = 2315;
@@ -840,8 +710,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[69].coefficient       = 1;
   scadaParameters_[69].min               = 0;
   scadaParameters_[69].max               = 65535;
-  scadaParameters_[69].command           = OPERATION_ERROR;
-  scadaParameters_[69].value.float_t     = 0;
   // Время последнего пуска (секунды, минуты)
   scadaParameters_[70].id                = 0;
   scadaParameters_[70].address           = 2316;
@@ -852,8 +720,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[70].coefficient       = 1;
   scadaParameters_[70].min               = 0;
   scadaParameters_[70].max               = 65535;
-  scadaParameters_[70].command           = OPERATION_ERROR;
-  scadaParameters_[70].value.float_t     = 0;
   // Общее время простоя ПЭД (часы)
   scadaParameters_[71].id                = CCS_GENERAL_STOP_DATE_TIME;
   scadaParameters_[71].address           = 2317;
@@ -864,8 +730,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[71].coefficient       = 1;
   scadaParameters_[71].min               = 0;
   scadaParameters_[71].max               = 65535;
-  scadaParameters_[71].command           = OPERATION_ERROR;
-  scadaParameters_[71].value.float_t     = 0;
   // Потреблённая ПЭД полная электоэнергия всего, МВА*ч
   scadaParameters_[72].id                = -1;
   scadaParameters_[72].address           = 2318;
@@ -876,8 +740,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[72].coefficient       = 1;
   scadaParameters_[72].min               = 0;
   scadaParameters_[72].max               = 65535;
-  scadaParameters_[72].command           = OPERATION_ERROR;
-  scadaParameters_[72].value.float_t     = 0;
   // Потреблённая ПЭД полная электоэнергия всего, кВА*ч
   scadaParameters_[73].id                = -1;
   scadaParameters_[73].address           = 2319;
@@ -888,8 +750,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[73].coefficient       = 0.1;
   scadaParameters_[73].min               = 0;
   scadaParameters_[73].max               = 65535;
-  scadaParameters_[73].command           = OPERATION_ERROR;
-  scadaParameters_[73].value.float_t     = 0;
   // Потреблённая ПЭД реактивная электоэнергия всего, МВАр*ч
   scadaParameters_[74].id                = -1;
   scadaParameters_[74].address           = 2320;
@@ -900,8 +760,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[74].coefficient       = 1;
   scadaParameters_[74].min               = 0;
   scadaParameters_[74].max               = 65535;
-  scadaParameters_[74].command           = OPERATION_ERROR;
-  scadaParameters_[74].value.float_t     = 0;
   // Потреблённая ПЭД реактивная электоэнергия всего, кВАр*ч
   scadaParameters_[75].id                = -1;
   scadaParameters_[75].address           = 2321;
@@ -912,8 +770,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[75].coefficient       = 0.1;
   scadaParameters_[75].min               = 0;
   scadaParameters_[75].max               = 65535;
-  scadaParameters_[75].command           = OPERATION_ERROR;
-  scadaParameters_[75].value.float_t     = 0;
   // Потреблённая ПЭД активная электоэнергия всего, МВт*ч
   scadaParameters_[76].id                = -1;
   scadaParameters_[76].address           = 2322;
@@ -924,8 +780,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[76].coefficient       = 1;
   scadaParameters_[76].min               = 0;
   scadaParameters_[76].max               = 65535;
-  scadaParameters_[76].command           = OPERATION_ERROR;
-  scadaParameters_[76].value.float_t     = 0;
   // Потреблённая ПЭД активная электоэнергия всего, кВт*ч
   scadaParameters_[77].id                = -1;
   scadaParameters_[77].address           = 2323;
@@ -936,8 +790,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[77].coefficient       = 0.1;
   scadaParameters_[77].min               = 0;
   scadaParameters_[77].max               = 65535;
-  scadaParameters_[77].command           = OPERATION_ERROR;
-  scadaParameters_[77].value.float_t     = 0;
   // Потреблённая ПЭД активная электоэнергия за месяц, МВт*ч
   scadaParameters_[78].id                = -1;
   scadaParameters_[78].address           = 2324;
@@ -948,8 +800,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[78].coefficient       = 1;
   scadaParameters_[78].min               = 0;
   scadaParameters_[78].max               = 65535;
-  scadaParameters_[78].command           = OPERATION_ERROR;
-  scadaParameters_[78].value.float_t     = 0;
   // Потреблённая ПЭД активная электоэнергия за месяц, кВт*ч
   scadaParameters_[79].id                = -1;
   scadaParameters_[79].address           = 2325;
@@ -960,8 +810,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[79].coefficient       = 0.1;
   scadaParameters_[79].min               = 0;
   scadaParameters_[79].max               = 65535;
-  scadaParameters_[79].command           = OPERATION_ERROR;
-  scadaParameters_[79].value.float_t     = 0;
   // Потреблённая ПЭД активная электоэнергия за день, МВт*ч
   scadaParameters_[80].id                = -1;
   scadaParameters_[80].address           = 2326;
@@ -972,8 +820,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[80].coefficient       = 1;
   scadaParameters_[80].min               = 0;
   scadaParameters_[80].max               = 65535;
-  scadaParameters_[80].command           = OPERATION_ERROR;
-  scadaParameters_[80].value.float_t     = 0;
   // Потреблённая ПЭД активная электоэнергия за день, кВт*ч
   scadaParameters_[81].id                = -1;
   scadaParameters_[81].address           = 2327;
@@ -984,8 +830,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[81].coefficient       = 0.1;
   scadaParameters_[81].min               = 0;
   scadaParameters_[81].max               = 65535;
-  scadaParameters_[81].command           = OPERATION_ERROR;
-  scadaParameters_[81].value.float_t     = 0;
   // Потреблённая ПЭД активная электоэнергия с момента последнего пуска, МВт*ч
   scadaParameters_[82].id                = -1;
   scadaParameters_[82].address           = 2328;
@@ -996,8 +840,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[82].coefficient       = 1;
   scadaParameters_[82].min               = 0;
   scadaParameters_[82].max               = 65535;
-  scadaParameters_[82].command           = OPERATION_ERROR;
-  scadaParameters_[82].value.float_t     = 0;
   // Потреблённая ПЭД активная электоэнергия с момента последнего пуска, кВт*ч
   scadaParameters_[83].id                = -1;
   scadaParameters_[83].address           = 2329;
@@ -1008,8 +850,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[83].coefficient       = 0.1;
   scadaParameters_[83].min               = 0;
   scadaParameters_[83].max               = 65535;
-  scadaParameters_[83].command           = OPERATION_ERROR;
-  scadaParameters_[83].value.float_t     = 0;
   // Время сброса счетчиков статистики и электроэнергии (месяц, день)
   scadaParameters_[84].id                = 0;
   scadaParameters_[84].address           = 2330;
@@ -1020,8 +860,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[84].coefficient       = 1;
   scadaParameters_[84].min               = 0;
   scadaParameters_[84].max               = 65535;
-  scadaParameters_[84].command           = OPERATION_ERROR;
-  scadaParameters_[84].value.float_t     = 0;
   // Время сброса счетчиков статистики и электроэнергии (час, год)
   scadaParameters_[85].id                = 0;
   scadaParameters_[85].address           = 2331;
@@ -1032,8 +870,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[85].coefficient       = 1;
   scadaParameters_[85].min               = 0;
   scadaParameters_[85].max               = 65535;
-  scadaParameters_[85].command           = OPERATION_ERROR;
-  scadaParameters_[85].value.float_t     = 0;
   // Время сброса счетчиков статистики и электроэнергии (секунды, минуты)
   scadaParameters_[86].id                = 0;
   scadaParameters_[86].address           = 2332;
@@ -1044,8 +880,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[86].coefficient       = 1;
   scadaParameters_[86].min               = 0;
   scadaParameters_[86].max               = 65535;
-  scadaParameters_[86].command           = OPERATION_ERROR;
-  scadaParameters_[86].value.float_t     = 0;
   // Резерв
   scadaParameters_[87].id                = -1;
   scadaParameters_[87].address           = 2333;
@@ -1056,8 +890,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[87].coefficient       = 1;
   scadaParameters_[87].min               = 0;
   scadaParameters_[87].max               = 65535;
-  scadaParameters_[87].command           = OPERATION_ERROR;
-  scadaParameters_[87].value.float_t     = 0;
   // Резерв
   scadaParameters_[88].id                = -1;
   scadaParameters_[88].address           = 2334;
@@ -1068,8 +900,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[88].coefficient       = 1;
   scadaParameters_[88].min               = 0;
   scadaParameters_[88].max               = 65535;
-  scadaParameters_[88].command           = OPERATION_ERROR;
-  scadaParameters_[88].value.float_t     = 0;
   // Резерв
   scadaParameters_[89].id                = -1;
   scadaParameters_[89].address           = 2335;
@@ -1080,8 +910,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[89].coefficient       = 1;
   scadaParameters_[89].min               = 0;
   scadaParameters_[89].max               = 65535;
-  scadaParameters_[89].command           = OPERATION_ERROR;
-  scadaParameters_[89].value.float_t     = 0;
   // Потреблённая СУ активная электоэнергия всего, МВт*ч
   scadaParameters_[90].id                = 0;
   scadaParameters_[90].address           = 2336;
@@ -1092,8 +920,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[90].coefficient       = 1;
   scadaParameters_[90].min               = 0;
   scadaParameters_[90].max               = 65535;
-  scadaParameters_[90].command           = OPERATION_ERROR;
-  scadaParameters_[90].value.float_t     = 0;
   // Потреблённая СУ активная электоэнергия всего, кВт*ч
   scadaParameters_[91].id                = 0;
   scadaParameters_[91].address           = 2337;
@@ -1104,8 +930,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[91].coefficient       = 0.1;
   scadaParameters_[91].min               = 0;
   scadaParameters_[91].max               = 65535;
-  scadaParameters_[91].command           = OPERATION_ERROR;
-  scadaParameters_[91].value.float_t     = 0;
   // Потреблённая СУ реактивная электоэнергия всего, МВАр*ч
   scadaParameters_[92].id                = 0;
   scadaParameters_[92].address           = 2338;
@@ -1116,8 +940,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[92].coefficient       = 1;
   scadaParameters_[92].min               = 0;
   scadaParameters_[92].max               = 65535;
-  scadaParameters_[92].command           = OPERATION_ERROR;
-  scadaParameters_[92].value.float_t     = 0;
   // Потреблённая СУ реактивная электоэнергия всего, кВАр*ч
   scadaParameters_[93].id                = 0;
   scadaParameters_[93].address           = 2339;
@@ -1128,8 +950,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[93].coefficient       = 0.1;
   scadaParameters_[93].min               = 0;
   scadaParameters_[93].max               = 65535;
-  scadaParameters_[93].command           = OPERATION_ERROR;
-  scadaParameters_[93].value.float_t     = 0;
   // Потреблённая СУ полная электоэнергия всего, МВА*ч
   scadaParameters_[94].id                = 0;
   scadaParameters_[94].address           = 2340;
@@ -1140,8 +960,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[94].coefficient       = 1;
   scadaParameters_[94].min               = 0;
   scadaParameters_[94].max               = 65535;
-  scadaParameters_[94].command           = OPERATION_ERROR;
-  scadaParameters_[94].value.float_t     = 0;
   // Потреблённая СУ полная электоэнергия всего, кВА*ч
   scadaParameters_[95].id                = 0;
   scadaParameters_[95].address           = 2341;
@@ -1152,8 +970,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[95].coefficient       = 0.1;
   scadaParameters_[95].min               = 0;
   scadaParameters_[95].max               = 65535;
-  scadaParameters_[95].command           = OPERATION_ERROR;
-  scadaParameters_[95].value.float_t     = 0;
   // Потреблённая СУ активная электоэнергия за тек. месяц, МВт*ч
   scadaParameters_[96].id                = 0;
   scadaParameters_[96].address           = 2342;
@@ -1164,8 +980,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[96].coefficient       = 1;
   scadaParameters_[96].min               = 0;
   scadaParameters_[96].max               = 65535;
-  scadaParameters_[96].command           = OPERATION_ERROR;
-  scadaParameters_[96].value.float_t     = 0;
   // Потреблённая СУ активная электоэнергия за тек. месяц, кВт*ч
   scadaParameters_[97].id                = 0;
   scadaParameters_[97].address           = 2343;
@@ -1176,8 +990,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[97].coefficient       = 0.1;
   scadaParameters_[97].min               = 0;
   scadaParameters_[97].max               = 65535;
-  scadaParameters_[97].command           = OPERATION_ERROR;
-  scadaParameters_[97].value.float_t     = 0;
   // Потреблённая СУ реактивная электоэнергия за тек. месяц, МВАр*ч
   scadaParameters_[98].id                = 0;
   scadaParameters_[98].address           = 2344;
@@ -1188,8 +1000,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[98].coefficient       = 1;
   scadaParameters_[98].min               = 0;
   scadaParameters_[98].max               = 65535;
-  scadaParameters_[98].command           = OPERATION_ERROR;
-  scadaParameters_[98].value.float_t     = 0;
   // Потреблённая СУ реактивная электоэнергия за тек. месяц, кВАр*ч
   scadaParameters_[99].id                = 0;
   scadaParameters_[99].address           = 2345;
@@ -1200,8 +1010,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[99].coefficient       = 0.1;
   scadaParameters_[99].min               = 0;
   scadaParameters_[99].max               = 65535;
-  scadaParameters_[99].command           = OPERATION_ERROR;
-  scadaParameters_[99].value.float_t     = 0;
   // Потреблённая СУ полная электоэнергия за тек. месяц, МВА*ч
   scadaParameters_[100].id               = 0;
   scadaParameters_[100].address          = 2346;
@@ -1212,8 +1020,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[100].coefficient      = 1;
   scadaParameters_[100].min              = 0;
   scadaParameters_[100].max              = 65535;
-  scadaParameters_[100].command          = OPERATION_ERROR;
-  scadaParameters_[100].value.float_t    = 0;
   // Потреблённая СУ полная электоэнергия за тек. месяц, кВА*ч
   scadaParameters_[101].id               = 0;
   scadaParameters_[101].address          = 2347;
@@ -1224,8 +1030,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[101].coefficient      = 0.1;
   scadaParameters_[101].min              = 0;
   scadaParameters_[101].max              = 65535;
-  scadaParameters_[101].command          = OPERATION_ERROR;
-  scadaParameters_[101].value.float_t    = 0;
   // Потреблённая СУ активная электоэнергия за пред. месяц, МВт*ч
   scadaParameters_[102].id               = 0;
   scadaParameters_[102].address          = 2348;
@@ -1236,8 +1040,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[102].coefficient      = 1;
   scadaParameters_[102].min              = 0;
   scadaParameters_[102].max              = 65535;
-  scadaParameters_[102].command          = OPERATION_ERROR;
-  scadaParameters_[102].value.float_t    = 0;
   // Потреблённая СУ активная электоэнергия за пред. месяц, кВт*ч
   scadaParameters_[103].id               = 0;
   scadaParameters_[103].address          = 2349;
@@ -1248,8 +1050,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[103].coefficient      = 0.1;
   scadaParameters_[103].min              = 0;
   scadaParameters_[103].max              = 65535;
-  scadaParameters_[103].command          = OPERATION_ERROR;
-  scadaParameters_[103].value.float_t    = 0;
   // Потреблённая СУ реактивная электоэнергия за пред. месяц, МВАр*ч
   scadaParameters_[104].id               = 0;
   scadaParameters_[104].address          = 2350;
@@ -1260,8 +1060,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[104].coefficient      = 1;
   scadaParameters_[104].min              = 0;
   scadaParameters_[104].max              = 65535;
-  scadaParameters_[104].command          = OPERATION_ERROR;
-  scadaParameters_[104].value.float_t    = 0;
   // Потреблённая СУ реактивная электоэнергия за пред. месяц, кВАр*ч
   scadaParameters_[105].id               = 0;
   scadaParameters_[105].address          = 2351;
@@ -1272,8 +1070,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[105].coefficient      = 0.1;
   scadaParameters_[105].min              = 0;
   scadaParameters_[105].max              = 65535;
-  scadaParameters_[105].command          = OPERATION_ERROR;
-  scadaParameters_[105].value.float_t    = 0;
   // Потреблённая СУ полная электоэнергия за пред. месяц, МВА*ч
   scadaParameters_[106].id               = 0;
   scadaParameters_[106].address          = 2352;
@@ -1284,8 +1080,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[106].coefficient      = 1;
   scadaParameters_[106].min              = 0;
   scadaParameters_[106].max              = 65535;
-  scadaParameters_[106].command          = OPERATION_ERROR;
-  scadaParameters_[106].value.float_t    = 0;
   // Потреблённая СУ полная электоэнергия за пред. месяц, кВА*ч
   scadaParameters_[107].id               = 0;
   scadaParameters_[107].address          = 2353;
@@ -1296,8 +1090,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[107].coefficient      = 0.1;
   scadaParameters_[107].min              = 0;
   scadaParameters_[107].max              = 65535;
-  scadaParameters_[107].command          = OPERATION_ERROR;
-  scadaParameters_[107].value.float_t    = 0;
   // Потреблённая СУ активная электоэнергия за тек. сутки, МВт*ч
   scadaParameters_[108].id               = 0;
   scadaParameters_[108].address          = 2354;
@@ -1308,8 +1100,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[108].coefficient      = 1;
   scadaParameters_[108].min              = 0;
   scadaParameters_[108].max              = 65535;
-  scadaParameters_[108].command          = OPERATION_ERROR;
-  scadaParameters_[108].value.float_t    = 0;
   // Потреблённая СУ активная электоэнергия за тек. сутки, кВт*ч
   scadaParameters_[109].id               = 0;
   scadaParameters_[109].address          = 2355;
@@ -1320,8 +1110,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[109].coefficient      = 0.1;
   scadaParameters_[109].min              = 0;
   scadaParameters_[109].max              = 65535;
-  scadaParameters_[109].command          = OPERATION_ERROR;
-  scadaParameters_[109].value.float_t    = 0;
   // Потреблённая СУ реактивная электоэнергия за тек. сутки, МВАр*ч
   scadaParameters_[110].id               = 0;
   scadaParameters_[110].address          = 2356;
@@ -1332,8 +1120,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[110].coefficient      = 1;
   scadaParameters_[110].min              = 0;
   scadaParameters_[110].max              = 65535;
-  scadaParameters_[110].command          = OPERATION_ERROR;
-  scadaParameters_[110].value.float_t    = 0;
   // Потреблённая СУ реактивная электоэнергия за тек. сутки, кВАр*ч
   scadaParameters_[111].id               = 0;
   scadaParameters_[111].address          = 2357;
@@ -1344,8 +1130,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[111].coefficient      = 0.1;
   scadaParameters_[111].min              = 0;
   scadaParameters_[111].max              = 65535;
-  scadaParameters_[111].command          = OPERATION_ERROR;
-  scadaParameters_[111].value.float_t    = 0;
   // Потреблённая СУ полная электоэнергия за тек. сутки, МВА*ч
   scadaParameters_[112].id               = 0;
   scadaParameters_[112].address          = 2358;
@@ -1356,8 +1140,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[112].coefficient      = 1;
   scadaParameters_[112].min              = 0;
   scadaParameters_[112].max              = 65535;
-  scadaParameters_[112].command          = OPERATION_ERROR;
-  scadaParameters_[112].value.float_t    = 0;
   // Потреблённая СУ полная электоэнергия за тек. сутки, кВА*ч
   scadaParameters_[113].id               = 0;
   scadaParameters_[113].address          = 2359;
@@ -1368,8 +1150,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[113].coefficient      = 0.1;
   scadaParameters_[113].min              = 0;
   scadaParameters_[113].max              = 65535;
-  scadaParameters_[113].command          = OPERATION_ERROR;
-  scadaParameters_[113].value.float_t    = 0;
   // Потреблённая СУ активная электоэнергия за пред. сутки, МВт*ч
   scadaParameters_[114].id               = 0;
   scadaParameters_[114].address          = 2360;
@@ -1380,8 +1160,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[114].coefficient      = 1;
   scadaParameters_[114].min              = 0;
   scadaParameters_[114].max              = 65535;
-  scadaParameters_[114].command          = OPERATION_ERROR;
-  scadaParameters_[114].value.float_t    = 0;
   // Потреблённая СУ активная электоэнергия за пред. сутки, кВт*ч
   scadaParameters_[115].id               = 0;
   scadaParameters_[115].address          = 2361;
@@ -1392,8 +1170,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[115].coefficient      = 0.1;
   scadaParameters_[115].min              = 0;
   scadaParameters_[115].max              = 65535;
-  scadaParameters_[115].command          = OPERATION_ERROR;
-  scadaParameters_[115].value.float_t    = 0;
   // Потреблённая СУ реактивная электоэнергия за пред. сутки, МВАр*ч
   scadaParameters_[116].id               = 0;
   scadaParameters_[116].address          = 2362;
@@ -1404,8 +1180,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[116].coefficient      = 1;
   scadaParameters_[116].min              = 0;
   scadaParameters_[116].max              = 65535;
-  scadaParameters_[116].command          = OPERATION_ERROR;
-  scadaParameters_[116].value.float_t    = 0;
   // Потреблённая СУ реактивная электоэнергия за пред. сутки, кВАр*ч
   scadaParameters_[117].id               = 0;
   scadaParameters_[117].address          = 2363;
@@ -1416,8 +1190,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[117].coefficient      = 0.1;
   scadaParameters_[117].min              = 0;
   scadaParameters_[117].max              = 65535;
-  scadaParameters_[117].command          = OPERATION_ERROR;
-  scadaParameters_[117].value.float_t    = 0;
   // Потреблённая СУ полная электоэнергия за пред. сутки, МВА*ч
   scadaParameters_[118].id               = 0;
   scadaParameters_[118].address          = 2364;
@@ -1428,8 +1200,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[118].coefficient      = 1;
   scadaParameters_[118].min              = 0;
   scadaParameters_[118].max              = 65535;
-  scadaParameters_[118].command          = OPERATION_ERROR;
-  scadaParameters_[118].value.float_t    = 0;
   // Потреблённая СУ полная электоэнергия за пред. сутки, кВА*ч
   scadaParameters_[119].id               = 0;
   scadaParameters_[119].address          = 2365;
@@ -1440,8 +1210,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[119].coefficient      = 0.1;
   scadaParameters_[119].min              = 0;
   scadaParameters_[119].max              = 65535;
-  scadaParameters_[119].command          = OPERATION_ERROR;
-  scadaParameters_[119].value.float_t    = 0;
   // Задержка контроля для ЭКМ высокого давления
   scadaParameters_[120].id               = CCS_PROT_DI_2_ACTIV_DELAY;
   scadaParameters_[120].address          = 757;
@@ -1452,8 +1220,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[120].coefficient      = 1;
   scadaParameters_[120].min              = 0;
   scadaParameters_[120].max              = 59999;
-  scadaParameters_[120].command          = OPERATION_ERROR;
-  scadaParameters_[120].value.float_t    = 0;
   // Количество АПВ после отключения по дисбалансу токов
   scadaParameters_[121].id               = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_LIMIT;
   scadaParameters_[121].address          = 758;
@@ -1464,8 +1230,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[121].coefficient      = 1;
   scadaParameters_[121].min              = 0;
   scadaParameters_[121].max              = 65535;
-  scadaParameters_[121].command          = OPERATION_ERROR;
-  scadaParameters_[121].value.float_t    = 0;
   // Контроль ЭКМ низкого давления
   scadaParameters_[122].id               = CCS_PROT_DI_1_MODE;
   scadaParameters_[122].address          = 759;
@@ -1476,8 +1240,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[122].coefficient      = 1;
   scadaParameters_[122].min              = 0;
   scadaParameters_[122].max              = 2;
-  scadaParameters_[122].command          = OPERATION_ERROR;
-  scadaParameters_[122].value.float_t    = 0;
   // Задержка отключения по сигналу ЭКМ низкого давления
   scadaParameters_[123].id               = CCS_PROT_DI_1_TRIP_DELAY;
   scadaParameters_[123].address          = 760;
@@ -1488,8 +1250,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[123].coefficient      = 1;
   scadaParameters_[123].min              = 0;
   scadaParameters_[123].max              = 59999;
-  scadaParameters_[123].command          = OPERATION_ERROR;
-  scadaParameters_[123].value.float_t    = 0;
   // Задержка АПВ после отключения по сигналу ЭКМ низкого давления
   scadaParameters_[124].id               = CCS_PROT_DI_1_RESTART_DELAY;
   scadaParameters_[124].address          = 761;
@@ -1500,8 +1260,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[124].coefficient      = 1;
   scadaParameters_[124].min              = 0;
   scadaParameters_[124].max              = 59999;
-  scadaParameters_[124].command          = OPERATION_ERROR;
-  scadaParameters_[124].value.float_t    = 0;
   // Количество АПВ для ЭКМ низкого давления
   scadaParameters_[125].id               = CCS_PROT_DI_1_RESTART_LIMIT;
   scadaParameters_[125].address          = 762;
@@ -1512,8 +1270,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[125].coefficient      = 1;
   scadaParameters_[125].min              = 0;
   scadaParameters_[125].max              = 65535;
-  scadaParameters_[125].command          = OPERATION_ERROR;
-  scadaParameters_[125].value.float_t    = 0;
   // Задержка контроля для ЭКМ низкого давления
   scadaParameters_[126].id               = CCS_PROT_DI_1_ACTIV_DELAY;
   scadaParameters_[126].address          = 763;
@@ -1524,8 +1280,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[126].coefficient      = 1;
   scadaParameters_[126].min              = 0;
   scadaParameters_[126].max              = 59999;
-  scadaParameters_[126].command          = OPERATION_ERROR;
-  scadaParameters_[126].value.float_t    = 0;
   // Время СУ (месяц, день)
   scadaParameters_[127].id               = 0;
   scadaParameters_[127].address          = 764;
@@ -1536,8 +1290,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[127].coefficient      = 1;
   scadaParameters_[127].min              = 0;
   scadaParameters_[127].max              = 65535;
-  scadaParameters_[127].command          = OPERATION_ERROR;
-  scadaParameters_[127].value.float_t    = 0;
   // Время СУ (час, год)
   scadaParameters_[128].id               = 0;
   scadaParameters_[128].address          = 765;
@@ -1548,8 +1300,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[128].coefficient      = 1;
   scadaParameters_[128].min              = 0;
   scadaParameters_[128].max              = 65535;
-  scadaParameters_[128].command          = OPERATION_ERROR;
-  scadaParameters_[128].value.float_t    = 0;
   // Время СУ (секунды, минуты)
   scadaParameters_[129].id               = 0;
   scadaParameters_[129].address          = 766;
@@ -1560,8 +1310,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[129].coefficient      = 1;
   scadaParameters_[129].min              = 0;
   scadaParameters_[129].max              = 65535;
-  scadaParameters_[129].command          = OPERATION_ERROR;
-  scadaParameters_[129].value.float_t    = 0;
   // Ток холостого хода ПЭД
   scadaParameters_[130].id               = VSD_UF_UHH;
   scadaParameters_[130].address          = 767;
@@ -1572,8 +1320,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[130].coefficient      = 0.1;
   scadaParameters_[130].min              = 0;
   scadaParameters_[130].max              = 65535;
-  scadaParameters_[130].command          = OPERATION_ERROR;
-  scadaParameters_[130].value.float_t    = 0;
   // Номинальный ток
   scadaParameters_[131].id               = VSD_MOTOR_CURRENT;
   scadaParameters_[131].address          = 768;
@@ -1584,8 +1330,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[131].coefficient      = 0.1;
   scadaParameters_[131].min              = 0;
   scadaParameters_[131].max              = 65535;
-  scadaParameters_[131].command          = OPERATION_ERROR;
-  scadaParameters_[131].value.float_t    = 0;
   // Напряжение отпайки ТМПН
   scadaParameters_[132].id               = CCS_TRANS_VOLTAGE_TAP_OFF;
   scadaParameters_[132].address          = 769;
@@ -1596,8 +1340,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[132].coefficient      = 1;
   scadaParameters_[132].min              = 300;
   scadaParameters_[132].max              = 65535;
-  scadaParameters_[132].command          = OPERATION_ERROR;
-  scadaParameters_[132].value.float_t    = 0;
   // Коэф. номинальный
   scadaParameters_[133].id               = VSD_MOTOR_COS_PHI;
   scadaParameters_[133].address          = 770;
@@ -1608,8 +1350,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[133].coefficient      = 0.001;
   scadaParameters_[133].min              = 0;
   scadaParameters_[133].max              = 1000;
-  scadaParameters_[133].command          = OPERATION_ERROR;
-  scadaParameters_[133].value.float_t    = 0;
   // Резерв
   scadaParameters_[134].id               = -1;
   scadaParameters_[134].address          = 771;
@@ -1620,8 +1360,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[134].coefficient      = 1;
   scadaParameters_[134].min              = 0;
   scadaParameters_[134].max              = 65535;
-  scadaParameters_[134].command          = OPERATION_ERROR;
-  scadaParameters_[134].value.float_t    = 0;
   // Резерв
   scadaParameters_[135].id               = -1;
   scadaParameters_[135].address          = 772;
@@ -1632,8 +1370,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[135].coefficient      = 1;
   scadaParameters_[135].min              = 0;
   scadaParameters_[135].max              = 65535;
-  scadaParameters_[135].command          = OPERATION_ERROR;
-  scadaParameters_[135].value.float_t    = 0;
   // Резерв
   scadaParameters_[136].id               = -1;
   scadaParameters_[136].address          = 773;
@@ -1644,8 +1380,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[136].coefficient      = 1;
   scadaParameters_[136].min              = 0;
   scadaParameters_[136].max              = 65535;
-  scadaParameters_[136].command          = OPERATION_ERROR;
-  scadaParameters_[136].value.float_t    = 0;
   // Резерв
   scadaParameters_[137].id               = -1;
   scadaParameters_[137].address          = 774;
@@ -1656,8 +1390,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[137].coefficient      = 1;
   scadaParameters_[137].min              = 0;
   scadaParameters_[137].max              = 65535;
-  scadaParameters_[137].command          = OPERATION_ERROR;
-  scadaParameters_[137].value.float_t    = 0;
   // Резерв
   scadaParameters_[138].id               = -1;
   scadaParameters_[138].address          = 775;
@@ -1668,8 +1400,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[138].coefficient      = 1;
   scadaParameters_[138].min              = 0;
   scadaParameters_[138].max              = 65535;
-  scadaParameters_[138].command          = OPERATION_ERROR;
-  scadaParameters_[138].value.float_t    = 0;
   // Резерв
   scadaParameters_[139].id               = -1;
   scadaParameters_[139].address          = 776;
@@ -1680,8 +1410,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[139].coefficient      = 1;
   scadaParameters_[139].min              = 0;
   scadaParameters_[139].max              = 65535;
-  scadaParameters_[139].command          = OPERATION_ERROR;
-  scadaParameters_[139].value.float_t    = 0;
   // Задержка контроля недогруза
   scadaParameters_[140].id               = CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY;
   scadaParameters_[140].address          = 777;
@@ -1692,8 +1420,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[140].coefficient      = 1;
   scadaParameters_[140].min              = 0;
   scadaParameters_[140].max              = 59999;
-  scadaParameters_[140].command          = OPERATION_ERROR;
-  scadaParameters_[140].value.float_t    = 0;
   // Контроль недогруза
   scadaParameters_[141].id               = CCS_PROT_MOTOR_UNDERLOAD_MODE;
   scadaParameters_[141].address          = 778;
@@ -1704,8 +1430,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[141].coefficient      = 1;
   scadaParameters_[141].min              = 0;
   scadaParameters_[141].max              = 2;
-  scadaParameters_[141].command          = OPERATION_ERROR;
-  scadaParameters_[141].value.float_t    = 0;
   // Уставка недогруза
   scadaParameters_[142].id               = CCS_PROT_MOTOR_UNDERLOAD_TRIP_SETPOINT;
   scadaParameters_[142].address          = 779;
@@ -1716,8 +1440,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[142].coefficient      = 1;
   scadaParameters_[142].min              = 0;
   scadaParameters_[142].max              = 100;
-  scadaParameters_[142].command          = OPERATION_ERROR;
-  scadaParameters_[142].value.float_t    = 0;
   // Задержка отключения по недогрузу
   scadaParameters_[143].id               = CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY;
   scadaParameters_[143].address          = 780;
@@ -1728,8 +1450,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[143].coefficient      = 1;
   scadaParameters_[143].min              = 0;
   scadaParameters_[143].max              = 59999;
-  scadaParameters_[143].command          = OPERATION_ERROR;
-  scadaParameters_[143].value.float_t    = 0;
   // Задержка АПВ после отключения по недогрузу
   scadaParameters_[144].id               = CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY;
   scadaParameters_[144].address          = 781;
@@ -1740,8 +1460,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[144].coefficient      = 1;
   scadaParameters_[144].min              = 1;
   scadaParameters_[144].max              = 59999;
-  scadaParameters_[144].command          = OPERATION_ERROR;
-  scadaParameters_[144].value.float_t    = 0;
   // Количество АПВ после недогруза
   scadaParameters_[145].id               = CCS_PROT_MOTOR_UNDERLOAD_RESTART_LIMIT;
   scadaParameters_[145].address          = 782;
@@ -1752,8 +1470,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[145].coefficient      = 1;
   scadaParameters_[145].min              = 0;
   scadaParameters_[145].max              = 65535;
-  scadaParameters_[145].command          = OPERATION_ERROR;
-  scadaParameters_[145].value.float_t    = 0;
   // Режим автоматического пересчёта значения загрузки ПЭД в зависимости от выходной частоты
   scadaParameters_[146].id               = -1;
   scadaParameters_[146].address          = 783;
@@ -1764,8 +1480,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[146].coefficient      = 1;
   scadaParameters_[146].min              = 0;
   scadaParameters_[146].max              = 1;
-  scadaParameters_[146].command          = OPERATION_ERROR;
-  scadaParameters_[146].value.float_t    = 0;
   // Контроль перегруза
   scadaParameters_[147].id               = CCS_PROT_MOTOR_OVERLOAD_MODE;
   scadaParameters_[147].address          = 784;
@@ -1776,8 +1490,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[147].coefficient      = 1;
   scadaParameters_[147].min              = 0;
   scadaParameters_[147].max              = 2;
-  scadaParameters_[147].command          = OPERATION_ERROR;
-  scadaParameters_[147].value.float_t    = 0;
   // Уставка перегруза
   scadaParameters_[148].id               = CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT;
   scadaParameters_[148].address          = 785;
@@ -1788,8 +1500,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[148].coefficient      = 1;
   scadaParameters_[148].min              = 50;
   scadaParameters_[148].max              = 400;
-  scadaParameters_[148].command          = OPERATION_ERROR;
-  scadaParameters_[148].value.float_t    = 0;
   // Задержка отключения по перегрузу
   scadaParameters_[149].id               = CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY;
   scadaParameters_[149].address          = 786;
@@ -1800,8 +1510,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[149].coefficient      = 1;
   scadaParameters_[149].min              = 0;
   scadaParameters_[149].max              = 59999;
-  scadaParameters_[149].command          = OPERATION_ERROR;
-  scadaParameters_[149].value.float_t    = 0;
   // Задержка АПВ после отключения по перегрузу
   scadaParameters_[150].id               = CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY;
   scadaParameters_[150].address          = 787;
@@ -1812,8 +1520,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[150].coefficient      = 1;
   scadaParameters_[150].min              = 1;
   scadaParameters_[150].max              = 59999;
-  scadaParameters_[150].command          = OPERATION_ERROR;
-  scadaParameters_[150].value.float_t    = 0;
   // Количество АПВ после перегруза
   scadaParameters_[151].id               = CCS_PROT_MOTOR_OVERLOAD_RESTART_LIMIT;
   scadaParameters_[151].address          = 788;
@@ -1824,8 +1530,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[151].coefficient      = 1;
   scadaParameters_[151].min              = 0;
   scadaParameters_[151].max              = 65535;
-  scadaParameters_[151].command          = OPERATION_ERROR;
-  scadaParameters_[151].value.float_t    = 0;
   // Задержка контроля перегруза
   scadaParameters_[152].id               = CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY;
   scadaParameters_[152].address          = 789;
@@ -1836,8 +1540,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[152].coefficient      = 1;
   scadaParameters_[152].min              = 0;
   scadaParameters_[152].max              = 59999;
-  scadaParameters_[152].command          = OPERATION_ERROR;
-  scadaParameters_[152].value.float_t    = 0;
   // Контроль дисбаланса токов
   scadaParameters_[153].id               = CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE;
   scadaParameters_[153].address          = 790;
@@ -1848,8 +1550,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[153].coefficient      = 1;
   scadaParameters_[153].min              = 0;
   scadaParameters_[153].max              = 2;
-  scadaParameters_[153].command          = OPERATION_ERROR;
-  scadaParameters_[153].value.float_t    = 0;
   // Уставка дисбаланса токов
   scadaParameters_[154].id               = CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_SETPOINT;
   scadaParameters_[154].address          = 791;
@@ -1860,8 +1560,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[154].coefficient      = 0.1;
   scadaParameters_[154].min              = 0;
   scadaParameters_[154].max              = 1000;
-  scadaParameters_[154].command          = OPERATION_ERROR;
-  scadaParameters_[154].value.float_t    = 0;
   // Задержка отключения по дисбалансу токов
   scadaParameters_[155].id               = CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY;
   scadaParameters_[155].address          = 792;
@@ -1872,8 +1570,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[155].coefficient      = 1;
   scadaParameters_[155].min              = 0;
   scadaParameters_[155].max              = 59999;
-  scadaParameters_[155].command          = OPERATION_ERROR;
-  scadaParameters_[155].value.float_t    = 0;
   // Задержка АПВ после отключения по дисбалансу токов
   scadaParameters_[156].id               = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY;
   scadaParameters_[156].address          = 793;
@@ -1884,8 +1580,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[156].coefficient      = 1;
   scadaParameters_[156].min              = 1;
   scadaParameters_[156].max              = 59999;
-  scadaParameters_[156].command          = OPERATION_ERROR;
-  scadaParameters_[156].value.float_t    = 0;
   // Задержка контроля дисбаланса токов
   scadaParameters_[157].id               = CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY;
   scadaParameters_[157].address          = 794;
@@ -1896,8 +1590,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[157].coefficient      = 1;
   scadaParameters_[157].min              = 0;
   scadaParameters_[157].max              = 59999;
-  scadaParameters_[157].command          = OPERATION_ERROR;
-  scadaParameters_[157].value.float_t    = 0;
   // Резерв
   scadaParameters_[158].id               = -1;
   scadaParameters_[158].address          = 795;
@@ -1908,8 +1600,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[158].coefficient      = 1;
   scadaParameters_[158].min              = 0;
   scadaParameters_[158].max              = 65535;
-  scadaParameters_[158].command          = OPERATION_ERROR;
-  scadaParameters_[158].value.float_t    = 0;
   // Контроль пониженного напряжения
   scadaParameters_[159].id               = CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE;
   scadaParameters_[159].address          = 796;
@@ -1920,8 +1610,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[159].coefficient      = 1;
   scadaParameters_[159].min              = 0;
   scadaParameters_[159].max              = 2;
-  scadaParameters_[159].command          = OPERATION_ERROR;
-  scadaParameters_[159].value.float_t    = 0;
   // Уставка пониженного напряжения
   scadaParameters_[160].id               = CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT;
   scadaParameters_[160].address          = 797;
@@ -1932,8 +1620,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[160].coefficient      = 1;
   scadaParameters_[160].min              = 0;
   scadaParameters_[160].max              = 100;
-  scadaParameters_[160].command          = OPERATION_ERROR;
-  scadaParameters_[160].value.float_t    = 0;
   // Задержка отключения по пониженному напряжению
   scadaParameters_[161].id               = CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY;
   scadaParameters_[161].address          = 798;
@@ -1944,8 +1630,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[161].coefficient      = 1;
   scadaParameters_[161].min              = 0;
   scadaParameters_[161].max              = 59999;
-  scadaParameters_[161].command          = OPERATION_ERROR;
-  scadaParameters_[161].value.float_t    = 0;
   // Задержка контроля пониженного напряжения
   scadaParameters_[162].id               = CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY;
   scadaParameters_[162].address          = 799;
@@ -1956,8 +1640,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[162].coefficient      = 1;
   scadaParameters_[162].min              = 0;
   scadaParameters_[162].max              = 59999;
-  scadaParameters_[162].command          = OPERATION_ERROR;
-  scadaParameters_[162].value.float_t    = 0;
   // Контроль повышенного напряжения
   scadaParameters_[163].id               = CCS_PROT_SUPPLY_OVERVOLTAGE_MODE;
   scadaParameters_[163].address          = 800;
@@ -1968,8 +1650,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[163].coefficient      = 1;
   scadaParameters_[163].min              = 0;
   scadaParameters_[163].max              = 2;
-  scadaParameters_[163].command          = OPERATION_ERROR;
-  scadaParameters_[163].value.float_t    = 0;
   // Уставка повышенного напряжения
   scadaParameters_[164].id               = CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT;
   scadaParameters_[164].address          = 801;
@@ -1980,8 +1660,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[164].coefficient      = 1;
   scadaParameters_[164].min              = 100;
   scadaParameters_[164].max              = 260;
-  scadaParameters_[164].command          = OPERATION_ERROR;
-  scadaParameters_[164].value.float_t    = 0;
   // Задержка отключения по повышенному напряжению
   scadaParameters_[165].id               = CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY;
   scadaParameters_[165].address          = 802;
@@ -1992,8 +1670,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[165].coefficient      = 1;
   scadaParameters_[165].min              = 0;
   scadaParameters_[165].max              = 59999;
-  scadaParameters_[165].command          = OPERATION_ERROR;
-  scadaParameters_[165].value.float_t    = 0;
   // Задержка контроля повышенного напряжения
   scadaParameters_[166].id               = CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY;
   scadaParameters_[166].address          = 803;
@@ -2004,8 +1680,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[166].coefficient      = 1;
   scadaParameters_[166].min              = 0;
   scadaParameters_[166].max              = 59999;
-  scadaParameters_[166].command          = OPERATION_ERROR;
-  scadaParameters_[166].value.float_t    = 0;
   // Контроль дисбаланса напряжений
   scadaParameters_[167].id               = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE;
   scadaParameters_[167].address          = 804;
@@ -2016,8 +1690,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[167].coefficient      = 1;
   scadaParameters_[167].min              = 0;
   scadaParameters_[167].max              = 2;
-  scadaParameters_[167].command          = OPERATION_ERROR;
-  scadaParameters_[167].value.float_t    = 0;
   // Уставка дисбаланса напряжений
   scadaParameters_[168].id               = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT;
   scadaParameters_[168].address          = 805;
@@ -2028,8 +1700,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[168].coefficient      = 0.1;
   scadaParameters_[168].min              = 0;
   scadaParameters_[168].max              = 2000;
-  scadaParameters_[168].command          = OPERATION_ERROR;
-  scadaParameters_[168].value.float_t    = 0;
   // Задержка отключения по дисбалансу напряжений
   scadaParameters_[169].id               = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY;
   scadaParameters_[169].address          = 806;
@@ -2040,8 +1710,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[169].coefficient      = 1;
   scadaParameters_[169].min              = 0;
   scadaParameters_[169].max              = 59999;
-  scadaParameters_[169].command          = OPERATION_ERROR;
-  scadaParameters_[169].value.float_t    = 0;
   // Задержка контроля дисбаланса напряжений
   scadaParameters_[170].id               = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY;
   scadaParameters_[170].address          = 807;
@@ -2052,8 +1720,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[170].coefficient      = 1;
   scadaParameters_[170].min              = 0;
   scadaParameters_[170].max              = 59999;
-  scadaParameters_[170].command          = OPERATION_ERROR;
-  scadaParameters_[170].value.float_t    = 0;
   // Контроль сопротивления изоляции
   scadaParameters_[171].id               = CCS_PROT_DHS_RESISTANCE_MODE;
   scadaParameters_[171].address          = 808;
@@ -2064,8 +1730,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[171].coefficient      = 1;
   scadaParameters_[171].min              = 0;
   scadaParameters_[171].max              = 1;
-  scadaParameters_[171].command          = OPERATION_ERROR;
-  scadaParameters_[171].value.float_t    = 0;
   // Уставка минимального сопротивления изоляции
   scadaParameters_[172].id               = CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT;
   scadaParameters_[172].address          = 809;
@@ -2076,8 +1740,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[172].coefficient      = 1;
   scadaParameters_[172].min              = 30;
   scadaParameters_[172].max              = 500;
-  scadaParameters_[172].command          = OPERATION_ERROR;
-  scadaParameters_[172].value.float_t    = 0;
   // Работа при пониженном сопротивлении изоляции
   scadaParameters_[173].id               = CCS_PROT_DHS_RESISTANCE_PARAMETER;
   scadaParameters_[173].address          = 810;
@@ -2088,8 +1750,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[173].coefficient      = 1;
   scadaParameters_[173].min              = 0;
   scadaParameters_[173].max              = 1;
-  scadaParameters_[173].command          = OPERATION_ERROR;
-  scadaParameters_[173].value.float_t    = 0;
   // Коэффициент коррекции сопротивления изоляции
   scadaParameters_[174].id               = CCS_COEF_RESISTANCE_ISOLATION;
   scadaParameters_[174].address          = 811;
@@ -2100,8 +1760,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[174].coefficient      = 0.001;
   scadaParameters_[174].min              = 1;
   scadaParameters_[174].max              = 9999;
-  scadaParameters_[174].command          = OPERATION_ERROR;
-  scadaParameters_[174].value.float_t    = 0;
   // Контроль турбинного вращения
   scadaParameters_[175].id               = 0;
   scadaParameters_[175].address          = 812;
@@ -2112,8 +1770,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[175].coefficient      = 1;
   scadaParameters_[175].min              = 0;
   scadaParameters_[175].max              = 1;
-  scadaParameters_[175].command          = OPERATION_ERROR;
-  scadaParameters_[175].value.float_t    = 0;
   // Уставка турбинного вращения
   scadaParameters_[176].id               = CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT;
   scadaParameters_[176].address          = 813;
@@ -2124,8 +1780,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[176].coefficient      = 0.1;
   scadaParameters_[176].min              = 10;
   scadaParameters_[176].max              = 480;
-  scadaParameters_[176].command          = OPERATION_ERROR;
-  scadaParameters_[176].value.float_t    = 0;
   // Контроль чередования фаз
   scadaParameters_[177].id               = CCS_PROT_SUPPLY_PHASE_ROTATION_MODE;
   scadaParameters_[177].address          = 814;
@@ -2136,8 +1790,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[177].coefficient      = 1;
   scadaParameters_[177].min              = 0;
   scadaParameters_[177].max              = 1;
-  scadaParameters_[177].command          = OPERATION_ERROR;
-  scadaParameters_[177].value.float_t    = 0;
   // Уставка чередования фаз (0 - ABC)
   scadaParameters_[178].id               = CCS_PROT_SUPPLY_PHASE_ROTATION_TRIP_SETPOINT;
   scadaParameters_[178].address          = 815;
@@ -2148,8 +1800,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[178].coefficient      = 1;
   scadaParameters_[178].min              = 0;
   scadaParameters_[178].max              = 1;
-  scadaParameters_[178].command          = OPERATION_ERROR;
-  scadaParameters_[178].value.float_t    = 0;
   // Контроль двери шкафа
   scadaParameters_[179].id               = 0;
   scadaParameters_[179].address          = 816;
@@ -2160,8 +1810,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[179].coefficient      = 1;
   scadaParameters_[179].min              = 0;
   scadaParameters_[179].max              = 1;
-  scadaParameters_[179].command          = OPERATION_ERROR;
-  scadaParameters_[179].value.float_t    = 0;
   // Контроль ЭКМ высокого давления
   scadaParameters_[180].id               = CCS_PROT_DI_2_MODE;
   scadaParameters_[180].address          = 817;
@@ -2172,8 +1820,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[180].coefficient      = 1;
   scadaParameters_[180].min              = 0;
   scadaParameters_[180].max              = 2;
-  scadaParameters_[180].command          = OPERATION_ERROR;
-  scadaParameters_[180].value.float_t    = 0;
   // Задержка отключения по сигналу ЭКМ высокого давления
   scadaParameters_[181].id               = CCS_PROT_DI_2_TRIP_DELAY;
   scadaParameters_[181].address          = 818;
@@ -2184,8 +1830,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[181].coefficient      = 1;
   scadaParameters_[181].min              = 0;
   scadaParameters_[181].max              = 59999;
-  scadaParameters_[181].command          = OPERATION_ERROR;
-  scadaParameters_[181].value.float_t    = 0;
   // Задержка АПВ после отключения по сигналу ЭКМ высокого давления
   scadaParameters_[182].id               = CCS_PROT_DI_2_RESTART_DELAY;
   scadaParameters_[182].address          = 819;
@@ -2196,8 +1840,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[182].coefficient      = 1;
   scadaParameters_[182].min              = 1;
   scadaParameters_[182].max              = 59999;
-  scadaParameters_[182].command          = OPERATION_ERROR;
-  scadaParameters_[182].value.float_t    = 0;
   // Количество АПВ для ЭКМ высокого давления
   scadaParameters_[183].id               = CCS_PROT_DI_2_RESTART_LIMIT;
   scadaParameters_[183].address          = 820;
@@ -2208,8 +1850,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[183].coefficient      = 1;
   scadaParameters_[183].min              = 0;
   scadaParameters_[183].max              = 65535;
-  scadaParameters_[183].command          = OPERATION_ERROR;
-  scadaParameters_[183].value.float_t    = 0;
   // Резерв
   scadaParameters_[184].id               = -1;
   scadaParameters_[184].address          = 821;
@@ -2220,8 +1860,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[184].coefficient      = 1;
   scadaParameters_[184].min              = 0;
   scadaParameters_[184].max              = 65535;
-  scadaParameters_[184].command          = OPERATION_ERROR;
-  scadaParameters_[184].value.float_t    = 0;
   // Резерв
   scadaParameters_[185].id               = -1;
   scadaParameters_[185].address          = 822;
@@ -2232,8 +1870,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[185].coefficient      = 1;
   scadaParameters_[185].min              = 0;
   scadaParameters_[185].max              = 65535;
-  scadaParameters_[185].command          = OPERATION_ERROR;
-  scadaParameters_[185].value.float_t    = 0;
   // Задержка АПВ при подаче электропитания
   scadaParameters_[186].id               = CCS_PROT_SUPPLY_RESTART_DELAY;
   scadaParameters_[186].address          = 823;
@@ -2244,8 +1880,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[186].coefficient      = 1;
   scadaParameters_[186].min              = 1;
   scadaParameters_[186].max              = 59999;
-  scadaParameters_[186].command          = OPERATION_ERROR;
-  scadaParameters_[186].value.float_t    = 0;
   // Работа по программе
   scadaParameters_[187].id               = 0;
   scadaParameters_[187].address          = 824;
@@ -2256,8 +1890,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[187].coefficient      = 1;
   scadaParameters_[187].min              = 0;
   scadaParameters_[187].max              = 1;
-  scadaParameters_[187].command          = OPERATION_ERROR;
-  scadaParameters_[187].value.float_t    = 0;
   // Время работы ПЭД в режиме работы по программе, час
   scadaParameters_[188].id               = 0;
   scadaParameters_[188].address          = 825;
@@ -2268,8 +1900,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[188].coefficient      = 1;
   scadaParameters_[188].min              = 0;
   scadaParameters_[188].max              = 999;
-  scadaParameters_[188].command          = OPERATION_ERROR;
-  scadaParameters_[188].value.float_t    = 0;
   // Время работы ПЭД в режиме работы по программе, мин
   scadaParameters_[189].id               = 0;
   scadaParameters_[189].address          = 826;
@@ -2280,8 +1910,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[189].coefficient      = 1;
   scadaParameters_[189].min              = 0;
   scadaParameters_[189].max              = 59;
-  scadaParameters_[189].command          = OPERATION_ERROR;
-  scadaParameters_[189].value.float_t    = 0;
   // Время простоя ПЭД в режиме работы по программе, час
   scadaParameters_[190].id               = 0;
   scadaParameters_[190].address          = 827;
@@ -2292,8 +1920,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[190].coefficient      = 1;
   scadaParameters_[190].min              = 0;
   scadaParameters_[190].max              = 999;
-  scadaParameters_[190].command          = OPERATION_ERROR;
-  scadaParameters_[190].value.float_t    = 0;
   // Время простоя ПЭД в режиме работы по программе, мин
   scadaParameters_[191].id               = 0;
   scadaParameters_[191].address          = 828;
@@ -2304,8 +1930,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[191].coefficient      = 1;
   scadaParameters_[191].min              = 0;
   scadaParameters_[191].max              = 59;
-  scadaParameters_[191].command          = OPERATION_ERROR;
-  scadaParameters_[191].value.float_t    = 0;
   // Резерв
   scadaParameters_[192].id               = -1;
   scadaParameters_[192].address          = 829;
@@ -2316,8 +1940,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[192].coefficient      = 1;
   scadaParameters_[192].min              = 0;
   scadaParameters_[192].max              = 65535;
-  scadaParameters_[192].command          = OPERATION_ERROR;
-  scadaParameters_[192].value.float_t    = 0;
   // Резерв
   scadaParameters_[193].id               = -1;
   scadaParameters_[193].address          = 830;
@@ -2328,8 +1950,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[193].coefficient      = 1;
   scadaParameters_[193].min              = 0;
   scadaParameters_[193].max              = 65535;
-  scadaParameters_[193].command          = OPERATION_ERROR;
-  scadaParameters_[193].value.float_t    = 0;
   // Резерв
   scadaParameters_[194].id               = -1;
   scadaParameters_[194].address          = 831;
@@ -2340,8 +1960,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[194].coefficient      = 1;
   scadaParameters_[194].min              = 0;
   scadaParameters_[194].max              = 65535;
-  scadaParameters_[194].command          = OPERATION_ERROR;
-  scadaParameters_[194].value.float_t    = 0;
   // Резерв
   scadaParameters_[195].id               = -1;
   scadaParameters_[195].address          = 832;
@@ -2352,8 +1970,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[195].coefficient      = 1;
   scadaParameters_[195].min              = 0;
   scadaParameters_[195].max              = 65535;
-  scadaParameters_[195].command          = OPERATION_ERROR;
-  scadaParameters_[195].value.float_t    = 0;
   // Задержка сброса счётчиков АПВ после пуска
   scadaParameters_[196].id               = 0;
   scadaParameters_[196].address          = 833;
@@ -2364,8 +1980,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[196].coefficient      = 1;
   scadaParameters_[196].min              = 1;
   scadaParameters_[196].max              = 59999;
-  scadaParameters_[196].command          = OPERATION_ERROR;
-  scadaParameters_[196].value.float_t    = 0;
   // Период нормальной записи событий в историю работы ПЭД
   scadaParameters_[197].id               = CCS_LOG_PERIOD_NORMAL;
   scadaParameters_[197].address          = 834;
@@ -2376,8 +1990,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[197].coefficient      = 1;
   scadaParameters_[197].min              = 1;
   scadaParameters_[197].max              = 59999;
-  scadaParameters_[197].command          = OPERATION_ERROR;
-  scadaParameters_[197].value.float_t    = 0;
   // Период ускоренной записи событий в историю работы ПЭД
   scadaParameters_[198].id               = CCS_LOG_PERIOD_FAST;
   scadaParameters_[198].address          = 835;
@@ -2388,8 +2000,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[198].coefficient      = 1;
   scadaParameters_[198].min              = 1;
   scadaParameters_[198].max              = 10;
-  scadaParameters_[198].command          = OPERATION_ERROR;
-  scadaParameters_[198].value.float_t    = 0;
   // Изменение напряжения для записи истории
   scadaParameters_[199].id               = -1;
   scadaParameters_[199].address          = 836;
@@ -2400,8 +2010,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[199].coefficient      = 1;
   scadaParameters_[199].min              = 0;
   scadaParameters_[199].max              = 100;
-  scadaParameters_[199].command          = OPERATION_ERROR;
-  scadaParameters_[199].value.float_t    = 0;
   // Изменение тока для записи истории
   scadaParameters_[200].id               = -1;
   scadaParameters_[200].address          = 837;
@@ -2412,8 +2020,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[200].coefficient      = 1;
   scadaParameters_[200].min              = 0;
   scadaParameters_[200].max              = 100;
-  scadaParameters_[200].command          = OPERATION_ERROR;
-  scadaParameters_[200].value.float_t    = 0;
   // Изменение сопротивления изоляции для записи истории
   scadaParameters_[201].id               = -1;
   scadaParameters_[201].address          = 838;
@@ -2424,8 +2030,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[201].coefficient      = 1;
   scadaParameters_[201].min              = 0;
   scadaParameters_[201].max              = 100;
-  scadaParameters_[201].command          = OPERATION_ERROR;
-  scadaParameters_[201].value.float_t    = 0;
   // Изменение давления для записи истории
   scadaParameters_[202].id               = -1;
   scadaParameters_[202].address          = 839;
@@ -2436,8 +2040,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[202].coefficient      = 1;
   scadaParameters_[202].min              = 0;
   scadaParameters_[202].max              = 100;
-  scadaParameters_[202].command          = OPERATION_ERROR;
-  scadaParameters_[202].value.float_t    = 0;
   // Изменение температуры для записи истории
   scadaParameters_[203].id               = -1;
   scadaParameters_[203].address          = 840;
@@ -2448,8 +2050,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[203].coefficient      = 1;
   scadaParameters_[203].min              = 0;
   scadaParameters_[203].max              = 100;
-  scadaParameters_[203].command          = OPERATION_ERROR;
-  scadaParameters_[203].value.float_t    = 0;
   // Изменение выходной частоты ПЧ для записи истории
   scadaParameters_[204].id               = -1;
   scadaParameters_[204].address          = 841;
@@ -2460,8 +2060,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[204].coefficient      = 1;
   scadaParameters_[204].min              = 0;
   scadaParameters_[204].max              = 100;
-  scadaParameters_[204].command          = OPERATION_ERROR;
-  scadaParameters_[204].value.float_t    = 0;
   // Коэф. коррекции тока Ia
   scadaParameters_[205].id               = CCS_COEF_OUT_CURRENT_1;
   scadaParameters_[205].address          = 842;
@@ -2472,8 +2070,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[205].coefficient      = 0.001;
   scadaParameters_[205].min              = 0;
   scadaParameters_[205].max              = 9999;
-  scadaParameters_[205].command          = OPERATION_ERROR;
-  scadaParameters_[205].value.float_t    = 0;
   // Коэф. коррекции тока Ib
   scadaParameters_[206].id               = CCS_COEF_OUT_CURRENT_2;
   scadaParameters_[206].address          = 843;
@@ -2484,8 +2080,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[206].coefficient      = 0.001;
   scadaParameters_[206].min              = 0;
   scadaParameters_[206].max              = 9999;
-  scadaParameters_[206].command          = OPERATION_ERROR;
-  scadaParameters_[206].value.float_t    = 0;
   // Коэф. коррекции тока Ic
   scadaParameters_[207].id               = CCS_COEF_OUT_CURRENT_3;
   scadaParameters_[207].address          = 844;
@@ -2496,8 +2090,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[207].coefficient      = 0.001;
   scadaParameters_[207].min              = 0;
   scadaParameters_[207].max              = 9999;
-  scadaParameters_[207].command          = OPERATION_ERROR;
-  scadaParameters_[207].value.float_t    = 0;
   // Коэф. коррекции напряжения Uab
   scadaParameters_[208].id               = CCS_COEF_VOLTAGE_IN_A;
   scadaParameters_[208].address          = 845;
@@ -2508,8 +2100,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[208].coefficient      = 0.001;
   scadaParameters_[208].min              = 0;
   scadaParameters_[208].max              = 9999;
-  scadaParameters_[208].command          = OPERATION_ERROR;
-  scadaParameters_[208].value.float_t    = 0;
   // Коэф. коррекции напряжения Ubc
   scadaParameters_[209].id               = CCS_COEF_VOLTAGE_IN_B;
   scadaParameters_[209].address          = 846;
@@ -2520,8 +2110,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[209].coefficient      = 0.001;
   scadaParameters_[209].min              = 0;
   scadaParameters_[209].max              = 9999;
-  scadaParameters_[209].command          = OPERATION_ERROR;
-  scadaParameters_[209].value.float_t    = 0;
   // Коэф. коррекции напряжения Uca
   scadaParameters_[210].id               = CCS_COEF_VOLTAGE_IN_C;
   scadaParameters_[210].address          = 847;
@@ -2532,8 +2120,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[210].coefficient      = 0.001;
   scadaParameters_[210].min              = 0;
   scadaParameters_[210].max              = 9999;
-  scadaParameters_[210].command          = OPERATION_ERROR;
-  scadaParameters_[210].value.float_t    = 0;
   // Коэф. коррекции cos
   scadaParameters_[211].id               = -1;
   scadaParameters_[211].address          = 848;
@@ -2544,8 +2130,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[211].coefficient      = 0.001;
   scadaParameters_[211].min              = 0;
   scadaParameters_[211].max              = 9999;
-  scadaParameters_[211].command          = OPERATION_ERROR;
-  scadaParameters_[211].value.float_t    = 0;
   // Тип наземного блока ТМС
   scadaParameters_[212].id               = 0;
   scadaParameters_[212].address          = 849;
@@ -2556,8 +2140,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[212].coefficient      = 1;
   scadaParameters_[212].min              = 0;
   scadaParameters_[212].max              = 11;
-  scadaParameters_[212].command          = OPERATION_ERROR;
-  scadaParameters_[212].value.float_t    = 0;
   // Задержка АПВ после отключения по вибрации
   scadaParameters_[213].id               = CCS_PROT_DHS_VIBRATION_RESTART_DELAY;
   scadaParameters_[213].address          = 850;
@@ -2568,8 +2150,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[213].coefficient      = 1;
   scadaParameters_[213].min              = 1;
   scadaParameters_[213].max              = 59999;
-  scadaParameters_[213].command          = OPERATION_ERROR;
-  scadaParameters_[213].value.float_t    = 0;
   // Контроль температуры на приёме насоса
   scadaParameters_[214].id               = -1;
   scadaParameters_[214].address          = 851;
@@ -2580,8 +2160,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[214].coefficient      = 1;
   scadaParameters_[214].min              = 0;
   scadaParameters_[214].max              = 2;
-  scadaParameters_[214].command          = OPERATION_ERROR;
-  scadaParameters_[214].value.float_t    = 0;
   // Минимальная температура на приёме насоса
   scadaParameters_[215].id               = -1;
   scadaParameters_[215].address          = 852;
@@ -2592,8 +2170,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[215].coefficient      = 0.01;
   scadaParameters_[215].min              = 0;
   scadaParameters_[215].max              = 65535;
-  scadaParameters_[215].command          = OPERATION_ERROR;
-  scadaParameters_[215].value.float_t    = 0;
   // Максимальная температура на приёме насоса
   scadaParameters_[216].id               = -1;
   scadaParameters_[216].address          = 853;
@@ -2604,8 +2180,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[216].coefficient      = 0.01;
   scadaParameters_[216].min              = 0;
   scadaParameters_[216].max              = 65535;
-  scadaParameters_[216].command          = OPERATION_ERROR;
-  scadaParameters_[216].value.float_t    = 0;
   // Задержка АПВ по температуре на приёме насоса
   scadaParameters_[217].id               = -1;
   scadaParameters_[217].address          = 854;
@@ -2616,8 +2190,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[217].coefficient      = 1;
   scadaParameters_[217].min              = 1;
   scadaParameters_[217].max              = 59999;
-  scadaParameters_[217].command          = OPERATION_ERROR;
-  scadaParameters_[217].value.float_t    = 0;
   // Количество АПВ по температуре на приёме насоса
   scadaParameters_[218].id               = -1;
   scadaParameters_[218].address          = 855;
@@ -2628,8 +2200,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[218].coefficient      = 1;
   scadaParameters_[218].min              = 1;
   scadaParameters_[218].max              = 59999;
-  scadaParameters_[218].command          = OPERATION_ERROR;
-  scadaParameters_[218].value.float_t    = 0;
   // Тип АПВ по температуре на приёме насоса (0-время;1-нормализация;2-комбинированный)
   scadaParameters_[219].id               = -1;
   scadaParameters_[219].address          = 856;
@@ -2640,8 +2210,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[219].coefficient      = 1;
   scadaParameters_[219].min              = 0;
   scadaParameters_[219].max              = 2;
-  scadaParameters_[219].command          = OPERATION_ERROR;
-  scadaParameters_[219].value.float_t    = 0;
   // Задержка отключения по  температуре на приёме насоса
   scadaParameters_[220].id               = -1;
   scadaParameters_[220].address          = 857;
@@ -2652,8 +2220,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[220].coefficient      = 1;
   scadaParameters_[220].min              = 0;
   scadaParameters_[220].max              = 59999;
-  scadaParameters_[220].command          = OPERATION_ERROR;
-  scadaParameters_[220].value.float_t    = 0;
   // Минимальное давление на приёме насоса
   scadaParameters_[221].id               = CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT;
   scadaParameters_[221].address          = 858;
@@ -2664,8 +2230,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[221].coefficient      = 0.01;
   scadaParameters_[221].min              = 0;
   scadaParameters_[221].max              = 65535;
-  scadaParameters_[221].command          = OPERATION_ERROR;
-  scadaParameters_[221].value.float_t    = 0;
   // Контроль температуры ПЭД
   scadaParameters_[222].id               = CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE;
   scadaParameters_[222].address          = 859;
@@ -2676,8 +2240,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[222].coefficient      = 1;
   scadaParameters_[222].min              = 0;
   scadaParameters_[222].max              = 2;
-  scadaParameters_[222].command          = OPERATION_ERROR;
-  scadaParameters_[222].value.float_t    = 0;
   // Минимальная температура ПЭД
   scadaParameters_[223].id               = CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_SETPOINT;
   scadaParameters_[223].address          = 860;
@@ -2688,8 +2250,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[223].coefficient      = 0.01;
   scadaParameters_[223].min              = 0;
   scadaParameters_[223].max              = 65535;
-  scadaParameters_[223].command          = OPERATION_ERROR;
-  scadaParameters_[223].value.float_t    = 0;
   // Максимальная температура ПЭД
   scadaParameters_[224].id               = CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_SETPOINT;
   scadaParameters_[224].address          = 861;
@@ -2700,8 +2260,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[224].coefficient      = 0.01;
   scadaParameters_[224].min              = 0;
   scadaParameters_[224].max              = 65535;
-  scadaParameters_[224].command          = OPERATION_ERROR;
-  scadaParameters_[224].value.float_t    = 0;
   // Задержка АПВ по температуре ПЭД
   scadaParameters_[225].id               = CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY;
   scadaParameters_[225].address          = 862;
@@ -2712,8 +2270,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[225].coefficient      = 1;
   scadaParameters_[225].min              = 1;
   scadaParameters_[225].max              = 59999;
-  scadaParameters_[225].command          = OPERATION_ERROR;
-  scadaParameters_[225].value.float_t    = 0;
   // Количество АПВ по температуре ПЭД
   scadaParameters_[226].id               = CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_LIMIT;
   scadaParameters_[226].address          = 863;
@@ -2724,8 +2280,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[226].coefficient      = 1;
   scadaParameters_[226].min              = 1;
   scadaParameters_[226].max              = 59999;
-  scadaParameters_[226].command          = OPERATION_ERROR;
-  scadaParameters_[226].value.float_t    = 0;
   // Тип АПВ по температуре ПЭД (0-время;1-нормализация;2-комбинированный)
   scadaParameters_[227].id               = -1;
   scadaParameters_[227].address          = 864;
@@ -2736,8 +2290,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[227].coefficient      = 1;
   scadaParameters_[227].min              = 0;
   scadaParameters_[227].max              = 2;
-  scadaParameters_[227].command          = OPERATION_ERROR;
-  scadaParameters_[227].value.float_t    = 0;
   // Задержка отключения по  температуре ПЭД
   scadaParameters_[228].id               = CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY;
   scadaParameters_[228].address          = 865;
@@ -2748,8 +2300,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[228].coefficient      = 1;
   scadaParameters_[228].min              = 0;
   scadaParameters_[228].max              = 59999;
-  scadaParameters_[228].command          = OPERATION_ERROR;
-  scadaParameters_[228].value.float_t    = 0;
   // Единицы измерения для параметров "Температура..." (7-C;8-F)
   scadaParameters_[229].id               = 0;
   scadaParameters_[229].address          = 866;
@@ -2760,8 +2310,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[229].coefficient      = 1;
   scadaParameters_[229].min              = 7;
   scadaParameters_[229].max              = 8;
-  scadaParameters_[229].command          = OPERATION_ERROR;
-  scadaParameters_[229].value.float_t    = 0;
   // Контроль вибрации
   scadaParameters_[230].id               = CCS_PROT_DHS_VIBRATION_MODE;
   scadaParameters_[230].address          = 867;
@@ -2772,8 +2320,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[230].coefficient      = 1;
   scadaParameters_[230].min              = 0;
   scadaParameters_[230].max              = 2;
-  scadaParameters_[230].command          = OPERATION_ERROR;
-  scadaParameters_[230].value.float_t    = 0;
   // Уставка максимальной вибрации
   scadaParameters_[231].id               = CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT;
   scadaParameters_[231].address          = 868;
@@ -2784,8 +2330,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[231].coefficient      = 0.01;
   scadaParameters_[231].min              = 0;
   scadaParameters_[231].max              = 65535;
-  scadaParameters_[231].command          = OPERATION_ERROR;
-  scadaParameters_[231].value.float_t    = 0;
   // Резерв
   scadaParameters_[232].id               = -1;
   scadaParameters_[232].address          = 869;
@@ -2796,8 +2340,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[232].coefficient      = 1;
   scadaParameters_[232].min              = 0;
   scadaParameters_[232].max              = 65535;
-  scadaParameters_[232].command          = OPERATION_ERROR;
-  scadaParameters_[232].value.float_t    = 0;
   // Задержка отключения по  вибрации ПЭД
   scadaParameters_[233].id               = CCS_PROT_DHS_VIBRATION_TRIP_DELAY;
   scadaParameters_[233].address          = 870;
@@ -2808,8 +2350,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[233].coefficient      = 1;
   scadaParameters_[233].min              = 0;
   scadaParameters_[233].max              = 65535;
-  scadaParameters_[233].command          = OPERATION_ERROR;
-  scadaParameters_[233].value.float_t    = 0;
   // Единицы измерения для параметров "Вибрация..." (9-g;10-м/с2)
   scadaParameters_[234].id               = 0;
   scadaParameters_[234].address          = 871;
@@ -2820,8 +2360,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[234].coefficient      = 1;
   scadaParameters_[234].min              = 9;
   scadaParameters_[234].max              = 10;
-  scadaParameters_[234].command          = OPERATION_ERROR;
-  scadaParameters_[234].value.float_t    = 0;
   // Контроль давления на приёме насоса
   scadaParameters_[235].id               = CCS_PROT_DHS_PRESSURE_INTAKE_MODE;
   scadaParameters_[235].address          = 872;
@@ -2832,8 +2370,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[235].coefficient      = 1;
   scadaParameters_[235].min              = 0;
   scadaParameters_[235].max              = 2;
-  scadaParameters_[235].command          = OPERATION_ERROR;
-  scadaParameters_[235].value.float_t    = 0;
   // Минимальное давление на приёме насоса
   scadaParameters_[236].id               = CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT;
   scadaParameters_[236].address          = 873;
@@ -2844,8 +2380,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[236].coefficient      = 0.001;
   scadaParameters_[236].min              = 0;
   scadaParameters_[236].max              = 65535;
-  scadaParameters_[236].command          = OPERATION_ERROR;
-  scadaParameters_[236].value.float_t    = 0;
   // Максимальное давление на приёме насоса
   scadaParameters_[237].id               = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT;
   scadaParameters_[237].address          = 874;
@@ -2856,8 +2390,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[237].coefficient      = 0.001;
   scadaParameters_[237].min              = 0;
   scadaParameters_[237].max              = 65535;
-  scadaParameters_[237].command          = OPERATION_ERROR;
-  scadaParameters_[237].value.float_t    = 0;
   // Задержка АПВ по давлению на приёме насоса
   scadaParameters_[238].id               = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY;
   scadaParameters_[238].address          = 875;
@@ -2868,8 +2400,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[238].coefficient      = 1;
   scadaParameters_[238].min              = 1;
   scadaParameters_[238].max              = 59999;
-  scadaParameters_[238].command          = OPERATION_ERROR;
-  scadaParameters_[238].value.float_t    = 0;
   // Количество АПВ по давлению на приёме насоса
   scadaParameters_[239].id               = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_LIMIT;
   scadaParameters_[239].address          = 876;
@@ -2880,8 +2410,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[239].coefficient      = 1;
   scadaParameters_[239].min              = 0;
   scadaParameters_[239].max              = 65535;
-  scadaParameters_[239].command          = OPERATION_ERROR;
-  scadaParameters_[239].value.float_t    = 0;
   // Тип АПВ по давлению на приёме насоса (0-время;1-нормализация;2-комбинированный)
   scadaParameters_[240].id               = -1;
   scadaParameters_[240].address          = 877;
@@ -2892,8 +2420,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[240].coefficient      = 1;
   scadaParameters_[240].min              = 0;
   scadaParameters_[240].max              = 2;
-  scadaParameters_[240].command          = OPERATION_ERROR;
-  scadaParameters_[240].value.float_t    = 0;
   // Задержка отключения по  давлению на приёме насоса
   scadaParameters_[241].id               = CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY;
   scadaParameters_[241].address          = 878;
@@ -2904,8 +2430,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[241].coefficient      = 1;
   scadaParameters_[241].min              = 0;
   scadaParameters_[241].max              = 59999;
-  scadaParameters_[241].command          = OPERATION_ERROR;
-  scadaParameters_[241].value.float_t    = 0;
   // Единицы измерения для параметров "Давление..." (1-кгс/см2;2-Атм;3-Ат;4-Мпа;5-psi;6-bar)
   scadaParameters_[242].id               = 0;
   scadaParameters_[242].address          = 879;
@@ -2916,8 +2440,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[242].coefficient      = 1;
   scadaParameters_[242].min              = 1;
   scadaParameters_[242].max              = 6;
-  scadaParameters_[242].command          = OPERATION_ERROR;
-  scadaParameters_[242].value.float_t    = 0;
   // Контроль давления масла ПЭД
   scadaParameters_[243].id               = -1;
   scadaParameters_[243].address          = 880;
@@ -2928,8 +2450,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[243].coefficient      = 1;
   scadaParameters_[243].min              = 0;
   scadaParameters_[243].max              = 2;
-  scadaParameters_[243].command          = OPERATION_ERROR;
-  scadaParameters_[243].value.float_t    = 0;
   // Минимальное давление масла ПЭД
   scadaParameters_[244].id               = -1;
   scadaParameters_[244].address          = 881;
@@ -2940,8 +2460,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[244].coefficient      = 0.001;
   scadaParameters_[244].min              = 0;
   scadaParameters_[244].max              = 65535;
-  scadaParameters_[244].command          = OPERATION_ERROR;
-  scadaParameters_[244].value.float_t    = 0;
   // Максимальное давление масла ПЭД
   scadaParameters_[245].id               = -1;
   scadaParameters_[245].address          = 882;
@@ -2952,8 +2470,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[245].coefficient      = 0.001;
   scadaParameters_[245].min              = 0;
   scadaParameters_[245].max              = 65535;
-  scadaParameters_[245].command          = OPERATION_ERROR;
-  scadaParameters_[245].value.float_t    = 0;
   // Задержка АПВ по давлению масла ПЭД
   scadaParameters_[246].id               = -1;
   scadaParameters_[246].address          = 883;
@@ -2964,8 +2480,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[246].coefficient      = 1;
   scadaParameters_[246].min              = 1;
   scadaParameters_[246].max              = 59999;
-  scadaParameters_[246].command          = OPERATION_ERROR;
-  scadaParameters_[246].value.float_t    = 0;
   // Количество АПВ по давлению масла ПЭД
   scadaParameters_[247].id               = -1;
   scadaParameters_[247].address          = 884;
@@ -2976,8 +2490,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[247].coefficient      = 1;
   scadaParameters_[247].min              = 0;
   scadaParameters_[247].max              = 65535;
-  scadaParameters_[247].command          = OPERATION_ERROR;
-  scadaParameters_[247].value.float_t    = 0;
   // Тип АПВ по давлению масла ПЭД (0-время;1-нормализация;2-комбинированный)
   scadaParameters_[248].id               = -1;
   scadaParameters_[248].address          = 885;
@@ -2988,8 +2500,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[248].coefficient      = 1;
   scadaParameters_[248].min              = 0;
   scadaParameters_[248].max              = 2;
-  scadaParameters_[248].command          = OPERATION_ERROR;
-  scadaParameters_[248].value.float_t    = 0;
   // Задержка отключения по  давлению масла ПЭД
   scadaParameters_[249].id               = -1;
   scadaParameters_[249].address          = 886;
@@ -3000,8 +2510,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[249].coefficient      = 1;
   scadaParameters_[249].min              = 0;
   scadaParameters_[249].max              = 59999;
-  scadaParameters_[249].command          = OPERATION_ERROR;
-  scadaParameters_[249].value.float_t    = 0;
   // Максимальное давление на приёме насоса, кгс/см2
   scadaParameters_[250].id               = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT;
   scadaParameters_[250].address          = 887;
@@ -3012,8 +2520,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[250].coefficient      = 0.01;
   scadaParameters_[250].min              = 0;
   scadaParameters_[250].max              = 65535;
-  scadaParameters_[250].command          = OPERATION_ERROR;
-  scadaParameters_[250].value.float_t    = 0;
   // Тип сигнала для аналоговых входов (0 - "нет";1 - "0-10В";2 - "0-5В";3 - "0-1В";4 -" 0-500мВ";5 - "0-150мВ";6 - "0-20мА")
   scadaParameters_[251].id               = 0;
   scadaParameters_[251].address          = 888;
@@ -3024,8 +2530,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[251].coefficient      = 1;
   scadaParameters_[251].min              = 0;
   scadaParameters_[251].max              = 6;
-  scadaParameters_[251].command          = OPERATION_ERROR;
-  scadaParameters_[251].value.float_t    = 0;
   // Максимальное значение сигнала для аналог. входа 1
   scadaParameters_[252].id               = -1;
   scadaParameters_[252].address          = 889;
@@ -3036,8 +2540,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[252].coefficient      = 1;
   scadaParameters_[252].min              = 0;
   scadaParameters_[252].max              = 65535;
-  scadaParameters_[252].command          = OPERATION_ERROR;
-  scadaParameters_[252].value.float_t    = 0;
   // Измеряемый при помощи аналог. входа 1 параметр (0 - "ед"; 1 - "давление кгс/см2"; 2 - "Атм"; 3 - "Ат"; 4 - "МПа"; 5 - psi; 6-bar;7-температура С;8-F;9-вибрация g;10-м/с2;11-уровень м;12-фут;13-расход м3/сут;14-bbl/сут)
   scadaParameters_[253].id               = 0;
   scadaParameters_[253].address          = 890;
@@ -3048,8 +2550,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[253].coefficient      = 1;
   scadaParameters_[253].min              = 0;
   scadaParameters_[253].max              = 14;
-  scadaParameters_[253].command          = OPERATION_ERROR;
-  scadaParameters_[253].value.float_t    = 0;
   // Дискретность измеряемого при помощи аналог. входа 1 параметра (0-1.0;1-0.1;2-0.01;3-0.001)
   scadaParameters_[254].id               = -1;
   scadaParameters_[254].address          = 891;
@@ -3060,8 +2560,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[254].coefficient      = 1;
   scadaParameters_[254].min              = 0;
   scadaParameters_[254].max              = 3;
-  scadaParameters_[254].command          = OPERATION_ERROR;
-  scadaParameters_[254].value.float_t    = 0;
   // Минимум шкалы для аналог. входа 1
   scadaParameters_[255].id               = CCS_AI_1_MINIMUM;
   scadaParameters_[255].address          = 892;
@@ -3072,8 +2570,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[255].coefficient      = 1;
   scadaParameters_[255].min              = 0;
   scadaParameters_[255].max              = 65535;
-  scadaParameters_[255].command          = OPERATION_ERROR;
-  scadaParameters_[255].value.float_t    = 0;
   // Максимум шкалы для аналог. входа 1
   scadaParameters_[256].id               = CCS_AI_1_MAXIMUM;
   scadaParameters_[256].address          = 893;
@@ -3084,8 +2580,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[256].coefficient      = 1;
   scadaParameters_[256].min              = 0;
   scadaParameters_[256].max              = 65535;
-  scadaParameters_[256].command          = OPERATION_ERROR;
-  scadaParameters_[256].value.float_t    = 0;
   // Контроль сигнала на аналог. входе 1
   scadaParameters_[257].id               = CCS_PROT_AI_1_MODE;
   scadaParameters_[257].address          = 894;
@@ -3096,8 +2590,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[257].coefficient      = 1;
   scadaParameters_[257].min              = 0;
   scadaParameters_[257].max              = 2;
-  scadaParameters_[257].command          = OPERATION_ERROR;
-  scadaParameters_[257].value.float_t    = 0;
   // Максимально допустимое значение сигнала на аналог. входе 1
   scadaParameters_[258].id               = CCS_PROT_AI_1_PARAMETER;
   scadaParameters_[258].address          = 895;
@@ -3108,8 +2600,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[258].coefficient      = 1;
   scadaParameters_[258].min              = 0;
   scadaParameters_[258].max              = 65535;
-  scadaParameters_[258].command          = OPERATION_ERROR;
-  scadaParameters_[258].value.float_t    = 0;
   // Минимально допустимое значение сигнала на аналог. входе 1
   scadaParameters_[259].id               = CCS_PROT_AI_1_TRIP_SETPOINT;
   scadaParameters_[259].address          = 896;
@@ -3120,8 +2610,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[259].coefficient      = 1;
   scadaParameters_[259].min              = 0;
   scadaParameters_[259].max              = 65535;
-  scadaParameters_[259].command          = OPERATION_ERROR;
-  scadaParameters_[259].value.float_t    = 0;
   // Задержка контроля сигнала на аналог. входе 1 при запуске ПЭД
   scadaParameters_[260].id               = CCS_PROT_AI_1_ACTIV_DELAY;
   scadaParameters_[260].address          = 897;
@@ -3132,8 +2620,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[260].coefficient      = 1;
   scadaParameters_[260].min              = 0;
   scadaParameters_[260].max              = 59999;
-  scadaParameters_[260].command          = OPERATION_ERROR;
-  scadaParameters_[260].value.float_t    = 0;
   // Задержка отключения ПЭД по сигналу на аналог. входе 1
   scadaParameters_[261].id               = CCS_PROT_AI_1_TRIP_DELAY;
   scadaParameters_[261].address          = 898;
@@ -3144,8 +2630,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[261].coefficient      = 1;
   scadaParameters_[261].min              = 0;
   scadaParameters_[261].max              = 59999;
-  scadaParameters_[261].command          = OPERATION_ERROR;
-  scadaParameters_[261].value.float_t    = 0;
   // Тип АПВ по сигналу на аналог. входе 1 (0-время;1-нормализация;2-комбинированный)
   scadaParameters_[262].id               = -1;
   scadaParameters_[262].address          = 899;
@@ -3156,8 +2640,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[262].coefficient      = 1;
   scadaParameters_[262].min              = 0;
   scadaParameters_[262].max              = 2;
-  scadaParameters_[262].command          = OPERATION_ERROR;
-  scadaParameters_[262].value.float_t    = 0;
   // Задержка АПВ для аналог. входа 1
   scadaParameters_[263].id               = CCS_PROT_AI_1_RESTART_DELAY;
   scadaParameters_[263].address          = 900;
@@ -3168,8 +2650,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[263].coefficient      = 1;
   scadaParameters_[263].min              = 1;
   scadaParameters_[263].max              = 59999;
-  scadaParameters_[263].command          = OPERATION_ERROR;
-  scadaParameters_[263].value.float_t    = 0;
   // Количество АПВ для аналог. входа 1
   scadaParameters_[264].id               = CCS_PROT_AI_1_RESTART_LIMIT;
   scadaParameters_[264].address          = 901;
@@ -3180,8 +2660,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[264].coefficient      = 1;
   scadaParameters_[264].min              = 0;
   scadaParameters_[264].max              = 65535;
-  scadaParameters_[264].command          = OPERATION_ERROR;
-  scadaParameters_[264].value.float_t    = 0;
   // Минимальное давление масла ПЭД, кгс/см2
   scadaParameters_[265].id               = -1;
   scadaParameters_[265].address          = 902;
@@ -3192,8 +2670,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[265].coefficient      = 0.01;
   scadaParameters_[265].min              = 0;
   scadaParameters_[265].max              = 65535;
-  scadaParameters_[265].command          = OPERATION_ERROR;
-  scadaParameters_[265].value.float_t    = 0;
   // Максимальное значение сигнала для аналог. входа 2
   scadaParameters_[266].id               = -1;
   scadaParameters_[266].address          = 903;
@@ -3204,8 +2680,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[266].coefficient      = 1;
   scadaParameters_[266].min              = 0;
   scadaParameters_[266].max              = 65535;
-  scadaParameters_[266].command          = OPERATION_ERROR;
-  scadaParameters_[266].value.float_t    = 0;
   // Измеряемый при помощи аналог. входа 2 параметр (0 - "ед"; 1 - "давление кгс/см2"; 2 - "Атм"; 3 - "Ат"; 4 - "МПа"; 5 - psi; 6-bar;7-температура С;8-F;9-вибрация g;10-м/с2;11-уровень м;12-фут;13-расход м3/сут;14-bbl/сут)
   scadaParameters_[267].id               = 0;
   scadaParameters_[267].address          = 904;
@@ -3216,8 +2690,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[267].coefficient      = 1;
   scadaParameters_[267].min              = 0;
   scadaParameters_[267].max              = 14;
-  scadaParameters_[267].command          = OPERATION_ERROR;
-  scadaParameters_[267].value.float_t    = 0;
   // Дискретность измеряемого при помощи аналог. входа 2 параметра (0-1.0;1-0.1;2-0.01;3-0.001)
   scadaParameters_[268].id               = -1;
   scadaParameters_[268].address          = 905;
@@ -3228,8 +2700,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[268].coefficient      = 1;
   scadaParameters_[268].min              = 0;
   scadaParameters_[268].max              = 3;
-  scadaParameters_[268].command          = OPERATION_ERROR;
-  scadaParameters_[268].value.float_t    = 0;
   // Минимум шкалы для аналог. входа 2
   scadaParameters_[269].id               = CCS_AI_2_MINIMUM;
   scadaParameters_[269].address          = 906;
@@ -3240,8 +2710,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[269].coefficient      = 1;
   scadaParameters_[269].min              = 0;
   scadaParameters_[269].max              = 65535;
-  scadaParameters_[269].command          = OPERATION_ERROR;
-  scadaParameters_[269].value.float_t    = 0;
   // Максимум шкалы для аналог. входа 2
   scadaParameters_[270].id               = CCS_AI_2_MAXIMUM;
   scadaParameters_[270].address          = 907;
@@ -3252,8 +2720,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[270].coefficient      = 1;
   scadaParameters_[270].min              = 0;
   scadaParameters_[270].max              = 65535;
-  scadaParameters_[270].command          = OPERATION_ERROR;
-  scadaParameters_[270].value.float_t    = 0;
   // Контроль сигнала на аналог. входе 2
   scadaParameters_[271].id               = CCS_PROT_AI_2_MODE;
   scadaParameters_[271].address          = 908;
@@ -3264,8 +2730,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[271].coefficient      = 1;
   scadaParameters_[271].min              = 0;
   scadaParameters_[271].max              = 2;
-  scadaParameters_[271].command          = OPERATION_ERROR;
-  scadaParameters_[271].value.float_t    = 0;
   // Максимально допустимое значение сигнала на аналог. входе 2
   scadaParameters_[272].id               = CCS_PROT_AI_2_PARAMETER;
   scadaParameters_[272].address          = 909;
@@ -3276,8 +2740,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[272].coefficient      = 1;
   scadaParameters_[272].min              = 0;
   scadaParameters_[272].max              = 65535;
-  scadaParameters_[272].command          = OPERATION_ERROR;
-  scadaParameters_[272].value.float_t    = 0;
   // Минимально допустимое значение сигнала на аналог. входе 2
   scadaParameters_[273].id               = CCS_PROT_AI_2_TRIP_SETPOINT;
   scadaParameters_[273].address          = 910;
@@ -3288,8 +2750,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[273].coefficient      = 1;
   scadaParameters_[273].min              = 0;
   scadaParameters_[273].max              = 65535;
-  scadaParameters_[273].command          = OPERATION_ERROR;
-  scadaParameters_[273].value.float_t    = 0;
   // Задержка контроля сигнала на аналог. входе 2 при запуске ПЭД
   scadaParameters_[274].id               = CCS_PROT_AI_2_ACTIV_DELAY;
   scadaParameters_[274].address          = 911;
@@ -3300,8 +2760,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[274].coefficient      = 1;
   scadaParameters_[274].min              = 0;
   scadaParameters_[274].max              = 59999;
-  scadaParameters_[274].command          = OPERATION_ERROR;
-  scadaParameters_[274].value.float_t    = 0;
   // Задержка отключения ПЭД по сигналу на аналог. входе 2
   scadaParameters_[275].id               = CCS_PROT_AI_2_TRIP_DELAY;
   scadaParameters_[275].address          = 912;
@@ -3312,8 +2770,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[275].coefficient      = 1;
   scadaParameters_[275].min              = 0;
   scadaParameters_[275].max              = 59999;
-  scadaParameters_[275].command          = OPERATION_ERROR;
-  scadaParameters_[275].value.float_t    = 0;
   // Тип АПВ по сигналу на аналог. входе 2 (0-время;1-нормализация;2-комбинированный)
   scadaParameters_[276].id               = -1;
   scadaParameters_[276].address          = 913;
@@ -3324,8 +2780,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[276].coefficient      = 1;
   scadaParameters_[276].min              = 0;
   scadaParameters_[276].max              = 2;
-  scadaParameters_[276].command          = OPERATION_ERROR;
-  scadaParameters_[276].value.float_t    = 0;
   // Задержка АПВ для аналог. входа 2
   scadaParameters_[277].id               = CCS_PROT_AI_2_RESTART_DELAY;
   scadaParameters_[277].address          = 914;
@@ -3336,8 +2790,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[277].coefficient      = 1;
   scadaParameters_[277].min              = 1;
   scadaParameters_[277].max              = 59999;
-  scadaParameters_[277].command          = OPERATION_ERROR;
-  scadaParameters_[277].value.float_t    = 0;
   // Количество АПВ для аналог. входа 2
   scadaParameters_[278].id               = CCS_PROT_AI_2_RESTART_LIMIT;
   scadaParameters_[278].address          = 915;
@@ -3348,8 +2800,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[278].coefficient      = 1;
   scadaParameters_[278].min              = 0;
   scadaParameters_[278].max              = 65535;
-  scadaParameters_[278].command          = OPERATION_ERROR;
-  scadaParameters_[278].value.float_t    = 0;
   // Максимальное давление масла ПЭД, кгс/см2
   scadaParameters_[279].id               = -1;
   scadaParameters_[279].address          = 916;
@@ -3360,8 +2810,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[279].coefficient      = 0.01;
   scadaParameters_[279].min              = 0;
   scadaParameters_[279].max              = 65535;
-  scadaParameters_[279].command          = OPERATION_ERROR;
-  scadaParameters_[279].value.float_t    = 0;
   // Пароль для уровня доступа ЭЛЕКТРОМОНТЕР
   scadaParameters_[280].id               = CCS_PASSWORD_LEVEL_1;
   scadaParameters_[280].address          = 917;
@@ -3372,8 +2820,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[280].coefficient      = 1;
   scadaParameters_[280].min              = 0;
   scadaParameters_[280].max              = 65535;
-  scadaParameters_[280].command          = OPERATION_ERROR;
-  scadaParameters_[280].value.float_t    = 0;
   // Пароль для уровня доступа МАСТЕР
   scadaParameters_[281].id               = CCS_PASSWORD_LEVEL_2;
   scadaParameters_[281].address          = 918;
@@ -3384,8 +2830,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[281].coefficient      = 1;
   scadaParameters_[281].min              = 0;
   scadaParameters_[281].max              = 65535;
-  scadaParameters_[281].command          = OPERATION_ERROR;
-  scadaParameters_[281].value.float_t    = 0;
   // Пароль для уровня доступа АДМИНИСТРАТОР
   scadaParameters_[282].id               = CCS_PASSWORD_LEVEL_2;
   scadaParameters_[282].address          = 919;
@@ -3396,8 +2840,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[282].coefficient      = 1;
   scadaParameters_[282].min              = 0;
   scadaParameters_[282].max              = 65535;
-  scadaParameters_[282].command          = OPERATION_ERROR;
-  scadaParameters_[282].value.float_t    = 0;
   // Множитель для параметра ТМС "Давление..."
   scadaParameters_[283].id               = -1;
   scadaParameters_[283].address          = 920;
@@ -3408,8 +2850,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[283].coefficient      = 1;
   scadaParameters_[283].min              = 0;
   scadaParameters_[283].max              = 3;
-  scadaParameters_[283].command          = OPERATION_ERROR;
-  scadaParameters_[283].value.float_t    = 0;
   // Множитель для параметра ТМС "Температура..."
   scadaParameters_[284].id               = -1;
   scadaParameters_[284].address          = 921;
@@ -3420,8 +2860,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[284].coefficient      = 1;
   scadaParameters_[284].min              = 0;
   scadaParameters_[284].max              = 3;
-  scadaParameters_[284].command          = OPERATION_ERROR;
-  scadaParameters_[284].value.float_t    = 0;
   // Множитель для параметра ТМС "Вибрация..."
   scadaParameters_[285].id               = -1;
   scadaParameters_[285].address          = 922;
@@ -3432,8 +2870,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[285].coefficient      = 1;
   scadaParameters_[285].min              = 0;
   scadaParameters_[285].max              = 3;
-  scadaParameters_[285].command          = OPERATION_ERROR;
-  scadaParameters_[285].value.float_t    = 0;
   // Заданная частота ПЧ
   scadaParameters_[286].id               = VSD_FREQUENCY;
   scadaParameters_[286].address          = 923;
@@ -3444,8 +2880,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[286].coefficient      = 0.1;
   scadaParameters_[286].min              = 0;
   scadaParameters_[286].max              = 2000;
-  scadaParameters_[286].command          = OPERATION_ERROR;
-  scadaParameters_[286].value.float_t    = 0;
   // Время разгона
   scadaParameters_[287].id               = VSD_TIMER_DISPERSAL;
   scadaParameters_[287].address          = 924;
@@ -3456,8 +2890,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[287].coefficient      = 0.1;
   scadaParameters_[287].min              = 1;
   scadaParameters_[287].max              = 2000;
-  scadaParameters_[287].command          = OPERATION_ERROR;
-  scadaParameters_[287].value.float_t    = 0;
   // Время торможения
   scadaParameters_[288].id               = VSD_TIMER_DELAY;
   scadaParameters_[288].address          = 925;
@@ -3468,8 +2900,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[288].coefficient      = 0.1;
   scadaParameters_[288].min              = 1;
   scadaParameters_[288].max              = 2000;
-  scadaParameters_[288].command          = OPERATION_ERROR;
-  scadaParameters_[288].value.float_t    = 0;
   // Резерв
   scadaParameters_[289].id               = -1;
   scadaParameters_[289].address          = 926;
@@ -3480,8 +2910,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[289].coefficient      = 1;
   scadaParameters_[289].min              = 0;
   scadaParameters_[289].max              = 65535;
-  scadaParameters_[289].command          = OPERATION_ERROR;
-  scadaParameters_[289].value.float_t    = 0;
   // Резерв
   scadaParameters_[290].id               = -1;
   scadaParameters_[290].address          = 927;
@@ -3492,8 +2920,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[290].coefficient      = 1;
   scadaParameters_[290].min              = 0;
   scadaParameters_[290].max              = 65535;
-  scadaParameters_[290].command          = OPERATION_ERROR;
-  scadaParameters_[290].value.float_t    = 0;
   // Направление вращения (0-прямое;1-обратное)
   scadaParameters_[291].id               = VSD_ROTATION;
   scadaParameters_[291].address          = 928;
@@ -3504,8 +2930,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[291].coefficient      = 1;
   scadaParameters_[291].min              = 0;
   scadaParameters_[291].max              = 1;
-  scadaParameters_[291].command          = OPERATION_ERROR;
-  scadaParameters_[291].value.float_t    = 0;
   // Резерв
   scadaParameters_[292].id               = -1;
   scadaParameters_[292].address          = 929;
@@ -3516,8 +2940,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[292].coefficient      = 1;
   scadaParameters_[292].min              = 0;
   scadaParameters_[292].max              = 65535;
-  scadaParameters_[292].command          = OPERATION_ERROR;
-  scadaParameters_[292].value.float_t    = 0;
   // Несущая частота ШИМ
   scadaParameters_[293].id               = VSD_SWITCHING_FREQUENCY;
   scadaParameters_[293].address          = 930;
@@ -3528,8 +2950,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[293].coefficient      = 0.1;
   scadaParameters_[293].min              = 20;
   scadaParameters_[293].max              = 50;
-  scadaParameters_[293].command          = OPERATION_ERROR;
-  scadaParameters_[293].value.float_t    = 0;
   // Режим подхвата ротора ПЭД
   scadaParameters_[294].id               = 0;
   scadaParameters_[294].address          = 931;
@@ -3540,8 +2960,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[294].coefficient      = 1;
   scadaParameters_[294].min              = 0;
   scadaParameters_[294].max              = 1;
-  scadaParameters_[294].command          = OPERATION_ERROR;
-  scadaParameters_[294].value.float_t    = 0;
   // Номинальная частота
   scadaParameters_[295].id               = VSD_MOTOR_FREQUENCY;
   scadaParameters_[295].address          = 932;
@@ -3552,8 +2970,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[295].coefficient      = 0.1;
   scadaParameters_[295].min              = 100;
   scadaParameters_[295].max              = 10000;
-  scadaParameters_[295].command          = OPERATION_ERROR;
-  scadaParameters_[295].value.float_t    = 0;
   // Режим динамического торможения
   scadaParameters_[296].id               = -1;
   scadaParameters_[296].address          = 933;
@@ -3564,8 +2980,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[296].coefficient      = 1;
   scadaParameters_[296].min              = 0;
   scadaParameters_[296].max              = 1;
-  scadaParameters_[296].command          = OPERATION_ERROR;
-  scadaParameters_[296].value.float_t    = 0;
   // Номинальное напряжение
   scadaParameters_[297].id               = VSD_MOTOR_VOLTAGE;
   scadaParameters_[297].address          = 934;
@@ -3576,8 +2990,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[297].coefficient      = 1;
   scadaParameters_[297].min              = 0;
   scadaParameters_[297].max              = 65535;
-  scadaParameters_[297].command          = OPERATION_ERROR;
-  scadaParameters_[297].value.float_t    = 0;
   // Темп разгона
   scadaParameters_[298].id               = VSD_TEMP_SPEEDUP;
   scadaParameters_[298].address          = 935;
@@ -3588,8 +3000,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[298].coefficient      = 0.1;
   scadaParameters_[298].min              = 1;
   scadaParameters_[298].max              = 5000;
-  scadaParameters_[298].command          = OPERATION_ERROR;
-  scadaParameters_[298].value.float_t    = 0;
   // Темп торможения
   scadaParameters_[299].id               = VSD_TEMP_SPEEDDOWN;
   scadaParameters_[299].address          = 936;
@@ -3600,8 +3010,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[299].coefficient      = 0.1;
   scadaParameters_[299].min              = 1;
   scadaParameters_[299].max              = 5000;
-  scadaParameters_[299].command          = OPERATION_ERROR;
-  scadaParameters_[299].value.float_t    = 0;
   // Режим запуска ПЭД (0-плавный;1-с толчком;2-с раскачкой;3-с синхронизацией)
   scadaParameters_[300].id               = 0;
   scadaParameters_[300].address          = 937;
@@ -3612,8 +3020,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[300].coefficient      = 1;
   scadaParameters_[300].min              = 0;
   scadaParameters_[300].max              = 3;
-  scadaParameters_[300].command          = OPERATION_ERROR;
-  scadaParameters_[300].value.float_t    = 0;
   // Толчковая частота
   scadaParameters_[301].id               = CCS_RGM_RUN_PUSH_FREQ;
   scadaParameters_[301].address          = 938;
@@ -3624,8 +3030,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[301].coefficient      = 0.1;
   scadaParameters_[301].min              = 1;
   scadaParameters_[301].max              = 500;
-  scadaParameters_[301].command          = OPERATION_ERROR;
-  scadaParameters_[301].value.float_t    = 0;
   // Количество толчков
   scadaParameters_[302].id               = CCS_RGM_RUN_PUSH_QUANTITY;
   scadaParameters_[302].address          = 939;
@@ -3636,8 +3040,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[302].coefficient      = 1;
   scadaParameters_[302].min              = 0;
   scadaParameters_[302].max              = 65535;
-  scadaParameters_[302].command          = OPERATION_ERROR;
-  scadaParameters_[302].value.float_t    = 0;
   // Напряжение толчка, %
   scadaParameters_[303].id               = CCS_RGM_RUN_PUSH_VOLTAGE;
   scadaParameters_[303].address          = 940;
@@ -3648,8 +3050,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[303].coefficient      = 1;
   scadaParameters_[303].min              = 100;
   scadaParameters_[303].max              = 400;
-  scadaParameters_[303].command          = OPERATION_ERROR;
-  scadaParameters_[303].value.float_t    = 0;
   // Длительность толчка
   scadaParameters_[304].id               = CCS_RGM_RUN_PUSH_TIME;
   scadaParameters_[304].address          = 941;
@@ -3660,8 +3060,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[304].coefficient      = 0.1;
   scadaParameters_[304].min              = 1;
   scadaParameters_[304].max              = 2000;
-  scadaParameters_[304].command          = OPERATION_ERROR;
-  scadaParameters_[304].value.float_t    = 0;
   // Темп разгона раскачки
   scadaParameters_[305].id               = -1;
   scadaParameters_[305].address          = 942;
@@ -3672,8 +3070,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[305].coefficient      = 0.1;
   scadaParameters_[305].min              = 1;
   scadaParameters_[305].max              = 5000;
-  scadaParameters_[305].command          = OPERATION_ERROR;
-  scadaParameters_[305].value.float_t    = 0;
   // Частота раскачки
   scadaParameters_[306].id               = CCS_RGM_RUN_SWING_FREQ;
   scadaParameters_[306].address          = 943;
@@ -3684,8 +3080,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[306].coefficient      = 0.1;
   scadaParameters_[306].min              = 1;
   scadaParameters_[306].max              = 500;
-  scadaParameters_[306].command          = OPERATION_ERROR;
-  scadaParameters_[306].value.float_t    = 0;
   // Резерв
   scadaParameters_[307].id               = -1;
   scadaParameters_[307].address          = 944;
@@ -3696,8 +3090,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[307].coefficient      = 1;
   scadaParameters_[307].min              = 0;
   scadaParameters_[307].max              = 65535;
-  scadaParameters_[307].command          = OPERATION_ERROR;
-  scadaParameters_[307].value.float_t    = 0;
   // Количество циклов раскачки
   scadaParameters_[308].id               = CCS_RGM_RUN_SWING_QUANTITY;
   scadaParameters_[308].address          = 945;
@@ -3708,8 +3100,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[308].coefficient      = 1;
   scadaParameters_[308].min              = 0;
   scadaParameters_[308].max              = 65535;
-  scadaParameters_[308].command          = OPERATION_ERROR;
-  scadaParameters_[308].value.float_t    = 0;
   // Усиление пускового момента при раскачке, %
   scadaParameters_[309].id               = CCS_RGM_RUN_SWING_VOLTAGE;
   scadaParameters_[309].address          = 946;
@@ -3720,8 +3110,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[309].coefficient      = 1;
   scadaParameters_[309].min              = 0;
   scadaParameters_[309].max              = 150;
-  scadaParameters_[309].command          = OPERATION_ERROR;
-  scadaParameters_[309].value.float_t    = 0;
   // Время торможения при раскачке
   scadaParameters_[310].id               = -1;
   scadaParameters_[310].address          = 947;
@@ -3732,8 +3120,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[310].coefficient      = 0.1;
   scadaParameters_[310].min              = 1;
   scadaParameters_[310].max              = 2000;
-  scadaParameters_[310].command          = OPERATION_ERROR;
-  scadaParameters_[310].value.float_t    = 0;
   // Время разгона при раскачке
   scadaParameters_[311].id               = -1;
   scadaParameters_[311].address          = 948;
@@ -3744,8 +3130,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[311].coefficient      = 0.1;
   scadaParameters_[311].min              = 1;
   scadaParameters_[311].max              = 2000;
-  scadaParameters_[311].command          = OPERATION_ERROR;
-  scadaParameters_[311].value.float_t    = 0;
   // Длительность раскачки
   scadaParameters_[312].id               = -1;
   scadaParameters_[312].address          = 949;
@@ -3756,8 +3140,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[312].coefficient      = 0.1;
   scadaParameters_[312].min              = 1;
   scadaParameters_[312].max              = 2000;
-  scadaParameters_[312].command          = OPERATION_ERROR;
-  scadaParameters_[312].value.float_t    = 0;
   // Темп торможения раскачки
   scadaParameters_[313].id               = -1;
   scadaParameters_[313].address          = 950;
@@ -3768,8 +3150,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[313].coefficient      = 0.1;
   scadaParameters_[313].min              = 1;
   scadaParameters_[313].max              = 5000;
-  scadaParameters_[313].command          = OPERATION_ERROR;
-  scadaParameters_[313].value.float_t    = 0;
   // Режим встряхивания
   scadaParameters_[314].id               = 0;
   scadaParameters_[314].address          = 951;
@@ -3780,8 +3160,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[314].coefficient      = 1;
   scadaParameters_[314].min              = 0;
   scadaParameters_[314].max              = 2;
-  scadaParameters_[314].command          = OPERATION_ERROR;
-  scadaParameters_[314].value.float_t    = 0;
   // Период встряхивания
   scadaParameters_[315].id               = CCS_RGM_JARRING_PERIOD;
   scadaParameters_[315].address          = 952;
@@ -3792,8 +3170,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[315].coefficient      = 1;
   scadaParameters_[315].min              = 1;
   scadaParameters_[315].max              = 59999;
-  scadaParameters_[315].command          = OPERATION_ERROR;
-  scadaParameters_[315].value.float_t    = 0;
   // Количество встряхиваний в цикле
   scadaParameters_[316].id               = CCS_RGM_JARRING_COUNT;
   scadaParameters_[316].address          = 953;
@@ -3804,8 +3180,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[316].coefficient      = 1;
   scadaParameters_[316].min              = 0;
   scadaParameters_[316].max              = 99;
-  scadaParameters_[316].command          = OPERATION_ERROR;
-  scadaParameters_[316].value.float_t    = 0;
   // Длительность встряхивания
   scadaParameters_[317].id               = -1;
   scadaParameters_[317].address          = 954;
@@ -3816,8 +3190,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[317].coefficient      = 1;
   scadaParameters_[317].min              = 1;
   scadaParameters_[317].max              = 59999;
-  scadaParameters_[317].command          = OPERATION_ERROR;
-  scadaParameters_[317].value.float_t    = 0;
   // Частота F1 встряхивания
   scadaParameters_[318].id               = CCS_RGM_JARRING_FREQ_1;
   scadaParameters_[318].address          = 955;
@@ -3828,8 +3200,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[318].coefficient      = 0.1;
   scadaParameters_[318].min              = 0;
   scadaParameters_[318].max              = 1000;
-  scadaParameters_[318].command          = OPERATION_ERROR;
-  scadaParameters_[318].value.float_t    = 0;
   // Частота F2 встряхивания
   scadaParameters_[319].id               = CCS_RGM_JARRING_FREQ_2;
   scadaParameters_[319].address          = 956;
@@ -3840,8 +3210,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[319].coefficient      = 0.1;
   scadaParameters_[319].min              = 0;
   scadaParameters_[319].max              = 1000;
-  scadaParameters_[319].command          = OPERATION_ERROR;
-  scadaParameters_[319].value.float_t    = 0;
   // Время торможения при встряхивании
   scadaParameters_[320].id               = -1;
   scadaParameters_[320].address          = 957;
@@ -3852,8 +3220,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[320].coefficient      = 0.1;
   scadaParameters_[320].min              = 1;
   scadaParameters_[320].max              = 2000;
-  scadaParameters_[320].command          = OPERATION_ERROR;
-  scadaParameters_[320].value.float_t    = 0;
   // Время разгона при встряхивании
   scadaParameters_[321].id               = -1;
   scadaParameters_[321].address          = 958;
@@ -3864,8 +3230,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[321].coefficient      = 0.1;
   scadaParameters_[321].min              = 1;
   scadaParameters_[321].max              = 2000;
-  scadaParameters_[321].command          = OPERATION_ERROR;
-  scadaParameters_[321].value.float_t    = 0;
   // Режим ПИД-регулирования
   scadaParameters_[322].id               = 0;
   scadaParameters_[322].address          = 959;
@@ -3876,8 +3240,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[322].coefficient      = 1;
   scadaParameters_[322].min              = 0;
   scadaParameters_[322].max              = 1;
-  scadaParameters_[322].command          = OPERATION_ERROR;
-  scadaParameters_[322].value.float_t    = 0;
   // Тип параметра для поддержания
   scadaParameters_[323].id               = 0;
   scadaParameters_[323].address          = 960;
@@ -3888,8 +3250,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[323].coefficient      = 1;
   scadaParameters_[323].min              = 0;
   scadaParameters_[323].max              = 7;
-  scadaParameters_[323].command          = OPERATION_ERROR;
-  scadaParameters_[323].value.float_t    = 0;
   // Значение параметра для поддержания
   scadaParameters_[324].id               = 0;
   scadaParameters_[324].address          = 961;
@@ -3900,8 +3260,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[324].coefficient      = 1;
   scadaParameters_[324].min              = 0;
   scadaParameters_[324].max              = 65535;
-  scadaParameters_[324].command          = OPERATION_ERROR;
-  scadaParameters_[324].value.float_t    = 0;
   // Пропорциональная составляющая
   scadaParameters_[325].id               = CCS_RGM_MAINTENANCE_PARAM_PROP;
   scadaParameters_[325].address          = 962;
@@ -3912,8 +3270,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[325].coefficient      = 0.001;
   scadaParameters_[325].min              = 0;
   scadaParameters_[325].max              = 65535;
-  scadaParameters_[325].command          = OPERATION_ERROR;
-  scadaParameters_[325].value.float_t    = 0;
   // Интегральная составляющая
   scadaParameters_[326].id               = CCS_RGM_MAINTENANCE_PARAM_INT;
   scadaParameters_[326].address          = 963;
@@ -3924,8 +3280,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[326].coefficient      = 0.01;
   scadaParameters_[326].min              = 0;
   scadaParameters_[326].max              = 65535;
-  scadaParameters_[326].command          = OPERATION_ERROR;
-  scadaParameters_[326].value.float_t    = 0;
   // Зависимость регулирования
   scadaParameters_[327].id               = CCS_RGM_MAINTENANCE_PARAM_DEPENDENCE;
   scadaParameters_[327].address          = 964;
@@ -3936,8 +3290,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[327].coefficient      = 1;
   scadaParameters_[327].min              = 0;
   scadaParameters_[327].max              = 1;
-  scadaParameters_[327].command          = OPERATION_ERROR;
-  scadaParameters_[327].value.float_t    = 0;
   // Период регулирования
   scadaParameters_[328].id               = CCS_RGM_MAINTENANCE_PARAM_PERIOD;
   scadaParameters_[328].address          = 965;
@@ -3948,8 +3300,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[328].coefficient      = 1;
   scadaParameters_[328].min              = 0;
   scadaParameters_[328].max              = 65535;
-  scadaParameters_[328].command          = OPERATION_ERROR;
-  scadaParameters_[328].value.float_t    = 0;
   // Тип регулирования (0-П;1-ПИ;2-ПИД)
   scadaParameters_[329].id               = -1;
   scadaParameters_[329].address          = 966;
@@ -3960,8 +3310,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[329].coefficient      = 1;
   scadaParameters_[329].min              = 0;
   scadaParameters_[329].max              = 2;
-  scadaParameters_[329].command          = OPERATION_ERROR;
-  scadaParameters_[329].value.float_t    = 0;
   // Дифференциальная составляющая
   scadaParameters_[330].id               = -1;
   scadaParameters_[330].address          = 967;
@@ -3972,8 +3320,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[330].coefficient      = 0.01;
   scadaParameters_[330].min              = 0;
   scadaParameters_[330].max              = 65535;
-  scadaParameters_[330].command          = OPERATION_ERROR;
-  scadaParameters_[330].value.float_t    = 0;
   // Диапазон нечувствительности регулятора
   scadaParameters_[331].id               = -1;
   scadaParameters_[331].address          = 968;
@@ -3984,8 +3330,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[331].coefficient      = 1;
   scadaParameters_[331].min              = 0;
   scadaParameters_[331].max              = 65535;
-  scadaParameters_[331].command          = OPERATION_ERROR;
-  scadaParameters_[331].value.float_t    = 0;
   // Режим прокачки газа
   scadaParameters_[332].id               = 0;
   scadaParameters_[332].address          = 969;
@@ -3996,8 +3340,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[332].coefficient      = 1;
   scadaParameters_[332].min              = 0;
   scadaParameters_[332].max              = 1;
-  scadaParameters_[332].command          = OPERATION_ERROR;
-  scadaParameters_[332].value.float_t    = 0;
   // Частота прокачки
   scadaParameters_[333].id               = CCS_RGM_PUMP_GAS_F1;
   scadaParameters_[333].address          = 970;
@@ -4008,8 +3350,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[333].coefficient      = 0.1;
   scadaParameters_[333].min              = 1;
   scadaParameters_[333].max              = 1000;
-  scadaParameters_[333].command          = OPERATION_ERROR;
-  scadaParameters_[333].value.float_t    = 0;
   // Ток для включения прокачки газа
   scadaParameters_[334].id               = -1;
   scadaParameters_[334].address          = 971;
@@ -4020,8 +3360,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[334].coefficient      = 0.1;
   scadaParameters_[334].min              = 0;
   scadaParameters_[334].max              = 65535;
-  scadaParameters_[334].command          = OPERATION_ERROR;
-  scadaParameters_[334].value.float_t    = 0;
   // Ток для отключения прокачки газа
   scadaParameters_[335].id               = -1;
   scadaParameters_[335].address          = 972;
@@ -4032,8 +3370,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[335].coefficient      = 0.1;
   scadaParameters_[335].min              = 0;
   scadaParameters_[335].max              = 65535;
-  scadaParameters_[335].command          = OPERATION_ERROR;
-  scadaParameters_[335].value.float_t    = 0;
   // Длительность прокачки газа
   scadaParameters_[336].id               = CCS_RGM_PUMP_GAS_TIME;
   scadaParameters_[336].address          = 973;
@@ -4044,8 +3380,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[336].coefficient      = 1;
   scadaParameters_[336].min              = 0;
   scadaParameters_[336].max              = 59999;
-  scadaParameters_[336].command          = OPERATION_ERROR;
-  scadaParameters_[336].value.float_t    = 0;
   // Время включения/отключения прокачки газа
   scadaParameters_[337].id               = -1;
   scadaParameters_[337].address          = 974;
@@ -4056,8 +3390,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[337].coefficient      = 1;
   scadaParameters_[337].min              = 0;
   scadaParameters_[337].max              = 59999;
-  scadaParameters_[337].command          = OPERATION_ERROR;
-  scadaParameters_[337].value.float_t    = 0;
   // Время разгона при прокачке газа
   scadaParameters_[338].id               = -1;
   scadaParameters_[338].address          = 975;
@@ -4068,8 +3400,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[338].coefficient      = 0.1;
   scadaParameters_[338].min              = 0;
   scadaParameters_[338].max              = 2000;
-  scadaParameters_[338].command          = OPERATION_ERROR;
-  scadaParameters_[338].value.float_t    = 0;
   // Время торможения при прокачке газа
   scadaParameters_[339].id               = -1;
   scadaParameters_[339].address          = 976;
@@ -4080,8 +3410,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[339].coefficient      = 0.1;
   scadaParameters_[339].min              = 0;
   scadaParameters_[339].max              = 2000;
-  scadaParameters_[339].command          = OPERATION_ERROR;
-  scadaParameters_[339].value.float_t    = 0;
   // Ограничение тока при плавном изменении частоты
   scadaParameters_[340].id               = -1;
   scadaParameters_[340].address          = 977;
@@ -4092,8 +3420,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[340].coefficient      = 1;
   scadaParameters_[340].min              = 0;
   scadaParameters_[340].max              = 1;
-  scadaParameters_[340].command          = OPERATION_ERROR;
-  scadaParameters_[340].value.float_t    = 0;
   // Режим плавного изменения частоты
   scadaParameters_[341].id               = CCS_RGM_CHANGE_FREQ_MODE;
   scadaParameters_[341].address          = 978;
@@ -4104,8 +3430,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[341].coefficient      = 1;
   scadaParameters_[341].min              = 0;
   scadaParameters_[341].max              = 2;
-  scadaParameters_[341].command          = OPERATION_ERROR;
-  scadaParameters_[341].value.float_t    = 0;
   // Начальная частота
   scadaParameters_[342].id               = CCS_RGM_CHANGE_FREQ_BEGIN_FREQ;
   scadaParameters_[342].address          = 979;
@@ -4116,8 +3440,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[342].coefficient      = 0.1;
   scadaParameters_[342].min              = 0;
   scadaParameters_[342].max              = 1000;
-  scadaParameters_[342].command          = OPERATION_ERROR;
-  scadaParameters_[342].value.float_t    = 0;
   // Конечная частота
   scadaParameters_[343].id               = CCS_RGM_CHANGE_FREQ_END_FREQ;
   scadaParameters_[343].address          = 980;
@@ -4128,8 +3450,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[343].coefficient      = 0.1;
   scadaParameters_[343].min              = 0;
   scadaParameters_[343].max              = 1000;
-  scadaParameters_[343].command          = OPERATION_ERROR;
-  scadaParameters_[343].value.float_t    = 0;
   // Скорость изменения, Гц/час
   scadaParameters_[344].id               = -1;
   scadaParameters_[344].address          = 981;
@@ -4140,8 +3460,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[344].coefficient      = 0.01;
   scadaParameters_[344].min              = 1;
   scadaParameters_[344].max              = 5000;
-  scadaParameters_[344].command          = OPERATION_ERROR;
-  scadaParameters_[344].value.float_t    = 0;
   // Уставка предельного тока для режима плавного изменения частоты, %
   scadaParameters_[345].id               = -1;
   scadaParameters_[345].address          = 982;
@@ -4152,8 +3470,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[345].coefficient      = 1;
   scadaParameters_[345].min              = 0;
   scadaParameters_[345].max              = 150;
-  scadaParameters_[345].command          = OPERATION_ERROR;
-  scadaParameters_[345].value.float_t    = 0;
   // Резерв
   scadaParameters_[346].id               = -1;
   scadaParameters_[346].address          = 983;
@@ -4164,8 +3480,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[346].coefficient      = 1;
   scadaParameters_[346].min              = 0;
   scadaParameters_[346].max              = 65535;
-  scadaParameters_[346].command          = OPERATION_ERROR;
-  scadaParameters_[346].value.float_t    = 0;
   // Частота синхронизации
   scadaParameters_[347].id               = -1;
   scadaParameters_[347].address          = 984;
@@ -4176,8 +3490,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[347].coefficient      = 0.1;
   scadaParameters_[347].min              = 1;
   scadaParameters_[347].max              = 1000;
-  scadaParameters_[347].command          = OPERATION_ERROR;
-  scadaParameters_[347].value.float_t    = 0;
   // Время синхронизации
   scadaParameters_[348].id               = -1;
   scadaParameters_[348].address          = 985;
@@ -4188,8 +3500,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[348].coefficient      = 1;
   scadaParameters_[348].min              = 0;
   scadaParameters_[348].max              = 59999;
-  scadaParameters_[348].command          = OPERATION_ERROR;
-  scadaParameters_[348].value.float_t    = 0;
   // Начальная уставка недогрузи для режима плавного изменения частоты, %
   scadaParameters_[349].id               = CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD;
   scadaParameters_[349].address          = 986;
@@ -4200,8 +3510,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[349].coefficient      = 1;
   scadaParameters_[349].min              = 0;
   scadaParameters_[349].max              = 100;
-  scadaParameters_[349].command          = OPERATION_ERROR;
-  scadaParameters_[349].value.float_t    = 0;
   // Режим ограничения тока
   scadaParameters_[350].id               = 0;
   scadaParameters_[350].address          = 987;
@@ -4212,8 +3520,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[350].coefficient      = 1;
   scadaParameters_[350].min              = 0;
   scadaParameters_[350].max              = 1;
-  scadaParameters_[350].command          = OPERATION_ERROR;
-  scadaParameters_[350].value.float_t    = 0;
   // Режим ограничения температуры ПЭД
   scadaParameters_[351].id               = -1;
   scadaParameters_[351].address          = 988;
@@ -4224,8 +3530,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[351].coefficient      = 1;
   scadaParameters_[351].min              = 0;
   scadaParameters_[351].max              = 1;
-  scadaParameters_[351].command          = OPERATION_ERROR;
-  scadaParameters_[351].value.float_t    = 0;
   // Режим автоматической оптимизации выходного напряжения СУ по току ПЭД
   scadaParameters_[352].id               = -1;
   scadaParameters_[352].address          = 989;
@@ -4236,8 +3540,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[352].coefficient      = 1;
   scadaParameters_[352].min              = 0;
   scadaParameters_[352].max              = 2;
-  scadaParameters_[352].command          = OPERATION_ERROR;
-  scadaParameters_[352].value.float_t    = 0;
   // Период оптимизации
   scadaParameters_[353].id               = -1;
   scadaParameters_[353].address          = 990;
@@ -4248,8 +3550,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[353].coefficient      = 1;
   scadaParameters_[353].min              = 0;
   scadaParameters_[353].max              = 59999;
-  scadaParameters_[353].command          = OPERATION_ERROR;
-  scadaParameters_[353].value.float_t    = 0;
   // Количество АПВ после отключения по вибрации
   scadaParameters_[354].id               = CCS_PROT_DHS_VIBRATION_RESTART_LIMIT;
   scadaParameters_[354].address          = 991;
@@ -4260,8 +3560,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[354].coefficient      = 1;
   scadaParameters_[354].min              = 0;
   scadaParameters_[354].max              = 65535;
-  scadaParameters_[354].command          = OPERATION_ERROR;
-  scadaParameters_[354].value.float_t    = 0;
   // Защита по минимальной выходной частоте
   scadaParameters_[355].id               = -1;
   scadaParameters_[355].address          = 992;
@@ -4272,8 +3570,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[355].coefficient      = 1;
   scadaParameters_[355].min              = 0;
   scadaParameters_[355].max              = 2;
-  scadaParameters_[355].command          = OPERATION_ERROR;
-  scadaParameters_[355].value.float_t    = 0;
   // Уставка минимальной выходной частоты
   scadaParameters_[356].id               = -1;
   scadaParameters_[356].address          = 993;
@@ -4284,8 +3580,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[356].coefficient      = 0.1;
   scadaParameters_[356].min              = 1;
   scadaParameters_[356].max              = 1000;
-  scadaParameters_[356].command          = OPERATION_ERROR;
-  scadaParameters_[356].value.float_t    = 0;
   // Задержка отключения для защиты по минимальной выходной частоте
   scadaParameters_[357].id               = -1;
   scadaParameters_[357].address          = 994;
@@ -4296,8 +3590,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[357].coefficient      = 1;
   scadaParameters_[357].min              = 0;
   scadaParameters_[357].max              = 59999;
-  scadaParameters_[357].command          = OPERATION_ERROR;
-  scadaParameters_[357].value.float_t    = 0;
   // Задержка контроля минимальной выходной частоты
   scadaParameters_[358].id               = -1;
   scadaParameters_[358].address          = 995;
@@ -4308,8 +3600,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[358].coefficient      = 1;
   scadaParameters_[358].min              = 0;
   scadaParameters_[358].max              = 59999;
-  scadaParameters_[358].command          = OPERATION_ERROR;
-  scadaParameters_[358].value.float_t    = 0;
   // Задержка АПВ после отключения по минимальной выходной частоте
   scadaParameters_[359].id               = -1;
   scadaParameters_[359].address          = 996;
@@ -4320,8 +3610,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[359].coefficient      = 1;
   scadaParameters_[359].min              = 1;
   scadaParameters_[359].max              = 59999;
-  scadaParameters_[359].command          = OPERATION_ERROR;
-  scadaParameters_[359].value.float_t    = 0;
   // Количество АПВ после отключения по минимальной выходной частоте
   scadaParameters_[360].id               = -1;
   scadaParameters_[360].address          = 997;
@@ -4332,8 +3620,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[360].coefficient      = 1;
   scadaParameters_[360].min              = 0;
   scadaParameters_[360].max              = 65535;
-  scadaParameters_[360].command          = OPERATION_ERROR;
-  scadaParameters_[360].value.float_t    = 0;
   // Защита по максимальной выходной частоте
   scadaParameters_[361].id               = -1;
   scadaParameters_[361].address          = 998;
@@ -4344,8 +3630,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[361].coefficient      = 1;
   scadaParameters_[361].min              = 0;
   scadaParameters_[361].max              = 2;
-  scadaParameters_[361].command          = OPERATION_ERROR;
-  scadaParameters_[361].value.float_t    = 0;
   // Уставка максимальной выходной частоты
   scadaParameters_[362].id               = -1;
   scadaParameters_[362].address          = 999;
@@ -4356,8 +3640,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[362].coefficient      = 0.1;
   scadaParameters_[362].min              = 1;
   scadaParameters_[362].max              = 1000;
-  scadaParameters_[362].command          = OPERATION_ERROR;
-  scadaParameters_[362].value.float_t    = 0;
   // Задержка отключения для защиты по максимальной выходной частоте
   scadaParameters_[363].id               = -1;
   scadaParameters_[363].address          = 1000;
@@ -4368,8 +3650,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[363].coefficient      = 1;
   scadaParameters_[363].min              = 0;
   scadaParameters_[363].max              = 59999;
-  scadaParameters_[363].command          = OPERATION_ERROR;
-  scadaParameters_[363].value.float_t    = 0;
   // Задержка контроля максимальной выходной частоты
   scadaParameters_[364].id               = -1;
   scadaParameters_[364].address          = 1001;
@@ -4380,8 +3660,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[364].coefficient      = 1;
   scadaParameters_[364].min              = 0;
   scadaParameters_[364].max              = 59999;
-  scadaParameters_[364].command          = OPERATION_ERROR;
-  scadaParameters_[364].value.float_t    = 0;
   // Задержка АПВ после отключения по максимальной выходной частоте
   scadaParameters_[365].id               = -1;
   scadaParameters_[365].address          = 1002;
@@ -4392,8 +3670,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[365].coefficient      = 1;
   scadaParameters_[365].min              = 1;
   scadaParameters_[365].max              = 59999;
-  scadaParameters_[365].command          = OPERATION_ERROR;
-  scadaParameters_[365].value.float_t    = 0;
   // Количество АПВ после отключения по максимальной выходной частоте
   scadaParameters_[366].id               = -1;
   scadaParameters_[366].address          = 1003;
@@ -4404,8 +3680,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[366].coefficient      = 1;
   scadaParameters_[366].min              = 0;
   scadaParameters_[366].max              = 65535;
-  scadaParameters_[366].command          = OPERATION_ERROR;
-  scadaParameters_[366].value.float_t    = 0;
   // Режим ограничения температуры радиатора ПЧ
   scadaParameters_[367].id               = -1;
   scadaParameters_[367].address          = 1004;
@@ -4416,8 +3690,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[367].coefficient      = 1;
   scadaParameters_[367].min              = 0;
   scadaParameters_[367].max              = 1;
-  scadaParameters_[367].command          = OPERATION_ERROR;
-  scadaParameters_[367].value.float_t    = 0;
   // Режим работы при пониженном напряжении электопитания
   scadaParameters_[368].id               = -1;
   scadaParameters_[368].address          = 1005;
@@ -4428,8 +3700,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[368].coefficient      = 1;
   scadaParameters_[368].min              = 0;
   scadaParameters_[368].max              = 1;
-  scadaParameters_[368].command          = OPERATION_ERROR;
-  scadaParameters_[368].value.float_t    = 0;
   // Хар-ка U/F, точка F1, Гц
   scadaParameters_[369].id               = VSD_UF_CHARACTERISTIC_F_1;
   scadaParameters_[369].address          = 1006;
@@ -4440,8 +3710,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[369].coefficient      = 0.1;
   scadaParameters_[369].min              = 1;
   scadaParameters_[369].max              = 5000;
-  scadaParameters_[369].command          = OPERATION_ERROR;
-  scadaParameters_[369].value.float_t    = 0;
   // Хар-ка U/F, точка U1, %
   scadaParameters_[370].id               = 0;
   scadaParameters_[370].address          = 1007;
@@ -4452,8 +3720,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[370].coefficient      = 0.1;
   scadaParameters_[370].min              = 0;
   scadaParameters_[370].max              = 1000;
-  scadaParameters_[370].command          = OPERATION_ERROR;
-  scadaParameters_[370].value.float_t    = 0;
   // Хар-ка U/F, точка F2, Гц
   scadaParameters_[371].id               = VSD_UF_CHARACTERISTIC_F_2;
   scadaParameters_[371].address          = 1008;
@@ -4464,8 +3730,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[371].coefficient      = 0.1;
   scadaParameters_[371].min              = 1;
   scadaParameters_[371].max              = 5000;
-  scadaParameters_[371].command          = OPERATION_ERROR;
-  scadaParameters_[371].value.float_t    = 0;
   // Хар-ка U/F, точка U2, %
   scadaParameters_[372].id               = 0;
   scadaParameters_[372].address          = 1009;
@@ -4476,8 +3740,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[372].coefficient      = 0.1;
   scadaParameters_[372].min              = 0;
   scadaParameters_[372].max              = 1000;
-  scadaParameters_[372].command          = OPERATION_ERROR;
-  scadaParameters_[372].value.float_t    = 0;
   // Хар-ка U/F, точка F3, Гц
   scadaParameters_[373].id               = VSD_UF_CHARACTERISTIC_F_3;
   scadaParameters_[373].address          = 1010;
@@ -4488,8 +3750,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[373].coefficient      = 0.1;
   scadaParameters_[373].min              = 1;
   scadaParameters_[373].max              = 5000;
-  scadaParameters_[373].command          = OPERATION_ERROR;
-  scadaParameters_[373].value.float_t    = 0;
   // Хар-ка U/F, точка U3, %
   scadaParameters_[374].id               = 0;
   scadaParameters_[374].address          = 1011;
@@ -4500,8 +3760,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[374].coefficient      = 0.1;
   scadaParameters_[374].min              = 0;
   scadaParameters_[374].max              = 1000;
-  scadaParameters_[374].command          = OPERATION_ERROR;
-  scadaParameters_[374].value.float_t    = 0;
   // Хар-ка U/F, точка F4, Гц
   scadaParameters_[375].id               = VSD_UF_CHARACTERISTIC_F_4;
   scadaParameters_[375].address          = 1012;
@@ -4512,8 +3770,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[375].coefficient      = 0.1;
   scadaParameters_[375].min              = 1;
   scadaParameters_[375].max              = 5000;
-  scadaParameters_[375].command          = OPERATION_ERROR;
-  scadaParameters_[375].value.float_t    = 0;
   // Хар-ка U/F, точка U4, %
   scadaParameters_[376].id               = 0;
   scadaParameters_[376].address          = 1013;
@@ -4524,8 +3780,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[376].coefficient      = 0.1;
   scadaParameters_[376].min              = 0;
   scadaParameters_[376].max              = 1000;
-  scadaParameters_[376].command          = OPERATION_ERROR;
-  scadaParameters_[376].value.float_t    = 0;
   // Хар-ка U/F, точка F5, Гц
   scadaParameters_[377].id               = VSD_UF_CHARACTERISTIC_F_5;
   scadaParameters_[377].address          = 1014;
@@ -4536,8 +3790,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[377].coefficient      = 0.1;
   scadaParameters_[377].min              = 1;
   scadaParameters_[377].max              = 5000;
-  scadaParameters_[377].command          = OPERATION_ERROR;
-  scadaParameters_[377].value.float_t    = 0;
   // Хар-ка U/F, точка U5, %
   scadaParameters_[378].id               = 0;
   scadaParameters_[378].address          = 1015;
@@ -4548,8 +3800,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[378].coefficient      = 0.1;
   scadaParameters_[378].min              = 0;
   scadaParameters_[378].max              = 1000;
-  scadaParameters_[378].command          = OPERATION_ERROR;
-  scadaParameters_[378].value.float_t    = 0;
   // Темп разгона в режиме встряхивания
   scadaParameters_[379].id               = CCS_RGM_JARRING_UPTEMP;
   scadaParameters_[379].address          = 1016;
@@ -4560,8 +3810,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[379].coefficient      = 0.1;
   scadaParameters_[379].min              = 1;
   scadaParameters_[379].max              = 5000;
-  scadaParameters_[379].command          = OPERATION_ERROR;
-  scadaParameters_[379].value.float_t    = 0;
   // Темп торможения в режиме встряхивания
   scadaParameters_[380].id               = CCS_RGM_JARRING_DOWNTEMP;
   scadaParameters_[380].address          = 1017;
@@ -4572,8 +3820,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[380].coefficient      = 0.1;
   scadaParameters_[380].min              = 1;
   scadaParameters_[380].max              = 5000;
-  scadaParameters_[380].command          = OPERATION_ERROR;
-  scadaParameters_[380].value.float_t    = 0;
   // Темп разгона в режиме прокачки газа
   scadaParameters_[381].id               = -1;
   scadaParameters_[381].address          = 1018;
@@ -4584,8 +3830,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[381].coefficient      = 0.1;
   scadaParameters_[381].min              = 1;
   scadaParameters_[381].max              = 5000;
-  scadaParameters_[381].command          = OPERATION_ERROR;
-  scadaParameters_[381].value.float_t    = 0;
   // Темп торможения в режиме прокачки газа
   scadaParameters_[382].id               = -1;
   scadaParameters_[382].address          = 1019;
@@ -4596,8 +3840,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[382].coefficient      = 0.1;
   scadaParameters_[382].min              = 1;
   scadaParameters_[382].max              = 5000;
-  scadaParameters_[382].command          = OPERATION_ERROR;
-  scadaParameters_[382].value.float_t    = 0;
   // Сетевой адрес СУ (RS232)
   scadaParameters_[383].id               = -1;
   scadaParameters_[383].address          = 1020;
@@ -4608,8 +3850,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[383].coefficient      = 1;
   scadaParameters_[383].min              = 0;
   scadaParameters_[383].max              = 247;
-  scadaParameters_[383].command          = OPERATION_ERROR;
-  scadaParameters_[383].value.float_t    = 0;
   // Скорость обмена (RS232)
   scadaParameters_[384].id               = -1;
   scadaParameters_[384].address          = 1021;
@@ -4620,8 +3860,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[384].coefficient      = 1;
   scadaParameters_[384].min              = 0;
   scadaParameters_[384].max              = 10;
-  scadaParameters_[384].command          = OPERATION_ERROR;
-  scadaParameters_[384].value.float_t    = 0;
   // Тип протокола (RS232) (0-ИРЗ;1-ТНК-BP стандарт;2-Роснефть-ЮНГ;3-ТНК-BP расширенный;4-ЛЗС расширенный)
   scadaParameters_[385].id               = -1;
   scadaParameters_[385].address          = 1022;
@@ -4632,8 +3870,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[385].coefficient      = 1;
   scadaParameters_[385].min              = 0;
   scadaParameters_[385].max              = 4;
-  scadaParameters_[385].command          = OPERATION_ERROR;
-  scadaParameters_[385].value.float_t    = 0;
   // Задержка выдачи ответа на запрос, мс (RS232)
   scadaParameters_[386].id               = -1;
   scadaParameters_[386].address          = 1023;
@@ -4644,8 +3880,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[386].coefficient      = 1;
   scadaParameters_[386].min              = 0;
   scadaParameters_[386].max              = 59999;
-  scadaParameters_[386].command          = OPERATION_ERROR;
-  scadaParameters_[386].value.float_t    = 0;
   // Сетевой адрес СУ (RS485)
   scadaParameters_[387].id               = CCS_SCADA_ADDRESS;
   scadaParameters_[387].address          = 1024;
@@ -4656,8 +3890,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[387].coefficient      = 1;
   scadaParameters_[387].min              = 0;
   scadaParameters_[387].max              = 247;
-  scadaParameters_[387].command          = OPERATION_ERROR;
-  scadaParameters_[387].value.float_t    = 0;
   // Скорость обмена (RS485)
   scadaParameters_[388].id               = 0;
   scadaParameters_[388].address          = 1025;
@@ -4668,8 +3900,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[388].coefficient      = 1;
   scadaParameters_[388].min              = 0;
   scadaParameters_[388].max              = 10;
-  scadaParameters_[388].command          = OPERATION_ERROR;
-  scadaParameters_[388].value.float_t    = 0;
   // Тип протокола (RS485) (0-ИРЗ;1-ТНК-BP стандарт;2-Роснефть-ЮНГ;3-ТНК-BP расширенный;4-ЛЗС расширенный)
   scadaParameters_[389].id               = 0;
   scadaParameters_[389].address          = 1026;
@@ -4680,8 +3910,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[389].coefficient      = 1;
   scadaParameters_[389].min              = 0;
   scadaParameters_[389].max              = 4;
-  scadaParameters_[389].command          = OPERATION_ERROR;
-  scadaParameters_[389].value.float_t    = 0;
   // Задержка выдачи ответа на запрос, мс (RS485)
   scadaParameters_[390].id               = CCS_SCADA_DELAY;
   scadaParameters_[390].address          = 1027;
@@ -4692,8 +3920,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[390].coefficient      = 1;
   scadaParameters_[390].min              = 0;
   scadaParameters_[390].max              = 59999;
-  scadaParameters_[390].command          = OPERATION_ERROR;
-  scadaParameters_[390].value.float_t    = 0;
   // Дистанционный запуск ПЭД в ручном режиме (0-запрещен;1-разрешен)
   scadaParameters_[391].id               = -1;
   scadaParameters_[391].address          = 1028;
@@ -4704,8 +3930,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[391].coefficient      = 1;
   scadaParameters_[391].min              = 0;
   scadaParameters_[391].max              = 1;
-  scadaParameters_[391].command          = OPERATION_ERROR;
-  scadaParameters_[391].value.float_t    = 0;
   // Номинальная мощность ПЭД, кВт
   scadaParameters_[392].id               = VSD_MOTOR_POWER;
   scadaParameters_[392].address          = 1029;
@@ -4716,8 +3940,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[392].coefficient      = 1;
   scadaParameters_[392].min              = 0;
   scadaParameters_[392].max              = 65535;
-  scadaParameters_[392].command          = OPERATION_ERROR;
-  scadaParameters_[392].value.float_t    = 0;
   // Номинальное напряжение питания ПЭД
   scadaParameters_[393].id               = VSD_MOTOR_VOLTAGE;
   scadaParameters_[393].address          = 1030;
@@ -4728,8 +3950,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[393].coefficient      = 1;
   scadaParameters_[393].min              = 0;
   scadaParameters_[393].max              = 65535;
-  scadaParameters_[393].command          = OPERATION_ERROR;
-  scadaParameters_[393].value.float_t    = 0;
   // Номинальная подача ЭЦН, м3/сут
   scadaParameters_[394].id               = CCS_PUMP_CAPACITY;
   scadaParameters_[394].address          = 1031;
@@ -4740,8 +3960,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[394].coefficient      = 1;
   scadaParameters_[394].min              = 0;
   scadaParameters_[394].max              = 65535;
-  scadaParameters_[394].command          = OPERATION_ERROR;
-  scadaParameters_[394].value.float_t    = 0;
   // Оптимальный напор ЭЦН, м
   scadaParameters_[395].id               = CCS_PUMP_HEAD;
   scadaParameters_[395].address          = 1032;
@@ -4752,8 +3970,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[395].coefficient      = 1;
   scadaParameters_[395].min              = 0;
   scadaParameters_[395].max              = 65535;
-  scadaParameters_[395].command          = OPERATION_ERROR;
-  scadaParameters_[395].value.float_t    = 0;
   // Глубина спуска ЭЦН, м
   scadaParameters_[396].id               = CCS_DEPTH;
   scadaParameters_[396].address          = 1033;
@@ -4764,8 +3980,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[396].coefficient      = 1;
   scadaParameters_[396].min              = 0;
   scadaParameters_[396].max              = 65535;
-  scadaParameters_[396].command          = OPERATION_ERROR;
-  scadaParameters_[396].value.float_t    = 0;
   // Плотность пластовой жидкости, кг/м3
   scadaParameters_[397].id               = -1;
   scadaParameters_[397].address          = 1034;
@@ -4776,8 +3990,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[397].coefficient      = 1;
   scadaParameters_[397].min              = 0;
   scadaParameters_[397].max              = 65535;
-  scadaParameters_[397].command          = OPERATION_ERROR;
-  scadaParameters_[397].value.float_t    = 0;
   // Номинальная мощность ТМПН, кВА
   scadaParameters_[398].id               = CCS_TRANS_NOMINAL_POWER;
   scadaParameters_[398].address          = 1035;
@@ -4788,8 +4000,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[398].coefficient      = 1;
   scadaParameters_[398].min              = 0;
   scadaParameters_[398].max              = 65535;
-  scadaParameters_[398].command          = OPERATION_ERROR;
-  scadaParameters_[398].value.float_t    = 0;
   // Номер месторождения
   scadaParameters_[399].id               = CCS_NUMBER_CDNG;
   scadaParameters_[399].address          = 1036;
@@ -4800,8 +4010,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[399].coefficient      = 1;
   scadaParameters_[399].min              = 0;
   scadaParameters_[399].max              = 65535;
-  scadaParameters_[399].command          = OPERATION_ERROR;
-  scadaParameters_[399].value.float_t    = 0;
   // Номер куста
   scadaParameters_[400].id               = CCS_NUMBER_BUSH;
   scadaParameters_[400].address          = 1037;
@@ -4812,8 +4020,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[400].coefficient      = 1;
   scadaParameters_[400].min              = 0;
   scadaParameters_[400].max              = 65535;
-  scadaParameters_[400].command          = OPERATION_ERROR;
-  scadaParameters_[400].value.float_t    = 0;
   // Номер скважины
   scadaParameters_[401].id               = CCS_NUMBER_WELL;
   scadaParameters_[401].address          = 1038;
@@ -4824,8 +4030,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[401].coefficient      = 1;
   scadaParameters_[401].min              = 0;
   scadaParameters_[401].max              = 65535;
-  scadaParameters_[401].command          = OPERATION_ERROR;
-  scadaParameters_[401].value.float_t    = 0;
   // Номер питающего фидера
   scadaParameters_[402].id               = -1;
   scadaParameters_[402].address          = 1039;
@@ -4836,8 +4040,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[402].coefficient      = 1;
   scadaParameters_[402].min              = 0;
   scadaParameters_[402].max              = 65535;
-  scadaParameters_[402].command          = OPERATION_ERROR;
-  scadaParameters_[402].value.float_t    = 0;
   // Дата установки СУ на месте эксплуатации (день)
   scadaParameters_[403].id               = -1;
   scadaParameters_[403].address          = 1040;
@@ -4848,8 +4050,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[403].coefficient      = 1;
   scadaParameters_[403].min              = 1;
   scadaParameters_[403].max              = 31;
-  scadaParameters_[403].command          = OPERATION_ERROR;
-  scadaParameters_[403].value.float_t    = 0;
   // Дата установки СУ на месте эксплуатации (месяц)
   scadaParameters_[404].id               = -1;
   scadaParameters_[404].address          = 1041;
@@ -4860,8 +4060,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[404].coefficient      = 1;
   scadaParameters_[404].min              = 1;
   scadaParameters_[404].max              = 12;
-  scadaParameters_[404].command          = OPERATION_ERROR;
-  scadaParameters_[404].value.float_t    = 0;
   // Дата установки СУ на месте эксплуатации (год)
   scadaParameters_[405].id               = -1;
   scadaParameters_[405].address          = 1042;
@@ -4872,8 +4070,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[405].coefficient      = 1;
   scadaParameters_[405].min              = 0;
   scadaParameters_[405].max              = 99;
-  scadaParameters_[405].command          = OPERATION_ERROR;
-  scadaParameters_[405].value.float_t    = 0;
   // Резерв
   scadaParameters_[406].id               = -1;
   scadaParameters_[406].address          = 1043;
@@ -4884,8 +4080,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[406].coefficient      = 1;
   scadaParameters_[406].min              = 0;
   scadaParameters_[406].max              = 65535;
-  scadaParameters_[406].command          = OPERATION_ERROR;
-  scadaParameters_[406].value.float_t    = 0;
   // Резерв
   scadaParameters_[407].id               = -1;
   scadaParameters_[407].address          = 1044;
@@ -4896,8 +4090,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[407].coefficient      = 1;
   scadaParameters_[407].min              = 0;
   scadaParameters_[407].max              = 65535;
-  scadaParameters_[407].command          = OPERATION_ERROR;
-  scadaParameters_[407].value.float_t    = 0;
   // Резерв
   scadaParameters_[408].id               = -1;
   scadaParameters_[408].address          = 1045;
@@ -4908,8 +4100,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[408].coefficient      = 1;
   scadaParameters_[408].min              = 0;
   scadaParameters_[408].max              = 65535;
-  scadaParameters_[408].command          = OPERATION_ERROR;
-  scadaParameters_[408].value.float_t    = 0;
   // Резерв
   scadaParameters_[409].id               = -1;
   scadaParameters_[409].address          = 1046;
@@ -4920,8 +4110,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[409].coefficient      = 1;
   scadaParameters_[409].min              = 0;
   scadaParameters_[409].max              = 65535;
-  scadaParameters_[409].command          = OPERATION_ERROR;
-  scadaParameters_[409].value.float_t    = 0;
   // Резерв
   scadaParameters_[410].id               = -1;
   scadaParameters_[410].address          = 1047;
@@ -4932,8 +4120,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[410].coefficient      = 1;
   scadaParameters_[410].min              = 0;
   scadaParameters_[410].max              = 65535;
-  scadaParameters_[410].command          = OPERATION_ERROR;
-  scadaParameters_[410].value.float_t    = 0;
   // Резерв
   scadaParameters_[411].id               = -1;
   scadaParameters_[411].address          = 1048;
@@ -4944,8 +4130,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[411].coefficient      = 1;
   scadaParameters_[411].min              = 0;
   scadaParameters_[411].max              = 65535;
-  scadaParameters_[411].command          = OPERATION_ERROR;
-  scadaParameters_[411].value.float_t    = 0;
   // Резерв
   scadaParameters_[412].id               = -1;
   scadaParameters_[412].address          = 1049;
@@ -4956,8 +4140,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[412].coefficient      = 1;
   scadaParameters_[412].min              = 0;
   scadaParameters_[412].max              = 65535;
-  scadaParameters_[412].command          = OPERATION_ERROR;
-  scadaParameters_[412].value.float_t    = 0;
   // Резерв
   scadaParameters_[413].id               = -1;
   scadaParameters_[413].address          = 1050;
@@ -4968,8 +4150,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[413].coefficient      = 1;
   scadaParameters_[413].min              = 0;
   scadaParameters_[413].max              = 65535;
-  scadaParameters_[413].command          = OPERATION_ERROR;
-  scadaParameters_[413].value.float_t    = 0;
   // Заводской номер контроллера (ст.часть)
   scadaParameters_[414].id               = 0;
   scadaParameters_[414].address          = 1051;
@@ -4980,8 +4160,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[414].coefficient      = 1;
   scadaParameters_[414].min              = 0;
   scadaParameters_[414].max              = 65535;
-  scadaParameters_[414].command          = OPERATION_ERROR;
-  scadaParameters_[414].value.float_t    = 0;
   // Заводской номер контроллера (мл.часть)
   scadaParameters_[415].id               = 0;
   scadaParameters_[415].address          = 1052;
@@ -4992,8 +4170,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[415].coefficient      = 1;
   scadaParameters_[415].min              = 0;
   scadaParameters_[415].max              = 65535;
-  scadaParameters_[415].command          = OPERATION_ERROR;
-  scadaParameters_[415].value.float_t    = 0;
   // Резерв
   scadaParameters_[416].id               = -1;
   scadaParameters_[416].address          = 1053;
@@ -5004,8 +4180,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[416].coefficient      = 1;
   scadaParameters_[416].min              = 0;
   scadaParameters_[416].max              = 65535;
-  scadaParameters_[416].command          = OPERATION_ERROR;
-  scadaParameters_[416].value.float_t    = 0;
   // Дата изготовления контроллера (день)
   scadaParameters_[417].id               = 0;
   scadaParameters_[417].address          = 1054;
@@ -5016,8 +4190,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[417].coefficient      = 1;
   scadaParameters_[417].min              = 1;
   scadaParameters_[417].max              = 31;
-  scadaParameters_[417].command          = OPERATION_ERROR;
-  scadaParameters_[417].value.float_t    = 0;
   // Дата изготовления контроллера (месяц)
   scadaParameters_[418].id               = 0;
   scadaParameters_[418].address          = 1055;
@@ -5028,8 +4200,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[418].coefficient      = 1;
   scadaParameters_[418].min              = 1;
   scadaParameters_[418].max              = 12;
-  scadaParameters_[418].command          = OPERATION_ERROR;
-  scadaParameters_[418].value.float_t    = 0;
   // Дата изготовления контроллера (год)
   scadaParameters_[419].id               = 0;
   scadaParameters_[419].address          = 1056;
@@ -5040,8 +4210,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[419].coefficient      = 1;
   scadaParameters_[419].min              = 0;
   scadaParameters_[419].max              = 99;
-  scadaParameters_[419].command          = OPERATION_ERROR;
-  scadaParameters_[419].value.float_t    = 0;
   // Резерв
   scadaParameters_[420].id               = -1;
   scadaParameters_[420].address          = 1057;
@@ -5052,8 +4220,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[420].coefficient      = 1;
   scadaParameters_[420].min              = 0;
   scadaParameters_[420].max              = 65535;
-  scadaParameters_[420].command          = OPERATION_ERROR;
-  scadaParameters_[420].value.float_t    = 0;
   // Дата установки ПО контроллера (день)
   scadaParameters_[421].id               = 0;
   scadaParameters_[421].address          = 1058;
@@ -5064,8 +4230,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[421].coefficient      = 1;
   scadaParameters_[421].min              = 1;
   scadaParameters_[421].max              = 31;
-  scadaParameters_[421].command          = OPERATION_ERROR;
-  scadaParameters_[421].value.float_t    = 0;
   // Дата установки ПО контроллера (месяц)
   scadaParameters_[422].id               = 0;
   scadaParameters_[422].address          = 1059;
@@ -5076,8 +4240,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[422].coefficient      = 1;
   scadaParameters_[422].min              = 1;
   scadaParameters_[422].max              = 12;
-  scadaParameters_[422].command          = OPERATION_ERROR;
-  scadaParameters_[422].value.float_t    = 0;
   // Дата установки ПО контроллера (год)
   scadaParameters_[423].id               = 0;
   scadaParameters_[423].address          = 1060;
@@ -5088,8 +4250,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[423].coefficient      = 1;
   scadaParameters_[423].min              = 0;
   scadaParameters_[423].max              = 99;
-  scadaParameters_[423].command          = OPERATION_ERROR;
-  scadaParameters_[423].value.float_t    = 0;
   // Резерв
   scadaParameters_[424].id               = -1;
   scadaParameters_[424].address          = 1061;
@@ -5100,8 +4260,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[424].coefficient      = 1;
   scadaParameters_[424].min              = 0;
   scadaParameters_[424].max              = 65535;
-  scadaParameters_[424].command          = OPERATION_ERROR;
-  scadaParameters_[424].value.float_t    = 0;
   // Дата изготовления СУ (день)
   scadaParameters_[425].id               = 0;
   scadaParameters_[425].address          = 1062;
@@ -5112,8 +4270,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[425].coefficient      = 1;
   scadaParameters_[425].min              = 1;
   scadaParameters_[425].max              = 31;
-  scadaParameters_[425].command          = OPERATION_ERROR;
-  scadaParameters_[425].value.float_t    = 0;
   // Дата изготовления СУ (месяц)
   scadaParameters_[426].id               = 0;
   scadaParameters_[426].address          = 1063;
@@ -5124,8 +4280,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[426].coefficient      = 1;
   scadaParameters_[426].min              = 1;
   scadaParameters_[426].max              = 12;
-  scadaParameters_[426].command          = OPERATION_ERROR;
-  scadaParameters_[426].value.float_t    = 0;
   // Дата изготовления СУ (год)
   scadaParameters_[427].id               = 0;
   scadaParameters_[427].address          = 1064;
@@ -5136,8 +4290,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[427].coefficient      = 1;
   scadaParameters_[427].min              = 0;
   scadaParameters_[427].max              = 99;
-  scadaParameters_[427].command          = OPERATION_ERROR;
-  scadaParameters_[427].value.float_t    = 0;
   // Заводской номер СУ (ст.часть)
   scadaParameters_[428].id               = 0;
   scadaParameters_[428].address          = 1065;
@@ -5148,8 +4300,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[428].coefficient      = 1;
   scadaParameters_[428].min              = 0;
   scadaParameters_[428].max              = 65535;
-  scadaParameters_[428].command          = OPERATION_ERROR;
-  scadaParameters_[428].value.float_t    = 0;
   // Заводской номер СУ (мл.часть)
   scadaParameters_[429].id               = 0;
   scadaParameters_[429].address          = 1066;
@@ -5160,8 +4310,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[429].coefficient      = 1;
   scadaParameters_[429].min              = 0;
   scadaParameters_[429].max              = 65535;
-  scadaParameters_[429].command          = OPERATION_ERROR;
-  scadaParameters_[429].value.float_t    = 0;
   // Номинальный ток СУ, А
   scadaParameters_[430].id               = CCS_SU_NOMINAL_CURRENT;
   scadaParameters_[430].address          = 1067;
@@ -5172,8 +4320,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[430].coefficient      = 1;
   scadaParameters_[430].min              = 0;
   scadaParameters_[430].max              = 65535;
-  scadaParameters_[430].command          = OPERATION_ERROR;
-  scadaParameters_[430].value.float_t    = 0;
   // Коэф. трансформации трансформаторов тока для внешнего электосчетчика
   scadaParameters_[431].id               = EM_COEFFICIENT_TRANS_CURRENT;
   scadaParameters_[431].address          = 1068;
@@ -5184,8 +4330,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[431].coefficient      = 1;
   scadaParameters_[431].min              = 1;
   scadaParameters_[431].max              = 65535;
-  scadaParameters_[431].command          = OPERATION_ERROR;
-  scadaParameters_[431].value.float_t    = 0;
   // Тип внешнего электосчетчика (0-нет;1-ПСЧ-3АРТ.07Д.132.4;2-СЭТ-4ТМ.03;3-другой)
   scadaParameters_[432].id               = 0;
   scadaParameters_[432].address          = 1069;
@@ -5196,8 +4340,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[432].coefficient      = 1;
   scadaParameters_[432].min              = 0;
   scadaParameters_[432].max              = 3;
-  scadaParameters_[432].command          = OPERATION_ERROR;
-  scadaParameters_[432].value.float_t    = 0;
   // Период опроса внешнего электосчетчика
   scadaParameters_[433].id               = -1;
   scadaParameters_[433].address          = 1070;
@@ -5208,8 +4350,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[433].coefficient      = 1;
   scadaParameters_[433].min              = 1;
   scadaParameters_[433].max              = 59999;
-  scadaParameters_[433].command          = OPERATION_ERROR;
-  scadaParameters_[433].value.float_t    = 0;
   // Сетевой адрес внешнего электосчетчика
   scadaParameters_[434].id               = -1;
   scadaParameters_[434].address          = 1071;
@@ -5220,8 +4360,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[434].coefficient      = 1;
   scadaParameters_[434].min              = 0;
   scadaParameters_[434].max              = 65535;
-  scadaParameters_[434].command          = OPERATION_ERROR;
-  scadaParameters_[434].value.float_t    = 0;
   // Версия ПО контроллера (ст.часть)
   scadaParameters_[435].id               = 0;
   scadaParameters_[435].address          = 1072;
@@ -5232,8 +4370,6 @@ void ScadaLukoil::initParameters()
   scadaParameters_[435].coefficient      = 1;
   scadaParameters_[435].min              = 0;
   scadaParameters_[435].max              = 65535;
-  scadaParameters_[435].command          = OPERATION_ERROR;
-  scadaParameters_[435].value.float_t    = 0;
   // Версия ПО  контроллера (мл.часть)
   scadaParameters_[436].id               = 0;
   scadaParameters_[436].address          = 1073;
@@ -5244,7 +4380,5 @@ void ScadaLukoil::initParameters()
   scadaParameters_[436].coefficient      = 1;
   scadaParameters_[436].min              = 0;
   scadaParameters_[436].max              = 65535;
-  scadaParameters_[436].command          = OPERATION_ERROR;
-  scadaParameters_[436].value.float_t    = 0;
 }
 

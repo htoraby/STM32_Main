@@ -10,7 +10,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Состояние СУ и причина останова</name>
 	</param>
 	<param>
@@ -23,7 +22,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Активная мощность</name>
 	</param>
 	<param>
@@ -36,7 +34,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Ток фаза А</name>
 	</param>
 	<param>
@@ -49,7 +46,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Ток фаза B</name>
 	</param>
 	<param>
@@ -62,7 +58,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Ток фаза C</name>
 	</param>
 	<param>
@@ -75,7 +70,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Сопротивление изоляции Rinsul</name>
 	</param>
 	<param>
@@ -87,7 +81,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Коэф. Мощности</name>
 	</param>
 	<param>
@@ -100,7 +93,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Напряжение фазы А</name>
 	</param>
 	<param>
@@ -113,7 +105,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Напряжение фазы B</name>
 	</param>
 	<param>
@@ -126,7 +117,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Напряжение фазы C</name>
 	</param>
 	<param>
@@ -139,7 +129,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>40</max>
-		<command>OPERATION_ERROR</command>
 		<name>Давление на приеме</name>
 	</param>
 	<param>
@@ -150,7 +139,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -163,7 +151,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>150</max>
-		<command>OPERATION_ERROR</command>
 		<name>Температура на приемеTin</name>
 	</param>
 	<param>
@@ -176,7 +163,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>300</max>
-		<command>OPERATION_ERROR</command>
 		<name>Температура обмоток двигателя Tw</name>
 	</param>
 	<param>
@@ -189,7 +175,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>40</max>
-		<command>OPERATION_ERROR</command>
 		<name>Вибрация радиальная Vradial</name>
 	</param>
 	<param>
@@ -202,7 +187,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>40</max>
-		<command>OPERATION_ERROR</command>
 		<name>Вибрация осевая Vaxial</name>
 	</param>
 	<param>
@@ -213,7 +197,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -224,7 +207,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -235,7 +217,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -246,7 +227,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -257,7 +237,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -269,7 +248,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Режим работы</name>
 	</param>
 	<param>
@@ -280,7 +258,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -291,7 +268,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -302,7 +278,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -314,7 +289,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Текущий порядок чередования фаз</name>
 	</param>
 	<param>
@@ -327,7 +301,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Загрузка двигателя</name>
 	</param>
 	<param>
@@ -340,7 +313,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>20000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение текущей частоты</name>
 	</param>
 	<param>
@@ -353,7 +325,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Температура контроллера</name>
 	</param>
 	<param>
@@ -366,7 +337,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Межфазное напряжение Uin(AB)</name>
 	</param>
 	<param>
@@ -379,7 +349,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Межфазное напряжение Uin(BC)</name>
 	</param>
 	<param>
@@ -392,7 +361,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Межфазное напряжение Uin(CA)</name>
 	</param>
 	<param>
@@ -405,7 +373,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Vdcl(В) Напряжение в звене пост. тока ЧРП</name>
 	</param>
 	<param>
@@ -417,7 +384,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Состояние СУ</name>
 	</param>
 	<param>
@@ -429,7 +395,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Причина останова</name>
 	</param>
 	<param>
@@ -441,7 +406,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение аварийного параметра</name>
 	</param>
 	<param>
@@ -452,7 +416,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 	</param>
 	<param>
 		<id>CCS_VOLTAGE_IMBALANCE_IN</id>
@@ -464,7 +427,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс входного напряжения dUin</name>
 	</param>
 	<param>
@@ -477,7 +439,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс токов</name>
 	</param>
 	<param>
@@ -489,7 +450,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Общая наработка (мл.байт)</name>
 	</param>
 	<param>
@@ -501,7 +461,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Общая наработка (ст.байт)</name>
 	</param>
 	<param>
@@ -513,7 +472,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Количество пусков</name>
 	</param>
 	<param>
@@ -525,7 +483,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Активная энергия (мл.байт)</name>
 	</param>
 	<param>
@@ -537,7 +494,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Активная энергия (ст.байт)</name>
 	</param>
 	<param>
@@ -550,7 +506,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Температура радиатора</name>
 	</param>
 	<param>
@@ -563,7 +518,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Температура IGBT</name>
 	</param>
 	<param>
@@ -574,7 +528,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -585,7 +538,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -596,7 +548,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -607,7 +558,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -618,7 +568,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -629,7 +578,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -640,7 +588,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -651,7 +598,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -662,7 +608,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -673,7 +618,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -684,7 +628,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -695,7 +638,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -706,7 +648,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -717,7 +658,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -728,7 +668,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -739,7 +678,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -750,7 +688,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -761,7 +698,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -772,7 +708,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -783,7 +718,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -794,7 +728,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -805,7 +738,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -816,7 +748,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -827,7 +758,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -838,7 +768,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -849,7 +778,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -860,7 +788,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -871,7 +798,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -882,7 +808,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -893,7 +818,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -904,7 +828,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -915,7 +838,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -926,7 +848,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -937,7 +858,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -948,7 +868,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -959,7 +878,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -970,7 +888,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -981,7 +898,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -992,7 +908,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -1003,7 +918,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -1014,7 +928,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -1025,7 +938,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1036,7 +948,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1047,7 +958,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1058,7 +968,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1069,7 +978,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1080,7 +988,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1091,7 +998,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1102,7 +1008,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1113,7 +1018,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1124,7 +1028,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1135,7 +1038,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1146,7 +1048,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1157,7 +1058,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1168,7 +1068,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1179,7 +1078,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1190,7 +1088,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1201,7 +1098,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1212,7 +1108,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1223,7 +1118,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1234,7 +1128,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1245,7 +1138,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1256,7 +1148,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1267,7 +1158,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1278,7 +1168,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1289,7 +1178,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1300,7 +1188,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1311,7 +1198,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1322,7 +1208,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1333,7 +1218,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1344,7 +1228,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1355,7 +1238,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1366,7 +1248,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1377,7 +1258,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1388,7 +1268,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1399,7 +1278,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1410,7 +1288,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1421,7 +1298,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1432,7 +1308,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1443,7 +1318,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1454,7 +1328,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1465,7 +1338,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1476,7 +1348,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1487,7 +1358,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1498,7 +1368,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1509,7 +1378,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1520,7 +1388,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1531,7 +1398,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1542,7 +1408,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1553,7 +1418,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1564,7 +1428,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1575,7 +1438,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1586,7 +1448,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1597,7 +1458,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1608,7 +1468,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1619,7 +1478,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1630,7 +1488,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1641,7 +1498,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1652,7 +1508,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1663,7 +1518,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1674,7 +1528,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1685,7 +1538,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1696,7 +1548,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1707,7 +1558,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1718,7 +1568,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1729,7 +1578,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1740,7 +1588,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1751,7 +1598,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1762,7 +1608,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1773,7 +1618,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1784,7 +1628,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1795,7 +1638,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1806,7 +1648,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1817,7 +1658,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1828,7 +1668,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1839,7 +1678,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1850,7 +1688,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1861,7 +1698,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1872,7 +1708,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1883,7 +1718,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1894,7 +1728,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1905,7 +1738,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1916,7 +1748,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1927,7 +1758,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1938,7 +1768,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1949,7 +1778,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1960,7 +1788,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1971,7 +1798,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1982,7 +1808,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -1993,7 +1818,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2004,7 +1828,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2015,7 +1838,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2026,7 +1848,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2037,7 +1858,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2048,7 +1868,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2059,7 +1878,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2070,7 +1888,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2081,7 +1898,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2092,7 +1908,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2103,7 +1918,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2114,7 +1928,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2125,7 +1938,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2136,7 +1948,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2147,7 +1958,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2158,7 +1968,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2169,7 +1978,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2180,7 +1988,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2191,7 +1998,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2202,7 +2008,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2213,7 +2018,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2224,7 +2028,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2235,7 +2038,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2246,7 +2048,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2257,7 +2058,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2268,7 +2068,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2279,7 +2078,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2290,7 +2088,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2301,7 +2098,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2312,7 +2108,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2323,7 +2118,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2334,7 +2128,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2345,7 +2138,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2356,7 +2148,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2367,7 +2158,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2378,7 +2168,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2389,7 +2178,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2400,7 +2188,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2411,7 +2198,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2422,7 +2208,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2433,7 +2218,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2444,7 +2228,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2455,7 +2238,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2466,7 +2248,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2477,7 +2258,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2488,7 +2268,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2499,7 +2278,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2510,7 +2288,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2521,7 +2298,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2532,7 +2308,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2543,7 +2318,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2554,7 +2328,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2565,7 +2338,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2576,7 +2348,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2587,7 +2358,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2598,7 +2368,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2609,7 +2378,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2620,7 +2388,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2631,7 +2398,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2642,7 +2408,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2653,7 +2418,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2664,7 +2428,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2675,7 +2438,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2686,7 +2448,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2697,7 +2458,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2708,7 +2468,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2719,7 +2478,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2730,7 +2488,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2741,7 +2498,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2752,7 +2508,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2763,7 +2518,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2774,7 +2528,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2785,7 +2538,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2796,7 +2548,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2807,7 +2558,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2818,7 +2568,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2829,7 +2578,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2840,7 +2588,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2851,7 +2598,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2862,7 +2608,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2873,7 +2618,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2884,7 +2628,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2895,7 +2638,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2906,7 +2648,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2917,7 +2658,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2928,7 +2668,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2939,7 +2678,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2950,7 +2688,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2961,7 +2698,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2972,7 +2708,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2983,7 +2718,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -2994,7 +2728,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3005,7 +2738,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3016,7 +2748,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3027,7 +2758,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3038,7 +2768,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3049,7 +2778,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3060,7 +2788,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3071,7 +2798,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3082,7 +2808,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3093,7 +2818,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3104,7 +2828,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3115,7 +2838,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3126,7 +2848,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3137,7 +2858,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3148,7 +2868,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3159,7 +2878,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3170,7 +2888,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3181,7 +2898,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3192,7 +2908,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3203,7 +2918,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3214,7 +2928,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3225,7 +2938,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3236,7 +2948,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3247,7 +2958,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3258,7 +2968,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3269,7 +2978,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 	<param>
@@ -3280,7 +2988,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка</name>
 	</param>
 </SCADA>

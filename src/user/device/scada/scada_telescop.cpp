@@ -3,7 +3,6 @@
 
 ScadaTelescop::ScadaTelescop()
 {
-  countParameters_ = 183;
   initParameters();
 }
 

@@ -10,7 +10,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Причина последнего останова</name>
 	</param>
 	<param>
@@ -23,7 +22,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Состояние СУ</name>
 	</param>
 	<param>
@@ -36,7 +34,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Входной ток фаза А</name>
 	</param>
 	<param>
@@ -49,7 +46,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Входной ток фаза B</name>
 	</param>
 	<param>
@@ -62,7 +58,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Входной ток фаза C</name>
 	</param>
 	<param>
@@ -75,7 +70,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс тока на входе dIin</name>
 	</param>
 	<param>
@@ -88,7 +82,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Межфазное напряжение Uin(AB)</name>
 	</param>
 	<param>
@@ -101,7 +94,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Межфазное напряжение Uin(BC)</name>
 	</param>
 	<param>
@@ -114,7 +106,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Межфазное напряжение Uin(CA)</name>
 	</param>
 	<param>
@@ -127,7 +118,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс входного напряжения dUin</name>
 	</param>
 	<param>
@@ -140,7 +130,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Сопротивление изоляции Rinsul</name>
 	</param>
 	<param>
@@ -153,7 +142,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Коэф. Мощности</name>
 	</param>
 	<param>
@@ -166,7 +154,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Загрузка двигателя</name>
 	</param>
 	<param>
@@ -179,7 +166,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Активная мощность</name>
 	</param>
 	<param>
@@ -192,7 +178,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Ток двигателя</name>
 	</param>
 	<param>
@@ -205,7 +190,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>300</max>
-		<command>OPERATION_ERROR</command>
 		<name>Температура обмоток двигателя Tw</name>
 	</param>
 	<param>
@@ -218,7 +202,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>40</max>
-		<command>OPERATION_ERROR</command>
 		<name>Давление на приеме</name>
 	</param>
 	<param>
@@ -231,7 +214,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>30000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Рабочая частота</name>
 	</param>
 	<param>
@@ -244,7 +226,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>20000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение текущей частоты</name>
 	</param>
 	<param>
@@ -257,7 +238,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Выходной ток ПЧ</name>
 	</param>
 	<param>
@@ -270,7 +250,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Выходное напряжение ПЧ</name>
 	</param>
 	<param>
@@ -283,7 +262,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Ток в звене постоянного тока Id</name>
 	</param>
 	<param>
@@ -294,7 +272,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Динамический уровень</name>
 	</param>
 	<param>
@@ -306,7 +283,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>999999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Общее количество пусков</name>
 	</param>
 	<param>
@@ -317,7 +293,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Устьевое давление</name>
 	</param>
 	<param>
@@ -328,7 +303,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Затрубное давление</name>
 	</param>
 	<param>
@@ -339,7 +313,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Линейное давление</name>
 	</param>
 	<param>
@@ -352,7 +325,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>150</max>
-		<command>OPERATION_ERROR</command>
 		<name>Температура на приемеTin</name>
 	</param>
 	<param>
@@ -365,7 +337,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>40</max>
-		<command>OPERATION_ERROR</command>
 		<name>Вибрация радиальная Vradial</name>
 	</param>
 	<param>
@@ -378,7 +349,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>40</max>
-		<command>OPERATION_ERROR</command>
 		<name>Вибрация осевая Vaxial</name>
 	</param>
 	<param>
@@ -391,7 +361,6 @@
 		<coefficient>1</coefficient>
 		<min>100</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номинальное напряжение сети</name>
 	</param>
 	<param>
@@ -403,7 +372,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Высокое напряжение</name>
 	</param>
 	<param>
@@ -416,7 +384,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>260</max>
-		<command>OPERATION_ERROR</command>
 		<name>Высокое напряжение, уставка</name>
 	</param>
 	<param>
@@ -428,7 +395,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Низкое напряжение</name>
 	</param>
 	<param>
@@ -440,7 +406,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс напряжения</name>
 	</param>
 	<param>
@@ -453,7 +418,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время АПВ защит по напряжению (Автозапуск)</name>
 	</param>
 	<param>
@@ -466,7 +430,6 @@
 		<coefficient>1</coefficient>
 		<min>380</min>
 		<max>5500</max>
-		<command>OPERATION_ERROR</command>
 		<name>Напряжение отпайки ТМПН</name>
 	</param>
 	<param>
@@ -479,7 +442,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номинальный ток двигателя</name>
 	</param>
 	<param>
@@ -491,7 +453,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Перегруз (ЗП)</name>
 	</param>
 	<param>
@@ -504,7 +465,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Перегруз, уставка</name>
 	</param>
 	<param>
@@ -517,7 +477,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Перегруз, задержка АПВ</name>
 	</param>
 	<param>
@@ -529,7 +488,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Недогруз (ЗСП)</name>
 	</param>
 	<param>
@@ -542,7 +500,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Недогруз, уставка</name>
 	</param>
 	<param>
@@ -555,7 +512,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Недогруз, задержка АПВ</name>
 	</param>
 	<param>
@@ -567,7 +523,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс токов</name>
 	</param>
 	<param>
@@ -580,7 +535,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ после дисбаланса токов</name>
 	</param>
 	<param>
@@ -592,7 +546,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Ввод единиц измерения давления</name>
 	</param>
 	<param>
@@ -604,7 +557,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Давление</name>
 	</param>
 	<param>
@@ -617,7 +569,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальное давление</name>
 	</param>
 	<param>
@@ -630,7 +581,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимальное давление</name>
 	</param>
 	<param>
@@ -643,7 +593,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ уставка</name>
 	</param>
 	<param>
@@ -655,7 +604,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Ввод единиц измерения температуры</name>
 	</param>
 	<param>
@@ -667,7 +615,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Температура</name>
 	</param>
 	<param>
@@ -680,7 +627,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Макс.температура</name>
 	</param>
 	<param>
@@ -693,7 +639,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Мин.температура</name>
 	</param>
 	<param>
@@ -706,7 +651,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ уставка</name>
 	</param>
 	<param>
@@ -718,7 +662,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Турбинное вращение</name>
 	</param>
 	<param>
@@ -731,7 +674,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>255</max>
-		<command>OPERATION_ERROR</command>
 		<name>Турбин.вращение уст.</name>
 	</param>
 	<param>
@@ -743,7 +685,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальная токовая защита</name>
 	</param>
 	<param>
@@ -755,7 +696,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Сопротивление изоляции</name>
 	</param>
 	<param>
@@ -767,7 +707,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Недогруз (ЗСП). Количество разрешенных АПВ</name>
 	</param>
 	<param>
@@ -779,7 +718,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Перегруз (ЗП). Количество разрешенных АПВ</name>
 	</param>
 	<param>
@@ -791,7 +729,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Кол-во разрешенных АПВ после других защит</name>
 	</param>
 	<param>
@@ -803,7 +740,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номер куста</name>
 	</param>
 	<param>
@@ -815,7 +751,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номер скважины</name>
 	</param>
 	<param>
@@ -827,7 +762,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>247</max>
-		<command>OPERATION_ERROR</command>
 		<name>Адрес Модбас Слейва</name>
 	</param>
 	<param>
@@ -839,7 +773,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Чередование фаз</name>
 	</param>
 	<param>
@@ -852,7 +785,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>20000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка минимального значения частоты</name>
 	</param>
 	<param>
@@ -865,7 +797,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>20000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка максимального значения частоты</name>
 	</param>
 	<param>
@@ -878,7 +809,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>20000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка частоты</name>
 	</param>
 	<param>
@@ -891,7 +821,6 @@
 		<coefficient>0.01</coefficient>
 		<min>1</min>
 		<max>3600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Темп разгона</name>
 	</param>
 	<param>
@@ -902,7 +831,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нагрузка на шток</name>
 	</param>
 	<param>
@@ -913,7 +841,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальная нагрузка на шток</name>
 	</param>
 	<param>
@@ -924,7 +851,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимальная нагрузка на шток</name>
 	</param>
 	<param>
@@ -935,7 +861,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Длина хода полированного штока</name>
 	</param>
 </SCADA>

@@ -2,6 +2,14 @@
 
 void ScadaKarakuduk::initParameters()
 {
+  countParameters_ = 293;
+#ifdef USE_SERVER
+  scadaParameters_ = new ScadaParameter[countParameters_];
+#endif
+  for (int i = 0; i < countParameters_; ++i) {
+    scadaParameters_[i].value.uint32_t = 0;
+  }
+
   // Состояние СУ и причина останова
   scadaParameters_[0].id                 = 0;
   scadaParameters_[0].address            = 256;
@@ -12,8 +20,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[0].coefficient        = 1;
   scadaParameters_[0].min                = 0;
   scadaParameters_[0].max                = 65535;
-  scadaParameters_[0].command            = OPERATION_ERROR;
-  scadaParameters_[0].value.float_t      = 0;
   // Активная мощность
   scadaParameters_[1].id                 = VSD_POWER_ACTIVE;
   scadaParameters_[1].address            = 257;
@@ -24,8 +30,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[1].coefficient        = 1;
   scadaParameters_[1].min                = 0;
   scadaParameters_[1].max                = 10000;
-  scadaParameters_[1].command            = OPERATION_ERROR;
-  scadaParameters_[1].value.float_t      = 0;
   // Ток фаза А
   scadaParameters_[2].id                 = CCS_MOTOR_CURRENT_PHASE_1;
   scadaParameters_[2].address            = 258;
@@ -36,8 +40,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[2].coefficient        = 1;
   scadaParameters_[2].min                = 0;
   scadaParameters_[2].max                = 65535;
-  scadaParameters_[2].command            = OPERATION_ERROR;
-  scadaParameters_[2].value.float_t      = 0;
   // Ток фаза B
   scadaParameters_[3].id                 = CCS_MOTOR_CURRENT_PHASE_2;
   scadaParameters_[3].address            = 259;
@@ -48,8 +50,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[3].coefficient        = 1;
   scadaParameters_[3].min                = 0;
   scadaParameters_[3].max                = 65535;
-  scadaParameters_[3].command            = OPERATION_ERROR;
-  scadaParameters_[3].value.float_t      = 0;
   // Ток фаза C
   scadaParameters_[4].id                 = CCS_MOTOR_CURRENT_PHASE_3;
   scadaParameters_[4].address            = 260;
@@ -60,8 +60,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[4].coefficient        = 1;
   scadaParameters_[4].min                = 0;
   scadaParameters_[4].max                = 65535;
-  scadaParameters_[4].command            = OPERATION_ERROR;
-  scadaParameters_[4].value.float_t      = 0;
   // Сопротивление изоляции Rinsul
   scadaParameters_[5].id                 = CCS_RESISTANCE_ISOLATION;
   scadaParameters_[5].address            = 261;
@@ -72,8 +70,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[5].coefficient        = 1;
   scadaParameters_[5].min                = 0;
   scadaParameters_[5].max                = 9999;
-  scadaParameters_[5].command            = OPERATION_ERROR;
-  scadaParameters_[5].value.float_t      = 0;
   // Коэф. Мощности
   scadaParameters_[6].id                 = CCS_MOTOR_COS_PHI_NOW;
   scadaParameters_[6].address            = 262;
@@ -84,8 +80,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[6].coefficient        = 0.1;
   scadaParameters_[6].min                = 0;
   scadaParameters_[6].max                = 65535;
-  scadaParameters_[6].command            = OPERATION_ERROR;
-  scadaParameters_[6].value.float_t      = 0;
   // Напряжение фазы А
   scadaParameters_[7].id                 = CCS_VOLTAGE_PHASE_1;
   scadaParameters_[7].address            = 263;
@@ -96,8 +90,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[7].coefficient        = 1;
   scadaParameters_[7].min                = 0;
   scadaParameters_[7].max                = 65535;
-  scadaParameters_[7].command            = OPERATION_ERROR;
-  scadaParameters_[7].value.float_t      = 0;
   // Напряжение фазы B
   scadaParameters_[8].id                 = CCS_VOLTAGE_PHASE_2;
   scadaParameters_[8].address            = 264;
@@ -108,8 +100,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[8].coefficient        = 1;
   scadaParameters_[8].min                = 0;
   scadaParameters_[8].max                = 65535;
-  scadaParameters_[8].command            = OPERATION_ERROR;
-  scadaParameters_[8].value.float_t      = 0;
   // Напряжение фазы C
   scadaParameters_[9].id                 = CCS_VOLTAGE_PHASE_3;
   scadaParameters_[9].address            = 265;
@@ -120,8 +110,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[9].coefficient        = 1;
   scadaParameters_[9].min                = 0;
   scadaParameters_[9].max                = 65535;
-  scadaParameters_[9].command            = OPERATION_ERROR;
-  scadaParameters_[9].value.float_t      = 0;
   // Давление на приеме
   scadaParameters_[10].id                = TMS_PRESSURE_INTAKE;
   scadaParameters_[10].address           = 266;
@@ -132,8 +120,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[10].coefficient       = 1;
   scadaParameters_[10].min               = 0;
   scadaParameters_[10].max               = 40;
-  scadaParameters_[10].command           = OPERATION_ERROR;
-  scadaParameters_[10].value.float_t     = 0;
   // Резерв
   scadaParameters_[11].id                = -1;
   scadaParameters_[11].address           = 267;
@@ -144,8 +130,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[11].coefficient       = 1;
   scadaParameters_[11].min               = 0;
   scadaParameters_[11].max               = 65535;
-  scadaParameters_[11].command           = OPERATION_ERROR;
-  scadaParameters_[11].value.float_t     = 0;
   // Температура на приемеTin
   scadaParameters_[12].id                = TMS_TEMPERATURE_INTAKE;
   scadaParameters_[12].address           = 268;
@@ -156,8 +140,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[12].coefficient       = 1;
   scadaParameters_[12].min               = 0;
   scadaParameters_[12].max               = 150;
-  scadaParameters_[12].command           = OPERATION_ERROR;
-  scadaParameters_[12].value.float_t     = 0;
   // Температура обмоток двигателя Tw
   scadaParameters_[13].id                = TMS_TEMPERATURE_WINDING;
   scadaParameters_[13].address           = 269;
@@ -168,8 +150,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[13].coefficient       = 1;
   scadaParameters_[13].min               = 0;
   scadaParameters_[13].max               = 300;
-  scadaParameters_[13].command           = OPERATION_ERROR;
-  scadaParameters_[13].value.float_t     = 0;
   // Вибрация радиальная Vradial
   scadaParameters_[14].id                = TMS_ACCELERATION_XY_INTAKE;
   scadaParameters_[14].address           = 270;
@@ -180,8 +160,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[14].coefficient       = 0.1;
   scadaParameters_[14].min               = 0;
   scadaParameters_[14].max               = 40;
-  scadaParameters_[14].command           = OPERATION_ERROR;
-  scadaParameters_[14].value.float_t     = 0;
   // Вибрация осевая Vaxial
   scadaParameters_[15].id                = TMS_ACCELERATION_Z_INTAKE;
   scadaParameters_[15].address           = 271;
@@ -192,8 +170,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[15].coefficient       = 0.1;
   scadaParameters_[15].min               = 0;
   scadaParameters_[15].max               = 40;
-  scadaParameters_[15].command           = OPERATION_ERROR;
-  scadaParameters_[15].value.float_t     = 0;
   // Резерв
   scadaParameters_[16].id                = -1;
   scadaParameters_[16].address           = 272;
@@ -204,8 +180,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[16].coefficient       = 1;
   scadaParameters_[16].min               = 0;
   scadaParameters_[16].max               = 65535;
-  scadaParameters_[16].command           = OPERATION_ERROR;
-  scadaParameters_[16].value.float_t     = 0;
   // Резерв
   scadaParameters_[17].id                = -1;
   scadaParameters_[17].address           = 273;
@@ -216,8 +190,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[17].coefficient       = 1;
   scadaParameters_[17].min               = 0;
   scadaParameters_[17].max               = 65535;
-  scadaParameters_[17].command           = OPERATION_ERROR;
-  scadaParameters_[17].value.float_t     = 0;
   // Резерв
   scadaParameters_[18].id                = -1;
   scadaParameters_[18].address           = 274;
@@ -228,8 +200,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[18].coefficient       = 1;
   scadaParameters_[18].min               = 0;
   scadaParameters_[18].max               = 65535;
-  scadaParameters_[18].command           = OPERATION_ERROR;
-  scadaParameters_[18].value.float_t     = 0;
   // Резерв
   scadaParameters_[19].id                = -1;
   scadaParameters_[19].address           = 275;
@@ -240,8 +210,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[19].coefficient       = 1;
   scadaParameters_[19].min               = 0;
   scadaParameters_[19].max               = 65535;
-  scadaParameters_[19].command           = OPERATION_ERROR;
-  scadaParameters_[19].value.float_t     = 0;
   // Резерв
   scadaParameters_[20].id                = -1;
   scadaParameters_[20].address           = 276;
@@ -252,8 +220,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[20].coefficient       = 1;
   scadaParameters_[20].min               = 0;
   scadaParameters_[20].max               = 65535;
-  scadaParameters_[20].command           = OPERATION_ERROR;
-  scadaParameters_[20].value.float_t     = 0;
   // Режим работы
   scadaParameters_[21].id                = 0;
   scadaParameters_[21].address           = 277;
@@ -264,8 +230,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[21].coefficient       = 1;
   scadaParameters_[21].min               = 0;
   scadaParameters_[21].max               = 65535;
-  scadaParameters_[21].command           = OPERATION_ERROR;
-  scadaParameters_[21].value.float_t     = 0;
   // Резерв
   scadaParameters_[22].id                = -1;
   scadaParameters_[22].address           = 278;
@@ -276,8 +240,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[22].coefficient       = 1;
   scadaParameters_[22].min               = 0;
   scadaParameters_[22].max               = 65535;
-  scadaParameters_[22].command           = OPERATION_ERROR;
-  scadaParameters_[22].value.float_t     = 0;
   // Резерв
   scadaParameters_[23].id                = -1;
   scadaParameters_[23].address           = 279;
@@ -288,8 +250,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[23].coefficient       = 1;
   scadaParameters_[23].min               = 0;
   scadaParameters_[23].max               = 65535;
-  scadaParameters_[23].command           = OPERATION_ERROR;
-  scadaParameters_[23].value.float_t     = 0;
   // Резерв
   scadaParameters_[24].id                = -1;
   scadaParameters_[24].address           = 280;
@@ -300,8 +260,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[24].coefficient       = 1;
   scadaParameters_[24].min               = 0;
   scadaParameters_[24].max               = 65535;
-  scadaParameters_[24].command           = OPERATION_ERROR;
-  scadaParameters_[24].value.float_t     = 0;
   // Текущий порядок чередования фаз
   scadaParameters_[25].id                = CCS_PHASE_ROTATION;
   scadaParameters_[25].address           = 281;
@@ -312,8 +270,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[25].coefficient       = 1;
   scadaParameters_[25].min               = 0;
   scadaParameters_[25].max               = 2;
-  scadaParameters_[25].command           = OPERATION_ERROR;
-  scadaParameters_[25].value.float_t     = 0;
   // Загрузка двигателя
   scadaParameters_[26].id                = CCS_MOTOR_LOAD_NOW;
   scadaParameters_[26].address           = 282;
@@ -324,8 +280,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[26].coefficient       = 1;
   scadaParameters_[26].min               = 0;
   scadaParameters_[26].max               = 200;
-  scadaParameters_[26].command           = OPERATION_ERROR;
-  scadaParameters_[26].value.float_t     = 0;
   // Значение текущей частоты
   scadaParameters_[27].id                = VSD_FREQUENCY_NOW;
   scadaParameters_[27].address           = 283;
@@ -336,8 +290,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[27].coefficient       = 0.1;
   scadaParameters_[27].min               = 0;
   scadaParameters_[27].max               = 20000;
-  scadaParameters_[27].command           = OPERATION_ERROR;
-  scadaParameters_[27].value.float_t     = 0;
   // Температура контроллера
   scadaParameters_[28].id                = CCS_TEMPERATURE_CCS;
   scadaParameters_[28].address           = 284;
@@ -348,8 +300,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[28].coefficient       = 1;
   scadaParameters_[28].min               = 0;
   scadaParameters_[28].max               = 65535;
-  scadaParameters_[28].command           = OPERATION_ERROR;
-  scadaParameters_[28].value.float_t     = 0;
   // Межфазное напряжение Uin(AB)
   scadaParameters_[29].id                = CCS_VOLTAGE_PHASE_1_2;
   scadaParameters_[29].address           = 285;
@@ -360,8 +310,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[29].coefficient       = 1;
   scadaParameters_[29].min               = 0;
   scadaParameters_[29].max               = 10000;
-  scadaParameters_[29].command           = OPERATION_ERROR;
-  scadaParameters_[29].value.float_t     = 0;
   // Межфазное напряжение Uin(BC)
   scadaParameters_[30].id                = CCS_VOLTAGE_PHASE_2_3;
   scadaParameters_[30].address           = 286;
@@ -372,8 +320,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[30].coefficient       = 1;
   scadaParameters_[30].min               = 0;
   scadaParameters_[30].max               = 10000;
-  scadaParameters_[30].command           = OPERATION_ERROR;
-  scadaParameters_[30].value.float_t     = 0;
   // Межфазное напряжение Uin(CA)
   scadaParameters_[31].id                = CCS_VOLTAGE_PHASE_3_1;
   scadaParameters_[31].address           = 287;
@@ -384,8 +330,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[31].coefficient       = 1;
   scadaParameters_[31].min               = 0;
   scadaParameters_[31].max               = 10000;
-  scadaParameters_[31].command           = OPERATION_ERROR;
-  scadaParameters_[31].value.float_t     = 0;
   // Vdcl(В) Напряжение в звене пост. тока ЧРП
   scadaParameters_[32].id                = VSD_VOLTAGE_DC;
   scadaParameters_[32].address           = 288;
@@ -396,8 +340,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[32].coefficient       = 1;
   scadaParameters_[32].min               = 0;
   scadaParameters_[32].max               = 1000;
-  scadaParameters_[32].command           = OPERATION_ERROR;
-  scadaParameters_[32].value.float_t     = 0;
   // Состояние СУ
   scadaParameters_[33].id                = 0;
   scadaParameters_[33].address           = 289;
@@ -408,8 +350,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[33].coefficient       = 1;
   scadaParameters_[33].min               = 0;
   scadaParameters_[33].max               = 65535;
-  scadaParameters_[33].command           = OPERATION_ERROR;
-  scadaParameters_[33].value.float_t     = 0;
   // Причина останова
   scadaParameters_[34].id                = 0;
   scadaParameters_[34].address           = 290;
@@ -420,8 +360,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[34].coefficient       = 1;
   scadaParameters_[34].min               = 0;
   scadaParameters_[34].max               = 65535;
-  scadaParameters_[34].command           = OPERATION_ERROR;
-  scadaParameters_[34].value.float_t     = 0;
   // Значение аварийного параметра
   scadaParameters_[35].id                = 0;
   scadaParameters_[35].address           = 291;
@@ -432,8 +370,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[35].coefficient       = 1;
   scadaParameters_[35].min               = 0;
   scadaParameters_[35].max               = 65535;
-  scadaParameters_[35].command           = OPERATION_ERROR;
-  scadaParameters_[35].value.float_t     = 0;
   // 
   scadaParameters_[36].id                = -1;
   scadaParameters_[36].address           = 292;
@@ -444,8 +380,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[36].coefficient       = 1;
   scadaParameters_[36].min               = 0;
   scadaParameters_[36].max               = 65535;
-  scadaParameters_[36].command           = OPERATION_ERROR;
-  scadaParameters_[36].value.float_t     = 0;
   // Дисбаланс входного напряжения dUin
   scadaParameters_[37].id                = CCS_VOLTAGE_IMBALANCE_IN;
   scadaParameters_[37].address           = 293;
@@ -456,8 +390,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[37].coefficient       = 1;
   scadaParameters_[37].min               = 0;
   scadaParameters_[37].max               = 100;
-  scadaParameters_[37].command           = OPERATION_ERROR;
-  scadaParameters_[37].value.float_t     = 0;
   // Дисбаланс токов
   scadaParameters_[38].id                = CCS_MOTOR_CURRENT_IMBALANCE;
   scadaParameters_[38].address           = 294;
@@ -468,8 +400,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[38].coefficient       = 1;
   scadaParameters_[38].min               = 0;
   scadaParameters_[38].max               = 65535;
-  scadaParameters_[38].command           = OPERATION_ERROR;
-  scadaParameters_[38].value.float_t     = 0;
   // Общая наработка (мл.байт)
   scadaParameters_[39].id                = 0;
   scadaParameters_[39].address           = 295;
@@ -480,8 +410,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[39].coefficient       = 1;
   scadaParameters_[39].min               = 0;
   scadaParameters_[39].max               = 65535;
-  scadaParameters_[39].command           = OPERATION_ERROR;
-  scadaParameters_[39].value.float_t     = 0;
   // Общая наработка (ст.байт)
   scadaParameters_[40].id                = 0;
   scadaParameters_[40].address           = 296;
@@ -492,8 +420,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[40].coefficient       = 1;
   scadaParameters_[40].min               = 0;
   scadaParameters_[40].max               = 65535;
-  scadaParameters_[40].command           = OPERATION_ERROR;
-  scadaParameters_[40].value.float_t     = 0;
   // Количество пусков
   scadaParameters_[41].id                = CCS_COUNT_START;
   scadaParameters_[41].address           = 297;
@@ -504,8 +430,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[41].coefficient       = 1;
   scadaParameters_[41].min               = 0;
   scadaParameters_[41].max               = 65535;
-  scadaParameters_[41].command           = OPERATION_ERROR;
-  scadaParameters_[41].value.float_t     = 0;
   // Активная энергия (мл.байт)
   scadaParameters_[42].id                = 0;
   scadaParameters_[42].address           = 298;
@@ -516,8 +440,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[42].coefficient       = 1;
   scadaParameters_[42].min               = 0;
   scadaParameters_[42].max               = 65535;
-  scadaParameters_[42].command           = OPERATION_ERROR;
-  scadaParameters_[42].value.float_t     = 0;
   // Активная энергия (ст.байт)
   scadaParameters_[43].id                = 0;
   scadaParameters_[43].address           = 299;
@@ -528,8 +450,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[43].coefficient       = 1;
   scadaParameters_[43].min               = 0;
   scadaParameters_[43].max               = 65535;
-  scadaParameters_[43].command           = OPERATION_ERROR;
-  scadaParameters_[43].value.float_t     = 0;
   // Температура радиатора
   scadaParameters_[44].id                = VSD_RADIATOR_TEMPERATURE;
   scadaParameters_[44].address           = 300;
@@ -540,8 +460,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[44].coefficient       = 1;
   scadaParameters_[44].min               = 0;
   scadaParameters_[44].max               = 65535;
-  scadaParameters_[44].command           = OPERATION_ERROR;
-  scadaParameters_[44].value.float_t     = 0;
   // Температура IGBT
   scadaParameters_[45].id                = VSD_RADIATOR_TEMPERATURE_1;
   scadaParameters_[45].address           = 301;
@@ -552,8 +470,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[45].coefficient       = 1;
   scadaParameters_[45].min               = 0;
   scadaParameters_[45].max               = 65535;
-  scadaParameters_[45].command           = OPERATION_ERROR;
-  scadaParameters_[45].value.float_t     = 0;
   // Резерв
   scadaParameters_[46].id                = -1;
   scadaParameters_[46].address           = 302;
@@ -564,8 +480,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[46].coefficient       = 1;
   scadaParameters_[46].min               = 0;
   scadaParameters_[46].max               = 65535;
-  scadaParameters_[46].command           = OPERATION_ERROR;
-  scadaParameters_[46].value.float_t     = 0;
   // Резерв
   scadaParameters_[47].id                = -1;
   scadaParameters_[47].address           = 303;
@@ -576,8 +490,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[47].coefficient       = 1;
   scadaParameters_[47].min               = 0;
   scadaParameters_[47].max               = 65535;
-  scadaParameters_[47].command           = OPERATION_ERROR;
-  scadaParameters_[47].value.float_t     = 0;
   // Резерв
   scadaParameters_[48].id                = -1;
   scadaParameters_[48].address           = 356;
@@ -588,8 +500,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[48].coefficient       = 1;
   scadaParameters_[48].min               = 0;
   scadaParameters_[48].max               = 65535;
-  scadaParameters_[48].command           = OPERATION_ERROR;
-  scadaParameters_[48].value.float_t     = 0;
   // Резерв
   scadaParameters_[49].id                = -1;
   scadaParameters_[49].address           = 357;
@@ -600,8 +510,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[49].coefficient       = 1;
   scadaParameters_[49].min               = 0;
   scadaParameters_[49].max               = 65535;
-  scadaParameters_[49].command           = OPERATION_ERROR;
-  scadaParameters_[49].value.float_t     = 0;
   // Резерв
   scadaParameters_[50].id                = -1;
   scadaParameters_[50].address           = 358;
@@ -612,8 +520,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[50].coefficient       = 1;
   scadaParameters_[50].min               = 0;
   scadaParameters_[50].max               = 65535;
-  scadaParameters_[50].command           = OPERATION_ERROR;
-  scadaParameters_[50].value.float_t     = 0;
   // Резерв
   scadaParameters_[51].id                = -1;
   scadaParameters_[51].address           = 359;
@@ -624,8 +530,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[51].coefficient       = 1;
   scadaParameters_[51].min               = 0;
   scadaParameters_[51].max               = 65535;
-  scadaParameters_[51].command           = OPERATION_ERROR;
-  scadaParameters_[51].value.float_t     = 0;
   // Резерв
   scadaParameters_[52].id                = -1;
   scadaParameters_[52].address           = 360;
@@ -636,8 +540,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[52].coefficient       = 1;
   scadaParameters_[52].min               = 0;
   scadaParameters_[52].max               = 65535;
-  scadaParameters_[52].command           = OPERATION_ERROR;
-  scadaParameters_[52].value.float_t     = 0;
   // Резерв
   scadaParameters_[53].id                = -1;
   scadaParameters_[53].address           = 361;
@@ -648,8 +550,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[53].coefficient       = 1;
   scadaParameters_[53].min               = 0;
   scadaParameters_[53].max               = 65535;
-  scadaParameters_[53].command           = OPERATION_ERROR;
-  scadaParameters_[53].value.float_t     = 0;
   // Резерв
   scadaParameters_[54].id                = -1;
   scadaParameters_[54].address           = 362;
@@ -660,8 +560,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[54].coefficient       = 1;
   scadaParameters_[54].min               = 0;
   scadaParameters_[54].max               = 65535;
-  scadaParameters_[54].command           = OPERATION_ERROR;
-  scadaParameters_[54].value.float_t     = 0;
   // Резерв
   scadaParameters_[55].id                = -1;
   scadaParameters_[55].address           = 363;
@@ -672,8 +570,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[55].coefficient       = 1;
   scadaParameters_[55].min               = 0;
   scadaParameters_[55].max               = 65535;
-  scadaParameters_[55].command           = OPERATION_ERROR;
-  scadaParameters_[55].value.float_t     = 0;
   // Резерв
   scadaParameters_[56].id                = -1;
   scadaParameters_[56].address           = 364;
@@ -684,8 +580,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[56].coefficient       = 1;
   scadaParameters_[56].min               = 0;
   scadaParameters_[56].max               = 65535;
-  scadaParameters_[56].command           = OPERATION_ERROR;
-  scadaParameters_[56].value.float_t     = 0;
   // Резерв
   scadaParameters_[57].id                = -1;
   scadaParameters_[57].address           = 365;
@@ -696,8 +590,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[57].coefficient       = 1;
   scadaParameters_[57].min               = 0;
   scadaParameters_[57].max               = 65535;
-  scadaParameters_[57].command           = OPERATION_ERROR;
-  scadaParameters_[57].value.float_t     = 0;
   // Резерв
   scadaParameters_[58].id                = -1;
   scadaParameters_[58].address           = 366;
@@ -708,8 +600,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[58].coefficient       = 1;
   scadaParameters_[58].min               = 0;
   scadaParameters_[58].max               = 65535;
-  scadaParameters_[58].command           = OPERATION_ERROR;
-  scadaParameters_[58].value.float_t     = 0;
   // Резерв
   scadaParameters_[59].id                = -1;
   scadaParameters_[59].address           = 367;
@@ -720,8 +610,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[59].coefficient       = 1;
   scadaParameters_[59].min               = 0;
   scadaParameters_[59].max               = 65535;
-  scadaParameters_[59].command           = OPERATION_ERROR;
-  scadaParameters_[59].value.float_t     = 0;
   // Резерв
   scadaParameters_[60].id                = -1;
   scadaParameters_[60].address           = 368;
@@ -732,8 +620,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[60].coefficient       = 1;
   scadaParameters_[60].min               = 0;
   scadaParameters_[60].max               = 65535;
-  scadaParameters_[60].command           = OPERATION_ERROR;
-  scadaParameters_[60].value.float_t     = 0;
   // Резерв
   scadaParameters_[61].id                = -1;
   scadaParameters_[61].address           = 369;
@@ -744,8 +630,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[61].coefficient       = 1;
   scadaParameters_[61].min               = 0;
   scadaParameters_[61].max               = 65535;
-  scadaParameters_[61].command           = OPERATION_ERROR;
-  scadaParameters_[61].value.float_t     = 0;
   // Резерв
   scadaParameters_[62].id                = -1;
   scadaParameters_[62].address           = 370;
@@ -756,8 +640,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[62].coefficient       = 1;
   scadaParameters_[62].min               = 0;
   scadaParameters_[62].max               = 65535;
-  scadaParameters_[62].command           = OPERATION_ERROR;
-  scadaParameters_[62].value.float_t     = 0;
   // Резерв
   scadaParameters_[63].id                = -1;
   scadaParameters_[63].address           = 371;
@@ -768,8 +650,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[63].coefficient       = 1;
   scadaParameters_[63].min               = 0;
   scadaParameters_[63].max               = 65535;
-  scadaParameters_[63].command           = OPERATION_ERROR;
-  scadaParameters_[63].value.float_t     = 0;
   // Резерв
   scadaParameters_[64].id                = -1;
   scadaParameters_[64].address           = 372;
@@ -780,8 +660,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[64].coefficient       = 1;
   scadaParameters_[64].min               = 0;
   scadaParameters_[64].max               = 65535;
-  scadaParameters_[64].command           = OPERATION_ERROR;
-  scadaParameters_[64].value.float_t     = 0;
   // Резерв
   scadaParameters_[65].id                = -1;
   scadaParameters_[65].address           = 373;
@@ -792,8 +670,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[65].coefficient       = 1;
   scadaParameters_[65].min               = 0;
   scadaParameters_[65].max               = 65535;
-  scadaParameters_[65].command           = OPERATION_ERROR;
-  scadaParameters_[65].value.float_t     = 0;
   // Резерв
   scadaParameters_[66].id                = -1;
   scadaParameters_[66].address           = 374;
@@ -804,8 +680,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[66].coefficient       = 1;
   scadaParameters_[66].min               = 0;
   scadaParameters_[66].max               = 65535;
-  scadaParameters_[66].command           = OPERATION_ERROR;
-  scadaParameters_[66].value.float_t     = 0;
   // Резерв
   scadaParameters_[67].id                = -1;
   scadaParameters_[67].address           = 375;
@@ -816,8 +690,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[67].coefficient       = 1;
   scadaParameters_[67].min               = 0;
   scadaParameters_[67].max               = 65535;
-  scadaParameters_[67].command           = OPERATION_ERROR;
-  scadaParameters_[67].value.float_t     = 0;
   // Резерв
   scadaParameters_[68].id                = -1;
   scadaParameters_[68].address           = 376;
@@ -828,8 +700,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[68].coefficient       = 1;
   scadaParameters_[68].min               = 0;
   scadaParameters_[68].max               = 65535;
-  scadaParameters_[68].command           = OPERATION_ERROR;
-  scadaParameters_[68].value.float_t     = 0;
   // Резерв
   scadaParameters_[69].id                = -1;
   scadaParameters_[69].address           = 377;
@@ -840,8 +710,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[69].coefficient       = 1;
   scadaParameters_[69].min               = 0;
   scadaParameters_[69].max               = 65535;
-  scadaParameters_[69].command           = OPERATION_ERROR;
-  scadaParameters_[69].value.float_t     = 0;
   // Резерв
   scadaParameters_[70].id                = -1;
   scadaParameters_[70].address           = 378;
@@ -852,8 +720,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[70].coefficient       = 1;
   scadaParameters_[70].min               = 0;
   scadaParameters_[70].max               = 65535;
-  scadaParameters_[70].command           = OPERATION_ERROR;
-  scadaParameters_[70].value.float_t     = 0;
   // Резерв
   scadaParameters_[71].id                = -1;
   scadaParameters_[71].address           = 379;
@@ -864,8 +730,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[71].coefficient       = 1;
   scadaParameters_[71].min               = 0;
   scadaParameters_[71].max               = 65535;
-  scadaParameters_[71].command           = OPERATION_ERROR;
-  scadaParameters_[71].value.float_t     = 0;
   // Резерв
   scadaParameters_[72].id                = -1;
   scadaParameters_[72].address           = 380;
@@ -876,8 +740,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[72].coefficient       = 1;
   scadaParameters_[72].min               = 0;
   scadaParameters_[72].max               = 65535;
-  scadaParameters_[72].command           = OPERATION_ERROR;
-  scadaParameters_[72].value.float_t     = 0;
   // Резерв
   scadaParameters_[73].id                = -1;
   scadaParameters_[73].address           = 381;
@@ -888,8 +750,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[73].coefficient       = 1;
   scadaParameters_[73].min               = 0;
   scadaParameters_[73].max               = 65535;
-  scadaParameters_[73].command           = OPERATION_ERROR;
-  scadaParameters_[73].value.float_t     = 0;
   // Резерв
   scadaParameters_[74].id                = -1;
   scadaParameters_[74].address           = 382;
@@ -900,8 +760,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[74].coefficient       = 1;
   scadaParameters_[74].min               = 0;
   scadaParameters_[74].max               = 65535;
-  scadaParameters_[74].command           = OPERATION_ERROR;
-  scadaParameters_[74].value.float_t     = 0;
   // Резерв
   scadaParameters_[75].id                = -1;
   scadaParameters_[75].address           = 383;
@@ -912,8 +770,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[75].coefficient       = 1;
   scadaParameters_[75].min               = 0;
   scadaParameters_[75].max               = 65535;
-  scadaParameters_[75].command           = OPERATION_ERROR;
-  scadaParameters_[75].value.float_t     = 0;
   // Резерв
   scadaParameters_[76].id                = -1;
   scadaParameters_[76].address           = 384;
@@ -924,8 +780,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[76].coefficient       = 1;
   scadaParameters_[76].min               = 0;
   scadaParameters_[76].max               = 65535;
-  scadaParameters_[76].command           = OPERATION_ERROR;
-  scadaParameters_[76].value.float_t     = 0;
   // Резерв
   scadaParameters_[77].id                = -1;
   scadaParameters_[77].address           = 385;
@@ -936,8 +790,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[77].coefficient       = 1;
   scadaParameters_[77].min               = 0;
   scadaParameters_[77].max               = 65535;
-  scadaParameters_[77].command           = OPERATION_ERROR;
-  scadaParameters_[77].value.float_t     = 0;
   // Резерв
   scadaParameters_[78].id                = -1;
   scadaParameters_[78].address           = 386;
@@ -948,8 +800,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[78].coefficient       = 1;
   scadaParameters_[78].min               = 0;
   scadaParameters_[78].max               = 65535;
-  scadaParameters_[78].command           = OPERATION_ERROR;
-  scadaParameters_[78].value.float_t     = 0;
   // Резерв
   scadaParameters_[79].id                = -1;
   scadaParameters_[79].address           = 387;
@@ -960,8 +810,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[79].coefficient       = 1;
   scadaParameters_[79].min               = 0;
   scadaParameters_[79].max               = 65535;
-  scadaParameters_[79].command           = OPERATION_ERROR;
-  scadaParameters_[79].value.float_t     = 0;
   // Резерв
   scadaParameters_[80].id                = -1;
   scadaParameters_[80].address           = 388;
@@ -972,8 +820,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[80].coefficient       = 1;
   scadaParameters_[80].min               = 0;
   scadaParameters_[80].max               = 65535;
-  scadaParameters_[80].command           = OPERATION_ERROR;
-  scadaParameters_[80].value.float_t     = 0;
   // Резерв
   scadaParameters_[81].id                = -1;
   scadaParameters_[81].address           = 389;
@@ -984,8 +830,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[81].coefficient       = 1;
   scadaParameters_[81].min               = 0;
   scadaParameters_[81].max               = 65535;
-  scadaParameters_[81].command           = OPERATION_ERROR;
-  scadaParameters_[81].value.float_t     = 0;
   // Резерв
   scadaParameters_[82].id                = -1;
   scadaParameters_[82].address           = 390;
@@ -996,8 +840,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[82].coefficient       = 1;
   scadaParameters_[82].min               = 0;
   scadaParameters_[82].max               = 65535;
-  scadaParameters_[82].command           = OPERATION_ERROR;
-  scadaParameters_[82].value.float_t     = 0;
   // Резерв
   scadaParameters_[83].id                = -1;
   scadaParameters_[83].address           = 391;
@@ -1008,8 +850,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[83].coefficient       = 1;
   scadaParameters_[83].min               = 0;
   scadaParameters_[83].max               = 65535;
-  scadaParameters_[83].command           = OPERATION_ERROR;
-  scadaParameters_[83].value.float_t     = 0;
   // Резерв
   scadaParameters_[84].id                = -1;
   scadaParameters_[84].address           = 392;
@@ -1020,8 +860,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[84].coefficient       = 1;
   scadaParameters_[84].min               = 0;
   scadaParameters_[84].max               = 65535;
-  scadaParameters_[84].command           = OPERATION_ERROR;
-  scadaParameters_[84].value.float_t     = 0;
   // Резерв
   scadaParameters_[85].id                = -1;
   scadaParameters_[85].address           = 393;
@@ -1032,8 +870,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[85].coefficient       = 1;
   scadaParameters_[85].min               = 0;
   scadaParameters_[85].max               = 65535;
-  scadaParameters_[85].command           = OPERATION_ERROR;
-  scadaParameters_[85].value.float_t     = 0;
   // Резерв
   scadaParameters_[86].id                = -1;
   scadaParameters_[86].address           = 394;
@@ -1044,8 +880,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[86].coefficient       = 1;
   scadaParameters_[86].min               = 0;
   scadaParameters_[86].max               = 65535;
-  scadaParameters_[86].command           = OPERATION_ERROR;
-  scadaParameters_[86].value.float_t     = 0;
   // Уставка
   scadaParameters_[87].id                = -1;
   scadaParameters_[87].address           = 544;
@@ -1056,8 +890,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[87].coefficient       = 1;
   scadaParameters_[87].min               = 0;
   scadaParameters_[87].max               = 65535;
-  scadaParameters_[87].command           = OPERATION_ERROR;
-  scadaParameters_[87].value.float_t     = 0;
   // Уставка
   scadaParameters_[88].id                = -1;
   scadaParameters_[88].address           = 545;
@@ -1068,8 +900,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[88].coefficient       = 1;
   scadaParameters_[88].min               = 0;
   scadaParameters_[88].max               = 65535;
-  scadaParameters_[88].command           = OPERATION_ERROR;
-  scadaParameters_[88].value.float_t     = 0;
   // Уставка
   scadaParameters_[89].id                = -1;
   scadaParameters_[89].address           = 546;
@@ -1080,8 +910,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[89].coefficient       = 1;
   scadaParameters_[89].min               = 0;
   scadaParameters_[89].max               = 65535;
-  scadaParameters_[89].command           = OPERATION_ERROR;
-  scadaParameters_[89].value.float_t     = 0;
   // Уставка
   scadaParameters_[90].id                = -1;
   scadaParameters_[90].address           = 547;
@@ -1092,8 +920,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[90].coefficient       = 1;
   scadaParameters_[90].min               = 0;
   scadaParameters_[90].max               = 65535;
-  scadaParameters_[90].command           = OPERATION_ERROR;
-  scadaParameters_[90].value.float_t     = 0;
   // Уставка
   scadaParameters_[91].id                = -1;
   scadaParameters_[91].address           = 548;
@@ -1104,8 +930,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[91].coefficient       = 1;
   scadaParameters_[91].min               = 0;
   scadaParameters_[91].max               = 65535;
-  scadaParameters_[91].command           = OPERATION_ERROR;
-  scadaParameters_[91].value.float_t     = 0;
   // Уставка
   scadaParameters_[92].id                = -1;
   scadaParameters_[92].address           = 549;
@@ -1116,8 +940,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[92].coefficient       = 1;
   scadaParameters_[92].min               = 0;
   scadaParameters_[92].max               = 65535;
-  scadaParameters_[92].command           = OPERATION_ERROR;
-  scadaParameters_[92].value.float_t     = 0;
   // Уставка
   scadaParameters_[93].id                = -1;
   scadaParameters_[93].address           = 550;
@@ -1128,8 +950,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[93].coefficient       = 1;
   scadaParameters_[93].min               = 0;
   scadaParameters_[93].max               = 65535;
-  scadaParameters_[93].command           = OPERATION_ERROR;
-  scadaParameters_[93].value.float_t     = 0;
   // Уставка
   scadaParameters_[94].id                = -1;
   scadaParameters_[94].address           = 551;
@@ -1140,8 +960,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[94].coefficient       = 1;
   scadaParameters_[94].min               = 0;
   scadaParameters_[94].max               = 65535;
-  scadaParameters_[94].command           = OPERATION_ERROR;
-  scadaParameters_[94].value.float_t     = 0;
   // Уставка
   scadaParameters_[95].id                = -1;
   scadaParameters_[95].address           = 552;
@@ -1152,8 +970,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[95].coefficient       = 1;
   scadaParameters_[95].min               = 0;
   scadaParameters_[95].max               = 65535;
-  scadaParameters_[95].command           = OPERATION_ERROR;
-  scadaParameters_[95].value.float_t     = 0;
   // Уставка
   scadaParameters_[96].id                = -1;
   scadaParameters_[96].address           = 553;
@@ -1164,8 +980,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[96].coefficient       = 1;
   scadaParameters_[96].min               = 0;
   scadaParameters_[96].max               = 65535;
-  scadaParameters_[96].command           = OPERATION_ERROR;
-  scadaParameters_[96].value.float_t     = 0;
   // Уставка
   scadaParameters_[97].id                = -1;
   scadaParameters_[97].address           = 554;
@@ -1176,8 +990,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[97].coefficient       = 1;
   scadaParameters_[97].min               = 0;
   scadaParameters_[97].max               = 65535;
-  scadaParameters_[97].command           = OPERATION_ERROR;
-  scadaParameters_[97].value.float_t     = 0;
   // Уставка
   scadaParameters_[98].id                = -1;
   scadaParameters_[98].address           = 555;
@@ -1188,8 +1000,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[98].coefficient       = 1;
   scadaParameters_[98].min               = 0;
   scadaParameters_[98].max               = 65535;
-  scadaParameters_[98].command           = OPERATION_ERROR;
-  scadaParameters_[98].value.float_t     = 0;
   // Уставка
   scadaParameters_[99].id                = -1;
   scadaParameters_[99].address           = 556;
@@ -1200,8 +1010,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[99].coefficient       = 1;
   scadaParameters_[99].min               = 0;
   scadaParameters_[99].max               = 65535;
-  scadaParameters_[99].command           = OPERATION_ERROR;
-  scadaParameters_[99].value.float_t     = 0;
   // Уставка
   scadaParameters_[100].id               = -1;
   scadaParameters_[100].address          = 557;
@@ -1212,8 +1020,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[100].coefficient      = 1;
   scadaParameters_[100].min              = 0;
   scadaParameters_[100].max              = 65535;
-  scadaParameters_[100].command          = OPERATION_ERROR;
-  scadaParameters_[100].value.float_t    = 0;
   // Уставка
   scadaParameters_[101].id               = -1;
   scadaParameters_[101].address          = 558;
@@ -1224,8 +1030,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[101].coefficient      = 1;
   scadaParameters_[101].min              = 0;
   scadaParameters_[101].max              = 65535;
-  scadaParameters_[101].command          = OPERATION_ERROR;
-  scadaParameters_[101].value.float_t    = 0;
   // Уставка
   scadaParameters_[102].id               = -1;
   scadaParameters_[102].address          = 559;
@@ -1236,8 +1040,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[102].coefficient      = 1;
   scadaParameters_[102].min              = 0;
   scadaParameters_[102].max              = 65535;
-  scadaParameters_[102].command          = OPERATION_ERROR;
-  scadaParameters_[102].value.float_t    = 0;
   // Уставка
   scadaParameters_[103].id               = -1;
   scadaParameters_[103].address          = 560;
@@ -1248,8 +1050,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[103].coefficient      = 1;
   scadaParameters_[103].min              = 0;
   scadaParameters_[103].max              = 65535;
-  scadaParameters_[103].command          = OPERATION_ERROR;
-  scadaParameters_[103].value.float_t    = 0;
   // Уставка
   scadaParameters_[104].id               = -1;
   scadaParameters_[104].address          = 561;
@@ -1260,8 +1060,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[104].coefficient      = 1;
   scadaParameters_[104].min              = 0;
   scadaParameters_[104].max              = 65535;
-  scadaParameters_[104].command          = OPERATION_ERROR;
-  scadaParameters_[104].value.float_t    = 0;
   // Уставка
   scadaParameters_[105].id               = -1;
   scadaParameters_[105].address          = 562;
@@ -1272,8 +1070,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[105].coefficient      = 1;
   scadaParameters_[105].min              = 0;
   scadaParameters_[105].max              = 65535;
-  scadaParameters_[105].command          = OPERATION_ERROR;
-  scadaParameters_[105].value.float_t    = 0;
   // Уставка
   scadaParameters_[106].id               = -1;
   scadaParameters_[106].address          = 563;
@@ -1284,8 +1080,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[106].coefficient      = 1;
   scadaParameters_[106].min              = 0;
   scadaParameters_[106].max              = 65535;
-  scadaParameters_[106].command          = OPERATION_ERROR;
-  scadaParameters_[106].value.float_t    = 0;
   // Уставка
   scadaParameters_[107].id               = -1;
   scadaParameters_[107].address          = 564;
@@ -1296,8 +1090,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[107].coefficient      = 1;
   scadaParameters_[107].min              = 0;
   scadaParameters_[107].max              = 65535;
-  scadaParameters_[107].command          = OPERATION_ERROR;
-  scadaParameters_[107].value.float_t    = 0;
   // Уставка
   scadaParameters_[108].id               = -1;
   scadaParameters_[108].address          = 565;
@@ -1308,8 +1100,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[108].coefficient      = 1;
   scadaParameters_[108].min              = 0;
   scadaParameters_[108].max              = 65535;
-  scadaParameters_[108].command          = OPERATION_ERROR;
-  scadaParameters_[108].value.float_t    = 0;
   // Уставка
   scadaParameters_[109].id               = -1;
   scadaParameters_[109].address          = 566;
@@ -1320,8 +1110,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[109].coefficient      = 1;
   scadaParameters_[109].min              = 0;
   scadaParameters_[109].max              = 65535;
-  scadaParameters_[109].command          = OPERATION_ERROR;
-  scadaParameters_[109].value.float_t    = 0;
   // Уставка
   scadaParameters_[110].id               = -1;
   scadaParameters_[110].address          = 567;
@@ -1332,8 +1120,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[110].coefficient      = 1;
   scadaParameters_[110].min              = 0;
   scadaParameters_[110].max              = 65535;
-  scadaParameters_[110].command          = OPERATION_ERROR;
-  scadaParameters_[110].value.float_t    = 0;
   // Уставка
   scadaParameters_[111].id               = -1;
   scadaParameters_[111].address          = 568;
@@ -1344,8 +1130,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[111].coefficient      = 1;
   scadaParameters_[111].min              = 0;
   scadaParameters_[111].max              = 65535;
-  scadaParameters_[111].command          = OPERATION_ERROR;
-  scadaParameters_[111].value.float_t    = 0;
   // Уставка
   scadaParameters_[112].id               = -1;
   scadaParameters_[112].address          = 569;
@@ -1356,8 +1140,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[112].coefficient      = 1;
   scadaParameters_[112].min              = 0;
   scadaParameters_[112].max              = 65535;
-  scadaParameters_[112].command          = OPERATION_ERROR;
-  scadaParameters_[112].value.float_t    = 0;
   // Уставка
   scadaParameters_[113].id               = -1;
   scadaParameters_[113].address          = 570;
@@ -1368,8 +1150,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[113].coefficient      = 1;
   scadaParameters_[113].min              = 0;
   scadaParameters_[113].max              = 65535;
-  scadaParameters_[113].command          = OPERATION_ERROR;
-  scadaParameters_[113].value.float_t    = 0;
   // Уставка
   scadaParameters_[114].id               = -1;
   scadaParameters_[114].address          = 571;
@@ -1380,8 +1160,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[114].coefficient      = 1;
   scadaParameters_[114].min              = 0;
   scadaParameters_[114].max              = 65535;
-  scadaParameters_[114].command          = OPERATION_ERROR;
-  scadaParameters_[114].value.float_t    = 0;
   // Уставка
   scadaParameters_[115].id               = -1;
   scadaParameters_[115].address          = 572;
@@ -1392,8 +1170,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[115].coefficient      = 1;
   scadaParameters_[115].min              = 0;
   scadaParameters_[115].max              = 65535;
-  scadaParameters_[115].command          = OPERATION_ERROR;
-  scadaParameters_[115].value.float_t    = 0;
   // Уставка
   scadaParameters_[116].id               = -1;
   scadaParameters_[116].address          = 573;
@@ -1404,8 +1180,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[116].coefficient      = 1;
   scadaParameters_[116].min              = 0;
   scadaParameters_[116].max              = 65535;
-  scadaParameters_[116].command          = OPERATION_ERROR;
-  scadaParameters_[116].value.float_t    = 0;
   // Уставка
   scadaParameters_[117].id               = -1;
   scadaParameters_[117].address          = 574;
@@ -1416,8 +1190,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[117].coefficient      = 1;
   scadaParameters_[117].min              = 0;
   scadaParameters_[117].max              = 65535;
-  scadaParameters_[117].command          = OPERATION_ERROR;
-  scadaParameters_[117].value.float_t    = 0;
   // Уставка
   scadaParameters_[118].id               = -1;
   scadaParameters_[118].address          = 575;
@@ -1428,8 +1200,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[118].coefficient      = 1;
   scadaParameters_[118].min              = 0;
   scadaParameters_[118].max              = 65535;
-  scadaParameters_[118].command          = OPERATION_ERROR;
-  scadaParameters_[118].value.float_t    = 0;
   // Уставка
   scadaParameters_[119].id               = -1;
   scadaParameters_[119].address          = 576;
@@ -1440,8 +1210,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[119].coefficient      = 1;
   scadaParameters_[119].min              = 0;
   scadaParameters_[119].max              = 65535;
-  scadaParameters_[119].command          = OPERATION_ERROR;
-  scadaParameters_[119].value.float_t    = 0;
   // Уставка
   scadaParameters_[120].id               = -1;
   scadaParameters_[120].address          = 577;
@@ -1452,8 +1220,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[120].coefficient      = 1;
   scadaParameters_[120].min              = 0;
   scadaParameters_[120].max              = 65535;
-  scadaParameters_[120].command          = OPERATION_ERROR;
-  scadaParameters_[120].value.float_t    = 0;
   // Уставка
   scadaParameters_[121].id               = -1;
   scadaParameters_[121].address          = 578;
@@ -1464,8 +1230,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[121].coefficient      = 1;
   scadaParameters_[121].min              = 0;
   scadaParameters_[121].max              = 65535;
-  scadaParameters_[121].command          = OPERATION_ERROR;
-  scadaParameters_[121].value.float_t    = 0;
   // Уставка
   scadaParameters_[122].id               = -1;
   scadaParameters_[122].address          = 579;
@@ -1476,8 +1240,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[122].coefficient      = 1;
   scadaParameters_[122].min              = 0;
   scadaParameters_[122].max              = 65535;
-  scadaParameters_[122].command          = OPERATION_ERROR;
-  scadaParameters_[122].value.float_t    = 0;
   // Уставка
   scadaParameters_[123].id               = -1;
   scadaParameters_[123].address          = 580;
@@ -1488,8 +1250,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[123].coefficient      = 1;
   scadaParameters_[123].min              = 0;
   scadaParameters_[123].max              = 65535;
-  scadaParameters_[123].command          = OPERATION_ERROR;
-  scadaParameters_[123].value.float_t    = 0;
   // Уставка
   scadaParameters_[124].id               = -1;
   scadaParameters_[124].address          = 581;
@@ -1500,8 +1260,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[124].coefficient      = 1;
   scadaParameters_[124].min              = 0;
   scadaParameters_[124].max              = 65535;
-  scadaParameters_[124].command          = OPERATION_ERROR;
-  scadaParameters_[124].value.float_t    = 0;
   // Уставка
   scadaParameters_[125].id               = -1;
   scadaParameters_[125].address          = 582;
@@ -1512,8 +1270,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[125].coefficient      = 1;
   scadaParameters_[125].min              = 0;
   scadaParameters_[125].max              = 65535;
-  scadaParameters_[125].command          = OPERATION_ERROR;
-  scadaParameters_[125].value.float_t    = 0;
   // Уставка
   scadaParameters_[126].id               = -1;
   scadaParameters_[126].address          = 583;
@@ -1524,8 +1280,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[126].coefficient      = 1;
   scadaParameters_[126].min              = 0;
   scadaParameters_[126].max              = 65535;
-  scadaParameters_[126].command          = OPERATION_ERROR;
-  scadaParameters_[126].value.float_t    = 0;
   // Уставка
   scadaParameters_[127].id               = -1;
   scadaParameters_[127].address          = 584;
@@ -1536,8 +1290,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[127].coefficient      = 1;
   scadaParameters_[127].min              = 0;
   scadaParameters_[127].max              = 65535;
-  scadaParameters_[127].command          = OPERATION_ERROR;
-  scadaParameters_[127].value.float_t    = 0;
   // Уставка
   scadaParameters_[128].id               = -1;
   scadaParameters_[128].address          = 585;
@@ -1548,8 +1300,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[128].coefficient      = 1;
   scadaParameters_[128].min              = 0;
   scadaParameters_[128].max              = 65535;
-  scadaParameters_[128].command          = OPERATION_ERROR;
-  scadaParameters_[128].value.float_t    = 0;
   // Уставка
   scadaParameters_[129].id               = -1;
   scadaParameters_[129].address          = 586;
@@ -1560,8 +1310,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[129].coefficient      = 1;
   scadaParameters_[129].min              = 0;
   scadaParameters_[129].max              = 65535;
-  scadaParameters_[129].command          = OPERATION_ERROR;
-  scadaParameters_[129].value.float_t    = 0;
   // Уставка
   scadaParameters_[130].id               = -1;
   scadaParameters_[130].address          = 587;
@@ -1572,8 +1320,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[130].coefficient      = 1;
   scadaParameters_[130].min              = 0;
   scadaParameters_[130].max              = 65535;
-  scadaParameters_[130].command          = OPERATION_ERROR;
-  scadaParameters_[130].value.float_t    = 0;
   // Уставка
   scadaParameters_[131].id               = -1;
   scadaParameters_[131].address          = 588;
@@ -1584,8 +1330,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[131].coefficient      = 1;
   scadaParameters_[131].min              = 0;
   scadaParameters_[131].max              = 65535;
-  scadaParameters_[131].command          = OPERATION_ERROR;
-  scadaParameters_[131].value.float_t    = 0;
   // Уставка
   scadaParameters_[132].id               = -1;
   scadaParameters_[132].address          = 589;
@@ -1596,8 +1340,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[132].coefficient      = 1;
   scadaParameters_[132].min              = 0;
   scadaParameters_[132].max              = 65535;
-  scadaParameters_[132].command          = OPERATION_ERROR;
-  scadaParameters_[132].value.float_t    = 0;
   // Уставка
   scadaParameters_[133].id               = -1;
   scadaParameters_[133].address          = 590;
@@ -1608,8 +1350,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[133].coefficient      = 1;
   scadaParameters_[133].min              = 0;
   scadaParameters_[133].max              = 65535;
-  scadaParameters_[133].command          = OPERATION_ERROR;
-  scadaParameters_[133].value.float_t    = 0;
   // Уставка
   scadaParameters_[134].id               = -1;
   scadaParameters_[134].address          = 591;
@@ -1620,8 +1360,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[134].coefficient      = 1;
   scadaParameters_[134].min              = 0;
   scadaParameters_[134].max              = 65535;
-  scadaParameters_[134].command          = OPERATION_ERROR;
-  scadaParameters_[134].value.float_t    = 0;
   // Уставка
   scadaParameters_[135].id               = -1;
   scadaParameters_[135].address          = 592;
@@ -1632,8 +1370,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[135].coefficient      = 1;
   scadaParameters_[135].min              = 0;
   scadaParameters_[135].max              = 65535;
-  scadaParameters_[135].command          = OPERATION_ERROR;
-  scadaParameters_[135].value.float_t    = 0;
   // Уставка
   scadaParameters_[136].id               = -1;
   scadaParameters_[136].address          = 593;
@@ -1644,8 +1380,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[136].coefficient      = 1;
   scadaParameters_[136].min              = 0;
   scadaParameters_[136].max              = 65535;
-  scadaParameters_[136].command          = OPERATION_ERROR;
-  scadaParameters_[136].value.float_t    = 0;
   // Уставка
   scadaParameters_[137].id               = -1;
   scadaParameters_[137].address          = 594;
@@ -1656,8 +1390,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[137].coefficient      = 1;
   scadaParameters_[137].min              = 0;
   scadaParameters_[137].max              = 65535;
-  scadaParameters_[137].command          = OPERATION_ERROR;
-  scadaParameters_[137].value.float_t    = 0;
   // Уставка
   scadaParameters_[138].id               = -1;
   scadaParameters_[138].address          = 595;
@@ -1668,8 +1400,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[138].coefficient      = 1;
   scadaParameters_[138].min              = 0;
   scadaParameters_[138].max              = 65535;
-  scadaParameters_[138].command          = OPERATION_ERROR;
-  scadaParameters_[138].value.float_t    = 0;
   // Уставка
   scadaParameters_[139].id               = -1;
   scadaParameters_[139].address          = 596;
@@ -1680,8 +1410,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[139].coefficient      = 1;
   scadaParameters_[139].min              = 0;
   scadaParameters_[139].max              = 65535;
-  scadaParameters_[139].command          = OPERATION_ERROR;
-  scadaParameters_[139].value.float_t    = 0;
   // Уставка
   scadaParameters_[140].id               = -1;
   scadaParameters_[140].address          = 597;
@@ -1692,8 +1420,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[140].coefficient      = 1;
   scadaParameters_[140].min              = 0;
   scadaParameters_[140].max              = 65535;
-  scadaParameters_[140].command          = OPERATION_ERROR;
-  scadaParameters_[140].value.float_t    = 0;
   // Уставка
   scadaParameters_[141].id               = -1;
   scadaParameters_[141].address          = 598;
@@ -1704,8 +1430,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[141].coefficient      = 1;
   scadaParameters_[141].min              = 0;
   scadaParameters_[141].max              = 65535;
-  scadaParameters_[141].command          = OPERATION_ERROR;
-  scadaParameters_[141].value.float_t    = 0;
   // Уставка
   scadaParameters_[142].id               = -1;
   scadaParameters_[142].address          = 599;
@@ -1716,8 +1440,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[142].coefficient      = 1;
   scadaParameters_[142].min              = 0;
   scadaParameters_[142].max              = 65535;
-  scadaParameters_[142].command          = OPERATION_ERROR;
-  scadaParameters_[142].value.float_t    = 0;
   // Уставка
   scadaParameters_[143].id               = -1;
   scadaParameters_[143].address          = 600;
@@ -1728,8 +1450,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[143].coefficient      = 1;
   scadaParameters_[143].min              = 0;
   scadaParameters_[143].max              = 65535;
-  scadaParameters_[143].command          = OPERATION_ERROR;
-  scadaParameters_[143].value.float_t    = 0;
   // Уставка
   scadaParameters_[144].id               = -1;
   scadaParameters_[144].address          = 601;
@@ -1740,8 +1460,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[144].coefficient      = 1;
   scadaParameters_[144].min              = 0;
   scadaParameters_[144].max              = 65535;
-  scadaParameters_[144].command          = OPERATION_ERROR;
-  scadaParameters_[144].value.float_t    = 0;
   // Уставка
   scadaParameters_[145].id               = -1;
   scadaParameters_[145].address          = 602;
@@ -1752,8 +1470,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[145].coefficient      = 1;
   scadaParameters_[145].min              = 0;
   scadaParameters_[145].max              = 65535;
-  scadaParameters_[145].command          = OPERATION_ERROR;
-  scadaParameters_[145].value.float_t    = 0;
   // Уставка
   scadaParameters_[146].id               = -1;
   scadaParameters_[146].address          = 603;
@@ -1764,8 +1480,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[146].coefficient      = 1;
   scadaParameters_[146].min              = 0;
   scadaParameters_[146].max              = 65535;
-  scadaParameters_[146].command          = OPERATION_ERROR;
-  scadaParameters_[146].value.float_t    = 0;
   // Уставка
   scadaParameters_[147].id               = -1;
   scadaParameters_[147].address          = 604;
@@ -1776,8 +1490,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[147].coefficient      = 1;
   scadaParameters_[147].min              = 0;
   scadaParameters_[147].max              = 65535;
-  scadaParameters_[147].command          = OPERATION_ERROR;
-  scadaParameters_[147].value.float_t    = 0;
   // Уставка
   scadaParameters_[148].id               = -1;
   scadaParameters_[148].address          = 605;
@@ -1788,8 +1500,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[148].coefficient      = 1;
   scadaParameters_[148].min              = 0;
   scadaParameters_[148].max              = 65535;
-  scadaParameters_[148].command          = OPERATION_ERROR;
-  scadaParameters_[148].value.float_t    = 0;
   // Уставка
   scadaParameters_[149].id               = -1;
   scadaParameters_[149].address          = 606;
@@ -1800,8 +1510,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[149].coefficient      = 1;
   scadaParameters_[149].min              = 0;
   scadaParameters_[149].max              = 65535;
-  scadaParameters_[149].command          = OPERATION_ERROR;
-  scadaParameters_[149].value.float_t    = 0;
   // Уставка
   scadaParameters_[150].id               = -1;
   scadaParameters_[150].address          = 607;
@@ -1812,8 +1520,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[150].coefficient      = 1;
   scadaParameters_[150].min              = 0;
   scadaParameters_[150].max              = 65535;
-  scadaParameters_[150].command          = OPERATION_ERROR;
-  scadaParameters_[150].value.float_t    = 0;
   // Уставка
   scadaParameters_[151].id               = -1;
   scadaParameters_[151].address          = 608;
@@ -1824,8 +1530,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[151].coefficient      = 1;
   scadaParameters_[151].min              = 0;
   scadaParameters_[151].max              = 65535;
-  scadaParameters_[151].command          = OPERATION_ERROR;
-  scadaParameters_[151].value.float_t    = 0;
   // Уставка
   scadaParameters_[152].id               = -1;
   scadaParameters_[152].address          = 609;
@@ -1836,8 +1540,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[152].coefficient      = 1;
   scadaParameters_[152].min              = 0;
   scadaParameters_[152].max              = 65535;
-  scadaParameters_[152].command          = OPERATION_ERROR;
-  scadaParameters_[152].value.float_t    = 0;
   // Уставка
   scadaParameters_[153].id               = -1;
   scadaParameters_[153].address          = 610;
@@ -1848,8 +1550,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[153].coefficient      = 1;
   scadaParameters_[153].min              = 0;
   scadaParameters_[153].max              = 65535;
-  scadaParameters_[153].command          = OPERATION_ERROR;
-  scadaParameters_[153].value.float_t    = 0;
   // Уставка
   scadaParameters_[154].id               = -1;
   scadaParameters_[154].address          = 611;
@@ -1860,8 +1560,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[154].coefficient      = 1;
   scadaParameters_[154].min              = 0;
   scadaParameters_[154].max              = 65535;
-  scadaParameters_[154].command          = OPERATION_ERROR;
-  scadaParameters_[154].value.float_t    = 0;
   // Уставка
   scadaParameters_[155].id               = -1;
   scadaParameters_[155].address          = 612;
@@ -1872,8 +1570,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[155].coefficient      = 1;
   scadaParameters_[155].min              = 0;
   scadaParameters_[155].max              = 65535;
-  scadaParameters_[155].command          = OPERATION_ERROR;
-  scadaParameters_[155].value.float_t    = 0;
   // Уставка
   scadaParameters_[156].id               = -1;
   scadaParameters_[156].address          = 613;
@@ -1884,8 +1580,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[156].coefficient      = 1;
   scadaParameters_[156].min              = 0;
   scadaParameters_[156].max              = 65535;
-  scadaParameters_[156].command          = OPERATION_ERROR;
-  scadaParameters_[156].value.float_t    = 0;
   // Уставка
   scadaParameters_[157].id               = -1;
   scadaParameters_[157].address          = 614;
@@ -1896,8 +1590,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[157].coefficient      = 1;
   scadaParameters_[157].min              = 0;
   scadaParameters_[157].max              = 65535;
-  scadaParameters_[157].command          = OPERATION_ERROR;
-  scadaParameters_[157].value.float_t    = 0;
   // Уставка
   scadaParameters_[158].id               = -1;
   scadaParameters_[158].address          = 615;
@@ -1908,8 +1600,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[158].coefficient      = 1;
   scadaParameters_[158].min              = 0;
   scadaParameters_[158].max              = 65535;
-  scadaParameters_[158].command          = OPERATION_ERROR;
-  scadaParameters_[158].value.float_t    = 0;
   // Уставка
   scadaParameters_[159].id               = -1;
   scadaParameters_[159].address          = 616;
@@ -1920,8 +1610,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[159].coefficient      = 1;
   scadaParameters_[159].min              = 0;
   scadaParameters_[159].max              = 65535;
-  scadaParameters_[159].command          = OPERATION_ERROR;
-  scadaParameters_[159].value.float_t    = 0;
   // Уставка
   scadaParameters_[160].id               = -1;
   scadaParameters_[160].address          = 617;
@@ -1932,8 +1620,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[160].coefficient      = 1;
   scadaParameters_[160].min              = 0;
   scadaParameters_[160].max              = 65535;
-  scadaParameters_[160].command          = OPERATION_ERROR;
-  scadaParameters_[160].value.float_t    = 0;
   // Уставка
   scadaParameters_[161].id               = -1;
   scadaParameters_[161].address          = 618;
@@ -1944,8 +1630,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[161].coefficient      = 1;
   scadaParameters_[161].min              = 0;
   scadaParameters_[161].max              = 65535;
-  scadaParameters_[161].command          = OPERATION_ERROR;
-  scadaParameters_[161].value.float_t    = 0;
   // Уставка
   scadaParameters_[162].id               = -1;
   scadaParameters_[162].address          = 619;
@@ -1956,8 +1640,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[162].coefficient      = 1;
   scadaParameters_[162].min              = 0;
   scadaParameters_[162].max              = 65535;
-  scadaParameters_[162].command          = OPERATION_ERROR;
-  scadaParameters_[162].value.float_t    = 0;
   // Уставка
   scadaParameters_[163].id               = -1;
   scadaParameters_[163].address          = 620;
@@ -1968,8 +1650,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[163].coefficient      = 1;
   scadaParameters_[163].min              = 0;
   scadaParameters_[163].max              = 65535;
-  scadaParameters_[163].command          = OPERATION_ERROR;
-  scadaParameters_[163].value.float_t    = 0;
   // Уставка
   scadaParameters_[164].id               = -1;
   scadaParameters_[164].address          = 621;
@@ -1980,8 +1660,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[164].coefficient      = 1;
   scadaParameters_[164].min              = 0;
   scadaParameters_[164].max              = 65535;
-  scadaParameters_[164].command          = OPERATION_ERROR;
-  scadaParameters_[164].value.float_t    = 0;
   // Уставка
   scadaParameters_[165].id               = -1;
   scadaParameters_[165].address          = 622;
@@ -1992,8 +1670,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[165].coefficient      = 1;
   scadaParameters_[165].min              = 0;
   scadaParameters_[165].max              = 65535;
-  scadaParameters_[165].command          = OPERATION_ERROR;
-  scadaParameters_[165].value.float_t    = 0;
   // Уставка
   scadaParameters_[166].id               = -1;
   scadaParameters_[166].address          = 623;
@@ -2004,8 +1680,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[166].coefficient      = 1;
   scadaParameters_[166].min              = 0;
   scadaParameters_[166].max              = 65535;
-  scadaParameters_[166].command          = OPERATION_ERROR;
-  scadaParameters_[166].value.float_t    = 0;
   // Уставка
   scadaParameters_[167].id               = -1;
   scadaParameters_[167].address          = 624;
@@ -2016,8 +1690,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[167].coefficient      = 1;
   scadaParameters_[167].min              = 0;
   scadaParameters_[167].max              = 65535;
-  scadaParameters_[167].command          = OPERATION_ERROR;
-  scadaParameters_[167].value.float_t    = 0;
   // Уставка
   scadaParameters_[168].id               = -1;
   scadaParameters_[168].address          = 625;
@@ -2028,8 +1700,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[168].coefficient      = 1;
   scadaParameters_[168].min              = 0;
   scadaParameters_[168].max              = 65535;
-  scadaParameters_[168].command          = OPERATION_ERROR;
-  scadaParameters_[168].value.float_t    = 0;
   // Уставка
   scadaParameters_[169].id               = -1;
   scadaParameters_[169].address          = 626;
@@ -2040,8 +1710,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[169].coefficient      = 1;
   scadaParameters_[169].min              = 0;
   scadaParameters_[169].max              = 65535;
-  scadaParameters_[169].command          = OPERATION_ERROR;
-  scadaParameters_[169].value.float_t    = 0;
   // Уставка
   scadaParameters_[170].id               = -1;
   scadaParameters_[170].address          = 627;
@@ -2052,8 +1720,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[170].coefficient      = 1;
   scadaParameters_[170].min              = 0;
   scadaParameters_[170].max              = 65535;
-  scadaParameters_[170].command          = OPERATION_ERROR;
-  scadaParameters_[170].value.float_t    = 0;
   // Уставка
   scadaParameters_[171].id               = -1;
   scadaParameters_[171].address          = 628;
@@ -2064,8 +1730,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[171].coefficient      = 1;
   scadaParameters_[171].min              = 0;
   scadaParameters_[171].max              = 65535;
-  scadaParameters_[171].command          = OPERATION_ERROR;
-  scadaParameters_[171].value.float_t    = 0;
   // Уставка
   scadaParameters_[172].id               = -1;
   scadaParameters_[172].address          = 629;
@@ -2076,8 +1740,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[172].coefficient      = 1;
   scadaParameters_[172].min              = 0;
   scadaParameters_[172].max              = 65535;
-  scadaParameters_[172].command          = OPERATION_ERROR;
-  scadaParameters_[172].value.float_t    = 0;
   // Уставка
   scadaParameters_[173].id               = -1;
   scadaParameters_[173].address          = 630;
@@ -2088,8 +1750,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[173].coefficient      = 1;
   scadaParameters_[173].min              = 0;
   scadaParameters_[173].max              = 65535;
-  scadaParameters_[173].command          = OPERATION_ERROR;
-  scadaParameters_[173].value.float_t    = 0;
   // Уставка
   scadaParameters_[174].id               = -1;
   scadaParameters_[174].address          = 631;
@@ -2100,8 +1760,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[174].coefficient      = 1;
   scadaParameters_[174].min              = 0;
   scadaParameters_[174].max              = 65535;
-  scadaParameters_[174].command          = OPERATION_ERROR;
-  scadaParameters_[174].value.float_t    = 0;
   // Уставка
   scadaParameters_[175].id               = -1;
   scadaParameters_[175].address          = 632;
@@ -2112,8 +1770,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[175].coefficient      = 1;
   scadaParameters_[175].min              = 0;
   scadaParameters_[175].max              = 65535;
-  scadaParameters_[175].command          = OPERATION_ERROR;
-  scadaParameters_[175].value.float_t    = 0;
   // Уставка
   scadaParameters_[176].id               = -1;
   scadaParameters_[176].address          = 633;
@@ -2124,8 +1780,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[176].coefficient      = 1;
   scadaParameters_[176].min              = 0;
   scadaParameters_[176].max              = 65535;
-  scadaParameters_[176].command          = OPERATION_ERROR;
-  scadaParameters_[176].value.float_t    = 0;
   // Уставка
   scadaParameters_[177].id               = -1;
   scadaParameters_[177].address          = 634;
@@ -2136,8 +1790,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[177].coefficient      = 1;
   scadaParameters_[177].min              = 0;
   scadaParameters_[177].max              = 65535;
-  scadaParameters_[177].command          = OPERATION_ERROR;
-  scadaParameters_[177].value.float_t    = 0;
   // Уставка
   scadaParameters_[178].id               = -1;
   scadaParameters_[178].address          = 635;
@@ -2148,8 +1800,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[178].coefficient      = 1;
   scadaParameters_[178].min              = 0;
   scadaParameters_[178].max              = 65535;
-  scadaParameters_[178].command          = OPERATION_ERROR;
-  scadaParameters_[178].value.float_t    = 0;
   // Уставка
   scadaParameters_[179].id               = -1;
   scadaParameters_[179].address          = 636;
@@ -2160,8 +1810,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[179].coefficient      = 1;
   scadaParameters_[179].min              = 0;
   scadaParameters_[179].max              = 65535;
-  scadaParameters_[179].command          = OPERATION_ERROR;
-  scadaParameters_[179].value.float_t    = 0;
   // Уставка
   scadaParameters_[180].id               = -1;
   scadaParameters_[180].address          = 637;
@@ -2172,8 +1820,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[180].coefficient      = 1;
   scadaParameters_[180].min              = 0;
   scadaParameters_[180].max              = 65535;
-  scadaParameters_[180].command          = OPERATION_ERROR;
-  scadaParameters_[180].value.float_t    = 0;
   // Уставка
   scadaParameters_[181].id               = -1;
   scadaParameters_[181].address          = 638;
@@ -2184,8 +1830,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[181].coefficient      = 1;
   scadaParameters_[181].min              = 0;
   scadaParameters_[181].max              = 65535;
-  scadaParameters_[181].command          = OPERATION_ERROR;
-  scadaParameters_[181].value.float_t    = 0;
   // Уставка
   scadaParameters_[182].id               = -1;
   scadaParameters_[182].address          = 639;
@@ -2196,8 +1840,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[182].coefficient      = 1;
   scadaParameters_[182].min              = 0;
   scadaParameters_[182].max              = 65535;
-  scadaParameters_[182].command          = OPERATION_ERROR;
-  scadaParameters_[182].value.float_t    = 0;
   // Уставка
   scadaParameters_[183].id               = -1;
   scadaParameters_[183].address          = 640;
@@ -2208,8 +1850,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[183].coefficient      = 1;
   scadaParameters_[183].min              = 0;
   scadaParameters_[183].max              = 65535;
-  scadaParameters_[183].command          = OPERATION_ERROR;
-  scadaParameters_[183].value.float_t    = 0;
   // Уставка
   scadaParameters_[184].id               = -1;
   scadaParameters_[184].address          = 641;
@@ -2220,8 +1860,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[184].coefficient      = 1;
   scadaParameters_[184].min              = 0;
   scadaParameters_[184].max              = 65535;
-  scadaParameters_[184].command          = OPERATION_ERROR;
-  scadaParameters_[184].value.float_t    = 0;
   // Уставка
   scadaParameters_[185].id               = -1;
   scadaParameters_[185].address          = 642;
@@ -2232,8 +1870,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[185].coefficient      = 1;
   scadaParameters_[185].min              = 0;
   scadaParameters_[185].max              = 65535;
-  scadaParameters_[185].command          = OPERATION_ERROR;
-  scadaParameters_[185].value.float_t    = 0;
   // Уставка
   scadaParameters_[186].id               = -1;
   scadaParameters_[186].address          = 643;
@@ -2244,8 +1880,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[186].coefficient      = 1;
   scadaParameters_[186].min              = 0;
   scadaParameters_[186].max              = 65535;
-  scadaParameters_[186].command          = OPERATION_ERROR;
-  scadaParameters_[186].value.float_t    = 0;
   // Уставка
   scadaParameters_[187].id               = -1;
   scadaParameters_[187].address          = 644;
@@ -2256,8 +1890,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[187].coefficient      = 1;
   scadaParameters_[187].min              = 0;
   scadaParameters_[187].max              = 65535;
-  scadaParameters_[187].command          = OPERATION_ERROR;
-  scadaParameters_[187].value.float_t    = 0;
   // Уставка
   scadaParameters_[188].id               = -1;
   scadaParameters_[188].address          = 645;
@@ -2268,8 +1900,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[188].coefficient      = 1;
   scadaParameters_[188].min              = 0;
   scadaParameters_[188].max              = 65535;
-  scadaParameters_[188].command          = OPERATION_ERROR;
-  scadaParameters_[188].value.float_t    = 0;
   // Уставка
   scadaParameters_[189].id               = -1;
   scadaParameters_[189].address          = 646;
@@ -2280,8 +1910,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[189].coefficient      = 1;
   scadaParameters_[189].min              = 0;
   scadaParameters_[189].max              = 65535;
-  scadaParameters_[189].command          = OPERATION_ERROR;
-  scadaParameters_[189].value.float_t    = 0;
   // Уставка
   scadaParameters_[190].id               = -1;
   scadaParameters_[190].address          = 647;
@@ -2292,8 +1920,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[190].coefficient      = 1;
   scadaParameters_[190].min              = 0;
   scadaParameters_[190].max              = 65535;
-  scadaParameters_[190].command          = OPERATION_ERROR;
-  scadaParameters_[190].value.float_t    = 0;
   // Уставка
   scadaParameters_[191].id               = -1;
   scadaParameters_[191].address          = 648;
@@ -2304,8 +1930,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[191].coefficient      = 1;
   scadaParameters_[191].min              = 0;
   scadaParameters_[191].max              = 65535;
-  scadaParameters_[191].command          = OPERATION_ERROR;
-  scadaParameters_[191].value.float_t    = 0;
   // Уставка
   scadaParameters_[192].id               = -1;
   scadaParameters_[192].address          = 649;
@@ -2316,8 +1940,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[192].coefficient      = 1;
   scadaParameters_[192].min              = 0;
   scadaParameters_[192].max              = 65535;
-  scadaParameters_[192].command          = OPERATION_ERROR;
-  scadaParameters_[192].value.float_t    = 0;
   // Уставка
   scadaParameters_[193].id               = -1;
   scadaParameters_[193].address          = 650;
@@ -2328,8 +1950,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[193].coefficient      = 1;
   scadaParameters_[193].min              = 0;
   scadaParameters_[193].max              = 65535;
-  scadaParameters_[193].command          = OPERATION_ERROR;
-  scadaParameters_[193].value.float_t    = 0;
   // Уставка
   scadaParameters_[194].id               = -1;
   scadaParameters_[194].address          = 651;
@@ -2340,8 +1960,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[194].coefficient      = 1;
   scadaParameters_[194].min              = 0;
   scadaParameters_[194].max              = 65535;
-  scadaParameters_[194].command          = OPERATION_ERROR;
-  scadaParameters_[194].value.float_t    = 0;
   // Уставка
   scadaParameters_[195].id               = -1;
   scadaParameters_[195].address          = 652;
@@ -2352,8 +1970,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[195].coefficient      = 1;
   scadaParameters_[195].min              = 0;
   scadaParameters_[195].max              = 65535;
-  scadaParameters_[195].command          = OPERATION_ERROR;
-  scadaParameters_[195].value.float_t    = 0;
   // Уставка
   scadaParameters_[196].id               = -1;
   scadaParameters_[196].address          = 653;
@@ -2364,8 +1980,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[196].coefficient      = 1;
   scadaParameters_[196].min              = 0;
   scadaParameters_[196].max              = 65535;
-  scadaParameters_[196].command          = OPERATION_ERROR;
-  scadaParameters_[196].value.float_t    = 0;
   // Уставка
   scadaParameters_[197].id               = -1;
   scadaParameters_[197].address          = 654;
@@ -2376,8 +1990,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[197].coefficient      = 1;
   scadaParameters_[197].min              = 0;
   scadaParameters_[197].max              = 65535;
-  scadaParameters_[197].command          = OPERATION_ERROR;
-  scadaParameters_[197].value.float_t    = 0;
   // Уставка
   scadaParameters_[198].id               = -1;
   scadaParameters_[198].address          = 655;
@@ -2388,8 +2000,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[198].coefficient      = 1;
   scadaParameters_[198].min              = 0;
   scadaParameters_[198].max              = 65535;
-  scadaParameters_[198].command          = OPERATION_ERROR;
-  scadaParameters_[198].value.float_t    = 0;
   // Уставка
   scadaParameters_[199].id               = -1;
   scadaParameters_[199].address          = 656;
@@ -2400,8 +2010,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[199].coefficient      = 1;
   scadaParameters_[199].min              = 0;
   scadaParameters_[199].max              = 65535;
-  scadaParameters_[199].command          = OPERATION_ERROR;
-  scadaParameters_[199].value.float_t    = 0;
   // Уставка
   scadaParameters_[200].id               = -1;
   scadaParameters_[200].address          = 657;
@@ -2412,8 +2020,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[200].coefficient      = 1;
   scadaParameters_[200].min              = 0;
   scadaParameters_[200].max              = 65535;
-  scadaParameters_[200].command          = OPERATION_ERROR;
-  scadaParameters_[200].value.float_t    = 0;
   // Уставка
   scadaParameters_[201].id               = -1;
   scadaParameters_[201].address          = 658;
@@ -2424,8 +2030,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[201].coefficient      = 1;
   scadaParameters_[201].min              = 0;
   scadaParameters_[201].max              = 65535;
-  scadaParameters_[201].command          = OPERATION_ERROR;
-  scadaParameters_[201].value.float_t    = 0;
   // Уставка
   scadaParameters_[202].id               = -1;
   scadaParameters_[202].address          = 659;
@@ -2436,8 +2040,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[202].coefficient      = 1;
   scadaParameters_[202].min              = 0;
   scadaParameters_[202].max              = 65535;
-  scadaParameters_[202].command          = OPERATION_ERROR;
-  scadaParameters_[202].value.float_t    = 0;
   // Уставка
   scadaParameters_[203].id               = -1;
   scadaParameters_[203].address          = 660;
@@ -2448,8 +2050,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[203].coefficient      = 1;
   scadaParameters_[203].min              = 0;
   scadaParameters_[203].max              = 65535;
-  scadaParameters_[203].command          = OPERATION_ERROR;
-  scadaParameters_[203].value.float_t    = 0;
   // Уставка
   scadaParameters_[204].id               = -1;
   scadaParameters_[204].address          = 661;
@@ -2460,8 +2060,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[204].coefficient      = 1;
   scadaParameters_[204].min              = 0;
   scadaParameters_[204].max              = 65535;
-  scadaParameters_[204].command          = OPERATION_ERROR;
-  scadaParameters_[204].value.float_t    = 0;
   // Уставка
   scadaParameters_[205].id               = -1;
   scadaParameters_[205].address          = 662;
@@ -2472,8 +2070,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[205].coefficient      = 1;
   scadaParameters_[205].min              = 0;
   scadaParameters_[205].max              = 65535;
-  scadaParameters_[205].command          = OPERATION_ERROR;
-  scadaParameters_[205].value.float_t    = 0;
   // Уставка
   scadaParameters_[206].id               = -1;
   scadaParameters_[206].address          = 663;
@@ -2484,8 +2080,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[206].coefficient      = 1;
   scadaParameters_[206].min              = 0;
   scadaParameters_[206].max              = 65535;
-  scadaParameters_[206].command          = OPERATION_ERROR;
-  scadaParameters_[206].value.float_t    = 0;
   // Уставка
   scadaParameters_[207].id               = -1;
   scadaParameters_[207].address          = 664;
@@ -2496,8 +2090,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[207].coefficient      = 1;
   scadaParameters_[207].min              = 0;
   scadaParameters_[207].max              = 65535;
-  scadaParameters_[207].command          = OPERATION_ERROR;
-  scadaParameters_[207].value.float_t    = 0;
   // Уставка
   scadaParameters_[208].id               = -1;
   scadaParameters_[208].address          = 665;
@@ -2508,8 +2100,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[208].coefficient      = 1;
   scadaParameters_[208].min              = 0;
   scadaParameters_[208].max              = 65535;
-  scadaParameters_[208].command          = OPERATION_ERROR;
-  scadaParameters_[208].value.float_t    = 0;
   // Уставка
   scadaParameters_[209].id               = -1;
   scadaParameters_[209].address          = 666;
@@ -2520,8 +2110,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[209].coefficient      = 1;
   scadaParameters_[209].min              = 0;
   scadaParameters_[209].max              = 65535;
-  scadaParameters_[209].command          = OPERATION_ERROR;
-  scadaParameters_[209].value.float_t    = 0;
   // Уставка
   scadaParameters_[210].id               = -1;
   scadaParameters_[210].address          = 667;
@@ -2532,8 +2120,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[210].coefficient      = 1;
   scadaParameters_[210].min              = 0;
   scadaParameters_[210].max              = 65535;
-  scadaParameters_[210].command          = OPERATION_ERROR;
-  scadaParameters_[210].value.float_t    = 0;
   // Уставка
   scadaParameters_[211].id               = -1;
   scadaParameters_[211].address          = 668;
@@ -2544,8 +2130,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[211].coefficient      = 1;
   scadaParameters_[211].min              = 0;
   scadaParameters_[211].max              = 65535;
-  scadaParameters_[211].command          = OPERATION_ERROR;
-  scadaParameters_[211].value.float_t    = 0;
   // Уставка
   scadaParameters_[212].id               = -1;
   scadaParameters_[212].address          = 669;
@@ -2556,8 +2140,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[212].coefficient      = 1;
   scadaParameters_[212].min              = 0;
   scadaParameters_[212].max              = 65535;
-  scadaParameters_[212].command          = OPERATION_ERROR;
-  scadaParameters_[212].value.float_t    = 0;
   // Уставка
   scadaParameters_[213].id               = -1;
   scadaParameters_[213].address          = 670;
@@ -2568,8 +2150,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[213].coefficient      = 1;
   scadaParameters_[213].min              = 0;
   scadaParameters_[213].max              = 65535;
-  scadaParameters_[213].command          = OPERATION_ERROR;
-  scadaParameters_[213].value.float_t    = 0;
   // Уставка
   scadaParameters_[214].id               = -1;
   scadaParameters_[214].address          = 671;
@@ -2580,8 +2160,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[214].coefficient      = 1;
   scadaParameters_[214].min              = 0;
   scadaParameters_[214].max              = 65535;
-  scadaParameters_[214].command          = OPERATION_ERROR;
-  scadaParameters_[214].value.float_t    = 0;
   // Уставка
   scadaParameters_[215].id               = -1;
   scadaParameters_[215].address          = 672;
@@ -2592,8 +2170,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[215].coefficient      = 1;
   scadaParameters_[215].min              = 0;
   scadaParameters_[215].max              = 65535;
-  scadaParameters_[215].command          = OPERATION_ERROR;
-  scadaParameters_[215].value.float_t    = 0;
   // Уставка
   scadaParameters_[216].id               = -1;
   scadaParameters_[216].address          = 673;
@@ -2604,8 +2180,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[216].coefficient      = 1;
   scadaParameters_[216].min              = 0;
   scadaParameters_[216].max              = 65535;
-  scadaParameters_[216].command          = OPERATION_ERROR;
-  scadaParameters_[216].value.float_t    = 0;
   // Уставка
   scadaParameters_[217].id               = -1;
   scadaParameters_[217].address          = 674;
@@ -2616,8 +2190,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[217].coefficient      = 1;
   scadaParameters_[217].min              = 0;
   scadaParameters_[217].max              = 65535;
-  scadaParameters_[217].command          = OPERATION_ERROR;
-  scadaParameters_[217].value.float_t    = 0;
   // Уставка
   scadaParameters_[218].id               = -1;
   scadaParameters_[218].address          = 675;
@@ -2628,8 +2200,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[218].coefficient      = 1;
   scadaParameters_[218].min              = 0;
   scadaParameters_[218].max              = 65535;
-  scadaParameters_[218].command          = OPERATION_ERROR;
-  scadaParameters_[218].value.float_t    = 0;
   // Уставка
   scadaParameters_[219].id               = -1;
   scadaParameters_[219].address          = 676;
@@ -2640,8 +2210,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[219].coefficient      = 1;
   scadaParameters_[219].min              = 0;
   scadaParameters_[219].max              = 65535;
-  scadaParameters_[219].command          = OPERATION_ERROR;
-  scadaParameters_[219].value.float_t    = 0;
   // Уставка
   scadaParameters_[220].id               = -1;
   scadaParameters_[220].address          = 677;
@@ -2652,8 +2220,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[220].coefficient      = 1;
   scadaParameters_[220].min              = 0;
   scadaParameters_[220].max              = 65535;
-  scadaParameters_[220].command          = OPERATION_ERROR;
-  scadaParameters_[220].value.float_t    = 0;
   // Уставка
   scadaParameters_[221].id               = -1;
   scadaParameters_[221].address          = 678;
@@ -2664,8 +2230,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[221].coefficient      = 1;
   scadaParameters_[221].min              = 0;
   scadaParameters_[221].max              = 65535;
-  scadaParameters_[221].command          = OPERATION_ERROR;
-  scadaParameters_[221].value.float_t    = 0;
   // Уставка
   scadaParameters_[222].id               = -1;
   scadaParameters_[222].address          = 679;
@@ -2676,8 +2240,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[222].coefficient      = 1;
   scadaParameters_[222].min              = 0;
   scadaParameters_[222].max              = 65535;
-  scadaParameters_[222].command          = OPERATION_ERROR;
-  scadaParameters_[222].value.float_t    = 0;
   // Уставка
   scadaParameters_[223].id               = -1;
   scadaParameters_[223].address          = 680;
@@ -2688,8 +2250,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[223].coefficient      = 1;
   scadaParameters_[223].min              = 0;
   scadaParameters_[223].max              = 65535;
-  scadaParameters_[223].command          = OPERATION_ERROR;
-  scadaParameters_[223].value.float_t    = 0;
   // Уставка
   scadaParameters_[224].id               = -1;
   scadaParameters_[224].address          = 681;
@@ -2700,8 +2260,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[224].coefficient      = 1;
   scadaParameters_[224].min              = 0;
   scadaParameters_[224].max              = 65535;
-  scadaParameters_[224].command          = OPERATION_ERROR;
-  scadaParameters_[224].value.float_t    = 0;
   // Уставка
   scadaParameters_[225].id               = -1;
   scadaParameters_[225].address          = 682;
@@ -2712,8 +2270,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[225].coefficient      = 1;
   scadaParameters_[225].min              = 0;
   scadaParameters_[225].max              = 65535;
-  scadaParameters_[225].command          = OPERATION_ERROR;
-  scadaParameters_[225].value.float_t    = 0;
   // Уставка
   scadaParameters_[226].id               = -1;
   scadaParameters_[226].address          = 683;
@@ -2724,8 +2280,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[226].coefficient      = 1;
   scadaParameters_[226].min              = 0;
   scadaParameters_[226].max              = 65535;
-  scadaParameters_[226].command          = OPERATION_ERROR;
-  scadaParameters_[226].value.float_t    = 0;
   // Уставка
   scadaParameters_[227].id               = -1;
   scadaParameters_[227].address          = 684;
@@ -2736,8 +2290,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[227].coefficient      = 1;
   scadaParameters_[227].min              = 0;
   scadaParameters_[227].max              = 65535;
-  scadaParameters_[227].command          = OPERATION_ERROR;
-  scadaParameters_[227].value.float_t    = 0;
   // Уставка
   scadaParameters_[228].id               = -1;
   scadaParameters_[228].address          = 685;
@@ -2748,8 +2300,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[228].coefficient      = 1;
   scadaParameters_[228].min              = 0;
   scadaParameters_[228].max              = 65535;
-  scadaParameters_[228].command          = OPERATION_ERROR;
-  scadaParameters_[228].value.float_t    = 0;
   // Уставка
   scadaParameters_[229].id               = -1;
   scadaParameters_[229].address          = 686;
@@ -2760,8 +2310,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[229].coefficient      = 1;
   scadaParameters_[229].min              = 0;
   scadaParameters_[229].max              = 65535;
-  scadaParameters_[229].command          = OPERATION_ERROR;
-  scadaParameters_[229].value.float_t    = 0;
   // Уставка
   scadaParameters_[230].id               = -1;
   scadaParameters_[230].address          = 687;
@@ -2772,8 +2320,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[230].coefficient      = 1;
   scadaParameters_[230].min              = 0;
   scadaParameters_[230].max              = 65535;
-  scadaParameters_[230].command          = OPERATION_ERROR;
-  scadaParameters_[230].value.float_t    = 0;
   // Уставка
   scadaParameters_[231].id               = -1;
   scadaParameters_[231].address          = 688;
@@ -2784,8 +2330,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[231].coefficient      = 1;
   scadaParameters_[231].min              = 0;
   scadaParameters_[231].max              = 65535;
-  scadaParameters_[231].command          = OPERATION_ERROR;
-  scadaParameters_[231].value.float_t    = 0;
   // Уставка
   scadaParameters_[232].id               = -1;
   scadaParameters_[232].address          = 689;
@@ -2796,8 +2340,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[232].coefficient      = 1;
   scadaParameters_[232].min              = 0;
   scadaParameters_[232].max              = 65535;
-  scadaParameters_[232].command          = OPERATION_ERROR;
-  scadaParameters_[232].value.float_t    = 0;
   // Уставка
   scadaParameters_[233].id               = -1;
   scadaParameters_[233].address          = 690;
@@ -2808,8 +2350,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[233].coefficient      = 1;
   scadaParameters_[233].min              = 0;
   scadaParameters_[233].max              = 65535;
-  scadaParameters_[233].command          = OPERATION_ERROR;
-  scadaParameters_[233].value.float_t    = 0;
   // Уставка
   scadaParameters_[234].id               = -1;
   scadaParameters_[234].address          = 691;
@@ -2820,8 +2360,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[234].coefficient      = 1;
   scadaParameters_[234].min              = 0;
   scadaParameters_[234].max              = 65535;
-  scadaParameters_[234].command          = OPERATION_ERROR;
-  scadaParameters_[234].value.float_t    = 0;
   // Уставка
   scadaParameters_[235].id               = -1;
   scadaParameters_[235].address          = 692;
@@ -2832,8 +2370,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[235].coefficient      = 1;
   scadaParameters_[235].min              = 0;
   scadaParameters_[235].max              = 65535;
-  scadaParameters_[235].command          = OPERATION_ERROR;
-  scadaParameters_[235].value.float_t    = 0;
   // Уставка
   scadaParameters_[236].id               = -1;
   scadaParameters_[236].address          = 693;
@@ -2844,8 +2380,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[236].coefficient      = 1;
   scadaParameters_[236].min              = 0;
   scadaParameters_[236].max              = 65535;
-  scadaParameters_[236].command          = OPERATION_ERROR;
-  scadaParameters_[236].value.float_t    = 0;
   // Уставка
   scadaParameters_[237].id               = -1;
   scadaParameters_[237].address          = 694;
@@ -2856,8 +2390,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[237].coefficient      = 1;
   scadaParameters_[237].min              = 0;
   scadaParameters_[237].max              = 65535;
-  scadaParameters_[237].command          = OPERATION_ERROR;
-  scadaParameters_[237].value.float_t    = 0;
   // Уставка
   scadaParameters_[238].id               = -1;
   scadaParameters_[238].address          = 695;
@@ -2868,8 +2400,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[238].coefficient      = 1;
   scadaParameters_[238].min              = 0;
   scadaParameters_[238].max              = 65535;
-  scadaParameters_[238].command          = OPERATION_ERROR;
-  scadaParameters_[238].value.float_t    = 0;
   // Уставка
   scadaParameters_[239].id               = -1;
   scadaParameters_[239].address          = 696;
@@ -2880,8 +2410,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[239].coefficient      = 1;
   scadaParameters_[239].min              = 0;
   scadaParameters_[239].max              = 65535;
-  scadaParameters_[239].command          = OPERATION_ERROR;
-  scadaParameters_[239].value.float_t    = 0;
   // Уставка
   scadaParameters_[240].id               = -1;
   scadaParameters_[240].address          = 697;
@@ -2892,8 +2420,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[240].coefficient      = 1;
   scadaParameters_[240].min              = 0;
   scadaParameters_[240].max              = 65535;
-  scadaParameters_[240].command          = OPERATION_ERROR;
-  scadaParameters_[240].value.float_t    = 0;
   // Уставка
   scadaParameters_[241].id               = -1;
   scadaParameters_[241].address          = 698;
@@ -2904,8 +2430,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[241].coefficient      = 1;
   scadaParameters_[241].min              = 0;
   scadaParameters_[241].max              = 65535;
-  scadaParameters_[241].command          = OPERATION_ERROR;
-  scadaParameters_[241].value.float_t    = 0;
   // Уставка
   scadaParameters_[242].id               = -1;
   scadaParameters_[242].address          = 699;
@@ -2916,8 +2440,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[242].coefficient      = 1;
   scadaParameters_[242].min              = 0;
   scadaParameters_[242].max              = 65535;
-  scadaParameters_[242].command          = OPERATION_ERROR;
-  scadaParameters_[242].value.float_t    = 0;
   // Уставка
   scadaParameters_[243].id               = -1;
   scadaParameters_[243].address          = 700;
@@ -2928,8 +2450,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[243].coefficient      = 1;
   scadaParameters_[243].min              = 0;
   scadaParameters_[243].max              = 65535;
-  scadaParameters_[243].command          = OPERATION_ERROR;
-  scadaParameters_[243].value.float_t    = 0;
   // Уставка
   scadaParameters_[244].id               = -1;
   scadaParameters_[244].address          = 701;
@@ -2940,8 +2460,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[244].coefficient      = 1;
   scadaParameters_[244].min              = 0;
   scadaParameters_[244].max              = 65535;
-  scadaParameters_[244].command          = OPERATION_ERROR;
-  scadaParameters_[244].value.float_t    = 0;
   // Уставка
   scadaParameters_[245].id               = -1;
   scadaParameters_[245].address          = 702;
@@ -2952,8 +2470,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[245].coefficient      = 1;
   scadaParameters_[245].min              = 0;
   scadaParameters_[245].max              = 65535;
-  scadaParameters_[245].command          = OPERATION_ERROR;
-  scadaParameters_[245].value.float_t    = 0;
   // Уставка
   scadaParameters_[246].id               = -1;
   scadaParameters_[246].address          = 703;
@@ -2964,8 +2480,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[246].coefficient      = 1;
   scadaParameters_[246].min              = 0;
   scadaParameters_[246].max              = 65535;
-  scadaParameters_[246].command          = OPERATION_ERROR;
-  scadaParameters_[246].value.float_t    = 0;
   // Уставка
   scadaParameters_[247].id               = -1;
   scadaParameters_[247].address          = 704;
@@ -2976,8 +2490,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[247].coefficient      = 1;
   scadaParameters_[247].min              = 0;
   scadaParameters_[247].max              = 65535;
-  scadaParameters_[247].command          = OPERATION_ERROR;
-  scadaParameters_[247].value.float_t    = 0;
   // Уставка
   scadaParameters_[248].id               = -1;
   scadaParameters_[248].address          = 705;
@@ -2988,8 +2500,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[248].coefficient      = 1;
   scadaParameters_[248].min              = 0;
   scadaParameters_[248].max              = 65535;
-  scadaParameters_[248].command          = OPERATION_ERROR;
-  scadaParameters_[248].value.float_t    = 0;
   // Уставка
   scadaParameters_[249].id               = -1;
   scadaParameters_[249].address          = 706;
@@ -3000,8 +2510,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[249].coefficient      = 1;
   scadaParameters_[249].min              = 0;
   scadaParameters_[249].max              = 65535;
-  scadaParameters_[249].command          = OPERATION_ERROR;
-  scadaParameters_[249].value.float_t    = 0;
   // Уставка
   scadaParameters_[250].id               = -1;
   scadaParameters_[250].address          = 707;
@@ -3012,8 +2520,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[250].coefficient      = 1;
   scadaParameters_[250].min              = 0;
   scadaParameters_[250].max              = 65535;
-  scadaParameters_[250].command          = OPERATION_ERROR;
-  scadaParameters_[250].value.float_t    = 0;
   // Уставка
   scadaParameters_[251].id               = -1;
   scadaParameters_[251].address          = 708;
@@ -3024,8 +2530,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[251].coefficient      = 1;
   scadaParameters_[251].min              = 0;
   scadaParameters_[251].max              = 65535;
-  scadaParameters_[251].command          = OPERATION_ERROR;
-  scadaParameters_[251].value.float_t    = 0;
   // Уставка
   scadaParameters_[252].id               = -1;
   scadaParameters_[252].address          = 709;
@@ -3036,8 +2540,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[252].coefficient      = 1;
   scadaParameters_[252].min              = 0;
   scadaParameters_[252].max              = 65535;
-  scadaParameters_[252].command          = OPERATION_ERROR;
-  scadaParameters_[252].value.float_t    = 0;
   // Уставка
   scadaParameters_[253].id               = -1;
   scadaParameters_[253].address          = 710;
@@ -3048,8 +2550,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[253].coefficient      = 1;
   scadaParameters_[253].min              = 0;
   scadaParameters_[253].max              = 65535;
-  scadaParameters_[253].command          = OPERATION_ERROR;
-  scadaParameters_[253].value.float_t    = 0;
   // Уставка
   scadaParameters_[254].id               = -1;
   scadaParameters_[254].address          = 711;
@@ -3060,8 +2560,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[254].coefficient      = 1;
   scadaParameters_[254].min              = 0;
   scadaParameters_[254].max              = 65535;
-  scadaParameters_[254].command          = OPERATION_ERROR;
-  scadaParameters_[254].value.float_t    = 0;
   // Уставка
   scadaParameters_[255].id               = -1;
   scadaParameters_[255].address          = 712;
@@ -3072,8 +2570,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[255].coefficient      = 1;
   scadaParameters_[255].min              = 0;
   scadaParameters_[255].max              = 65535;
-  scadaParameters_[255].command          = OPERATION_ERROR;
-  scadaParameters_[255].value.float_t    = 0;
   // Уставка
   scadaParameters_[256].id               = -1;
   scadaParameters_[256].address          = 713;
@@ -3084,8 +2580,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[256].coefficient      = 1;
   scadaParameters_[256].min              = 0;
   scadaParameters_[256].max              = 65535;
-  scadaParameters_[256].command          = OPERATION_ERROR;
-  scadaParameters_[256].value.float_t    = 0;
   // Уставка
   scadaParameters_[257].id               = -1;
   scadaParameters_[257].address          = 714;
@@ -3096,8 +2590,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[257].coefficient      = 1;
   scadaParameters_[257].min              = 0;
   scadaParameters_[257].max              = 65535;
-  scadaParameters_[257].command          = OPERATION_ERROR;
-  scadaParameters_[257].value.float_t    = 0;
   // Уставка
   scadaParameters_[258].id               = -1;
   scadaParameters_[258].address          = 715;
@@ -3108,8 +2600,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[258].coefficient      = 1;
   scadaParameters_[258].min              = 0;
   scadaParameters_[258].max              = 65535;
-  scadaParameters_[258].command          = OPERATION_ERROR;
-  scadaParameters_[258].value.float_t    = 0;
   // Уставка
   scadaParameters_[259].id               = -1;
   scadaParameters_[259].address          = 716;
@@ -3120,8 +2610,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[259].coefficient      = 1;
   scadaParameters_[259].min              = 0;
   scadaParameters_[259].max              = 65535;
-  scadaParameters_[259].command          = OPERATION_ERROR;
-  scadaParameters_[259].value.float_t    = 0;
   // Уставка
   scadaParameters_[260].id               = -1;
   scadaParameters_[260].address          = 717;
@@ -3132,8 +2620,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[260].coefficient      = 1;
   scadaParameters_[260].min              = 0;
   scadaParameters_[260].max              = 65535;
-  scadaParameters_[260].command          = OPERATION_ERROR;
-  scadaParameters_[260].value.float_t    = 0;
   // Уставка
   scadaParameters_[261].id               = -1;
   scadaParameters_[261].address          = 718;
@@ -3144,8 +2630,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[261].coefficient      = 1;
   scadaParameters_[261].min              = 0;
   scadaParameters_[261].max              = 65535;
-  scadaParameters_[261].command          = OPERATION_ERROR;
-  scadaParameters_[261].value.float_t    = 0;
   // Уставка
   scadaParameters_[262].id               = -1;
   scadaParameters_[262].address          = 719;
@@ -3156,8 +2640,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[262].coefficient      = 1;
   scadaParameters_[262].min              = 0;
   scadaParameters_[262].max              = 65535;
-  scadaParameters_[262].command          = OPERATION_ERROR;
-  scadaParameters_[262].value.float_t    = 0;
   // Уставка
   scadaParameters_[263].id               = -1;
   scadaParameters_[263].address          = 720;
@@ -3168,8 +2650,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[263].coefficient      = 1;
   scadaParameters_[263].min              = 0;
   scadaParameters_[263].max              = 65535;
-  scadaParameters_[263].command          = OPERATION_ERROR;
-  scadaParameters_[263].value.float_t    = 0;
   // Уставка
   scadaParameters_[264].id               = -1;
   scadaParameters_[264].address          = 721;
@@ -3180,8 +2660,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[264].coefficient      = 1;
   scadaParameters_[264].min              = 0;
   scadaParameters_[264].max              = 65535;
-  scadaParameters_[264].command          = OPERATION_ERROR;
-  scadaParameters_[264].value.float_t    = 0;
   // Уставка
   scadaParameters_[265].id               = -1;
   scadaParameters_[265].address          = 722;
@@ -3192,8 +2670,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[265].coefficient      = 1;
   scadaParameters_[265].min              = 0;
   scadaParameters_[265].max              = 65535;
-  scadaParameters_[265].command          = OPERATION_ERROR;
-  scadaParameters_[265].value.float_t    = 0;
   // Уставка
   scadaParameters_[266].id               = -1;
   scadaParameters_[266].address          = 723;
@@ -3204,8 +2680,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[266].coefficient      = 1;
   scadaParameters_[266].min              = 0;
   scadaParameters_[266].max              = 65535;
-  scadaParameters_[266].command          = OPERATION_ERROR;
-  scadaParameters_[266].value.float_t    = 0;
   // Уставка
   scadaParameters_[267].id               = -1;
   scadaParameters_[267].address          = 724;
@@ -3216,8 +2690,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[267].coefficient      = 1;
   scadaParameters_[267].min              = 0;
   scadaParameters_[267].max              = 65535;
-  scadaParameters_[267].command          = OPERATION_ERROR;
-  scadaParameters_[267].value.float_t    = 0;
   // Уставка
   scadaParameters_[268].id               = -1;
   scadaParameters_[268].address          = 725;
@@ -3228,8 +2700,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[268].coefficient      = 1;
   scadaParameters_[268].min              = 0;
   scadaParameters_[268].max              = 65535;
-  scadaParameters_[268].command          = OPERATION_ERROR;
-  scadaParameters_[268].value.float_t    = 0;
   // Уставка
   scadaParameters_[269].id               = -1;
   scadaParameters_[269].address          = 726;
@@ -3240,8 +2710,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[269].coefficient      = 1;
   scadaParameters_[269].min              = 0;
   scadaParameters_[269].max              = 65535;
-  scadaParameters_[269].command          = OPERATION_ERROR;
-  scadaParameters_[269].value.float_t    = 0;
   // Уставка
   scadaParameters_[270].id               = -1;
   scadaParameters_[270].address          = 727;
@@ -3252,8 +2720,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[270].coefficient      = 1;
   scadaParameters_[270].min              = 0;
   scadaParameters_[270].max              = 65535;
-  scadaParameters_[270].command          = OPERATION_ERROR;
-  scadaParameters_[270].value.float_t    = 0;
   // Уставка
   scadaParameters_[271].id               = -1;
   scadaParameters_[271].address          = 728;
@@ -3264,8 +2730,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[271].coefficient      = 1;
   scadaParameters_[271].min              = 0;
   scadaParameters_[271].max              = 65535;
-  scadaParameters_[271].command          = OPERATION_ERROR;
-  scadaParameters_[271].value.float_t    = 0;
   // Уставка
   scadaParameters_[272].id               = -1;
   scadaParameters_[272].address          = 729;
@@ -3276,8 +2740,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[272].coefficient      = 1;
   scadaParameters_[272].min              = 0;
   scadaParameters_[272].max              = 65535;
-  scadaParameters_[272].command          = OPERATION_ERROR;
-  scadaParameters_[272].value.float_t    = 0;
   // Уставка
   scadaParameters_[273].id               = -1;
   scadaParameters_[273].address          = 730;
@@ -3288,8 +2750,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[273].coefficient      = 1;
   scadaParameters_[273].min              = 0;
   scadaParameters_[273].max              = 65535;
-  scadaParameters_[273].command          = OPERATION_ERROR;
-  scadaParameters_[273].value.float_t    = 0;
   // Уставка
   scadaParameters_[274].id               = -1;
   scadaParameters_[274].address          = 731;
@@ -3300,8 +2760,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[274].coefficient      = 1;
   scadaParameters_[274].min              = 0;
   scadaParameters_[274].max              = 65535;
-  scadaParameters_[274].command          = OPERATION_ERROR;
-  scadaParameters_[274].value.float_t    = 0;
   // Уставка
   scadaParameters_[275].id               = -1;
   scadaParameters_[275].address          = 732;
@@ -3312,8 +2770,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[275].coefficient      = 1;
   scadaParameters_[275].min              = 0;
   scadaParameters_[275].max              = 65535;
-  scadaParameters_[275].command          = OPERATION_ERROR;
-  scadaParameters_[275].value.float_t    = 0;
   // Уставка
   scadaParameters_[276].id               = -1;
   scadaParameters_[276].address          = 733;
@@ -3324,8 +2780,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[276].coefficient      = 1;
   scadaParameters_[276].min              = 0;
   scadaParameters_[276].max              = 65535;
-  scadaParameters_[276].command          = OPERATION_ERROR;
-  scadaParameters_[276].value.float_t    = 0;
   // Уставка
   scadaParameters_[277].id               = -1;
   scadaParameters_[277].address          = 734;
@@ -3336,8 +2790,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[277].coefficient      = 1;
   scadaParameters_[277].min              = 0;
   scadaParameters_[277].max              = 65535;
-  scadaParameters_[277].command          = OPERATION_ERROR;
-  scadaParameters_[277].value.float_t    = 0;
   // Уставка
   scadaParameters_[278].id               = -1;
   scadaParameters_[278].address          = 735;
@@ -3348,8 +2800,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[278].coefficient      = 1;
   scadaParameters_[278].min              = 0;
   scadaParameters_[278].max              = 65535;
-  scadaParameters_[278].command          = OPERATION_ERROR;
-  scadaParameters_[278].value.float_t    = 0;
   // Уставка
   scadaParameters_[279].id               = -1;
   scadaParameters_[279].address          = 736;
@@ -3360,8 +2810,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[279].coefficient      = 1;
   scadaParameters_[279].min              = 0;
   scadaParameters_[279].max              = 65535;
-  scadaParameters_[279].command          = OPERATION_ERROR;
-  scadaParameters_[279].value.float_t    = 0;
   // Уставка
   scadaParameters_[280].id               = -1;
   scadaParameters_[280].address          = 737;
@@ -3372,8 +2820,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[280].coefficient      = 1;
   scadaParameters_[280].min              = 0;
   scadaParameters_[280].max              = 65535;
-  scadaParameters_[280].command          = OPERATION_ERROR;
-  scadaParameters_[280].value.float_t    = 0;
   // Уставка
   scadaParameters_[281].id               = -1;
   scadaParameters_[281].address          = 738;
@@ -3384,8 +2830,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[281].coefficient      = 1;
   scadaParameters_[281].min              = 0;
   scadaParameters_[281].max              = 65535;
-  scadaParameters_[281].command          = OPERATION_ERROR;
-  scadaParameters_[281].value.float_t    = 0;
   // Уставка
   scadaParameters_[282].id               = -1;
   scadaParameters_[282].address          = 739;
@@ -3396,8 +2840,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[282].coefficient      = 1;
   scadaParameters_[282].min              = 0;
   scadaParameters_[282].max              = 65535;
-  scadaParameters_[282].command          = OPERATION_ERROR;
-  scadaParameters_[282].value.float_t    = 0;
   // Уставка
   scadaParameters_[283].id               = -1;
   scadaParameters_[283].address          = 740;
@@ -3408,8 +2850,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[283].coefficient      = 1;
   scadaParameters_[283].min              = 0;
   scadaParameters_[283].max              = 65535;
-  scadaParameters_[283].command          = OPERATION_ERROR;
-  scadaParameters_[283].value.float_t    = 0;
   // Уставка
   scadaParameters_[284].id               = -1;
   scadaParameters_[284].address          = 741;
@@ -3420,8 +2860,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[284].coefficient      = 1;
   scadaParameters_[284].min              = 0;
   scadaParameters_[284].max              = 65535;
-  scadaParameters_[284].command          = OPERATION_ERROR;
-  scadaParameters_[284].value.float_t    = 0;
   // Уставка
   scadaParameters_[285].id               = -1;
   scadaParameters_[285].address          = 742;
@@ -3432,8 +2870,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[285].coefficient      = 1;
   scadaParameters_[285].min              = 0;
   scadaParameters_[285].max              = 65535;
-  scadaParameters_[285].command          = OPERATION_ERROR;
-  scadaParameters_[285].value.float_t    = 0;
   // Уставка
   scadaParameters_[286].id               = -1;
   scadaParameters_[286].address          = 743;
@@ -3444,8 +2880,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[286].coefficient      = 1;
   scadaParameters_[286].min              = 0;
   scadaParameters_[286].max              = 65535;
-  scadaParameters_[286].command          = OPERATION_ERROR;
-  scadaParameters_[286].value.float_t    = 0;
   // Уставка
   scadaParameters_[287].id               = -1;
   scadaParameters_[287].address          = 744;
@@ -3456,8 +2890,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[287].coefficient      = 1;
   scadaParameters_[287].min              = 0;
   scadaParameters_[287].max              = 65535;
-  scadaParameters_[287].command          = OPERATION_ERROR;
-  scadaParameters_[287].value.float_t    = 0;
   // Уставка
   scadaParameters_[288].id               = -1;
   scadaParameters_[288].address          = 745;
@@ -3468,8 +2900,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[288].coefficient      = 1;
   scadaParameters_[288].min              = 0;
   scadaParameters_[288].max              = 65535;
-  scadaParameters_[288].command          = OPERATION_ERROR;
-  scadaParameters_[288].value.float_t    = 0;
   // Уставка
   scadaParameters_[289].id               = -1;
   scadaParameters_[289].address          = 746;
@@ -3480,8 +2910,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[289].coefficient      = 1;
   scadaParameters_[289].min              = 0;
   scadaParameters_[289].max              = 65535;
-  scadaParameters_[289].command          = OPERATION_ERROR;
-  scadaParameters_[289].value.float_t    = 0;
   // Уставка
   scadaParameters_[290].id               = -1;
   scadaParameters_[290].address          = 747;
@@ -3492,8 +2920,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[290].coefficient      = 1;
   scadaParameters_[290].min              = 0;
   scadaParameters_[290].max              = 65535;
-  scadaParameters_[290].command          = OPERATION_ERROR;
-  scadaParameters_[290].value.float_t    = 0;
   // Уставка
   scadaParameters_[291].id               = -1;
   scadaParameters_[291].address          = 748;
@@ -3504,8 +2930,6 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[291].coefficient      = 1;
   scadaParameters_[291].min              = 0;
   scadaParameters_[291].max              = 65535;
-  scadaParameters_[291].command          = OPERATION_ERROR;
-  scadaParameters_[291].value.float_t    = 0;
   // Уставка
   scadaParameters_[292].id               = -1;
   scadaParameters_[292].address          = 749;
@@ -3516,7 +2940,5 @@ void ScadaKarakuduk::initParameters()
   scadaParameters_[292].coefficient      = 1;
   scadaParameters_[292].min              = 0;
   scadaParameters_[292].max              = 65535;
-  scadaParameters_[292].command          = OPERATION_ERROR;
-  scadaParameters_[292].value.float_t    = 0;
 }
 

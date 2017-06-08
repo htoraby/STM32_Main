@@ -3,7 +3,6 @@
 
 ScadaRegion2000::ScadaRegion2000()
 {
-  countParameters_ = 75;
   initParameters();
 }
 

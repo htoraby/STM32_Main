@@ -4,7 +4,6 @@
 
 ScadaKarakuduk::ScadaKarakuduk()
 {
-  countParameters_ = 293;
   initParameters();
 }
 
