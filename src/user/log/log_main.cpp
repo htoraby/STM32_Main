@@ -142,26 +142,6 @@ StatusType logParamsRead(uint32_t address, uint8_t *data, uint32_t size)
   return status;
 }
 
-bool logCompressRead(uint8_t *data)
-{
-  LOG_PKT_HEADER *pkt = (LOG_PKT_HEADER *)data;
-  StatusType status = StatusError;
-
-  if (pkt->type == HeaderLogType) {
-    logHeader((LOG_FILE_HEADER*)&data[sizeof(LOG_PKT_HEADER)]);
-    return true;
-  }
-  if (pkt->type == MainLogType)
-    status = logRead(pkt->addr, &data[sizeof(LOG_PKT_HEADER)], pkt->inLen);
-  else if (pkt->type == DebugLogType)
-    status = logDebugRead(pkt->addr, &data[sizeof(LOG_PKT_HEADER)], pkt->inLen);
-  else if (pkt->type == ParamsLogType)
-    status = logParamsRead(pkt->addr, &data[sizeof(LOG_PKT_HEADER)], pkt->inLen);
-
-  if (status == StatusError)
-    asm("nop");
-  return true;
-}
 
 static void getFilePath(char *path)
 {
@@ -415,89 +395,154 @@ void logDeleted()
   parameters.set(CCS_DHS_LOG_COUNT_RECORD, 0);
 }
 
+bool logCompressRead(uint8_t *data)
+{
+  LOG_PKT_HEADER *pkt = (LOG_PKT_HEADER *)data;
+  StatusType status = StatusError;
+
+  if (pkt->type == HeaderLogType) {
+    logHeader((LOG_FILE_HEADER*)&data[sizeof(LOG_PKT_HEADER)]);
+    return true;
+  }
+  if (pkt->type == MainLogType)
+    status = logRead(pkt->addr, &data[sizeof(LOG_PKT_HEADER)], pkt->inLen);
+  else if (pkt->type == DebugLogType)
+    status = logDebugRead(pkt->addr, &data[sizeof(LOG_PKT_HEADER)], pkt->inLen);
+  else if (pkt->type == ParamsLogType)
+    status = logParamsRead(pkt->addr, &data[sizeof(LOG_PKT_HEADER)], pkt->inLen);
+
+  if (status == StatusError)
+    asm("nop");
+  return true;
+}
+
 static bool logCompress()
 {
-  UINT bytesWritten;
   LOG_FILE_HEADER header;
-
+  uint32_t lastAddress = AddrCompressLog;
   uint16_t calcCrc = 0xFFFF;
   uint32_t addr = 0;
   uint32_t inLen = IN_BUF_SIZE;
   lzo_uint outLen = 0;
-  uint32_t size = 0;
-  uint32_t count = 0;
   int resCompress = 0;
+  uint32_t size = 0;
 
+  // Проверка архиватора
   if (lzo_init() != LZO_E_OK) {
     printf("lzo_init() failed!\n");
     ksu.setError(MiniLzoInitUsbErr);
     return false;
   }
 
+  // Формирование и запись заголовка
   logHeader(&header);
-  calcCrc = crc16_ibm((uint8_t*)&header, bytesWritten, calcCrc);
-  flashExtWriteEx(FlashSpi1, lastAddress, (uint8_t*)&header, bytesWritten);
-
+  flashExtWriteEx(FlashSpi1, lastAddress, (uint8_t*)&header, sizeof(header));
+  calcCrc = crc16_ibm((uint8_t*)&header, sizeof(header), calcCrc);
+  lastAddress = lastAddress + sizeof(header);
+  // Чтение, сжатие и запись архива данных
   while(1) {
+    // Чтение архива данных
     StatusType status = logRead(addr, inBufData, inLen);
     if (status == StatusError)
       asm("nop");
     addr = addr + inLen;
     calcCrc = crc16_ibm(inBufData, inLen, calcCrc);
-
+    // Сжатие архива данных
     resCompress = lzo1x_1_compress(inBufData, inLen, &outBufData[8], &outLen, wrkmem);
-    if (resCompress != LZO_E_OK) {
-      ksu.setError(MiniLzoUsbErr);
-      return false;
+    if (resCompress != LZO_E_OK) {                                              // Если не удалось сжать
+      ksu.setError(MiniLzoUsbErr);                                              // Формирование ошибки
+      return false;                                                             // Выход
     }
-
-    flashExtWriteEx(FlashSpi1, lastAddress, outBufData, outLen);
+    // Запись сжатых архива данных
+    *(uint32_t*)(outBufData) = inLen;
+    if (outLen < inLen) {
+      *(uint32_t*)(outBufData+4) = outLen;
+      size = outLen + 8;
+      flashExtWriteEx(FlashSpi1, lastAddress, outBufData, size);
+      lastAddress = lastAddress + size;
+    } else {
+      *(uint32_t*)(outBufData+4) = inLen;
+      flashExtWriteEx(FlashSpi1, lastAddress, outBufData, 8);
+      lastAddress = lastAddress + 8;
+      size = inLen;
+      flashExtWriteEx(FlashSpi1, lastAddress, inBufData, inLen);
+      lastAddress = lastAddress + inLen;
+    }
+    // Условие выхода из цикла
     if (addr >= flashExts[FlashSpi5].size)
       break;
   }
 
   addr = 0;
   inLen = IN_BUF_SIZE;
-  while (1) {
+  // Чтение, сжатие и запись архива программистов
+  while(1) {
+    // Чтение архива программистов
     StatusType status = logDebugRead(addr, inBufData, inLen);
     if (status == StatusError)
       asm("nop");
     addr = addr + inLen;
     calcCrc = crc16_ibm(inBufData, inLen, calcCrc);
-
+    // Сжатие архива программистов
     resCompress = lzo1x_1_compress(inBufData, inLen, &outBufData[8], &outLen, wrkmem);
-    if (resCompress != LZO_E_OK) {
-      ksu.setError(MiniLzoUsbErr);
-      return false;
+    if (resCompress != LZO_E_OK) {                                              // Если не удалось сжать
+      ksu.setError(MiniLzoUsbErr);                                              // Формирование ошибки
+      return false;                                                             // Выход
     }
-
-    // Запись на flash
-
+    // Запись сжатых архива данных
+    *(uint32_t*)(outBufData) = inLen;
+    if (outLen < inLen) {
+      *(uint32_t*)(outBufData+4) = outLen;
+      size = outLen + 8;
+      flashExtWriteEx(FlashSpi1, lastAddress, outBufData, size);
+      lastAddress = lastAddress + size;
+    } else {
+      *(uint32_t*)(outBufData+4) = inLen;
+      flashExtWriteEx(FlashSpi1, lastAddress, outBufData, 8);
+      lastAddress = lastAddress + 8;
+      size = inLen;
+      flashExtWriteEx(FlashSpi1, lastAddress, inBufData, inLen);
+      lastAddress = lastAddress + inLen;
+    }
     if (addr >= EndAddrDebugLog)
       break;
   }
 
   addr = 0;
   inLen = IN_BUF_SIZE;
-  count = 0;
+  // Чтение, сжатие и запись параметров
   while(1) {
+    // Чтение параметров
     StatusType status = logParamsRead(addr, inBufData, inLen);
     if (status == StatusError)
       asm("nop");
     addr = addr + inLen;
     calcCrc = crc16_ibm(inBufData, inLen, calcCrc);
-
+    // Сжатие архива параметров
     resCompress = lzo1x_1_compress(inBufData, inLen, &outBufData[8], &outLen, wrkmem);
     if (resCompress != LZO_E_OK) {
       ksu.setError(MiniLzoUsbErr);
       return false;
     }
-
-    // Запись на flash
-
+    // Запись сжатых параметров
+    *(uint32_t*)(outBufData) = inLen;
+    if (outLen < inLen) {
+      *(uint32_t*)(outBufData+4) = outLen;
+      size = outLen + 8;
+      flashExtWriteEx(FlashSpi1, lastAddress, outBufData, size);
+      lastAddress = lastAddress + size;
+    } else {
+      *(uint32_t*)(outBufData+4) = inLen;
+      flashExtWriteEx(FlashSpi1, lastAddress, outBufData, 8);
+      lastAddress = lastAddress + 8;
+      size = inLen;
+      flashExtWriteEx(FlashSpi1, lastAddress, inBufData, inLen);
+      lastAddress = lastAddress + inLen;
+    }
     if (addr >= PARAMETERS_SIZE)
       break;
   }
+  flashExtWriteEx(FlashSpi1, lastAddress, (uint8_t*)&calcCrc, sizeof(calcCrc));
   return true;
 }
 
