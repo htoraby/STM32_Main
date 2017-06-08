@@ -1824,7 +1824,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIMER_DISPERSAL - VSD_BEGIN].min                               = 0.0;
   parameters_[VSD_TIMER_DISPERSAL - VSD_BEGIN].max                               = 3600.0;
   parameters_[VSD_TIMER_DISPERSAL - VSD_BEGIN].def                               = 30.0;
-  parameters_[VSD_TIMER_DISPERSAL - VSD_BEGIN].discret                           = 1;
+  parameters_[VSD_TIMER_DISPERSAL - VSD_BEGIN].discret                           = 10;
   parameters_[VSD_TIMER_DISPERSAL - VSD_BEGIN].code                              = 13;
   // Время замедления Danfoss 3-42 % Активно используется в проекте
   parameters_[VSD_TIMER_DELAY - VSD_BEGIN].id                                    = VSD_TIMER_DELAY;
@@ -1836,7 +1836,7 @@ void Vsd::initParameters()
   parameters_[VSD_TIMER_DELAY - VSD_BEGIN].min                                   = 0.0;
   parameters_[VSD_TIMER_DELAY - VSD_BEGIN].max                                   = 3600.0;
   parameters_[VSD_TIMER_DELAY - VSD_BEGIN].def                                   = 30.0;
-  parameters_[VSD_TIMER_DELAY - VSD_BEGIN].discret                               = 1;
+  parameters_[VSD_TIMER_DELAY - VSD_BEGIN].discret                               = 10;
   parameters_[VSD_TIMER_DELAY - VSD_BEGIN].code                                  = 13;
   // Указатель индекса для массивных параметров Danfoss 0х0008 используется для массивов параметров
   parameters_[VSD_INDEX - VSD_BEGIN].id                                          = VSD_INDEX;

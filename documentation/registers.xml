@@ -26930,7 +26930,7 @@
 		<min>0.0</min>
 		<max>3600.0</max>
 		<def>30.0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>30.0</value>
 		<text>Время разгона до номинал. частоты</text>
@@ -26951,7 +26951,7 @@
 		<min>0.0</min>
 		<max>3600.0</max>
 		<def>30.0</def>
-		<discret>1</discret>
+		<discret>10</discret>
 		<valid>VALIDITY_ERROR</valid>
 		<value>30.0</value>
 		<text>Время торм. с номинал. частоты</text>
