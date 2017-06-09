@@ -313,7 +313,7 @@ void Ccs::vsdConditionTask()
     case VSD_CONDITION_RUN:
       if (getValue(CCS_CONDITION) != CCS_CONDITION_WORK) {
         if ((parameters.get(VSD_FREQUENCY_NOW) >= parameters.get(VSD_FREQUENCY))
-         && (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState))
+            && (parameters.get(CCS_RGM_RUN_VSD_STATE) == Regime::IdleState))
           setNewValue(CCS_CONDITION, CCS_CONDITION_WORK);
 #if USE_DEBUG
         setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
@@ -454,6 +454,8 @@ void Ccs::start(LastReasonRun reason, bool force)
     initStart();
     setNewValue(CCS_LAST_RUN_REASON, reason);
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+    setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());
+
     setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
     calcCountersRun(reason);
@@ -471,6 +473,7 @@ void Ccs::stop(LastReasonStop reason)
     logData.add();
     logEvent.add(StopCode, NoneType, (EventId)reason);
     setNewValue(CCS_LAST_STOP_REASON, reason);
+    setNewValue(CCS_LAST_STOP_DATE_TIME, getTime());
 
     setNewValue(CCS_CONDITION, CCS_CONDITION_BREAK);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
@@ -489,6 +492,8 @@ void Ccs::syncStart()
   resetRestart();
   setNewValue(CCS_LAST_RUN_REASON, LastReasonRunApvHardwareVsd);
   setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+  setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());
+
   setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_RUN);
   setNewValue(CCS_CONDITION, CCS_CONDITION_WORK);
   calcCountersRun(LastReasonRunApvHardwareVsd);
@@ -503,6 +508,8 @@ void Ccs::syncStop()
   setBlock();
   logEvent.add(StopCode, NoneType, (EventId)LastReasonStopVsdErrControl);
   setNewValue(CCS_LAST_STOP_REASON, LastReasonStopVsdErrControl);
+  setNewValue(CCS_LAST_STOP_DATE_TIME, getTime());
+
   setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_STOP);
 }
 
@@ -525,6 +532,8 @@ void Ccs::cmdStart(int value)
     float reason = getValue(CCS_LAST_RUN_REASON_TMP);
     setNewValue(CCS_LAST_RUN_REASON, reason);
     setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
+    setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());
+
     setNewValue(CCS_CONDITION, CCS_CONDITION_RUN);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_RUN);
     calcCountersRun(reason);
@@ -548,12 +557,13 @@ void Ccs::cmdStop(int value)
     logData.add();
     logEvent.add(StopCode, NoneType, (EventId)reason);
     setNewValue(CCS_LAST_STOP_REASON, reason);
+    setNewValue(CCS_LAST_STOP_DATE_TIME, getTime());
     setBlock();
 
     setNewValue(CCS_CONDITION, CCS_CONDITION_BREAK);
     setNewValue(CCS_VSD_CONDITION, VSD_CONDITION_WAIT_STOP);
     calcCountersStop(reason);
-  }    
+  }
 }
 
 bool Ccs::checkCanStart(bool isForce)
@@ -576,7 +586,7 @@ bool Ccs::checkCanStart(bool isForce)
         return false;
       }
       if (parameters.get(CCS_LAST_RUN_REASON_TMP) != LastReasonRunOperator)
-         return false;
+        return false;
     }
     else {
       setNewValue(CCS_LAST_RUN_REASON_TMP, LastReasonRunNone);
@@ -636,8 +646,8 @@ bool Ccs::checkCanStop()
     return false;
   }
 
-//  if (!interceptionStopRegime())
-//    return false;
+  //  if (!interceptionStopRegime())
+  //    return false;
 
   return true;
 }
@@ -903,7 +913,6 @@ uint32_t Ccs::getSecFromCurTime(enID timeId)
 
 void Ccs::calcTime()
 {
-  static int conditionOld = getValue(CCS_CONDITION);
   static uint32_t timer = HAL_GetTick();
   static float generalRunTime = getValue(CCS_GENERAL_RUN_DATE_TIME);
   static float generalStopTime = getValue(CCS_GENERAL_STOP_DATE_TIME);
@@ -924,24 +933,12 @@ void Ccs::calcTime()
     // TODO: Синхронизация времени
   }
 
-  if (conditionOld != condition) {
-    if ((condition != CCS_CONDITION_STOP) && (conditionOld == CCS_CONDITION_STOP)) {
-      setNewValue(CCS_LAST_RUN_DATE_TIME, getTime());
-      generalStopTime = getValue(CCS_GENERAL_STOP_DATE_TIME);
-    }
-    if ((condition == CCS_CONDITION_STOP) && (conditionOld != CCS_CONDITION_STOP)) {
-      setNewValue(CCS_LAST_STOP_DATE_TIME, getTime());          // Сохранили время перехода в СТО
-      generalRunTime = getValue(CCS_GENERAL_RUN_DATE_TIME);     // Сохранили общее время наработки
-    }
-    conditionOld = condition;
-  }
-
-  if (condition == CCS_CONDITION_STOP) {
+  if ((condition == CCS_CONDITION_STOP) || (condition == CCS_CONDITION_BREAK)) {
     setNewValue(CCS_STOP_TIME, (float)getSecFromCurTime(CCS_LAST_STOP_DATE_TIME));
     setNewValue(CCS_GENERAL_STOP_DATE_TIME, generalStopTime + (float)getSecFromCurTime(CCS_LAST_STOP_DATE_TIME));
   }
   else {
-    setNewValue(CCS_RUN_TIME, (float)getSecFromCurTime(CCS_LAST_RUN_DATE_TIME)); 
+    setNewValue(CCS_RUN_TIME, (float)getSecFromCurTime(CCS_LAST_RUN_DATE_TIME));
     setNewValue(CCS_GENERAL_RUN_DATE_TIME, generalRunTime + (float)getSecFromCurTime(CCS_LAST_RUN_DATE_TIME));
   }
 }
@@ -1159,10 +1156,10 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       if (value != Regime::OffAction) {
         //err = offWorkRgmExcept(CCS_RGM_CURRENT_LIMIT_MODE);
         //if (!err) {
-          err = setValue(id, value, eventType);
-          if (!err) {
-            vsd->onRegimeCurrentLimitation();
-          }
+        err = setValue(id, value, eventType);
+        if (!err) {
+          vsd->onRegimeCurrentLimitation();
+        }
       }
       else {
         err = setValue(id, value, eventType);
@@ -1177,7 +1174,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
   case CCS_RGM_CURRENT_LIMIT_DELAY_REACTION:
   case CCS_RGM_CURRENT_LIMIT_DELAY_RESTART:
     err = setValue(id, value, eventType);
-//    vsd->configRegimeCurrentLimitation();
+    //    vsd->configRegimeCurrentLimitation();
     return err;
   case CCS_VSD_DECEL:
     err = setValue(id, value, eventType);
@@ -1311,123 +1308,123 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     parameters.set(VSD_TIME_YEAR, value);
     return err;
   case CCS_CMD_PROT_SUPPLY_OVERVOLTAGE_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtSupplyOvervoltageSetpointReset();
     return err;
   case CCS_CMD_PROT_SUPPLY_UNDERVOLTAGE_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtSupplyUndervoltageSetpointReset();
     return err;
   case CCS_CMD_PROT_SUPPLY_IMBALANCE_VOLTAGE_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtSupplyImbalanceVoltageSetpointReset();
     return err;
   case CCS_CMD_PROT_SUPPLY_IMBALANCE_CURRENT_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtSupplyImbalanceCurrentSetpointReset();
     return err;
   case CCS_CMD_PROT_SUPPLY_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtSupplySetpointReset();
     return err;
   case CCS_CMD_PROT_MOTOR_OVERLOAD_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtMotorOverloadSetpointReset();
     return err;
   case CCS_CMD_PROT_MOTOR_CURRENT_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtMotorCurrentSetpointReset();
     return err;
   case CCS_CMD_PROT_MOTOR_UNDERLOAD_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtMotorUnderloadSetpointReset();
     return err;
   case CCS_CMD_PROT_MOTOR_IMBALANCE_CURRENT_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtMotorImbalanceCurrentSetpointReset();
     return err;
   case CCS_CMD_PROT_MOTOR_ASYNC_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtMotorAsyncModeSetpointReset();
     return err;
   case CCS_CMD_PROT_MOTOR_OUT_OF_SYNC_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtMotorOutOfSyncSetpointReset();
     return err;
   case CCS_CMD_PROT_DHS_PRESSURE_INTAKE_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtDhsPressureIntakeSetpointReset();
     return err;
   case CCS_CMD_PROT_DHS_PRESSURE_DISCHARGE_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtDhsPressureDischargeSetpointReset();
     return err;
   case CCS_CMD_PROT_DHS_TEMPERATURE_MOTOR_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtDhsTemperatureMotorSetpointReset();
     return err;
   case CCS_CMD_PROT_DHS_RESISTANCE_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtDhsResistanceSetpointReset();
     return err;
   case CCS_CMD_PROT_DHS_VIBRATION_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtDhsVibrationSetpointReset();
     return err;
   case CCS_CMD_PROT_DHS_FLOW_DISCHARGE_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtDhsFlowDischargeSetpointReset();
     return err;
   case CCS_PROT_OTHER_LIMIT_RESTART_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtOvernumberOfStartSetpointReset();
     return err;
   case CCS_CMD_PROT_OTHER_VSD_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtOtherHardwareVsdSetpointReset();
     return err;
   case CCS_CMD_PROT_OTHER_VSD_NO_CONNECT_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtOtherVsdNoConnectSetpointReset();
     return err;
   case CCS_CMD_PROT_OTHER_OVERHEAT_INPUT_FILTER_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtOtherOverheatInputFilterSetpointReset();
     return err;
   case CCS_CMD_PROT_DI_1_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtDigitalInput1SetpointReset();
     return err;
   case CCS_CMD_PROT_DI_2_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtDigitalInput2SetpointReset();
     return err;
   case CCS_CMD_PROT_DI_3_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtDigitalInput3SetpointReset();
     return err;
   case CCS_CMD_PROT_DI_4_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtDigitalInput4SetpointReset();
     return err;
   case CCS_CMD_PROT_AI_1_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtAnalogInput1SetpointReset();
     return err;
   case CCS_CMD_PROT_AI_2_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtAnalogInput2SetpointReset();
     return err;
   case CCS_CMD_PROT_AI_3_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtAnalogInput3SetpointReset();
     return err;
   case CCS_CMD_PROT_AI_4_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     cmdProtAnalogInput4SetpointReset();
     return err;
   case CCS_CMD_PROT_ALL_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     if (!err) {
       cmdProtSetpointReset();
       logEvent.add(ResetCountsCode, eventType, CounterAllResetId);
@@ -1510,7 +1507,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
       }
       else {
         if (!parameters.get(CCS_FILTER_INPUT)) {
-           parameters.set(VSD_DI_33, value * 2 );
+          parameters.set(VSD_DI_33, value * 2 );
         }
       }
     }
@@ -1978,7 +1975,7 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     }
     return err;
   case CCS_CMD_ALL_SETPOINT_RESET:
-    err = setValue(id, value, eventType);
+    err = setCmd(id, eventType);
     if (!err && value) {
       parameters.setAllDefault();
     }
@@ -2703,10 +2700,12 @@ void Ccs::checkConnectMaster()
   isConnectMaster_ = isConnect;
 }
 
-void Ccs::setCmd(uint16_t id)
+uint8_t Ccs::setCmd(uint16_t id, EventType eventType)
 {
-  setValue(id, 0.0);
-  setValue(id, 1.0);
+  uint8_t err = err_r;
+  if (setValue(id, 0.0, NoneType) == ok_r)
+    err = setValue(id, 1.0, eventType);
+  return err;
 }
 
 void Ccs::resetCmd(uint16_t id)

@@ -57,6 +57,14 @@ void RegimeTechnologMaintenanceParam::processing()
         curValue = parameters.get(CCS_AI_1_VALUE + (type - AnalogIn1Param));
         setpoint = parameters.get(CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN);
         break;
+      case LoadMotorParam:
+        curValue = parameters.get(CCS_MOTOR_LOAD_NOW);
+        setpoint = parameters.get(CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD);
+        break;
+      case ActivePowerParam:
+        curValue = parameters.get(CCS_MOTOR_ACTIVE_POWER);
+        setpoint = parameters.get(CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER);
+        break;
       default:
         curValue = parameters.get(CCS_MOTOR_CURRENT_AVARAGE);
         setpoint = parameters.get(CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT);

@@ -9,12 +9,11 @@ static uint8_t logDhs[1312];
 #endif
 
 ScadaRegion30::ScadaRegion30()
+  : logDhs_(logDhs)
 {
-  countParameters_ = 173;
   initParameters();
   firstAddrDhsLog_ = parameters.get(CCS_DHS_LOG_ROSNEFT_FIRST_REGISTER);
   lastAddrDhsLog_ = parameters.get(CCS_DHS_LOG_ROSNEFT_LAST_REGISTER);
-  logDhs_ = logDhs;
 }
 
 ScadaRegion30::~ScadaRegion30()

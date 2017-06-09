@@ -7,7 +7,6 @@
 
 ScadaSurgutneftegas::ScadaSurgutneftegas()
 {
-  countParameters_ = 256;
   initParameters();
 }
 

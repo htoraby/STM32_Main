@@ -5,7 +5,6 @@
 
 ScadaLukoil::ScadaLukoil()
 {
-  countParameters_ = 437;
   initParameters();
 }
 

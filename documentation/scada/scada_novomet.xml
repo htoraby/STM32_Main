@@ -10,7 +10,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -23,7 +22,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>247</max>
-		<command>OPERATION_ERROR</command>
 		<name>Адрес Модбас Слейва</name>
 	</param>
 	<param>
@@ -36,7 +34,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -48,7 +45,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Состояние станции (старт, стоп, ожидание срабатывания защиты, блокировка)</name>
 	</param>
 	<param>
@@ -60,7 +56,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>255</max>
-		<command>OPERATION_ERROR</command>
 		<name>Причина последнего останова</name>
 	</param>
 	<param>
@@ -72,7 +67,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Режим работы(стоп, ручной, авто)</name>
 	</param>
 	<param>
@@ -84,7 +78,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>255</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номер аварии ПЧ при последнем останове</name>
 	</param>
 	<param>
@@ -96,7 +89,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Командное слово</name>
 	</param>
 	<param>
@@ -107,7 +99,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -119,7 +110,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Слово состояния</name>
 	</param>
 	<param>
@@ -130,7 +120,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -143,7 +132,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка частоты</name>
 	</param>
 	<param>
@@ -154,7 +142,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -167,7 +154,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>1000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение текущего тока двигателя</name>
 	</param>
 	<param>
@@ -178,7 +164,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -191,7 +176,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение текущей частоты</name>
 	</param>
 	<param>
@@ -202,7 +186,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -215,7 +198,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка минимальной частоты</name>
 	</param>
 	<param>
@@ -226,7 +208,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -239,7 +220,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка максимальной частоты</name>
 	</param>
 	<param>
@@ -250,7 +230,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -263,7 +242,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Загрузка двигателя</name>
 	</param>
 	<param>
@@ -274,7 +252,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -287,7 +264,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Частота турбинного вращения</name>
 	</param>
 	<param>
@@ -298,7 +274,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -311,7 +286,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Сопротивление изоляции Rinsul</name>
 	</param>
 	<param>
@@ -322,7 +296,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -335,7 +308,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Активная мощность</name>
 	</param>
 	<param>
@@ -348,7 +320,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Полная мощность</name>
 	</param>
 	<param>
@@ -360,7 +331,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Коэф. Мощности</name>
 	</param>
 	<param>
@@ -371,7 +341,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -384,7 +353,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Выходной ток ПЧ фаза U</name>
 	</param>
 	<param>
@@ -395,7 +363,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -408,7 +375,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Выходной ток ПЧ фаза V</name>
 	</param>
 	<param>
@@ -419,7 +385,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -432,7 +397,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Выходной ток ПЧ фаза W</name>
 	</param>
 	<param>
@@ -443,7 +407,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -456,7 +419,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Выходное напряжение ПЧ</name>
 	</param>
 	<param>
@@ -467,7 +429,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -480,7 +441,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Напряжение цепи постоянного тока Ud</name>
 	</param>
 	<param>
@@ -491,7 +451,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -504,7 +463,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>255</max>
-		<command>OPERATION_ERROR</command>
 		<name>Температура радиатора</name>
 	</param>
 	<param>
@@ -515,7 +473,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -528,7 +485,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>1000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Температура платы</name>
 	</param>
 	<param>
@@ -539,7 +495,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -552,7 +507,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Межфазное напряжение Uin(AB)</name>
 	</param>
 	<param>
@@ -563,7 +517,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -576,7 +529,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Межфазное напряжение Uin(BC)</name>
 	</param>
 	<param>
@@ -587,7 +539,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -600,7 +551,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Межфазное напряжение Uin(CA)</name>
 	</param>
 	<param>
@@ -611,7 +561,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -624,7 +573,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Входной ток фаза А</name>
 	</param>
 	<param>
@@ -635,7 +583,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -648,7 +595,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Входной ток фаза B</name>
 	</param>
 	<param>
@@ -659,7 +605,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -672,7 +617,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Входной ток фаза C</name>
 	</param>
 	<param>
@@ -683,7 +627,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -696,7 +639,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс входного напряжения dUin</name>
 	</param>
 	<param>
@@ -707,7 +649,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -720,7 +661,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс тока на входе dIin</name>
 	</param>
 	<param>
@@ -731,7 +671,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -744,7 +683,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>999999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Pin</name>
 	</param>
 	<param>
@@ -757,7 +695,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>999999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Sin</name>
 	</param>
 	<param>
@@ -770,7 +707,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>999999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Потребленная энергия:</name>
 	</param>
 	<param>
@@ -783,7 +719,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Ток двигателя Im(A)</name>
 	</param>
 	<param>
@@ -794,7 +729,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -807,7 +741,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Ток двигателя Im(B)</name>
 	</param>
 	<param>
@@ -818,7 +751,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -831,7 +763,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Ток двигателя Im(C)</name>
 	</param>
 	<param>
@@ -842,7 +773,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -855,7 +785,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Загрузка двигателя</name>
 	</param>
 	<param>
@@ -866,7 +795,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -879,7 +807,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Напряжение двигателя Um</name>
 	</param>
 	<param>
@@ -890,7 +817,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -903,7 +829,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс тока двигателя dIm</name>
 	</param>
 	<param>
@@ -914,7 +839,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -927,7 +851,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>40</max>
-		<command>OPERATION_ERROR</command>
 		<name>Давление на приеме</name>
 	</param>
 	<param>
@@ -940,7 +863,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>40</max>
-		<command>OPERATION_ERROR</command>
 		<name>Давление на выкиде</name>
 	</param>
 	<param>
@@ -953,7 +875,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>150</max>
-		<command>OPERATION_ERROR</command>
 		<name>Температура на приемеTin</name>
 	</param>
 	<param>
@@ -964,7 +885,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -977,7 +897,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>300</max>
-		<command>OPERATION_ERROR</command>
 		<name>Температура обмоток двигателя Tw</name>
 	</param>
 	<param>
@@ -988,7 +907,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1001,7 +919,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>90</max>
-		<command>OPERATION_ERROR</command>
 		<name>Зенитный угол двигателя</name>
 	</param>
 	<param>
@@ -1012,7 +929,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1025,7 +941,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>40</max>
-		<command>OPERATION_ERROR</command>
 		<name>Виброскорость осевая Vaxial</name>
 	</param>
 	<param>
@@ -1036,7 +951,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1049,7 +963,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>40</max>
-		<command>OPERATION_ERROR</command>
 		<name>Виброскорость радиальная Vradial</name>
 	</param>
 	<param>
@@ -1060,7 +973,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1072,7 +984,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4294967295</max>
-		<command>OPERATION_ERROR</command>
 		<name>Состояние защит(включены оператором)</name>
 	</param>
 	<param>
@@ -1084,7 +995,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4294967295</max>
-		<command>OPERATION_ERROR</command>
 		<name>Сработка защит</name>
 	</param>
 	<param>
@@ -1096,7 +1006,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Причина останова</name>
 	</param>
 	<param>
@@ -1107,7 +1016,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1120,7 +1028,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>999999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Общее время простоя</name>
 	</param>
 	<param>
@@ -1133,7 +1040,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>999999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Текущее общее время простоя</name>
 	</param>
 	<param>
@@ -1146,7 +1052,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>999999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время работы в часах</name>
 	</param>
 	<param>
@@ -1158,7 +1063,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номер куста</name>
 	</param>
 	<param>
@@ -1169,7 +1073,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1181,7 +1084,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номер скважины</name>
 	</param>
 	<param>
@@ -1192,7 +1094,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1205,7 +1106,6 @@
 		<coefficient>1</coefficient>
 		<min>100</min>
 		<max>500</max>
-		<command>OPERATION_ERROR</command>
 		<name>Входн. Напряж ТМПН номинал</name>
 	</param>
 	<param>
@@ -1216,7 +1116,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1229,7 +1128,6 @@
 		<coefficient>1</coefficient>
 		<min>50</min>
 		<max>7000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Напряж. Отпайки ТМПН</name>
 	</param>
 	<param>
@@ -1240,7 +1138,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1253,7 +1150,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Мощн. Двигателя</name>
 	</param>
 	<param>
@@ -1264,7 +1160,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1277,7 +1172,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Глубина спуска</name>
 	</param>
 	<param>
@@ -1288,7 +1182,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1301,7 +1194,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Мощность ТМПН</name>
 	</param>
 	<param>
@@ -1312,7 +1204,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1324,7 +1215,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Пуск станции</name>
 	</param>
 	<param>
@@ -1335,7 +1225,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1347,7 +1236,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Остановка станции</name>
 	</param>
 	<param>
@@ -1359,7 +1247,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Деблокировка станции</name>
 	</param>
 	<param>
@@ -1372,7 +1259,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Входное Напряжение фазы А</name>
 	</param>
 	<param>
@@ -1383,7 +1269,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1396,7 +1281,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Входное Напряжение фазы В</name>
 	</param>
 	<param>
@@ -1407,7 +1291,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1420,7 +1303,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Входное Напряжение фазы С</name>
 	</param>
 	<param>
@@ -1431,7 +1313,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1443,7 +1324,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>3</max>
-		<command>OPERATION_ERROR</command>
 		<name>Активный язык интерфейса</name>
 	</param>
 	<param>
@@ -1454,7 +1334,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1466,7 +1345,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Использование паролей</name>
 	</param>
 	<param>
@@ -1477,7 +1355,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1489,7 +1366,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4</max>
-		<command>OPERATION_ERROR</command>
 		<name>Единицы измерения давления</name>
 	</param>
 	<param>
@@ -1500,7 +1376,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1512,7 +1387,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Единицы измерения температуры</name>
 	</param>
 	<param>
@@ -1523,7 +1397,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1535,7 +1408,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>3</max>
-		<command>OPERATION_ERROR</command>
 		<name>Единицы измерения вибрации</name>
 	</param>
 	<param>
@@ -1546,7 +1418,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1558,7 +1429,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Схема выпрямления входного напряжения</name>
 	</param>
 	<param>
@@ -1569,7 +1439,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1581,7 +1450,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>4294967295</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номер версии ПО</name>
 	</param>
 	<param>
@@ -1594,7 +1462,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>21600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Период архивов СУ</name>
 	</param>
 	<param>
@@ -1605,7 +1472,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1618,7 +1484,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>5</max>
-		<command>OPERATION_ERROR</command>
 		<name>Период аварийных записей СУ</name>
 	</param>
 	<param>
@@ -1629,7 +1494,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1642,7 +1506,6 @@
 		<coefficient>1</coefficient>
 		<min>5</min>
 		<max>60</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время записи аварийных записей СУ</name>
 	</param>
 	<param>
@@ -1653,7 +1516,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1666,7 +1528,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номинальный ток СУ</name>
 	</param>
 	<param>
@@ -1677,7 +1538,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1690,7 +1550,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Трансформаторы тока СУ</name>
 	</param>
 	<param>
@@ -1701,7 +1560,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1713,7 +1571,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Тип ЧРП</name>
 	</param>
 	<param>
@@ -1724,7 +1581,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1737,7 +1593,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Мощность ТМПН</name>
 	</param>
 	<param>
@@ -1748,7 +1603,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1761,7 +1615,6 @@
 		<coefficient>1</coefficient>
 		<min>380</min>
 		<max>500</max>
-		<command>OPERATION_ERROR</command>
 		<name>Входное напряжение ТМПН</name>
 	</param>
 	<param>
@@ -1772,7 +1625,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1785,7 +1637,6 @@
 		<coefficient>1</coefficient>
 		<min>380</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Отпайка ТМПН</name>
 	</param>
 	<param>
@@ -1796,7 +1647,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1809,7 +1659,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>30000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Длина кабеля</name>
 	</param>
 	<param>
@@ -1820,7 +1669,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1832,7 +1680,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Тип двигателя</name>
 	</param>
 	<param>
@@ -1843,7 +1690,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1856,7 +1702,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номинальная мощность двигателя</name>
 	</param>
 	<param>
@@ -1867,7 +1712,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1880,7 +1724,6 @@
 		<coefficient>1</coefficient>
 		<min>300</min>
 		<max>7500</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номинальное напряжение двигателя</name>
 	</param>
 	<param>
@@ -1891,7 +1734,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1904,7 +1746,6 @@
 		<coefficient>0.1</coefficient>
 		<min>10</min>
 		<max>1000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номинальный ток двигателя</name>
 	</param>
 	<param>
@@ -1915,7 +1756,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1928,7 +1768,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>300</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номинальная частота двигателя</name>
 	</param>
 	<param>
@@ -1939,7 +1778,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1952,7 +1790,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>48000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номинальная скорость двигателя</name>
 	</param>
 	<param>
@@ -1963,7 +1800,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1975,7 +1811,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>1000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номинальный КПД двигателя</name>
 	</param>
 	<param>
@@ -1986,7 +1821,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -1998,7 +1832,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>1000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номинальный косинус двигателя</name>
 	</param>
 	<param>
@@ -2009,7 +1842,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2021,7 +1853,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Направление вращения</name>
 	</param>
 	<param>
@@ -2032,7 +1863,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2043,7 +1873,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2054,7 +1883,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2065,7 +1893,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2076,7 +1903,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2089,7 +1915,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0,01</min>
 		<max>3600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время разгона</name>
 	</param>
 	<param>
@@ -2100,7 +1925,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2113,7 +1937,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0,01</min>
 		<max>3600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время замедления</name>
 	</param>
 	<param>
@@ -2124,7 +1947,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2136,7 +1958,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>14</max>
-		<command>OPERATION_ERROR</command>
 		<name>Частота ШИМ</name>
 	</param>
 	<param>
@@ -2147,7 +1968,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2160,7 +1980,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Характеристика U/f-U1</name>
 	</param>
 	<param>
@@ -2171,7 +1990,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2184,7 +2002,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Характеристика U/f-F1</name>
 	</param>
 	<param>
@@ -2195,7 +2012,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2208,7 +2024,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Характеристика U/f-U2</name>
 	</param>
 	<param>
@@ -2219,7 +2034,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2232,7 +2046,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Характеристика U/f-F2</name>
 	</param>
 	<param>
@@ -2243,7 +2056,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2256,7 +2068,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Характеристика U/f-U3</name>
 	</param>
 	<param>
@@ -2267,7 +2078,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2280,7 +2090,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Характеристика U/f-F3</name>
 	</param>
 	<param>
@@ -2291,7 +2100,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2304,7 +2112,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Характеристика U/f-U4</name>
 	</param>
 	<param>
@@ -2315,7 +2122,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2328,7 +2134,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Характеристика U/f-F4</name>
 	</param>
 	<param>
@@ -2339,7 +2144,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2352,7 +2156,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Характеристика U/f-U5</name>
 	</param>
 	<param>
@@ -2363,7 +2166,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2376,7 +2178,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Характеристика U/f-F5</name>
 	</param>
 	<param>
@@ -2387,7 +2188,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2400,7 +2200,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Характеристика U/f-U6</name>
 	</param>
 	<param>
@@ -2411,7 +2210,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2424,7 +2222,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Характеристика U/f-F6</name>
 	</param>
 	<param>
@@ -2435,7 +2232,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2447,7 +2243,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>12</max>
-		<command>OPERATION_ERROR</command>
 		<name>Тип ТМС</name>
 	</param>
 	<param>
@@ -2458,7 +2253,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2470,7 +2264,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>255</max>
-		<command>OPERATION_ERROR</command>
 		<name>Mobdus адрес ТМС</name>
 	</param>
 	<param>
@@ -2481,7 +2274,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2493,7 +2285,6 @@
 		<coefficient>1</coefficient>
 		<min>9600</min>
 		<max>115200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Скорость работы ТМС</name>
 	</param>
 	<param>
@@ -2505,7 +2296,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4294967295</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номер насоса в базе данных</name>
 	</param>
 	<param>
@@ -2517,7 +2307,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>7</max>
-		<command>OPERATION_ERROR</command>
 		<name>Интервал построения графиков</name>
 	</param>
 	<param>
@@ -2528,7 +2317,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2540,7 +2328,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>60</max>
-		<command>OPERATION_ERROR</command>
 		<name>Первый график</name>
 	</param>
 	<param>
@@ -2551,7 +2338,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2563,7 +2349,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>60</max>
-		<command>OPERATION_ERROR</command>
 		<name>Второй график</name>
 	</param>
 	<param>
@@ -2574,7 +2359,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2586,7 +2370,6 @@
 		<coefficient>1</coefficient>
 		<min>1200</min>
 		<max>115200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Скорость компорта слейва</name>
 	</param>
 	<param>
@@ -2598,7 +2381,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4</max>
-		<command>OPERATION_ERROR</command>
 		<name>Четность компорта слейва</name>
 	</param>
 	<param>
@@ -2609,7 +2391,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2621,7 +2402,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Стоп бит компорта слейва</name>
 	</param>
 	<param>
@@ -2632,7 +2412,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2644,7 +2423,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>20</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка компорта слейва</name>
 	</param>
 	<param>
@@ -2655,7 +2433,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2667,7 +2444,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4294967295</max>
-		<command>OPERATION_ERROR</command>
 		<name>Слово состояния режимов</name>
 	</param>
 	<param>
@@ -2680,7 +2456,6 @@
 		<coefficient>1</coefficient>
 		<min>60</min>
 		<max>864000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Период работы периодического режима</name>
 	</param>
 	<param>
@@ -2693,7 +2468,6 @@
 		<coefficient>1</coefficient>
 		<min>60</min>
 		<max>864000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Период паузы периодического режима</name>
 	</param>
 	<param>
@@ -2706,7 +2480,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Начальная частота режима изменения частоты</name>
 	</param>
 	<param>
@@ -2717,7 +2490,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2730,7 +2502,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Конечная частота режима изменения частоты</name>
 	</param>
 	<param>
@@ -2743,7 +2514,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Начальная уставка ЗСП режима изменения частоты</name>
 	</param>
 	<param>
@@ -2756,7 +2526,6 @@
 		<coefficient>1</coefficient>
 		<min>60</min>
 		<max>864000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Период режима изменения частоты</name>
 	</param>
 	<param>
@@ -2769,7 +2538,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>864000</max>
-		<command>OPERATION_ERROR</command>
 	</param>
 	<param>
 		<id>CCS_RGM_RUN_SWING_FREQ</id>
@@ -2781,7 +2549,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Частота вперед пуска с раскачкой</name>
 	</param>
 	<param>
@@ -2792,7 +2559,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2805,7 +2571,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Частота назад пуска с раскачкой</name>
 	</param>
 	<param>
@@ -2816,7 +2581,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2829,7 +2593,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Напряжение толчка пуска с раскачкой</name>
 	</param>
 	<param>
@@ -2842,7 +2605,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0.1</min>
 		<max>6000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время разгона пуска с раскачкой</name>
 	</param>
 	<param>
@@ -2853,7 +2615,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -2866,7 +2627,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0.1</min>
 		<max>6000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время торможения пуска с раскачкой</name>
 	</param>
 	<param>
@@ -2879,7 +2639,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Предел по току пуска с раскачкой</name>
 	</param>
 	<param>
@@ -2891,7 +2650,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>20</max>
-		<command>OPERATION_ERROR</command>
 		<name>Число толчков пуска с раскачкой</name>
 	</param>
 	<param>
@@ -2903,7 +2661,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>6</max>
-		<command>OPERATION_ERROR</command>
 		<name>Тип поддерживаемого параметра</name>
 	</param>
 	<param>
@@ -2916,7 +2673,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Поддерживаемое давление</name>
 	</param>
 	<param>
@@ -2929,7 +2685,6 @@
 		<coefficient>0.1</coefficient>
 		<min>10</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Поддерживаемый ток</name>
 	</param>
 	<param>
@@ -2942,7 +2697,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Период регулирования</name>
 	</param>
 	<param>
@@ -2955,7 +2709,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>1500</max>
-		<command>OPERATION_ERROR</command>
 		<name>Поддерживаемая температура</name>
 	</param>
 	<param>
@@ -2968,7 +2721,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Пропорциональный коэффициент</name>
 	</param>
 	<param>
@@ -2980,7 +2732,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Поддерживаемый сигнал на аналоговом входе</name>
 	</param>
 	<param>
@@ -2993,7 +2744,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Интегральный коэффициент</name>
 	</param>
 	<param>
@@ -3005,7 +2755,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Зависимость в режиме поддержания параметра</name>
 	</param>
 	<param>
@@ -3017,7 +2766,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4294967295</max>
-		<command>OPERATION_ERROR</command>
 		<name>Режимы пуска ЧРП</name>
 	</param>
 	<param>
@@ -3030,7 +2778,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>260</max>
-		<command>OPERATION_ERROR</command>
 		<name>Высокое напряжение</name>
 	</param>
 	<param>
@@ -3041,7 +2788,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3054,7 +2800,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по высокому напряжению</name>
 	</param>
 	<param>
@@ -3065,7 +2810,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3078,7 +2822,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по высокому напряжению</name>
 	</param>
 	<param>
@@ -3089,7 +2832,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3102,7 +2844,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>86400</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по высокому напряжению</name>
 	</param>
 	<param>
@@ -3115,7 +2856,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>150</max>
-		<command>OPERATION_ERROR</command>
 		<name>Напряжение АПВ защиты по высокому напряжению</name>
 	</param>
 	<param>
@@ -3126,7 +2866,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3139,7 +2878,6 @@
 		<coefficient>1</coefficient>
 		<min>50</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Снижение напряжения</name>
 	</param>
 	<param>
@@ -3150,7 +2888,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3163,7 +2900,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по снижению напряжения</name>
 	</param>
 	<param>
@@ -3174,7 +2910,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3187,7 +2922,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по снижению напряжения</name>
 	</param>
 	<param>
@@ -3198,7 +2932,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3211,7 +2944,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>86400</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по снижению напряжения</name>
 	</param>
 	<param>
@@ -3224,7 +2956,6 @@
 		<coefficient>1</coefficient>
 		<min>50</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Напряжение АПВ защиты по снижению напряжения</name>
 	</param>
 	<param>
@@ -3235,7 +2966,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3248,7 +2978,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс сети</name>
 	</param>
 	<param>
@@ -3259,7 +2988,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3272,7 +3000,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по дисбалансу сети</name>
 	</param>
 	<param>
@@ -3283,7 +3010,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3296,7 +3022,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по дисбалансу сети</name>
 	</param>
 	<param>
@@ -3307,7 +3032,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3320,7 +3044,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>86400</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по дисбалансу сети</name>
 	</param>
 	<param>
@@ -3333,7 +3056,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс АПВ защиты по дисбалансу сети</name>
 	</param>
 	<param>
@@ -3344,7 +3066,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3356,7 +3077,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Количество аппаратных включений защиты по максимальному току</name>
 	</param>
 	<param>
@@ -3367,7 +3087,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3380,7 +3099,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Автосброс счетчика включений защиты по максимальному току</name>
 	</param>
 	<param>
@@ -3391,7 +3109,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3404,7 +3121,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Перегрузка ПЭД</name>
 	</param>
 	<param>
@@ -3415,7 +3131,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3428,7 +3143,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>120</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по перегрузке ПЭД</name>
 	</param>
 	<param>
@@ -3439,7 +3153,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3452,7 +3165,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>120</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по перегрузке ПЭД</name>
 	</param>
 	<param>
@@ -3463,7 +3175,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3476,7 +3187,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>600000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по перегрузке ПЭД</name>
 	</param>
 	<param>
@@ -3489,7 +3199,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Автосброс счетчика АПВ защиты по перегрузке ПЭД</name>
 	</param>
 	<param>
@@ -3500,7 +3209,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3512,7 +3220,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Количество АПВ защиты по перегрузке ПЭД</name>
 	</param>
 	<param>
@@ -3523,7 +3230,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3534,7 +3240,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3545,7 +3250,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3558,7 +3262,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Недогрузка ПЭД</name>
 	</param>
 	<param>
@@ -3569,7 +3272,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3582,7 +3284,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>120</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по недогрузке ПЭД</name>
 	</param>
 	<param>
@@ -3593,7 +3294,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3606,7 +3306,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по недогрузке ПЭД</name>
 	</param>
 	<param>
@@ -3617,7 +3316,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3630,7 +3328,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по недогрузке ПЭД</name>
 	</param>
 	<param>
@@ -3643,7 +3340,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Автосброс счетчика АПВ защиты по недогрузке ПЭД</name>
 	</param>
 	<param>
@@ -3654,7 +3350,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3666,7 +3361,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Количество АПВ защиты по недогрузке ПЭД</name>
 	</param>
 	<param>
@@ -3677,7 +3371,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3688,7 +3381,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3699,7 +3391,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3712,7 +3403,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>255</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка частоты турбинного вращения</name>
 	</param>
 	<param>
@@ -3723,7 +3413,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3736,7 +3425,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>50</max>
-		<command>OPERATION_ERROR</command>
 	</param>
 	<param>
 		<id>-1</id>
@@ -3746,7 +3434,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3759,7 +3446,6 @@
 		<coefficient>1</coefficient>
 		<min>30</min>
 		<max>120</max>
-		<command>OPERATION_ERROR</command>
 	</param>
 	<param>
 		<id>-1</id>
@@ -3769,7 +3455,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3780,7 +3465,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3791,7 +3475,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3802,7 +3485,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3813,7 +3495,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3824,7 +3505,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3835,7 +3515,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3848,7 +3527,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>9999</max>
-		<command>OPERATION_ERROR</command>
 		<name>Сопротивление изоляции</name>
 	</param>
 	<param>
@@ -3859,7 +3537,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3872,7 +3549,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по сопротивлению изоляции</name>
 	</param>
 	<param>
@@ -3883,7 +3559,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3896,7 +3571,6 @@
 		<coefficient>0.01</coefficient>
 		<min>10</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимальное давление на приёме насоса</name>
 	</param>
 	<param>
@@ -3907,7 +3581,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3920,7 +3593,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>900</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по минимальному давлению на приеме</name>
 	</param>
 	<param>
@@ -3931,7 +3603,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3944,7 +3615,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>900</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по минимальному давлению на приеме</name>
 	</param>
 	<param>
@@ -3955,7 +3625,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -3968,7 +3637,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по минимальному давлению на приеме</name>
 	</param>
 	<param>
@@ -3980,7 +3648,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Критерий АПВ защиты по минимальному давлению на приеме</name>
 	</param>
 	<param>
@@ -3991,7 +3658,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4004,7 +3670,6 @@
 		<coefficient>0.01</coefficient>
 		<min>1</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Давление АПВ защиты по минимальному давлению на приеме</name>
 	</param>
 	<param>
@@ -4015,7 +3680,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4028,7 +3692,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Автосборос счетчика АПВ защиты по минимальному давлению на приеме</name>
 	</param>
 	<param>
@@ -4039,7 +3702,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4051,7 +3713,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10</max>
-		<command>OPERATION_ERROR</command>
 		<name>Количество АПВ защиты по минимальному давлению на приеме</name>
 	</param>
 	<param>
@@ -4062,7 +3723,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4075,7 +3735,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>2500</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальная температура статора</name>
 	</param>
 	<param>
@@ -4086,7 +3745,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4099,7 +3757,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>21600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по максимальной температуре статора</name>
 	</param>
 	<param>
@@ -4110,7 +3767,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4123,7 +3779,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>21600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по максимальной температуре статора</name>
 	</param>
 	<param>
@@ -4134,7 +3789,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4147,7 +3801,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по максимальной температуре статора</name>
 	</param>
 	<param>
@@ -4160,7 +3813,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>2500</max>
-		<command>OPERATION_ERROR</command>
 		<name>Температура АПВ защиты по максимальной температуре статора</name>
 	</param>
 	<param>
@@ -4171,7 +3823,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4184,7 +3835,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Автосборос счетчика АПВ защиты по максимальной температуре статора</name>
 	</param>
 	<param>
@@ -4195,7 +3845,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4207,7 +3856,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10</max>
-		<command>OPERATION_ERROR</command>
 		<name>Количество АПВ защиты по максимальной температуре статора</name>
 	</param>
 	<param>
@@ -4218,7 +3866,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4231,7 +3878,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>24</max>
-		<command>OPERATION_ERROR</command>
 		<name>Период защиты по превышению числа пусков за период</name>
 	</param>
 	<param>
@@ -4242,7 +3888,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4254,7 +3899,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>40</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальное количество АПВ защиты по превышению числа пусков за период</name>
 	</param>
 	<param>
@@ -4265,7 +3909,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4278,7 +3921,6 @@
 		<coefficient>1</coefficient>
 		<min>30</min>
 		<max>86400</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты от аварий ЧРП</name>
 	</param>
 	<param>
@@ -4290,7 +3932,6 @@
 		<coefficient>1</coefficient>
 		<min>1</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальное количество АПВ защиты от аварий ЧРП</name>
 	</param>
 	<param>
@@ -4301,7 +3942,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4314,7 +3954,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Автосброс счетчика АПВ защиты от аварий ЧРП</name>
 	</param>
 	<param>
@@ -4325,7 +3964,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4337,7 +3975,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000000</max>
-		<command>OPERATION_ERROR</command>
 	</param>
 	<param>
 		<id>-1</id>
@@ -4348,7 +3985,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000000</max>
-		<command>OPERATION_ERROR</command>
 	</param>
 	<param>
 		<id>-1</id>
@@ -4360,7 +3996,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 	</param>
 	<param>
 		<id>-1</id>
@@ -4370,7 +4005,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4383,7 +4017,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 	</param>
 	<param>
 		<id>-1</id>
@@ -4393,7 +4026,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4406,7 +4038,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>1000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Диаметр колонны</name>
 	</param>
 	<param>
@@ -4417,7 +4048,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4430,7 +4060,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>1000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Диаметр НКТ</name>
 	</param>
 	<param>
@@ -4441,7 +4070,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4454,7 +4082,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Глубина подвеса насоса</name>
 	</param>
 	<param>
@@ -4465,7 +4092,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4478,7 +4104,6 @@
 		<coefficient>0.01</coefficient>
 		<min>0</min>
 		<max>65000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Давление в линии</name>
 	</param>
 	<param>
@@ -4489,7 +4114,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4502,7 +4126,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>5000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Плотность жидкости глушения</name>
 	</param>
 	<param>
@@ -4513,7 +4136,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4526,7 +4148,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Номинальный напор насоса</name>
 	</param>
 	<param>
@@ -4537,7 +4158,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4550,7 +4170,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время цикла откачки-накопления</name>
 	</param>
 	<param>
@@ -4561,7 +4180,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4574,7 +4192,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>2000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Рабочая частота</name>
 	</param>
 	<param>
@@ -4585,7 +4202,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4597,7 +4213,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4294967295</max>
-		<command>OPERATION_ERROR</command>
 		<name>Состояние защит (состояние блокировки)</name>
 	</param>
 	<param>
@@ -4609,7 +4224,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Высокое напряжение</name>
 	</param>
 	<param>
@@ -4621,7 +4235,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Низкое напряжение</name>
 	</param>
 	<param>
@@ -4633,7 +4246,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дисбаланс напряжения</name>
 	</param>
 	<param>
@@ -4644,7 +4256,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4656,7 +4267,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальная токовая защита</name>
 	</param>
 	<param>
@@ -4669,7 +4279,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Перегруз</name>
 	</param>
 	<param>
@@ -4682,7 +4291,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Недогруз</name>
 	</param>
 	<param>
@@ -4693,7 +4301,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4705,7 +4312,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Турбинное вращение</name>
 	</param>
 	<param>
@@ -4716,7 +4322,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4728,7 +4333,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Сопротивление изоляции</name>
 	</param>
 	<param>
@@ -4740,7 +4344,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Снижение давления на приёме</name>
 	</param>
 	<param>
@@ -4751,7 +4354,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4763,7 +4365,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Превышение давления на выкиде насоса</name>
 	</param>
 	<param>
@@ -4775,7 +4376,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Перегрев ПЭД</name>
 	</param>
 	<param>
@@ -4786,7 +4386,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4797,7 +4396,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4808,7 +4406,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4819,7 +4416,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4831,7 +4427,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Режим работы защиты по сигналу дискретного входа 1</name>
 	</param>
 	<param>
@@ -4843,7 +4438,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Режим работы защиты по сигналу дискретного входа 2</name>
 	</param>
 	<param>
@@ -4855,7 +4449,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Режим работы защиты по сигналу дискретного входа 3</name>
 	</param>
 	<param>
@@ -4867,7 +4460,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Режим работы защиты по сигналу дискретного входа 4</name>
 	</param>
 	<param>
@@ -4878,7 +4470,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4889,7 +4480,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4900,7 +4490,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4911,7 +4500,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4923,7 +4511,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Режим работы защиты по сигналу аналогового входа 1</name>
 	</param>
 	<param>
@@ -4935,7 +4522,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Режим работы защиты по сигналу аналогового входа 2</name>
 	</param>
 	<param>
@@ -4947,7 +4533,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Режим работы защиты по сигналу аналогового входа 3</name>
 	</param>
 	<param>
@@ -4959,7 +4544,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Режим работы защиты по сигналу аналогового входа 4</name>
 	</param>
 	<param>
@@ -4970,7 +4554,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -4982,7 +4565,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4294967295</max>
-		<command>OPERATION_ERROR</command>
 		<name>Серийный номер СУ 1</name>
 	</param>
 	<param>
@@ -4994,7 +4576,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4294967295</max>
-		<command>OPERATION_ERROR</command>
 		<name>Серийный номер СУ 2</name>
 	</param>
 	<param>
@@ -5006,7 +4587,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>255</max>
-		<command>OPERATION_ERROR</command>
 		<name>Запрещающий параметр</name>
 	</param>
 	<param>
@@ -5017,7 +4597,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -5029,7 +4608,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5041,7 +4619,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5053,7 +4630,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5065,7 +4641,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5077,7 +4652,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5089,7 +4663,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5101,7 +4674,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5113,7 +4685,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5125,7 +4696,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5137,7 +4707,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5149,7 +4718,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5161,7 +4729,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5173,7 +4740,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5185,7 +4751,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5197,7 +4762,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5209,7 +4773,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5221,7 +4784,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5233,7 +4795,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5245,7 +4806,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5257,7 +4817,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5269,7 +4828,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Состояние режима поддержания параметра</name>
 	</param>
 	<param>
@@ -5281,7 +4839,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5293,7 +4850,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5305,7 +4861,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5317,7 +4872,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5329,7 +4883,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5341,7 +4894,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Состояние режима чередования частот</name>
 	</param>
 	<param>
@@ -5353,7 +4905,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Состояние режима встряхивания</name>
 	</param>
 	<param>
@@ -5365,7 +4916,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5377,7 +4927,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Состояние режима программного изменения частоты</name>
 	</param>
 	<param>
@@ -5389,7 +4938,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Состояние периодического режима</name>
 	</param>
 	<param>
@@ -5401,7 +4949,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Резерв</name>
 	</param>
 	<param>
@@ -5414,7 +4961,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время работы с момента последнего пуска</name>
 	</param>
 	<param>
@@ -5427,7 +4973,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время простоя за текущий период</name>
 	</param>
 	<param>
@@ -5440,7 +4985,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Общее время простоя</name>
 	</param>
 	<param>
@@ -5453,7 +4997,6 @@
 		<coefficient>0.01</coefficient>
 		<min>2</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальное давление на выкиде насоса</name>
 	</param>
 	<param>
@@ -5466,7 +5009,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>900</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации</name>
 	</param>
 	<param>
@@ -5479,7 +5021,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>900</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания</name>
 	</param>
 	<param>
@@ -5492,7 +5033,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ</name>
 	</param>
 	<param>
@@ -5505,7 +5045,6 @@
 		<coefficient>0.01</coefficient>
 		<min>1</min>
 		<max>10000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Давление АПВ</name>
 	</param>
 	<param>
@@ -5518,7 +5057,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Автоматический сброс счетчика</name>
 	</param>
 	<param>
@@ -5530,7 +5068,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>10</max>
-		<command>OPERATION_ERROR</command>
 		<name>Количество АПВ защиты по максимальному давлению на выкиде</name>
 	</param>
 	<param>
@@ -5541,7 +5078,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -5552,7 +5088,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -5563,7 +5098,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -5575,7 +5109,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на цифровом входе 1 клемника внешних подключений</name>
 	</param>
 	<param>
@@ -5587,7 +5120,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на цифровом входе 2 клемника внешних подключений</name>
 	</param>
 	<param>
@@ -5599,7 +5131,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на цифровом входе 3 клемника внешних подключений</name>
 	</param>
 	<param>
@@ -5611,7 +5142,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на цифровом входе 4 клемника внешних подключений</name>
 	</param>
 	<param>
@@ -5623,7 +5153,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на аналоговом входе 1 клемника внешних подключений</name>
 	</param>
 	<param>
@@ -5635,7 +5164,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на аналоговом входе 2 клемника внешних подключений</name>
 	</param>
 	<param>
@@ -5647,7 +5175,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на аналоговом входе 3 клемника внешних подключений</name>
 	</param>
 	<param>
@@ -5659,7 +5186,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на аналоговом входе 4 клемника внешних подключений</name>
 	</param>
 	<param>
@@ -5671,7 +5197,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на аналоговом входе 1 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
@@ -5683,7 +5208,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на аналоговом входе 2 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
@@ -5695,7 +5219,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на аналоговом входе 3 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
@@ -5707,7 +5230,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на аналоговом входе 4 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
@@ -5719,7 +5241,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на аналоговом входе 5 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
@@ -5731,7 +5252,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на аналоговом входе 6 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
@@ -5743,7 +5263,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на аналоговом входе 7 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
@@ -5755,7 +5274,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Значение на аналоговом входе 8 внешнего модуля аналоговых входов</name>
 	</param>
 	<param>
@@ -5768,7 +5286,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>86400</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время накопления суточного дебита</name>
 	</param>
 	<param>
@@ -5781,7 +5298,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>250</max>
-		<command>OPERATION_ERROR</command>
 		<name>Уставка температуры ингибитора в баке</name>
 	</param>
 	<param>
@@ -5793,7 +5309,6 @@
 		<coefficient>0.001</coefficient>
 		<min>0</min>
 		<max>65,535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Объём подачи ингибитора</name>
 	</param>
 	<param>
@@ -5805,7 +5320,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Текущий уровень ингибитора в баке УБПР</name>
 	</param>
 	<param>
@@ -5818,7 +5332,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>250</max>
-		<command>OPERATION_ERROR</command>
 		<name>Текущая температура ингибитора в баке</name>
 	</param>
 	<param>
@@ -5830,7 +5343,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Текущий уровень ингибитора в баке УБПР</name>
 	</param>
 	<param>
@@ -5842,7 +5354,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Останов насоса-дозатора по максимальному/минимальному давлению в линии нагнетания</name>
 	</param>
 	<param>
@@ -5854,7 +5365,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>2500</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дебит по 1-ой методике</name>
 	</param>
 	<param>
@@ -5866,7 +5376,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>2500</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дебит по 2-ой методике</name>
 	</param>
 	<param>
@@ -5878,7 +5387,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>2500</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дебит средний</name>
 	</param>
 	<param>
@@ -5890,7 +5398,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>2500</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дебит суточный</name>
 	</param>
 	<param>
@@ -5902,7 +5409,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Дебит по 3-ей методике</name>
 	</param>
 	<param>
@@ -5915,7 +5421,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимальная рабочая частота режима поддержания параметров</name>
 	</param>
 	<param>
@@ -5928,7 +5433,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальная рабочая частота режима поддержания параметров</name>
 	</param>
 	<param>
@@ -5941,7 +5445,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Частота F1 режима чередования частот</name>
 	</param>
 	<param>
@@ -5954,7 +5457,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Частота F2 режима чередования частот</name>
 	</param>
 	<param>
@@ -5967,7 +5469,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>864000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время работы начастоте F1</name>
 	</param>
 	<param>
@@ -5980,7 +5481,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>864000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время работы начастоте F2</name>
 	</param>
 	<param>
@@ -5993,7 +5493,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Частота F1 режима встряхивания</name>
 	</param>
 	<param>
@@ -6006,7 +5505,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>3000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Частота F2 режима встряхивания</name>
 	</param>
 	<param>
@@ -6018,7 +5516,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>99</max>
-		<command>OPERATION_ERROR</command>
 		<name>Число встряхиваний</name>
 	</param>
 	<param>
@@ -6031,7 +5528,6 @@
 		<coefficient>1</coefficient>
 		<min>10</min>
 		<max>3600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Время встряхивания</name>
 	</param>
 	<param>
@@ -6044,7 +5540,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>32000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Пауза встряхивания</name>
 	</param>
 	<param>
@@ -6057,7 +5552,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Темп увеличения частоты в режиме встряхивания</name>
 	</param>
 	<param>
@@ -6070,7 +5564,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Темп уменьшения частоты в режиме встряхивания</name>
 	</param>
 	<param>
@@ -6081,7 +5574,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6092,7 +5584,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6103,7 +5594,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6114,7 +5604,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6125,7 +5614,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6137,7 +5625,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Пуск ПЧ плавный</name>
 	</param>
 	<param>
@@ -6149,7 +5636,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Пуск ПЧ с раскачкой</name>
 	</param>
 	<param>
@@ -6161,7 +5647,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Пуск ПЧ толчками</name>
 	</param>
 	<param>
@@ -6173,7 +5658,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Пуск ПЧ с синхронизацией</name>
 	</param>
 	<param>
@@ -6184,7 +5668,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6195,7 +5678,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6206,7 +5688,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6217,7 +5698,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6228,7 +5708,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6239,7 +5718,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6250,7 +5728,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6261,7 +5738,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6272,7 +5748,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6283,7 +5758,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6294,7 +5768,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6305,7 +5778,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6316,7 +5788,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6327,7 +5798,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6338,7 +5808,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6349,7 +5818,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6360,7 +5828,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6371,7 +5838,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6382,7 +5848,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6393,7 +5858,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6404,7 +5868,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6415,7 +5878,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6426,7 +5888,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6437,7 +5898,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6448,7 +5908,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6459,7 +5918,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6470,7 +5928,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6481,7 +5938,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6492,7 +5948,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6503,7 +5958,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6514,7 +5968,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6525,7 +5978,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6536,7 +5988,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6547,7 +5998,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6558,7 +6008,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6569,7 +6018,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -6581,7 +6029,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Тип аналогового входа 1</name>
 	</param>
 	<param>
@@ -6593,7 +6040,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>5</max>
-		<command>OPERATION_ERROR</command>
 		<name>Сигнал на аналоговом входе 1</name>
 	</param>
 	<param>
@@ -6605,7 +6051,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4</max>
-		<command>OPERATION_ERROR</command>
 		<name>Единицы измерения сигнала на аналоговом входе 1</name>
 	</param>
 	<param>
@@ -6617,7 +6062,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимум шкалы сигнала на аналоговом входе 1</name>
 	</param>
 	<param>
@@ -6629,7 +6073,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимум шкалы сигнала на аналоговом входе 1</name>
 	</param>
 	<param>
@@ -6641,7 +6084,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимальное значение срабатывания защиты по AI1</name>
 	</param>
 	<param>
@@ -6653,7 +6095,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимальное значение АПВ защиты по AI1</name>
 	</param>
 	<param>
@@ -6665,7 +6106,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальное значение АПВ защиты по AI1</name>
 	</param>
 	<param>
@@ -6677,7 +6117,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальное значение срабатывания защиты по AI1</name>
 	</param>
 	<param>
@@ -6690,7 +6129,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>120</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по AI1</name>
 	</param>
 	<param>
@@ -6703,7 +6141,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по AI1</name>
 	</param>
 	<param>
@@ -6716,7 +6153,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по AI1</name>
 	</param>
 	<param>
@@ -6729,7 +6165,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Автоматический сброс счетчика защиты по AI1</name>
 	</param>
 	<param>
@@ -6741,7 +6176,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Количество АПВ, вызывающее блокировку защиты по AI1</name>
 	</param>
 	<param>
@@ -6753,7 +6187,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Тип аналогового входа 2</name>
 	</param>
 	<param>
@@ -6765,7 +6198,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>5</max>
-		<command>OPERATION_ERROR</command>
 		<name>Сигнал на аналоговом входе 2</name>
 	</param>
 	<param>
@@ -6777,7 +6209,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4</max>
-		<command>OPERATION_ERROR</command>
 		<name>Единицы измерения сигнала на аналоговом входе 2</name>
 	</param>
 	<param>
@@ -6789,7 +6220,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимум шкалы сигнала на аналоговом входе 2</name>
 	</param>
 	<param>
@@ -6801,7 +6231,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимум шкалы сигнала на аналоговом входе 2</name>
 	</param>
 	<param>
@@ -6813,7 +6242,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимальное значение срабатывания защиты по AI2</name>
 	</param>
 	<param>
@@ -6825,7 +6253,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимальное значение АПВ защиты по AI2</name>
 	</param>
 	<param>
@@ -6837,7 +6264,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальное значение АПВ защиты по AI2</name>
 	</param>
 	<param>
@@ -6849,7 +6275,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальное значение срабатывания защиты по AI2</name>
 	</param>
 	<param>
@@ -6862,7 +6287,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>120</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по AI2</name>
 	</param>
 	<param>
@@ -6875,7 +6299,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по AI2</name>
 	</param>
 	<param>
@@ -6888,7 +6311,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по AI2</name>
 	</param>
 	<param>
@@ -6901,7 +6323,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Автоматический сброс счетчика защиты по AI2</name>
 	</param>
 	<param>
@@ -6913,7 +6334,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Количество АПВ, вызывающее блокировку защиты по AI2</name>
 	</param>
 	<param>
@@ -6925,7 +6345,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Тип аналогового входа 3</name>
 	</param>
 	<param>
@@ -6937,7 +6356,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>5</max>
-		<command>OPERATION_ERROR</command>
 		<name>Сигнал на аналоговом входе 3</name>
 	</param>
 	<param>
@@ -6949,7 +6367,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4</max>
-		<command>OPERATION_ERROR</command>
 		<name>Единицы измерения сигнала на аналоговом входе 3</name>
 	</param>
 	<param>
@@ -6961,7 +6378,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимум шкалы сигнала на аналоговом входе 3</name>
 	</param>
 	<param>
@@ -6973,7 +6389,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимум шкалы сигнала на аналоговом входе 3</name>
 	</param>
 	<param>
@@ -6985,7 +6400,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимальное значение срабатывания защиты по AI3</name>
 	</param>
 	<param>
@@ -6997,7 +6411,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимальное значение АПВ защиты по AI3</name>
 	</param>
 	<param>
@@ -7009,7 +6422,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальное значение АПВ защиты по AI3</name>
 	</param>
 	<param>
@@ -7021,7 +6433,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальное значение срабатывания защиты по AI3</name>
 	</param>
 	<param>
@@ -7034,7 +6445,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>120</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по AI3</name>
 	</param>
 	<param>
@@ -7047,7 +6457,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по AI3</name>
 	</param>
 	<param>
@@ -7060,7 +6469,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по AI3</name>
 	</param>
 	<param>
@@ -7073,7 +6481,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Автоматический сброс счетчика защиты по AI3</name>
 	</param>
 	<param>
@@ -7085,7 +6492,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Количество АПВ, вызывающее блокировку защиты по AI3</name>
 	</param>
 	<param>
@@ -7097,7 +6503,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Тип аналогового входа 4</name>
 	</param>
 	<param>
@@ -7109,7 +6514,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>5</max>
-		<command>OPERATION_ERROR</command>
 		<name>Сигнал на аналоговом входе 4</name>
 	</param>
 	<param>
@@ -7121,7 +6525,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4</max>
-		<command>OPERATION_ERROR</command>
 		<name>Единицы измерения сигнала на аналоговом входе 4</name>
 	</param>
 	<param>
@@ -7133,7 +6536,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимум шкалы сигнала на аналоговом входе 4</name>
 	</param>
 	<param>
@@ -7145,7 +6547,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимум шкалы сигнала на аналоговом входе 4</name>
 	</param>
 	<param>
@@ -7157,7 +6558,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимальное значение срабатывания защиты по AI4</name>
 	</param>
 	<param>
@@ -7169,7 +6569,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Минимальное значение АПВ защиты по AI4</name>
 	</param>
 	<param>
@@ -7181,7 +6580,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальное значение АПВ защиты по AI4</name>
 	</param>
 	<param>
@@ -7193,7 +6591,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>100000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Максимальное значение срабатывания защиты по AI4</name>
 	</param>
 	<param>
@@ -7206,7 +6603,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>120</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по AI4</name>
 	</param>
 	<param>
@@ -7219,7 +6615,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по AI4</name>
 	</param>
 	<param>
@@ -7232,7 +6627,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по AI4</name>
 	</param>
 	<param>
@@ -7245,7 +6639,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Автоматический сброс счетчика защиты по AI4</name>
 	</param>
 	<param>
@@ -7257,7 +6650,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Количество АПВ, вызывающее блокировку защиты по AI4</name>
 	</param>
 	<param>
@@ -7269,7 +6661,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Тип цифрового входа 1</name>
 	</param>
 	<param>
@@ -7281,7 +6672,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>6</max>
-		<command>OPERATION_ERROR</command>
 		<name>Действие по сигналу на цифровом входе 1</name>
 	</param>
 	<param>
@@ -7294,7 +6684,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>120</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по DI1</name>
 	</param>
 	<param>
@@ -7307,7 +6696,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по DI1</name>
 	</param>
 	<param>
@@ -7320,7 +6708,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по DI1</name>
 	</param>
 	<param>
@@ -7333,7 +6720,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Период сброса счётчика АПВ защиты по DI1</name>
 	</param>
 	<param>
@@ -7345,7 +6731,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Число разрешённых АПВ защиты по DI1</name>
 	</param>
 	<param>
@@ -7357,7 +6742,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Тип цифрового входа 2</name>
 	</param>
 	<param>
@@ -7369,7 +6753,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>6</max>
-		<command>OPERATION_ERROR</command>
 		<name>Действие по сигналу на цифровом входе 2</name>
 	</param>
 	<param>
@@ -7382,7 +6765,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>120</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по DI2</name>
 	</param>
 	<param>
@@ -7395,7 +6777,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по DI2</name>
 	</param>
 	<param>
@@ -7408,7 +6789,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по DI2</name>
 	</param>
 	<param>
@@ -7421,7 +6801,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Период сброса счётчика АПВ защиты по DI2</name>
 	</param>
 	<param>
@@ -7433,7 +6812,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Число разрешённых АПВ защиты по DI2</name>
 	</param>
 	<param>
@@ -7445,7 +6823,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Тип цифрового входа 3</name>
 	</param>
 	<param>
@@ -7457,7 +6834,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>6</max>
-		<command>OPERATION_ERROR</command>
 		<name>Действие по сигналу на цифровом входе 3</name>
 	</param>
 	<param>
@@ -7470,7 +6846,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>120</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по DI3</name>
 	</param>
 	<param>
@@ -7483,7 +6858,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по DI3</name>
 	</param>
 	<param>
@@ -7496,7 +6870,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по DI3</name>
 	</param>
 	<param>
@@ -7509,7 +6882,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Период сброса счётчика АПВ защиты по DI3</name>
 	</param>
 	<param>
@@ -7521,7 +6893,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Число разрешённых АПВ защиты по DI3</name>
 	</param>
 	<param>
@@ -7533,7 +6904,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>1</max>
-		<command>OPERATION_ERROR</command>
 		<name>Тип цифрового входа 4</name>
 	</param>
 	<param>
@@ -7545,7 +6915,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>6</max>
-		<command>OPERATION_ERROR</command>
 		<name>Действие по сигналу на цифровом входе 4</name>
 	</param>
 	<param>
@@ -7558,7 +6927,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>120</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка активации защиты по DI4</name>
 	</param>
 	<param>
@@ -7571,7 +6939,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка срабатывания защиты по DI4</name>
 	</param>
 	<param>
@@ -7584,7 +6951,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>600000</max>
-		<command>OPERATION_ERROR</command>
 		<name>Задержка АПВ защиты по DI4</name>
 	</param>
 	<param>
@@ -7597,7 +6963,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>100</max>
-		<command>OPERATION_ERROR</command>
 		<name>Период сброса счётчика АПВ защиты по DI4</name>
 	</param>
 	<param>
@@ -7609,7 +6974,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>200</max>
-		<command>OPERATION_ERROR</command>
 		<name>Число разрешённых АПВ защиты по DI4</name>
 	</param>
 	<param>
@@ -7620,7 +6984,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7631,7 +6994,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7642,7 +7004,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7653,7 +7014,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7664,7 +7024,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7675,7 +7034,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7686,7 +7044,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7697,7 +7054,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7708,7 +7064,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7719,7 +7074,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7730,7 +7084,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7741,7 +7094,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7752,7 +7104,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7763,7 +7114,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7774,7 +7124,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7785,7 +7134,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7796,7 +7144,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7807,7 +7154,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7818,7 +7164,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7829,7 +7174,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7840,7 +7184,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7851,7 +7194,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7862,7 +7204,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7873,7 +7214,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7884,7 +7224,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7895,7 +7234,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7906,7 +7244,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7917,7 +7254,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7928,7 +7264,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7939,7 +7274,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7950,7 +7284,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7961,7 +7294,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7972,7 +7304,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7983,7 +7314,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -7994,7 +7324,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8005,7 +7334,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8016,7 +7344,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8027,7 +7354,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8038,7 +7364,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8049,7 +7374,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8060,7 +7384,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8071,7 +7394,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8082,7 +7404,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8093,7 +7414,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8104,7 +7424,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8115,7 +7434,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8126,7 +7444,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8137,7 +7454,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8148,7 +7464,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8159,7 +7474,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8170,7 +7484,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8181,7 +7494,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8192,7 +7504,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8203,7 +7514,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8214,7 +7524,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8225,7 +7534,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8236,7 +7544,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8247,7 +7554,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8258,7 +7564,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8269,7 +7574,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8280,7 +7584,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8291,7 +7594,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8302,7 +7604,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8313,7 +7614,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8324,7 +7624,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8335,7 +7634,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8346,7 +7644,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8357,7 +7654,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8368,7 +7664,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8379,7 +7674,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8390,7 +7684,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8401,7 +7694,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8412,7 +7704,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8423,7 +7714,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8434,7 +7724,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8445,7 +7734,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8456,7 +7744,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8467,7 +7754,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8478,7 +7764,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8489,7 +7774,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8500,7 +7784,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8511,7 +7794,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8522,7 +7804,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8533,7 +7814,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8544,7 +7824,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8555,7 +7834,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8566,7 +7844,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8577,7 +7854,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8588,7 +7864,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8599,7 +7874,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8610,7 +7884,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8621,7 +7894,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8632,7 +7904,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8643,7 +7914,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8654,7 +7924,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8665,7 +7934,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8676,7 +7944,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8687,7 +7954,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8698,7 +7964,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8709,7 +7974,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8720,7 +7984,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8731,7 +7994,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8742,7 +8004,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8753,7 +8014,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8764,7 +8024,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8775,7 +8034,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8786,7 +8044,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8797,7 +8054,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8808,7 +8064,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8819,7 +8074,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8830,7 +8084,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8841,7 +8094,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8852,7 +8104,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8863,7 +8114,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8874,7 +8124,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8885,7 +8134,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8896,7 +8144,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8907,7 +8154,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8918,7 +8164,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8929,7 +8174,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8940,7 +8184,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8951,7 +8194,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8962,7 +8204,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8973,7 +8214,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8984,7 +8224,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -8995,7 +8234,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9006,7 +8244,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9017,7 +8254,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9028,7 +8264,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9039,7 +8274,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9050,7 +8284,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9061,7 +8294,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9072,7 +8304,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9083,7 +8314,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9094,7 +8324,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9105,7 +8334,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9116,7 +8344,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9127,7 +8354,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9138,7 +8364,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9149,7 +8374,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9160,7 +8384,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9171,7 +8394,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9182,7 +8404,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9193,7 +8414,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9204,7 +8424,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9215,7 +8434,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9226,7 +8444,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9237,7 +8454,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9248,7 +8464,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9259,7 +8474,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9270,7 +8484,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9281,7 +8494,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9292,7 +8504,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9303,7 +8514,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9314,7 +8524,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9325,7 +8534,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9336,7 +8544,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9347,7 +8554,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9358,7 +8564,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9369,7 +8574,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9380,7 +8584,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9391,7 +8594,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9402,7 +8604,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9413,7 +8614,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9424,7 +8624,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9435,7 +8634,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9446,7 +8644,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9457,7 +8654,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9468,7 +8664,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9479,7 +8674,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9490,7 +8684,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9501,7 +8694,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9512,7 +8704,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9523,7 +8714,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9534,7 +8724,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9545,7 +8734,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9556,7 +8744,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9567,7 +8754,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9578,7 +8764,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9589,7 +8774,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9600,7 +8784,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9611,7 +8794,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9622,7 +8804,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9633,7 +8814,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9644,7 +8824,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9655,7 +8834,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9666,7 +8844,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9677,7 +8854,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9688,7 +8864,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9699,7 +8874,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9710,7 +8884,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9721,7 +8894,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9732,7 +8904,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9743,7 +8914,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9754,7 +8924,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9765,7 +8934,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9776,7 +8944,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9787,7 +8954,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9798,7 +8964,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9809,7 +8974,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9820,7 +8984,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9831,7 +8994,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9842,7 +9004,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9853,7 +9014,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9864,7 +9024,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9875,7 +9034,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9886,7 +9044,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9897,7 +9054,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9908,7 +9064,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9919,7 +9074,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9930,7 +9084,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9941,7 +9094,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9952,7 +9104,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9963,7 +9114,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9974,7 +9124,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9985,7 +9134,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -9996,7 +9144,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10007,7 +9154,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10018,7 +9164,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10029,7 +9174,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10040,7 +9184,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10051,7 +9194,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10062,7 +9204,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10073,7 +9214,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10084,7 +9224,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10095,7 +9234,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10106,7 +9244,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10117,7 +9254,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10128,7 +9264,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10139,7 +9274,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10150,7 +9284,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10161,7 +9294,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10172,7 +9304,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10183,7 +9314,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10194,7 +9324,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10205,7 +9334,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10216,7 +9344,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10227,7 +9354,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10238,7 +9364,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10249,7 +9374,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10260,7 +9384,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10271,7 +9394,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10282,7 +9404,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10293,7 +9414,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10304,7 +9424,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10315,7 +9434,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10326,7 +9444,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10337,7 +9454,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10348,7 +9464,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10359,7 +9474,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10370,7 +9484,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10381,7 +9494,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10392,7 +9504,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10403,7 +9514,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10414,7 +9524,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10425,7 +9534,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10436,7 +9544,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10447,7 +9554,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10458,7 +9564,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10469,7 +9574,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10480,7 +9584,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10491,7 +9594,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10502,7 +9604,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10513,7 +9614,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10524,7 +9624,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10535,7 +9634,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10546,7 +9644,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10557,7 +9654,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10568,7 +9664,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10579,7 +9674,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10590,7 +9684,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10601,7 +9694,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10612,7 +9704,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10623,7 +9714,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10634,7 +9724,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10645,7 +9734,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10656,7 +9744,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10667,7 +9754,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10678,7 +9764,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10689,7 +9774,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10700,7 +9784,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10711,7 +9794,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10722,7 +9804,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10733,7 +9814,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10746,7 +9826,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Активная мощность</name>
 	</param>
 	<param>
@@ -10757,7 +9836,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10770,7 +9848,6 @@
 		<coefficient>0.1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Давление</name>
 	</param>
 	<param>
@@ -10781,7 +9858,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10794,7 +9870,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>65535</max>
-		<command>OPERATION_ERROR</command>
 		<name>Фактор времени</name>
 	</param>
 	<param>
@@ -10806,7 +9881,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>2</max>
-		<command>OPERATION_ERROR</command>
 		<name>Состояние архива</name>
 	</param>
 	<param>
@@ -10817,7 +9891,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>0</max>
-		<command>OPERATION_ERROR</command>
 		<name>Нет операции</name>
 	</param>
 	<param>
@@ -10829,7 +9902,6 @@
 		<coefficient>1</coefficient>
 		<min>0</min>
 		<max>4294836225</max>
-		<command>OPERATION_ERROR</command>
 		<name>Размер архива</name>
 	</param>
 </SCADA>

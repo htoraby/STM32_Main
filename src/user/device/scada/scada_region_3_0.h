@@ -13,6 +13,13 @@ public:
 
   virtual eMBErrorCode readReg(uint8_t *buffer, uint16_t address, uint16_t numRegs);
 
+private:
+  /*!
+   * \brief Инициализация параметров скады Регион 3.0
+   */
+  void initParameters();
+  void calcParamsTask();
+  int setNewValue(ScadaParameter *param);
   /*!
    * \brief функция формирования данных из логов ТМС в архивы ГДИ Роснефть
    * \param buffer уазатель на массив куда будем заносить данные
@@ -23,15 +30,6 @@ public:
   eMBErrorCode readRegDhsLog(uint8_t *buffer, uint16_t address, uint16_t numRegs);
 
   uint8_t *logDhs_;                         //!< Указатель на буфер с данными ТМС
-
-private:
-  /*!
-   * \brief Инициализация параметров скады Регион 3.0
-   */
-  void initParameters();
-  void calcParamsTask();
-  int setNewValue(ScadaParameter *param);
-
   float firstAddrDhsLog_;                   //!< Адрес первого регистра архива ГДИ
   float lastAddrDhsLog_;                    //!< Адрес последнего регистра архива ГДИ
 

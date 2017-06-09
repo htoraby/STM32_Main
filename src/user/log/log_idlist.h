@@ -225,7 +225,6 @@ typedef enum {
   RgmOptimVoltageFinishId,            //!< Оптимизация напряжения завершена
   RgmOptimVoltageRestoreId,           //!< Оптимизация напряжения возврат характеристики
   RgmOptimVoltageFailId,              //!< Оптимизация напряжения прервана
-  DefaultSetpointResetId,             //!< Сброс всех уставок по умолчанию
   StopMotorId,                        //!< Останов двигателя
 } EventId;
 

@@ -53,11 +53,15 @@ static void getFile(char *fileName)
 #endif
       if (strstr(fn, SW_FILE_NAME)) {
         if (strstr(fn, ".bin")) {
-          strcpy(fileName, fn); // файл прошивки найден
-          return;
+          strcpy(fileName, fn);
         }
       }
     }
+    if (strlen(fileName)) {
+      f_closedir(&dir);
+      return; // файл прошивки найден
+    }
+
     logDebug.add(WarningMsg, "update.getFile()  Firmware file not found");
     ksu.setError(NotFoundFwUpdateErr);
   }
