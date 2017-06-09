@@ -90,11 +90,7 @@ void logStartDelete(EventType type)
 void logStartCompress(EventType type)
 {
   parameters.startSave();
-
   eventType = type;
-//  parameters.set(CCS_PROGRESS_VALUE, 0);
-//  parameters.set(CCS_PROGRESS_MAX, 0);
-//  parameters.set(CCS_PROGRESS_MAX, (float)(EndAddrDebugLog + flashExts[FlashSpi5].size + PARAMETERS_SIZE)/1024);
   osSemaphoreRelease(compressSemaphoreId_);
 }
 
@@ -471,6 +467,7 @@ static bool logCompress()
     // Условие выхода из цикла
     if (addr >= flashExts[FlashSpi5].size)
       break;
+
   }
 
   addr = 0;
@@ -597,7 +594,9 @@ void logSaveTask(void *argument)
     if (osSemaphoreWait(compressSemaphoreId_, 10) == osOK) {
       osDelay(100);
       if (logCompress()) {
-
+        parameters.set(CCS_CMD_LOG_COMPRESSED, 2);
+      } else {
+        parameters.set(CCS_CMD_LOG_COMPRESSED, 0);
       }
     }
   }

@@ -1199,6 +1199,11 @@ uint8_t Ccs::setNewValue(uint16_t id, float value, EventType eventType)
     if (value)
       logStartDelete(eventType);
     return err;
+  case CCS_CMD_LOG_COMPRESSED:
+    err = setValue(id, value, eventType);
+    if (value == 1)
+      logStartCompress(eventType);
+    return err;
   case CCS_CMD_UNBLOCK:
     err = setValue(id, 0.0, eventType);
     if (value)

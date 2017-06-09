@@ -14150,5 +14150,17 @@ void Ccs::initParameters()
   parameters_[CCS_INTERFACE_VOLTAGE_PHASE_OR_LINE - CCS_BEGIN].discret           = 1;
   parameters_[CCS_INTERFACE_VOLTAGE_PHASE_OR_LINE - CCS_BEGIN].def               = 0.0;
   parameters_[CCS_INTERFACE_VOLTAGE_PHASE_OR_LINE - CCS_BEGIN].code              = 13;
+  // 
+  parameters_[CCS_CMD_LOG_COMPRESSED - CCS_BEGIN].id                             = CCS_CMD_LOG_COMPRESSED;
+  parameters_[CCS_CMD_LOG_COMPRESSED - CCS_BEGIN].access                         = ACCESS_OPERATOR;
+  parameters_[CCS_CMD_LOG_COMPRESSED - CCS_BEGIN].operation                      = OPERATION_READ;
+  parameters_[CCS_CMD_LOG_COMPRESSED - CCS_BEGIN].physic                         = PHYSIC_NUMERIC;
+  parameters_[CCS_CMD_LOG_COMPRESSED - CCS_BEGIN].validity                       = VALIDITY_OK;
+  parameters_[CCS_CMD_LOG_COMPRESSED - CCS_BEGIN].value.float_t                  = 0.0;
+  parameters_[CCS_CMD_LOG_COMPRESSED - CCS_BEGIN].min                            = 0.0;
+  parameters_[CCS_CMD_LOG_COMPRESSED - CCS_BEGIN].max                            = 2.0;
+  parameters_[CCS_CMD_LOG_COMPRESSED - CCS_BEGIN].discret                        = 1;
+  parameters_[CCS_CMD_LOG_COMPRESSED - CCS_BEGIN].def                            = 0.0;
+  parameters_[CCS_CMD_LOG_COMPRESSED - CCS_BEGIN].code                           = 0;
 }
 

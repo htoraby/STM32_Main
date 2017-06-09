@@ -24094,6 +24094,23 @@
 	</param>
 	<param>
 		<id>1179</id>
+		<name>CCS_CMD_LOG_COMPRESSED</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Сжать архив</text>
+		<short_text>Сжать архив</short_text>
+		<form>NULL</form>
+		<code>0</code>
+	</param>
+	<param>
+		<id>1180</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

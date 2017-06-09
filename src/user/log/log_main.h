@@ -61,6 +61,12 @@ void logInit();
 void logStartSave(EventType type);
 
 /*!
+ * \brief logStartCompress
+ * \param type
+ */
+void logStartCompress(EventType type);
+
+/*!
  * \brief Запуск стирания архивов (в т.ч. стирание всей Flash)
  * type - Тип события
 */
