@@ -24097,34 +24097,16 @@
 	</param>
 	<param>
 		<id>1179</id>
-<<<<<<< HEAD
-		<name>CCS_CMD_LOG_COMPRESSED</name>
-		<access>ACCESS_OPERATOR</access>
-		<operation>OPERATION_READ</operation>
-		<physic>PHYSIC_NUMERIC</physic>
-		<min>0.0</min>
-		<max>2.0</max>
-=======
 		<name>CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD</name>
 		<access>ACCESS_OPERATOR</access>
 		<operation>OPERATION_WRITE</operation>
 		<physic>PHYSIC_PERCENT</physic>
 		<min>0.0</min>
 		<max>5000.0</max>
->>>>>>> master
 		<def>0.0</def>
 		<discret>1</discret>
 		<valid>VALIDITY_OK</valid>
 		<value>0.0</value>
-<<<<<<< HEAD
-		<text>Сжать архив</text>
-		<short_text>Сжать архив</short_text>
-		<form>NULL</form>
-		<code>0</code>
-	</param>
-	<param>
-		<id>1180</id>
-=======
 		<text>Поддерживаемое значение</text>
 		<short_text>Поддержание параметра Загрузка</short_text>
 		<form>Технологические настройки.Режимы.Поддержание параметра</form>
@@ -24157,7 +24139,24 @@
 	</param>
 	<param>
 		<id>1181</id>
->>>>>>> master
+		<name>CCS_CMD_LOG_COMPRESSED</name>
+		<access>ACCESS_OPERATOR</access>
+		<operation>OPERATION_READ</operation>
+		<physic>PHYSIC_NUMERIC</physic>
+		<min>0.0</min>
+		<max>2.0</max>
+		<def>0.0</def>
+		<discret>1</discret>
+		<valid>VALIDITY_OK</valid>
+		<value>0.0</value>
+		<text>Сжать архив</text>
+		<short_text>Сжать архив</short_text>
+		<form>NULL</form>
+		<code>0</code>
+		<comment>Сжать архив</comment>
+	</param>
+	<param>
+		<id>1182</id>
 		<name>CCS_END</name>
 		<form>NULL</form>
 		<code>NULL</code>

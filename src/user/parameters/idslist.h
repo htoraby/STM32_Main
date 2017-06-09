@@ -1184,7 +1184,7 @@ enum enID
   CCS_INTERFACE_VOLTAGE_PHASE_OR_LINE = 1178,                //!< Формат вывода напряжения
   CCS_RGM_MAINTENANCE_PARAM_SETPOINT_LOAD = 1179,            //!< Режим поддержания параметра. Поддержка значения - Загрузка
   CCS_RGM_MAINTENANCE_PARAM_SETPOINT_POWER = 1180,           //!< Режим поддержания параметра. Поддержка значения - Мощность
-  CCS_CMD_LOG_COMPRESSED = 1181,                             //!< 
+  CCS_CMD_LOG_COMPRESSED = 1181,                             //!< Сжать архив
   CCS_END = 1182,                                            //!< 
   VSD_BEGIN = 10000,                                         //!< Первый параметр ЧРП
   VSD_FREQUENCY_NOW = 10001,                                 //!< Выходная частота ПЧ

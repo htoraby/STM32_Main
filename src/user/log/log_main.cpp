@@ -17,7 +17,7 @@
 #if USE_EXT_MEM
 static uint8_t __LZO_MMODEL inBufData[IN_BUF_SIZE] __attribute__((section(".extmem")));
 static uint8_t __LZO_MMODEL outBufData[OUT_BUF_SIZE] __attribute__((section(".extmem")));
-static HEAP_ALLOC(wrkmem, LZO1X_1_MEM_COMPRESS) __attribute__((section(".extmem")));
+static HEAP_ALLOC(wrkmem, LZO1X_1_MEM_COMPRESS) __attribute__((section(".ccmram")));
 #else
 static uint8_t inBufData[IN_BUF_SIZE];
 static uint8_t outBufData[OUT_BUF_SIZE];
@@ -426,6 +426,7 @@ static bool logCompress()
   int resCompress = 0;
   uint32_t size = 0;
   uint32_t count = 0;
+  uint32_t time = HAL_GetTick();
 
   // Проверка архиватора
   if (lzo_init() != LZO_E_OK) {
@@ -442,9 +443,11 @@ static bool logCompress()
   // Чтение, сжатие и запись архива данных
   while(1) {
     // Чтение архива данных
+    time = HAL_GetTick();
     StatusType status = logRead(addr, inBufData, inLen);
     if (status == StatusError)
       asm("nop");
+    printf(">> time read = %d \n", int(HAL_GetTick() - time));
     addr = addr + inLen;
     calcCrc = crc16_ibm(inBufData, inLen, calcCrc);
     // Сжатие архива данных
@@ -453,6 +456,7 @@ static bool logCompress()
       ksu.setError(MiniLzoUsbErr);                                              // Формирование ошибки
       return false;                                                             // Выход
     }
+    printf(">> time compress = %d \n", int(HAL_GetTick() - time));
     // Запись сжатых архива данных
     *(uint32_t*)(outBufData) = inLen;
     if (outLen < inLen) {
@@ -478,6 +482,8 @@ static bool logCompress()
     // Условие выхода из цикла
     if (addr >= flashExts[FlashSpi5].size)
       break;
+
+    printf(">> time write = %d, %d \n", int(HAL_GetTick() - time), size);
   }
 
   addr = 0;
