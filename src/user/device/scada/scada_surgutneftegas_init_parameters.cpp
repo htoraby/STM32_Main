@@ -2,6 +2,14 @@
 
 void ScadaSurgutneftegas::initParameters()
 {
+  countParameters_ = 256;
+#ifdef USE_SERVER
+  scadaParameters_ = new ScadaParameter[countParameters_];
+#endif
+  for (int i = 0; i < countParameters_; ++i) {
+    scadaParameters_[i].value.uint32_t = 0;
+  }
+
   // Активная мощность
   scadaParameters_[0].id                 = VSD_POWER_ACTIVE;
   scadaParameters_[0].address            = 0;
@@ -12,8 +20,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[0].coefficient        = 1;
   scadaParameters_[0].min                = 0;
   scadaParameters_[0].max                = 9999;
-  scadaParameters_[0].command            = OPERATION_ERROR;
-  scadaParameters_[0].value.float_t      = 0;
   // Ток фаза А
   scadaParameters_[1].id                 = CCS_MOTOR_CURRENT_PHASE_1;
   scadaParameters_[1].address            = 1;
@@ -24,8 +30,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[1].coefficient        = 0.1;
   scadaParameters_[1].min                = 0;
   scadaParameters_[1].max                = 150;
-  scadaParameters_[1].command            = OPERATION_ERROR;
-  scadaParameters_[1].value.float_t      = 0;
   // Ток фаза B
   scadaParameters_[2].id                 = CCS_MOTOR_CURRENT_PHASE_2;
   scadaParameters_[2].address            = 2;
@@ -36,8 +40,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[2].coefficient        = 0.1;
   scadaParameters_[2].min                = 0;
   scadaParameters_[2].max                = 150;
-  scadaParameters_[2].command            = OPERATION_ERROR;
-  scadaParameters_[2].value.float_t      = 0;
   // Ток фаза C
   scadaParameters_[3].id                 = CCS_MOTOR_CURRENT_PHASE_3;
   scadaParameters_[3].address            = 3;
@@ -48,8 +50,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[3].coefficient        = 0.1;
   scadaParameters_[3].min                = 0;
   scadaParameters_[3].max                = 150;
-  scadaParameters_[3].command            = OPERATION_ERROR;
-  scadaParameters_[3].value.float_t      = 0;
   // Сопротивление изоляции Rinsul
   scadaParameters_[4].id                 = CCS_RESISTANCE_ISOLATION;
   scadaParameters_[4].address            = 4;
@@ -60,8 +60,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[4].coefficient        = 1;
   scadaParameters_[4].min                = 20;
   scadaParameters_[4].max                = 9999;
-  scadaParameters_[4].command            = OPERATION_ERROR;
-  scadaParameters_[4].value.float_t      = 0;
   // Коэф. Мощности
   scadaParameters_[5].id                 = CCS_MOTOR_COS_PHI_NOW;
   scadaParameters_[5].address            = 5;
@@ -72,8 +70,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[5].coefficient        = 0.001;
   scadaParameters_[5].min                = 0;
   scadaParameters_[5].max                = 1;
-  scadaParameters_[5].command            = OPERATION_ERROR;
-  scadaParameters_[5].value.float_t      = 0;
   // Межфазное напряжение Uin(AB)
   scadaParameters_[6].id                 = CCS_VOLTAGE_PHASE_1_2;
   scadaParameters_[6].address            = 6;
@@ -84,8 +80,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[6].coefficient        = 1;
   scadaParameters_[6].min                = 0;
   scadaParameters_[6].max                = 1000;
-  scadaParameters_[6].command            = OPERATION_ERROR;
-  scadaParameters_[6].value.float_t      = 0;
   // Межфазное напряжение Uin(BC)
   scadaParameters_[7].id                 = CCS_VOLTAGE_PHASE_2_3;
   scadaParameters_[7].address            = 7;
@@ -96,8 +90,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[7].coefficient        = 1;
   scadaParameters_[7].min                = 0;
   scadaParameters_[7].max                = 1000;
-  scadaParameters_[7].command            = OPERATION_ERROR;
-  scadaParameters_[7].value.float_t      = 0;
   // Межфазное напряжение Uin(CA)
   scadaParameters_[8].id                 = CCS_VOLTAGE_PHASE_3_1;
   scadaParameters_[8].address            = 8;
@@ -108,8 +100,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[8].coefficient        = 1;
   scadaParameters_[8].min                = 0;
   scadaParameters_[8].max                = 1000;
-  scadaParameters_[8].command            = OPERATION_ERROR;
-  scadaParameters_[8].value.float_t      = 0;
   // Давление на приеме
   scadaParameters_[9].id                 = TMS_PRESSURE_INTAKE;
   scadaParameters_[9].address            = 9;
@@ -120,8 +110,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[9].coefficient        = 0.01;
   scadaParameters_[9].min                = 0;
   scadaParameters_[9].max                = 40;
-  scadaParameters_[9].command            = OPERATION_ERROR;
-  scadaParameters_[9].value.float_t      = 0;
   // Температура на выкиде насоса
   scadaParameters_[10].id                = TMS_TEMPERATURE_DISCHARGE;
   scadaParameters_[10].address           = 10;
@@ -132,8 +120,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[10].coefficient       = 1;
   scadaParameters_[10].min               = 0;
   scadaParameters_[10].max               = 200;
-  scadaParameters_[10].command           = OPERATION_ERROR;
-  scadaParameters_[10].value.float_t     = 0;
   // Температура на приемеTin
   scadaParameters_[11].id                = TMS_TEMPERATURE_INTAKE;
   scadaParameters_[11].address           = 11;
@@ -144,8 +130,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[11].coefficient       = 1;
   scadaParameters_[11].min               = 0;
   scadaParameters_[11].max               = 200;
-  scadaParameters_[11].command           = OPERATION_ERROR;
-  scadaParameters_[11].value.float_t     = 0;
   // Температура обмоток двигателя Tw
   scadaParameters_[12].id                = TMS_TEMPERATURE_WINDING;
   scadaParameters_[12].address           = 12;
@@ -156,8 +140,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[12].coefficient       = 1;
   scadaParameters_[12].min               = 0;
   scadaParameters_[12].max               = 200;
-  scadaParameters_[12].command           = OPERATION_ERROR;
-  scadaParameters_[12].value.float_t     = 0;
   // Вибрация радиальная Vradial
   scadaParameters_[13].id                = TMS_ACCELERATION_XY_INTAKE;
   scadaParameters_[13].address           = 13;
@@ -168,8 +150,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[13].coefficient       = 0.1;
   scadaParameters_[13].min               = 0;
   scadaParameters_[13].max               = 100;
-  scadaParameters_[13].command           = OPERATION_ERROR;
-  scadaParameters_[13].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[14].id                = -1;
   scadaParameters_[14].address           = 14;
@@ -180,8 +160,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[14].coefficient       = 1;
   scadaParameters_[14].min               = 0;
   scadaParameters_[14].max               = 100;
-  scadaParameters_[14].command           = OPERATION_ERROR;
-  scadaParameters_[14].value.float_t     = 0;
   // Вибрация осевая Vaxial
   scadaParameters_[15].id                = TMS_ACCELERATION_Z_INTAKE;
   scadaParameters_[15].address           = 15;
@@ -192,8 +170,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[15].coefficient       = 0.1;
   scadaParameters_[15].min               = 0;
   scadaParameters_[15].max               = 100;
-  scadaParameters_[15].command           = OPERATION_ERROR;
-  scadaParameters_[15].value.float_t     = 0;
   // Давление на выкиде насоса
   scadaParameters_[16].id                = TMS_PRESSURE_DISCHARGE;
   scadaParameters_[16].address           = 16;
@@ -204,8 +180,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[16].coefficient       = 0.01;
   scadaParameters_[16].min               = 0;
   scadaParameters_[16].max               = 40;
-  scadaParameters_[16].command           = OPERATION_ERROR;
-  scadaParameters_[16].value.float_t     = 0;
   // Давление в буфере
   scadaParameters_[17].id                = -1;
   scadaParameters_[17].address           = 17;
@@ -216,8 +190,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[17].coefficient       = 0.01;
   scadaParameters_[17].min               = 0;
   scadaParameters_[17].max               = 6;
-  scadaParameters_[17].command           = OPERATION_ERROR;
-  scadaParameters_[17].value.float_t     = 0;
   // Давление в линии
   scadaParameters_[18].id                = -1;
   scadaParameters_[18].address           = 18;
@@ -228,8 +200,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[18].coefficient       = 0.01;
   scadaParameters_[18].min               = 0;
   scadaParameters_[18].max               = 6;
-  scadaParameters_[18].command           = OPERATION_ERROR;
-  scadaParameters_[18].value.float_t     = 0;
   // Расход жидкости
   scadaParameters_[19].id                = TMS_FLOW_DISCHARGE;
   scadaParameters_[19].address           = 19;
@@ -240,8 +210,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[19].coefficient       = 1;
   scadaParameters_[19].min               = 0;
   scadaParameters_[19].max               = 9999;
-  scadaParameters_[19].command           = OPERATION_ERROR;
-  scadaParameters_[19].value.float_t     = 0;
   // Режим работы СУ (СНГ)
   scadaParameters_[20].id                = 0;
   scadaParameters_[20].address           = 20;
@@ -252,8 +220,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[20].coefficient       = 1;
   scadaParameters_[20].min               = 0;
   scadaParameters_[20].max               = 3;
-  scadaParameters_[20].command           = OPERATION_ERROR;
-  scadaParameters_[20].value.float_t     = 0;
   // Загрузка двигателя
   scadaParameters_[21].id                = CCS_MOTOR_LOAD_NOW;
   scadaParameters_[21].address           = 21;
@@ -264,8 +230,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[21].coefficient       = 1;
   scadaParameters_[21].min               = 0;
   scadaParameters_[21].max               = 200;
-  scadaParameters_[21].command           = OPERATION_ERROR;
-  scadaParameters_[21].value.float_t     = 0;
   // Дисбаланс токов
   scadaParameters_[22].id                = CCS_MOTOR_CURRENT_IMBALANCE;
   scadaParameters_[22].address           = 22;
@@ -276,8 +240,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[22].coefficient       = 0.1;
   scadaParameters_[22].min               = 0;
   scadaParameters_[22].max               = 100;
-  scadaParameters_[22].command           = OPERATION_ERROR;
-  scadaParameters_[22].value.float_t     = 0;
   // Дисбаланс входного напряжения dUin
   scadaParameters_[23].id                = CCS_VOLTAGE_IMBALANCE_IN;
   scadaParameters_[23].address           = 23;
@@ -288,8 +250,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[23].coefficient       = 0.1;
   scadaParameters_[23].min               = 0;
   scadaParameters_[23].max               = 100;
-  scadaParameters_[23].command           = OPERATION_ERROR;
-  scadaParameters_[23].value.float_t     = 0;
   // Частота турбинного вращения
   scadaParameters_[24].id                = CCS_TURBO_ROTATION_NOW;
   scadaParameters_[24].address           = 24;
@@ -300,8 +260,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[24].coefficient       = 1;
   scadaParameters_[24].min               = 0;
   scadaParameters_[24].max               = 200;
-  scadaParameters_[24].command           = OPERATION_ERROR;
-  scadaParameters_[24].value.float_t     = 0;
   // Текущий порядок чередования фаз
   scadaParameters_[25].id                = 0;
   scadaParameters_[25].address           = 25;
@@ -312,8 +270,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[25].coefficient       = 1;
   scadaParameters_[25].min               = 0;
   scadaParameters_[25].max               = 1;
-  scadaParameters_[25].command           = OPERATION_ERROR;
-  scadaParameters_[25].value.float_t     = 0;
   // Сигнал с контактного манометра
   scadaParameters_[26].id                = CCS_MONOMETR_CONTACT_VALUE;
   scadaParameters_[26].address           = 26;
@@ -324,8 +280,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[26].coefficient       = 1;
   scadaParameters_[26].min               = 0;
   scadaParameters_[26].max               = 1;
-  scadaParameters_[26].command           = OPERATION_ERROR;
-  scadaParameters_[26].value.float_t     = 0;
   // Значение сигнала на аналоговом входе 1
   scadaParameters_[27].id                = CCS_AI_1_VALUE;
   scadaParameters_[27].address           = 27;
@@ -336,8 +290,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[27].coefficient       = 0.1;
   scadaParameters_[27].min               = 0;
   scadaParameters_[27].max               = 1000;
-  scadaParameters_[27].command           = OPERATION_ERROR;
-  scadaParameters_[27].value.float_t     = 0;
   // Значение сигнала на аналоговом входе 2
   scadaParameters_[28].id                = CCS_AI_2_VALUE;
   scadaParameters_[28].address           = 28;
@@ -348,8 +300,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[28].coefficient       = 0.1;
   scadaParameters_[28].min               = 0;
   scadaParameters_[28].max               = 1000;
-  scadaParameters_[28].command           = OPERATION_ERROR;
-  scadaParameters_[28].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[29].id                = -1;
   scadaParameters_[29].address           = 29;
@@ -360,8 +310,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[29].coefficient       = 1;
   scadaParameters_[29].min               = 0;
   scadaParameters_[29].max               = 100;
-  scadaParameters_[29].command           = OPERATION_ERROR;
-  scadaParameters_[29].value.float_t     = 0;
   // Значение текущей частоты
   scadaParameters_[30].id                = VSD_FREQUENCY_NOW;
   scadaParameters_[30].address           = 30;
@@ -372,8 +320,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[30].coefficient       = 0.1;
   scadaParameters_[30].min               = 0;
   scadaParameters_[30].max               = 2000;
-  scadaParameters_[30].command           = OPERATION_ERROR;
-  scadaParameters_[30].value.float_t     = 0;
   // Уставка недогруза
   scadaParameters_[31].id                = CCS_PROT_MOTOR_UNDERLOAD_TRIP_SETPOINT;
   scadaParameters_[31].address           = 31;
@@ -384,8 +330,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[31].coefficient       = 1;
   scadaParameters_[31].min               = 0;
   scadaParameters_[31].max               = 100;
-  scadaParameters_[31].command           = OPERATION_ERROR;
-  scadaParameters_[31].value.float_t     = 0;
   // Уставка перегруза
   scadaParameters_[32].id                = CCS_PROT_MOTOR_OVERLOAD_TRIP_SETPOINT;
   scadaParameters_[32].address           = 32;
@@ -396,8 +340,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[32].coefficient       = 1;
   scadaParameters_[32].min               = 50;
   scadaParameters_[32].max               = 150;
-  scadaParameters_[32].command           = OPERATION_ERROR;
-  scadaParameters_[32].value.float_t     = 0;
   // Уставка снижения сопротивления изоляции
   scadaParameters_[33].id                = CCS_PROT_DHS_RESISTANCE_TRIP_SETPOINT;
   scadaParameters_[33].address           = 33;
@@ -408,8 +350,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[33].coefficient       = 1;
   scadaParameters_[33].min               = 30;
   scadaParameters_[33].max               = 500;
-  scadaParameters_[33].command           = OPERATION_ERROR;
-  scadaParameters_[33].value.float_t     = 0;
   // Уставка низкого напряжения
   scadaParameters_[34].id                = CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_SETPOINT;
   scadaParameters_[34].address           = 34;
@@ -420,8 +360,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[34].coefficient       = 1;
   scadaParameters_[34].min               = 70;
   scadaParameters_[34].max               = 100;
-  scadaParameters_[34].command           = OPERATION_ERROR;
-  scadaParameters_[34].value.float_t     = 0;
   // Уставка высокого напряжения
   scadaParameters_[35].id                = CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_SETPOINT;
   scadaParameters_[35].address           = 35;
@@ -432,8 +370,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[35].coefficient       = 1;
   scadaParameters_[35].min               = 100;
   scadaParameters_[35].max               = 125;
-  scadaParameters_[35].command           = OPERATION_ERROR;
-  scadaParameters_[35].value.float_t     = 0;
   // Уставка минимального давления на приёме
   scadaParameters_[36].id                = CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_SETPOINT;
   scadaParameters_[36].address           = 36;
@@ -444,8 +380,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[36].coefficient       = 0.01;
   scadaParameters_[36].min               = 0;
   scadaParameters_[36].max               = 100;
-  scadaParameters_[36].command           = OPERATION_ERROR;
-  scadaParameters_[36].value.float_t     = 0;
   // Уставка максимального давления на приёме
   scadaParameters_[37].id                = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_SETPOINT;
   scadaParameters_[37].address           = 37;
@@ -456,8 +390,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[37].coefficient       = 0.01;
   scadaParameters_[37].min               = 0;
   scadaParameters_[37].max               = 100;
-  scadaParameters_[37].command           = OPERATION_ERROR;
-  scadaParameters_[37].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[38].id                = -1;
   scadaParameters_[38].address           = 38;
@@ -468,8 +400,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[38].coefficient       = 1;
   scadaParameters_[38].min               = 0;
   scadaParameters_[38].max               = 100;
-  scadaParameters_[38].command           = OPERATION_ERROR;
-  scadaParameters_[38].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[39].id                = -1;
   scadaParameters_[39].address           = 39;
@@ -480,8 +410,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[39].coefficient       = 1;
   scadaParameters_[39].min               = 0;
   scadaParameters_[39].max               = 100;
-  scadaParameters_[39].command           = OPERATION_ERROR;
-  scadaParameters_[39].value.float_t     = 0;
   // Максимальная температура обмотки
   scadaParameters_[40].id                = CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_SETPOINT;
   scadaParameters_[40].address           = 40;
@@ -492,8 +420,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[40].coefficient       = 1;
   scadaParameters_[40].min               = 0;
   scadaParameters_[40].max               = 150;
-  scadaParameters_[40].command           = OPERATION_ERROR;
-  scadaParameters_[40].value.float_t     = 0;
   // Максимальная вибрация
   scadaParameters_[41].id                = CCS_PROT_DHS_VIBRATION_TRIP_SETPOINT;
   scadaParameters_[41].address           = 41;
@@ -504,8 +430,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[41].coefficient       = 0.1;
   scadaParameters_[41].min               = 0;
   scadaParameters_[41].max               = 10;
-  scadaParameters_[41].command           = OPERATION_ERROR;
-  scadaParameters_[41].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[42].id                = -1;
   scadaParameters_[42].address           = 42;
@@ -516,8 +440,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[42].coefficient       = 1;
   scadaParameters_[42].min               = 0;
   scadaParameters_[42].max               = 100;
-  scadaParameters_[42].command           = OPERATION_ERROR;
-  scadaParameters_[42].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[43].id                = -1;
   scadaParameters_[43].address           = 43;
@@ -528,8 +450,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[43].coefficient       = 1;
   scadaParameters_[43].min               = 0;
   scadaParameters_[43].max               = 100;
-  scadaParameters_[43].command           = OPERATION_ERROR;
-  scadaParameters_[43].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[44].id                = -1;
   scadaParameters_[44].address           = 44;
@@ -540,8 +460,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[44].coefficient       = 1;
   scadaParameters_[44].min               = 0;
   scadaParameters_[44].max               = 100;
-  scadaParameters_[44].command           = OPERATION_ERROR;
-  scadaParameters_[44].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[45].id                = -1;
   scadaParameters_[45].address           = 45;
@@ -552,8 +470,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[45].coefficient       = 1;
   scadaParameters_[45].min               = 0;
   scadaParameters_[45].max               = 100;
-  scadaParameters_[45].command           = OPERATION_ERROR;
-  scadaParameters_[45].value.float_t     = 0;
   // Задание режима работы ПЭД по программе
   scadaParameters_[46].id                = 0;
   scadaParameters_[46].address           = 46;
@@ -564,8 +480,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[46].coefficient       = 1;
   scadaParameters_[46].min               = 0;
   scadaParameters_[46].max               = 1;
-  scadaParameters_[46].command           = OPERATION_ERROR;
-  scadaParameters_[46].value.float_t     = 0;
   // Дисбаланс тока, уставка
   scadaParameters_[47].id                = CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_SETPOINT;
   scadaParameters_[47].address           = 47;
@@ -576,8 +490,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[47].coefficient       = 0.1;
   scadaParameters_[47].min               = 0;
   scadaParameters_[47].max               = 30;
-  scadaParameters_[47].command           = OPERATION_ERROR;
-  scadaParameters_[47].value.float_t     = 0;
   // Дисбаланс напряжения, уставка
   scadaParameters_[48].id                = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_SETPOINT;
   scadaParameters_[48].address           = 48;
@@ -588,8 +500,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[48].coefficient       = 0.1;
   scadaParameters_[48].min               = 0;
   scadaParameters_[48].max               = 20;
-  scadaParameters_[48].command           = OPERATION_ERROR;
-  scadaParameters_[48].value.float_t     = 0;
   // Максимальная частота турбинного вращения
   scadaParameters_[49].id                = CCS_PROT_MOTOR_ASYNC_TRIP_SETPOINT;
   scadaParameters_[49].address           = 49;
@@ -600,8 +510,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[49].coefficient       = 1;
   scadaParameters_[49].min               = 0;
   scadaParameters_[49].max               = 100;
-  scadaParameters_[49].command           = OPERATION_ERROR;
-  scadaParameters_[49].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[50].id                = -1;
   scadaParameters_[50].address           = 50;
@@ -612,8 +520,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[50].coefficient       = 1;
   scadaParameters_[50].min               = 0;
   scadaParameters_[50].max               = 100;
-  scadaParameters_[50].command           = OPERATION_ERROR;
-  scadaParameters_[50].value.float_t     = 0;
   // Максимальное значение сигнала на аналоговом входе 1
   scadaParameters_[51].id                = CCS_PROT_AI_1_PARAMETER;
   scadaParameters_[51].address           = 51;
@@ -624,8 +530,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[51].coefficient       = 0.1;
   scadaParameters_[51].min               = 0;
   scadaParameters_[51].max               = 1000;
-  scadaParameters_[51].command           = OPERATION_ERROR;
-  scadaParameters_[51].value.float_t     = 0;
   // Максимальное значение сигнала на аналоговом входе 2
   scadaParameters_[52].id                = CCS_PROT_AI_2_PARAMETER;
   scadaParameters_[52].address           = 52;
@@ -636,8 +540,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[52].coefficient       = 0.1;
   scadaParameters_[52].min               = 0;
   scadaParameters_[52].max               = 1000;
-  scadaParameters_[52].command           = OPERATION_ERROR;
-  scadaParameters_[52].value.float_t     = 0;
   // Минимальное значение сигнала на аналоговом входе 1
   scadaParameters_[53].id                = CCS_PROT_AI_1_TRIP_SETPOINT;
   scadaParameters_[53].address           = 53;
@@ -648,8 +550,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[53].coefficient       = 0.1;
   scadaParameters_[53].min               = 0;
   scadaParameters_[53].max               = 1000;
-  scadaParameters_[53].command           = OPERATION_ERROR;
-  scadaParameters_[53].value.float_t     = 0;
   // Минимальное значение сигнала на аналоговом входе 2
   scadaParameters_[54].id                = CCS_PROT_AI_2_TRIP_SETPOINT;
   scadaParameters_[54].address           = 54;
@@ -660,8 +560,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[54].coefficient       = 0.1;
   scadaParameters_[54].min               = 0;
   scadaParameters_[54].max               = 1000;
-  scadaParameters_[54].command           = OPERATION_ERROR;
-  scadaParameters_[54].value.float_t     = 0;
   // Недогруз (ЗСП)
   scadaParameters_[55].id                = CCS_PROT_MOTOR_UNDERLOAD_MODE;
   scadaParameters_[55].address           = 55;
@@ -672,8 +570,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[55].coefficient       = 1;
   scadaParameters_[55].min               = 0;
   scadaParameters_[55].max               = 2;
-  scadaParameters_[55].command           = OPERATION_ERROR;
-  scadaParameters_[55].value.float_t     = 0;
   // Перегруз (ЗП)
   scadaParameters_[56].id                = CCS_PROT_MOTOR_OVERLOAD_MODE;
   scadaParameters_[56].address           = 56;
@@ -684,8 +580,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[56].coefficient       = 1;
   scadaParameters_[56].min               = 0;
   scadaParameters_[56].max               = 2;
-  scadaParameters_[56].command           = OPERATION_ERROR;
-  scadaParameters_[56].value.float_t     = 0;
   // Сопротивление изоляции
   scadaParameters_[57].id                = CCS_PROT_DHS_RESISTANCE_MODE;
   scadaParameters_[57].address           = 57;
@@ -696,8 +590,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[57].coefficient       = 1;
   scadaParameters_[57].min               = 0;
   scadaParameters_[57].max               = 2;
-  scadaParameters_[57].command           = OPERATION_ERROR;
-  scadaParameters_[57].value.float_t     = 0;
   // Низкое напряжение
   scadaParameters_[58].id                = CCS_PROT_SUPPLY_UNDERVOLTAGE_MODE;
   scadaParameters_[58].address           = 58;
@@ -708,8 +600,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[58].coefficient       = 1;
   scadaParameters_[58].min               = 0;
   scadaParameters_[58].max               = 2;
-  scadaParameters_[58].command           = OPERATION_ERROR;
-  scadaParameters_[58].value.float_t     = 0;
   // Высокое напряжение
   scadaParameters_[59].id                = CCS_PROT_SUPPLY_OVERVOLTAGE_MODE;
   scadaParameters_[59].address           = 59;
@@ -720,8 +610,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[59].coefficient       = 1;
   scadaParameters_[59].min               = 0;
   scadaParameters_[59].max               = 2;
-  scadaParameters_[59].command           = OPERATION_ERROR;
-  scadaParameters_[59].value.float_t     = 0;
   // Давление
   scadaParameters_[60].id                = CCS_PROT_DHS_PRESSURE_INTAKE_MODE;
   scadaParameters_[60].address           = 60;
@@ -732,8 +620,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[60].coefficient       = 1;
   scadaParameters_[60].min               = 0;
   scadaParameters_[60].max               = 2;
-  scadaParameters_[60].command           = OPERATION_ERROR;
-  scadaParameters_[60].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[61].id                = -1;
   scadaParameters_[61].address           = 61;
@@ -744,8 +630,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[61].coefficient       = 1;
   scadaParameters_[61].min               = 0;
   scadaParameters_[61].max               = 100;
-  scadaParameters_[61].command           = OPERATION_ERROR;
-  scadaParameters_[61].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[62].id                = -1;
   scadaParameters_[62].address           = 62;
@@ -756,8 +640,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[62].coefficient       = 1;
   scadaParameters_[62].min               = 0;
   scadaParameters_[62].max               = 100;
-  scadaParameters_[62].command           = OPERATION_ERROR;
-  scadaParameters_[62].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[63].id                = -1;
   scadaParameters_[63].address           = 63;
@@ -768,8 +650,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[63].coefficient       = 1;
   scadaParameters_[63].min               = 0;
   scadaParameters_[63].max               = 100;
-  scadaParameters_[63].command           = OPERATION_ERROR;
-  scadaParameters_[63].value.float_t     = 0;
   // Температура
   scadaParameters_[64].id                = CCS_PROT_DHS_TEMPERATURE_MOTOR_MODE;
   scadaParameters_[64].address           = 64;
@@ -780,8 +660,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[64].coefficient       = 1;
   scadaParameters_[64].min               = 0;
   scadaParameters_[64].max               = 2;
-  scadaParameters_[64].command           = OPERATION_ERROR;
-  scadaParameters_[64].value.float_t     = 0;
   // Защита от вибрации
   scadaParameters_[65].id                = CCS_PROT_DHS_VIBRATION_MODE;
   scadaParameters_[65].address           = 65;
@@ -792,8 +670,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[65].coefficient       = 1;
   scadaParameters_[65].min               = 0;
   scadaParameters_[65].max               = 2;
-  scadaParameters_[65].command           = OPERATION_ERROR;
-  scadaParameters_[65].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[66].id                = -1;
   scadaParameters_[66].address           = 66;
@@ -804,8 +680,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[66].coefficient       = 1;
   scadaParameters_[66].min               = 0;
   scadaParameters_[66].max               = 100;
-  scadaParameters_[66].command           = OPERATION_ERROR;
-  scadaParameters_[66].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[67].id                = -1;
   scadaParameters_[67].address           = 67;
@@ -816,8 +690,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[67].coefficient       = 1;
   scadaParameters_[67].min               = 0;
   scadaParameters_[67].max               = 100;
-  scadaParameters_[67].command           = OPERATION_ERROR;
-  scadaParameters_[67].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[68].id                = -1;
   scadaParameters_[68].address           = 68;
@@ -828,8 +700,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[68].coefficient       = 1;
   scadaParameters_[68].min               = 0;
   scadaParameters_[68].max               = 100;
-  scadaParameters_[68].command           = OPERATION_ERROR;
-  scadaParameters_[68].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[69].id                = -1;
   scadaParameters_[69].address           = 69;
@@ -840,8 +710,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[69].coefficient       = 1;
   scadaParameters_[69].min               = 0;
   scadaParameters_[69].max               = 100;
-  scadaParameters_[69].command           = OPERATION_ERROR;
-  scadaParameters_[69].value.float_t     = 0;
   // Дисбаланс тока
   scadaParameters_[70].id                = CCS_PROT_MOTOR_IMBALANCE_CURRENT_MODE;
   scadaParameters_[70].address           = 70;
@@ -852,8 +720,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[70].coefficient       = 1;
   scadaParameters_[70].min               = 0;
   scadaParameters_[70].max               = 2;
-  scadaParameters_[70].command           = OPERATION_ERROR;
-  scadaParameters_[70].value.float_t     = 0;
   // Дисбаланс напряжения
   scadaParameters_[71].id                = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_MODE;
   scadaParameters_[71].address           = 71;
@@ -864,8 +730,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[71].coefficient       = 1;
   scadaParameters_[71].min               = 0;
   scadaParameters_[71].max               = 2;
-  scadaParameters_[71].command           = OPERATION_ERROR;
-  scadaParameters_[71].value.float_t     = 0;
   // Турбинное вращение
   scadaParameters_[72].id                = CCS_PROT_MOTOR_ASYNC_MODE;
   scadaParameters_[72].address           = 72;
@@ -876,8 +740,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[72].coefficient       = 1;
   scadaParameters_[72].min               = 0;
   scadaParameters_[72].max               = 2;
-  scadaParameters_[72].command           = OPERATION_ERROR;
-  scadaParameters_[72].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[73].id                = -1;
   scadaParameters_[73].address           = 73;
@@ -888,8 +750,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[73].coefficient       = 1;
   scadaParameters_[73].min               = 0;
   scadaParameters_[73].max               = 100;
-  scadaParameters_[73].command           = OPERATION_ERROR;
-  scadaParameters_[73].value.float_t     = 0;
   // Защита по сигналу контактного манометра
   scadaParameters_[74].id                = CCS_PROT_DI_1_MODE;
   scadaParameters_[74].address           = 74;
@@ -900,8 +760,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[74].coefficient       = 1;
   scadaParameters_[74].min               = 0;
   scadaParameters_[74].max               = 2;
-  scadaParameters_[74].command           = OPERATION_ERROR;
-  scadaParameters_[74].value.float_t     = 0;
   // Защита по сигналу с дополнительного аналогового входа 1
   scadaParameters_[75].id                = CCS_PROT_AI_1_MODE;
   scadaParameters_[75].address           = 75;
@@ -912,8 +770,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[75].coefficient       = 1;
   scadaParameters_[75].min               = 0;
   scadaParameters_[75].max               = 2;
-  scadaParameters_[75].command           = OPERATION_ERROR;
-  scadaParameters_[75].value.float_t     = 0;
   // Защита по сигналу с дополнительного аналогового входа 2
   scadaParameters_[76].id                = CCS_PROT_AI_2_MODE;
   scadaParameters_[76].address           = 76;
@@ -924,8 +780,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[76].coefficient       = 1;
   scadaParameters_[76].min               = 0;
   scadaParameters_[76].max               = 2;
-  scadaParameters_[76].command           = OPERATION_ERROR;
-  scadaParameters_[76].value.float_t     = 0;
   // Активная энергия (ст)
   scadaParameters_[77].id                = 0;
   scadaParameters_[77].address           = 77;
@@ -936,8 +790,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[77].coefficient       = 1;
   scadaParameters_[77].min               = 0;
   scadaParameters_[77].max               = 9999;
-  scadaParameters_[77].command           = OPERATION_ERROR;
-  scadaParameters_[77].value.float_t     = 0;
   // Активная энергия (мл)
   scadaParameters_[78].id                = 0;
   scadaParameters_[78].address           = 78;
@@ -948,8 +800,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[78].coefficient       = 1;
   scadaParameters_[78].min               = 0;
   scadaParameters_[78].max               = 9999;
-  scadaParameters_[78].command           = OPERATION_ERROR;
-  scadaParameters_[78].value.float_t     = 0;
   // Задержка активации защиты по недогрузу
   scadaParameters_[79].id                = CCS_PROT_MOTOR_UNDERLOAD_ACTIV_DELAY;
   scadaParameters_[79].address           = 79;
@@ -960,8 +810,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[79].coefficient       = 0.1;
   scadaParameters_[79].min               = 0;
   scadaParameters_[79].max               = 60;
-  scadaParameters_[79].command           = OPERATION_ERROR;
-  scadaParameters_[79].value.float_t     = 0;
   // Задержка активации защиты по снижению питания
   scadaParameters_[80].id                = CCS_PROT_SUPPLY_UNDERVOLTAGE_ACTIV_DELAY;
   scadaParameters_[80].address           = 80;
@@ -972,8 +820,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[80].coefficient       = 0.1;
   scadaParameters_[80].min               = 0;
   scadaParameters_[80].max               = 60;
-  scadaParameters_[80].command           = OPERATION_ERROR;
-  scadaParameters_[80].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[81].id                = -1;
   scadaParameters_[81].address           = 81;
@@ -984,8 +830,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[81].coefficient       = 1;
   scadaParameters_[81].min               = 0;
   scadaParameters_[81].max               = 100;
-  scadaParameters_[81].command           = OPERATION_ERROR;
-  scadaParameters_[81].value.float_t     = 0;
   // Задержка активации защиты по сигналу с дополнительного аналогового входа 1
   scadaParameters_[82].id                = CCS_PROT_AI_1_ACTIV_DELAY;
   scadaParameters_[82].address           = 82;
@@ -996,8 +840,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[82].coefficient       = 0.1;
   scadaParameters_[82].min               = 0;
   scadaParameters_[82].max               = 60;
-  scadaParameters_[82].command           = OPERATION_ERROR;
-  scadaParameters_[82].value.float_t     = 0;
   // Задержка активации защиты по сигналу с дополнительного аналогового входа 2
   scadaParameters_[83].id                = CCS_PROT_AI_2_ACTIV_DELAY;
   scadaParameters_[83].address           = 83;
@@ -1008,8 +850,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[83].coefficient       = 0.1;
   scadaParameters_[83].min               = 0;
   scadaParameters_[83].max               = 60;
-  scadaParameters_[83].command           = OPERATION_ERROR;
-  scadaParameters_[83].value.float_t     = 0;
   // Задержка активации защиты по сигналу контактного манометра
   scadaParameters_[84].id                = CCS_PROT_DI_1_ACTIV_DELAY;
   scadaParameters_[84].address           = 84;
@@ -1020,8 +860,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[84].coefficient       = 0.1;
   scadaParameters_[84].min               = 0;
   scadaParameters_[84].max               = 1000;
-  scadaParameters_[84].command           = OPERATION_ERROR;
-  scadaParameters_[84].value.float_t     = 0;
   // Задержка активации защиты по ТМС
   scadaParameters_[85].id                = 0;
   scadaParameters_[85].address           = 85;
@@ -1032,8 +870,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[85].coefficient       = 0.1;
   scadaParameters_[85].min               = 0;
   scadaParameters_[85].max               = 1000;
-  scadaParameters_[85].command           = OPERATION_ERROR;
-  scadaParameters_[85].value.float_t     = 0;
   // Задержка срабатывания защиты по недогрузу
   scadaParameters_[86].id                = CCS_PROT_MOTOR_UNDERLOAD_TRIP_DELAY;
   scadaParameters_[86].address           = 86;
@@ -1044,8 +880,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[86].coefficient       = 1;
   scadaParameters_[86].min               = 0;
   scadaParameters_[86].max               = 45;
-  scadaParameters_[86].command           = OPERATION_ERROR;
-  scadaParameters_[86].value.float_t     = 0;
   // Задержка срабатывания защиты по перегрузу
   scadaParameters_[87].id                = CCS_PROT_MOTOR_OVERLOAD_TRIP_DELAY;
   scadaParameters_[87].address           = 87;
@@ -1056,8 +890,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[87].coefficient       = 1;
   scadaParameters_[87].min               = 0;
   scadaParameters_[87].max               = 60;
-  scadaParameters_[87].command           = OPERATION_ERROR;
-  scadaParameters_[87].value.float_t     = 0;
   // Задержка срабатывания защиты по низкому напряжению
   scadaParameters_[88].id                = CCS_PROT_SUPPLY_UNDERVOLTAGE_TRIP_DELAY;
   scadaParameters_[88].address           = 88;
@@ -1068,8 +900,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[88].coefficient       = 1;
   scadaParameters_[88].min               = 0;
   scadaParameters_[88].max               = 60;
-  scadaParameters_[88].command           = OPERATION_ERROR;
-  scadaParameters_[88].value.float_t     = 0;
   // Задержка срабатывания защиты по высокому напряжению
   scadaParameters_[89].id                = CCS_PROT_SUPPLY_OVERVOLTAGE_TRIP_DELAY;
   scadaParameters_[89].address           = 89;
@@ -1080,8 +910,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[89].coefficient       = 1;
   scadaParameters_[89].min               = 0;
   scadaParameters_[89].max               = 60;
-  scadaParameters_[89].command           = OPERATION_ERROR;
-  scadaParameters_[89].value.float_t     = 0;
   // Задержка срабатывания защиты по давлению на приёме
   scadaParameters_[90].id                = CCS_PROT_DHS_PRESSURE_INTAKE_TRIP_DELAY;
   scadaParameters_[90].address           = 90;
@@ -1092,8 +920,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[90].coefficient       = 1;
   scadaParameters_[90].min               = 0;
   scadaParameters_[90].max               = 60;
-  scadaParameters_[90].command           = OPERATION_ERROR;
-  scadaParameters_[90].value.float_t     = 0;
   // Реактивная энергия (ст)
   scadaParameters_[91].id                = 0;
   scadaParameters_[91].address           = 91;
@@ -1104,8 +930,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[91].coefficient       = 1;
   scadaParameters_[91].min               = 0;
   scadaParameters_[91].max               = 9999;
-  scadaParameters_[91].command           = OPERATION_ERROR;
-  scadaParameters_[91].value.float_t     = 0;
   // Реактивная энергия (мл)
   scadaParameters_[92].id                = 0;
   scadaParameters_[92].address           = 92;
@@ -1116,8 +940,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[92].coefficient       = 1;
   scadaParameters_[92].min               = 0;
   scadaParameters_[92].max               = 9999;
-  scadaParameters_[92].command           = OPERATION_ERROR;
-  scadaParameters_[92].value.float_t     = 0;
   // Задержка срабатывания защиты по перегреву ПЭД
   scadaParameters_[93].id                = CCS_PROT_DHS_TEMPERATURE_MOTOR_TRIP_DELAY;
   scadaParameters_[93].address           = 93;
@@ -1128,8 +950,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[93].coefficient       = 1;
   scadaParameters_[93].min               = 0;
   scadaParameters_[93].max               = 60;
-  scadaParameters_[93].command           = OPERATION_ERROR;
-  scadaParameters_[93].value.float_t     = 0;
   // Задержка срабатывания защиты по вибрации
   scadaParameters_[94].id                = CCS_PROT_DHS_VIBRATION_TRIP_DELAY;
   scadaParameters_[94].address           = 94;
@@ -1140,8 +960,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[94].coefficient       = 1;
   scadaParameters_[94].min               = 0;
   scadaParameters_[94].max               = 60;
-  scadaParameters_[94].command           = OPERATION_ERROR;
-  scadaParameters_[94].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[95].id                = -1;
   scadaParameters_[95].address           = 95;
@@ -1152,8 +970,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[95].coefficient       = 1;
   scadaParameters_[95].min               = 0;
   scadaParameters_[95].max               = 100;
-  scadaParameters_[95].command           = OPERATION_ERROR;
-  scadaParameters_[95].value.float_t     = 0;
   // Зарезервирован
   scadaParameters_[96].id                = -1;
   scadaParameters_[96].address           = 96;
@@ -1164,8 +980,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[96].coefficient       = 1;
   scadaParameters_[96].min               = 0;
   scadaParameters_[96].max               = 100;
-  scadaParameters_[96].command           = OPERATION_ERROR;
-  scadaParameters_[96].value.float_t     = 0;
   // Задержка срабатывания защиты по дисбалансу тока
   scadaParameters_[97].id                = CCS_PROT_MOTOR_IMBALANCE_CURRENT_TRIP_DELAY;
   scadaParameters_[97].address           = 97;
@@ -1176,8 +990,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[97].coefficient       = 1;
   scadaParameters_[97].min               = 0;
   scadaParameters_[97].max               = 60;
-  scadaParameters_[97].command           = OPERATION_ERROR;
-  scadaParameters_[97].value.float_t     = 0;
   // Задержка срабатывания защиты по дисбалансу напряжения
   scadaParameters_[98].id                = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_TRIP_DELAY;
   scadaParameters_[98].address           = 98;
@@ -1188,8 +1000,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[98].coefficient       = 1;
   scadaParameters_[98].min               = 0;
   scadaParameters_[98].max               = 60;
-  scadaParameters_[98].command           = OPERATION_ERROR;
-  scadaParameters_[98].value.float_t     = 0;
   // Задержка срабатывания защиты по сигналу контактного манометра
   scadaParameters_[99].id                = CCS_PROT_DI_1_TRIP_DELAY;
   scadaParameters_[99].address           = 99;
@@ -1200,8 +1010,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[99].coefficient       = 1;
   scadaParameters_[99].min               = 0;
   scadaParameters_[99].max               = 60;
-  scadaParameters_[99].command           = OPERATION_ERROR;
-  scadaParameters_[99].value.float_t     = 0;
   // Задержка срабатывания защиты по сигналу с дополнительного аналогового входа 1
   scadaParameters_[100].id               = CCS_PROT_AI_1_TRIP_DELAY;
   scadaParameters_[100].address          = 100;
@@ -1212,8 +1020,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[100].coefficient      = 1;
   scadaParameters_[100].min              = 0;
   scadaParameters_[100].max              = 120;
-  scadaParameters_[100].command          = OPERATION_ERROR;
-  scadaParameters_[100].value.float_t    = 0;
   // Задержка срабатывания защиты по сигналу с дополнительного аналогового входа 2
   scadaParameters_[101].id               = CCS_PROT_AI_2_TRIP_DELAY;
   scadaParameters_[101].address          = 101;
@@ -1224,8 +1030,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[101].coefficient      = 1;
   scadaParameters_[101].min              = 0;
   scadaParameters_[101].max              = 120;
-  scadaParameters_[101].command          = OPERATION_ERROR;
-  scadaParameters_[101].value.float_t    = 0;
   // Состав датчиков ТМСП
   scadaParameters_[102].id               = TMS_SENSOR_TMSP;
   scadaParameters_[102].address          = 102;
@@ -1236,8 +1040,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[102].coefficient      = 1;
   scadaParameters_[102].min              = 0;
   scadaParameters_[102].max              = 65535;
-  scadaParameters_[102].command          = OPERATION_ERROR;
-  scadaParameters_[102].value.float_t    = 0;
   // Команда на чтение статических параметров ТМСП
   scadaParameters_[103].id               = TMS_READ_STATIC_PARAM;
   scadaParameters_[103].address          = 103;
@@ -1248,8 +1050,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[103].coefficient      = 1;
   scadaParameters_[103].min              = 0;
   scadaParameters_[103].max              = 1;
-  scadaParameters_[103].command          = OPERATION_ERROR;
-  scadaParameters_[103].value.float_t    = 0;
   // Задержка АПВ после срабатывания защиты по недогрузу
   scadaParameters_[104].id               = CCS_PROT_MOTOR_UNDERLOAD_RESTART_DELAY;
   scadaParameters_[104].address          = 104;
@@ -1260,8 +1060,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[104].coefficient      = 1;
   scadaParameters_[104].min              = 5;
   scadaParameters_[104].max              = 3000;
-  scadaParameters_[104].command          = OPERATION_ERROR;
-  scadaParameters_[104].value.float_t    = 0;
   // Задержка АПВ после срабатывания защиты по перегрузу
   scadaParameters_[105].id               = CCS_PROT_MOTOR_OVERLOAD_RESTART_DELAY;
   scadaParameters_[105].address          = 105;
@@ -1272,8 +1070,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[105].coefficient      = 1;
   scadaParameters_[105].min              = 5;
   scadaParameters_[105].max              = 3000;
-  scadaParameters_[105].command          = OPERATION_ERROR;
-  scadaParameters_[105].value.float_t    = 0;
   // Код завода-изготовителя ТМСН
   scadaParameters_[106].id               = TMS_MANUFACTURE_TMSN;
   scadaParameters_[106].address          = 106;
@@ -1284,8 +1080,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[106].coefficient      = 1;
   scadaParameters_[106].min              = 0;
   scadaParameters_[106].max              = 9999;
-  scadaParameters_[106].command          = OPERATION_ERROR;
-  scadaParameters_[106].value.float_t    = 0;
   // Код завода-изготовителя ТМСП
   scadaParameters_[107].id               = TMS_MANUFACTURE_TMSP;
   scadaParameters_[107].address          = 107;
@@ -1296,8 +1090,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[107].coefficient      = 1;
   scadaParameters_[107].min              = 0;
   scadaParameters_[107].max              = 9999;
-  scadaParameters_[107].command          = OPERATION_ERROR;
-  scadaParameters_[107].value.float_t    = 0;
   // Задержка АПВ после срабатывания защиты по давлению на приёме
   scadaParameters_[108].id               = CCS_PROT_DHS_PRESSURE_INTAKE_RESTART_DELAY;
   scadaParameters_[108].address          = 108;
@@ -1308,8 +1100,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[108].coefficient      = 1;
   scadaParameters_[108].min              = 0;
   scadaParameters_[108].max              = 3000;
-  scadaParameters_[108].command          = OPERATION_ERROR;
-  scadaParameters_[108].value.float_t    = 0;
   // Тип конструкции ТМСН
   scadaParameters_[109].id               = TMS_CONSTRUCTION_TMSN;
   scadaParameters_[109].address          = 109;
@@ -1320,8 +1110,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[109].coefficient      = 1;
   scadaParameters_[109].min              = 0;
   scadaParameters_[109].max              = 9999;
-  scadaParameters_[109].command          = OPERATION_ERROR;
-  scadaParameters_[109].value.float_t    = 0;
   // Тип конструкции ТМСП
   scadaParameters_[110].id               = TMS_CONSTRUCTION_TMSP;
   scadaParameters_[110].address          = 110;
@@ -1332,8 +1120,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[110].coefficient      = 1;
   scadaParameters_[110].min              = 0;
   scadaParameters_[110].max              = 9999;
-  scadaParameters_[110].command          = OPERATION_ERROR;
-  scadaParameters_[110].value.float_t    = 0;
   // Задержка АПВ после срабатывания защиты по перегреву ПЭД
   scadaParameters_[111].id               = CCS_PROT_DHS_TEMPERATURE_MOTOR_RESTART_DELAY;
   scadaParameters_[111].address          = 111;
@@ -1344,8 +1130,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[111].coefficient      = 1;
   scadaParameters_[111].min              = 0;
   scadaParameters_[111].max              = 300;
-  scadaParameters_[111].command          = OPERATION_ERROR;
-  scadaParameters_[111].value.float_t    = 0;
   // Задержка АПВ после срабатывания защиты по вибрации
   scadaParameters_[112].id               = CCS_PROT_DHS_VIBRATION_RESTART_DELAY;
   scadaParameters_[112].address          = 112;
@@ -1356,8 +1140,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[112].coefficient      = 1;
   scadaParameters_[112].min              = 0;
   scadaParameters_[112].max              = 300;
-  scadaParameters_[112].command          = OPERATION_ERROR;
-  scadaParameters_[112].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[113].id               = -1;
   scadaParameters_[113].address          = 113;
@@ -1368,8 +1150,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[113].coefficient      = 1;
   scadaParameters_[113].min              = 0;
   scadaParameters_[113].max              = 100;
-  scadaParameters_[113].command          = OPERATION_ERROR;
-  scadaParameters_[113].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[114].id               = -1;
   scadaParameters_[114].address          = 114;
@@ -1380,8 +1160,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[114].coefficient      = 1;
   scadaParameters_[114].min              = 0;
   scadaParameters_[114].max              = 100;
-  scadaParameters_[114].command          = OPERATION_ERROR;
-  scadaParameters_[114].value.float_t    = 0;
   // Задержка АПВ после срабатывания защиты по дисбалансу тока
   scadaParameters_[115].id               = CCS_PROT_MOTOR_IMBALANCE_CURRENT_RESTART_DELAY;
   scadaParameters_[115].address          = 115;
@@ -1392,8 +1170,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[115].coefficient      = 1;
   scadaParameters_[115].min              = 0;
   scadaParameters_[115].max              = 300;
-  scadaParameters_[115].command          = OPERATION_ERROR;
-  scadaParameters_[115].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[116].id               = -1;
   scadaParameters_[116].address          = 116;
@@ -1404,8 +1180,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[116].coefficient      = 1;
   scadaParameters_[116].min              = 0;
   scadaParameters_[116].max              = 100;
-  scadaParameters_[116].command          = OPERATION_ERROR;
-  scadaParameters_[116].value.float_t    = 0;
   // Задержка АПВ после срабатывания защиты по сигналу контактного манометра
   scadaParameters_[117].id               = CCS_PROT_DI_1_RESTART_DELAY;
   scadaParameters_[117].address          = 117;
@@ -1416,8 +1190,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[117].coefficient      = 1;
   scadaParameters_[117].min              = 0;
   scadaParameters_[117].max              = 300;
-  scadaParameters_[117].command          = OPERATION_ERROR;
-  scadaParameters_[117].value.float_t    = 0;
   // Задержка АПВ после срабатывания защиты по сигналу с дополнительного аналогового входа 1
   scadaParameters_[118].id               = CCS_PROT_AI_1_RESTART_DELAY;
   scadaParameters_[118].address          = 118;
@@ -1428,8 +1200,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[118].coefficient      = 1;
   scadaParameters_[118].min              = 0;
   scadaParameters_[118].max              = 300;
-  scadaParameters_[118].command          = OPERATION_ERROR;
-  scadaParameters_[118].value.float_t    = 0;
   // Задержка АПВ после срабатывания защиты по сигналу с дополнительного аналогового входа 2
   scadaParameters_[119].id               = CCS_PROT_AI_2_RESTART_DELAY;
   scadaParameters_[119].address          = 119;
@@ -1440,8 +1210,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[119].coefficient      = 1;
   scadaParameters_[119].min              = 0;
   scadaParameters_[119].max              = 300;
-  scadaParameters_[119].command          = OPERATION_ERROR;
-  scadaParameters_[119].value.float_t    = 0;
   // Отказ связи с ТМСП
   scadaParameters_[120].id               = TMS_FAIL_LINK_TMSP;
   scadaParameters_[120].address          = 120;
@@ -1452,8 +1220,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[120].coefficient      = 1;
   scadaParameters_[120].min              = 0;
   scadaParameters_[120].max              = 1;
-  scadaParameters_[120].command          = OPERATION_ERROR;
-  scadaParameters_[120].value.float_t    = 0;
   // Версия программы ТМСП
   scadaParameters_[121].id               = TMS_SOFT_TMSP;
   scadaParameters_[121].address          = 121;
@@ -1464,8 +1230,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[121].coefficient      = 1;
   scadaParameters_[121].min              = 0;
   scadaParameters_[121].max              = 9999;
-  scadaParameters_[121].command          = OPERATION_ERROR;
-  scadaParameters_[121].value.float_t    = 0;
   // Число разрешённых АПВ после срабатывания защиты по недогрузу
   scadaParameters_[122].id               = CCS_PROT_MOTOR_UNDERLOAD_RESTART_LIMIT;
   scadaParameters_[122].address          = 122;
@@ -1476,8 +1240,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[122].coefficient      = 1;
   scadaParameters_[122].min              = 0;
   scadaParameters_[122].max              = 21;
-  scadaParameters_[122].command          = OPERATION_ERROR;
-  scadaParameters_[122].value.float_t    = 0;
   // Число разрешённых АПВ после срабатывания защиты по перегрузу
   scadaParameters_[123].id               = CCS_PROT_MOTOR_OVERLOAD_RESTART_LIMIT;
   scadaParameters_[123].address          = 123;
@@ -1488,8 +1250,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[123].coefficient      = 1;
   scadaParameters_[123].min              = 0;
   scadaParameters_[123].max              = 3;
-  scadaParameters_[123].command          = OPERATION_ERROR;
-  scadaParameters_[123].value.float_t    = 0;
   // Число разрешённых АПВ после срабатывания других защит
   scadaParameters_[124].id               = CCS_PROT_OTHER_RESTART_LIMIT;
   scadaParameters_[124].address          = 124;
@@ -1500,8 +1260,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[124].coefficient      = 1;
   scadaParameters_[124].min              = 0;
   scadaParameters_[124].max              = 9999;
-  scadaParameters_[124].command          = OPERATION_ERROR;
-  scadaParameters_[124].value.float_t    = 0;
   // Время обнуления счётчиков ограничения количества АПВ
   scadaParameters_[125].id               = 0;
   scadaParameters_[125].address          = 125;
@@ -1512,8 +1270,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[125].coefficient      = 1;
   scadaParameters_[125].min              = 0;
   scadaParameters_[125].max              = 9999;
-  scadaParameters_[125].command          = OPERATION_ERROR;
-  scadaParameters_[125].value.float_t    = 0;
   // Число разрешённых АПВ после срабатывания защиты по сигналу с дополнительного аналогового входа 1
   scadaParameters_[126].id               = CCS_PROT_AI_1_RESTART_LIMIT;
   scadaParameters_[126].address          = 126;
@@ -1524,8 +1280,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[126].coefficient      = 1;
   scadaParameters_[126].min              = 0;
   scadaParameters_[126].max              = 9999;
-  scadaParameters_[126].command          = OPERATION_ERROR;
-  scadaParameters_[126].value.float_t    = 0;
   // Число разрешённых АПВ после срабатывания защиты по сигналу с дополнительного аналогового входа 2
   scadaParameters_[127].id               = CCS_PROT_AI_2_RESTART_LIMIT;
   scadaParameters_[127].address          = 127;
@@ -1536,8 +1290,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[127].coefficient      = 1;
   scadaParameters_[127].min              = 0;
   scadaParameters_[127].max              = 9999;
-  scadaParameters_[127].command          = OPERATION_ERROR;
-  scadaParameters_[127].value.float_t    = 0;
   // Дата изготовления ТМСН
   scadaParameters_[128].id               = TMS_DATE_TMSN;
   scadaParameters_[128].address          = 128;
@@ -1548,8 +1300,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[128].coefficient      = 1;
   scadaParameters_[128].min              = 0;
   scadaParameters_[128].max              = 9999;
-  scadaParameters_[128].command          = OPERATION_ERROR;
-  scadaParameters_[128].value.float_t    = 0;
   // Дата изготовления ТМСП
   scadaParameters_[129].id               = TMS_DATE_TMSP;
   scadaParameters_[129].address          = 129;
@@ -1560,8 +1310,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[129].coefficient      = 1;
   scadaParameters_[129].min              = 0;
   scadaParameters_[129].max              = 9999;
-  scadaParameters_[129].command          = OPERATION_ERROR;
-  scadaParameters_[129].value.float_t    = 0;
   // Коэффициент коррекции тока Ia
   scadaParameters_[130].id               = CCS_COEF_OUT_CURRENT_1;
   scadaParameters_[130].address          = 130;
@@ -1572,8 +1320,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[130].coefficient      = 0.001;
   scadaParameters_[130].min              = 0.001;
   scadaParameters_[130].max              = 9.999;
-  scadaParameters_[130].command          = OPERATION_ERROR;
-  scadaParameters_[130].value.float_t    = 0;
   // Коэффициент коррекции тока Ib
   scadaParameters_[131].id               = CCS_COEF_OUT_CURRENT_2;
   scadaParameters_[131].address          = 131;
@@ -1584,8 +1330,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[131].coefficient      = 0.001;
   scadaParameters_[131].min              = 0.001;
   scadaParameters_[131].max              = 9.999;
-  scadaParameters_[131].command          = OPERATION_ERROR;
-  scadaParameters_[131].value.float_t    = 0;
   // Коэффициент коррекции тока Ic
   scadaParameters_[132].id               = CCS_COEF_OUT_CURRENT_3;
   scadaParameters_[132].address          = 132;
@@ -1596,8 +1340,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[132].coefficient      = 0.001;
   scadaParameters_[132].min              = 0.001;
   scadaParameters_[132].max              = 9.999;
-  scadaParameters_[132].command          = OPERATION_ERROR;
-  scadaParameters_[132].value.float_t    = 0;
   // Коэффициент коррекции сопротивления изоляции
   scadaParameters_[133].id               = CCS_COEF_RESISTANCE_ISOLATION;
   scadaParameters_[133].address          = 133;
@@ -1608,8 +1350,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[133].coefficient      = 0.001;
   scadaParameters_[133].min              = 0.001;
   scadaParameters_[133].max              = 9.999;
-  scadaParameters_[133].command          = OPERATION_ERROR;
-  scadaParameters_[133].value.float_t    = 0;
   // Коэффициент коррекции напряжения Ua
   scadaParameters_[134].id               = CCS_COEF_VOLTAGE_IN_A;
   scadaParameters_[134].address          = 134;
@@ -1620,8 +1360,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[134].coefficient      = 0.001;
   scadaParameters_[134].min              = 0.001;
   scadaParameters_[134].max              = 9.999;
-  scadaParameters_[134].command          = OPERATION_ERROR;
-  scadaParameters_[134].value.float_t    = 0;
   // Коэффициент коррекции напряжения Ub
   scadaParameters_[135].id               = CCS_COEF_VOLTAGE_IN_B;
   scadaParameters_[135].address          = 135;
@@ -1632,8 +1370,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[135].coefficient      = 0.001;
   scadaParameters_[135].min              = 0.001;
   scadaParameters_[135].max              = 9.999;
-  scadaParameters_[135].command          = OPERATION_ERROR;
-  scadaParameters_[135].value.float_t    = 0;
   // Коэффициент коррекции напряжения Uc
   scadaParameters_[136].id               = CCS_COEF_VOLTAGE_IN_C;
   scadaParameters_[136].address          = 136;
@@ -1644,8 +1380,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[136].coefficient      = 0.001;
   scadaParameters_[136].min              = 0.001;
   scadaParameters_[136].max              = 9.999;
-  scadaParameters_[136].command          = OPERATION_ERROR;
-  scadaParameters_[136].value.float_t    = 0;
   // Тип двигателя
   scadaParameters_[137].id               = CCS_MOTOR_TYPE;
   scadaParameters_[137].address          = 137;
@@ -1656,8 +1390,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[137].coefficient      = 1;
   scadaParameters_[137].min              = 0;
   scadaParameters_[137].max              = 255;
-  scadaParameters_[137].command          = OPERATION_ERROR;
-  scadaParameters_[137].value.float_t    = 0;
   // Число пар полюсов ПВЭД
   scadaParameters_[138].id               = VSD_MOTOR_POLES;
   scadaParameters_[138].address          = 138;
@@ -1668,8 +1400,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[138].coefficient      = 1;
   scadaParameters_[138].min              = 1;
   scadaParameters_[138].max              = 2;
-  scadaParameters_[138].command          = OPERATION_ERROR;
-  scadaParameters_[138].value.float_t    = 0;
   // Версия программы КПЧ
   scadaParameters_[139].id               = CCS_VERSION_SW_VSD;
   scadaParameters_[139].address          = 139;
@@ -1680,8 +1410,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[139].coefficient      = 1;
   scadaParameters_[139].min              = 0;
   scadaParameters_[139].max              = 9999;
-  scadaParameters_[139].command          = OPERATION_ERROR;
-  scadaParameters_[139].value.float_t    = 0;
   // Версия программы ТМСН
   scadaParameters_[140].id               = TMS_SOFT_TMSN;
   scadaParameters_[140].address          = 140;
@@ -1692,8 +1420,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[140].coefficient      = 1;
   scadaParameters_[140].min              = 0;
   scadaParameters_[140].max              = 9999;
-  scadaParameters_[140].command          = OPERATION_ERROR;
-  scadaParameters_[140].value.float_t    = 0;
   // Тип КСУ (производитель и модификация контроллера)
   scadaParameters_[141].id               = CCS_TYPE_CCS;
   scadaParameters_[141].address          = 141;
@@ -1704,8 +1430,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[141].coefficient      = 1;
   scadaParameters_[141].min              = 0;
   scadaParameters_[141].max              = 9999;
-  scadaParameters_[141].command          = OPERATION_ERROR;
-  scadaParameters_[141].value.float_t    = 0;
   // Код предприятия-изготовителя
   scadaParameters_[142].id               = CCS_CODE_PRODUCTION_CCS;
   scadaParameters_[142].address          = 142;
@@ -1716,8 +1440,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[142].coefficient      = 1;
   scadaParameters_[142].min              = 0;
   scadaParameters_[142].max              = 9999;
-  scadaParameters_[142].command          = OPERATION_ERROR;
-  scadaParameters_[142].value.float_t    = 0;
   // Дата генерации ПО (ГГ.ММ)
   scadaParameters_[143].id               = 0;
   scadaParameters_[143].address          = 143;
@@ -1728,8 +1450,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[143].coefficient      = 1;
   scadaParameters_[143].min              = 0;
   scadaParameters_[143].max              = 9999;
-  scadaParameters_[143].command          = OPERATION_ERROR;
-  scadaParameters_[143].value.float_t    = 0;
   // Дата генерации ПО (DD.00)
   scadaParameters_[144].id               = 0;
   scadaParameters_[144].address          = 144;
@@ -1740,8 +1460,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[144].coefficient      = 1;
   scadaParameters_[144].min              = 0;
   scadaParameters_[144].max              = 9999;
-  scadaParameters_[144].command          = OPERATION_ERROR;
-  scadaParameters_[144].value.float_t    = 0;
   // Заводской номер КСУ
   scadaParameters_[145].id               = 0;
   scadaParameters_[145].address          = 145;
@@ -1752,8 +1470,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[145].coefficient      = 1;
   scadaParameters_[145].min              = 0;
   scadaParameters_[145].max              = 9999;
-  scadaParameters_[145].command          = OPERATION_ERROR;
-  scadaParameters_[145].value.float_t    = 0;
   // Заводской номер КСУ
   scadaParameters_[146].id               = 0;
   scadaParameters_[146].address          = 146;
@@ -1764,8 +1480,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[146].coefficient      = 1;
   scadaParameters_[146].min              = 0;
   scadaParameters_[146].max              = 9999;
-  scadaParameters_[146].command          = OPERATION_ERROR;
-  scadaParameters_[146].value.float_t    = 0;
   // Заводской номер КСУ
   scadaParameters_[147].id               = 0;
   scadaParameters_[147].address          = 147;
@@ -1776,8 +1490,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[147].coefficient      = 1;
   scadaParameters_[147].min              = 0;
   scadaParameters_[147].max              = 9999;
-  scadaParameters_[147].command          = OPERATION_ERROR;
-  scadaParameters_[147].value.float_t    = 0;
   // Заводской номер КСУ
   scadaParameters_[148].id               = 0;
   scadaParameters_[148].address          = 148;
@@ -1788,8 +1500,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[148].coefficient      = 1;
   scadaParameters_[148].min              = 0;
   scadaParameters_[148].max              = 9999;
-  scadaParameters_[148].command          = OPERATION_ERROR;
-  scadaParameters_[148].value.float_t    = 0;
   // Дата изготовления КСУ (ГГ.ММ)
   scadaParameters_[149].id               = 0;
   scadaParameters_[149].address          = 149;
@@ -1800,8 +1510,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[149].coefficient      = 1;
   scadaParameters_[149].min              = 0;
   scadaParameters_[149].max              = 9999;
-  scadaParameters_[149].command          = OPERATION_ERROR;
-  scadaParameters_[149].value.float_t    = 0;
   // Дата изготовления КСУ (ДД.00)
   scadaParameters_[150].id               = 0;
   scadaParameters_[150].address          = 150;
@@ -1812,8 +1520,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[150].coefficient      = 1;
   scadaParameters_[150].min              = 0;
   scadaParameters_[150].max              = 9999;
-  scadaParameters_[150].command          = OPERATION_ERROR;
-  scadaParameters_[150].value.float_t    = 0;
   // Номер версии ПО
   scadaParameters_[151].id               = CCS_VERSION_SW_CCS;
   scadaParameters_[151].address          = 151;
@@ -1824,8 +1530,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[151].coefficient      = 1;
   scadaParameters_[151].min              = 0;
   scadaParameters_[151].max              = 9999;
-  scadaParameters_[151].command          = OPERATION_ERROR;
-  scadaParameters_[151].value.float_t    = 0;
   // Дата установки последней версии  ПО КСУ (ГГ.ММ)
   scadaParameters_[152].id               = 0;
   scadaParameters_[152].address          = 152;
@@ -1836,8 +1540,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[152].coefficient      = 1;
   scadaParameters_[152].min              = 0;
   scadaParameters_[152].max              = 9999;
-  scadaParameters_[152].command          = OPERATION_ERROR;
-  scadaParameters_[152].value.float_t    = 0;
   // Дата установки последней версии  ПО КСУ (ДД.00)
   scadaParameters_[153].id               = 0;
   scadaParameters_[153].address          = 153;
@@ -1848,8 +1550,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[153].coefficient      = 1;
   scadaParameters_[153].min              = 0;
   scadaParameters_[153].max              = 9999;
-  scadaParameters_[153].command          = OPERATION_ERROR;
-  scadaParameters_[153].value.float_t    = 0;
   // Тип СУ
   scadaParameters_[154].id               = CCS_TYPE_SU;
   scadaParameters_[154].address          = 154;
@@ -1860,8 +1560,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[154].coefficient      = 1;
   scadaParameters_[154].min              = 0;
   scadaParameters_[154].max              = 9999;
-  scadaParameters_[154].command          = OPERATION_ERROR;
-  scadaParameters_[154].value.float_t    = 0;
   // Код завода-изготовителя СУ
   scadaParameters_[155].id               = CCS_CODE_PRODUCTION_SU;
   scadaParameters_[155].address          = 155;
@@ -1872,8 +1570,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[155].coefficient      = 1;
   scadaParameters_[155].min              = 0;
   scadaParameters_[155].max              = 9999;
-  scadaParameters_[155].command          = OPERATION_ERROR;
-  scadaParameters_[155].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[156].id               = -1;
   scadaParameters_[156].address          = 156;
@@ -1884,8 +1580,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[156].coefficient      = 1;
   scadaParameters_[156].min              = 0;
   scadaParameters_[156].max              = 100;
-  scadaParameters_[156].command          = OPERATION_ERROR;
-  scadaParameters_[156].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[157].id               = -1;
   scadaParameters_[157].address          = 157;
@@ -1896,8 +1590,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[157].coefficient      = 1;
   scadaParameters_[157].min              = 0;
   scadaParameters_[157].max              = 100;
-  scadaParameters_[157].command          = OPERATION_ERROR;
-  scadaParameters_[157].value.float_t    = 0;
   // Серийный номер СУ для СНГ
   scadaParameters_[158].id               = 0;
   scadaParameters_[158].address          = 158;
@@ -1908,8 +1600,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[158].coefficient      = 1;
   scadaParameters_[158].min              = 0;
   scadaParameters_[158].max              = 65535;
-  scadaParameters_[158].command          = OPERATION_ERROR;
-  scadaParameters_[158].value.float_t    = 0;
   // Серийный номер СУ для СНГ
   scadaParameters_[159].id               = 0;
   scadaParameters_[159].address          = 159;
@@ -1920,8 +1610,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[159].coefficient      = 1;
   scadaParameters_[159].min              = 0;
   scadaParameters_[159].max              = 65535;
-  scadaParameters_[159].command          = OPERATION_ERROR;
-  scadaParameters_[159].value.float_t    = 0;
   // Серийный номер СУ для СНГ
   scadaParameters_[160].id               = 0;
   scadaParameters_[160].address          = 160;
@@ -1932,8 +1620,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[160].coefficient      = 1;
   scadaParameters_[160].min              = 0;
   scadaParameters_[160].max              = 65535;
-  scadaParameters_[160].command          = OPERATION_ERROR;
-  scadaParameters_[160].value.float_t    = 0;
   // Серийный номер СУ для СНГ
   scadaParameters_[161].id               = 0;
   scadaParameters_[161].address          = 161;
@@ -1944,8 +1630,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[161].coefficient      = 1;
   scadaParameters_[161].min              = 1;
   scadaParameters_[161].max              = 65535;
-  scadaParameters_[161].command          = OPERATION_ERROR;
-  scadaParameters_[161].value.float_t    = 0;
   // Дата изготовления СУ (ГГ.ММ)
   scadaParameters_[162].id               = 0;
   scadaParameters_[162].address          = 162;
@@ -1956,8 +1640,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[162].coefficient      = 1;
   scadaParameters_[162].min              = 0;
   scadaParameters_[162].max              = 9999;
-  scadaParameters_[162].command          = OPERATION_ERROR;
-  scadaParameters_[162].value.float_t    = 0;
   // Дата изготовления СУ (ДД.00)
   scadaParameters_[163].id               = 0;
   scadaParameters_[163].address          = 163;
@@ -1968,8 +1650,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[163].coefficient      = 1;
   scadaParameters_[163].min              = 0;
   scadaParameters_[163].max              = 9999;
-  scadaParameters_[163].command          = OPERATION_ERROR;
-  scadaParameters_[163].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[164].id               = -1;
   scadaParameters_[164].address          = 164;
@@ -1980,8 +1660,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[164].coefficient      = 1;
   scadaParameters_[164].min              = 0;
   scadaParameters_[164].max              = 100;
-  scadaParameters_[164].command          = OPERATION_ERROR;
-  scadaParameters_[164].value.float_t    = 0;
   // Номер ЦДНГ
   scadaParameters_[165].id               = CCS_NUMBER_CDNG;
   scadaParameters_[165].address          = 165;
@@ -1992,8 +1670,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[165].coefficient      = 1;
   scadaParameters_[165].min              = 1;
   scadaParameters_[165].max              = 9999;
-  scadaParameters_[165].command          = OPERATION_ERROR;
-  scadaParameters_[165].value.float_t    = 0;
   // Номер куста
   scadaParameters_[166].id               = CCS_NUMBER_BUSH;
   scadaParameters_[166].address          = 166;
@@ -2004,8 +1680,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[166].coefficient      = 1;
   scadaParameters_[166].min              = 0;
   scadaParameters_[166].max              = 9999;
-  scadaParameters_[166].command          = OPERATION_ERROR;
-  scadaParameters_[166].value.float_t    = 0;
   // Номер скважины
   scadaParameters_[167].id               = CCS_NUMBER_WELL;
   scadaParameters_[167].address          = 167;
@@ -2016,8 +1690,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[167].coefficient      = 1;
   scadaParameters_[167].min              = 0;
   scadaParameters_[167].max              = 9999;
-  scadaParameters_[167].command          = OPERATION_ERROR;
-  scadaParameters_[167].value.float_t    = 0;
   // Код скорости протокола передачи данных
   scadaParameters_[168].id               = 0;
   scadaParameters_[168].address          = 168;
@@ -2028,8 +1700,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[168].coefficient      = 1;
   scadaParameters_[168].min              = 0;
   scadaParameters_[168].max              = 9999;
-  scadaParameters_[168].command          = OPERATION_ERROR;
-  scadaParameters_[168].value.float_t    = 0;
   // Номер версии протокола
   scadaParameters_[169].id               = 0;
   scadaParameters_[169].address          = 169;
@@ -2040,8 +1710,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[169].coefficient      = 1;
   scadaParameters_[169].min              = 0;
   scadaParameters_[169].max              = 9999;
-  scadaParameters_[169].command          = OPERATION_ERROR;
-  scadaParameters_[169].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[170].id               = -1;
   scadaParameters_[170].address          = 170;
@@ -2052,8 +1720,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[170].coefficient      = 1;
   scadaParameters_[170].min              = 0;
   scadaParameters_[170].max              = 100;
-  scadaParameters_[170].command          = OPERATION_ERROR;
-  scadaParameters_[170].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[171].id               = -1;
   scadaParameters_[171].address          = 171;
@@ -2064,8 +1730,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[171].coefficient      = 1;
   scadaParameters_[171].min              = 0;
   scadaParameters_[171].max              = 100;
-  scadaParameters_[171].command          = OPERATION_ERROR;
-  scadaParameters_[171].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[172].id               = -1;
   scadaParameters_[172].address          = 172;
@@ -2076,8 +1740,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[172].coefficient      = 1;
   scadaParameters_[172].min              = 0;
   scadaParameters_[172].max              = 100;
-  scadaParameters_[172].command          = OPERATION_ERROR;
-  scadaParameters_[172].value.float_t    = 0;
   // Причина попытки последнего пуска
   scadaParameters_[173].id               = CCS_LAST_RUN_REASON;
   scadaParameters_[173].address          = 173;
@@ -2088,8 +1750,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[173].coefficient      = 1;
   scadaParameters_[173].min              = 0;
   scadaParameters_[173].max              = 9999;
-  scadaParameters_[173].command          = OPERATION_ERROR;
-  scadaParameters_[173].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[174].id               = -1;
   scadaParameters_[174].address          = 174;
@@ -2100,8 +1760,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[174].coefficient      = 1;
   scadaParameters_[174].min              = 0;
   scadaParameters_[174].max              = 100;
-  scadaParameters_[174].command          = OPERATION_ERROR;
-  scadaParameters_[174].value.float_t    = 0;
   // Сброс счётчиков
   scadaParameters_[175].id               = CCS_CMD_COUNTER_ALL_RESET;
   scadaParameters_[175].address          = 175;
@@ -2112,8 +1770,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[175].coefficient      = 1;
   scadaParameters_[175].min              = 0;
   scadaParameters_[175].max              = 1;
-  scadaParameters_[175].command          = OPERATION_ERROR;
-  scadaParameters_[175].value.float_t    = 0;
   // Физический минимум дополнительного аналогового входа 1
   scadaParameters_[176].id               = CCS_AI_1_MINIMUM;
   scadaParameters_[176].address          = 176;
@@ -2124,8 +1780,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[176].coefficient      = 0.1;
   scadaParameters_[176].min              = 0;
   scadaParameters_[176].max              = 9999;
-  scadaParameters_[176].command          = OPERATION_ERROR;
-  scadaParameters_[176].value.float_t    = 0;
   // Физический максимум дополнительного аналогового входа 1
   scadaParameters_[177].id               = CCS_AI_1_MAXIMUM;
   scadaParameters_[177].address          = 177;
@@ -2136,8 +1790,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[177].coefficient      = 0.1;
   scadaParameters_[177].min              = 0;
   scadaParameters_[177].max              = 9999;
-  scadaParameters_[177].command          = OPERATION_ERROR;
-  scadaParameters_[177].value.float_t    = 0;
   // Физический минимум дополнительного аналогового входа 2
   scadaParameters_[178].id               = CCS_AI_2_MINIMUM;
   scadaParameters_[178].address          = 178;
@@ -2148,8 +1800,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[178].coefficient      = 0.1;
   scadaParameters_[178].min              = 0;
   scadaParameters_[178].max              = 9999;
-  scadaParameters_[178].command          = OPERATION_ERROR;
-  scadaParameters_[178].value.float_t    = 0;
   // Физический максимум дополнительного аналогового входа 2
   scadaParameters_[179].id               = CCS_AI_2_MAXIMUM;
   scadaParameters_[179].address          = 179;
@@ -2160,8 +1810,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[179].coefficient      = 0.1;
   scadaParameters_[179].min              = 0;
   scadaParameters_[179].max              = 9999;
-  scadaParameters_[179].command          = OPERATION_ERROR;
-  scadaParameters_[179].value.float_t    = 0;
   // Температура в контроллере
   scadaParameters_[180].id               = CCS_TEMPERATURE_CCS;
   scadaParameters_[180].address          = 180;
@@ -2172,8 +1820,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[180].coefficient      = 1;
   scadaParameters_[180].min              = 0;
   scadaParameters_[180].max              = 9999;
-  scadaParameters_[180].command          = OPERATION_ERROR;
-  scadaParameters_[180].value.float_t    = 0;
   // Поддерживаемый параметр
   scadaParameters_[181].id               = CCS_RGM_MAINTENANCE_PARAM_TYPE;
   scadaParameters_[181].address          = 181;
@@ -2184,8 +1830,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[181].coefficient      = 1;
   scadaParameters_[181].min              = 0;
   scadaParameters_[181].max              = 9;
-  scadaParameters_[181].command          = OPERATION_ERROR;
-  scadaParameters_[181].value.float_t    = 0;
   // Номинальное напряжение ПЭД
   scadaParameters_[182].id               = VSD_MOTOR_VOLTAGE;
   scadaParameters_[182].address          = 182;
@@ -2196,8 +1840,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[182].coefficient      = 1;
   scadaParameters_[182].min              = 0;
   scadaParameters_[182].max              = 5000;
-  scadaParameters_[182].command          = OPERATION_ERROR;
-  scadaParameters_[182].value.float_t    = 0;
   // Номинальный ток ПЭД
   scadaParameters_[183].id               = VSD_MOTOR_CURRENT;
   scadaParameters_[183].address          = 183;
@@ -2208,8 +1850,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[183].coefficient      = 0.1;
   scadaParameters_[183].min              = 0;
   scadaParameters_[183].max              = 200;
-  scadaParameters_[183].command          = OPERATION_ERROR;
-  scadaParameters_[183].value.float_t    = 0;
   // Номинальная мощность ПЭД
   scadaParameters_[184].id               = VSD_MOTOR_POWER;
   scadaParameters_[184].address          = 184;
@@ -2220,8 +1860,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[184].coefficient      = 1;
   scadaParameters_[184].min              = 0;
   scadaParameters_[184].max              = 4000;
-  scadaParameters_[184].command          = OPERATION_ERROR;
-  scadaParameters_[184].value.float_t    = 0;
   // Номинальный коэффициент мощности
   scadaParameters_[185].id               = VSD_MOTOR_COS_PHI;
   scadaParameters_[185].address          = 185;
@@ -2232,8 +1870,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[185].coefficient      = 0.001;
   scadaParameters_[185].min              = 0;
   scadaParameters_[185].max              = 1;
-  scadaParameters_[185].command          = OPERATION_ERROR;
-  scadaParameters_[185].value.float_t    = 0;
   // Производительность насоса
   scadaParameters_[186].id               = CCS_PUMP_CAPACITY;
   scadaParameters_[186].address          = 186;
@@ -2244,8 +1880,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[186].coefficient      = 1;
   scadaParameters_[186].min              = 0;
   scadaParameters_[186].max              = 2000;
-  scadaParameters_[186].command          = OPERATION_ERROR;
-  scadaParameters_[186].value.float_t    = 0;
   // Напор насоса
   scadaParameters_[187].id               = CCS_PUMP_HEAD;
   scadaParameters_[187].address          = 187;
@@ -2256,8 +1890,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[187].coefficient      = 1;
   scadaParameters_[187].min              = 0;
   scadaParameters_[187].max              = 5000;
-  scadaParameters_[187].command          = OPERATION_ERROR;
-  scadaParameters_[187].value.float_t    = 0;
   // Напряжение отпайки ТМПН
   scadaParameters_[188].id               = CCS_TRANS_VOLTAGE_TAP_OFF;
   scadaParameters_[188].address          = 188;
@@ -2268,8 +1900,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[188].coefficient      = 1;
   scadaParameters_[188].min              = 300;
   scadaParameters_[188].max              = 3500;
-  scadaParameters_[188].command          = OPERATION_ERROR;
-  scadaParameters_[188].value.float_t    = 0;
   // Номинальное значение аналогового входа 1
   scadaParameters_[189].id               = CCS_PROT_AI_1_PARAMETER;
   scadaParameters_[189].address          = 189;
@@ -2280,8 +1910,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[189].coefficient      = 0.1;
   scadaParameters_[189].min              = 0;
   scadaParameters_[189].max              = 9999;
-  scadaParameters_[189].command          = OPERATION_ERROR;
-  scadaParameters_[189].value.float_t    = 0;
   // Номинальное значение аналогового входа 2
   scadaParameters_[190].id               = CCS_PROT_AI_2_PARAMETER;
   scadaParameters_[190].address          = 190;
@@ -2292,8 +1920,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[190].coefficient      = 0.1;
   scadaParameters_[190].min              = 0;
   scadaParameters_[190].max              = 9999;
-  scadaParameters_[190].command          = OPERATION_ERROR;
-  scadaParameters_[190].value.float_t    = 0;
   // Последнее включение ПЭД (ГГ.ММ)
   scadaParameters_[191].id               = 0;
   scadaParameters_[191].address          = 191;
@@ -2304,8 +1930,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[191].coefficient      = 1;
   scadaParameters_[191].min              = 0;
   scadaParameters_[191].max              = 9999;
-  scadaParameters_[191].command          = OPERATION_ERROR;
-  scadaParameters_[191].value.float_t    = 0;
   // Последнее включение ПЭД (ДД.ЧЧ)
   scadaParameters_[192].id               = 0;
   scadaParameters_[192].address          = 192;
@@ -2316,8 +1940,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[192].coefficient      = 1;
   scadaParameters_[192].min              = 0;
   scadaParameters_[192].max              = 9999;
-  scadaParameters_[192].command          = OPERATION_ERROR;
-  scadaParameters_[192].value.float_t    = 0;
   // Последнее включение ПЭД (ММ.СС)
   scadaParameters_[193].id               = 0;
   scadaParameters_[193].address          = 193;
@@ -2328,8 +1950,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[193].coefficient      = 1;
   scadaParameters_[193].min              = 0;
   scadaParameters_[193].max              = 9999;
-  scadaParameters_[193].command          = OPERATION_ERROR;
-  scadaParameters_[193].value.float_t    = 0;
   // Последнее отключение ПЭД (ГГ.ММ)
   scadaParameters_[194].id               = 0;
   scadaParameters_[194].address          = 194;
@@ -2340,8 +1960,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[194].coefficient      = 1;
   scadaParameters_[194].min              = 0;
   scadaParameters_[194].max              = 9999;
-  scadaParameters_[194].command          = OPERATION_ERROR;
-  scadaParameters_[194].value.float_t    = 0;
   // Последнее отключение ПЭД (ДД.ЧЧ)
   scadaParameters_[195].id               = 0;
   scadaParameters_[195].address          = 195;
@@ -2352,8 +1970,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[195].coefficient      = 1;
   scadaParameters_[195].min              = 0;
   scadaParameters_[195].max              = 9999;
-  scadaParameters_[195].command          = OPERATION_ERROR;
-  scadaParameters_[195].value.float_t    = 0;
   // Последнее отключение ПЭД (ММ.СС)
   scadaParameters_[196].id               = 0;
   scadaParameters_[196].address          = 196;
@@ -2364,8 +1980,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[196].coefficient      = 1;
   scadaParameters_[196].min              = 0;
   scadaParameters_[196].max              = 9999;
-  scadaParameters_[196].command          = OPERATION_ERROR;
-  scadaParameters_[196].value.float_t    = 0;
   // Причина последнего отключения
   scadaParameters_[197].id               = CCS_LAST_STOP_REASON;
   scadaParameters_[197].address          = 197;
@@ -2376,8 +1990,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[197].coefficient      = 1;
   scadaParameters_[197].min              = 0;
   scadaParameters_[197].max              = 9999;
-  scadaParameters_[197].command          = OPERATION_ERROR;
-  scadaParameters_[197].value.float_t    = 0;
   // Ток холостого хода ПЭД
   scadaParameters_[198].id               = VSD_UF_UHH;
   scadaParameters_[198].address          = 198;
@@ -2388,8 +2000,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[198].coefficient      = 0.1;
   scadaParameters_[198].min              = 0;
   scadaParameters_[198].max              = 1000;
-  scadaParameters_[198].command          = OPERATION_ERROR;
-  scadaParameters_[198].value.float_t    = 0;
   // Глубина спуска УЭЦН
   scadaParameters_[199].id               = CCS_DEPTH;
   scadaParameters_[199].address          = 199;
@@ -2400,8 +2010,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[199].coefficient      = 1;
   scadaParameters_[199].min              = 0;
   scadaParameters_[199].max              = 9999;
-  scadaParameters_[199].command          = OPERATION_ERROR;
-  scadaParameters_[199].value.float_t    = 0;
   // Адрес СУ в системе телемеханики
   scadaParameters_[200].id               = CCS_SCADA_ADDRESS;
   scadaParameters_[200].address          = 200;
@@ -2412,8 +2020,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[200].coefficient      = 1;
   scadaParameters_[200].min              = 0;
   scadaParameters_[200].max              = 99;
-  scadaParameters_[200].command          = OPERATION_ERROR;
-  scadaParameters_[200].value.float_t    = 0;
   // Счётчик общего количества включений ПЭД
   scadaParameters_[201].id               = CCS_COUNT_START;
   scadaParameters_[201].address          = 201;
@@ -2424,8 +2030,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[201].coefficient      = 1;
   scadaParameters_[201].min              = 0;
   scadaParameters_[201].max              = 9999;
-  scadaParameters_[201].command          = OPERATION_ERROR;
-  scadaParameters_[201].value.float_t    = 0;
   // Поддерживаемое значение аналогового входа режима поддержания параметра
   scadaParameters_[202].id               = CCS_RGM_MAINTENANCE_PARAM_SETPOINT_ANALOG_IN;
   scadaParameters_[202].address          = 202;
@@ -2436,8 +2040,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[202].coefficient      = 1;
   scadaParameters_[202].min              = 0;
   scadaParameters_[202].max              = 9999;
-  scadaParameters_[202].command          = OPERATION_ERROR;
-  scadaParameters_[202].value.float_t    = 0;
   // Счётчик количества отключений ПЭД по недогрузу
   scadaParameters_[203].id               = CCS_PROT_UNDERLOAD_COUNT_STOP;
   scadaParameters_[203].address          = 203;
@@ -2448,8 +2050,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[203].coefficient      = 1;
   scadaParameters_[203].min              = 0;
   scadaParameters_[203].max              = 9999;
-  scadaParameters_[203].command          = OPERATION_ERROR;
-  scadaParameters_[203].value.float_t    = 0;
   // Счётчик количества отключений ПЭД по перегрузу
   scadaParameters_[204].id               = CCS_PROT_OVERLOAD_COUNT_STOP;
   scadaParameters_[204].address          = 204;
@@ -2460,8 +2060,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[204].coefficient      = 1;
   scadaParameters_[204].min              = 0;
   scadaParameters_[204].max              = 9999;
-  scadaParameters_[204].command          = OPERATION_ERROR;
-  scadaParameters_[204].value.float_t    = 0;
   // Счётчик количества отключений ПЭД по другим защитам
   scadaParameters_[205].id               = CCS_PROT_OTHER_COUNT_STOP;
   scadaParameters_[205].address          = 205;
@@ -2472,8 +2070,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[205].coefficient      = 1;
   scadaParameters_[205].min              = 0;
   scadaParameters_[205].max              = 9999;
-  scadaParameters_[205].command          = OPERATION_ERROR;
-  scadaParameters_[205].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[206].id               = -1;
   scadaParameters_[206].address          = 206;
@@ -2484,8 +2080,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[206].coefficient      = 1;
   scadaParameters_[206].min              = 0;
   scadaParameters_[206].max              = 100;
-  scadaParameters_[206].command          = OPERATION_ERROR;
-  scadaParameters_[206].value.float_t    = 0;
   // Значение поддерживаемого тока
   scadaParameters_[207].id               = CCS_RGM_MAINTENANCE_PARAM_SETPOINT_CURRENT;
   scadaParameters_[207].address          = 207;
@@ -2496,8 +2090,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[207].coefficient      = 0.1;
   scadaParameters_[207].min              = 0;
   scadaParameters_[207].max              = 1000;
-  scadaParameters_[207].command          = OPERATION_ERROR;
-  scadaParameters_[207].value.float_t    = 0;
   // Общее время работы ПЭД
   scadaParameters_[208].id               = CCS_GENERAL_RUN_DATE_TIME;
   scadaParameters_[208].address          = 208;
@@ -2508,8 +2100,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[208].coefficient      = 1;
   scadaParameters_[208].min              = 0;
   scadaParameters_[208].max              = 9999;
-  scadaParameters_[208].command          = OPERATION_ERROR;
-  scadaParameters_[208].value.float_t    = 0;
   // Общее время простоя ПЭД
   scadaParameters_[209].id               = CCS_GENERAL_STOP_DATE_TIME;
   scadaParameters_[209].address          = 209;
@@ -2520,8 +2110,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[209].coefficient      = 1;
   scadaParameters_[209].min              = 0;
   scadaParameters_[209].max              = 9999;
-  scadaParameters_[209].command          = OPERATION_ERROR;
-  scadaParameters_[209].value.float_t    = 0;
   // Наработка с момента последнего пуска
   scadaParameters_[210].id               = CCS_RUN_TIME;
   scadaParameters_[210].address          = 210;
@@ -2532,8 +2120,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[210].coefficient      = 1;
   scadaParameters_[210].min              = 0;
   scadaParameters_[210].max              = 9999;
-  scadaParameters_[210].command          = OPERATION_ERROR;
-  scadaParameters_[210].value.float_t    = 0;
   // Время до изменения режима работы периодического режима
   scadaParameters_[211].id               = 0;
   scadaParameters_[211].address          = 211;
@@ -2544,8 +2130,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[211].coefficient      = 1;
   scadaParameters_[211].min              = 0;
   scadaParameters_[211].max              = 9999;
-  scadaParameters_[211].command          = OPERATION_ERROR;
-  scadaParameters_[211].value.float_t    = 0;
   // Время до запуска ПЭД по задержке АПВ
   scadaParameters_[212].id               = CCS_RESTART_TIMER;
   scadaParameters_[212].address          = 212;
@@ -2556,8 +2140,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[212].coefficient      = 1;
   scadaParameters_[212].min              = 0;
   scadaParameters_[212].max              = 9999;
-  scadaParameters_[212].command          = OPERATION_ERROR;
-  scadaParameters_[212].value.float_t    = 0;
   // Время простоя ПЭД с момента последней остановки
   scadaParameters_[213].id               = CCS_STOP_TIME;
   scadaParameters_[213].address          = 213;
@@ -2568,8 +2150,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[213].coefficient      = 1;
   scadaParameters_[213].min              = 0;
   scadaParameters_[213].max              = 9999;
-  scadaParameters_[213].command          = OPERATION_ERROR;
-  scadaParameters_[213].value.float_t    = 0;
   // Дата/время КСУ (ГГ.ММ)
   scadaParameters_[214].id               = 0;
   scadaParameters_[214].address          = 214;
@@ -2580,8 +2160,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[214].coefficient      = 1;
   scadaParameters_[214].min              = 0;
   scadaParameters_[214].max              = 9999;
-  scadaParameters_[214].command          = OPERATION_ERROR;
-  scadaParameters_[214].value.float_t    = 0;
   // Дата/время КСУ (ДД.ЧЧ)
   scadaParameters_[215].id               = 0;
   scadaParameters_[215].address          = 215;
@@ -2592,8 +2170,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[215].coefficient      = 1;
   scadaParameters_[215].min              = 0;
   scadaParameters_[215].max              = 9999;
-  scadaParameters_[215].command          = OPERATION_ERROR;
-  scadaParameters_[215].value.float_t    = 0;
   // Дата/время КСУ (ММ.СС)
   scadaParameters_[216].id               = 0;
   scadaParameters_[216].address          = 216;
@@ -2604,8 +2180,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[216].coefficient      = 1;
   scadaParameters_[216].min              = 0;
   scadaParameters_[216].max              = 9999;
-  scadaParameters_[216].command          = OPERATION_ERROR;
-  scadaParameters_[216].value.float_t    = 0;
   // Время разновременного пуска
   scadaParameters_[217].id               = CCS_PROT_SUPPLY_RESTART_DELAY;
   scadaParameters_[217].address          = 217;
@@ -2616,8 +2190,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[217].coefficient      = 1;
   scadaParameters_[217].min              = 0;
   scadaParameters_[217].max              = 60;
-  scadaParameters_[217].command          = OPERATION_ERROR;
-  scadaParameters_[217].value.float_t    = 0;
   // Период записи хронологии в обычном режиме
   scadaParameters_[218].id               = CCS_LOG_PERIOD_NORMAL;
   scadaParameters_[218].address          = 218;
@@ -2628,8 +2200,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[218].coefficient      = 1;
   scadaParameters_[218].min              = 1;
   scadaParameters_[218].max              = 9999;
-  scadaParameters_[218].command          = OPERATION_ERROR;
-  scadaParameters_[218].value.float_t    = 0;
   // Период записи хронологии в ускоренном режиме
   scadaParameters_[219].id               = CCS_LOG_PERIOD_FAST;
   scadaParameters_[219].address          = 219;
@@ -2640,8 +2210,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[219].coefficient      = 1;
   scadaParameters_[219].min              = 1;
   scadaParameters_[219].max              = 10;
-  scadaParameters_[219].command          = OPERATION_ERROR;
-  scadaParameters_[219].value.float_t    = 0;
   // Время работы ПЭД в режиме таймера
   scadaParameters_[220].id               = CCS_RGM_PERIODIC_RUN_PERIOD;
   scadaParameters_[220].address          = 220;
@@ -2652,8 +2220,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[220].coefficient      = 1;
   scadaParameters_[220].min              = 1;
   scadaParameters_[220].max              = 9999;
-  scadaParameters_[220].command          = OPERATION_ERROR;
-  scadaParameters_[220].value.float_t    = 0;
   // Время останова ПЭД в режиме таймера
   scadaParameters_[221].id               = CCS_RGM_PERIODIC_STOP_PERIOD;
   scadaParameters_[221].address          = 221;
@@ -2664,8 +2230,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[221].coefficient      = 1;
   scadaParameters_[221].min              = 1;
   scadaParameters_[221].max              = 9999;
-  scadaParameters_[221].command          = OPERATION_ERROR;
-  scadaParameters_[221].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[222].id               = -1;
   scadaParameters_[222].address          = 222;
@@ -2676,8 +2240,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[222].coefficient      = 1;
   scadaParameters_[222].min              = 0;
   scadaParameters_[222].max              = 100;
-  scadaParameters_[222].command          = OPERATION_ERROR;
-  scadaParameters_[222].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[223].id               = -1;
   scadaParameters_[223].address          = 223;
@@ -2688,8 +2250,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[223].coefficient      = 1;
   scadaParameters_[223].min              = 0;
   scadaParameters_[223].max              = 100;
-  scadaParameters_[223].command          = OPERATION_ERROR;
-  scadaParameters_[223].value.float_t    = 0;
   // Блокировка двери силового отсека
   scadaParameters_[224].id               = CCS_PROT_OTHER_LOCK_DOOR_MODE;
   scadaParameters_[224].address          = 224;
@@ -2700,8 +2260,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[224].coefficient      = 1;
   scadaParameters_[224].min              = 0;
   scadaParameters_[224].max              = 1;
-  scadaParameters_[224].command          = OPERATION_ERROR;
-  scadaParameters_[224].value.float_t    = 0;
   // Пароль первого уровня
   scadaParameters_[225].id               = CCS_PASSWORD_LEVEL_1;
   scadaParameters_[225].address          = 225;
@@ -2712,8 +2270,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[225].coefficient      = 1;
   scadaParameters_[225].min              = 0;
   scadaParameters_[225].max              = 9999;
-  scadaParameters_[225].command          = OPERATION_ERROR;
-  scadaParameters_[225].value.float_t    = 0;
   // Пароль второго уровня
   scadaParameters_[226].id               = CCS_PASSWORD_LEVEL_2;
   scadaParameters_[226].address          = 226;
@@ -2724,8 +2280,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[226].coefficient      = 1;
   scadaParameters_[226].min              = 0;
   scadaParameters_[226].max              = 9999;
-  scadaParameters_[226].command          = OPERATION_ERROR;
-  scadaParameters_[226].value.float_t    = 0;
   // Начальная уставка недогрузки в режиме разгона
   scadaParameters_[227].id               = CCS_RGM_CHANGE_FREQ_BEGIN_UNDERLOAD;
   scadaParameters_[227].address          = 227;
@@ -2736,8 +2290,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[227].coefficient      = 1;
   scadaParameters_[227].min              = 0;
   scadaParameters_[227].max              = 200;
-  scadaParameters_[227].command          = OPERATION_ERROR;
-  scadaParameters_[227].value.float_t    = 0;
   // Деблокировка СУ
   scadaParameters_[228].id               = CCS_CMD_UNBLOCK;
   scadaParameters_[228].address          = 228;
@@ -2748,8 +2300,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[228].coefficient      = 1;
   scadaParameters_[228].min              = 0;
   scadaParameters_[228].max              = 1;
-  scadaParameters_[228].command          = OPERATION_ERROR;
-  scadaParameters_[228].value.float_t    = 0;
   // Запуск ПЭД
   scadaParameters_[229].id               = CCS_CMD_START;
   scadaParameters_[229].address          = 229;
@@ -2760,8 +2310,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[229].coefficient      = 1;
   scadaParameters_[229].min              = 0;
   scadaParameters_[229].max              = 1;
-  scadaParameters_[229].command          = OPERATION_ERROR;
-  scadaParameters_[229].value.float_t    = 0;
   // Останов ПЭД
   scadaParameters_[230].id               = CCS_CMD_STOP;
   scadaParameters_[230].address          = 230;
@@ -2772,8 +2320,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[230].coefficient      = 1;
   scadaParameters_[230].min              = 0;
   scadaParameters_[230].max              = 1;
-  scadaParameters_[230].command          = OPERATION_ERROR;
-  scadaParameters_[230].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[231].id               = -1;
   scadaParameters_[231].address          = 231;
@@ -2784,8 +2330,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[231].coefficient      = 1;
   scadaParameters_[231].min              = 0;
   scadaParameters_[231].max              = 100;
-  scadaParameters_[231].command          = OPERATION_ERROR;
-  scadaParameters_[231].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[232].id               = -1;
   scadaParameters_[232].address          = 232;
@@ -2796,8 +2340,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[232].coefficient      = 1;
   scadaParameters_[232].min              = 0;
   scadaParameters_[232].max              = 100;
-  scadaParameters_[232].command          = OPERATION_ERROR;
-  scadaParameters_[232].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[233].id               = -1;
   scadaParameters_[233].address          = 233;
@@ -2808,8 +2350,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[233].coefficient      = 1;
   scadaParameters_[233].min              = 0;
   scadaParameters_[233].max              = 100;
-  scadaParameters_[233].command          = OPERATION_ERROR;
-  scadaParameters_[233].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[234].id               = -1;
   scadaParameters_[234].address          = 234;
@@ -2820,8 +2360,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[234].coefficient      = 1;
   scadaParameters_[234].min              = 0;
   scadaParameters_[234].max              = 100;
-  scadaParameters_[234].command          = OPERATION_ERROR;
-  scadaParameters_[234].value.float_t    = 0;
   // Задание частоты
   scadaParameters_[235].id               = VSD_FREQUENCY;
   scadaParameters_[235].address          = 235;
@@ -2832,8 +2370,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[235].coefficient      = 0.1;
   scadaParameters_[235].min              = 3;
   scadaParameters_[235].max              = 200;
-  scadaParameters_[235].command          = OPERATION_ERROR;
-  scadaParameters_[235].value.float_t    = 0;
   // Задержка активации защиты от перегруза
   scadaParameters_[236].id               = CCS_PROT_MOTOR_OVERLOAD_ACTIV_DELAY;
   scadaParameters_[236].address          = 236;
@@ -2844,8 +2380,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[236].coefficient      = 0.1;
   scadaParameters_[236].min              = 0;
   scadaParameters_[236].max              = 60;
-  scadaParameters_[236].command          = OPERATION_ERROR;
-  scadaParameters_[236].value.float_t    = 0;
   // Задержка активации защиты от дисбаланса токов
   scadaParameters_[237].id               = CCS_PROT_MOTOR_IMBALANCE_CURRENT_ACTIV_DELAY;
   scadaParameters_[237].address          = 237;
@@ -2856,8 +2390,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[237].coefficient      = 0.1;
   scadaParameters_[237].min              = 0;
   scadaParameters_[237].max              = 60;
-  scadaParameters_[237].command          = OPERATION_ERROR;
-  scadaParameters_[237].value.float_t    = 0;
   // Задержка активации защиты от высокого напряжения
   scadaParameters_[238].id               = CCS_PROT_SUPPLY_OVERVOLTAGE_ACTIV_DELAY;
   scadaParameters_[238].address          = 238;
@@ -2868,8 +2400,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[238].coefficient      = 0.1;
   scadaParameters_[238].min              = 0;
   scadaParameters_[238].max              = 60;
-  scadaParameters_[238].command          = OPERATION_ERROR;
-  scadaParameters_[238].value.float_t    = 0;
   // Задержка активации защиты от дисбаланса напряжений
   scadaParameters_[239].id               = CCS_PROT_SUPPLY_IMBALANCE_VOLTAGE_ACTIV_DELAY;
   scadaParameters_[239].address          = 239;
@@ -2880,8 +2410,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[239].coefficient      = 0.1;
   scadaParameters_[239].min              = 0;
   scadaParameters_[239].max              = 60;
-  scadaParameters_[239].command          = OPERATION_ERROR;
-  scadaParameters_[239].value.float_t    = 0;
   // Период записи параметров ТМС (температуры обмотки и давления на приёме)
   scadaParameters_[240].id               = CCS_LOG_PERIOD_DHS;
   scadaParameters_[240].address          = 240;
@@ -2892,8 +2420,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[240].coefficient      = 1;
   scadaParameters_[240].min              = 0;
   scadaParameters_[240].max              = 9999;
-  scadaParameters_[240].command          = OPERATION_ERROR;
-  scadaParameters_[240].value.float_t    = 0;
   // Режим работы защиты от минимальной частоты
   scadaParameters_[241].id               = -1;
   scadaParameters_[241].address          = 241;
@@ -2904,8 +2430,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[241].coefficient      = 1;
   scadaParameters_[241].min              = 0;
   scadaParameters_[241].max              = 2;
-  scadaParameters_[241].command          = OPERATION_ERROR;
-  scadaParameters_[241].value.float_t    = 0;
   // Уставка минимальной частоты
   scadaParameters_[242].id               = -1;
   scadaParameters_[242].address          = 242;
@@ -2916,8 +2440,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[242].coefficient      = 0.1;
   scadaParameters_[242].min              = 8;
   scadaParameters_[242].max              = 170;
-  scadaParameters_[242].command          = OPERATION_ERROR;
-  scadaParameters_[242].value.float_t    = 0;
   // Задержка срабатывания защиты при работающем ПЭД
   scadaParameters_[243].id               = -1;
   scadaParameters_[243].address          = 243;
@@ -2928,8 +2450,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[243].coefficient      = 1;
   scadaParameters_[243].min              = 0;
   scadaParameters_[243].max              = 9999;
-  scadaParameters_[243].command          = OPERATION_ERROR;
-  scadaParameters_[243].value.float_t    = 0;
   // Задержка срабатывания защиты при запуске ПЭД
   scadaParameters_[244].id               = -1;
   scadaParameters_[244].address          = 244;
@@ -2940,8 +2460,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[244].coefficient      = 1;
   scadaParameters_[244].min              = 0;
   scadaParameters_[244].max              = 9999;
-  scadaParameters_[244].command          = OPERATION_ERROR;
-  scadaParameters_[244].value.float_t    = 0;
   // Задержка АПВ при срабатывании защиты от минимальной частоты
   scadaParameters_[245].id               = -1;
   scadaParameters_[245].address          = 245;
@@ -2952,8 +2470,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[245].coefficient      = 1;
   scadaParameters_[245].min              = 1;
   scadaParameters_[245].max              = 9999;
-  scadaParameters_[245].command          = OPERATION_ERROR;
-  scadaParameters_[245].value.float_t    = 0;
   // Режим работы защиты от максимальной частоты
   scadaParameters_[246].id               = -1;
   scadaParameters_[246].address          = 246;
@@ -2964,8 +2480,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[246].coefficient      = 1;
   scadaParameters_[246].min              = 0;
   scadaParameters_[246].max              = 2;
-  scadaParameters_[246].command          = OPERATION_ERROR;
-  scadaParameters_[246].value.float_t    = 0;
   // Уставка максимальной частоты
   scadaParameters_[247].id               = -1;
   scadaParameters_[247].address          = 247;
@@ -2976,8 +2490,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[247].coefficient      = 0.1;
   scadaParameters_[247].min              = 8;
   scadaParameters_[247].max              = 170;
-  scadaParameters_[247].command          = OPERATION_ERROR;
-  scadaParameters_[247].value.float_t    = 0;
   // Задержка срабатывания защиты при работающем ПЭД
   scadaParameters_[248].id               = -1;
   scadaParameters_[248].address          = 248;
@@ -2988,8 +2500,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[248].coefficient      = 1;
   scadaParameters_[248].min              = 0;
   scadaParameters_[248].max              = 9999;
-  scadaParameters_[248].command          = OPERATION_ERROR;
-  scadaParameters_[248].value.float_t    = 0;
   // Задержка срабатывания защиты при запуске ПЭД
   scadaParameters_[249].id               = -1;
   scadaParameters_[249].address          = 249;
@@ -3000,8 +2510,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[249].coefficient      = 1;
   scadaParameters_[249].min              = 0;
   scadaParameters_[249].max              = 9999;
-  scadaParameters_[249].command          = OPERATION_ERROR;
-  scadaParameters_[249].value.float_t    = 0;
   // Маска флагов состояния КСУ
   scadaParameters_[250].id               = 0;
   scadaParameters_[250].address          = 250;
@@ -3012,8 +2520,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[250].coefficient      = 1;
   scadaParameters_[250].min              = 0;
   scadaParameters_[250].max              = 65535;
-  scadaParameters_[250].command          = OPERATION_ERROR;
-  scadaParameters_[250].value.float_t    = 0;
   // Задержка АПВ при срабатывании защиты от максимальной частоты
   scadaParameters_[251].id               = -1;
   scadaParameters_[251].address          = 251;
@@ -3024,8 +2530,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[251].coefficient      = 1;
   scadaParameters_[251].min              = 1;
   scadaParameters_[251].max              = 9999;
-  scadaParameters_[251].command          = OPERATION_ERROR;
-  scadaParameters_[251].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[252].id               = -1;
   scadaParameters_[252].address          = 252;
@@ -3036,8 +2540,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[252].coefficient      = 1;
   scadaParameters_[252].min              = 0;
   scadaParameters_[252].max              = 100;
-  scadaParameters_[252].command          = OPERATION_ERROR;
-  scadaParameters_[252].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[253].id               = -1;
   scadaParameters_[253].address          = 253;
@@ -3048,8 +2550,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[253].coefficient      = 1;
   scadaParameters_[253].min              = 0;
   scadaParameters_[253].max              = 100;
-  scadaParameters_[253].command          = OPERATION_ERROR;
-  scadaParameters_[253].value.float_t    = 0;
   // Слово состояния оборудования
   scadaParameters_[254].id               = 0;
   scadaParameters_[254].address          = 254;
@@ -3060,8 +2560,6 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[254].coefficient      = 1;
   scadaParameters_[254].min              = 0;
   scadaParameters_[254].max              = 65535;
-  scadaParameters_[254].command          = OPERATION_ERROR;
-  scadaParameters_[254].value.float_t    = 0;
   // Зарезервирован
   scadaParameters_[255].id               = -1;
   scadaParameters_[255].address          = 255;
@@ -3072,7 +2570,5 @@ void ScadaSurgutneftegas::initParameters()
   scadaParameters_[255].coefficient      = 1;
   scadaParameters_[255].min              = 0;
   scadaParameters_[255].max              = 100;
-  scadaParameters_[255].command          = OPERATION_ERROR;
-  scadaParameters_[255].value.float_t    = 0;
 }
 

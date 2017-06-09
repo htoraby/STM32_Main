@@ -91,6 +91,9 @@ void logStartCompress(EventType type)
 {
   parameters.startSave();
   eventType = type;
+  parameters.set(CCS_PROGRESS_VALUE, 0);
+  parameters.set(CCS_PROGRESS_MAX, 0);
+  parameters.set(CCS_PROGRESS_MAX, (float)(EndAddrDebugLog + flashExts[FlashSpi5].size + PARAMETERS_SIZE)/1024);
   osSemaphoreRelease(compressSemaphoreId_);
 }
 
@@ -422,6 +425,7 @@ static bool logCompress()
   lzo_uint outLen = 0;
   int resCompress = 0;
   uint32_t size = 0;
+  uint32_t count = 0;
 
   // Проверка архиватора
   if (lzo_init() != LZO_E_OK) {
@@ -464,10 +468,16 @@ static bool logCompress()
       flashExtWriteEx(FlashSpi1, lastAddress, inBufData, inLen);
       lastAddress = lastAddress + inLen;
     }
+
+    count++;
+    if (count >= 60) {
+      count = 0;
+      parameters.set(CCS_PROGRESS_VALUE, (float)(addr)/1024);
+    }
+
     // Условие выхода из цикла
     if (addr >= flashExts[FlashSpi5].size)
       break;
-
   }
 
   addr = 0;
@@ -501,6 +511,13 @@ static bool logCompress()
       flashExtWriteEx(FlashSpi1, lastAddress, inBufData, inLen);
       lastAddress = lastAddress + inLen;
     }
+
+    count++;
+    if (count >= 60) {
+      count = 0;
+      parameters.set(CCS_PROGRESS_VALUE, (float)(addr + flashExts[FlashSpi5].size)/1024);
+    }
+
     if (addr >= EndAddrDebugLog)
       break;
   }
@@ -536,6 +553,13 @@ static bool logCompress()
       flashExtWriteEx(FlashSpi1, lastAddress, inBufData, inLen);
       lastAddress = lastAddress + inLen;
     }
+
+    count++;
+    if (count >= 60) {
+      count = 0;
+      parameters.set(CCS_PROGRESS_VALUE, (float)(addr + flashExts[FlashSpi5].size + EndAddrDebugLog)/1024);
+    }
+
     if (addr >= PARAMETERS_SIZE)
       break;
   }
